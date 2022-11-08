@@ -44,6 +44,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetBook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBook",
-			ID:   "getBook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGetBookParams(args, r)
@@ -72,6 +74,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "GetBook",
 			OperationID:   "getBook",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -144,6 +147,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPageCoverImage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -151,8 +155,9 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPageCoverImage",
-			ID:   "getPageCoverImage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGetPageCoverImageParams(args, r)
@@ -172,6 +177,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetPageCoverImage",
 			OperationID:   "getPageCoverImage",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -248,6 +254,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPageImage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -255,8 +262,9 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPageImage",
-			ID:   "getPageImage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGetPageImageParams(args, r)
@@ -276,6 +284,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "GetPageImage",
 			OperationID:   "getPageImage",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -356,6 +365,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPageThumbnailImage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -363,8 +373,9 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPageThumbnailImage",
-			ID:   "getPageThumbnailImage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeGetPageThumbnailImageParams(args, r)
@@ -384,6 +395,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetPageThumbnailImage",
 			OperationID:   "getPageThumbnailImage",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -464,6 +476,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Search
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -471,8 +484,9 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Search",
-			ID:   "search",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchParams(args, r)
@@ -492,6 +506,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 			Context:       ctx,
 			OperationName: "Search",
 			OperationID:   "search",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -568,6 +583,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SearchByTagID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -575,8 +591,9 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchByTagID",
-			ID:   "searchByTagID",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSearchByTagIDParams(args, r)
@@ -596,6 +613,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SearchByTagID",
 			OperationID:   "searchByTagID",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

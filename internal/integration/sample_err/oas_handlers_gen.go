@@ -46,6 +46,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataCreate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53,8 +54,9 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataCreate",
-			ID:   "dataCreate",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDataCreateRequest(r)
@@ -79,6 +81,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "DataCreate",
 			OperationID:   "dataCreate",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -154,6 +157,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DataGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -168,6 +172,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "DataGet",
 			OperationID:   "dataGet",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

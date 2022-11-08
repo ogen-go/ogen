@@ -44,6 +44,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedPodProxy",
-			ID:   "connectCoreV1DeleteNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r); err != nil {
@@ -84,6 +86,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNamespacedPodProxy",
 			OperationID:   "connectCoreV1DeleteNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -164,6 +167,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -171,8 +175,9 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1DeleteNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r); err != nil {
@@ -204,6 +209,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1DeleteNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -288,6 +294,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -295,8 +302,9 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedServiceProxy",
-			ID:   "connectCoreV1DeleteNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r); err != nil {
@@ -328,6 +336,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNamespacedServiceProxy",
 			OperationID:   "connectCoreV1DeleteNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -408,6 +417,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -415,8 +425,9 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1DeleteNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r); err != nil {
@@ -448,6 +459,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1DeleteNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -532,6 +544,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -539,8 +552,9 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNodeProxy",
-			ID:   "connectCoreV1DeleteNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r); err != nil {
@@ -572,6 +586,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNodeProxy",
 			OperationID:   "connectCoreV1DeleteNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -648,6 +663,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1DeleteNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -655,8 +671,9 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNodeProxyWithPath",
-			ID:   "connectCoreV1DeleteNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r); err != nil {
@@ -688,6 +705,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ConnectCoreV1DeleteNodeProxyWithPath",
 			OperationID:   "connectCoreV1DeleteNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -768,6 +786,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedPodAttach
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -775,8 +794,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodAttach",
-			ID:   "connectCoreV1GetNamespacedPodAttach",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r); err != nil {
@@ -808,6 +828,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedPodAttach",
 			OperationID:   "connectCoreV1GetNamespacedPodAttach",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -904,6 +925,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedPodExec
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -911,8 +933,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodExec",
-			ID:   "connectCoreV1GetNamespacedPodExec",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r); err != nil {
@@ -944,6 +967,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedPodExec",
 			OperationID:   "connectCoreV1GetNamespacedPodExec",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1044,6 +1068,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedPodPortforward
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1051,8 +1076,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodPortforward",
-			ID:   "connectCoreV1GetNamespacedPodPortforward",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r); err != nil {
@@ -1084,6 +1110,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedPodPortforward",
 			OperationID:   "connectCoreV1GetNamespacedPodPortforward",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1164,6 +1191,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1171,8 +1199,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodProxy",
-			ID:   "connectCoreV1GetNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r); err != nil {
@@ -1204,6 +1233,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedPodProxy",
 			OperationID:   "connectCoreV1GetNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1284,6 +1314,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1291,8 +1322,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1GetNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r); err != nil {
@@ -1324,6 +1356,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1GetNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1408,6 +1441,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1415,8 +1449,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedServiceProxy",
-			ID:   "connectCoreV1GetNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r); err != nil {
@@ -1448,6 +1483,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedServiceProxy",
 			OperationID:   "connectCoreV1GetNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1528,6 +1564,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1535,8 +1572,9 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1GetNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r); err != nil {
@@ -1568,6 +1606,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1GetNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1652,6 +1691,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1659,8 +1699,9 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNodeProxy",
-			ID:   "connectCoreV1GetNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r); err != nil {
@@ -1692,6 +1733,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNodeProxy",
 			OperationID:   "connectCoreV1GetNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1768,6 +1810,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1GetNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1775,8 +1818,9 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNodeProxyWithPath",
-			ID:   "connectCoreV1GetNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r); err != nil {
@@ -1808,6 +1852,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ConnectCoreV1GetNodeProxyWithPath",
 			OperationID:   "connectCoreV1GetNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1888,6 +1933,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1895,8 +1941,9 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedPodProxy",
-			ID:   "connectCoreV1HeadNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r); err != nil {
@@ -1928,6 +1975,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNamespacedPodProxy",
 			OperationID:   "connectCoreV1HeadNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2008,6 +2056,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2015,8 +2064,9 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1HeadNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r); err != nil {
@@ -2048,6 +2098,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1HeadNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2132,6 +2183,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2139,8 +2191,9 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedServiceProxy",
-			ID:   "connectCoreV1HeadNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r); err != nil {
@@ -2172,6 +2225,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNamespacedServiceProxy",
 			OperationID:   "connectCoreV1HeadNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2252,6 +2306,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2259,8 +2314,9 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1HeadNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r); err != nil {
@@ -2292,6 +2348,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1HeadNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2376,6 +2433,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2383,8 +2441,9 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNodeProxy",
-			ID:   "connectCoreV1HeadNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r); err != nil {
@@ -2416,6 +2475,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNodeProxy",
 			OperationID:   "connectCoreV1HeadNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2492,6 +2552,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1HeadNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2499,8 +2560,9 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNodeProxyWithPath",
-			ID:   "connectCoreV1HeadNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r); err != nil {
@@ -2532,6 +2594,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ConnectCoreV1HeadNodeProxyWithPath",
 			OperationID:   "connectCoreV1HeadNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2612,6 +2675,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2619,8 +2683,9 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedPodProxy",
-			ID:   "connectCoreV1OptionsNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r); err != nil {
@@ -2652,6 +2717,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNamespacedPodProxy",
 			OperationID:   "connectCoreV1OptionsNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2732,6 +2798,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2739,8 +2806,9 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1OptionsNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r); err != nil {
@@ -2772,6 +2840,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1OptionsNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2856,6 +2925,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2863,8 +2933,9 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedServiceProxy",
-			ID:   "connectCoreV1OptionsNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r); err != nil {
@@ -2896,6 +2967,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNamespacedServiceProxy",
 			OperationID:   "connectCoreV1OptionsNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2976,6 +3048,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2983,8 +3056,9 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1OptionsNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r); err != nil {
@@ -3016,6 +3090,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1OptionsNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3100,6 +3175,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3107,8 +3183,9 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNodeProxy",
-			ID:   "connectCoreV1OptionsNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r); err != nil {
@@ -3140,6 +3217,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNodeProxy",
 			OperationID:   "connectCoreV1OptionsNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3216,6 +3294,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1OptionsNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3223,8 +3302,9 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNodeProxyWithPath",
-			ID:   "connectCoreV1OptionsNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r); err != nil {
@@ -3256,6 +3336,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ConnectCoreV1OptionsNodeProxyWithPath",
 			OperationID:   "connectCoreV1OptionsNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3336,6 +3417,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3343,8 +3425,9 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedPodProxy",
-			ID:   "connectCoreV1PatchNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r); err != nil {
@@ -3376,6 +3459,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNamespacedPodProxy",
 			OperationID:   "connectCoreV1PatchNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3456,6 +3540,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3463,8 +3548,9 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1PatchNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r); err != nil {
@@ -3496,6 +3582,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1PatchNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3580,6 +3667,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3587,8 +3675,9 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedServiceProxy",
-			ID:   "connectCoreV1PatchNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r); err != nil {
@@ -3620,6 +3709,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNamespacedServiceProxy",
 			OperationID:   "connectCoreV1PatchNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3700,6 +3790,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3707,8 +3798,9 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1PatchNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r); err != nil {
@@ -3740,6 +3832,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1PatchNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3824,6 +3917,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3831,8 +3925,9 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNodeProxy",
-			ID:   "connectCoreV1PatchNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r); err != nil {
@@ -3864,6 +3959,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNodeProxy",
 			OperationID:   "connectCoreV1PatchNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -3940,6 +4036,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PatchNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3947,8 +4044,9 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNodeProxyWithPath",
-			ID:   "connectCoreV1PatchNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r); err != nil {
@@ -3980,6 +4078,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PatchNodeProxyWithPath",
 			OperationID:   "connectCoreV1PatchNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4060,6 +4159,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedPodAttach
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4067,8 +4167,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodAttach",
-			ID:   "connectCoreV1PostNamespacedPodAttach",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r); err != nil {
@@ -4100,6 +4201,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedPodAttach",
 			OperationID:   "connectCoreV1PostNamespacedPodAttach",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4196,6 +4298,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedPodExec
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4203,8 +4306,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodExec",
-			ID:   "connectCoreV1PostNamespacedPodExec",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r); err != nil {
@@ -4236,6 +4340,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedPodExec",
 			OperationID:   "connectCoreV1PostNamespacedPodExec",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4336,6 +4441,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedPodPortforward
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4343,8 +4449,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodPortforward",
-			ID:   "connectCoreV1PostNamespacedPodPortforward",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r); err != nil {
@@ -4376,6 +4483,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedPodPortforward",
 			OperationID:   "connectCoreV1PostNamespacedPodPortforward",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4456,6 +4564,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4463,8 +4572,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodProxy",
-			ID:   "connectCoreV1PostNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r); err != nil {
@@ -4496,6 +4606,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedPodProxy",
 			OperationID:   "connectCoreV1PostNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4576,6 +4687,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4583,8 +4695,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1PostNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r); err != nil {
@@ -4616,6 +4729,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1PostNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4700,6 +4814,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4707,8 +4822,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedServiceProxy",
-			ID:   "connectCoreV1PostNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r); err != nil {
@@ -4740,6 +4856,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedServiceProxy",
 			OperationID:   "connectCoreV1PostNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4820,6 +4937,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4827,8 +4945,9 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1PostNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r); err != nil {
@@ -4860,6 +4979,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1PostNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -4944,6 +5064,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4951,8 +5072,9 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNodeProxy",
-			ID:   "connectCoreV1PostNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r); err != nil {
@@ -4984,6 +5106,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNodeProxy",
 			OperationID:   "connectCoreV1PostNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5060,6 +5183,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PostNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5067,8 +5191,9 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNodeProxyWithPath",
-			ID:   "connectCoreV1PostNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r); err != nil {
@@ -5100,6 +5225,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PostNodeProxyWithPath",
 			OperationID:   "connectCoreV1PostNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5180,6 +5306,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNamespacedPodProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5187,8 +5314,9 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedPodProxy",
-			ID:   "connectCoreV1PutNamespacedPodProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r); err != nil {
@@ -5220,6 +5348,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNamespacedPodProxy",
 			OperationID:   "connectCoreV1PutNamespacedPodProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5300,6 +5429,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNamespacedPodProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5307,8 +5437,9 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedPodProxyWithPath",
-			ID:   "connectCoreV1PutNamespacedPodProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r); err != nil {
@@ -5340,6 +5471,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNamespacedPodProxyWithPath",
 			OperationID:   "connectCoreV1PutNamespacedPodProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5424,6 +5556,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNamespacedServiceProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5431,8 +5564,9 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedServiceProxy",
-			ID:   "connectCoreV1PutNamespacedServiceProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r); err != nil {
@@ -5464,6 +5598,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNamespacedServiceProxy",
 			OperationID:   "connectCoreV1PutNamespacedServiceProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5544,6 +5679,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNamespacedServiceProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5551,8 +5687,9 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedServiceProxyWithPath",
-			ID:   "connectCoreV1PutNamespacedServiceProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r); err != nil {
@@ -5584,6 +5721,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNamespacedServiceProxyWithPath",
 			OperationID:   "connectCoreV1PutNamespacedServiceProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5668,6 +5806,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNodeProxy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5675,8 +5814,9 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNodeProxy",
-			ID:   "connectCoreV1PutNodeProxy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r); err != nil {
@@ -5708,6 +5848,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNodeProxy",
 			OperationID:   "connectCoreV1PutNodeProxy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5784,6 +5925,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ConnectCoreV1PutNodeProxyWithPath
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5791,8 +5933,9 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNodeProxyWithPath",
-			ID:   "connectCoreV1PutNodeProxyWithPath",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r); err != nil {
@@ -5824,6 +5967,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ConnectCoreV1PutNodeProxyWithPath",
 			OperationID:   "connectCoreV1PutNodeProxyWithPath",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -5904,6 +6048,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAPIVersions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5911,8 +6056,9 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAPIVersions",
-			ID:   "getAPIVersions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAPIVersions", r); err != nil {
@@ -5934,6 +6080,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "GetAPIVersions",
 			OperationID:   "getAPIVersions",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6001,6 +6148,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAdmissionregistrationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6008,8 +6156,9 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAdmissionregistrationAPIGroup",
-			ID:   "getAdmissionregistrationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); err != nil {
@@ -6031,6 +6180,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "GetAdmissionregistrationAPIGroup",
 			OperationID:   "getAdmissionregistrationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6098,6 +6248,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAdmissionregistrationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6105,8 +6256,9 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAdmissionregistrationV1APIResources",
-			ID:   "getAdmissionregistrationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); err != nil {
@@ -6128,6 +6280,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			Context:       ctx,
 			OperationName: "GetAdmissionregistrationV1APIResources",
 			OperationID:   "getAdmissionregistrationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6195,6 +6348,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetApiextensionsAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6202,8 +6356,9 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiextensionsAPIGroup",
-			ID:   "getApiextensionsAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); err != nil {
@@ -6225,6 +6380,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "GetApiextensionsAPIGroup",
 			OperationID:   "getApiextensionsAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6292,6 +6448,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetApiextensionsV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6299,8 +6456,9 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiextensionsV1APIResources",
-			ID:   "getApiextensionsV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); err != nil {
@@ -6322,6 +6480,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "GetApiextensionsV1APIResources",
 			OperationID:   "getApiextensionsV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6389,6 +6548,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetApiregistrationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6396,8 +6556,9 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiregistrationAPIGroup",
-			ID:   "getApiregistrationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); err != nil {
@@ -6419,6 +6580,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "GetApiregistrationAPIGroup",
 			OperationID:   "getApiregistrationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6486,6 +6648,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetApiregistrationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6493,8 +6656,9 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiregistrationV1APIResources",
-			ID:   "getApiregistrationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); err != nil {
@@ -6516,6 +6680,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "GetApiregistrationV1APIResources",
 			OperationID:   "getApiregistrationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6583,6 +6748,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAppsAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6590,8 +6756,9 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAppsAPIGroup",
-			ID:   "getAppsAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAppsAPIGroup", r); err != nil {
@@ -6613,6 +6780,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "GetAppsAPIGroup",
 			OperationID:   "getAppsAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6680,6 +6848,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAppsV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6687,8 +6856,9 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAppsV1APIResources",
-			ID:   "getAppsV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAppsV1APIResources", r); err != nil {
@@ -6710,6 +6880,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetAppsV1APIResources",
 			OperationID:   "getAppsV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6777,6 +6948,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAuthenticationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6784,8 +6956,9 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthenticationAPIGroup",
-			ID:   "getAuthenticationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); err != nil {
@@ -6807,6 +6980,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "GetAuthenticationAPIGroup",
 			OperationID:   "getAuthenticationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6874,6 +7048,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAuthenticationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6881,8 +7056,9 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthenticationV1APIResources",
-			ID:   "getAuthenticationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); err != nil {
@@ -6904,6 +7080,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "GetAuthenticationV1APIResources",
 			OperationID:   "getAuthenticationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6971,6 +7148,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAuthorizationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6978,8 +7156,9 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthorizationAPIGroup",
-			ID:   "getAuthorizationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); err != nil {
@@ -7001,6 +7180,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "GetAuthorizationAPIGroup",
 			OperationID:   "getAuthorizationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7068,6 +7248,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAuthorizationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7075,8 +7256,9 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthorizationV1APIResources",
-			ID:   "getAuthorizationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); err != nil {
@@ -7098,6 +7280,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "GetAuthorizationV1APIResources",
 			OperationID:   "getAuthorizationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7165,6 +7348,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAutoscalingAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7172,8 +7356,9 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingAPIGroup",
-			ID:   "getAutoscalingAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); err != nil {
@@ -7195,6 +7380,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "GetAutoscalingAPIGroup",
 			OperationID:   "getAutoscalingAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7262,6 +7448,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAutoscalingV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7269,8 +7456,9 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV1APIResources",
-			ID:   "getAutoscalingV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); err != nil {
@@ -7292,6 +7480,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "GetAutoscalingV1APIResources",
 			OperationID:   "getAutoscalingV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7359,6 +7548,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAutoscalingV2beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7366,8 +7556,9 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV2beta1APIResources",
-			ID:   "getAutoscalingV2beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); err != nil {
@@ -7389,6 +7580,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "GetAutoscalingV2beta1APIResources",
 			OperationID:   "getAutoscalingV2beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7456,6 +7648,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetAutoscalingV2beta2APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7463,8 +7656,9 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV2beta2APIResources",
-			ID:   "getAutoscalingV2beta2APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); err != nil {
@@ -7486,6 +7680,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "GetAutoscalingV2beta2APIResources",
 			OperationID:   "getAutoscalingV2beta2APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7553,6 +7748,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetBatchAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7560,8 +7756,9 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchAPIGroup",
-			ID:   "getBatchAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetBatchAPIGroup", r); err != nil {
@@ -7583,6 +7780,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "GetBatchAPIGroup",
 			OperationID:   "getBatchAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7650,6 +7848,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetBatchV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7657,8 +7856,9 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchV1APIResources",
-			ID:   "getBatchV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetBatchV1APIResources", r); err != nil {
@@ -7680,6 +7880,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "GetBatchV1APIResources",
 			OperationID:   "getBatchV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7747,6 +7948,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetBatchV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7754,8 +7956,9 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchV1beta1APIResources",
-			ID:   "getBatchV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); err != nil {
@@ -7777,6 +7980,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "GetBatchV1beta1APIResources",
 			OperationID:   "getBatchV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7844,6 +8048,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCertificatesAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7851,8 +8056,9 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCertificatesAPIGroup",
-			ID:   "getCertificatesAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); err != nil {
@@ -7874,6 +8080,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "GetCertificatesAPIGroup",
 			OperationID:   "getCertificatesAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7941,6 +8148,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCertificatesV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7948,8 +8156,9 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCertificatesV1APIResources",
-			ID:   "getCertificatesV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); err != nil {
@@ -7971,6 +8180,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "GetCertificatesV1APIResources",
 			OperationID:   "getCertificatesV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8038,6 +8248,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCodeVersion
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8045,8 +8256,9 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCodeVersion",
-			ID:   "getCodeVersion",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCodeVersion", r); err != nil {
@@ -8068,6 +8280,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "GetCodeVersion",
 			OperationID:   "getCodeVersion",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8135,6 +8348,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCoordinationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8142,8 +8356,9 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoordinationAPIGroup",
-			ID:   "getCoordinationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); err != nil {
@@ -8165,6 +8380,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "GetCoordinationAPIGroup",
 			OperationID:   "getCoordinationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8232,6 +8448,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCoordinationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8239,8 +8456,9 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoordinationV1APIResources",
-			ID:   "getCoordinationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); err != nil {
@@ -8262,6 +8480,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "GetCoordinationV1APIResources",
 			OperationID:   "getCoordinationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8329,6 +8548,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCoreAPIVersions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8336,8 +8556,9 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoreAPIVersions",
-			ID:   "getCoreAPIVersions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCoreAPIVersions", r); err != nil {
@@ -8359,6 +8580,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "GetCoreAPIVersions",
 			OperationID:   "getCoreAPIVersions",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8426,6 +8648,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetCoreV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8433,8 +8656,9 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoreV1APIResources",
-			ID:   "getCoreV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetCoreV1APIResources", r); err != nil {
@@ -8456,6 +8680,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetCoreV1APIResources",
 			OperationID:   "getCoreV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8523,6 +8748,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetDiscoveryAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8530,8 +8756,9 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryAPIGroup",
-			ID:   "getDiscoveryAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); err != nil {
@@ -8553,6 +8780,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "GetDiscoveryAPIGroup",
 			OperationID:   "getDiscoveryAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8620,6 +8848,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetDiscoveryV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8627,8 +8856,9 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryV1APIResources",
-			ID:   "getDiscoveryV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); err != nil {
@@ -8650,6 +8880,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "GetDiscoveryV1APIResources",
 			OperationID:   "getDiscoveryV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8717,6 +8948,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetDiscoveryV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8724,8 +8956,9 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryV1beta1APIResources",
-			ID:   "getDiscoveryV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); err != nil {
@@ -8747,6 +8980,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "GetDiscoveryV1beta1APIResources",
 			OperationID:   "getDiscoveryV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8814,6 +9048,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetEventsAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8821,8 +9056,9 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsAPIGroup",
-			ID:   "getEventsAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetEventsAPIGroup", r); err != nil {
@@ -8844,6 +9080,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetEventsAPIGroup",
 			OperationID:   "getEventsAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8911,6 +9148,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetEventsV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8918,8 +9156,9 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsV1APIResources",
-			ID:   "getEventsV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetEventsV1APIResources", r); err != nil {
@@ -8941,6 +9180,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "GetEventsV1APIResources",
 			OperationID:   "getEventsV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9008,6 +9248,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetEventsV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9015,8 +9256,9 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsV1beta1APIResources",
-			ID:   "getEventsV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); err != nil {
@@ -9038,6 +9280,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "GetEventsV1beta1APIResources",
 			OperationID:   "getEventsV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9105,6 +9348,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetFlowcontrolApiserverAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9112,8 +9356,9 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverAPIGroup",
-			ID:   "getFlowcontrolApiserverAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); err != nil {
@@ -9135,6 +9380,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverAPIGroup",
 			OperationID:   "getFlowcontrolApiserverAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9202,6 +9448,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetFlowcontrolApiserverV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9209,8 +9456,9 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverV1beta1APIResources",
-			ID:   "getFlowcontrolApiserverV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); err != nil {
@@ -9232,6 +9480,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverV1beta1APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9299,6 +9548,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetFlowcontrolApiserverV1beta2APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9306,8 +9556,9 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverV1beta2APIResources",
-			ID:   "getFlowcontrolApiserverV1beta2APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); err != nil {
@@ -9329,6 +9580,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverV1beta2APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta2APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9396,6 +9648,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetInternalApiserverAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9403,8 +9656,9 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetInternalApiserverAPIGroup",
-			ID:   "getInternalApiserverAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); err != nil {
@@ -9426,6 +9680,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "GetInternalApiserverAPIGroup",
 			OperationID:   "getInternalApiserverAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9493,6 +9748,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetInternalApiserverV1alpha1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9500,8 +9756,9 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetInternalApiserverV1alpha1APIResources",
-			ID:   "getInternalApiserverV1alpha1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); err != nil {
@@ -9523,6 +9780,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			Context:       ctx,
 			OperationName: "GetInternalApiserverV1alpha1APIResources",
 			OperationID:   "getInternalApiserverV1alpha1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9590,6 +9848,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNetworkingAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9597,8 +9856,9 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNetworkingAPIGroup",
-			ID:   "getNetworkingAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); err != nil {
@@ -9620,6 +9880,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetNetworkingAPIGroup",
 			OperationID:   "getNetworkingAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9687,6 +9948,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNetworkingV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9694,8 +9956,9 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNetworkingV1APIResources",
-			ID:   "getNetworkingV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); err != nil {
@@ -9717,6 +9980,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "GetNetworkingV1APIResources",
 			OperationID:   "getNetworkingV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9784,6 +10048,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNodeAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9791,8 +10056,9 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeAPIGroup",
-			ID:   "getNodeAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNodeAPIGroup", r); err != nil {
@@ -9814,6 +10080,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "GetNodeAPIGroup",
 			OperationID:   "getNodeAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9881,6 +10148,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNodeV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9888,8 +10156,9 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1APIResources",
-			ID:   "getNodeV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1APIResources", r); err != nil {
@@ -9911,6 +10180,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetNodeV1APIResources",
 			OperationID:   "getNodeV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9978,6 +10248,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNodeV1alpha1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9985,8 +10256,9 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1alpha1APIResources",
-			ID:   "getNodeV1alpha1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); err != nil {
@@ -10008,6 +10280,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "GetNodeV1alpha1APIResources",
 			OperationID:   "getNodeV1alpha1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10075,6 +10348,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetNodeV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10082,8 +10356,9 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1beta1APIResources",
-			ID:   "getNodeV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); err != nil {
@@ -10105,6 +10380,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "GetNodeV1beta1APIResources",
 			OperationID:   "getNodeV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10172,6 +10448,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPolicyAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10179,8 +10456,9 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyAPIGroup",
-			ID:   "getPolicyAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetPolicyAPIGroup", r); err != nil {
@@ -10202,6 +10480,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetPolicyAPIGroup",
 			OperationID:   "getPolicyAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10269,6 +10548,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPolicyV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10276,8 +10556,9 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyV1APIResources",
-			ID:   "getPolicyV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetPolicyV1APIResources", r); err != nil {
@@ -10299,6 +10580,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "GetPolicyV1APIResources",
 			OperationID:   "getPolicyV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10366,6 +10648,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetPolicyV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10373,8 +10656,9 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyV1beta1APIResources",
-			ID:   "getPolicyV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); err != nil {
@@ -10396,6 +10680,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "GetPolicyV1beta1APIResources",
 			OperationID:   "getPolicyV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10463,6 +10748,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetRbacAuthorizationAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10470,8 +10756,9 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetRbacAuthorizationAPIGroup",
-			ID:   "getRbacAuthorizationAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); err != nil {
@@ -10493,6 +10780,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "GetRbacAuthorizationAPIGroup",
 			OperationID:   "getRbacAuthorizationAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10560,6 +10848,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetRbacAuthorizationV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10567,8 +10856,9 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetRbacAuthorizationV1APIResources",
-			ID:   "getRbacAuthorizationV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); err != nil {
@@ -10590,6 +10880,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "GetRbacAuthorizationV1APIResources",
 			OperationID:   "getRbacAuthorizationV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10657,6 +10948,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetSchedulingAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10664,8 +10956,9 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetSchedulingAPIGroup",
-			ID:   "getSchedulingAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); err != nil {
@@ -10687,6 +10980,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetSchedulingAPIGroup",
 			OperationID:   "getSchedulingAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10754,6 +11048,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetSchedulingV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10761,8 +11056,9 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetSchedulingV1APIResources",
-			ID:   "getSchedulingV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); err != nil {
@@ -10784,6 +11080,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "GetSchedulingV1APIResources",
 			OperationID:   "getSchedulingV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10851,6 +11148,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetServiceAccountIssuerOpenIDConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10858,8 +11156,9 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetServiceAccountIssuerOpenIDConfiguration",
-			ID:   "getServiceAccountIssuerOpenIDConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); err != nil {
@@ -10881,6 +11180,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			Context:       ctx,
 			OperationName: "GetServiceAccountIssuerOpenIDConfiguration",
 			OperationID:   "getServiceAccountIssuerOpenIDConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10948,6 +11248,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetServiceAccountIssuerOpenIDKeyset
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10955,8 +11256,9 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetServiceAccountIssuerOpenIDKeyset",
-			ID:   "getServiceAccountIssuerOpenIDKeyset",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r); err != nil {
@@ -10978,6 +11280,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 			Context:       ctx,
 			OperationName: "GetServiceAccountIssuerOpenIDKeyset",
 			OperationID:   "getServiceAccountIssuerOpenIDKeyset",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11045,6 +11348,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetStorageAPIGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11052,8 +11356,9 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageAPIGroup",
-			ID:   "getStorageAPIGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetStorageAPIGroup", r); err != nil {
@@ -11075,6 +11380,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "GetStorageAPIGroup",
 			OperationID:   "getStorageAPIGroup",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11142,6 +11448,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetStorageV1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11149,8 +11456,9 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1APIResources",
-			ID:   "getStorageV1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1APIResources", r); err != nil {
@@ -11172,6 +11480,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "GetStorageV1APIResources",
 			OperationID:   "getStorageV1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11239,6 +11548,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetStorageV1alpha1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11246,8 +11556,9 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1alpha1APIResources",
-			ID:   "getStorageV1alpha1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); err != nil {
@@ -11269,6 +11580,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "GetStorageV1alpha1APIResources",
 			OperationID:   "getStorageV1alpha1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11336,6 +11648,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetStorageV1beta1APIResources
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11343,8 +11656,9 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1beta1APIResources",
-			ID:   "getStorageV1beta1APIResources",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); err != nil {
@@ -11366,6 +11680,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "GetStorageV1beta1APIResources",
 			OperationID:   "getStorageV1beta1APIResources",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11433,6 +11748,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAdmissionregistrationV1MutatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11440,8 +11756,9 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
-			ID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
@@ -11473,6 +11790,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Context:       ctx,
 			OperationName: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11581,6 +11899,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAdmissionregistrationV1ValidatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11588,8 +11907,9 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
-			ID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
@@ -11621,6 +11941,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			Context:       ctx,
 			OperationName: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11729,6 +12050,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListApiextensionsV1CustomResourceDefinition
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11736,8 +12058,9 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListApiextensionsV1CustomResourceDefinition",
-			ID:   "listApiextensionsV1CustomResourceDefinition",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); err != nil {
@@ -11769,6 +12092,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			Context:       ctx,
 			OperationName: "ListApiextensionsV1CustomResourceDefinition",
 			OperationID:   "listApiextensionsV1CustomResourceDefinition",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -11877,6 +12201,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListApiregistrationV1APIService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11884,8 +12209,9 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListApiregistrationV1APIService",
-			ID:   "listApiregistrationV1APIService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); err != nil {
@@ -11917,6 +12243,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "ListApiregistrationV1APIService",
 			OperationID:   "listApiregistrationV1APIService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12025,6 +12352,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1ControllerRevisionForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12032,8 +12360,9 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1ControllerRevisionForAllNamespaces",
-			ID:   "listAppsV1ControllerRevisionForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); err != nil {
@@ -12065,6 +12394,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "ListAppsV1ControllerRevisionForAllNamespaces",
 			OperationID:   "listAppsV1ControllerRevisionForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12173,6 +12503,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1DaemonSetForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12180,8 +12511,9 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1DaemonSetForAllNamespaces",
-			ID:   "listAppsV1DaemonSetForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); err != nil {
@@ -12213,6 +12545,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			Context:       ctx,
 			OperationName: "ListAppsV1DaemonSetForAllNamespaces",
 			OperationID:   "listAppsV1DaemonSetForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12321,6 +12654,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1DeploymentForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12328,8 +12662,9 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1DeploymentForAllNamespaces",
-			ID:   "listAppsV1DeploymentForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); err != nil {
@@ -12361,6 +12696,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "ListAppsV1DeploymentForAllNamespaces",
 			OperationID:   "listAppsV1DeploymentForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12469,6 +12805,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1NamespacedControllerRevision
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12476,8 +12813,9 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedControllerRevision",
-			ID:   "listAppsV1NamespacedControllerRevision",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); err != nil {
@@ -12509,6 +12847,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedControllerRevision",
 			OperationID:   "listAppsV1NamespacedControllerRevision",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12621,6 +12960,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1NamespacedDaemonSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12628,8 +12968,9 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedDaemonSet",
-			ID:   "listAppsV1NamespacedDaemonSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); err != nil {
@@ -12661,6 +13002,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedDaemonSet",
 			OperationID:   "listAppsV1NamespacedDaemonSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12773,6 +13115,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1NamespacedDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12780,8 +13123,9 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedDeployment",
-			ID:   "listAppsV1NamespacedDeployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); err != nil {
@@ -12813,6 +13157,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedDeployment",
 			OperationID:   "listAppsV1NamespacedDeployment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -12925,6 +13270,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1NamespacedReplicaSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12932,8 +13278,9 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedReplicaSet",
-			ID:   "listAppsV1NamespacedReplicaSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); err != nil {
@@ -12965,6 +13312,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedReplicaSet",
 			OperationID:   "listAppsV1NamespacedReplicaSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13077,6 +13425,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1NamespacedStatefulSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13084,8 +13433,9 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedStatefulSet",
-			ID:   "listAppsV1NamespacedStatefulSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); err != nil {
@@ -13117,6 +13467,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedStatefulSet",
 			OperationID:   "listAppsV1NamespacedStatefulSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13229,6 +13580,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1ReplicaSetForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13236,8 +13588,9 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1ReplicaSetForAllNamespaces",
-			ID:   "listAppsV1ReplicaSetForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); err != nil {
@@ -13269,6 +13622,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "ListAppsV1ReplicaSetForAllNamespaces",
 			OperationID:   "listAppsV1ReplicaSetForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13377,6 +13731,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAppsV1StatefulSetForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13384,8 +13739,9 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1StatefulSetForAllNamespaces",
-			ID:   "listAppsV1StatefulSetForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); err != nil {
@@ -13417,6 +13773,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "ListAppsV1StatefulSetForAllNamespaces",
 			OperationID:   "listAppsV1StatefulSetForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13525,6 +13882,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13532,8 +13890,9 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
-			ID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
@@ -13565,6 +13924,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			Context:       ctx,
 			OperationName: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13673,6 +14033,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13680,8 +14041,9 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			ID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -13713,6 +14075,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Context:       ctx,
 			OperationName: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13825,6 +14188,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13832,8 +14196,9 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
-			ID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
@@ -13865,6 +14230,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -13973,6 +14339,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13980,8 +14347,9 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			ID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -14013,6 +14381,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14125,6 +14494,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14132,8 +14502,9 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
-			ID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
@@ -14165,6 +14536,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14273,6 +14645,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14280,8 +14653,9 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			ID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -14313,6 +14687,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14425,6 +14800,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1CronJobForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14432,8 +14808,9 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1CronJobForAllNamespaces",
-			ID:   "listBatchV1CronJobForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); err != nil {
@@ -14465,6 +14842,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "ListBatchV1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1CronJobForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14573,6 +14951,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1JobForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14580,8 +14959,9 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1JobForAllNamespaces",
-			ID:   "listBatchV1JobForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); err != nil {
@@ -14613,6 +14993,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "ListBatchV1JobForAllNamespaces",
 			OperationID:   "listBatchV1JobForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14721,6 +15102,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14728,8 +15110,9 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1NamespacedCronJob",
-			ID:   "listBatchV1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); err != nil {
@@ -14761,6 +15144,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "ListBatchV1NamespacedCronJob",
 			OperationID:   "listBatchV1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -14873,6 +15257,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1NamespacedJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14880,8 +15265,9 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1NamespacedJob",
-			ID:   "listBatchV1NamespacedJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); err != nil {
@@ -14913,6 +15299,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			Context:       ctx,
 			OperationName: "ListBatchV1NamespacedJob",
 			OperationID:   "listBatchV1NamespacedJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15025,6 +15412,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1beta1CronJobForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15032,8 +15420,9 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1beta1CronJobForAllNamespaces",
-			ID:   "listBatchV1beta1CronJobForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); err != nil {
@@ -15065,6 +15454,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			Context:       ctx,
 			OperationName: "ListBatchV1beta1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1beta1CronJobForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15173,6 +15563,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListBatchV1beta1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15180,8 +15571,9 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1beta1NamespacedCronJob",
-			ID:   "listBatchV1beta1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); err != nil {
@@ -15213,6 +15605,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "ListBatchV1beta1NamespacedCronJob",
 			OperationID:   "listBatchV1beta1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15325,6 +15718,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCertificatesV1CertificateSigningRequest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15332,8 +15726,9 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCertificatesV1CertificateSigningRequest",
-			ID:   "listCertificatesV1CertificateSigningRequest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); err != nil {
@@ -15365,6 +15760,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			Context:       ctx,
 			OperationName: "ListCertificatesV1CertificateSigningRequest",
 			OperationID:   "listCertificatesV1CertificateSigningRequest",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15473,6 +15869,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoordinationV1LeaseForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15480,8 +15877,9 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoordinationV1LeaseForAllNamespaces",
-			ID:   "listCoordinationV1LeaseForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); err != nil {
@@ -15513,6 +15911,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			Context:       ctx,
 			OperationName: "ListCoordinationV1LeaseForAllNamespaces",
 			OperationID:   "listCoordinationV1LeaseForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15621,6 +16020,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoordinationV1NamespacedLease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15628,8 +16028,9 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoordinationV1NamespacedLease",
-			ID:   "listCoordinationV1NamespacedLease",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); err != nil {
@@ -15661,6 +16062,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "ListCoordinationV1NamespacedLease",
 			OperationID:   "listCoordinationV1NamespacedLease",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15773,6 +16175,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ComponentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15780,8 +16183,9 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ComponentStatus",
-			ID:   "listCoreV1ComponentStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); err != nil {
@@ -15813,6 +16217,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "ListCoreV1ComponentStatus",
 			OperationID:   "listCoreV1ComponentStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -15921,6 +16326,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ConfigMapForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15928,8 +16334,9 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ConfigMapForAllNamespaces",
-			ID:   "listCoreV1ConfigMapForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); err != nil {
@@ -15961,6 +16368,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			Context:       ctx,
 			OperationName: "ListCoreV1ConfigMapForAllNamespaces",
 			OperationID:   "listCoreV1ConfigMapForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16069,6 +16477,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1EndpointsForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16076,8 +16485,9 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1EndpointsForAllNamespaces",
-			ID:   "listCoreV1EndpointsForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); err != nil {
@@ -16109,6 +16519,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			Context:       ctx,
 			OperationName: "ListCoreV1EndpointsForAllNamespaces",
 			OperationID:   "listCoreV1EndpointsForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16217,6 +16628,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1EventForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16224,8 +16636,9 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1EventForAllNamespaces",
-			ID:   "listCoreV1EventForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); err != nil {
@@ -16257,6 +16670,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "ListCoreV1EventForAllNamespaces",
 			OperationID:   "listCoreV1EventForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16365,6 +16779,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1LimitRangeForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16372,8 +16787,9 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1LimitRangeForAllNamespaces",
-			ID:   "listCoreV1LimitRangeForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); err != nil {
@@ -16405,6 +16821,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "ListCoreV1LimitRangeForAllNamespaces",
 			OperationID:   "listCoreV1LimitRangeForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16513,6 +16930,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1Namespace
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16520,8 +16938,9 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1Namespace",
-			ID:   "listCoreV1Namespace",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1Namespace", r); err != nil {
@@ -16553,6 +16972,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ListCoreV1Namespace",
 			OperationID:   "listCoreV1Namespace",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16661,6 +17081,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedConfigMap
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16668,8 +17089,9 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedConfigMap",
-			ID:   "listCoreV1NamespacedConfigMap",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); err != nil {
@@ -16701,6 +17123,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedConfigMap",
 			OperationID:   "listCoreV1NamespacedConfigMap",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16813,6 +17236,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedEndpoints
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16820,8 +17244,9 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedEndpoints",
-			ID:   "listCoreV1NamespacedEndpoints",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); err != nil {
@@ -16853,6 +17278,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedEndpoints",
 			OperationID:   "listCoreV1NamespacedEndpoints",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -16965,6 +17391,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16972,8 +17399,9 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedEvent",
-			ID:   "listCoreV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); err != nil {
@@ -17005,6 +17433,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedEvent",
 			OperationID:   "listCoreV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17117,6 +17546,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedLimitRange
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17124,8 +17554,9 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedLimitRange",
-			ID:   "listCoreV1NamespacedLimitRange",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); err != nil {
@@ -17157,6 +17588,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedLimitRange",
 			OperationID:   "listCoreV1NamespacedLimitRange",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17269,6 +17701,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedPersistentVolumeClaim
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17276,8 +17709,9 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPersistentVolumeClaim",
-			ID:   "listCoreV1NamespacedPersistentVolumeClaim",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
@@ -17309,6 +17743,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "listCoreV1NamespacedPersistentVolumeClaim",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17421,6 +17856,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedPod
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17428,8 +17864,9 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPod",
-			ID:   "listCoreV1NamespacedPod",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); err != nil {
@@ -17461,6 +17898,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPod",
 			OperationID:   "listCoreV1NamespacedPod",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17573,6 +18011,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedPodTemplate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17580,8 +18019,9 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPodTemplate",
-			ID:   "listCoreV1NamespacedPodTemplate",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); err != nil {
@@ -17613,6 +18053,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPodTemplate",
 			OperationID:   "listCoreV1NamespacedPodTemplate",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17725,6 +18166,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedReplicationController
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17732,8 +18174,9 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedReplicationController",
-			ID:   "listCoreV1NamespacedReplicationController",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); err != nil {
@@ -17765,6 +18208,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedReplicationController",
 			OperationID:   "listCoreV1NamespacedReplicationController",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -17877,6 +18321,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedResourceQuota
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17884,8 +18329,9 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedResourceQuota",
-			ID:   "listCoreV1NamespacedResourceQuota",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); err != nil {
@@ -17917,6 +18363,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedResourceQuota",
 			OperationID:   "listCoreV1NamespacedResourceQuota",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18029,6 +18476,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18036,8 +18484,9 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedSecret",
-			ID:   "listCoreV1NamespacedSecret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); err != nil {
@@ -18069,6 +18518,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedSecret",
 			OperationID:   "listCoreV1NamespacedSecret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18181,6 +18631,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18188,8 +18639,9 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedService",
-			ID:   "listCoreV1NamespacedService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); err != nil {
@@ -18221,6 +18673,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedService",
 			OperationID:   "listCoreV1NamespacedService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18333,6 +18786,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1NamespacedServiceAccount
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18340,8 +18794,9 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedServiceAccount",
-			ID:   "listCoreV1NamespacedServiceAccount",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); err != nil {
@@ -18373,6 +18828,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedServiceAccount",
 			OperationID:   "listCoreV1NamespacedServiceAccount",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18485,6 +18941,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1Node
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18492,8 +18949,9 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1Node",
-			ID:   "listCoreV1Node",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1Node", r); err != nil {
@@ -18525,6 +18983,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ListCoreV1Node",
 			OperationID:   "listCoreV1Node",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18633,6 +19092,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1PersistentVolume
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18640,8 +19100,9 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PersistentVolume",
-			ID:   "listCoreV1PersistentVolume",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); err != nil {
@@ -18673,6 +19134,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "ListCoreV1PersistentVolume",
 			OperationID:   "listCoreV1PersistentVolume",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18781,6 +19243,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1PersistentVolumeClaimForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18788,8 +19251,9 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
-			ID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); err != nil {
@@ -18821,6 +19285,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			Context:       ctx,
 			OperationName: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
 			OperationID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -18929,6 +19394,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1PodForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18936,8 +19402,9 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PodForAllNamespaces",
-			ID:   "listCoreV1PodForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); err != nil {
@@ -18969,6 +19436,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "ListCoreV1PodForAllNamespaces",
 			OperationID:   "listCoreV1PodForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19077,6 +19545,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1PodTemplateForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19084,8 +19553,9 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PodTemplateForAllNamespaces",
-			ID:   "listCoreV1PodTemplateForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); err != nil {
@@ -19117,6 +19587,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "ListCoreV1PodTemplateForAllNamespaces",
 			OperationID:   "listCoreV1PodTemplateForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19225,6 +19696,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ReplicationControllerForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19232,8 +19704,9 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ReplicationControllerForAllNamespaces",
-			ID:   "listCoreV1ReplicationControllerForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); err != nil {
@@ -19265,6 +19738,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			Context:       ctx,
 			OperationName: "ListCoreV1ReplicationControllerForAllNamespaces",
 			OperationID:   "listCoreV1ReplicationControllerForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19373,6 +19847,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ResourceQuotaForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19380,8 +19855,9 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ResourceQuotaForAllNamespaces",
-			ID:   "listCoreV1ResourceQuotaForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); err != nil {
@@ -19413,6 +19889,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			Context:       ctx,
 			OperationName: "ListCoreV1ResourceQuotaForAllNamespaces",
 			OperationID:   "listCoreV1ResourceQuotaForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19521,6 +19998,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1SecretForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19528,8 +20006,9 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1SecretForAllNamespaces",
-			ID:   "listCoreV1SecretForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); err != nil {
@@ -19561,6 +20040,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "ListCoreV1SecretForAllNamespaces",
 			OperationID:   "listCoreV1SecretForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19669,6 +20149,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ServiceAccountForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19676,8 +20157,9 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ServiceAccountForAllNamespaces",
-			ID:   "listCoreV1ServiceAccountForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); err != nil {
@@ -19709,6 +20191,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			Context:       ctx,
 			OperationName: "ListCoreV1ServiceAccountForAllNamespaces",
 			OperationID:   "listCoreV1ServiceAccountForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19817,6 +20300,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListCoreV1ServiceForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19824,8 +20308,9 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ServiceForAllNamespaces",
-			ID:   "listCoreV1ServiceForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); err != nil {
@@ -19857,6 +20342,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "ListCoreV1ServiceForAllNamespaces",
 			OperationID:   "listCoreV1ServiceForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -19965,6 +20451,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListDiscoveryV1EndpointSliceForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19972,8 +20459,9 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1EndpointSliceForAllNamespaces",
-			ID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); err != nil {
@@ -20005,6 +20493,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20113,6 +20602,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListDiscoveryV1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20120,8 +20610,9 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1NamespacedEndpointSlice",
-			ID:   "listDiscoveryV1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); err != nil {
@@ -20153,6 +20644,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20265,6 +20757,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListDiscoveryV1beta1EndpointSliceForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20272,8 +20765,9 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
-			ID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); err != nil {
@@ -20305,6 +20799,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20413,6 +20908,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListDiscoveryV1beta1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20420,8 +20916,9 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1beta1NamespacedEndpointSlice",
-			ID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
@@ -20453,6 +20950,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20565,6 +21063,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListEventsV1EventForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20572,8 +21071,9 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1EventForAllNamespaces",
-			ID:   "listEventsV1EventForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); err != nil {
@@ -20605,6 +21105,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "ListEventsV1EventForAllNamespaces",
 			OperationID:   "listEventsV1EventForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20713,6 +21214,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListEventsV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20720,8 +21222,9 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1NamespacedEvent",
-			ID:   "listEventsV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); err != nil {
@@ -20753,6 +21256,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "ListEventsV1NamespacedEvent",
 			OperationID:   "listEventsV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -20865,6 +21369,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListEventsV1beta1EventForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20872,8 +21377,9 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1beta1EventForAllNamespaces",
-			ID:   "listEventsV1beta1EventForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); err != nil {
@@ -20905,6 +21411,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			Context:       ctx,
 			OperationName: "ListEventsV1beta1EventForAllNamespaces",
 			OperationID:   "listEventsV1beta1EventForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21013,6 +21520,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListEventsV1beta1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21020,8 +21528,9 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1beta1NamespacedEvent",
-			ID:   "listEventsV1beta1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); err != nil {
@@ -21053,6 +21562,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "ListEventsV1beta1NamespacedEvent",
 			OperationID:   "listEventsV1beta1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21165,6 +21675,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListFlowcontrolApiserverV1beta1FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21172,8 +21683,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta1FlowSchema",
-			ID:   "listFlowcontrolApiserverV1beta1FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
@@ -21205,6 +21717,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta1FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21313,6 +21826,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21320,8 +21834,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			ID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
@@ -21353,6 +21868,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21461,6 +21977,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListFlowcontrolApiserverV1beta2FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21468,8 +21985,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta2FlowSchema",
-			ID:   "listFlowcontrolApiserverV1beta2FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
@@ -21501,6 +22019,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta2FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21609,6 +22128,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21616,8 +22136,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			ID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
@@ -21649,6 +22170,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21757,6 +22279,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListInternalApiserverV1alpha1StorageVersion
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21764,8 +22287,9 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListInternalApiserverV1alpha1StorageVersion",
-			ID:   "listInternalApiserverV1alpha1StorageVersion",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); err != nil {
@@ -21797,6 +22321,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			Context:       ctx,
 			OperationName: "ListInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "listInternalApiserverV1alpha1StorageVersion",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -21905,6 +22430,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNetworkingV1IngressClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21912,8 +22438,9 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1IngressClass",
-			ID:   "listNetworkingV1IngressClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); err != nil {
@@ -21945,6 +22472,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "ListNetworkingV1IngressClass",
 			OperationID:   "listNetworkingV1IngressClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22053,6 +22581,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNetworkingV1IngressForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22060,8 +22589,9 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1IngressForAllNamespaces",
-			ID:   "listNetworkingV1IngressForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); err != nil {
@@ -22093,6 +22623,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			Context:       ctx,
 			OperationName: "ListNetworkingV1IngressForAllNamespaces",
 			OperationID:   "listNetworkingV1IngressForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22201,6 +22732,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNetworkingV1NamespacedIngress
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22208,8 +22740,9 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NamespacedIngress",
-			ID:   "listNetworkingV1NamespacedIngress",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); err != nil {
@@ -22241,6 +22774,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NamespacedIngress",
 			OperationID:   "listNetworkingV1NamespacedIngress",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22353,6 +22887,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNetworkingV1NamespacedNetworkPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22360,8 +22895,9 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NamespacedNetworkPolicy",
-			ID:   "listNetworkingV1NamespacedNetworkPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); err != nil {
@@ -22393,6 +22929,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "listNetworkingV1NamespacedNetworkPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22505,6 +23042,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNetworkingV1NetworkPolicyForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22512,8 +23050,9 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NetworkPolicyForAllNamespaces",
-			ID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); err != nil {
@@ -22545,6 +23084,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NetworkPolicyForAllNamespaces",
 			OperationID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22653,6 +23193,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNodeV1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22660,8 +23201,9 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1RuntimeClass",
-			ID:   "listNodeV1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); err != nil {
@@ -22693,6 +23235,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ListNodeV1RuntimeClass",
 			OperationID:   "listNodeV1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22801,6 +23344,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNodeV1alpha1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22808,8 +23352,9 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1alpha1RuntimeClass",
-			ID:   "listNodeV1alpha1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); err != nil {
@@ -22841,6 +23386,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "ListNodeV1alpha1RuntimeClass",
 			OperationID:   "listNodeV1alpha1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -22949,6 +23495,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListNodeV1beta1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22956,8 +23503,9 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1beta1RuntimeClass",
-			ID:   "listNodeV1beta1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); err != nil {
@@ -22989,6 +23537,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "ListNodeV1beta1RuntimeClass",
 			OperationID:   "listNodeV1beta1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23097,6 +23646,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPolicyV1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23104,8 +23654,9 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1NamespacedPodDisruptionBudget",
-			ID:   "listPolicyV1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
@@ -23137,6 +23688,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			Context:       ctx,
 			OperationName: "ListPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23249,6 +23801,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPolicyV1PodDisruptionBudgetForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23256,8 +23809,9 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
-			ID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); err != nil {
@@ -23289,6 +23843,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			Context:       ctx,
 			OperationName: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23397,6 +23952,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPolicyV1beta1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23404,8 +23960,9 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
-			ID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
@@ -23437,6 +23994,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23549,6 +24107,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23556,8 +24115,9 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
-			ID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); err != nil {
@@ -23589,6 +24149,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23697,6 +24258,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPolicyV1beta1PodSecurityPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23704,8 +24266,9 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1PodSecurityPolicy",
-			ID:   "listPolicyV1beta1PodSecurityPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); err != nil {
@@ -23737,6 +24300,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "listPolicyV1beta1PodSecurityPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23845,6 +24409,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1ClusterRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23852,8 +24417,9 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1ClusterRole",
-			ID:   "listRbacAuthorizationV1ClusterRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); err != nil {
@@ -23885,6 +24451,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1ClusterRole",
 			OperationID:   "listRbacAuthorizationV1ClusterRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -23993,6 +24560,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1ClusterRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24000,8 +24568,9 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1ClusterRoleBinding",
-			ID:   "listRbacAuthorizationV1ClusterRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
@@ -24033,6 +24602,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "listRbacAuthorizationV1ClusterRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24141,6 +24711,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1NamespacedRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24148,8 +24719,9 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1NamespacedRole",
-			ID:   "listRbacAuthorizationV1NamespacedRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); err != nil {
@@ -24181,6 +24753,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1NamespacedRole",
 			OperationID:   "listRbacAuthorizationV1NamespacedRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24293,6 +24866,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1NamespacedRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24300,8 +24874,9 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1NamespacedRoleBinding",
-			ID:   "listRbacAuthorizationV1NamespacedRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
@@ -24333,6 +24908,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "listRbacAuthorizationV1NamespacedRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24445,6 +25021,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1RoleBindingForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24452,8 +25029,9 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
-			ID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); err != nil {
@@ -24485,6 +25063,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24593,6 +25172,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListRbacAuthorizationV1RoleForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24600,8 +25180,9 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1RoleForAllNamespaces",
-			ID:   "listRbacAuthorizationV1RoleForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); err != nil {
@@ -24633,6 +25214,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1RoleForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24741,6 +25323,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListSchedulingV1PriorityClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24748,8 +25331,9 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListSchedulingV1PriorityClass",
-			ID:   "listSchedulingV1PriorityClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); err != nil {
@@ -24781,6 +25365,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "ListSchedulingV1PriorityClass",
 			OperationID:   "listSchedulingV1PriorityClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -24889,6 +25474,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1CSIDriver
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24896,8 +25482,9 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1CSIDriver",
-			ID:   "listStorageV1CSIDriver",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); err != nil {
@@ -24929,6 +25516,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ListStorageV1CSIDriver",
 			OperationID:   "listStorageV1CSIDriver",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25037,6 +25625,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1CSINode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25044,8 +25633,9 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1CSINode",
-			ID:   "listStorageV1CSINode",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSINode", r); err != nil {
@@ -25077,6 +25667,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ListStorageV1CSINode",
 			OperationID:   "listStorageV1CSINode",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25185,6 +25776,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1StorageClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25192,8 +25784,9 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1StorageClass",
-			ID:   "listStorageV1StorageClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1StorageClass", r); err != nil {
@@ -25225,6 +25818,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "ListStorageV1StorageClass",
 			OperationID:   "listStorageV1StorageClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25333,6 +25927,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1VolumeAttachment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25340,8 +25935,9 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1VolumeAttachment",
-			ID:   "listStorageV1VolumeAttachment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); err != nil {
@@ -25373,6 +25969,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "ListStorageV1VolumeAttachment",
 			OperationID:   "listStorageV1VolumeAttachment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25481,6 +26078,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25488,8 +26086,9 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
-			ID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); err != nil {
@@ -25521,6 +26120,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			Context:       ctx,
 			OperationName: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25629,6 +26229,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1alpha1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25636,8 +26237,9 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
-			ID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
@@ -25669,6 +26271,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Context:       ctx,
 			OperationName: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25781,6 +26384,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1beta1CSIStorageCapacityForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25788,8 +26392,9 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
-			ID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); err != nil {
@@ -25821,6 +26426,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			Context:       ctx,
 			OperationName: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -25929,6 +26535,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListStorageV1beta1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25936,8 +26543,9 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1beta1NamespacedCSIStorageCapacity",
-			ID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
@@ -25969,6 +26577,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Context:       ctx,
 			OperationName: "ListStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26079,6 +26688,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LogFileHandler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26086,8 +26696,9 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LogFileHandler",
-			ID:   "logFileHandler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "LogFileHandler", r); err != nil {
@@ -26119,6 +26730,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "LogFileHandler",
 			OperationID:   "logFileHandler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26189,6 +26801,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LogFileListHandler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26196,8 +26809,9 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LogFileListHandler",
-			ID:   "logFileListHandler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "LogFileListHandler", r); err != nil {
@@ -26219,6 +26833,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "LogFileListHandler",
 			OperationID:   "logFileListHandler",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26286,6 +26901,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAdmissionregistrationV1MutatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26293,8 +26909,9 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
-			ID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
@@ -26326,6 +26943,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Context:       ctx,
 			OperationName: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26402,6 +27020,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26409,8 +27028,9 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
-			ID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
@@ -26442,6 +27062,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			Context:       ctx,
 			OperationName: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26518,6 +27139,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadApiextensionsV1CustomResourceDefinition
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26525,8 +27147,9 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiextensionsV1CustomResourceDefinition",
-			ID:   "readApiextensionsV1CustomResourceDefinition",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); err != nil {
@@ -26558,6 +27181,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			Context:       ctx,
 			OperationName: "ReadApiextensionsV1CustomResourceDefinition",
 			OperationID:   "readApiextensionsV1CustomResourceDefinition",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26634,6 +27258,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadApiextensionsV1CustomResourceDefinitionStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26641,8 +27266,9 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiextensionsV1CustomResourceDefinitionStatus",
-			ID:   "readApiextensionsV1CustomResourceDefinitionStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); err != nil {
@@ -26674,6 +27300,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			Context:       ctx,
 			OperationName: "ReadApiextensionsV1CustomResourceDefinitionStatus",
 			OperationID:   "readApiextensionsV1CustomResourceDefinitionStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26750,6 +27377,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadApiregistrationV1APIService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26757,8 +27385,9 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiregistrationV1APIService",
-			ID:   "readApiregistrationV1APIService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); err != nil {
@@ -26790,6 +27419,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			Context:       ctx,
 			OperationName: "ReadApiregistrationV1APIService",
 			OperationID:   "readApiregistrationV1APIService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26866,6 +27496,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadApiregistrationV1APIServiceStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26873,8 +27504,9 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiregistrationV1APIServiceStatus",
-			ID:   "readApiregistrationV1APIServiceStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); err != nil {
@@ -26906,6 +27538,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			Context:       ctx,
 			OperationName: "ReadApiregistrationV1APIServiceStatus",
 			OperationID:   "readApiregistrationV1APIServiceStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -26982,6 +27615,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedControllerRevision
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26989,8 +27623,9 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedControllerRevision",
-			ID:   "readAppsV1NamespacedControllerRevision",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); err != nil {
@@ -27022,6 +27657,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedControllerRevision",
 			OperationID:   "readAppsV1NamespacedControllerRevision",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27102,6 +27738,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedDaemonSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27109,8 +27746,9 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDaemonSet",
-			ID:   "readAppsV1NamespacedDaemonSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); err != nil {
@@ -27142,6 +27780,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDaemonSet",
 			OperationID:   "readAppsV1NamespacedDaemonSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27222,6 +27861,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedDaemonSetStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27229,8 +27869,9 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDaemonSetStatus",
-			ID:   "readAppsV1NamespacedDaemonSetStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); err != nil {
@@ -27262,6 +27903,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDaemonSetStatus",
 			OperationID:   "readAppsV1NamespacedDaemonSetStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27342,6 +27984,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27349,8 +27992,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeployment",
-			ID:   "readAppsV1NamespacedDeployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); err != nil {
@@ -27382,6 +28026,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeployment",
 			OperationID:   "readAppsV1NamespacedDeployment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27462,6 +28107,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedDeploymentScale
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27469,8 +28115,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeploymentScale",
-			ID:   "readAppsV1NamespacedDeploymentScale",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); err != nil {
@@ -27502,6 +28149,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeploymentScale",
 			OperationID:   "readAppsV1NamespacedDeploymentScale",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27582,6 +28230,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedDeploymentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27589,8 +28238,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeploymentStatus",
-			ID:   "readAppsV1NamespacedDeploymentStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); err != nil {
@@ -27622,6 +28272,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeploymentStatus",
 			OperationID:   "readAppsV1NamespacedDeploymentStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27702,6 +28353,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedReplicaSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27709,8 +28361,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSet",
-			ID:   "readAppsV1NamespacedReplicaSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); err != nil {
@@ -27742,6 +28395,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSet",
 			OperationID:   "readAppsV1NamespacedReplicaSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27822,6 +28476,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedReplicaSetScale
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27829,8 +28484,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSetScale",
-			ID:   "readAppsV1NamespacedReplicaSetScale",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); err != nil {
@@ -27862,6 +28518,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSetScale",
 			OperationID:   "readAppsV1NamespacedReplicaSetScale",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -27942,6 +28599,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedReplicaSetStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27949,8 +28607,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSetStatus",
-			ID:   "readAppsV1NamespacedReplicaSetStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); err != nil {
@@ -27982,6 +28641,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSetStatus",
 			OperationID:   "readAppsV1NamespacedReplicaSetStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28062,6 +28722,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedStatefulSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28069,8 +28730,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSet",
-			ID:   "readAppsV1NamespacedStatefulSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); err != nil {
@@ -28102,6 +28764,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSet",
 			OperationID:   "readAppsV1NamespacedStatefulSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28182,6 +28845,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedStatefulSetScale
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28189,8 +28853,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSetScale",
-			ID:   "readAppsV1NamespacedStatefulSetScale",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); err != nil {
@@ -28222,6 +28887,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSetScale",
 			OperationID:   "readAppsV1NamespacedStatefulSetScale",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28302,6 +28968,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAppsV1NamespacedStatefulSetStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28309,8 +28976,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSetStatus",
-			ID:   "readAppsV1NamespacedStatefulSetStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); err != nil {
@@ -28342,6 +29010,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSetStatus",
 			OperationID:   "readAppsV1NamespacedStatefulSetStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28422,6 +29091,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28429,8 +29099,9 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -28462,6 +29133,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28542,6 +29214,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28549,8 +29222,9 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
-			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
@@ -28582,6 +29256,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28662,6 +29337,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28669,8 +29345,9 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -28702,6 +29379,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28782,6 +29460,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28789,8 +29468,9 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
-			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
@@ -28822,6 +29502,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -28902,6 +29583,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28909,8 +29591,9 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -28942,6 +29625,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29022,6 +29706,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29029,8 +29714,9 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
-			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
@@ -29062,6 +29748,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29142,6 +29829,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29149,8 +29837,9 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedCronJob",
-			ID:   "readBatchV1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); err != nil {
@@ -29182,6 +29871,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedCronJob",
 			OperationID:   "readBatchV1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29262,6 +29952,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1NamespacedCronJobStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29269,8 +29960,9 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedCronJobStatus",
-			ID:   "readBatchV1NamespacedCronJobStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); err != nil {
@@ -29302,6 +29994,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1NamespacedCronJobStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29382,6 +30075,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1NamespacedJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29389,8 +30083,9 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedJob",
-			ID:   "readBatchV1NamespacedJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); err != nil {
@@ -29422,6 +30117,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedJob",
 			OperationID:   "readBatchV1NamespacedJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29502,6 +30198,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1NamespacedJobStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29509,8 +30206,9 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedJobStatus",
-			ID:   "readBatchV1NamespacedJobStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); err != nil {
@@ -29542,6 +30240,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedJobStatus",
 			OperationID:   "readBatchV1NamespacedJobStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29622,6 +30321,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1beta1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29629,8 +30329,9 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1beta1NamespacedCronJob",
-			ID:   "readBatchV1beta1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); err != nil {
@@ -29662,6 +30363,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReadBatchV1beta1NamespacedCronJob",
 			OperationID:   "readBatchV1beta1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29742,6 +30444,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadBatchV1beta1NamespacedCronJobStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29749,8 +30452,9 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1beta1NamespacedCronJobStatus",
-			ID:   "readBatchV1beta1NamespacedCronJobStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); err != nil {
@@ -29782,6 +30486,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ReadBatchV1beta1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1beta1NamespacedCronJobStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29862,6 +30567,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCertificatesV1CertificateSigningRequest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29869,8 +30575,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequest",
-			ID:   "readCertificatesV1CertificateSigningRequest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); err != nil {
@@ -29902,6 +30609,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequest",
 			OperationID:   "readCertificatesV1CertificateSigningRequest",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -29978,6 +30686,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCertificatesV1CertificateSigningRequestApproval
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29985,8 +30694,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequestApproval",
-			ID:   "readCertificatesV1CertificateSigningRequestApproval",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); err != nil {
@@ -30018,6 +30728,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequestApproval",
 			OperationID:   "readCertificatesV1CertificateSigningRequestApproval",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30094,6 +30805,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCertificatesV1CertificateSigningRequestStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30101,8 +30813,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequestStatus",
-			ID:   "readCertificatesV1CertificateSigningRequestStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); err != nil {
@@ -30134,6 +30847,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequestStatus",
 			OperationID:   "readCertificatesV1CertificateSigningRequestStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30210,6 +30924,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoordinationV1NamespacedLease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30217,8 +30932,9 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoordinationV1NamespacedLease",
-			ID:   "readCoordinationV1NamespacedLease",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); err != nil {
@@ -30250,6 +30966,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReadCoordinationV1NamespacedLease",
 			OperationID:   "readCoordinationV1NamespacedLease",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30330,6 +31047,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1ComponentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30337,8 +31055,9 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1ComponentStatus",
-			ID:   "readCoreV1ComponentStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); err != nil {
@@ -30370,6 +31089,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ReadCoreV1ComponentStatus",
 			OperationID:   "readCoreV1ComponentStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30446,6 +31166,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1Namespace
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30453,8 +31174,9 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1Namespace",
-			ID:   "readCoreV1Namespace",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Namespace", r); err != nil {
@@ -30486,6 +31208,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "ReadCoreV1Namespace",
 			OperationID:   "readCoreV1Namespace",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30562,6 +31285,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespaceStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30569,8 +31293,9 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespaceStatus",
-			ID:   "readCoreV1NamespaceStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); err != nil {
@@ -30602,6 +31327,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespaceStatus",
 			OperationID:   "readCoreV1NamespaceStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30678,6 +31404,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedConfigMap
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30685,8 +31412,9 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedConfigMap",
-			ID:   "readCoreV1NamespacedConfigMap",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); err != nil {
@@ -30718,6 +31446,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedConfigMap",
 			OperationID:   "readCoreV1NamespacedConfigMap",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30798,6 +31527,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedEndpoints
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30805,8 +31535,9 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedEndpoints",
-			ID:   "readCoreV1NamespacedEndpoints",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); err != nil {
@@ -30838,6 +31569,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedEndpoints",
 			OperationID:   "readCoreV1NamespacedEndpoints",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -30918,6 +31650,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30925,8 +31658,9 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedEvent",
-			ID:   "readCoreV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); err != nil {
@@ -30958,6 +31692,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedEvent",
 			OperationID:   "readCoreV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31038,6 +31773,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedLimitRange
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31045,8 +31781,9 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedLimitRange",
-			ID:   "readCoreV1NamespacedLimitRange",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); err != nil {
@@ -31078,6 +31815,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedLimitRange",
 			OperationID:   "readCoreV1NamespacedLimitRange",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31158,6 +31896,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPersistentVolumeClaim
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31165,8 +31904,9 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPersistentVolumeClaim",
-			ID:   "readCoreV1NamespacedPersistentVolumeClaim",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
@@ -31198,6 +31938,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaim",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31278,6 +32019,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPersistentVolumeClaimStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31285,8 +32027,9 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
-			ID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); err != nil {
@@ -31318,6 +32061,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31398,6 +32142,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPod
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31405,8 +32150,9 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPod",
-			ID:   "readCoreV1NamespacedPod",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); err != nil {
@@ -31438,6 +32184,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPod",
 			OperationID:   "readCoreV1NamespacedPod",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31518,6 +32265,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPodEphemeralcontainers
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31525,8 +32273,9 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodEphemeralcontainers",
-			ID:   "readCoreV1NamespacedPodEphemeralcontainers",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); err != nil {
@@ -31558,6 +32307,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodEphemeralcontainers",
 			OperationID:   "readCoreV1NamespacedPodEphemeralcontainers",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31638,6 +32388,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPodLog
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31645,8 +32396,9 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodLog",
-			ID:   "readCoreV1NamespacedPodLog",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); err != nil {
@@ -31678,6 +32430,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodLog",
 			OperationID:   "readCoreV1NamespacedPodLog",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31790,6 +32543,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPodStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31797,8 +32551,9 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodStatus",
-			ID:   "readCoreV1NamespacedPodStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); err != nil {
@@ -31830,6 +32585,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodStatus",
 			OperationID:   "readCoreV1NamespacedPodStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -31910,6 +32666,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedPodTemplate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31917,8 +32674,9 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodTemplate",
-			ID:   "readCoreV1NamespacedPodTemplate",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); err != nil {
@@ -31950,6 +32708,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodTemplate",
 			OperationID:   "readCoreV1NamespacedPodTemplate",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32030,6 +32789,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedReplicationController
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32037,8 +32797,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationController",
-			ID:   "readCoreV1NamespacedReplicationController",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); err != nil {
@@ -32070,6 +32831,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationController",
 			OperationID:   "readCoreV1NamespacedReplicationController",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32150,6 +32912,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedReplicationControllerScale
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32157,8 +32920,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationControllerScale",
-			ID:   "readCoreV1NamespacedReplicationControllerScale",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); err != nil {
@@ -32190,6 +32954,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationControllerScale",
 			OperationID:   "readCoreV1NamespacedReplicationControllerScale",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32270,6 +33035,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedReplicationControllerStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32277,8 +33043,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationControllerStatus",
-			ID:   "readCoreV1NamespacedReplicationControllerStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); err != nil {
@@ -32310,6 +33077,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationControllerStatus",
 			OperationID:   "readCoreV1NamespacedReplicationControllerStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32390,6 +33158,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedResourceQuota
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32397,8 +33166,9 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedResourceQuota",
-			ID:   "readCoreV1NamespacedResourceQuota",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); err != nil {
@@ -32430,6 +33200,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedResourceQuota",
 			OperationID:   "readCoreV1NamespacedResourceQuota",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32510,6 +33281,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedResourceQuotaStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32517,8 +33289,9 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedResourceQuotaStatus",
-			ID:   "readCoreV1NamespacedResourceQuotaStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); err != nil {
@@ -32550,6 +33323,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedResourceQuotaStatus",
 			OperationID:   "readCoreV1NamespacedResourceQuotaStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32630,6 +33404,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32637,8 +33412,9 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedSecret",
-			ID:   "readCoreV1NamespacedSecret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); err != nil {
@@ -32670,6 +33446,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedSecret",
 			OperationID:   "readCoreV1NamespacedSecret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32750,6 +33527,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32757,8 +33535,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedService",
-			ID:   "readCoreV1NamespacedService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); err != nil {
@@ -32790,6 +33569,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedService",
 			OperationID:   "readCoreV1NamespacedService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32870,6 +33650,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedServiceAccount
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32877,8 +33658,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedServiceAccount",
-			ID:   "readCoreV1NamespacedServiceAccount",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); err != nil {
@@ -32910,6 +33692,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedServiceAccount",
 			OperationID:   "readCoreV1NamespacedServiceAccount",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -32990,6 +33773,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NamespacedServiceStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32997,8 +33781,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedServiceStatus",
-			ID:   "readCoreV1NamespacedServiceStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); err != nil {
@@ -33030,6 +33815,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedServiceStatus",
 			OperationID:   "readCoreV1NamespacedServiceStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33110,6 +33896,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1Node
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33117,8 +33904,9 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1Node",
-			ID:   "readCoreV1Node",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Node", r); err != nil {
@@ -33150,6 +33938,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ReadCoreV1Node",
 			OperationID:   "readCoreV1Node",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33226,6 +34015,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1NodeStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33233,8 +34023,9 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NodeStatus",
-			ID:   "readCoreV1NodeStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); err != nil {
@@ -33266,6 +34057,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReadCoreV1NodeStatus",
 			OperationID:   "readCoreV1NodeStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33342,6 +34134,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1PersistentVolume
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33349,8 +34142,9 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1PersistentVolume",
-			ID:   "readCoreV1PersistentVolume",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); err != nil {
@@ -33382,6 +34176,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "ReadCoreV1PersistentVolume",
 			OperationID:   "readCoreV1PersistentVolume",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33458,6 +34253,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadCoreV1PersistentVolumeStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33465,8 +34261,9 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1PersistentVolumeStatus",
-			ID:   "readCoreV1PersistentVolumeStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); err != nil {
@@ -33498,6 +34295,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "ReadCoreV1PersistentVolumeStatus",
 			OperationID:   "readCoreV1PersistentVolumeStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33574,6 +34372,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadDiscoveryV1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33581,8 +34380,9 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadDiscoveryV1NamespacedEndpointSlice",
-			ID:   "readDiscoveryV1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); err != nil {
@@ -33614,6 +34414,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			Context:       ctx,
 			OperationName: "ReadDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33694,6 +34495,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadDiscoveryV1beta1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33701,8 +34503,9 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
-			ID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
@@ -33734,6 +34537,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Context:       ctx,
 			OperationName: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33814,6 +34618,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadEventsV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33821,8 +34626,9 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadEventsV1NamespacedEvent",
-			ID:   "readEventsV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); err != nil {
@@ -33854,6 +34660,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "ReadEventsV1NamespacedEvent",
 			OperationID:   "readEventsV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -33934,6 +34741,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadEventsV1beta1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33941,8 +34749,9 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadEventsV1beta1NamespacedEvent",
-			ID:   "readEventsV1beta1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); err != nil {
@@ -33974,6 +34783,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "ReadEventsV1beta1NamespacedEvent",
 			OperationID:   "readEventsV1beta1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34054,6 +34864,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta1FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34061,8 +34872,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1FlowSchema",
-			ID:   "readFlowcontrolApiserverV1beta1FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
@@ -34094,6 +34906,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34170,6 +34983,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34177,8 +34991,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
-			ID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); err != nil {
@@ -34210,6 +35025,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34286,6 +35102,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34293,8 +35110,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
@@ -34326,6 +35144,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34402,6 +35221,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34409,8 +35229,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
-			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); err != nil {
@@ -34442,6 +35263,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34518,6 +35340,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta2FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34525,8 +35348,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2FlowSchema",
-			ID:   "readFlowcontrolApiserverV1beta2FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
@@ -34558,6 +35382,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34634,6 +35459,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34641,8 +35467,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
-			ID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); err != nil {
@@ -34674,6 +35501,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34750,6 +35578,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34757,8 +35586,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
@@ -34790,6 +35620,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34866,6 +35697,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34873,8 +35705,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
-			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); err != nil {
@@ -34906,6 +35739,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -34982,6 +35816,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadInternalApiserverV1alpha1StorageVersion
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34989,8 +35824,9 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadInternalApiserverV1alpha1StorageVersion",
-			ID:   "readInternalApiserverV1alpha1StorageVersion",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); err != nil {
@@ -35022,6 +35858,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			Context:       ctx,
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersion",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35098,6 +35935,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadInternalApiserverV1alpha1StorageVersionStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35105,8 +35943,9 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadInternalApiserverV1alpha1StorageVersionStatus",
-			ID:   "readInternalApiserverV1alpha1StorageVersionStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); err != nil {
@@ -35138,6 +35977,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			Context:       ctx,
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersionStatus",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersionStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35214,6 +36054,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNetworkingV1IngressClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35221,8 +36062,9 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1IngressClass",
-			ID:   "readNetworkingV1IngressClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); err != nil {
@@ -35254,6 +36096,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1IngressClass",
 			OperationID:   "readNetworkingV1IngressClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35330,6 +36173,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNetworkingV1NamespacedIngress
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35337,8 +36181,9 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedIngress",
-			ID:   "readNetworkingV1NamespacedIngress",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); err != nil {
@@ -35370,6 +36215,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedIngress",
 			OperationID:   "readNetworkingV1NamespacedIngress",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35450,6 +36296,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNetworkingV1NamespacedIngressStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35457,8 +36304,9 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedIngressStatus",
-			ID:   "readNetworkingV1NamespacedIngressStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); err != nil {
@@ -35490,6 +36338,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedIngressStatus",
 			OperationID:   "readNetworkingV1NamespacedIngressStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35570,6 +36419,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNetworkingV1NamespacedNetworkPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35577,8 +36427,9 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedNetworkPolicy",
-			ID:   "readNetworkingV1NamespacedNetworkPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); err != nil {
@@ -35610,6 +36461,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "readNetworkingV1NamespacedNetworkPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35690,6 +36542,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNodeV1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35697,8 +36550,9 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1RuntimeClass",
-			ID:   "readNodeV1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); err != nil {
@@ -35730,6 +36584,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReadNodeV1RuntimeClass",
 			OperationID:   "readNodeV1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35806,6 +36661,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNodeV1alpha1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35813,8 +36669,9 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1alpha1RuntimeClass",
-			ID:   "readNodeV1alpha1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); err != nil {
@@ -35846,6 +36703,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "ReadNodeV1alpha1RuntimeClass",
 			OperationID:   "readNodeV1alpha1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -35922,6 +36780,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadNodeV1beta1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35929,8 +36788,9 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1beta1RuntimeClass",
-			ID:   "readNodeV1beta1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); err != nil {
@@ -35962,6 +36822,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "ReadNodeV1beta1RuntimeClass",
 			OperationID:   "readNodeV1beta1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36038,6 +36899,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadPolicyV1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36045,8 +36907,9 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1NamespacedPodDisruptionBudget",
-			ID:   "readPolicyV1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
@@ -36078,6 +36941,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			Context:       ctx,
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36158,6 +37022,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadPolicyV1NamespacedPodDisruptionBudgetStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36165,8 +37030,9 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
-			ID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); err != nil {
@@ -36198,6 +37064,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			Context:       ctx,
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36278,6 +37145,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadPolicyV1beta1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36285,8 +37153,9 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
-			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
@@ -36318,6 +37187,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36398,6 +37268,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36405,8 +37276,9 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
-			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); err != nil {
@@ -36438,6 +37310,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36518,6 +37391,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadPolicyV1beta1PodSecurityPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36525,8 +37399,9 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1PodSecurityPolicy",
-			ID:   "readPolicyV1beta1PodSecurityPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); err != nil {
@@ -36558,6 +37433,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "readPolicyV1beta1PodSecurityPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36634,6 +37510,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadRbacAuthorizationV1ClusterRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36641,8 +37518,9 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1ClusterRole",
-			ID:   "readRbacAuthorizationV1ClusterRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); err != nil {
@@ -36674,6 +37552,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1ClusterRole",
 			OperationID:   "readRbacAuthorizationV1ClusterRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36750,6 +37629,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadRbacAuthorizationV1ClusterRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36757,8 +37637,9 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1ClusterRoleBinding",
-			ID:   "readRbacAuthorizationV1ClusterRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
@@ -36790,6 +37671,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "readRbacAuthorizationV1ClusterRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36866,6 +37748,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadRbacAuthorizationV1NamespacedRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36873,8 +37756,9 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1NamespacedRole",
-			ID:   "readRbacAuthorizationV1NamespacedRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); err != nil {
@@ -36906,6 +37790,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1NamespacedRole",
 			OperationID:   "readRbacAuthorizationV1NamespacedRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -36986,6 +37871,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadRbacAuthorizationV1NamespacedRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36993,8 +37879,9 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1NamespacedRoleBinding",
-			ID:   "readRbacAuthorizationV1NamespacedRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
@@ -37026,6 +37913,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "readRbacAuthorizationV1NamespacedRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37106,6 +37994,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadSchedulingV1PriorityClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37113,8 +38002,9 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadSchedulingV1PriorityClass",
-			ID:   "readSchedulingV1PriorityClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); err != nil {
@@ -37146,6 +38036,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ReadSchedulingV1PriorityClass",
 			OperationID:   "readSchedulingV1PriorityClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37222,6 +38113,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1CSIDriver
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37229,8 +38121,9 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1CSIDriver",
-			ID:   "readStorageV1CSIDriver",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); err != nil {
@@ -37262,6 +38155,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ReadStorageV1CSIDriver",
 			OperationID:   "readStorageV1CSIDriver",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37338,6 +38232,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1CSINode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37345,8 +38240,9 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1CSINode",
-			ID:   "readStorageV1CSINode",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSINode", r); err != nil {
@@ -37378,6 +38274,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ReadStorageV1CSINode",
 			OperationID:   "readStorageV1CSINode",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37454,6 +38351,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1StorageClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37461,8 +38359,9 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1StorageClass",
-			ID:   "readStorageV1StorageClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); err != nil {
@@ -37494,6 +38393,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			Context:       ctx,
 			OperationName: "ReadStorageV1StorageClass",
 			OperationID:   "readStorageV1StorageClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37570,6 +38470,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1VolumeAttachment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37577,8 +38478,9 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1VolumeAttachment",
-			ID:   "readStorageV1VolumeAttachment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); err != nil {
@@ -37610,6 +38512,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "ReadStorageV1VolumeAttachment",
 			OperationID:   "readStorageV1VolumeAttachment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37686,6 +38589,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1VolumeAttachmentStatus
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37693,8 +38597,9 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1VolumeAttachmentStatus",
-			ID:   "readStorageV1VolumeAttachmentStatus",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); err != nil {
@@ -37726,6 +38631,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			Context:       ctx,
 			OperationName: "ReadStorageV1VolumeAttachmentStatus",
 			OperationID:   "readStorageV1VolumeAttachmentStatus",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37802,6 +38708,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1alpha1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37809,8 +38716,9 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
-			ID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
@@ -37842,6 +38750,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Context:       ctx,
 			OperationName: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -37922,6 +38831,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReadStorageV1beta1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37929,8 +38839,9 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
-			ID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
@@ -37962,6 +38873,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Context:       ctx,
 			OperationName: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38044,6 +38956,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAdmissionregistrationV1MutatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38051,8 +38964,9 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
-			ID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
@@ -38084,6 +38998,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38197,6 +39112,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAdmissionregistrationV1MutatingWebhookConfigurationList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38204,8 +39120,9 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
-			ID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); err != nil {
@@ -38237,6 +39154,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38347,6 +39265,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAdmissionregistrationV1ValidatingWebhookConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38354,8 +39273,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
-			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
@@ -38387,6 +39307,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38500,6 +39421,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAdmissionregistrationV1ValidatingWebhookConfigurationList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38507,8 +39429,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
-			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); err != nil {
@@ -38540,6 +39463,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38649,6 +39573,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchApiextensionsV1CustomResourceDefinition
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38656,8 +39581,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiextensionsV1CustomResourceDefinition",
-			ID:   "watchApiextensionsV1CustomResourceDefinition",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); err != nil {
@@ -38689,6 +39615,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			Context:       ctx,
 			OperationName: "WatchApiextensionsV1CustomResourceDefinition",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinition",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38802,6 +39729,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchApiextensionsV1CustomResourceDefinitionList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38809,8 +39737,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiextensionsV1CustomResourceDefinitionList",
-			ID:   "watchApiextensionsV1CustomResourceDefinitionList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); err != nil {
@@ -38842,6 +39771,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			Context:       ctx,
 			OperationName: "WatchApiextensionsV1CustomResourceDefinitionList",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinitionList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -38951,6 +39881,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchApiregistrationV1APIService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38958,8 +39889,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiregistrationV1APIService",
-			ID:   "watchApiregistrationV1APIService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); err != nil {
@@ -38991,6 +39923,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "WatchApiregistrationV1APIService",
 			OperationID:   "watchApiregistrationV1APIService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39104,6 +40037,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchApiregistrationV1APIServiceList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39111,8 +40045,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiregistrationV1APIServiceList",
-			ID:   "watchApiregistrationV1APIServiceList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); err != nil {
@@ -39144,6 +40079,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "WatchApiregistrationV1APIServiceList",
 			OperationID:   "watchApiregistrationV1APIServiceList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39253,6 +40189,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1ControllerRevisionListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39260,8 +40197,9 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1ControllerRevisionListForAllNamespaces",
-			ID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); err != nil {
@@ -39293,6 +40231,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			Context:       ctx,
 			OperationName: "WatchAppsV1ControllerRevisionListForAllNamespaces",
 			OperationID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39402,6 +40341,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1DaemonSetListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39409,8 +40349,9 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1DaemonSetListForAllNamespaces",
-			ID:   "watchAppsV1DaemonSetListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); err != nil {
@@ -39442,6 +40383,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			Context:       ctx,
 			OperationName: "WatchAppsV1DaemonSetListForAllNamespaces",
 			OperationID:   "watchAppsV1DaemonSetListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39551,6 +40493,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1DeploymentListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39558,8 +40501,9 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1DeploymentListForAllNamespaces",
-			ID:   "watchAppsV1DeploymentListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); err != nil {
@@ -39591,6 +40535,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			Context:       ctx,
 			OperationName: "WatchAppsV1DeploymentListForAllNamespaces",
 			OperationID:   "watchAppsV1DeploymentListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39700,6 +40645,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedControllerRevision
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39707,8 +40653,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedControllerRevision",
-			ID:   "watchAppsV1NamespacedControllerRevision",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); err != nil {
@@ -39740,6 +40687,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedControllerRevision",
 			OperationID:   "watchAppsV1NamespacedControllerRevision",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -39857,6 +40805,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedControllerRevisionList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39864,8 +40813,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedControllerRevisionList",
-			ID:   "watchAppsV1NamespacedControllerRevisionList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); err != nil {
@@ -39897,6 +40847,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedControllerRevisionList",
 			OperationID:   "watchAppsV1NamespacedControllerRevisionList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40010,6 +40961,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedDaemonSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40017,8 +40969,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDaemonSet",
-			ID:   "watchAppsV1NamespacedDaemonSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); err != nil {
@@ -40050,6 +41003,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDaemonSet",
 			OperationID:   "watchAppsV1NamespacedDaemonSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40167,6 +41121,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedDaemonSetList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40174,8 +41129,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDaemonSetList",
-			ID:   "watchAppsV1NamespacedDaemonSetList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); err != nil {
@@ -40207,6 +41163,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDaemonSetList",
 			OperationID:   "watchAppsV1NamespacedDaemonSetList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40320,6 +41277,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedDeployment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40327,8 +41285,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDeployment",
-			ID:   "watchAppsV1NamespacedDeployment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); err != nil {
@@ -40360,6 +41319,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDeployment",
 			OperationID:   "watchAppsV1NamespacedDeployment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40477,6 +41437,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedDeploymentList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40484,8 +41445,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDeploymentList",
-			ID:   "watchAppsV1NamespacedDeploymentList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); err != nil {
@@ -40517,6 +41479,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDeploymentList",
 			OperationID:   "watchAppsV1NamespacedDeploymentList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40630,6 +41593,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedReplicaSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40637,8 +41601,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedReplicaSet",
-			ID:   "watchAppsV1NamespacedReplicaSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); err != nil {
@@ -40670,6 +41635,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedReplicaSet",
 			OperationID:   "watchAppsV1NamespacedReplicaSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40787,6 +41753,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedReplicaSetList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40794,8 +41761,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedReplicaSetList",
-			ID:   "watchAppsV1NamespacedReplicaSetList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); err != nil {
@@ -40827,6 +41795,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedReplicaSetList",
 			OperationID:   "watchAppsV1NamespacedReplicaSetList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -40940,6 +41909,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedStatefulSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40947,8 +41917,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedStatefulSet",
-			ID:   "watchAppsV1NamespacedStatefulSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); err != nil {
@@ -40980,6 +41951,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedStatefulSet",
 			OperationID:   "watchAppsV1NamespacedStatefulSet",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41097,6 +42069,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1NamespacedStatefulSetList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41104,8 +42077,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedStatefulSetList",
-			ID:   "watchAppsV1NamespacedStatefulSetList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); err != nil {
@@ -41137,6 +42111,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedStatefulSetList",
 			OperationID:   "watchAppsV1NamespacedStatefulSetList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41250,6 +42225,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1ReplicaSetListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41257,8 +42233,9 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1ReplicaSetListForAllNamespaces",
-			ID:   "watchAppsV1ReplicaSetListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); err != nil {
@@ -41290,6 +42267,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			Context:       ctx,
 			OperationName: "WatchAppsV1ReplicaSetListForAllNamespaces",
 			OperationID:   "watchAppsV1ReplicaSetListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41399,6 +42377,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAppsV1StatefulSetListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41406,8 +42385,9 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1StatefulSetListForAllNamespaces",
-			ID:   "watchAppsV1StatefulSetListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); err != nil {
@@ -41439,6 +42419,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			Context:       ctx,
 			OperationName: "WatchAppsV1StatefulSetListForAllNamespaces",
 			OperationID:   "watchAppsV1StatefulSetListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41548,6 +42529,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41555,8 +42537,9 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
-			ID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
@@ -41588,6 +42571,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41697,6 +42681,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41704,8 +42689,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -41737,6 +42723,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -41854,6 +42841,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41861,8 +42849,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
-			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); err != nil {
@@ -41894,6 +42883,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42007,6 +42997,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42014,8 +43005,9 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
-			ID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
@@ -42047,6 +43039,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42156,6 +43149,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42163,8 +43157,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -42196,6 +43191,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42313,6 +43309,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42320,8 +43317,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
-			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); err != nil {
@@ -42353,6 +43351,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42466,6 +43465,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42473,8 +43473,9 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
-			ID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
@@ -42506,6 +43507,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42615,6 +43617,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42622,8 +43625,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
@@ -42655,6 +43659,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42772,6 +43777,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42779,8 +43785,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
-			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); err != nil {
@@ -42812,6 +43819,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -42925,6 +43933,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1CronJobListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42932,8 +43941,9 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1CronJobListForAllNamespaces",
-			ID:   "watchBatchV1CronJobListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); err != nil {
@@ -42965,6 +43975,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			Context:       ctx,
 			OperationName: "WatchBatchV1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1CronJobListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43074,6 +44085,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1JobListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43081,8 +44093,9 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1JobListForAllNamespaces",
-			ID:   "watchBatchV1JobListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); err != nil {
@@ -43114,6 +44127,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			Context:       ctx,
 			OperationName: "WatchBatchV1JobListForAllNamespaces",
 			OperationID:   "watchBatchV1JobListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43223,6 +44237,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43230,8 +44245,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedCronJob",
-			ID:   "watchBatchV1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); err != nil {
@@ -43263,6 +44279,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedCronJob",
 			OperationID:   "watchBatchV1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43380,6 +44397,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1NamespacedCronJobList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43387,8 +44405,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedCronJobList",
-			ID:   "watchBatchV1NamespacedCronJobList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); err != nil {
@@ -43420,6 +44439,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedCronJobList",
 			OperationID:   "watchBatchV1NamespacedCronJobList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43533,6 +44553,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1NamespacedJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43540,8 +44561,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedJob",
-			ID:   "watchBatchV1NamespacedJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); err != nil {
@@ -43573,6 +44595,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedJob",
 			OperationID:   "watchBatchV1NamespacedJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43690,6 +44713,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1NamespacedJobList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43697,8 +44721,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedJobList",
-			ID:   "watchBatchV1NamespacedJobList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); err != nil {
@@ -43730,6 +44755,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedJobList",
 			OperationID:   "watchBatchV1NamespacedJobList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43843,6 +44869,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1beta1CronJobListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43850,8 +44877,9 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1CronJobListForAllNamespaces",
-			ID:   "watchBatchV1beta1CronJobListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); err != nil {
@@ -43883,6 +44911,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1beta1CronJobListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -43992,6 +45021,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1beta1NamespacedCronJob
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43999,8 +45029,9 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1NamespacedCronJob",
-			ID:   "watchBatchV1beta1NamespacedCronJob",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); err != nil {
@@ -44032,6 +45063,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1NamespacedCronJob",
 			OperationID:   "watchBatchV1beta1NamespacedCronJob",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44149,6 +45181,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchBatchV1beta1NamespacedCronJobList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44156,8 +45189,9 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1NamespacedCronJobList",
-			ID:   "watchBatchV1beta1NamespacedCronJobList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); err != nil {
@@ -44189,6 +45223,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1NamespacedCronJobList",
 			OperationID:   "watchBatchV1beta1NamespacedCronJobList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44303,6 +45338,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCertificatesV1CertificateSigningRequest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44310,8 +45346,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCertificatesV1CertificateSigningRequest",
-			ID:   "watchCertificatesV1CertificateSigningRequest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); err != nil {
@@ -44343,6 +45380,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			Context:       ctx,
 			OperationName: "WatchCertificatesV1CertificateSigningRequest",
 			OperationID:   "watchCertificatesV1CertificateSigningRequest",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44456,6 +45494,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCertificatesV1CertificateSigningRequestList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44463,8 +45502,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCertificatesV1CertificateSigningRequestList",
-			ID:   "watchCertificatesV1CertificateSigningRequestList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); err != nil {
@@ -44496,6 +45536,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			Context:       ctx,
 			OperationName: "WatchCertificatesV1CertificateSigningRequestList",
 			OperationID:   "watchCertificatesV1CertificateSigningRequestList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44605,6 +45646,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoordinationV1LeaseListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44612,8 +45654,9 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1LeaseListForAllNamespaces",
-			ID:   "watchCoordinationV1LeaseListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); err != nil {
@@ -44645,6 +45688,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1LeaseListForAllNamespaces",
 			OperationID:   "watchCoordinationV1LeaseListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44754,6 +45798,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoordinationV1NamespacedLease
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44761,8 +45806,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1NamespacedLease",
-			ID:   "watchCoordinationV1NamespacedLease",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); err != nil {
@@ -44794,6 +45840,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1NamespacedLease",
 			OperationID:   "watchCoordinationV1NamespacedLease",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -44911,6 +45958,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoordinationV1NamespacedLeaseList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44918,8 +45966,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1NamespacedLeaseList",
-			ID:   "watchCoordinationV1NamespacedLeaseList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); err != nil {
@@ -44951,6 +46000,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1NamespacedLeaseList",
 			OperationID:   "watchCoordinationV1NamespacedLeaseList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45064,6 +46114,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1ConfigMapListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45071,8 +46122,9 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ConfigMapListForAllNamespaces",
-			ID:   "watchCoreV1ConfigMapListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); err != nil {
@@ -45104,6 +46156,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			Context:       ctx,
 			OperationName: "WatchCoreV1ConfigMapListForAllNamespaces",
 			OperationID:   "watchCoreV1ConfigMapListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45213,6 +46266,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1EndpointsListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45220,8 +46274,9 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1EndpointsListForAllNamespaces",
-			ID:   "watchCoreV1EndpointsListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); err != nil {
@@ -45253,6 +46308,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			Context:       ctx,
 			OperationName: "WatchCoreV1EndpointsListForAllNamespaces",
 			OperationID:   "watchCoreV1EndpointsListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45362,6 +46418,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1EventListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45369,8 +46426,9 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1EventListForAllNamespaces",
-			ID:   "watchCoreV1EventListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); err != nil {
@@ -45402,6 +46460,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "WatchCoreV1EventListForAllNamespaces",
 			OperationID:   "watchCoreV1EventListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45511,6 +46570,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1LimitRangeListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45518,8 +46578,9 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1LimitRangeListForAllNamespaces",
-			ID:   "watchCoreV1LimitRangeListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); err != nil {
@@ -45551,6 +46612,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			Context:       ctx,
 			OperationName: "WatchCoreV1LimitRangeListForAllNamespaces",
 			OperationID:   "watchCoreV1LimitRangeListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45660,6 +46722,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1Namespace
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45667,8 +46730,9 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1Namespace",
-			ID:   "watchCoreV1Namespace",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Namespace", r); err != nil {
@@ -45700,6 +46764,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			Context:       ctx,
 			OperationName: "WatchCoreV1Namespace",
 			OperationID:   "watchCoreV1Namespace",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45813,6 +46878,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespaceList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45820,8 +46886,9 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespaceList",
-			ID:   "watchCoreV1NamespaceList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); err != nil {
@@ -45853,6 +46920,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespaceList",
 			OperationID:   "watchCoreV1NamespaceList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -45962,6 +47030,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedConfigMap
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45969,8 +47038,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedConfigMap",
-			ID:   "watchCoreV1NamespacedConfigMap",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); err != nil {
@@ -46002,6 +47072,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedConfigMap",
 			OperationID:   "watchCoreV1NamespacedConfigMap",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46119,6 +47190,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedConfigMapList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46126,8 +47198,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedConfigMapList",
-			ID:   "watchCoreV1NamespacedConfigMapList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); err != nil {
@@ -46159,6 +47232,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedConfigMapList",
 			OperationID:   "watchCoreV1NamespacedConfigMapList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46272,6 +47346,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedEndpoints
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46279,8 +47354,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEndpoints",
-			ID:   "watchCoreV1NamespacedEndpoints",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); err != nil {
@@ -46312,6 +47388,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEndpoints",
 			OperationID:   "watchCoreV1NamespacedEndpoints",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46429,6 +47506,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedEndpointsList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46436,8 +47514,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEndpointsList",
-			ID:   "watchCoreV1NamespacedEndpointsList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); err != nil {
@@ -46469,6 +47548,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEndpointsList",
 			OperationID:   "watchCoreV1NamespacedEndpointsList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46582,6 +47662,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46589,8 +47670,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEvent",
-			ID:   "watchCoreV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); err != nil {
@@ -46622,6 +47704,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEvent",
 			OperationID:   "watchCoreV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46739,6 +47822,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedEventList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46746,8 +47830,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEventList",
-			ID:   "watchCoreV1NamespacedEventList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); err != nil {
@@ -46779,6 +47864,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEventList",
 			OperationID:   "watchCoreV1NamespacedEventList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -46892,6 +47978,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedLimitRange
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46899,8 +47986,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedLimitRange",
-			ID:   "watchCoreV1NamespacedLimitRange",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); err != nil {
@@ -46932,6 +48020,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedLimitRange",
 			OperationID:   "watchCoreV1NamespacedLimitRange",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47049,6 +48138,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedLimitRangeList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47056,8 +48146,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedLimitRangeList",
-			ID:   "watchCoreV1NamespacedLimitRangeList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); err != nil {
@@ -47089,6 +48180,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedLimitRangeList",
 			OperationID:   "watchCoreV1NamespacedLimitRangeList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47202,6 +48294,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPersistentVolumeClaim
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47209,8 +48302,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPersistentVolumeClaim",
-			ID:   "watchCoreV1NamespacedPersistentVolumeClaim",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
@@ -47242,6 +48336,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaim",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47359,6 +48454,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPersistentVolumeClaimList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47366,8 +48462,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPersistentVolumeClaimList",
-			ID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); err != nil {
@@ -47399,6 +48496,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaimList",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47512,6 +48610,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPod
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47519,8 +48618,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPod",
-			ID:   "watchCoreV1NamespacedPod",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); err != nil {
@@ -47552,6 +48652,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPod",
 			OperationID:   "watchCoreV1NamespacedPod",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47669,6 +48770,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPodList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47676,8 +48778,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodList",
-			ID:   "watchCoreV1NamespacedPodList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); err != nil {
@@ -47709,6 +48812,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodList",
 			OperationID:   "watchCoreV1NamespacedPodList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47822,6 +48926,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPodTemplate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47829,8 +48934,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodTemplate",
-			ID:   "watchCoreV1NamespacedPodTemplate",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); err != nil {
@@ -47862,6 +48968,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodTemplate",
 			OperationID:   "watchCoreV1NamespacedPodTemplate",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -47979,6 +49086,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedPodTemplateList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47986,8 +49094,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodTemplateList",
-			ID:   "watchCoreV1NamespacedPodTemplateList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); err != nil {
@@ -48019,6 +49128,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodTemplateList",
 			OperationID:   "watchCoreV1NamespacedPodTemplateList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48132,6 +49242,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedReplicationController
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48139,8 +49250,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedReplicationController",
-			ID:   "watchCoreV1NamespacedReplicationController",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); err != nil {
@@ -48172,6 +49284,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedReplicationController",
 			OperationID:   "watchCoreV1NamespacedReplicationController",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48289,6 +49402,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedReplicationControllerList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48296,8 +49410,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedReplicationControllerList",
-			ID:   "watchCoreV1NamespacedReplicationControllerList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); err != nil {
@@ -48329,6 +49444,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedReplicationControllerList",
 			OperationID:   "watchCoreV1NamespacedReplicationControllerList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48442,6 +49558,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedResourceQuota
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48449,8 +49566,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedResourceQuota",
-			ID:   "watchCoreV1NamespacedResourceQuota",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); err != nil {
@@ -48482,6 +49600,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedResourceQuota",
 			OperationID:   "watchCoreV1NamespacedResourceQuota",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48599,6 +49718,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedResourceQuotaList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48606,8 +49726,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedResourceQuotaList",
-			ID:   "watchCoreV1NamespacedResourceQuotaList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); err != nil {
@@ -48639,6 +49760,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedResourceQuotaList",
 			OperationID:   "watchCoreV1NamespacedResourceQuotaList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48752,6 +49874,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedSecret
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48759,8 +49882,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedSecret",
-			ID:   "watchCoreV1NamespacedSecret",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); err != nil {
@@ -48792,6 +49916,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedSecret",
 			OperationID:   "watchCoreV1NamespacedSecret",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -48909,6 +50034,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedSecretList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48916,8 +50042,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedSecretList",
-			ID:   "watchCoreV1NamespacedSecretList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); err != nil {
@@ -48949,6 +50076,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedSecretList",
 			OperationID:   "watchCoreV1NamespacedSecretList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49062,6 +50190,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedService
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49069,8 +50198,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedService",
-			ID:   "watchCoreV1NamespacedService",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); err != nil {
@@ -49102,6 +50232,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedService",
 			OperationID:   "watchCoreV1NamespacedService",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49219,6 +50350,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedServiceAccount
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49226,8 +50358,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceAccount",
-			ID:   "watchCoreV1NamespacedServiceAccount",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); err != nil {
@@ -49259,6 +50392,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceAccount",
 			OperationID:   "watchCoreV1NamespacedServiceAccount",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49376,6 +50510,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedServiceAccountList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49383,8 +50518,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceAccountList",
-			ID:   "watchCoreV1NamespacedServiceAccountList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); err != nil {
@@ -49416,6 +50552,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceAccountList",
 			OperationID:   "watchCoreV1NamespacedServiceAccountList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49529,6 +50666,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NamespacedServiceList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49536,8 +50674,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceList",
-			ID:   "watchCoreV1NamespacedServiceList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); err != nil {
@@ -49569,6 +50708,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceList",
 			OperationID:   "watchCoreV1NamespacedServiceList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49682,6 +50822,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1Node
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49689,8 +50830,9 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1Node",
-			ID:   "watchCoreV1Node",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Node", r); err != nil {
@@ -49722,6 +50864,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "WatchCoreV1Node",
 			OperationID:   "watchCoreV1Node",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49835,6 +50978,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1NodeList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49842,8 +50986,9 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NodeList",
-			ID:   "watchCoreV1NodeList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NodeList", r); err != nil {
@@ -49875,6 +51020,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "WatchCoreV1NodeList",
 			OperationID:   "watchCoreV1NodeList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -49984,6 +51130,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1PersistentVolume
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49991,8 +51138,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolume",
-			ID:   "watchCoreV1PersistentVolume",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); err != nil {
@@ -50024,6 +51172,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolume",
 			OperationID:   "watchCoreV1PersistentVolume",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50137,6 +51286,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1PersistentVolumeClaimListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50144,8 +51294,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
-			ID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); err != nil {
@@ -50177,6 +51328,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			OperationID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50286,6 +51438,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1PersistentVolumeList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50293,8 +51446,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolumeList",
-			ID:   "watchCoreV1PersistentVolumeList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); err != nil {
@@ -50326,6 +51480,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolumeList",
 			OperationID:   "watchCoreV1PersistentVolumeList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50435,6 +51590,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1PodListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50442,8 +51598,9 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PodListForAllNamespaces",
-			ID:   "watchCoreV1PodListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); err != nil {
@@ -50475,6 +51632,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "WatchCoreV1PodListForAllNamespaces",
 			OperationID:   "watchCoreV1PodListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50584,6 +51742,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1PodTemplateListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50591,8 +51750,9 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PodTemplateListForAllNamespaces",
-			ID:   "watchCoreV1PodTemplateListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); err != nil {
@@ -50624,6 +51784,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			Context:       ctx,
 			OperationName: "WatchCoreV1PodTemplateListForAllNamespaces",
 			OperationID:   "watchCoreV1PodTemplateListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50733,6 +51894,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1ReplicationControllerListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50740,8 +51902,9 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ReplicationControllerListForAllNamespaces",
-			ID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); err != nil {
@@ -50773,6 +51936,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			Context:       ctx,
 			OperationName: "WatchCoreV1ReplicationControllerListForAllNamespaces",
 			OperationID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -50882,6 +52046,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1ResourceQuotaListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50889,8 +52054,9 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ResourceQuotaListForAllNamespaces",
-			ID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); err != nil {
@@ -50922,6 +52088,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "WatchCoreV1ResourceQuotaListForAllNamespaces",
 			OperationID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51031,6 +52198,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1SecretListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51038,8 +52206,9 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1SecretListForAllNamespaces",
-			ID:   "watchCoreV1SecretListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); err != nil {
@@ -51071,6 +52240,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "WatchCoreV1SecretListForAllNamespaces",
 			OperationID:   "watchCoreV1SecretListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51180,6 +52350,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1ServiceAccountListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51187,8 +52358,9 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ServiceAccountListForAllNamespaces",
-			ID:   "watchCoreV1ServiceAccountListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); err != nil {
@@ -51220,6 +52392,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			Context:       ctx,
 			OperationName: "WatchCoreV1ServiceAccountListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceAccountListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51329,6 +52502,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchCoreV1ServiceListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51336,8 +52510,9 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ServiceListForAllNamespaces",
-			ID:   "watchCoreV1ServiceListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); err != nil {
@@ -51369,6 +52544,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			Context:       ctx,
 			OperationName: "WatchCoreV1ServiceListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51478,6 +52654,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1EndpointSliceListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51485,8 +52662,9 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
-			ID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); err != nil {
@@ -51518,6 +52696,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51627,6 +52806,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51634,8 +52814,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1NamespacedEndpointSlice",
-			ID:   "watchDiscoveryV1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); err != nil {
@@ -51667,6 +52848,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51784,6 +52966,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1NamespacedEndpointSliceList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51791,8 +52974,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1NamespacedEndpointSliceList",
-			ID:   "watchDiscoveryV1NamespacedEndpointSliceList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); err != nil {
@@ -51824,6 +53008,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSliceList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -51937,6 +53122,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51944,8 +53130,9 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
-			ID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); err != nil {
@@ -51977,6 +53164,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52086,6 +53274,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1beta1NamespacedEndpointSlice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52093,8 +53282,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
-			ID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
@@ -52126,6 +53316,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52243,6 +53434,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchDiscoveryV1beta1NamespacedEndpointSliceList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52250,8 +53442,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
-			ID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); err != nil {
@@ -52283,6 +53476,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52396,6 +53590,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1EventListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52403,8 +53598,9 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1EventListForAllNamespaces",
-			ID:   "watchEventsV1EventListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); err != nil {
@@ -52436,6 +53632,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			Context:       ctx,
 			OperationName: "WatchEventsV1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1EventListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52545,6 +53742,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52552,8 +53750,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1NamespacedEvent",
-			ID:   "watchEventsV1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); err != nil {
@@ -52585,6 +53784,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			Context:       ctx,
 			OperationName: "WatchEventsV1NamespacedEvent",
 			OperationID:   "watchEventsV1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52702,6 +53902,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1NamespacedEventList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52709,8 +53910,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1NamespacedEventList",
-			ID:   "watchEventsV1NamespacedEventList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); err != nil {
@@ -52742,6 +53944,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			Context:       ctx,
 			OperationName: "WatchEventsV1NamespacedEventList",
 			OperationID:   "watchEventsV1NamespacedEventList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -52855,6 +54058,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1beta1EventListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52862,8 +54066,9 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1EventListForAllNamespaces",
-			ID:   "watchEventsV1beta1EventListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); err != nil {
@@ -52895,6 +54100,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1beta1EventListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53004,6 +54210,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1beta1NamespacedEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53011,8 +54218,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1NamespacedEvent",
-			ID:   "watchEventsV1beta1NamespacedEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); err != nil {
@@ -53044,6 +54252,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1NamespacedEvent",
 			OperationID:   "watchEventsV1beta1NamespacedEvent",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53161,6 +54370,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchEventsV1beta1NamespacedEventList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53168,8 +54378,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1NamespacedEventList",
-			ID:   "watchEventsV1beta1NamespacedEventList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); err != nil {
@@ -53201,6 +54412,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1NamespacedEventList",
 			OperationID:   "watchEventsV1beta1NamespacedEventList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53314,6 +54526,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta1FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53321,8 +54534,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1FlowSchema",
-			ID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
@@ -53354,6 +54568,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53467,6 +54682,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta1FlowSchemaList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53474,8 +54690,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
-			ID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); err != nil {
@@ -53507,6 +54724,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53617,6 +54835,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53624,8 +54843,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
@@ -53657,6 +54877,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53770,6 +54991,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53777,8 +54999,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
-			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); err != nil {
@@ -53810,6 +55033,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -53919,6 +55143,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta2FlowSchema
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53926,8 +55151,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2FlowSchema",
-			ID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
@@ -53959,6 +55185,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54072,6 +55299,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta2FlowSchemaList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54079,8 +55307,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
-			ID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); err != nil {
@@ -54112,6 +55341,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54222,6 +55452,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54229,8 +55460,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
@@ -54262,6 +55494,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54375,6 +55608,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54382,8 +55616,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
-			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); err != nil {
@@ -54415,6 +55650,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54524,6 +55760,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchInternalApiserverV1alpha1StorageVersion
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54531,8 +55768,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchInternalApiserverV1alpha1StorageVersion",
-			ID:   "watchInternalApiserverV1alpha1StorageVersion",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); err != nil {
@@ -54564,6 +55802,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			Context:       ctx,
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersion",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54677,6 +55916,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchInternalApiserverV1alpha1StorageVersionList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54684,8 +55924,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchInternalApiserverV1alpha1StorageVersionList",
-			ID:   "watchInternalApiserverV1alpha1StorageVersionList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); err != nil {
@@ -54717,6 +55958,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			Context:       ctx,
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersionList",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersionList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54826,6 +56068,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1IngressClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54833,8 +56076,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressClass",
-			ID:   "watchNetworkingV1IngressClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); err != nil {
@@ -54866,6 +56110,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressClass",
 			OperationID:   "watchNetworkingV1IngressClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -54979,6 +56224,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1IngressClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54986,8 +56232,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressClassList",
-			ID:   "watchNetworkingV1IngressClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); err != nil {
@@ -55019,6 +56266,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressClassList",
 			OperationID:   "watchNetworkingV1IngressClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55128,6 +56376,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1IngressListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55135,8 +56384,9 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressListForAllNamespaces",
-			ID:   "watchNetworkingV1IngressListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); err != nil {
@@ -55168,6 +56418,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressListForAllNamespaces",
 			OperationID:   "watchNetworkingV1IngressListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55277,6 +56528,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1NamespacedIngress
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55284,8 +56536,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedIngress",
-			ID:   "watchNetworkingV1NamespacedIngress",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); err != nil {
@@ -55317,6 +56570,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedIngress",
 			OperationID:   "watchNetworkingV1NamespacedIngress",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55434,6 +56688,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1NamespacedIngressList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55441,8 +56696,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedIngressList",
-			ID:   "watchNetworkingV1NamespacedIngressList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); err != nil {
@@ -55474,6 +56730,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedIngressList",
 			OperationID:   "watchNetworkingV1NamespacedIngressList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55587,6 +56844,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1NamespacedNetworkPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55594,8 +56852,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedNetworkPolicy",
-			ID:   "watchNetworkingV1NamespacedNetworkPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); err != nil {
@@ -55627,6 +56886,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55744,6 +57004,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1NamespacedNetworkPolicyList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55751,8 +57012,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedNetworkPolicyList",
-			ID:   "watchNetworkingV1NamespacedNetworkPolicyList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); err != nil {
@@ -55784,6 +57046,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicyList",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicyList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -55897,6 +57160,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNetworkingV1NetworkPolicyListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55904,8 +57168,9 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
-			ID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); err != nil {
@@ -55937,6 +57202,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
 			OperationID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56046,6 +57312,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56053,8 +57320,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1RuntimeClass",
-			ID:   "watchNodeV1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); err != nil {
@@ -56086,6 +57354,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "WatchNodeV1RuntimeClass",
 			OperationID:   "watchNodeV1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56199,6 +57468,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1RuntimeClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56206,8 +57476,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1RuntimeClassList",
-			ID:   "watchNodeV1RuntimeClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); err != nil {
@@ -56239,6 +57510,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "WatchNodeV1RuntimeClassList",
 			OperationID:   "watchNodeV1RuntimeClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56348,6 +57620,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1alpha1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56355,8 +57628,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1alpha1RuntimeClass",
-			ID:   "watchNodeV1alpha1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); err != nil {
@@ -56388,6 +57662,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			Context:       ctx,
 			OperationName: "WatchNodeV1alpha1RuntimeClass",
 			OperationID:   "watchNodeV1alpha1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56501,6 +57776,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1alpha1RuntimeClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56508,8 +57784,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1alpha1RuntimeClassList",
-			ID:   "watchNodeV1alpha1RuntimeClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); err != nil {
@@ -56541,6 +57818,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "WatchNodeV1alpha1RuntimeClassList",
 			OperationID:   "watchNodeV1alpha1RuntimeClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56650,6 +57928,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1beta1RuntimeClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56657,8 +57936,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1beta1RuntimeClass",
-			ID:   "watchNodeV1beta1RuntimeClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); err != nil {
@@ -56690,6 +57970,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			Context:       ctx,
 			OperationName: "WatchNodeV1beta1RuntimeClass",
 			OperationID:   "watchNodeV1beta1RuntimeClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56803,6 +58084,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchNodeV1beta1RuntimeClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56810,8 +58092,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1beta1RuntimeClassList",
-			ID:   "watchNodeV1beta1RuntimeClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); err != nil {
@@ -56843,6 +58126,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "WatchNodeV1beta1RuntimeClassList",
 			OperationID:   "watchNodeV1beta1RuntimeClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -56952,6 +58236,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56959,8 +58244,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1NamespacedPodDisruptionBudget",
-			ID:   "watchPolicyV1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
@@ -56992,6 +58278,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			Context:       ctx,
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57109,6 +58396,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1NamespacedPodDisruptionBudgetList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57116,8 +58404,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
-			ID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); err != nil {
@@ -57149,6 +58438,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57262,6 +58552,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57269,8 +58560,9 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
-			ID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
@@ -57302,6 +58594,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			Context:       ctx,
 			OperationName: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57411,6 +58704,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1beta1NamespacedPodDisruptionBudget
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57418,8 +58712,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
-			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
@@ -57451,6 +58746,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57568,6 +58864,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1beta1NamespacedPodDisruptionBudgetList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57575,8 +58872,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
-			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); err != nil {
@@ -57608,6 +58906,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57721,6 +59020,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57728,8 +59028,9 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
-			ID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
@@ -57761,6 +59062,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -57870,6 +59172,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1beta1PodSecurityPolicy
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57877,8 +59180,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodSecurityPolicy",
-			ID:   "watchPolicyV1beta1PodSecurityPolicy",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); err != nil {
@@ -57910,6 +59214,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicy",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58023,6 +59328,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchPolicyV1beta1PodSecurityPolicyList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58030,8 +59336,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodSecurityPolicyList",
-			ID:   "watchPolicyV1beta1PodSecurityPolicyList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); err != nil {
@@ -58063,6 +59370,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicyList",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicyList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58172,6 +59480,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1ClusterRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58179,8 +59488,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRole",
-			ID:   "watchRbacAuthorizationV1ClusterRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); err != nil {
@@ -58212,6 +59522,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRole",
 			OperationID:   "watchRbacAuthorizationV1ClusterRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58325,6 +59636,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1ClusterRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58332,8 +59644,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleBinding",
-			ID:   "watchRbacAuthorizationV1ClusterRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
@@ -58365,6 +59678,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58478,6 +59792,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1ClusterRoleBindingList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58485,8 +59800,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleBindingList",
-			ID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); err != nil {
@@ -58518,6 +59834,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58627,6 +59944,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1ClusterRoleList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58634,8 +59952,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleList",
-			ID:   "watchRbacAuthorizationV1ClusterRoleList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); err != nil {
@@ -58667,6 +59986,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58776,6 +60096,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1NamespacedRole
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58783,8 +60104,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRole",
-			ID:   "watchRbacAuthorizationV1NamespacedRole",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); err != nil {
@@ -58816,6 +60138,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRole",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRole",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -58933,6 +60256,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1NamespacedRoleBinding
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58940,8 +60264,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleBinding",
-			ID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
@@ -58973,6 +60298,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59090,6 +60416,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1NamespacedRoleBindingList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59097,8 +60424,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
-			ID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); err != nil {
@@ -59130,6 +60458,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59243,6 +60572,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1NamespacedRoleList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59250,8 +60580,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleList",
-			ID:   "watchRbacAuthorizationV1NamespacedRoleList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); err != nil {
@@ -59283,6 +60614,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59396,6 +60728,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59403,8 +60736,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
-			ID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); err != nil {
@@ -59436,6 +60770,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59545,6 +60880,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchRbacAuthorizationV1RoleListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59552,8 +60888,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
-			ID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); err != nil {
@@ -59585,6 +60922,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59694,6 +61032,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchSchedulingV1PriorityClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59701,8 +61040,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchSchedulingV1PriorityClass",
-			ID:   "watchSchedulingV1PriorityClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); err != nil {
@@ -59734,6 +61074,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "WatchSchedulingV1PriorityClass",
 			OperationID:   "watchSchedulingV1PriorityClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59847,6 +61188,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchSchedulingV1PriorityClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59854,8 +61196,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchSchedulingV1PriorityClassList",
-			ID:   "watchSchedulingV1PriorityClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); err != nil {
@@ -59887,6 +61230,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "WatchSchedulingV1PriorityClassList",
 			OperationID:   "watchSchedulingV1PriorityClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -59996,6 +61340,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1CSIDriver
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60003,8 +61348,9 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSIDriver",
-			ID:   "watchStorageV1CSIDriver",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); err != nil {
@@ -60036,6 +61382,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSIDriver",
 			OperationID:   "watchStorageV1CSIDriver",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60149,6 +61496,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1CSIDriverList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60156,8 +61504,9 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSIDriverList",
-			ID:   "watchStorageV1CSIDriverList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); err != nil {
@@ -60189,6 +61538,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSIDriverList",
 			OperationID:   "watchStorageV1CSIDriverList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60298,6 +61648,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1CSINode
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60305,8 +61656,9 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSINode",
-			ID:   "watchStorageV1CSINode",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINode", r); err != nil {
@@ -60338,6 +61690,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSINode",
 			OperationID:   "watchStorageV1CSINode",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60451,6 +61804,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1CSINodeList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60458,8 +61812,9 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSINodeList",
-			ID:   "watchStorageV1CSINodeList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); err != nil {
@@ -60491,6 +61846,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSINodeList",
 			OperationID:   "watchStorageV1CSINodeList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60600,6 +61956,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1StorageClass
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60607,8 +61964,9 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1StorageClass",
-			ID:   "watchStorageV1StorageClass",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); err != nil {
@@ -60640,6 +61998,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			Context:       ctx,
 			OperationName: "WatchStorageV1StorageClass",
 			OperationID:   "watchStorageV1StorageClass",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60753,6 +62112,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1StorageClassList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60760,8 +62120,9 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1StorageClassList",
-			ID:   "watchStorageV1StorageClassList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); err != nil {
@@ -60793,6 +62154,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "WatchStorageV1StorageClassList",
 			OperationID:   "watchStorageV1StorageClassList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -60902,6 +62264,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1VolumeAttachment
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60909,8 +62272,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1VolumeAttachment",
-			ID:   "watchStorageV1VolumeAttachment",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); err != nil {
@@ -60942,6 +62306,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			Context:       ctx,
 			OperationName: "WatchStorageV1VolumeAttachment",
 			OperationID:   "watchStorageV1VolumeAttachment",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61055,6 +62420,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1VolumeAttachmentList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61062,8 +62428,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1VolumeAttachmentList",
-			ID:   "watchStorageV1VolumeAttachmentList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); err != nil {
@@ -61095,6 +62462,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "WatchStorageV1VolumeAttachmentList",
 			OperationID:   "watchStorageV1VolumeAttachmentList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61204,6 +62572,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61211,8 +62580,9 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
-			ID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); err != nil {
@@ -61244,6 +62614,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61353,6 +62724,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1alpha1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61360,8 +62732,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
-			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
@@ -61393,6 +62766,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61510,6 +62884,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1alpha1NamespacedCSIStorageCapacityList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61517,8 +62892,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
-			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); err != nil {
@@ -61550,6 +62926,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61663,6 +63040,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61670,8 +63048,9 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
-			ID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); err != nil {
@@ -61703,6 +63082,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61812,6 +63192,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1beta1NamespacedCSIStorageCapacity
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61819,8 +63200,9 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
-			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
@@ -61852,6 +63234,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -61969,6 +63352,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().WatchStorageV1beta1NamespacedCSIStorageCapacityList
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61976,8 +63360,9 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
-			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); err != nil {
@@ -62009,6 +63394,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

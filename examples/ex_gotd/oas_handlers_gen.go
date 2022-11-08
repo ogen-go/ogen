@@ -44,6 +44,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AddStickerToSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AddStickerToSet",
-			ID:   "addStickerToSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAddStickerToSetRequest(r)
@@ -77,6 +79,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "AddStickerToSet",
 			OperationID:   "addStickerToSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -150,6 +153,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnswerCallbackQuery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -157,8 +161,9 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AnswerCallbackQuery",
-			ID:   "answerCallbackQuery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAnswerCallbackQueryRequest(r)
@@ -183,6 +188,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "AnswerCallbackQuery",
 			OperationID:   "answerCallbackQuery",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -256,6 +262,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnswerInlineQuery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -263,8 +270,9 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AnswerInlineQuery",
-			ID:   "answerInlineQuery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAnswerInlineQueryRequest(r)
@@ -289,6 +297,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "AnswerInlineQuery",
 			OperationID:   "answerInlineQuery",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -362,6 +371,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnswerPreCheckoutQuery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -369,8 +379,9 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AnswerPreCheckoutQuery",
-			ID:   "answerPreCheckoutQuery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAnswerPreCheckoutQueryRequest(r)
@@ -395,6 +406,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "AnswerPreCheckoutQuery",
 			OperationID:   "answerPreCheckoutQuery",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -468,6 +480,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnswerShippingQuery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -475,8 +488,9 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AnswerShippingQuery",
-			ID:   "answerShippingQuery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAnswerShippingQueryRequest(r)
@@ -501,6 +515,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "AnswerShippingQuery",
 			OperationID:   "answerShippingQuery",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -574,6 +589,7 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().AnswerWebAppQuery
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -581,8 +597,9 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AnswerWebAppQuery",
-			ID:   "answerWebAppQuery",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeAnswerWebAppQueryRequest(r)
@@ -607,6 +624,7 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "AnswerWebAppQuery",
 			OperationID:   "answerWebAppQuery",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -680,6 +698,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ApproveChatJoinRequest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -687,8 +706,9 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ApproveChatJoinRequest",
-			ID:   "approveChatJoinRequest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeApproveChatJoinRequestRequest(r)
@@ -713,6 +733,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "ApproveChatJoinRequest",
 			OperationID:   "approveChatJoinRequest",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -786,6 +807,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BanChatMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -793,8 +815,9 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BanChatMember",
-			ID:   "banChatMember",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeBanChatMemberRequest(r)
@@ -819,6 +842,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "BanChatMember",
 			OperationID:   "banChatMember",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -892,6 +916,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().BanChatSenderChat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -899,8 +924,9 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BanChatSenderChat",
-			ID:   "banChatSenderChat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeBanChatSenderChatRequest(r)
@@ -925,6 +951,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "BanChatSenderChat",
 			OperationID:   "banChatSenderChat",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -998,6 +1025,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().Close
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1012,6 +1040,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 			Context:       ctx,
 			OperationName: "Close",
 			OperationID:   "close",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1085,6 +1114,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CopyMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1092,8 +1122,9 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CopyMessage",
-			ID:   "copyMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeCopyMessageRequest(r)
@@ -1118,6 +1149,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "CopyMessage",
 			OperationID:   "copyMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1191,6 +1223,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CreateChatInviteLink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1198,8 +1231,9 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateChatInviteLink",
-			ID:   "createChatInviteLink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeCreateChatInviteLinkRequest(r)
@@ -1224,6 +1258,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "CreateChatInviteLink",
 			OperationID:   "createChatInviteLink",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1297,6 +1332,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CreateNewStickerSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1304,8 +1340,9 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateNewStickerSet",
-			ID:   "createNewStickerSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeCreateNewStickerSetRequest(r)
@@ -1330,6 +1367,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "CreateNewStickerSet",
 			OperationID:   "createNewStickerSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1403,6 +1441,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeclineChatJoinRequest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1410,8 +1449,9 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeclineChatJoinRequest",
-			ID:   "declineChatJoinRequest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeclineChatJoinRequestRequest(r)
@@ -1436,6 +1476,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "DeclineChatJoinRequest",
 			OperationID:   "declineChatJoinRequest",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1509,6 +1550,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteChatPhoto
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1516,8 +1558,9 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteChatPhoto",
-			ID:   "deleteChatPhoto",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteChatPhotoRequest(r)
@@ -1542,6 +1585,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "DeleteChatPhoto",
 			OperationID:   "deleteChatPhoto",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1615,6 +1659,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteChatStickerSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1622,8 +1667,9 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteChatStickerSet",
-			ID:   "deleteChatStickerSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteChatStickerSetRequest(r)
@@ -1648,6 +1694,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "DeleteChatStickerSet",
 			OperationID:   "deleteChatStickerSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1721,6 +1768,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1728,8 +1776,9 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteMessage",
-			ID:   "deleteMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteMessageRequest(r)
@@ -1754,6 +1803,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "DeleteMessage",
 			OperationID:   "deleteMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1827,6 +1877,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteMyCommands
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1834,8 +1885,9 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteMyCommands",
-			ID:   "deleteMyCommands",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteMyCommandsRequest(r)
@@ -1860,6 +1912,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "DeleteMyCommands",
 			OperationID:   "deleteMyCommands",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1933,6 +1986,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteStickerFromSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1940,8 +1994,9 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteStickerFromSet",
-			ID:   "deleteStickerFromSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteStickerFromSetRequest(r)
@@ -1966,6 +2021,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "DeleteStickerFromSet",
 			OperationID:   "deleteStickerFromSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2039,6 +2095,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().DeleteWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2046,8 +2103,9 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteWebhook",
-			ID:   "deleteWebhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeDeleteWebhookRequest(r)
@@ -2072,6 +2130,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "DeleteWebhook",
 			OperationID:   "deleteWebhook",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2145,6 +2204,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditChatInviteLink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2152,8 +2212,9 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditChatInviteLink",
-			ID:   "editChatInviteLink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditChatInviteLinkRequest(r)
@@ -2178,6 +2239,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "EditChatInviteLink",
 			OperationID:   "editChatInviteLink",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2251,6 +2313,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditMessageCaption
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2258,8 +2321,9 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditMessageCaption",
-			ID:   "editMessageCaption",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditMessageCaptionRequest(r)
@@ -2284,6 +2348,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "EditMessageCaption",
 			OperationID:   "editMessageCaption",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2357,6 +2422,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditMessageLiveLocation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2364,8 +2430,9 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditMessageLiveLocation",
-			ID:   "editMessageLiveLocation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditMessageLiveLocationRequest(r)
@@ -2390,6 +2457,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "EditMessageLiveLocation",
 			OperationID:   "editMessageLiveLocation",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2463,6 +2531,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditMessageMedia
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2470,8 +2539,9 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditMessageMedia",
-			ID:   "editMessageMedia",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditMessageMediaRequest(r)
@@ -2496,6 +2566,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "EditMessageMedia",
 			OperationID:   "editMessageMedia",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2569,6 +2640,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditMessageReplyMarkup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2576,8 +2648,9 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditMessageReplyMarkup",
-			ID:   "editMessageReplyMarkup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditMessageReplyMarkupRequest(r)
@@ -2602,6 +2675,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "EditMessageReplyMarkup",
 			OperationID:   "editMessageReplyMarkup",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2675,6 +2749,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().EditMessageText
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2682,8 +2757,9 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EditMessageText",
-			ID:   "editMessageText",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeEditMessageTextRequest(r)
@@ -2708,6 +2784,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "EditMessageText",
 			OperationID:   "editMessageText",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2781,6 +2858,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ExportChatInviteLink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2788,8 +2866,9 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ExportChatInviteLink",
-			ID:   "exportChatInviteLink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeExportChatInviteLinkRequest(r)
@@ -2814,6 +2893,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ExportChatInviteLink",
 			OperationID:   "exportChatInviteLink",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2887,6 +2967,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ForwardMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2894,8 +2975,9 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ForwardMessage",
-			ID:   "forwardMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeForwardMessageRequest(r)
@@ -2920,6 +3002,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "ForwardMessage",
 			OperationID:   "forwardMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2993,6 +3076,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetChat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3000,8 +3084,9 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetChat",
-			ID:   "getChat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetChatRequest(r)
@@ -3026,6 +3111,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "GetChat",
 			OperationID:   "getChat",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3099,6 +3185,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetChatAdministrators
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3106,8 +3193,9 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetChatAdministrators",
-			ID:   "getChatAdministrators",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetChatAdministratorsRequest(r)
@@ -3132,6 +3220,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "GetChatAdministrators",
 			OperationID:   "getChatAdministrators",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3205,6 +3294,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetChatMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3212,8 +3302,9 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetChatMember",
-			ID:   "getChatMember",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetChatMemberRequest(r)
@@ -3238,6 +3329,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "GetChatMember",
 			OperationID:   "getChatMember",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3311,6 +3403,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetChatMemberCount
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3318,8 +3411,9 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetChatMemberCount",
-			ID:   "getChatMemberCount",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetChatMemberCountRequest(r)
@@ -3344,6 +3438,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "GetChatMemberCount",
 			OperationID:   "getChatMemberCount",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3417,6 +3512,7 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetChatMenuButton
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3424,8 +3520,9 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetChatMenuButton",
-			ID:   "getChatMenuButton",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetChatMenuButtonRequest(r)
@@ -3450,6 +3547,7 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetChatMenuButton",
 			OperationID:   "getChatMenuButton",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3523,6 +3621,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetFile
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3530,8 +3629,9 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFile",
-			ID:   "getFile",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetFileRequest(r)
@@ -3556,6 +3656,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "GetFile",
 			OperationID:   "getFile",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3629,6 +3730,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetGameHighScores
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3636,8 +3738,9 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetGameHighScores",
-			ID:   "getGameHighScores",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetGameHighScoresRequest(r)
@@ -3662,6 +3765,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "GetGameHighScores",
 			OperationID:   "getGameHighScores",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3735,6 +3839,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetMe
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3749,6 +3854,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 			Context:       ctx,
 			OperationName: "GetMe",
 			OperationID:   "getMe",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3822,6 +3928,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetMyCommands
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3829,8 +3936,9 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetMyCommands",
-			ID:   "getMyCommands",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetMyCommandsRequest(r)
@@ -3855,6 +3963,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "GetMyCommands",
 			OperationID:   "getMyCommands",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3928,6 +4037,7 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetMyDefaultAdministratorRights
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3935,8 +4045,9 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetMyDefaultAdministratorRights",
-			ID:   "getMyDefaultAdministratorRights",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetMyDefaultAdministratorRightsRequest(r)
@@ -3961,6 +4072,7 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "GetMyDefaultAdministratorRights",
 			OperationID:   "getMyDefaultAdministratorRights",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4034,6 +4146,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetStickerSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4041,8 +4154,9 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStickerSet",
-			ID:   "getStickerSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetStickerSetRequest(r)
@@ -4067,6 +4181,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "GetStickerSet",
 			OperationID:   "getStickerSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4140,6 +4255,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetUpdates
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4147,8 +4263,9 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetUpdates",
-			ID:   "getUpdates",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetUpdatesRequest(r)
@@ -4173,6 +4290,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "GetUpdates",
 			OperationID:   "getUpdates",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4246,6 +4364,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetUserProfilePhotos
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4253,8 +4372,9 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetUserProfilePhotos",
-			ID:   "getUserProfilePhotos",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeGetUserProfilePhotosRequest(r)
@@ -4279,6 +4399,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "GetUserProfilePhotos",
 			OperationID:   "getUserProfilePhotos",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4352,6 +4473,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().GetWebhookInfo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4366,6 +4488,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "GetWebhookInfo",
 			OperationID:   "getWebhookInfo",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4439,6 +4562,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LeaveChat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4446,8 +4570,9 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LeaveChat",
-			ID:   "leaveChat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeLeaveChatRequest(r)
@@ -4472,6 +4597,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "LeaveChat",
 			OperationID:   "leaveChat",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4545,6 +4671,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().LogOut
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4559,6 +4686,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 			Context:       ctx,
 			OperationName: "LogOut",
 			OperationID:   "logOut",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4632,6 +4760,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PinChatMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4639,8 +4768,9 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PinChatMessage",
-			ID:   "pinChatMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePinChatMessageRequest(r)
@@ -4665,6 +4795,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "PinChatMessage",
 			OperationID:   "pinChatMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4738,6 +4869,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PromoteChatMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4745,8 +4877,9 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PromoteChatMember",
-			ID:   "promoteChatMember",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePromoteChatMemberRequest(r)
@@ -4771,6 +4904,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "PromoteChatMember",
 			OperationID:   "promoteChatMember",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4844,6 +4978,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().RestrictChatMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4851,8 +4986,9 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RestrictChatMember",
-			ID:   "restrictChatMember",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeRestrictChatMemberRequest(r)
@@ -4877,6 +5013,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "RestrictChatMember",
 			OperationID:   "restrictChatMember",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4950,6 +5087,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().RevokeChatInviteLink
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4957,8 +5095,9 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RevokeChatInviteLink",
-			ID:   "revokeChatInviteLink",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeRevokeChatInviteLinkRequest(r)
@@ -4983,6 +5122,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "RevokeChatInviteLink",
 			OperationID:   "revokeChatInviteLink",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5056,6 +5196,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendAnimation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5063,8 +5204,9 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendAnimation",
-			ID:   "sendAnimation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendAnimationRequest(r)
@@ -5089,6 +5231,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SendAnimation",
 			OperationID:   "sendAnimation",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5162,6 +5305,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendAudio
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5169,8 +5313,9 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendAudio",
-			ID:   "sendAudio",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendAudioRequest(r)
@@ -5195,6 +5340,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "SendAudio",
 			OperationID:   "sendAudio",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5268,6 +5414,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendChatAction
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5275,8 +5422,9 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendChatAction",
-			ID:   "sendChatAction",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendChatActionRequest(r)
@@ -5301,6 +5449,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "SendChatAction",
 			OperationID:   "sendChatAction",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5374,6 +5523,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendContact
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5381,8 +5531,9 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendContact",
-			ID:   "sendContact",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendContactRequest(r)
@@ -5407,6 +5558,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SendContact",
 			OperationID:   "sendContact",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5480,6 +5632,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendDice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5487,8 +5640,9 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendDice",
-			ID:   "sendDice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendDiceRequest(r)
@@ -5513,6 +5667,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "SendDice",
 			OperationID:   "sendDice",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5586,6 +5741,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendDocument
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5593,8 +5749,9 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendDocument",
-			ID:   "sendDocument",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendDocumentRequest(r)
@@ -5619,6 +5776,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SendDocument",
 			OperationID:   "sendDocument",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5692,6 +5850,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendGame
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5699,8 +5858,9 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendGame",
-			ID:   "sendGame",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendGameRequest(r)
@@ -5725,6 +5885,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "SendGame",
 			OperationID:   "sendGame",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5798,6 +5959,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendInvoice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5805,8 +5967,9 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendInvoice",
-			ID:   "sendInvoice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendInvoiceRequest(r)
@@ -5831,6 +5994,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SendInvoice",
 			OperationID:   "sendInvoice",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5904,6 +6068,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendLocation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5911,8 +6076,9 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendLocation",
-			ID:   "sendLocation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendLocationRequest(r)
@@ -5937,6 +6103,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SendLocation",
 			OperationID:   "sendLocation",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6010,6 +6177,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendMediaGroup
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6017,8 +6185,9 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendMediaGroup",
-			ID:   "sendMediaGroup",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendMediaGroupRequest(r)
@@ -6043,6 +6212,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "SendMediaGroup",
 			OperationID:   "sendMediaGroup",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6116,6 +6286,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6123,8 +6294,9 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendMessage",
-			ID:   "sendMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendMessageRequest(r)
@@ -6149,6 +6321,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SendMessage",
 			OperationID:   "sendMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6222,6 +6395,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendPhoto
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6229,8 +6403,9 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendPhoto",
-			ID:   "sendPhoto",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendPhotoRequest(r)
@@ -6255,6 +6430,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "SendPhoto",
 			OperationID:   "sendPhoto",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6328,6 +6504,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendPoll
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6335,8 +6512,9 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendPoll",
-			ID:   "sendPoll",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendPollRequest(r)
@@ -6361,6 +6539,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "SendPoll",
 			OperationID:   "sendPoll",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6434,6 +6613,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendSticker
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6441,8 +6621,9 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendSticker",
-			ID:   "sendSticker",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendStickerRequest(r)
@@ -6467,6 +6648,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "SendSticker",
 			OperationID:   "sendSticker",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6540,6 +6722,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendVenue
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6547,8 +6730,9 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendVenue",
-			ID:   "sendVenue",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendVenueRequest(r)
@@ -6573,6 +6757,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "SendVenue",
 			OperationID:   "sendVenue",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6646,6 +6831,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendVideo
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6653,8 +6839,9 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendVideo",
-			ID:   "sendVideo",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendVideoRequest(r)
@@ -6679,6 +6866,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "SendVideo",
 			OperationID:   "sendVideo",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6752,6 +6940,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendVideoNote
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6759,8 +6948,9 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendVideoNote",
-			ID:   "sendVideoNote",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendVideoNoteRequest(r)
@@ -6785,6 +6975,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SendVideoNote",
 			OperationID:   "sendVideoNote",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6858,6 +7049,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SendVoice
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6865,8 +7057,9 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SendVoice",
-			ID:   "sendVoice",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSendVoiceRequest(r)
@@ -6891,6 +7084,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "SendVoice",
 			OperationID:   "sendVoice",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6964,6 +7158,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatAdministratorCustomTitle
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6971,8 +7166,9 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatAdministratorCustomTitle",
-			ID:   "setChatAdministratorCustomTitle",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r)
@@ -6997,6 +7193,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "SetChatAdministratorCustomTitle",
 			OperationID:   "setChatAdministratorCustomTitle",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7070,6 +7267,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatDescription
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7077,8 +7275,9 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatDescription",
-			ID:   "setChatDescription",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatDescriptionRequest(r)
@@ -7103,6 +7302,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "SetChatDescription",
 			OperationID:   "setChatDescription",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7176,6 +7376,7 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatMenuButton
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7183,8 +7384,9 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatMenuButton",
-			ID:   "setChatMenuButton",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatMenuButtonRequest(r)
@@ -7209,6 +7411,7 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "SetChatMenuButton",
 			OperationID:   "setChatMenuButton",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7282,6 +7485,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatPermissions
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7289,8 +7493,9 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatPermissions",
-			ID:   "setChatPermissions",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatPermissionsRequest(r)
@@ -7315,6 +7520,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "SetChatPermissions",
 			OperationID:   "setChatPermissions",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7388,6 +7594,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatPhoto
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7395,8 +7602,9 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatPhoto",
-			ID:   "setChatPhoto",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatPhotoRequest(r)
@@ -7421,6 +7629,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SetChatPhoto",
 			OperationID:   "setChatPhoto",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7494,6 +7703,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatStickerSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7501,8 +7711,9 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatStickerSet",
-			ID:   "setChatStickerSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatStickerSetRequest(r)
@@ -7527,6 +7738,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "SetChatStickerSet",
 			OperationID:   "setChatStickerSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7600,6 +7812,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetChatTitle
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7607,8 +7820,9 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetChatTitle",
-			ID:   "setChatTitle",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetChatTitleRequest(r)
@@ -7633,6 +7847,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SetChatTitle",
 			OperationID:   "setChatTitle",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7706,6 +7921,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetGameScore
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7713,8 +7929,9 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetGameScore",
-			ID:   "setGameScore",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetGameScoreRequest(r)
@@ -7739,6 +7956,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "SetGameScore",
 			OperationID:   "setGameScore",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7812,6 +8030,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetMyCommands
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7819,8 +8038,9 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetMyCommands",
-			ID:   "setMyCommands",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetMyCommandsRequest(r)
@@ -7845,6 +8065,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SetMyCommands",
 			OperationID:   "setMyCommands",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7918,6 +8139,7 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetMyDefaultAdministratorRights
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7925,8 +8147,9 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetMyDefaultAdministratorRights",
-			ID:   "setMyDefaultAdministratorRights",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetMyDefaultAdministratorRightsRequest(r)
@@ -7951,6 +8174,7 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "SetMyDefaultAdministratorRights",
 			OperationID:   "setMyDefaultAdministratorRights",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8024,6 +8248,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetPassportDataErrors
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8031,8 +8256,9 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetPassportDataErrors",
-			ID:   "setPassportDataErrors",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetPassportDataErrorsRequest(r)
@@ -8057,6 +8283,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "SetPassportDataErrors",
 			OperationID:   "setPassportDataErrors",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8130,6 +8357,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetStickerPositionInSet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8137,8 +8365,9 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetStickerPositionInSet",
-			ID:   "setStickerPositionInSet",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetStickerPositionInSetRequest(r)
@@ -8163,6 +8392,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "SetStickerPositionInSet",
 			OperationID:   "setStickerPositionInSet",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8236,6 +8466,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetStickerSetThumb
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8243,8 +8474,9 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetStickerSetThumb",
-			ID:   "setStickerSetThumb",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetStickerSetThumbRequest(r)
@@ -8269,6 +8501,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "SetStickerSetThumb",
 			OperationID:   "setStickerSetThumb",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8342,6 +8575,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SetWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8349,8 +8583,9 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SetWebhook",
-			ID:   "setWebhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSetWebhookRequest(r)
@@ -8375,6 +8610,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "SetWebhook",
 			OperationID:   "setWebhook",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8448,6 +8684,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().StopMessageLiveLocation
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8455,8 +8692,9 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "StopMessageLiveLocation",
-			ID:   "stopMessageLiveLocation",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeStopMessageLiveLocationRequest(r)
@@ -8481,6 +8719,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "StopMessageLiveLocation",
 			OperationID:   "stopMessageLiveLocation",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8554,6 +8793,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().StopPoll
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8561,8 +8801,9 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "StopPoll",
-			ID:   "stopPoll",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeStopPollRequest(r)
@@ -8587,6 +8828,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "StopPoll",
 			OperationID:   "stopPoll",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8660,6 +8902,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UnbanChatMember
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8667,8 +8910,9 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UnbanChatMember",
-			ID:   "unbanChatMember",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUnbanChatMemberRequest(r)
@@ -8693,6 +8937,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "UnbanChatMember",
 			OperationID:   "unbanChatMember",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8766,6 +9011,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UnbanChatSenderChat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8773,8 +9019,9 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UnbanChatSenderChat",
-			ID:   "unbanChatSenderChat",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUnbanChatSenderChatRequest(r)
@@ -8799,6 +9046,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "UnbanChatSenderChat",
 			OperationID:   "unbanChatSenderChat",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8872,6 +9120,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UnpinAllChatMessages
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8879,8 +9128,9 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UnpinAllChatMessages",
-			ID:   "unpinAllChatMessages",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUnpinAllChatMessagesRequest(r)
@@ -8905,6 +9155,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "UnpinAllChatMessages",
 			OperationID:   "unpinAllChatMessages",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8978,6 +9229,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UnpinChatMessage
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8985,8 +9237,9 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UnpinChatMessage",
-			ID:   "unpinChatMessage",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUnpinChatMessageRequest(r)
@@ -9011,6 +9264,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "UnpinChatMessage",
 			OperationID:   "unpinChatMessage",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9084,6 +9338,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UploadStickerFile
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9091,8 +9346,9 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UploadStickerFile",
-			ID:   "uploadStickerFile",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeUploadStickerFileRequest(r)
@@ -9117,6 +9373,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "UploadStickerFile",
 			OperationID:   "uploadStickerFile",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

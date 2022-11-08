@@ -39,6 +39,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketBondsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46,8 +47,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketBondsGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
@@ -69,6 +71,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "MarketBondsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -133,6 +136,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketCandlesGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -140,8 +144,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketCandlesGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
@@ -173,6 +178,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "MarketCandlesGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -254,6 +260,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketCurrenciesGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -261,8 +268,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketCurrenciesGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
@@ -284,6 +292,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "MarketCurrenciesGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -348,6 +357,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketEtfsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -355,8 +365,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketEtfsGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
@@ -378,6 +389,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "MarketEtfsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -442,6 +454,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketOrderbookGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -449,8 +462,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketOrderbookGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
@@ -482,6 +496,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "MarketOrderbookGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -555,6 +570,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketSearchByFigiGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -562,8 +578,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketSearchByFigiGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
@@ -595,6 +612,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "MarketSearchByFigiGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -664,6 +682,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketSearchByTickerGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -671,8 +690,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketSearchByTickerGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
@@ -704,6 +724,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "MarketSearchByTickerGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -773,6 +794,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().MarketStocksGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -780,8 +802,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarketStocksGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
@@ -803,6 +826,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "MarketStocksGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -867,6 +891,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OperationsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -874,8 +899,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OperationsGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
@@ -907,6 +933,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "OperationsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -988,6 +1015,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrdersCancelPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -995,8 +1023,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrdersCancelPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
@@ -1028,6 +1057,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "OrdersCancelPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1101,6 +1131,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrdersGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1108,8 +1139,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrdersGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
@@ -1141,6 +1173,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			Context:       ctx,
 			OperationName: "OrdersGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1210,6 +1243,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrdersLimitOrderPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1217,8 +1251,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrdersLimitOrderPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
@@ -1265,6 +1300,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "OrdersLimitOrderPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1338,6 +1374,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OrdersMarketOrderPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1345,8 +1382,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrdersMarketOrderPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
@@ -1393,6 +1431,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "OrdersMarketOrderPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1466,6 +1505,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PortfolioCurrenciesGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1473,8 +1513,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PortfolioCurrenciesGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
@@ -1506,6 +1547,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "PortfolioCurrenciesGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1575,6 +1617,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PortfolioGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1582,8 +1625,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PortfolioGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
@@ -1615,6 +1659,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "PortfolioGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1684,6 +1729,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SandboxClearPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1691,8 +1737,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SandboxClearPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
@@ -1724,6 +1771,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "SandboxClearPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -1793,6 +1841,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SandboxCurrenciesBalancePost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1800,8 +1849,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SandboxCurrenciesBalancePost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
@@ -1848,6 +1898,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "SandboxCurrenciesBalancePost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -1917,6 +1968,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SandboxPositionsBalancePost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1924,8 +1976,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SandboxPositionsBalancePost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
@@ -1972,6 +2025,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "SandboxPositionsBalancePost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -2041,6 +2095,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SandboxRegisterPost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2048,8 +2103,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SandboxRegisterPost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {
@@ -2086,6 +2142,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "SandboxRegisterPost",
 			OperationID:   "",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2150,6 +2207,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SandboxRemovePost
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2157,8 +2215,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SandboxRemovePost",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
@@ -2190,6 +2249,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "SandboxRemovePost",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -2259,6 +2319,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().UserAccountsGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2266,8 +2327,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserAccountsGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	if sctx, err := s.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
@@ -2289,6 +2351,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "UserAccountsGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

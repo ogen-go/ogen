@@ -41,6 +41,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().IntegerNumber
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55,6 +56,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "IntegerNumber",
 			OperationID:   "integerNumber",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -120,6 +122,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().JaegerAnyOf
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -134,6 +137,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "JaegerAnyOf",
 			OperationID:   "jaegerAnyOf",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -199,6 +203,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().OneUUID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -213,6 +218,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, w http.ResponseWriter, r *
 			Context:       ctx,
 			OperationName: "OneUUID",
 			OperationID:   "oneUUID",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

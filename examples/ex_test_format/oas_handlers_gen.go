@@ -46,6 +46,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestQueryParameter
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53,8 +54,9 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestQueryParameter",
-			ID:   "test_query_parameter",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeTestQueryParameterParams(args, r)
@@ -89,6 +91,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestQueryParameter",
 			OperationID:   "test_query_parameter",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{
@@ -475,6 +478,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestAny
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -482,8 +486,9 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestAny",
-			ID:   "test_request_Any",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestAnyRequest(r)
@@ -508,6 +513,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 			Context:       ctx,
 			OperationName: "TestRequestAny",
 			OperationID:   "test_request_Any",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -573,6 +579,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBoolean
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -580,8 +587,9 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBoolean",
-			ID:   "test_request_boolean",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanRequest(r)
@@ -606,6 +614,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestRequestBoolean",
 			OperationID:   "test_request_boolean",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -671,6 +680,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBooleanArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -678,8 +688,9 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBooleanArray",
-			ID:   "test_request_boolean_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanArrayRequest(r)
@@ -704,6 +715,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestBooleanArray",
 			OperationID:   "test_request_boolean_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -769,6 +781,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBooleanArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -776,8 +789,9 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBooleanArrayArray",
-			ID:   "test_request_boolean_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanArrayArrayRequest(r)
@@ -802,6 +816,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestBooleanArrayArray",
 			OperationID:   "test_request_boolean_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -867,6 +882,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBooleanNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -874,8 +890,9 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBooleanNullable",
-			ID:   "test_request_boolean_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanNullableRequest(r)
@@ -900,6 +917,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestBooleanNullable",
 			OperationID:   "test_request_boolean_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -965,6 +983,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBooleanNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -972,8 +991,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBooleanNullableArray",
-			ID:   "test_request_boolean_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanNullableArrayRequest(r)
@@ -998,6 +1018,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestBooleanNullableArray",
 			OperationID:   "test_request_boolean_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1063,6 +1084,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestBooleanNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1070,8 +1092,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestBooleanNullableArrayArray",
-			ID:   "test_request_boolean_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestBooleanNullableArrayArrayRequest(r)
@@ -1096,6 +1119,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestBooleanNullableArrayArray",
 			OperationID:   "test_request_boolean_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1161,6 +1185,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestEmptyStruct
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1168,8 +1193,9 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestEmptyStruct",
-			ID:   "test_request_EmptyStruct",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestEmptyStructRequest(r)
@@ -1194,6 +1220,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestEmptyStruct",
 			OperationID:   "test_request_EmptyStruct",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1259,6 +1286,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestFormatTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1266,8 +1294,9 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestFormatTest",
-			ID:   "test_request_FormatTest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestFormatTestRequest(r)
@@ -1292,6 +1321,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestFormatTest",
 			OperationID:   "test_request_FormatTest",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1357,6 +1387,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestInteger
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1364,8 +1395,9 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestInteger",
-			ID:   "test_request_integer",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerRequest(r)
@@ -1390,6 +1422,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestRequestInteger",
 			OperationID:   "test_request_integer",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1455,6 +1488,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1462,8 +1496,9 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerArray",
-			ID:   "test_request_integer_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerArrayRequest(r)
@@ -1488,6 +1523,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestIntegerArray",
 			OperationID:   "test_request_integer_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1553,6 +1589,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1560,8 +1597,9 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerArrayArray",
-			ID:   "test_request_integer_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerArrayArrayRequest(r)
@@ -1586,6 +1624,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestIntegerArrayArray",
 			OperationID:   "test_request_integer_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1651,6 +1690,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1658,8 +1698,9 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32",
-			ID:   "test_request_integer_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32Request(r)
@@ -1684,6 +1725,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32",
 			OperationID:   "test_request_integer_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1749,6 +1791,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1756,8 +1799,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32Array",
-			ID:   "test_request_integer_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32ArrayRequest(r)
@@ -1782,6 +1826,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32Array",
 			OperationID:   "test_request_integer_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1847,6 +1892,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1854,8 +1900,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32ArrayArray",
-			ID:   "test_request_integer_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32ArrayArrayRequest(r)
@@ -1880,6 +1927,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32ArrayArray",
 			OperationID:   "test_request_integer_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -1945,6 +1993,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -1952,8 +2001,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32Nullable",
-			ID:   "test_request_integer_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableRequest(r)
@@ -1978,6 +2028,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32Nullable",
 			OperationID:   "test_request_integer_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2043,6 +2094,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2050,8 +2102,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32NullableArray",
-			ID:   "test_request_integer_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayRequest(r)
@@ -2076,6 +2129,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32NullableArray",
 			OperationID:   "test_request_integer_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2141,6 +2195,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2148,8 +2203,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt32NullableArrayArray",
-			ID:   "test_request_integer_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayArrayRequest(r)
@@ -2174,6 +2230,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt32NullableArrayArray",
 			OperationID:   "test_request_integer_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2239,6 +2296,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2246,8 +2304,9 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64",
-			ID:   "test_request_integer_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64Request(r)
@@ -2272,6 +2331,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64",
 			OperationID:   "test_request_integer_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2337,6 +2397,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2344,8 +2405,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64Array",
-			ID:   "test_request_integer_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64ArrayRequest(r)
@@ -2370,6 +2432,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64Array",
 			OperationID:   "test_request_integer_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2435,6 +2498,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2442,8 +2506,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64ArrayArray",
-			ID:   "test_request_integer_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64ArrayArrayRequest(r)
@@ -2468,6 +2533,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64ArrayArray",
 			OperationID:   "test_request_integer_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2533,6 +2599,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2540,8 +2607,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64Nullable",
-			ID:   "test_request_integer_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableRequest(r)
@@ -2566,6 +2634,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64Nullable",
 			OperationID:   "test_request_integer_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2631,6 +2700,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2638,8 +2708,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64NullableArray",
-			ID:   "test_request_integer_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayRequest(r)
@@ -2664,6 +2735,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64NullableArray",
 			OperationID:   "test_request_integer_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2729,6 +2801,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2736,8 +2809,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerInt64NullableArrayArray",
-			ID:   "test_request_integer_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayArrayRequest(r)
@@ -2762,6 +2836,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestIntegerInt64NullableArrayArray",
 			OperationID:   "test_request_integer_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2827,6 +2902,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2834,8 +2910,9 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerNullable",
-			ID:   "test_request_integer_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerNullableRequest(r)
@@ -2860,6 +2937,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestIntegerNullable",
 			OperationID:   "test_request_integer_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -2925,6 +3003,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -2932,8 +3011,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerNullableArray",
-			ID:   "test_request_integer_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerNullableArrayRequest(r)
@@ -2958,6 +3038,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerNullableArray",
 			OperationID:   "test_request_integer_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3023,6 +3104,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3030,8 +3112,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerNullableArrayArray",
-			ID:   "test_request_integer_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerNullableArrayArrayRequest(r)
@@ -3056,6 +3139,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestIntegerNullableArrayArray",
 			OperationID:   "test_request_integer_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3121,6 +3205,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3128,8 +3213,9 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint",
-			ID:   "test_request_integer_uint",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintRequest(r)
@@ -3154,6 +3240,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint",
 			OperationID:   "test_request_integer_uint",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3219,6 +3306,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3226,8 +3314,9 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32",
-			ID:   "test_request_integer_uint32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32Request(r)
@@ -3252,6 +3341,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32",
 			OperationID:   "test_request_integer_uint32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3317,6 +3407,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3324,8 +3415,9 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32Array",
-			ID:   "test_request_integer_uint32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32ArrayRequest(r)
@@ -3350,6 +3442,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32Array",
 			OperationID:   "test_request_integer_uint32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3415,6 +3508,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3422,8 +3516,9 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32ArrayArray",
-			ID:   "test_request_integer_uint32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32ArrayArrayRequest(r)
@@ -3448,6 +3543,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32ArrayArray",
 			OperationID:   "test_request_integer_uint32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3513,6 +3609,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3520,8 +3617,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32Nullable",
-			ID:   "test_request_integer_uint32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32NullableRequest(r)
@@ -3546,6 +3644,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32Nullable",
 			OperationID:   "test_request_integer_uint32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3611,6 +3710,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3618,8 +3718,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32NullableArray",
-			ID:   "test_request_integer_uint32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32NullableArrayRequest(r)
@@ -3644,6 +3745,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32NullableArray",
 			OperationID:   "test_request_integer_uint32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3709,6 +3811,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3716,8 +3819,9 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint32NullableArrayArray",
-			ID:   "test_request_integer_uint32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint32NullableArrayArrayRequest(r)
@@ -3742,6 +3846,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint32NullableArrayArray",
 			OperationID:   "test_request_integer_uint32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3807,6 +3912,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3814,8 +3920,9 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64",
-			ID:   "test_request_integer_uint64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64Request(r)
@@ -3840,6 +3947,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64",
 			OperationID:   "test_request_integer_uint64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -3905,6 +4013,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -3912,8 +4021,9 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64Array",
-			ID:   "test_request_integer_uint64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64ArrayRequest(r)
@@ -3938,6 +4048,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64Array",
 			OperationID:   "test_request_integer_uint64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4003,6 +4114,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4010,8 +4122,9 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64ArrayArray",
-			ID:   "test_request_integer_uint64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64ArrayArrayRequest(r)
@@ -4036,6 +4149,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64ArrayArray",
 			OperationID:   "test_request_integer_uint64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4101,6 +4215,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4108,8 +4223,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64Nullable",
-			ID:   "test_request_integer_uint64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64NullableRequest(r)
@@ -4134,6 +4250,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64Nullable",
 			OperationID:   "test_request_integer_uint64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4199,6 +4316,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4206,8 +4324,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64NullableArray",
-			ID:   "test_request_integer_uint64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64NullableArrayRequest(r)
@@ -4232,6 +4351,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64NullableArray",
 			OperationID:   "test_request_integer_uint64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4297,6 +4417,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUint64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4304,8 +4425,9 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUint64NullableArrayArray",
-			ID:   "test_request_integer_uint64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUint64NullableArrayArrayRequest(r)
@@ -4330,6 +4452,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUint64NullableArrayArray",
 			OperationID:   "test_request_integer_uint64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4395,6 +4518,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUintArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4402,8 +4526,9 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUintArray",
-			ID:   "test_request_integer_uint_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintArrayRequest(r)
@@ -4428,6 +4553,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUintArray",
 			OperationID:   "test_request_integer_uint_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4493,6 +4619,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUintArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4500,8 +4627,9 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUintArrayArray",
-			ID:   "test_request_integer_uint_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintArrayArrayRequest(r)
@@ -4526,6 +4654,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUintArrayArray",
 			OperationID:   "test_request_integer_uint_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4591,6 +4720,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUintNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4598,8 +4728,9 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUintNullable",
-			ID:   "test_request_integer_uint_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintNullableRequest(r)
@@ -4624,6 +4755,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUintNullable",
 			OperationID:   "test_request_integer_uint_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4689,6 +4821,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUintNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4696,8 +4829,9 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUintNullableArray",
-			ID:   "test_request_integer_uint_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintNullableArrayRequest(r)
@@ -4722,6 +4856,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUintNullableArray",
 			OperationID:   "test_request_integer_uint_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4787,6 +4922,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUintNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4794,8 +4930,9 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUintNullableArrayArray",
-			ID:   "test_request_integer_uint_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUintNullableArrayArrayRequest(r)
@@ -4820,6 +4957,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUintNullableArrayArray",
 			OperationID:   "test_request_integer_uint_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4885,6 +5023,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4892,8 +5031,9 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnix",
-			ID:   "test_request_integer_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixRequest(r)
@@ -4918,6 +5058,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnix",
 			OperationID:   "test_request_integer_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -4983,6 +5124,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -4990,8 +5132,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixArray",
-			ID:   "test_request_integer_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixArrayRequest(r)
@@ -5016,6 +5159,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixArray",
 			OperationID:   "test_request_integer_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5081,6 +5225,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5088,8 +5233,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixArrayArray",
-			ID:   "test_request_integer_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixArrayArrayRequest(r)
@@ -5114,6 +5260,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixArrayArray",
 			OperationID:   "test_request_integer_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5179,6 +5326,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5186,8 +5334,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicro",
-			ID:   "test_request_integer_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroRequest(r)
@@ -5212,6 +5361,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicro",
 			OperationID:   "test_request_integer_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5277,6 +5427,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5284,8 +5435,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicroArray",
-			ID:   "test_request_integer_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroArrayRequest(r)
@@ -5310,6 +5462,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicroArray",
 			OperationID:   "test_request_integer_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5375,6 +5528,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5382,8 +5536,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicroArrayArray",
-			ID:   "test_request_integer_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroArrayArrayRequest(r)
@@ -5408,6 +5563,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicroArrayArray",
 			OperationID:   "test_request_integer_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5473,6 +5629,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5480,8 +5637,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicroNullable",
-			ID:   "test_request_integer_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroNullableRequest(r)
@@ -5506,6 +5664,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicroNullable",
 			OperationID:   "test_request_integer_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5571,6 +5730,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5578,8 +5738,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicroNullableArray",
-			ID:   "test_request_integer_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroNullableArrayRequest(r)
@@ -5604,6 +5765,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicroNullableArray",
 			OperationID:   "test_request_integer_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5669,6 +5831,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5676,8 +5839,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMicroNullableArrayArray",
-			ID:   "test_request_integer_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r)
@@ -5702,6 +5866,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_request_integer_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5767,6 +5932,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5774,8 +5940,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilli",
-			ID:   "test_request_integer_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliRequest(r)
@@ -5800,6 +5967,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilli",
 			OperationID:   "test_request_integer_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5865,6 +6033,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5872,8 +6041,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilliArray",
-			ID:   "test_request_integer_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliArrayRequest(r)
@@ -5898,6 +6068,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilliArray",
 			OperationID:   "test_request_integer_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -5963,6 +6134,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -5970,8 +6142,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilliArrayArray",
-			ID:   "test_request_integer_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliArrayArrayRequest(r)
@@ -5996,6 +6169,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilliArrayArray",
 			OperationID:   "test_request_integer_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6061,6 +6235,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6068,8 +6243,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilliNullable",
-			ID:   "test_request_integer_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliNullableRequest(r)
@@ -6094,6 +6270,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilliNullable",
 			OperationID:   "test_request_integer_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6159,6 +6336,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6166,8 +6344,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilliNullableArray",
-			ID:   "test_request_integer_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliNullableArrayRequest(r)
@@ -6192,6 +6371,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilliNullableArray",
 			OperationID:   "test_request_integer_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6257,6 +6437,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6264,8 +6445,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixMilliNullableArrayArray",
-			ID:   "test_request_integer_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r)
@@ -6290,6 +6472,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_request_integer_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6355,6 +6538,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6362,8 +6546,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNano",
-			ID:   "test_request_integer_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoRequest(r)
@@ -6388,6 +6573,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNano",
 			OperationID:   "test_request_integer_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6453,6 +6639,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6460,8 +6647,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNanoArray",
-			ID:   "test_request_integer_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoArrayRequest(r)
@@ -6486,6 +6674,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNanoArray",
 			OperationID:   "test_request_integer_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6551,6 +6740,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6558,8 +6748,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNanoArrayArray",
-			ID:   "test_request_integer_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoArrayArrayRequest(r)
@@ -6584,6 +6775,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNanoArrayArray",
 			OperationID:   "test_request_integer_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6649,6 +6841,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6656,8 +6849,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNanoNullable",
-			ID:   "test_request_integer_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoNullableRequest(r)
@@ -6682,6 +6876,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNanoNullable",
 			OperationID:   "test_request_integer_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6747,6 +6942,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6754,8 +6950,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNanoNullableArray",
-			ID:   "test_request_integer_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoNullableArrayRequest(r)
@@ -6780,6 +6977,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNanoNullableArray",
 			OperationID:   "test_request_integer_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6845,6 +7043,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6852,8 +7051,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNanoNullableArrayArray",
-			ID:   "test_request_integer_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r)
@@ -6878,6 +7078,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_request_integer_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -6943,6 +7144,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -6950,8 +7152,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNullable",
-			ID:   "test_request_integer_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNullableRequest(r)
@@ -6976,6 +7179,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNullable",
 			OperationID:   "test_request_integer_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7041,6 +7245,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7048,8 +7253,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNullableArray",
-			ID:   "test_request_integer_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNullableArrayRequest(r)
@@ -7074,6 +7280,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNullableArray",
 			OperationID:   "test_request_integer_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7139,6 +7346,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7146,8 +7354,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixNullableArrayArray",
-			ID:   "test_request_integer_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixNullableArrayArrayRequest(r)
@@ -7172,6 +7381,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixNullableArrayArray",
 			OperationID:   "test_request_integer_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7237,6 +7447,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7244,8 +7455,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSeconds",
-			ID:   "test_request_integer_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsRequest(r)
@@ -7270,6 +7482,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSeconds",
 			OperationID:   "test_request_integer_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7335,6 +7548,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7342,8 +7556,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSecondsArray",
-			ID:   "test_request_integer_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsArrayRequest(r)
@@ -7368,6 +7583,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSecondsArray",
 			OperationID:   "test_request_integer_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7433,6 +7649,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7440,8 +7657,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSecondsArrayArray",
-			ID:   "test_request_integer_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r)
@@ -7466,6 +7684,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSecondsArrayArray",
 			OperationID:   "test_request_integer_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7531,6 +7750,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7538,8 +7758,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSecondsNullable",
-			ID:   "test_request_integer_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsNullableRequest(r)
@@ -7564,6 +7785,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSecondsNullable",
 			OperationID:   "test_request_integer_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7629,6 +7851,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7636,8 +7859,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSecondsNullableArray",
-			ID:   "test_request_integer_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r)
@@ -7662,6 +7886,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSecondsNullableArray",
 			OperationID:   "test_request_integer_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7727,6 +7952,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestIntegerUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7734,8 +7960,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestIntegerUnixSecondsNullableArrayArray",
-			ID:   "test_request_integer_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r)
@@ -7760,6 +7987,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_integer_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7825,6 +8053,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNull
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7832,8 +8061,9 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNull",
-			ID:   "test_request_null",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullRequest(r)
@@ -7858,6 +8088,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "TestRequestNull",
 			OperationID:   "test_request_null",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -7923,6 +8154,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNullArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -7930,8 +8162,9 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNullArray",
-			ID:   "test_request_null_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullArrayRequest(r)
@@ -7956,6 +8189,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TestRequestNullArray",
 			OperationID:   "test_request_null_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8021,6 +8255,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNullArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8028,8 +8263,9 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNullArrayArray",
-			ID:   "test_request_null_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullArrayArrayRequest(r)
@@ -8054,6 +8290,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestNullArrayArray",
 			OperationID:   "test_request_null_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8119,6 +8356,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNullNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8126,8 +8364,9 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNullNullable",
-			ID:   "test_request_null_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullNullableRequest(r)
@@ -8152,6 +8391,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestNullNullable",
 			OperationID:   "test_request_null_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8217,6 +8457,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNullNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8224,8 +8465,9 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNullNullableArray",
-			ID:   "test_request_null_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullNullableArrayRequest(r)
@@ -8250,6 +8492,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestNullNullableArray",
 			OperationID:   "test_request_null_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8315,6 +8558,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNullNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8322,8 +8566,9 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNullNullableArrayArray",
-			ID:   "test_request_null_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNullNullableArrayArrayRequest(r)
@@ -8348,6 +8593,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestNullNullableArrayArray",
 			OperationID:   "test_request_null_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8413,6 +8659,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumber
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8420,8 +8667,9 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumber",
-			ID:   "test_request_number",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberRequest(r)
@@ -8446,6 +8694,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "TestRequestNumber",
 			OperationID:   "test_request_number",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8511,6 +8760,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8518,8 +8768,9 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberArray",
-			ID:   "test_request_number_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberArrayRequest(r)
@@ -8544,6 +8795,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestNumberArray",
 			OperationID:   "test_request_number_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8609,6 +8861,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8616,8 +8869,9 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberArrayArray",
-			ID:   "test_request_number_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberArrayArrayRequest(r)
@@ -8642,6 +8896,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestNumberArrayArray",
 			OperationID:   "test_request_number_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8707,6 +8962,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDouble
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8714,8 +8970,9 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDouble",
-			ID:   "test_request_number_double",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleRequest(r)
@@ -8740,6 +8997,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestNumberDouble",
 			OperationID:   "test_request_number_double",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8805,6 +9063,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDoubleArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8812,8 +9071,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDoubleArray",
-			ID:   "test_request_number_double_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleArrayRequest(r)
@@ -8838,6 +9098,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestNumberDoubleArray",
 			OperationID:   "test_request_number_double_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -8903,6 +9164,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDoubleArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -8910,8 +9172,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDoubleArrayArray",
-			ID:   "test_request_number_double_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleArrayArrayRequest(r)
@@ -8936,6 +9199,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestNumberDoubleArrayArray",
 			OperationID:   "test_request_number_double_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9001,6 +9265,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDoubleNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9008,8 +9273,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDoubleNullable",
-			ID:   "test_request_number_double_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableRequest(r)
@@ -9034,6 +9300,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestNumberDoubleNullable",
 			OperationID:   "test_request_number_double_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9099,6 +9366,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDoubleNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9106,8 +9374,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDoubleNullableArray",
-			ID:   "test_request_number_double_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayRequest(r)
@@ -9132,6 +9401,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestNumberDoubleNullableArray",
 			OperationID:   "test_request_number_double_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9197,6 +9467,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberDoubleNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9204,8 +9475,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberDoubleNullableArrayArray",
-			ID:   "test_request_number_double_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayArrayRequest(r)
@@ -9230,6 +9502,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestNumberDoubleNullableArrayArray",
 			OperationID:   "test_request_number_double_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9295,6 +9568,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9302,8 +9576,9 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloat",
-			ID:   "test_request_number_float",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatRequest(r)
@@ -9328,6 +9603,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloat",
 			OperationID:   "test_request_number_float",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9393,6 +9669,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloatArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9400,8 +9677,9 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloatArray",
-			ID:   "test_request_number_float_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatArrayRequest(r)
@@ -9426,6 +9704,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloatArray",
 			OperationID:   "test_request_number_float_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9491,6 +9770,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloatArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9498,8 +9778,9 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloatArrayArray",
-			ID:   "test_request_number_float_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatArrayArrayRequest(r)
@@ -9524,6 +9805,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloatArrayArray",
 			OperationID:   "test_request_number_float_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9589,6 +9871,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloatNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9596,8 +9879,9 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloatNullable",
-			ID:   "test_request_number_float_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableRequest(r)
@@ -9622,6 +9906,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloatNullable",
 			OperationID:   "test_request_number_float_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9687,6 +9972,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloatNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9694,8 +9980,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloatNullableArray",
-			ID:   "test_request_number_float_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableArrayRequest(r)
@@ -9720,6 +10007,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloatNullableArray",
 			OperationID:   "test_request_number_float_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9785,6 +10073,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberFloatNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9792,8 +10081,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberFloatNullableArrayArray",
-			ID:   "test_request_number_float_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableArrayArrayRequest(r)
@@ -9818,6 +10108,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestNumberFloatNullableArrayArray",
 			OperationID:   "test_request_number_float_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9883,6 +10174,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9890,8 +10182,9 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32",
-			ID:   "test_request_number_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32Request(r)
@@ -9916,6 +10209,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32",
 			OperationID:   "test_request_number_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -9981,6 +10275,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -9988,8 +10283,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32Array",
-			ID:   "test_request_number_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32ArrayRequest(r)
@@ -10014,6 +10310,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32Array",
 			OperationID:   "test_request_number_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10079,6 +10376,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10086,8 +10384,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32ArrayArray",
-			ID:   "test_request_number_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32ArrayArrayRequest(r)
@@ -10112,6 +10411,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32ArrayArray",
 			OperationID:   "test_request_number_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10177,6 +10477,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10184,8 +10485,9 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32Nullable",
-			ID:   "test_request_number_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableRequest(r)
@@ -10210,6 +10512,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32Nullable",
 			OperationID:   "test_request_number_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10275,6 +10578,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10282,8 +10586,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32NullableArray",
-			ID:   "test_request_number_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableArrayRequest(r)
@@ -10308,6 +10613,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32NullableArray",
 			OperationID:   "test_request_number_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10373,6 +10679,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10380,8 +10687,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt32NullableArrayArray",
-			ID:   "test_request_number_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableArrayArrayRequest(r)
@@ -10406,6 +10714,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt32NullableArrayArray",
 			OperationID:   "test_request_number_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10471,6 +10780,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10478,8 +10788,9 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64",
-			ID:   "test_request_number_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64Request(r)
@@ -10504,6 +10815,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64",
 			OperationID:   "test_request_number_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10569,6 +10881,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10576,8 +10889,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64Array",
-			ID:   "test_request_number_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64ArrayRequest(r)
@@ -10602,6 +10916,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64Array",
 			OperationID:   "test_request_number_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10667,6 +10982,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10674,8 +10990,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64ArrayArray",
-			ID:   "test_request_number_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64ArrayArrayRequest(r)
@@ -10700,6 +11017,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64ArrayArray",
 			OperationID:   "test_request_number_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10765,6 +11083,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10772,8 +11091,9 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64Nullable",
-			ID:   "test_request_number_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableRequest(r)
@@ -10798,6 +11118,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64Nullable",
 			OperationID:   "test_request_number_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10863,6 +11184,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10870,8 +11192,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64NullableArray",
-			ID:   "test_request_number_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableArrayRequest(r)
@@ -10896,6 +11219,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64NullableArray",
 			OperationID:   "test_request_number_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -10961,6 +11285,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -10968,8 +11293,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberInt64NullableArrayArray",
-			ID:   "test_request_number_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableArrayArrayRequest(r)
@@ -10994,6 +11320,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestNumberInt64NullableArrayArray",
 			OperationID:   "test_request_number_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11059,6 +11386,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11066,8 +11394,9 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberNullable",
-			ID:   "test_request_number_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberNullableRequest(r)
@@ -11092,6 +11421,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestNumberNullable",
 			OperationID:   "test_request_number_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11157,6 +11487,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11164,8 +11495,9 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberNullableArray",
-			ID:   "test_request_number_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberNullableArrayRequest(r)
@@ -11190,6 +11522,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestNumberNullableArray",
 			OperationID:   "test_request_number_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11255,6 +11588,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestNumberNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11262,8 +11596,9 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestNumberNullableArrayArray",
-			ID:   "test_request_number_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestNumberNullableArrayArrayRequest(r)
@@ -11288,6 +11623,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestNumberNullableArrayArray",
 			OperationID:   "test_request_number_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11353,6 +11689,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredAny
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11360,8 +11697,9 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredAny",
-			ID:   "test_request_required_Any",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredAnyRequest(r)
@@ -11386,6 +11724,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestRequiredAny",
 			OperationID:   "test_request_required_Any",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11451,6 +11790,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBoolean
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11458,8 +11798,9 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBoolean",
-			ID:   "test_request_required_boolean",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanRequest(r)
@@ -11484,6 +11825,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBoolean",
 			OperationID:   "test_request_required_boolean",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11549,6 +11891,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBooleanArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11556,8 +11899,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBooleanArray",
-			ID:   "test_request_required_boolean_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanArrayRequest(r)
@@ -11582,6 +11926,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBooleanArray",
 			OperationID:   "test_request_required_boolean_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11647,6 +11992,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBooleanArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11654,8 +12000,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBooleanArrayArray",
-			ID:   "test_request_required_boolean_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanArrayArrayRequest(r)
@@ -11680,6 +12027,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBooleanArrayArray",
 			OperationID:   "test_request_required_boolean_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11745,6 +12093,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBooleanNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11752,8 +12101,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBooleanNullable",
-			ID:   "test_request_required_boolean_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableRequest(r)
@@ -11778,6 +12128,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBooleanNullable",
 			OperationID:   "test_request_required_boolean_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11843,6 +12194,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBooleanNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11850,8 +12202,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBooleanNullableArray",
-			ID:   "test_request_required_boolean_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayRequest(r)
@@ -11876,6 +12229,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBooleanNullableArray",
 			OperationID:   "test_request_required_boolean_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -11941,6 +12295,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredBooleanNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -11948,8 +12303,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredBooleanNullableArrayArray",
-			ID:   "test_request_required_boolean_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r)
@@ -11974,6 +12330,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredBooleanNullableArrayArray",
 			OperationID:   "test_request_required_boolean_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12039,6 +12396,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredEmptyStruct
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12046,8 +12404,9 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredEmptyStruct",
-			ID:   "test_request_required_EmptyStruct",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredEmptyStructRequest(r)
@@ -12072,6 +12431,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredEmptyStruct",
 			OperationID:   "test_request_required_EmptyStruct",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12137,6 +12497,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredFormatTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12144,8 +12505,9 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredFormatTest",
-			ID:   "test_request_required_FormatTest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredFormatTestRequest(r)
@@ -12170,6 +12532,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredFormatTest",
 			OperationID:   "test_request_required_FormatTest",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12235,6 +12598,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredInteger
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12242,8 +12606,9 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredInteger",
-			ID:   "test_request_required_integer",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerRequest(r)
@@ -12268,6 +12633,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestRequiredInteger",
 			OperationID:   "test_request_required_integer",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12333,6 +12699,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12340,8 +12707,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerArray",
-			ID:   "test_request_required_integer_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerArrayRequest(r)
@@ -12366,6 +12734,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerArray",
 			OperationID:   "test_request_required_integer_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12431,6 +12800,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12438,8 +12808,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerArrayArray",
-			ID:   "test_request_required_integer_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerArrayArrayRequest(r)
@@ -12464,6 +12835,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerArrayArray",
 			OperationID:   "test_request_required_integer_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12529,6 +12901,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12536,8 +12909,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32",
-			ID:   "test_request_required_integer_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32Request(r)
@@ -12562,6 +12936,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32",
 			OperationID:   "test_request_required_integer_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12627,6 +13002,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12634,8 +13010,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32Array",
-			ID:   "test_request_required_integer_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayRequest(r)
@@ -12660,6 +13037,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32Array",
 			OperationID:   "test_request_required_integer_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12725,6 +13103,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12732,8 +13111,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32ArrayArray",
-			ID:   "test_request_required_integer_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r)
@@ -12758,6 +13138,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32ArrayArray",
 			OperationID:   "test_request_required_integer_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12823,6 +13204,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12830,8 +13212,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32Nullable",
-			ID:   "test_request_required_integer_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableRequest(r)
@@ -12856,6 +13239,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32Nullable",
 			OperationID:   "test_request_required_integer_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -12921,6 +13305,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -12928,8 +13313,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32NullableArray",
-			ID:   "test_request_required_integer_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r)
@@ -12954,6 +13340,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32NullableArray",
 			OperationID:   "test_request_required_integer_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13019,6 +13406,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13026,8 +13414,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt32NullableArrayArray",
-			ID:   "test_request_required_integer_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r)
@@ -13052,6 +13441,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt32NullableArrayArray",
 			OperationID:   "test_request_required_integer_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13117,6 +13507,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13124,8 +13515,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64",
-			ID:   "test_request_required_integer_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64Request(r)
@@ -13150,6 +13542,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64",
 			OperationID:   "test_request_required_integer_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13215,6 +13608,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13222,8 +13616,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64Array",
-			ID:   "test_request_required_integer_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayRequest(r)
@@ -13248,6 +13643,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64Array",
 			OperationID:   "test_request_required_integer_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13313,6 +13709,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13320,8 +13717,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64ArrayArray",
-			ID:   "test_request_required_integer_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r)
@@ -13346,6 +13744,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64ArrayArray",
 			OperationID:   "test_request_required_integer_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13411,6 +13810,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13418,8 +13818,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64Nullable",
-			ID:   "test_request_required_integer_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableRequest(r)
@@ -13444,6 +13845,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64Nullable",
 			OperationID:   "test_request_required_integer_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13509,6 +13911,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13516,8 +13919,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64NullableArray",
-			ID:   "test_request_required_integer_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r)
@@ -13542,6 +13946,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64NullableArray",
 			OperationID:   "test_request_required_integer_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13607,6 +14012,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13614,8 +14020,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerInt64NullableArrayArray",
-			ID:   "test_request_required_integer_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r)
@@ -13640,6 +14047,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerInt64NullableArrayArray",
 			OperationID:   "test_request_required_integer_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13705,6 +14113,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13712,8 +14121,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerNullable",
-			ID:   "test_request_required_integer_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableRequest(r)
@@ -13738,6 +14148,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerNullable",
 			OperationID:   "test_request_required_integer_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13803,6 +14214,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13810,8 +14222,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerNullableArray",
-			ID:   "test_request_required_integer_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayRequest(r)
@@ -13836,6 +14249,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerNullableArray",
 			OperationID:   "test_request_required_integer_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13901,6 +14315,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -13908,8 +14323,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerNullableArrayArray",
-			ID:   "test_request_required_integer_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r)
@@ -13934,6 +14350,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerNullableArrayArray",
 			OperationID:   "test_request_required_integer_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -13999,6 +14416,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14006,8 +14424,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint",
-			ID:   "test_request_required_integer_uint",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintRequest(r)
@@ -14032,6 +14451,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint",
 			OperationID:   "test_request_required_integer_uint",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14097,6 +14517,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14104,8 +14525,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32",
-			ID:   "test_request_required_integer_uint32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32Request(r)
@@ -14130,6 +14552,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32",
 			OperationID:   "test_request_required_integer_uint32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14195,6 +14618,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14202,8 +14626,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32Array",
-			ID:   "test_request_required_integer_uint32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32ArrayRequest(r)
@@ -14228,6 +14653,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32Array",
 			OperationID:   "test_request_required_integer_uint32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14293,6 +14719,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14300,8 +14727,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32ArrayArray",
-			ID:   "test_request_required_integer_uint32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r)
@@ -14326,6 +14754,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32ArrayArray",
 			OperationID:   "test_request_required_integer_uint32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14391,6 +14820,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14398,8 +14828,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32Nullable",
-			ID:   "test_request_required_integer_uint32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableRequest(r)
@@ -14424,6 +14855,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32Nullable",
 			OperationID:   "test_request_required_integer_uint32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14489,6 +14921,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14496,8 +14929,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32NullableArray",
-			ID:   "test_request_required_integer_uint32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r)
@@ -14522,6 +14956,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32NullableArray",
 			OperationID:   "test_request_required_integer_uint32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14587,6 +15022,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14594,8 +15030,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint32NullableArrayArray",
-			ID:   "test_request_required_integer_uint32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(r)
@@ -14620,6 +15057,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint32NullableArrayArray",
 			OperationID:   "test_request_required_integer_uint32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14685,6 +15123,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14692,8 +15131,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64",
-			ID:   "test_request_required_integer_uint64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64Request(r)
@@ -14718,6 +15158,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64",
 			OperationID:   "test_request_required_integer_uint64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14783,6 +15224,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14790,8 +15232,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64Array",
-			ID:   "test_request_required_integer_uint64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64ArrayRequest(r)
@@ -14816,6 +15259,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64Array",
 			OperationID:   "test_request_required_integer_uint64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14881,6 +15325,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14888,8 +15333,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64ArrayArray",
-			ID:   "test_request_required_integer_uint64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r)
@@ -14914,6 +15360,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64ArrayArray",
 			OperationID:   "test_request_required_integer_uint64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -14979,6 +15426,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -14986,8 +15434,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64Nullable",
-			ID:   "test_request_required_integer_uint64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableRequest(r)
@@ -15012,6 +15461,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64Nullable",
 			OperationID:   "test_request_required_integer_uint64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15077,6 +15527,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15084,8 +15535,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64NullableArray",
-			ID:   "test_request_required_integer_uint64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r)
@@ -15110,6 +15562,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64NullableArray",
 			OperationID:   "test_request_required_integer_uint64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15175,6 +15628,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUint64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15182,8 +15636,9 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUint64NullableArrayArray",
-			ID:   "test_request_required_integer_uint64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(r)
@@ -15208,6 +15663,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUint64NullableArrayArray",
 			OperationID:   "test_request_required_integer_uint64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15273,6 +15729,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUintArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15280,8 +15737,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUintArray",
-			ID:   "test_request_required_integer_uint_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintArrayRequest(r)
@@ -15306,6 +15764,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUintArray",
 			OperationID:   "test_request_required_integer_uint_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15371,6 +15830,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUintArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15378,8 +15838,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUintArrayArray",
-			ID:   "test_request_required_integer_uint_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintArrayArrayRequest(r)
@@ -15404,6 +15865,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUintArrayArray",
 			OperationID:   "test_request_required_integer_uint_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15469,6 +15931,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUintNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15476,8 +15939,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUintNullable",
-			ID:   "test_request_required_integer_uint_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableRequest(r)
@@ -15502,6 +15966,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUintNullable",
 			OperationID:   "test_request_required_integer_uint_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15567,6 +16032,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUintNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15574,8 +16040,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUintNullableArray",
-			ID:   "test_request_required_integer_uint_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableArrayRequest(r)
@@ -15600,6 +16067,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUintNullableArray",
 			OperationID:   "test_request_required_integer_uint_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15665,6 +16133,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUintNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15672,8 +16141,9 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUintNullableArrayArray",
-			ID:   "test_request_required_integer_uint_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r)
@@ -15698,6 +16168,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUintNullableArrayArray",
 			OperationID:   "test_request_required_integer_uint_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15763,6 +16234,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15770,8 +16242,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnix",
-			ID:   "test_request_required_integer_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixRequest(r)
@@ -15796,6 +16269,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnix",
 			OperationID:   "test_request_required_integer_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15861,6 +16335,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15868,8 +16343,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixArray",
-			ID:   "test_request_required_integer_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixArrayRequest(r)
@@ -15894,6 +16370,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixArray",
 			OperationID:   "test_request_required_integer_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -15959,6 +16436,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -15966,8 +16444,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixArrayArray",
-			ID:   "test_request_required_integer_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r)
@@ -15992,6 +16471,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixArrayArray",
 			OperationID:   "test_request_required_integer_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16057,6 +16537,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16064,8 +16545,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicro",
-			ID:   "test_request_required_integer_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroRequest(r)
@@ -16090,6 +16572,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicro",
 			OperationID:   "test_request_required_integer_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16155,6 +16638,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16162,8 +16646,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicroArray",
-			ID:   "test_request_required_integer_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r)
@@ -16188,6 +16673,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicroArray",
 			OperationID:   "test_request_required_integer_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16253,6 +16739,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16260,8 +16747,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicroArrayArray",
-			ID:   "test_request_required_integer_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r)
@@ -16286,6 +16774,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicroArrayArray",
 			OperationID:   "test_request_required_integer_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16351,6 +16840,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16358,8 +16848,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicroNullable",
-			ID:   "test_request_required_integer_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r)
@@ -16384,6 +16875,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullable",
 			OperationID:   "test_request_required_integer_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16449,6 +16941,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16456,8 +16949,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicroNullableArray",
-			ID:   "test_request_required_integer_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r)
@@ -16482,6 +16976,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArray",
 			OperationID:   "test_request_required_integer_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16547,6 +17042,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16554,8 +17050,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
-			ID:   "test_request_required_integer_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(r)
@@ -16580,6 +17077,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16645,6 +17143,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16652,8 +17151,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilli",
-			ID:   "test_request_required_integer_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliRequest(r)
@@ -16678,6 +17178,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilli",
 			OperationID:   "test_request_required_integer_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16743,6 +17244,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16750,8 +17252,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilliArray",
-			ID:   "test_request_required_integer_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r)
@@ -16776,6 +17279,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilliArray",
 			OperationID:   "test_request_required_integer_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16841,6 +17345,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16848,8 +17353,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilliArrayArray",
-			ID:   "test_request_required_integer_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r)
@@ -16874,6 +17380,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilliArrayArray",
 			OperationID:   "test_request_required_integer_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -16939,6 +17446,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -16946,8 +17454,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilliNullable",
-			ID:   "test_request_required_integer_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r)
@@ -16972,6 +17481,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullable",
 			OperationID:   "test_request_required_integer_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17037,6 +17547,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17044,8 +17555,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilliNullableArray",
-			ID:   "test_request_required_integer_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r)
@@ -17070,6 +17582,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArray",
 			OperationID:   "test_request_required_integer_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17135,6 +17648,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17142,8 +17656,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
-			ID:   "test_request_required_integer_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(r)
@@ -17168,6 +17683,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17233,6 +17749,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17240,8 +17757,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNano",
-			ID:   "test_request_required_integer_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoRequest(r)
@@ -17266,6 +17784,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNano",
 			OperationID:   "test_request_required_integer_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17331,6 +17850,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17338,8 +17858,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNanoArray",
-			ID:   "test_request_required_integer_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r)
@@ -17364,6 +17885,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNanoArray",
 			OperationID:   "test_request_required_integer_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17429,6 +17951,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17436,8 +17959,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNanoArrayArray",
-			ID:   "test_request_required_integer_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r)
@@ -17462,6 +17986,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNanoArrayArray",
 			OperationID:   "test_request_required_integer_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17527,6 +18052,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17534,8 +18060,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNanoNullable",
-			ID:   "test_request_required_integer_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r)
@@ -17560,6 +18087,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullable",
 			OperationID:   "test_request_required_integer_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17625,6 +18153,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17632,8 +18161,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNanoNullableArray",
-			ID:   "test_request_required_integer_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r)
@@ -17658,6 +18188,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArray",
 			OperationID:   "test_request_required_integer_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17723,6 +18254,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17730,8 +18262,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
-			ID:   "test_request_required_integer_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(r)
@@ -17756,6 +18289,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17821,6 +18355,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17828,8 +18363,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNullable",
-			ID:   "test_request_required_integer_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNullableRequest(r)
@@ -17854,6 +18390,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNullable",
 			OperationID:   "test_request_required_integer_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -17919,6 +18456,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -17926,8 +18464,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNullableArray",
-			ID:   "test_request_required_integer_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r)
@@ -17952,6 +18491,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNullableArray",
 			OperationID:   "test_request_required_integer_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18017,6 +18557,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18024,8 +18565,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixNullableArrayArray",
-			ID:   "test_request_required_integer_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r)
@@ -18050,6 +18592,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18115,6 +18658,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18122,8 +18666,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSeconds",
-			ID:   "test_request_required_integer_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsRequest(r)
@@ -18148,6 +18693,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSeconds",
 			OperationID:   "test_request_required_integer_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18213,6 +18759,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18220,8 +18767,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSecondsArray",
-			ID:   "test_request_required_integer_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r)
@@ -18246,6 +18794,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSecondsArray",
 			OperationID:   "test_request_required_integer_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18311,6 +18860,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18318,8 +18868,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSecondsArrayArray",
-			ID:   "test_request_required_integer_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r)
@@ -18344,6 +18895,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSecondsArrayArray",
 			OperationID:   "test_request_required_integer_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18409,6 +18961,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18416,8 +18969,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSecondsNullable",
-			ID:   "test_request_required_integer_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r)
@@ -18442,6 +18996,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullable",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18507,6 +19062,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18514,8 +19070,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSecondsNullableArray",
-			ID:   "test_request_required_integer_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(r)
@@ -18540,6 +19097,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArray",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18605,6 +19163,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredIntegerUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18612,8 +19171,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
-			ID:   "test_request_required_integer_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(r)
@@ -18638,6 +19198,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			Context:       ctx,
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18703,6 +19264,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNull
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18710,8 +19272,9 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNull",
-			ID:   "test_request_required_null",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullRequest(r)
@@ -18736,6 +19299,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNull",
 			OperationID:   "test_request_required_null",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18801,6 +19365,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNullArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18808,8 +19373,9 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNullArray",
-			ID:   "test_request_required_null_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullArrayRequest(r)
@@ -18834,6 +19400,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNullArray",
 			OperationID:   "test_request_required_null_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18899,6 +19466,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNullArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -18906,8 +19474,9 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNullArrayArray",
-			ID:   "test_request_required_null_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullArrayArrayRequest(r)
@@ -18932,6 +19501,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNullArrayArray",
 			OperationID:   "test_request_required_null_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -18997,6 +19567,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNullNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19004,8 +19575,9 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNullNullable",
-			ID:   "test_request_required_null_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableRequest(r)
@@ -19030,6 +19602,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNullNullable",
 			OperationID:   "test_request_required_null_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19095,6 +19668,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNullNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19102,8 +19676,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNullNullableArray",
-			ID:   "test_request_required_null_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableArrayRequest(r)
@@ -19128,6 +19703,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNullNullableArray",
 			OperationID:   "test_request_required_null_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19193,6 +19769,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNullNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19200,8 +19777,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNullNullableArrayArray",
-			ID:   "test_request_required_null_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableArrayArrayRequest(r)
@@ -19226,6 +19804,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNullNullableArrayArray",
 			OperationID:   "test_request_required_null_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19291,6 +19870,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumber
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19298,8 +19878,9 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumber",
-			ID:   "test_request_required_number",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberRequest(r)
@@ -19324,6 +19905,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumber",
 			OperationID:   "test_request_required_number",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19389,6 +19971,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19396,8 +19979,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberArray",
-			ID:   "test_request_required_number_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberArrayRequest(r)
@@ -19422,6 +20006,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberArray",
 			OperationID:   "test_request_required_number_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19487,6 +20072,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19494,8 +20080,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberArrayArray",
-			ID:   "test_request_required_number_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberArrayArrayRequest(r)
@@ -19520,6 +20107,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberArrayArray",
 			OperationID:   "test_request_required_number_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19585,6 +20173,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDouble
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19592,8 +20181,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDouble",
-			ID:   "test_request_required_number_double",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleRequest(r)
@@ -19618,6 +20208,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDouble",
 			OperationID:   "test_request_required_number_double",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19683,6 +20274,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDoubleArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19690,8 +20282,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDoubleArray",
-			ID:   "test_request_required_number_double_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayRequest(r)
@@ -19716,6 +20309,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDoubleArray",
 			OperationID:   "test_request_required_number_double_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19781,6 +20375,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDoubleArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19788,8 +20383,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDoubleArrayArray",
-			ID:   "test_request_required_number_double_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r)
@@ -19814,6 +20410,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDoubleArrayArray",
 			OperationID:   "test_request_required_number_double_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19879,6 +20476,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDoubleNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19886,8 +20484,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDoubleNullable",
-			ID:   "test_request_required_number_double_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableRequest(r)
@@ -19912,6 +20511,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDoubleNullable",
 			OperationID:   "test_request_required_number_double_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -19977,6 +20577,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDoubleNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -19984,8 +20585,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDoubleNullableArray",
-			ID:   "test_request_required_number_double_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r)
@@ -20010,6 +20612,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDoubleNullableArray",
 			OperationID:   "test_request_required_number_double_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20075,6 +20678,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberDoubleNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20082,8 +20686,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberDoubleNullableArrayArray",
-			ID:   "test_request_required_number_double_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r)
@@ -20108,6 +20713,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberDoubleNullableArrayArray",
 			OperationID:   "test_request_required_number_double_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20173,6 +20779,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20180,8 +20787,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloat",
-			ID:   "test_request_required_number_float",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatRequest(r)
@@ -20206,6 +20814,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloat",
 			OperationID:   "test_request_required_number_float",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20271,6 +20880,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloatArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20278,8 +20888,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloatArray",
-			ID:   "test_request_required_number_float_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayRequest(r)
@@ -20304,6 +20915,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloatArray",
 			OperationID:   "test_request_required_number_float_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20369,6 +20981,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloatArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20376,8 +20989,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloatArrayArray",
-			ID:   "test_request_required_number_float_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayArrayRequest(r)
@@ -20402,6 +21016,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloatArrayArray",
 			OperationID:   "test_request_required_number_float_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20467,6 +21082,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloatNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20474,8 +21090,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloatNullable",
-			ID:   "test_request_required_number_float_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableRequest(r)
@@ -20500,6 +21117,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloatNullable",
 			OperationID:   "test_request_required_number_float_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20565,6 +21183,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloatNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20572,8 +21191,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloatNullableArray",
-			ID:   "test_request_required_number_float_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayRequest(r)
@@ -20598,6 +21218,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloatNullableArray",
 			OperationID:   "test_request_required_number_float_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20663,6 +21284,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberFloatNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20670,8 +21292,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberFloatNullableArrayArray",
-			ID:   "test_request_required_number_float_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r)
@@ -20696,6 +21319,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberFloatNullableArrayArray",
 			OperationID:   "test_request_required_number_float_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20761,6 +21385,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20768,8 +21393,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32",
-			ID:   "test_request_required_number_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32Request(r)
@@ -20794,6 +21420,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32",
 			OperationID:   "test_request_required_number_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20859,6 +21486,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20866,8 +21494,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32Array",
-			ID:   "test_request_required_number_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayRequest(r)
@@ -20892,6 +21521,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32Array",
 			OperationID:   "test_request_required_number_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -20957,6 +21587,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -20964,8 +21595,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32ArrayArray",
-			ID:   "test_request_required_number_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r)
@@ -20990,6 +21622,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32ArrayArray",
 			OperationID:   "test_request_required_number_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21055,6 +21688,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21062,8 +21696,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32Nullable",
-			ID:   "test_request_required_number_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableRequest(r)
@@ -21088,6 +21723,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32Nullable",
 			OperationID:   "test_request_required_number_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21153,6 +21789,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21160,8 +21797,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32NullableArray",
-			ID:   "test_request_required_number_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayRequest(r)
@@ -21186,6 +21824,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32NullableArray",
 			OperationID:   "test_request_required_number_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21251,6 +21890,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21258,8 +21898,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt32NullableArrayArray",
-			ID:   "test_request_required_number_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r)
@@ -21284,6 +21925,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt32NullableArrayArray",
 			OperationID:   "test_request_required_number_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21349,6 +21991,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21356,8 +21999,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64",
-			ID:   "test_request_required_number_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64Request(r)
@@ -21382,6 +22026,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64",
 			OperationID:   "test_request_required_number_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21447,6 +22092,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21454,8 +22100,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64Array",
-			ID:   "test_request_required_number_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayRequest(r)
@@ -21480,6 +22127,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64Array",
 			OperationID:   "test_request_required_number_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21545,6 +22193,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21552,8 +22201,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64ArrayArray",
-			ID:   "test_request_required_number_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r)
@@ -21578,6 +22228,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64ArrayArray",
 			OperationID:   "test_request_required_number_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21643,6 +22294,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21650,8 +22302,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64Nullable",
-			ID:   "test_request_required_number_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableRequest(r)
@@ -21676,6 +22329,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64Nullable",
 			OperationID:   "test_request_required_number_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21741,6 +22395,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21748,8 +22403,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64NullableArray",
-			ID:   "test_request_required_number_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayRequest(r)
@@ -21774,6 +22430,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64NullableArray",
 			OperationID:   "test_request_required_number_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21839,6 +22496,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21846,8 +22504,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberInt64NullableArrayArray",
-			ID:   "test_request_required_number_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r)
@@ -21872,6 +22531,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberInt64NullableArrayArray",
 			OperationID:   "test_request_required_number_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -21937,6 +22597,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -21944,8 +22605,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberNullable",
-			ID:   "test_request_required_number_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableRequest(r)
@@ -21970,6 +22632,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberNullable",
 			OperationID:   "test_request_required_number_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22035,6 +22698,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22042,8 +22706,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberNullableArray",
-			ID:   "test_request_required_number_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayRequest(r)
@@ -22068,6 +22733,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberNullableArray",
 			OperationID:   "test_request_required_number_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22133,6 +22799,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredNumberNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22140,8 +22807,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredNumberNullableArrayArray",
-			ID:   "test_request_required_number_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayArrayRequest(r)
@@ -22166,6 +22834,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredNumberNullableArrayArray",
 			OperationID:   "test_request_required_number_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22231,6 +22900,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredString
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22238,8 +22908,9 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredString",
-			ID:   "test_request_required_string",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringRequest(r)
@@ -22264,6 +22935,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestRequiredString",
 			OperationID:   "test_request_required_string",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22329,6 +23001,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22336,8 +23009,9 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringArray",
-			ID:   "test_request_required_string_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringArrayRequest(r)
@@ -22362,6 +23036,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringArray",
 			OperationID:   "test_request_required_string_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22427,6 +23102,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22434,8 +23110,9 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringArrayArray",
-			ID:   "test_request_required_string_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringArrayArrayRequest(r)
@@ -22460,6 +23137,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringArrayArray",
 			OperationID:   "test_request_required_string_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22525,6 +23203,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22532,8 +23211,9 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64",
-			ID:   "test_request_required_string_base64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64Request(r)
@@ -22558,6 +23238,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64",
 			OperationID:   "test_request_required_string_base64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22623,6 +23304,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22630,8 +23312,9 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64Array",
-			ID:   "test_request_required_string_base64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64ArrayRequest(r)
@@ -22656,6 +23339,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64Array",
 			OperationID:   "test_request_required_string_base64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22721,6 +23405,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22728,8 +23413,9 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64ArrayArray",
-			ID:   "test_request_required_string_base64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64ArrayArrayRequest(r)
@@ -22754,6 +23440,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64ArrayArray",
 			OperationID:   "test_request_required_string_base64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22819,6 +23506,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22826,8 +23514,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64Nullable",
-			ID:   "test_request_required_string_base64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64NullableRequest(r)
@@ -22852,6 +23541,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64Nullable",
 			OperationID:   "test_request_required_string_base64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -22917,6 +23607,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -22924,8 +23615,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64NullableArray",
-			ID:   "test_request_required_string_base64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64NullableArrayRequest(r)
@@ -22950,6 +23642,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64NullableArray",
 			OperationID:   "test_request_required_string_base64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23015,6 +23708,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBase64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23022,8 +23716,9 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBase64NullableArrayArray",
-			ID:   "test_request_required_string_base64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBase64NullableArrayArrayRequest(r)
@@ -23048,6 +23743,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBase64NullableArrayArray",
 			OperationID:   "test_request_required_string_base64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23113,6 +23809,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinary
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23120,8 +23817,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinary",
-			ID:   "test_request_required_string_binary",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryRequest(r)
@@ -23146,6 +23844,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinary",
 			OperationID:   "test_request_required_string_binary",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23211,6 +23910,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinaryArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23218,8 +23918,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinaryArray",
-			ID:   "test_request_required_string_binary_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayRequest(r)
@@ -23244,6 +23945,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinaryArray",
 			OperationID:   "test_request_required_string_binary_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23309,6 +24011,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinaryArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23316,8 +24019,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinaryArrayArray",
-			ID:   "test_request_required_string_binary_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayArrayRequest(r)
@@ -23342,6 +24046,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinaryArrayArray",
 			OperationID:   "test_request_required_string_binary_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23407,6 +24112,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinaryNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23414,8 +24120,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinaryNullable",
-			ID:   "test_request_required_string_binary_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableRequest(r)
@@ -23440,6 +24147,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinaryNullable",
 			OperationID:   "test_request_required_string_binary_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23505,6 +24213,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinaryNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23512,8 +24221,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinaryNullableArray",
-			ID:   "test_request_required_string_binary_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayRequest(r)
@@ -23538,6 +24248,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinaryNullableArray",
 			OperationID:   "test_request_required_string_binary_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23603,6 +24314,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringBinaryNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23610,8 +24322,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringBinaryNullableArrayArray",
-			ID:   "test_request_required_string_binary_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r)
@@ -23636,6 +24349,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringBinaryNullableArrayArray",
 			OperationID:   "test_request_required_string_binary_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23701,6 +24415,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByte
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23708,8 +24423,9 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByte",
-			ID:   "test_request_required_string_byte",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteRequest(r)
@@ -23734,6 +24450,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByte",
 			OperationID:   "test_request_required_string_byte",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23799,6 +24516,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByteArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23806,8 +24524,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByteArray",
-			ID:   "test_request_required_string_byte_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteArrayRequest(r)
@@ -23832,6 +24551,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByteArray",
 			OperationID:   "test_request_required_string_byte_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23897,6 +24617,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByteArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -23904,8 +24625,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByteArrayArray",
-			ID:   "test_request_required_string_byte_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteArrayArrayRequest(r)
@@ -23930,6 +24652,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByteArrayArray",
 			OperationID:   "test_request_required_string_byte_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -23995,6 +24718,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByteNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24002,8 +24726,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByteNullable",
-			ID:   "test_request_required_string_byte_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableRequest(r)
@@ -24028,6 +24753,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByteNullable",
 			OperationID:   "test_request_required_string_byte_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24093,6 +24819,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByteNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24100,8 +24827,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByteNullableArray",
-			ID:   "test_request_required_string_byte_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayRequest(r)
@@ -24126,6 +24854,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByteNullableArray",
 			OperationID:   "test_request_required_string_byte_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24191,6 +24920,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringByteNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24198,8 +24928,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringByteNullableArrayArray",
-			ID:   "test_request_required_string_byte_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r)
@@ -24224,6 +24955,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringByteNullableArrayArray",
 			OperationID:   "test_request_required_string_byte_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24289,6 +25021,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24296,8 +25029,9 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDate",
-			ID:   "test_request_required_string_date",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateRequest(r)
@@ -24322,6 +25056,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDate",
 			OperationID:   "test_request_required_string_date",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24387,6 +25122,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24394,8 +25130,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateArray",
-			ID:   "test_request_required_string_date_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateArrayRequest(r)
@@ -24420,6 +25157,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateArray",
 			OperationID:   "test_request_required_string_date_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24485,6 +25223,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24492,8 +25231,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateArrayArray",
-			ID:   "test_request_required_string_date_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateArrayArrayRequest(r)
@@ -24518,6 +25258,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateArrayArray",
 			OperationID:   "test_request_required_string_date_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24583,6 +25324,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24590,8 +25332,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateNullable",
-			ID:   "test_request_required_string_date_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableRequest(r)
@@ -24616,6 +25359,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateNullable",
 			OperationID:   "test_request_required_string_date_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24681,6 +25425,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24688,8 +25433,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateNullableArray",
-			ID:   "test_request_required_string_date_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayRequest(r)
@@ -24714,6 +25460,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateNullableArray",
 			OperationID:   "test_request_required_string_date_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24779,6 +25526,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24786,8 +25534,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateNullableArrayArray",
-			ID:   "test_request_required_string_date_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r)
@@ -24812,6 +25561,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateNullableArrayArray",
 			OperationID:   "test_request_required_string_date_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24877,6 +25627,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24884,8 +25635,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTime",
-			ID:   "test_request_required_string_date-time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeRequest(r)
@@ -24910,6 +25662,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTime",
 			OperationID:   "test_request_required_string_date-time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -24975,6 +25728,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -24982,8 +25736,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTimeArray",
-			ID:   "test_request_required_string_date-time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayRequest(r)
@@ -25008,6 +25763,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTimeArray",
 			OperationID:   "test_request_required_string_date-time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25073,6 +25829,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25080,8 +25837,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTimeArrayArray",
-			ID:   "test_request_required_string_date-time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r)
@@ -25106,6 +25864,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTimeArrayArray",
 			OperationID:   "test_request_required_string_date-time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25171,6 +25930,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25178,8 +25938,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTimeNullable",
-			ID:   "test_request_required_string_date-time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableRequest(r)
@@ -25204,6 +25965,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTimeNullable",
 			OperationID:   "test_request_required_string_date-time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25269,6 +26031,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25276,8 +26039,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTimeNullableArray",
-			ID:   "test_request_required_string_date-time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r)
@@ -25302,6 +26066,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTimeNullableArray",
 			OperationID:   "test_request_required_string_date-time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25367,6 +26132,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDateTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25374,8 +26140,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDateTimeNullableArrayArray",
-			ID:   "test_request_required_string_date-time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r)
@@ -25400,6 +26167,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDateTimeNullableArrayArray",
 			OperationID:   "test_request_required_string_date-time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25465,6 +26233,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDuration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25472,8 +26241,9 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDuration",
-			ID:   "test_request_required_string_duration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationRequest(r)
@@ -25498,6 +26268,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDuration",
 			OperationID:   "test_request_required_string_duration",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25563,6 +26334,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDurationArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25570,8 +26342,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDurationArray",
-			ID:   "test_request_required_string_duration_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationArrayRequest(r)
@@ -25596,6 +26369,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDurationArray",
 			OperationID:   "test_request_required_string_duration_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25661,6 +26435,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDurationArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25668,8 +26443,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDurationArrayArray",
-			ID:   "test_request_required_string_duration_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationArrayArrayRequest(r)
@@ -25694,6 +26470,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDurationArrayArray",
 			OperationID:   "test_request_required_string_duration_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25759,6 +26536,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDurationNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25766,8 +26544,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDurationNullable",
-			ID:   "test_request_required_string_duration_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableRequest(r)
@@ -25792,6 +26571,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDurationNullable",
 			OperationID:   "test_request_required_string_duration_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25857,6 +26637,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDurationNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25864,8 +26645,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDurationNullableArray",
-			ID:   "test_request_required_string_duration_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayRequest(r)
@@ -25890,6 +26672,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDurationNullableArray",
 			OperationID:   "test_request_required_string_duration_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -25955,6 +26738,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringDurationNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -25962,8 +26746,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringDurationNullableArrayArray",
-			ID:   "test_request_required_string_duration_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r)
@@ -25988,6 +26773,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringDurationNullableArrayArray",
 			OperationID:   "test_request_required_string_duration_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26053,6 +26839,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmail
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26060,8 +26847,9 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmail",
-			ID:   "test_request_required_string_email",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailRequest(r)
@@ -26086,6 +26874,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmail",
 			OperationID:   "test_request_required_string_email",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26151,6 +26940,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmailArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26158,8 +26948,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmailArray",
-			ID:   "test_request_required_string_email_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailArrayRequest(r)
@@ -26184,6 +26975,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmailArray",
 			OperationID:   "test_request_required_string_email_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26249,6 +27041,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmailArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26256,8 +27049,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmailArrayArray",
-			ID:   "test_request_required_string_email_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailArrayArrayRequest(r)
@@ -26282,6 +27076,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmailArrayArray",
 			OperationID:   "test_request_required_string_email_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26347,6 +27142,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmailNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26354,8 +27150,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmailNullable",
-			ID:   "test_request_required_string_email_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableRequest(r)
@@ -26380,6 +27177,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmailNullable",
 			OperationID:   "test_request_required_string_email_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26445,6 +27243,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmailNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26452,8 +27251,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmailNullableArray",
-			ID:   "test_request_required_string_email_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayRequest(r)
@@ -26478,6 +27278,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmailNullableArray",
 			OperationID:   "test_request_required_string_email_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26543,6 +27344,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringEmailNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26550,8 +27352,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringEmailNullableArrayArray",
-			ID:   "test_request_required_string_email_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r)
@@ -26576,6 +27379,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringEmailNullableArrayArray",
 			OperationID:   "test_request_required_string_email_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26641,6 +27445,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostname
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26648,8 +27453,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostname",
-			ID:   "test_request_required_string_hostname",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameRequest(r)
@@ -26674,6 +27480,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostname",
 			OperationID:   "test_request_required_string_hostname",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26739,6 +27546,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostnameArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26746,8 +27554,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostnameArray",
-			ID:   "test_request_required_string_hostname_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayRequest(r)
@@ -26772,6 +27581,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostnameArray",
 			OperationID:   "test_request_required_string_hostname_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26837,6 +27647,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostnameArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26844,8 +27655,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostnameArrayArray",
-			ID:   "test_request_required_string_hostname_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayArrayRequest(r)
@@ -26870,6 +27682,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostnameArrayArray",
 			OperationID:   "test_request_required_string_hostname_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -26935,6 +27748,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostnameNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -26942,8 +27756,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostnameNullable",
-			ID:   "test_request_required_string_hostname_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableRequest(r)
@@ -26968,6 +27783,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostnameNullable",
 			OperationID:   "test_request_required_string_hostname_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27033,6 +27849,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostnameNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27040,8 +27857,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostnameNullableArray",
-			ID:   "test_request_required_string_hostname_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayRequest(r)
@@ -27066,6 +27884,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostnameNullableArray",
 			OperationID:   "test_request_required_string_hostname_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27131,6 +27950,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringHostnameNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27138,8 +27958,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringHostnameNullableArrayArray",
-			ID:   "test_request_required_string_hostname_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r)
@@ -27164,6 +27985,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringHostnameNullableArrayArray",
 			OperationID:   "test_request_required_string_hostname_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27229,6 +28051,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIP
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27236,8 +28059,9 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIP",
-			ID:   "test_request_required_string_ip",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPRequest(r)
@@ -27262,6 +28086,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIP",
 			OperationID:   "test_request_required_string_ip",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27327,6 +28152,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIPArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27334,8 +28160,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIPArray",
-			ID:   "test_request_required_string_ip_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPArrayRequest(r)
@@ -27360,6 +28187,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIPArray",
 			OperationID:   "test_request_required_string_ip_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27425,6 +28253,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIPArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27432,8 +28261,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIPArrayArray",
-			ID:   "test_request_required_string_ip_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPArrayArrayRequest(r)
@@ -27458,6 +28288,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIPArrayArray",
 			OperationID:   "test_request_required_string_ip_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27523,6 +28354,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIPNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27530,8 +28362,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIPNullable",
-			ID:   "test_request_required_string_ip_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableRequest(r)
@@ -27556,6 +28389,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIPNullable",
 			OperationID:   "test_request_required_string_ip_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27621,6 +28455,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIPNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27628,8 +28463,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIPNullableArray",
-			ID:   "test_request_required_string_ip_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayRequest(r)
@@ -27654,6 +28490,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIPNullableArray",
 			OperationID:   "test_request_required_string_ip_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27719,6 +28556,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIPNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27726,8 +28564,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIPNullableArrayArray",
-			ID:   "test_request_required_string_ip_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r)
@@ -27752,6 +28591,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIPNullableArrayArray",
 			OperationID:   "test_request_required_string_ip_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27817,6 +28657,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27824,8 +28665,9 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32",
-			ID:   "test_request_required_string_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32Request(r)
@@ -27850,6 +28692,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32",
 			OperationID:   "test_request_required_string_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -27915,6 +28758,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -27922,8 +28766,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32Array",
-			ID:   "test_request_required_string_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayRequest(r)
@@ -27948,6 +28793,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32Array",
 			OperationID:   "test_request_required_string_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28013,6 +28859,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28020,8 +28867,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32ArrayArray",
-			ID:   "test_request_required_string_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayArrayRequest(r)
@@ -28046,6 +28894,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32ArrayArray",
 			OperationID:   "test_request_required_string_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28111,6 +28960,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28118,8 +28968,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32Nullable",
-			ID:   "test_request_required_string_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableRequest(r)
@@ -28144,6 +28995,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32Nullable",
 			OperationID:   "test_request_required_string_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28209,6 +29061,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28216,8 +29069,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32NullableArray",
-			ID:   "test_request_required_string_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayRequest(r)
@@ -28242,6 +29096,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32NullableArray",
 			OperationID:   "test_request_required_string_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28307,6 +29162,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28314,8 +29170,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt32NullableArrayArray",
-			ID:   "test_request_required_string_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r)
@@ -28340,6 +29197,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt32NullableArrayArray",
 			OperationID:   "test_request_required_string_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28405,6 +29263,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28412,8 +29271,9 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64",
-			ID:   "test_request_required_string_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64Request(r)
@@ -28438,6 +29298,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64",
 			OperationID:   "test_request_required_string_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28503,6 +29364,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28510,8 +29372,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64Array",
-			ID:   "test_request_required_string_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayRequest(r)
@@ -28536,6 +29399,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64Array",
 			OperationID:   "test_request_required_string_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28601,6 +29465,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28608,8 +29473,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64ArrayArray",
-			ID:   "test_request_required_string_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayArrayRequest(r)
@@ -28634,6 +29500,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64ArrayArray",
 			OperationID:   "test_request_required_string_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28699,6 +29566,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28706,8 +29574,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64Nullable",
-			ID:   "test_request_required_string_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableRequest(r)
@@ -28732,6 +29601,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64Nullable",
 			OperationID:   "test_request_required_string_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28797,6 +29667,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28804,8 +29675,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64NullableArray",
-			ID:   "test_request_required_string_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayRequest(r)
@@ -28830,6 +29702,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64NullableArray",
 			OperationID:   "test_request_required_string_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28895,6 +29768,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -28902,8 +29776,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringInt64NullableArrayArray",
-			ID:   "test_request_required_string_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r)
@@ -28928,6 +29803,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringInt64NullableArrayArray",
 			OperationID:   "test_request_required_string_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -28993,6 +29869,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29000,8 +29877,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4",
-			ID:   "test_request_required_string_ipv4",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4Request(r)
@@ -29026,6 +29904,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4",
 			OperationID:   "test_request_required_string_ipv4",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29091,6 +29970,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29098,8 +29978,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4Array",
-			ID:   "test_request_required_string_ipv4_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayRequest(r)
@@ -29124,6 +30005,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4Array",
 			OperationID:   "test_request_required_string_ipv4_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29189,6 +30071,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29196,8 +30079,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4ArrayArray",
-			ID:   "test_request_required_string_ipv4_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r)
@@ -29222,6 +30106,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4ArrayArray",
 			OperationID:   "test_request_required_string_ipv4_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29287,6 +30172,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29294,8 +30180,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4Nullable",
-			ID:   "test_request_required_string_ipv4_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableRequest(r)
@@ -29320,6 +30207,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4Nullable",
 			OperationID:   "test_request_required_string_ipv4_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29385,6 +30273,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29392,8 +30281,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4NullableArray",
-			ID:   "test_request_required_string_ipv4_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayRequest(r)
@@ -29418,6 +30308,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4NullableArray",
 			OperationID:   "test_request_required_string_ipv4_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29483,6 +30374,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv4NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29490,8 +30382,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv4NullableArrayArray",
-			ID:   "test_request_required_string_ipv4_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r)
@@ -29516,6 +30409,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv4NullableArrayArray",
 			OperationID:   "test_request_required_string_ipv4_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29581,6 +30475,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29588,8 +30483,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6",
-			ID:   "test_request_required_string_ipv6",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6Request(r)
@@ -29614,6 +30510,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6",
 			OperationID:   "test_request_required_string_ipv6",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29679,6 +30576,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29686,8 +30584,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6Array",
-			ID:   "test_request_required_string_ipv6_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayRequest(r)
@@ -29712,6 +30611,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6Array",
 			OperationID:   "test_request_required_string_ipv6_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29777,6 +30677,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29784,8 +30685,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6ArrayArray",
-			ID:   "test_request_required_string_ipv6_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r)
@@ -29810,6 +30712,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6ArrayArray",
 			OperationID:   "test_request_required_string_ipv6_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29875,6 +30778,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29882,8 +30786,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6Nullable",
-			ID:   "test_request_required_string_ipv6_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableRequest(r)
@@ -29908,6 +30813,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6Nullable",
 			OperationID:   "test_request_required_string_ipv6_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -29973,6 +30879,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -29980,8 +30887,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6NullableArray",
-			ID:   "test_request_required_string_ipv6_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayRequest(r)
@@ -30006,6 +30914,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6NullableArray",
 			OperationID:   "test_request_required_string_ipv6_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30071,6 +30980,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringIpv6NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30078,8 +30988,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringIpv6NullableArrayArray",
-			ID:   "test_request_required_string_ipv6_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r)
@@ -30104,6 +31015,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringIpv6NullableArrayArray",
 			OperationID:   "test_request_required_string_ipv6_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30169,6 +31081,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30176,8 +31089,9 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringNullable",
-			ID:   "test_request_required_string_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableRequest(r)
@@ -30202,6 +31116,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringNullable",
 			OperationID:   "test_request_required_string_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30267,6 +31182,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30274,8 +31190,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringNullableArray",
-			ID:   "test_request_required_string_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableArrayRequest(r)
@@ -30300,6 +31217,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringNullableArray",
 			OperationID:   "test_request_required_string_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30365,6 +31283,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30372,8 +31291,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringNullableArrayArray",
-			ID:   "test_request_required_string_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableArrayArrayRequest(r)
@@ -30398,6 +31318,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringNullableArrayArray",
 			OperationID:   "test_request_required_string_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30463,6 +31384,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPassword
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30470,8 +31392,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPassword",
-			ID:   "test_request_required_string_password",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordRequest(r)
@@ -30496,6 +31419,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPassword",
 			OperationID:   "test_request_required_string_password",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30561,6 +31485,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPasswordArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30568,8 +31493,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPasswordArray",
-			ID:   "test_request_required_string_password_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayRequest(r)
@@ -30594,6 +31520,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPasswordArray",
 			OperationID:   "test_request_required_string_password_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30659,6 +31586,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPasswordArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30666,8 +31594,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPasswordArrayArray",
-			ID:   "test_request_required_string_password_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayArrayRequest(r)
@@ -30692,6 +31621,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPasswordArrayArray",
 			OperationID:   "test_request_required_string_password_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30757,6 +31687,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPasswordNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30764,8 +31695,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPasswordNullable",
-			ID:   "test_request_required_string_password_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableRequest(r)
@@ -30790,6 +31722,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPasswordNullable",
 			OperationID:   "test_request_required_string_password_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30855,6 +31788,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPasswordNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30862,8 +31796,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPasswordNullableArray",
-			ID:   "test_request_required_string_password_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayRequest(r)
@@ -30888,6 +31823,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPasswordNullableArray",
 			OperationID:   "test_request_required_string_password_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -30953,6 +31889,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringPasswordNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -30960,8 +31897,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringPasswordNullableArrayArray",
-			ID:   "test_request_required_string_password_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r)
@@ -30986,6 +31924,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringPasswordNullableArrayArray",
 			OperationID:   "test_request_required_string_password_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31051,6 +31990,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31058,8 +31998,9 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTime",
-			ID:   "test_request_required_string_time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeRequest(r)
@@ -31084,6 +32025,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTime",
 			OperationID:   "test_request_required_string_time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31149,6 +32091,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31156,8 +32099,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTimeArray",
-			ID:   "test_request_required_string_time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeArrayRequest(r)
@@ -31182,6 +32126,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTimeArray",
 			OperationID:   "test_request_required_string_time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31247,6 +32192,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31254,8 +32200,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTimeArrayArray",
-			ID:   "test_request_required_string_time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeArrayArrayRequest(r)
@@ -31280,6 +32227,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTimeArrayArray",
 			OperationID:   "test_request_required_string_time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31345,6 +32293,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31352,8 +32301,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTimeNullable",
-			ID:   "test_request_required_string_time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableRequest(r)
@@ -31378,6 +32328,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTimeNullable",
 			OperationID:   "test_request_required_string_time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31443,6 +32394,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31450,8 +32402,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTimeNullableArray",
-			ID:   "test_request_required_string_time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayRequest(r)
@@ -31476,6 +32429,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTimeNullableArray",
 			OperationID:   "test_request_required_string_time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31541,6 +32495,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31548,8 +32503,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringTimeNullableArrayArray",
-			ID:   "test_request_required_string_time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r)
@@ -31574,6 +32530,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringTimeNullableArrayArray",
 			OperationID:   "test_request_required_string_time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31639,6 +32596,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURI
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31646,8 +32604,9 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURI",
-			ID:   "test_request_required_string_uri",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURIRequest(r)
@@ -31672,6 +32631,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURI",
 			OperationID:   "test_request_required_string_uri",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31737,6 +32697,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURIArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31744,8 +32705,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURIArray",
-			ID:   "test_request_required_string_uri_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURIArrayRequest(r)
@@ -31770,6 +32732,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURIArray",
 			OperationID:   "test_request_required_string_uri_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31835,6 +32798,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURIArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31842,8 +32806,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURIArrayArray",
-			ID:   "test_request_required_string_uri_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURIArrayArrayRequest(r)
@@ -31868,6 +32833,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURIArrayArray",
 			OperationID:   "test_request_required_string_uri_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -31933,6 +32899,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURINullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -31940,8 +32907,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURINullable",
-			ID:   "test_request_required_string_uri_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableRequest(r)
@@ -31966,6 +32934,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURINullable",
 			OperationID:   "test_request_required_string_uri_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32031,6 +33000,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURINullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32038,8 +33008,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURINullableArray",
-			ID:   "test_request_required_string_uri_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayRequest(r)
@@ -32064,6 +33035,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURINullableArray",
 			OperationID:   "test_request_required_string_uri_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32129,6 +33101,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringURINullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32136,8 +33109,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringURINullableArrayArray",
-			ID:   "test_request_required_string_uri_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayArrayRequest(r)
@@ -32162,6 +33136,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringURINullableArrayArray",
 			OperationID:   "test_request_required_string_uri_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32227,6 +33202,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32234,8 +33210,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUID",
-			ID:   "test_request_required_string_uuid",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDRequest(r)
@@ -32260,6 +33237,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUID",
 			OperationID:   "test_request_required_string_uuid",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32325,6 +33303,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUIDArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32332,8 +33311,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUIDArray",
-			ID:   "test_request_required_string_uuid_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayRequest(r)
@@ -32358,6 +33338,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUIDArray",
 			OperationID:   "test_request_required_string_uuid_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32423,6 +33404,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUIDArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32430,8 +33412,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUIDArrayArray",
-			ID:   "test_request_required_string_uuid_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayArrayRequest(r)
@@ -32456,6 +33439,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUIDArrayArray",
 			OperationID:   "test_request_required_string_uuid_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32521,6 +33505,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUIDNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32528,8 +33513,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUIDNullable",
-			ID:   "test_request_required_string_uuid_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableRequest(r)
@@ -32554,6 +33540,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUIDNullable",
 			OperationID:   "test_request_required_string_uuid_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32619,6 +33606,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUIDNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32626,8 +33614,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUIDNullableArray",
-			ID:   "test_request_required_string_uuid_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayRequest(r)
@@ -32652,6 +33641,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUIDNullableArray",
 			OperationID:   "test_request_required_string_uuid_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32717,6 +33707,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUUIDNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32724,8 +33715,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUUIDNullableArrayArray",
-			ID:   "test_request_required_string_uuid_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r)
@@ -32750,6 +33742,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUUIDNullableArrayArray",
 			OperationID:   "test_request_required_string_uuid_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32815,6 +33808,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32822,8 +33816,9 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnix",
-			ID:   "test_request_required_string_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixRequest(r)
@@ -32848,6 +33843,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnix",
 			OperationID:   "test_request_required_string_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -32913,6 +33909,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -32920,8 +33917,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixArray",
-			ID:   "test_request_required_string_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixArrayRequest(r)
@@ -32946,6 +33944,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixArray",
 			OperationID:   "test_request_required_string_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33011,6 +34010,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33018,8 +34018,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixArrayArray",
-			ID:   "test_request_required_string_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixArrayArrayRequest(r)
@@ -33044,6 +34045,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixArrayArray",
 			OperationID:   "test_request_required_string_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33109,6 +34111,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33116,8 +34119,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicro",
-			ID:   "test_request_required_string_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroRequest(r)
@@ -33142,6 +34146,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicro",
 			OperationID:   "test_request_required_string_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33207,6 +34212,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33214,8 +34220,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicroArray",
-			ID:   "test_request_required_string_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayRequest(r)
@@ -33240,6 +34247,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicroArray",
 			OperationID:   "test_request_required_string_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33305,6 +34313,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33312,8 +34321,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicroArrayArray",
-			ID:   "test_request_required_string_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r)
@@ -33338,6 +34348,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicroArrayArray",
 			OperationID:   "test_request_required_string_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33403,6 +34414,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33410,8 +34422,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicroNullable",
-			ID:   "test_request_required_string_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableRequest(r)
@@ -33436,6 +34449,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicroNullable",
 			OperationID:   "test_request_required_string_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33501,6 +34515,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33508,8 +34523,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicroNullableArray",
-			ID:   "test_request_required_string_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r)
@@ -33534,6 +34550,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicroNullableArray",
 			OperationID:   "test_request_required_string_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33599,6 +34616,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33606,8 +34624,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMicroNullableArrayArray",
-			ID:   "test_request_required_string_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r)
@@ -33632,6 +34651,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMicroNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33697,6 +34717,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33704,8 +34725,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilli",
-			ID:   "test_request_required_string_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliRequest(r)
@@ -33730,6 +34752,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilli",
 			OperationID:   "test_request_required_string_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33795,6 +34818,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33802,8 +34826,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilliArray",
-			ID:   "test_request_required_string_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayRequest(r)
@@ -33828,6 +34853,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilliArray",
 			OperationID:   "test_request_required_string_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33893,6 +34919,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33900,8 +34927,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilliArrayArray",
-			ID:   "test_request_required_string_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r)
@@ -33926,6 +34954,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilliArrayArray",
 			OperationID:   "test_request_required_string_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -33991,6 +35020,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -33998,8 +35028,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilliNullable",
-			ID:   "test_request_required_string_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableRequest(r)
@@ -34024,6 +35055,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilliNullable",
 			OperationID:   "test_request_required_string_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34089,6 +35121,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34096,8 +35129,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilliNullableArray",
-			ID:   "test_request_required_string_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r)
@@ -34122,6 +35156,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilliNullableArray",
 			OperationID:   "test_request_required_string_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34187,6 +35222,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34194,8 +35230,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixMilliNullableArrayArray",
-			ID:   "test_request_required_string_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r)
@@ -34220,6 +35257,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixMilliNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34285,6 +35323,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34292,8 +35331,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNano",
-			ID:   "test_request_required_string_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoRequest(r)
@@ -34318,6 +35358,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNano",
 			OperationID:   "test_request_required_string_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34383,6 +35424,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34390,8 +35432,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNanoArray",
-			ID:   "test_request_required_string_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayRequest(r)
@@ -34416,6 +35459,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNanoArray",
 			OperationID:   "test_request_required_string_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34481,6 +35525,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34488,8 +35533,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNanoArrayArray",
-			ID:   "test_request_required_string_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r)
@@ -34514,6 +35560,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNanoArrayArray",
 			OperationID:   "test_request_required_string_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34579,6 +35626,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34586,8 +35634,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNanoNullable",
-			ID:   "test_request_required_string_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableRequest(r)
@@ -34612,6 +35661,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNanoNullable",
 			OperationID:   "test_request_required_string_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34677,6 +35727,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34684,8 +35735,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNanoNullableArray",
-			ID:   "test_request_required_string_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r)
@@ -34710,6 +35762,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNanoNullableArray",
 			OperationID:   "test_request_required_string_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34775,6 +35828,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34782,8 +35836,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNanoNullableArrayArray",
-			ID:   "test_request_required_string_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r)
@@ -34808,6 +35863,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNanoNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34873,6 +35929,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34880,8 +35937,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNullable",
-			ID:   "test_request_required_string_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableRequest(r)
@@ -34906,6 +35964,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNullable",
 			OperationID:   "test_request_required_string_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -34971,6 +36030,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -34978,8 +36038,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNullableArray",
-			ID:   "test_request_required_string_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayRequest(r)
@@ -35004,6 +36065,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNullableArray",
 			OperationID:   "test_request_required_string_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35069,6 +36131,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35076,8 +36139,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixNullableArrayArray",
-			ID:   "test_request_required_string_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r)
@@ -35102,6 +36166,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixNullableArrayArray",
 			OperationID:   "test_request_required_string_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35167,6 +36232,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35174,8 +36240,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSeconds",
-			ID:   "test_request_required_string_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsRequest(r)
@@ -35200,6 +36267,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSeconds",
 			OperationID:   "test_request_required_string_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35265,6 +36333,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35272,8 +36341,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSecondsArray",
-			ID:   "test_request_required_string_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayRequest(r)
@@ -35298,6 +36368,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSecondsArray",
 			OperationID:   "test_request_required_string_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35363,6 +36434,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35370,8 +36442,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSecondsArrayArray",
-			ID:   "test_request_required_string_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r)
@@ -35396,6 +36469,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSecondsArrayArray",
 			OperationID:   "test_request_required_string_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35461,6 +36535,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35468,8 +36543,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSecondsNullable",
-			ID:   "test_request_required_string_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableRequest(r)
@@ -35494,6 +36570,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSecondsNullable",
 			OperationID:   "test_request_required_string_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35559,6 +36636,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35566,8 +36644,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSecondsNullableArray",
-			ID:   "test_request_required_string_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r)
@@ -35592,6 +36671,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSecondsNullableArray",
 			OperationID:   "test_request_required_string_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35657,6 +36737,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestRequiredStringUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35664,8 +36745,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
-			ID:   "test_request_required_string_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r)
@@ -35690,6 +36772,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			Context:       ctx,
 			OperationName: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35755,6 +36838,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestString
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35762,8 +36846,9 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestString",
-			ID:   "test_request_string",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringRequest(r)
@@ -35788,6 +36873,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 			Context:       ctx,
 			OperationName: "TestRequestString",
 			OperationID:   "test_request_string",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35853,6 +36939,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35860,8 +36947,9 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringArray",
-			ID:   "test_request_string_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringArrayRequest(r)
@@ -35886,6 +36974,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestStringArray",
 			OperationID:   "test_request_string_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -35951,6 +37040,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -35958,8 +37048,9 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringArrayArray",
-			ID:   "test_request_string_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringArrayArrayRequest(r)
@@ -35984,6 +37075,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestStringArrayArray",
 			OperationID:   "test_request_string_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36049,6 +37141,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36056,8 +37149,9 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64",
-			ID:   "test_request_string_base64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64Request(r)
@@ -36082,6 +37176,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64",
 			OperationID:   "test_request_string_base64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36147,6 +37242,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36154,8 +37250,9 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64Array",
-			ID:   "test_request_string_base64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64ArrayRequest(r)
@@ -36180,6 +37277,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64Array",
 			OperationID:   "test_request_string_base64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36245,6 +37343,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36252,8 +37351,9 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64ArrayArray",
-			ID:   "test_request_string_base64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64ArrayArrayRequest(r)
@@ -36278,6 +37378,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64ArrayArray",
 			OperationID:   "test_request_string_base64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36343,6 +37444,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36350,8 +37452,9 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64Nullable",
-			ID:   "test_request_string_base64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64NullableRequest(r)
@@ -36376,6 +37479,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64Nullable",
 			OperationID:   "test_request_string_base64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36441,6 +37545,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36448,8 +37553,9 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64NullableArray",
-			ID:   "test_request_string_base64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64NullableArrayRequest(r)
@@ -36474,6 +37580,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64NullableArray",
 			OperationID:   "test_request_string_base64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36539,6 +37646,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBase64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36546,8 +37654,9 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBase64NullableArrayArray",
-			ID:   "test_request_string_base64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBase64NullableArrayArrayRequest(r)
@@ -36572,6 +37681,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestStringBase64NullableArrayArray",
 			OperationID:   "test_request_string_base64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36637,6 +37747,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinary
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36644,8 +37755,9 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinary",
-			ID:   "test_request_string_binary",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryRequest(r)
@@ -36670,6 +37782,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestRequestStringBinary",
 			OperationID:   "test_request_string_binary",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36735,6 +37848,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinaryArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36742,8 +37856,9 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinaryArray",
-			ID:   "test_request_string_binary_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryArrayRequest(r)
@@ -36768,6 +37883,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestStringBinaryArray",
 			OperationID:   "test_request_string_binary_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36833,6 +37949,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinaryArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36840,8 +37957,9 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinaryArrayArray",
-			ID:   "test_request_string_binary_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryArrayArrayRequest(r)
@@ -36866,6 +37984,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringBinaryArrayArray",
 			OperationID:   "test_request_string_binary_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -36931,6 +38050,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinaryNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -36938,8 +38058,9 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinaryNullable",
-			ID:   "test_request_string_binary_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableRequest(r)
@@ -36964,6 +38085,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringBinaryNullable",
 			OperationID:   "test_request_string_binary_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37029,6 +38151,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinaryNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37036,8 +38159,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinaryNullableArray",
-			ID:   "test_request_string_binary_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableArrayRequest(r)
@@ -37062,6 +38186,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestStringBinaryNullableArray",
 			OperationID:   "test_request_string_binary_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37127,6 +38252,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringBinaryNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37134,8 +38260,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringBinaryNullableArrayArray",
-			ID:   "test_request_string_binary_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableArrayArrayRequest(r)
@@ -37160,6 +38287,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestStringBinaryNullableArrayArray",
 			OperationID:   "test_request_string_binary_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37225,6 +38353,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByte
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37232,8 +38361,9 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByte",
-			ID:   "test_request_string_byte",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteRequest(r)
@@ -37258,6 +38388,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringByte",
 			OperationID:   "test_request_string_byte",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37323,6 +38454,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByteArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37330,8 +38462,9 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByteArray",
-			ID:   "test_request_string_byte_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteArrayRequest(r)
@@ -37356,6 +38489,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringByteArray",
 			OperationID:   "test_request_string_byte_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37421,6 +38555,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByteArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37428,8 +38563,9 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByteArrayArray",
-			ID:   "test_request_string_byte_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteArrayArrayRequest(r)
@@ -37454,6 +38590,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringByteArrayArray",
 			OperationID:   "test_request_string_byte_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37519,6 +38656,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByteNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37526,8 +38664,9 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByteNullable",
-			ID:   "test_request_string_byte_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteNullableRequest(r)
@@ -37552,6 +38691,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringByteNullable",
 			OperationID:   "test_request_string_byte_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37617,6 +38757,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByteNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37624,8 +38765,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByteNullableArray",
-			ID:   "test_request_string_byte_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteNullableArrayRequest(r)
@@ -37650,6 +38792,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringByteNullableArray",
 			OperationID:   "test_request_string_byte_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37715,6 +38858,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringByteNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37722,8 +38866,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringByteNullableArrayArray",
-			ID:   "test_request_string_byte_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringByteNullableArrayArrayRequest(r)
@@ -37748,6 +38893,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringByteNullableArrayArray",
 			OperationID:   "test_request_string_byte_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37813,6 +38959,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37820,8 +38967,9 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDate",
-			ID:   "test_request_string_date",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateRequest(r)
@@ -37846,6 +38994,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringDate",
 			OperationID:   "test_request_string_date",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -37911,6 +39060,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -37918,8 +39068,9 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateArray",
-			ID:   "test_request_string_date_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateArrayRequest(r)
@@ -37944,6 +39095,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringDateArray",
 			OperationID:   "test_request_string_date_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38009,6 +39161,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38016,8 +39169,9 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateArrayArray",
-			ID:   "test_request_string_date_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateArrayArrayRequest(r)
@@ -38042,6 +39196,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringDateArrayArray",
 			OperationID:   "test_request_string_date_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38107,6 +39262,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38114,8 +39270,9 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateNullable",
-			ID:   "test_request_string_date_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateNullableRequest(r)
@@ -38140,6 +39297,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringDateNullable",
 			OperationID:   "test_request_string_date_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38205,6 +39363,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38212,8 +39371,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateNullableArray",
-			ID:   "test_request_string_date_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateNullableArrayRequest(r)
@@ -38238,6 +39398,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringDateNullableArray",
 			OperationID:   "test_request_string_date_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38303,6 +39464,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38310,8 +39472,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateNullableArrayArray",
-			ID:   "test_request_string_date_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateNullableArrayArrayRequest(r)
@@ -38336,6 +39499,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringDateNullableArrayArray",
 			OperationID:   "test_request_string_date_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38401,6 +39565,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38408,8 +39573,9 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTime",
-			ID:   "test_request_string_date-time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeRequest(r)
@@ -38434,6 +39600,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTime",
 			OperationID:   "test_request_string_date-time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38499,6 +39666,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38506,8 +39674,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTimeArray",
-			ID:   "test_request_string_date-time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeArrayRequest(r)
@@ -38532,6 +39701,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTimeArray",
 			OperationID:   "test_request_string_date-time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38597,6 +39767,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38604,8 +39775,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTimeArrayArray",
-			ID:   "test_request_string_date-time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeArrayArrayRequest(r)
@@ -38630,6 +39802,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTimeArrayArray",
 			OperationID:   "test_request_string_date-time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38695,6 +39868,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38702,8 +39876,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTimeNullable",
-			ID:   "test_request_string_date-time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableRequest(r)
@@ -38728,6 +39903,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTimeNullable",
 			OperationID:   "test_request_string_date-time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38793,6 +39969,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38800,8 +39977,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTimeNullableArray",
-			ID:   "test_request_string_date-time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayRequest(r)
@@ -38826,6 +40004,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTimeNullableArray",
 			OperationID:   "test_request_string_date-time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38891,6 +40070,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDateTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38898,8 +40078,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDateTimeNullableArrayArray",
-			ID:   "test_request_string_date-time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayArrayRequest(r)
@@ -38924,6 +40105,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestStringDateTimeNullableArrayArray",
 			OperationID:   "test_request_string_date-time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -38989,6 +40171,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDuration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -38996,8 +40179,9 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDuration",
-			ID:   "test_request_string_duration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationRequest(r)
@@ -39022,6 +40206,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringDuration",
 			OperationID:   "test_request_string_duration",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39087,6 +40272,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDurationArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39094,8 +40280,9 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDurationArray",
-			ID:   "test_request_string_duration_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationArrayRequest(r)
@@ -39120,6 +40307,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringDurationArray",
 			OperationID:   "test_request_string_duration_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39185,6 +40373,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDurationArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39192,8 +40381,9 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDurationArrayArray",
-			ID:   "test_request_string_duration_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationArrayArrayRequest(r)
@@ -39218,6 +40408,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringDurationArrayArray",
 			OperationID:   "test_request_string_duration_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39283,6 +40474,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDurationNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39290,8 +40482,9 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDurationNullable",
-			ID:   "test_request_string_duration_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationNullableRequest(r)
@@ -39316,6 +40509,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringDurationNullable",
 			OperationID:   "test_request_string_duration_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39381,6 +40575,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDurationNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39388,8 +40583,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDurationNullableArray",
-			ID:   "test_request_string_duration_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationNullableArrayRequest(r)
@@ -39414,6 +40610,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringDurationNullableArray",
 			OperationID:   "test_request_string_duration_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39479,6 +40676,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringDurationNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39486,8 +40684,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringDurationNullableArrayArray",
-			ID:   "test_request_string_duration_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringDurationNullableArrayArrayRequest(r)
@@ -39512,6 +40711,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestStringDurationNullableArrayArray",
 			OperationID:   "test_request_string_duration_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39577,6 +40777,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmail
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39584,8 +40785,9 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmail",
-			ID:   "test_request_string_email",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailRequest(r)
@@ -39610,6 +40812,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestStringEmail",
 			OperationID:   "test_request_string_email",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39675,6 +40878,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmailArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39682,8 +40886,9 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmailArray",
-			ID:   "test_request_string_email_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailArrayRequest(r)
@@ -39708,6 +40913,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestStringEmailArray",
 			OperationID:   "test_request_string_email_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39773,6 +40979,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmailArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39780,8 +40987,9 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmailArrayArray",
-			ID:   "test_request_string_email_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailArrayArrayRequest(r)
@@ -39806,6 +41014,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestStringEmailArrayArray",
 			OperationID:   "test_request_string_email_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39871,6 +41080,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmailNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39878,8 +41088,9 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmailNullable",
-			ID:   "test_request_string_email_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailNullableRequest(r)
@@ -39904,6 +41115,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringEmailNullable",
 			OperationID:   "test_request_string_email_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -39969,6 +41181,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmailNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -39976,8 +41189,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmailNullableArray",
-			ID:   "test_request_string_email_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailNullableArrayRequest(r)
@@ -40002,6 +41216,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringEmailNullableArray",
 			OperationID:   "test_request_string_email_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40067,6 +41282,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringEmailNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40074,8 +41290,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringEmailNullableArrayArray",
-			ID:   "test_request_string_email_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringEmailNullableArrayArrayRequest(r)
@@ -40100,6 +41317,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestStringEmailNullableArrayArray",
 			OperationID:   "test_request_string_email_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40165,6 +41383,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostname
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40172,8 +41391,9 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostname",
-			ID:   "test_request_string_hostname",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameRequest(r)
@@ -40198,6 +41418,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringHostname",
 			OperationID:   "test_request_string_hostname",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40263,6 +41484,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostnameArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40270,8 +41492,9 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostnameArray",
-			ID:   "test_request_string_hostname_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameArrayRequest(r)
@@ -40296,6 +41519,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringHostnameArray",
 			OperationID:   "test_request_string_hostname_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40361,6 +41585,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostnameArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40368,8 +41593,9 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostnameArrayArray",
-			ID:   "test_request_string_hostname_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameArrayArrayRequest(r)
@@ -40394,6 +41620,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringHostnameArrayArray",
 			OperationID:   "test_request_string_hostname_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40459,6 +41686,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostnameNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40466,8 +41694,9 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostnameNullable",
-			ID:   "test_request_string_hostname_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableRequest(r)
@@ -40492,6 +41721,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringHostnameNullable",
 			OperationID:   "test_request_string_hostname_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40557,6 +41787,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostnameNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40564,8 +41795,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostnameNullableArray",
-			ID:   "test_request_string_hostname_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableArrayRequest(r)
@@ -40590,6 +41822,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringHostnameNullableArray",
 			OperationID:   "test_request_string_hostname_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40655,6 +41888,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringHostnameNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40662,8 +41896,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringHostnameNullableArrayArray",
-			ID:   "test_request_string_hostname_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableArrayArrayRequest(r)
@@ -40688,6 +41923,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestStringHostnameNullableArrayArray",
 			OperationID:   "test_request_string_hostname_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40753,6 +41989,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIP
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40760,8 +41997,9 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIP",
-			ID:   "test_request_string_ip",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPRequest(r)
@@ -40786,6 +42024,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestRequestStringIP",
 			OperationID:   "test_request_string_ip",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40851,6 +42090,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIPArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40858,8 +42098,9 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIPArray",
-			ID:   "test_request_string_ip_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPArrayRequest(r)
@@ -40884,6 +42125,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestRequestStringIPArray",
 			OperationID:   "test_request_string_ip_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -40949,6 +42191,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIPArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -40956,8 +42199,9 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIPArrayArray",
-			ID:   "test_request_string_ip_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPArrayArrayRequest(r)
@@ -40982,6 +42226,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringIPArrayArray",
 			OperationID:   "test_request_string_ip_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41047,6 +42292,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIPNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41054,8 +42300,9 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIPNullable",
-			ID:   "test_request_string_ip_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPNullableRequest(r)
@@ -41080,6 +42327,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestStringIPNullable",
 			OperationID:   "test_request_string_ip_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41145,6 +42393,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIPNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41152,8 +42401,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIPNullableArray",
-			ID:   "test_request_string_ip_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPNullableArrayRequest(r)
@@ -41178,6 +42428,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestStringIPNullableArray",
 			OperationID:   "test_request_string_ip_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41243,6 +42494,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIPNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41250,8 +42502,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIPNullableArrayArray",
-			ID:   "test_request_string_ip_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIPNullableArrayArrayRequest(r)
@@ -41276,6 +42529,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestRequestStringIPNullableArrayArray",
 			OperationID:   "test_request_string_ip_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41341,6 +42595,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41348,8 +42603,9 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32",
-			ID:   "test_request_string_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32Request(r)
@@ -41374,6 +42630,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32",
 			OperationID:   "test_request_string_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41439,6 +42696,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41446,8 +42704,9 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32Array",
-			ID:   "test_request_string_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32ArrayRequest(r)
@@ -41472,6 +42731,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32Array",
 			OperationID:   "test_request_string_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41537,6 +42797,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41544,8 +42805,9 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32ArrayArray",
-			ID:   "test_request_string_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32ArrayArrayRequest(r)
@@ -41570,6 +42832,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32ArrayArray",
 			OperationID:   "test_request_string_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41635,6 +42898,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41642,8 +42906,9 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32Nullable",
-			ID:   "test_request_string_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32NullableRequest(r)
@@ -41668,6 +42933,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32Nullable",
 			OperationID:   "test_request_string_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41733,6 +42999,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41740,8 +43007,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32NullableArray",
-			ID:   "test_request_string_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32NullableArrayRequest(r)
@@ -41766,6 +43034,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32NullableArray",
 			OperationID:   "test_request_string_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41831,6 +43100,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41838,8 +43108,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt32NullableArrayArray",
-			ID:   "test_request_string_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt32NullableArrayArrayRequest(r)
@@ -41864,6 +43135,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestStringInt32NullableArrayArray",
 			OperationID:   "test_request_string_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -41929,6 +43201,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -41936,8 +43209,9 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64",
-			ID:   "test_request_string_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64Request(r)
@@ -41962,6 +43236,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64",
 			OperationID:   "test_request_string_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42027,6 +43302,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42034,8 +43310,9 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64Array",
-			ID:   "test_request_string_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64ArrayRequest(r)
@@ -42060,6 +43337,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64Array",
 			OperationID:   "test_request_string_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42125,6 +43403,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42132,8 +43411,9 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64ArrayArray",
-			ID:   "test_request_string_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64ArrayArrayRequest(r)
@@ -42158,6 +43438,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64ArrayArray",
 			OperationID:   "test_request_string_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42223,6 +43504,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42230,8 +43512,9 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64Nullable",
-			ID:   "test_request_string_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64NullableRequest(r)
@@ -42256,6 +43539,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64Nullable",
 			OperationID:   "test_request_string_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42321,6 +43605,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42328,8 +43613,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64NullableArray",
-			ID:   "test_request_string_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64NullableArrayRequest(r)
@@ -42354,6 +43640,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64NullableArray",
 			OperationID:   "test_request_string_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42419,6 +43706,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42426,8 +43714,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringInt64NullableArrayArray",
-			ID:   "test_request_string_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringInt64NullableArrayArrayRequest(r)
@@ -42452,6 +43741,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestRequestStringInt64NullableArrayArray",
 			OperationID:   "test_request_string_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42517,6 +43807,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42524,8 +43815,9 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4",
-			ID:   "test_request_string_ipv4",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4Request(r)
@@ -42550,6 +43842,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4",
 			OperationID:   "test_request_string_ipv4",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42615,6 +43908,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42622,8 +43916,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4Array",
-			ID:   "test_request_string_ipv4_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4ArrayRequest(r)
@@ -42648,6 +43943,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4Array",
 			OperationID:   "test_request_string_ipv4_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42713,6 +44009,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42720,8 +44017,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4ArrayArray",
-			ID:   "test_request_string_ipv4_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4ArrayArrayRequest(r)
@@ -42746,6 +44044,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4ArrayArray",
 			OperationID:   "test_request_string_ipv4_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42811,6 +44110,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42818,8 +44118,9 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4Nullable",
-			ID:   "test_request_string_ipv4_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableRequest(r)
@@ -42844,6 +44145,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4Nullable",
 			OperationID:   "test_request_string_ipv4_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -42909,6 +44211,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -42916,8 +44219,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4NullableArray",
-			ID:   "test_request_string_ipv4_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableArrayRequest(r)
@@ -42942,6 +44246,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4NullableArray",
 			OperationID:   "test_request_string_ipv4_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43007,6 +44312,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv4NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43014,8 +44320,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv4NullableArrayArray",
-			ID:   "test_request_string_ipv4_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableArrayArrayRequest(r)
@@ -43040,6 +44347,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv4NullableArrayArray",
 			OperationID:   "test_request_string_ipv4_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43105,6 +44413,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43112,8 +44421,9 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6",
-			ID:   "test_request_string_ipv6",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6Request(r)
@@ -43138,6 +44448,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6",
 			OperationID:   "test_request_string_ipv6",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43203,6 +44514,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43210,8 +44522,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6Array",
-			ID:   "test_request_string_ipv6_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6ArrayRequest(r)
@@ -43236,6 +44549,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6Array",
 			OperationID:   "test_request_string_ipv6_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43301,6 +44615,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43308,8 +44623,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6ArrayArray",
-			ID:   "test_request_string_ipv6_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6ArrayArrayRequest(r)
@@ -43334,6 +44650,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6ArrayArray",
 			OperationID:   "test_request_string_ipv6_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43399,6 +44716,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43406,8 +44724,9 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6Nullable",
-			ID:   "test_request_string_ipv6_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableRequest(r)
@@ -43432,6 +44751,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6Nullable",
 			OperationID:   "test_request_string_ipv6_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43497,6 +44817,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43504,8 +44825,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6NullableArray",
-			ID:   "test_request_string_ipv6_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableArrayRequest(r)
@@ -43530,6 +44852,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6NullableArray",
 			OperationID:   "test_request_string_ipv6_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43595,6 +44918,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringIpv6NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43602,8 +44926,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringIpv6NullableArrayArray",
-			ID:   "test_request_string_ipv6_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableArrayArrayRequest(r)
@@ -43628,6 +44953,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringIpv6NullableArrayArray",
 			OperationID:   "test_request_string_ipv6_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43693,6 +45019,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43700,8 +45027,9 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringNullable",
-			ID:   "test_request_string_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringNullableRequest(r)
@@ -43726,6 +45054,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringNullable",
 			OperationID:   "test_request_string_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43791,6 +45120,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43798,8 +45128,9 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringNullableArray",
-			ID:   "test_request_string_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringNullableArrayRequest(r)
@@ -43824,6 +45155,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringNullableArray",
 			OperationID:   "test_request_string_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43889,6 +45221,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43896,8 +45229,9 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringNullableArrayArray",
-			ID:   "test_request_string_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringNullableArrayArrayRequest(r)
@@ -43922,6 +45256,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringNullableArrayArray",
 			OperationID:   "test_request_string_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -43987,6 +45322,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPassword
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -43994,8 +45330,9 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPassword",
-			ID:   "test_request_string_password",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordRequest(r)
@@ -44020,6 +45357,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringPassword",
 			OperationID:   "test_request_string_password",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44085,6 +45423,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPasswordArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44092,8 +45431,9 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPasswordArray",
-			ID:   "test_request_string_password_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordArrayRequest(r)
@@ -44118,6 +45458,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringPasswordArray",
 			OperationID:   "test_request_string_password_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44183,6 +45524,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPasswordArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44190,8 +45532,9 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPasswordArrayArray",
-			ID:   "test_request_string_password_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordArrayArrayRequest(r)
@@ -44216,6 +45559,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringPasswordArrayArray",
 			OperationID:   "test_request_string_password_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44281,6 +45625,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPasswordNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44288,8 +45633,9 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPasswordNullable",
-			ID:   "test_request_string_password_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableRequest(r)
@@ -44314,6 +45660,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringPasswordNullable",
 			OperationID:   "test_request_string_password_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44379,6 +45726,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPasswordNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44386,8 +45734,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPasswordNullableArray",
-			ID:   "test_request_string_password_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableArrayRequest(r)
@@ -44412,6 +45761,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringPasswordNullableArray",
 			OperationID:   "test_request_string_password_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44477,6 +45827,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringPasswordNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44484,8 +45835,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringPasswordNullableArrayArray",
-			ID:   "test_request_string_password_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableArrayArrayRequest(r)
@@ -44510,6 +45862,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestStringPasswordNullableArrayArray",
 			OperationID:   "test_request_string_password_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44575,6 +45928,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44582,8 +45936,9 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTime",
-			ID:   "test_request_string_time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeRequest(r)
@@ -44608,6 +45963,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringTime",
 			OperationID:   "test_request_string_time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44673,6 +46029,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44680,8 +46037,9 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTimeArray",
-			ID:   "test_request_string_time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeArrayRequest(r)
@@ -44706,6 +46064,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringTimeArray",
 			OperationID:   "test_request_string_time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44771,6 +46130,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44778,8 +46138,9 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTimeArrayArray",
-			ID:   "test_request_string_time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeArrayArrayRequest(r)
@@ -44804,6 +46165,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringTimeArrayArray",
 			OperationID:   "test_request_string_time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44869,6 +46231,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44876,8 +46239,9 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTimeNullable",
-			ID:   "test_request_string_time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeNullableRequest(r)
@@ -44902,6 +46266,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringTimeNullable",
 			OperationID:   "test_request_string_time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -44967,6 +46332,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -44974,8 +46340,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTimeNullableArray",
-			ID:   "test_request_string_time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeNullableArrayRequest(r)
@@ -45000,6 +46367,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringTimeNullableArray",
 			OperationID:   "test_request_string_time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45065,6 +46433,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45072,8 +46441,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringTimeNullableArrayArray",
-			ID:   "test_request_string_time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringTimeNullableArrayArrayRequest(r)
@@ -45098,6 +46468,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringTimeNullableArrayArray",
 			OperationID:   "test_request_string_time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45163,6 +46534,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURI
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45170,8 +46542,9 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURI",
-			ID:   "test_request_string_uri",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURIRequest(r)
@@ -45196,6 +46569,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TestRequestStringURI",
 			OperationID:   "test_request_string_uri",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45261,6 +46635,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURIArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45268,8 +46643,9 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURIArray",
-			ID:   "test_request_string_uri_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURIArrayRequest(r)
@@ -45294,6 +46670,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringURIArray",
 			OperationID:   "test_request_string_uri_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45359,6 +46736,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURIArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45366,8 +46744,9 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURIArrayArray",
-			ID:   "test_request_string_uri_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURIArrayArrayRequest(r)
@@ -45392,6 +46771,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringURIArrayArray",
 			OperationID:   "test_request_string_uri_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45457,6 +46837,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURINullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45464,8 +46845,9 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURINullable",
-			ID:   "test_request_string_uri_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURINullableRequest(r)
@@ -45490,6 +46872,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestStringURINullable",
 			OperationID:   "test_request_string_uri_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45555,6 +46938,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURINullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45562,8 +46946,9 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURINullableArray",
-			ID:   "test_request_string_uri_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURINullableArrayRequest(r)
@@ -45588,6 +46973,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringURINullableArray",
 			OperationID:   "test_request_string_uri_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45653,6 +47039,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringURINullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45660,8 +47047,9 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringURINullableArrayArray",
-			ID:   "test_request_string_uri_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringURINullableArrayArrayRequest(r)
@@ -45686,6 +47074,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringURINullableArrayArray",
 			OperationID:   "test_request_string_uri_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45751,6 +47140,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45758,8 +47148,9 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUID",
-			ID:   "test_request_string_uuid",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDRequest(r)
@@ -45784,6 +47175,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringUUID",
 			OperationID:   "test_request_string_uuid",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45849,6 +47241,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUIDArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45856,8 +47249,9 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUIDArray",
-			ID:   "test_request_string_uuid_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDArrayRequest(r)
@@ -45882,6 +47276,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringUUIDArray",
 			OperationID:   "test_request_string_uuid_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -45947,6 +47342,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUIDArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -45954,8 +47350,9 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUIDArrayArray",
-			ID:   "test_request_string_uuid_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDArrayArrayRequest(r)
@@ -45980,6 +47377,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringUUIDArrayArray",
 			OperationID:   "test_request_string_uuid_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46045,6 +47443,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUIDNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46052,8 +47451,9 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUIDNullable",
-			ID:   "test_request_string_uuid_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableRequest(r)
@@ -46078,6 +47478,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringUUIDNullable",
 			OperationID:   "test_request_string_uuid_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46143,6 +47544,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUIDNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46150,8 +47552,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUIDNullableArray",
-			ID:   "test_request_string_uuid_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableArrayRequest(r)
@@ -46176,6 +47579,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringUUIDNullableArray",
 			OperationID:   "test_request_string_uuid_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46241,6 +47645,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUUIDNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46248,8 +47653,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUUIDNullableArrayArray",
-			ID:   "test_request_string_uuid_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableArrayArrayRequest(r)
@@ -46274,6 +47680,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringUUIDNullableArrayArray",
 			OperationID:   "test_request_string_uuid_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46339,6 +47746,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46346,8 +47754,9 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnix",
-			ID:   "test_request_string_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixRequest(r)
@@ -46372,6 +47781,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestRequestStringUnix",
 			OperationID:   "test_request_string_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46437,6 +47847,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46444,8 +47855,9 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixArray",
-			ID:   "test_request_string_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixArrayRequest(r)
@@ -46470,6 +47882,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixArray",
 			OperationID:   "test_request_string_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46535,6 +47948,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46542,8 +47956,9 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixArrayArray",
-			ID:   "test_request_string_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixArrayArrayRequest(r)
@@ -46568,6 +47983,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixArrayArray",
 			OperationID:   "test_request_string_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46633,6 +48049,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46640,8 +48057,9 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicro",
-			ID:   "test_request_string_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroRequest(r)
@@ -46666,6 +48084,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicro",
 			OperationID:   "test_request_string_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46731,6 +48150,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46738,8 +48158,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicroArray",
-			ID:   "test_request_string_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroArrayRequest(r)
@@ -46764,6 +48185,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicroArray",
 			OperationID:   "test_request_string_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46829,6 +48251,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46836,8 +48259,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicroArrayArray",
-			ID:   "test_request_string_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroArrayArrayRequest(r)
@@ -46862,6 +48286,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicroArrayArray",
 			OperationID:   "test_request_string_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -46927,6 +48352,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46934,8 +48360,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicroNullable",
-			ID:   "test_request_string_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableRequest(r)
@@ -46960,6 +48387,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicroNullable",
 			OperationID:   "test_request_string_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47025,6 +48453,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47032,8 +48461,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicroNullableArray",
-			ID:   "test_request_string_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayRequest(r)
@@ -47058,6 +48488,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicroNullableArray",
 			OperationID:   "test_request_string_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47123,6 +48554,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47130,8 +48562,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMicroNullableArrayArray",
-			ID:   "test_request_string_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r)
@@ -47156,6 +48589,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMicroNullableArrayArray",
 			OperationID:   "test_request_string_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47221,6 +48655,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47228,8 +48663,9 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilli",
-			ID:   "test_request_string_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliRequest(r)
@@ -47254,6 +48690,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilli",
 			OperationID:   "test_request_string_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47319,6 +48756,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47326,8 +48764,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilliArray",
-			ID:   "test_request_string_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliArrayRequest(r)
@@ -47352,6 +48791,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilliArray",
 			OperationID:   "test_request_string_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47417,6 +48857,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47424,8 +48865,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilliArrayArray",
-			ID:   "test_request_string_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliArrayArrayRequest(r)
@@ -47450,6 +48892,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilliArrayArray",
 			OperationID:   "test_request_string_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47515,6 +48958,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47522,8 +48966,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilliNullable",
-			ID:   "test_request_string_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableRequest(r)
@@ -47548,6 +48993,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilliNullable",
 			OperationID:   "test_request_string_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47613,6 +49059,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47620,8 +49067,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilliNullableArray",
-			ID:   "test_request_string_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayRequest(r)
@@ -47646,6 +49094,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilliNullableArray",
 			OperationID:   "test_request_string_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47711,6 +49160,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47718,8 +49168,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixMilliNullableArrayArray",
-			ID:   "test_request_string_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r)
@@ -47744,6 +49195,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixMilliNullableArrayArray",
 			OperationID:   "test_request_string_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47809,6 +49261,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47816,8 +49269,9 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNano",
-			ID:   "test_request_string_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoRequest(r)
@@ -47842,6 +49296,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNano",
 			OperationID:   "test_request_string_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -47907,6 +49362,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -47914,8 +49370,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNanoArray",
-			ID:   "test_request_string_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoArrayRequest(r)
@@ -47940,6 +49397,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNanoArray",
 			OperationID:   "test_request_string_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48005,6 +49463,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48012,8 +49471,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNanoArrayArray",
-			ID:   "test_request_string_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoArrayArrayRequest(r)
@@ -48038,6 +49498,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNanoArrayArray",
 			OperationID:   "test_request_string_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48103,6 +49564,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48110,8 +49572,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNanoNullable",
-			ID:   "test_request_string_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableRequest(r)
@@ -48136,6 +49599,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNanoNullable",
 			OperationID:   "test_request_string_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48201,6 +49665,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48208,8 +49673,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNanoNullableArray",
-			ID:   "test_request_string_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayRequest(r)
@@ -48234,6 +49700,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNanoNullableArray",
 			OperationID:   "test_request_string_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48299,6 +49766,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48306,8 +49774,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNanoNullableArrayArray",
-			ID:   "test_request_string_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r)
@@ -48332,6 +49801,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNanoNullableArrayArray",
 			OperationID:   "test_request_string_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48397,6 +49867,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48404,8 +49875,9 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNullable",
-			ID:   "test_request_string_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNullableRequest(r)
@@ -48430,6 +49902,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNullable",
 			OperationID:   "test_request_string_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48495,6 +49968,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48502,8 +49976,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNullableArray",
-			ID:   "test_request_string_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNullableArrayRequest(r)
@@ -48528,6 +50003,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNullableArray",
 			OperationID:   "test_request_string_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48593,6 +50069,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48600,8 +50077,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixNullableArrayArray",
-			ID:   "test_request_string_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixNullableArrayArrayRequest(r)
@@ -48626,6 +50104,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixNullableArrayArray",
 			OperationID:   "test_request_string_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48691,6 +50170,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48698,8 +50178,9 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSeconds",
-			ID:   "test_request_string_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsRequest(r)
@@ -48724,6 +50205,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSeconds",
 			OperationID:   "test_request_string_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48789,6 +50271,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48796,8 +50279,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSecondsArray",
-			ID:   "test_request_string_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsArrayRequest(r)
@@ -48822,6 +50306,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSecondsArray",
 			OperationID:   "test_request_string_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48887,6 +50372,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48894,8 +50380,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSecondsArrayArray",
-			ID:   "test_request_string_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsArrayArrayRequest(r)
@@ -48920,6 +50407,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSecondsArrayArray",
 			OperationID:   "test_request_string_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -48985,6 +50473,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -48992,8 +50481,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSecondsNullable",
-			ID:   "test_request_string_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableRequest(r)
@@ -49018,6 +50508,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSecondsNullable",
 			OperationID:   "test_request_string_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49083,6 +50574,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49090,8 +50582,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSecondsNullableArray",
-			ID:   "test_request_string_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayRequest(r)
@@ -49116,6 +50609,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSecondsNullableArray",
 			OperationID:   "test_request_string_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49181,6 +50675,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestRequestStringUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49188,8 +50683,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestRequestStringUnixSecondsNullableArrayArray",
-			ID:   "test_request_string_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r)
@@ -49214,6 +50710,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestRequestStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_string_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49279,6 +50776,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseAny
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49286,8 +50784,9 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseAny",
-			ID:   "test_response_Any",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseAnyRequest(r)
@@ -49312,6 +50811,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "TestResponseAny",
 			OperationID:   "test_response_Any",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49377,6 +50877,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBoolean
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49384,8 +50885,9 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBoolean",
-			ID:   "test_response_boolean",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanRequest(r)
@@ -49410,6 +50912,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestResponseBoolean",
 			OperationID:   "test_response_boolean",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49475,6 +50978,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBooleanArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49482,8 +50986,9 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBooleanArray",
-			ID:   "test_response_boolean_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanArrayRequest(r)
@@ -49508,6 +51013,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseBooleanArray",
 			OperationID:   "test_response_boolean_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49573,6 +51079,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBooleanArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49580,8 +51087,9 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBooleanArrayArray",
-			ID:   "test_response_boolean_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanArrayArrayRequest(r)
@@ -49606,6 +51114,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseBooleanArrayArray",
 			OperationID:   "test_response_boolean_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49671,6 +51180,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBooleanNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49678,8 +51188,9 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBooleanNullable",
-			ID:   "test_response_boolean_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanNullableRequest(r)
@@ -49704,6 +51215,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseBooleanNullable",
 			OperationID:   "test_response_boolean_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49769,6 +51281,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBooleanNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49776,8 +51289,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBooleanNullableArray",
-			ID:   "test_response_boolean_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanNullableArrayRequest(r)
@@ -49802,6 +51316,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseBooleanNullableArray",
 			OperationID:   "test_response_boolean_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49867,6 +51382,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseBooleanNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49874,8 +51390,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseBooleanNullableArrayArray",
-			ID:   "test_response_boolean_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseBooleanNullableArrayArrayRequest(r)
@@ -49900,6 +51417,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseBooleanNullableArrayArray",
 			OperationID:   "test_response_boolean_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -49965,6 +51483,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseEmptyStruct
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -49972,8 +51491,9 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseEmptyStruct",
-			ID:   "test_response_EmptyStruct",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseEmptyStructRequest(r)
@@ -49998,6 +51518,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseEmptyStruct",
 			OperationID:   "test_response_EmptyStruct",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50063,6 +51584,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseFormatTest
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50070,8 +51592,9 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseFormatTest",
-			ID:   "test_response_FormatTest",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseFormatTestRequest(r)
@@ -50096,6 +51619,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseFormatTest",
 			OperationID:   "test_response_FormatTest",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50161,6 +51685,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseInteger
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50168,8 +51693,9 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseInteger",
-			ID:   "test_response_integer",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerRequest(r)
@@ -50194,6 +51720,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "TestResponseInteger",
 			OperationID:   "test_response_integer",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50259,6 +51786,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50266,8 +51794,9 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerArray",
-			ID:   "test_response_integer_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerArrayRequest(r)
@@ -50292,6 +51821,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseIntegerArray",
 			OperationID:   "test_response_integer_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50357,6 +51887,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50364,8 +51895,9 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerArrayArray",
-			ID:   "test_response_integer_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerArrayArrayRequest(r)
@@ -50390,6 +51922,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseIntegerArrayArray",
 			OperationID:   "test_response_integer_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50455,6 +51988,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50462,8 +51996,9 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32",
-			ID:   "test_response_integer_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32Request(r)
@@ -50488,6 +52023,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32",
 			OperationID:   "test_response_integer_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50553,6 +52089,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50560,8 +52097,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32Array",
-			ID:   "test_response_integer_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32ArrayRequest(r)
@@ -50586,6 +52124,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32Array",
 			OperationID:   "test_response_integer_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50651,6 +52190,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50658,8 +52198,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32ArrayArray",
-			ID:   "test_response_integer_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32ArrayArrayRequest(r)
@@ -50684,6 +52225,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32ArrayArray",
 			OperationID:   "test_response_integer_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50749,6 +52291,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50756,8 +52299,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32Nullable",
-			ID:   "test_response_integer_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableRequest(r)
@@ -50782,6 +52326,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32Nullable",
 			OperationID:   "test_response_integer_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50847,6 +52392,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50854,8 +52400,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32NullableArray",
-			ID:   "test_response_integer_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayRequest(r)
@@ -50880,6 +52427,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32NullableArray",
 			OperationID:   "test_response_integer_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -50945,6 +52493,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -50952,8 +52501,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt32NullableArrayArray",
-			ID:   "test_response_integer_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayArrayRequest(r)
@@ -50978,6 +52528,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt32NullableArrayArray",
 			OperationID:   "test_response_integer_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51043,6 +52594,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51050,8 +52602,9 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64",
-			ID:   "test_response_integer_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64Request(r)
@@ -51076,6 +52629,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64",
 			OperationID:   "test_response_integer_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51141,6 +52695,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51148,8 +52703,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64Array",
-			ID:   "test_response_integer_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64ArrayRequest(r)
@@ -51174,6 +52730,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64Array",
 			OperationID:   "test_response_integer_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51239,6 +52796,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51246,8 +52804,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64ArrayArray",
-			ID:   "test_response_integer_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64ArrayArrayRequest(r)
@@ -51272,6 +52831,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64ArrayArray",
 			OperationID:   "test_response_integer_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51337,6 +52897,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51344,8 +52905,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64Nullable",
-			ID:   "test_response_integer_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableRequest(r)
@@ -51370,6 +52932,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64Nullable",
 			OperationID:   "test_response_integer_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51435,6 +52998,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51442,8 +53006,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64NullableArray",
-			ID:   "test_response_integer_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayRequest(r)
@@ -51468,6 +53033,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64NullableArray",
 			OperationID:   "test_response_integer_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51533,6 +53099,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51540,8 +53107,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerInt64NullableArrayArray",
-			ID:   "test_response_integer_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayArrayRequest(r)
@@ -51566,6 +53134,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseIntegerInt64NullableArrayArray",
 			OperationID:   "test_response_integer_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51631,6 +53200,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51638,8 +53208,9 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerNullable",
-			ID:   "test_response_integer_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerNullableRequest(r)
@@ -51664,6 +53235,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseIntegerNullable",
 			OperationID:   "test_response_integer_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51729,6 +53301,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51736,8 +53309,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerNullableArray",
-			ID:   "test_response_integer_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerNullableArrayRequest(r)
@@ -51762,6 +53336,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseIntegerNullableArray",
 			OperationID:   "test_response_integer_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51827,6 +53402,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51834,8 +53410,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerNullableArrayArray",
-			ID:   "test_response_integer_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerNullableArrayArrayRequest(r)
@@ -51860,6 +53437,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseIntegerNullableArrayArray",
 			OperationID:   "test_response_integer_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -51925,6 +53503,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51932,8 +53511,9 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint",
-			ID:   "test_response_integer_uint",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintRequest(r)
@@ -51958,6 +53538,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint",
 			OperationID:   "test_response_integer_uint",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52023,6 +53604,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52030,8 +53612,9 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32",
-			ID:   "test_response_integer_uint32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32Request(r)
@@ -52056,6 +53639,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32",
 			OperationID:   "test_response_integer_uint32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52121,6 +53705,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52128,8 +53713,9 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32Array",
-			ID:   "test_response_integer_uint32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32ArrayRequest(r)
@@ -52154,6 +53740,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32Array",
 			OperationID:   "test_response_integer_uint32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52219,6 +53806,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52226,8 +53814,9 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32ArrayArray",
-			ID:   "test_response_integer_uint32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32ArrayArrayRequest(r)
@@ -52252,6 +53841,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32ArrayArray",
 			OperationID:   "test_response_integer_uint32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52317,6 +53907,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52324,8 +53915,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32Nullable",
-			ID:   "test_response_integer_uint32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32NullableRequest(r)
@@ -52350,6 +53942,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32Nullable",
 			OperationID:   "test_response_integer_uint32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52415,6 +54008,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52422,8 +54016,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32NullableArray",
-			ID:   "test_response_integer_uint32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32NullableArrayRequest(r)
@@ -52448,6 +54043,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32NullableArray",
 			OperationID:   "test_response_integer_uint32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52513,6 +54109,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52520,8 +54117,9 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint32NullableArrayArray",
-			ID:   "test_response_integer_uint32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint32NullableArrayArrayRequest(r)
@@ -52546,6 +54144,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint32NullableArrayArray",
 			OperationID:   "test_response_integer_uint32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52611,6 +54210,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52618,8 +54218,9 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64",
-			ID:   "test_response_integer_uint64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64Request(r)
@@ -52644,6 +54245,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64",
 			OperationID:   "test_response_integer_uint64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52709,6 +54311,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52716,8 +54319,9 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64Array",
-			ID:   "test_response_integer_uint64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64ArrayRequest(r)
@@ -52742,6 +54346,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64Array",
 			OperationID:   "test_response_integer_uint64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52807,6 +54412,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52814,8 +54420,9 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64ArrayArray",
-			ID:   "test_response_integer_uint64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64ArrayArrayRequest(r)
@@ -52840,6 +54447,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64ArrayArray",
 			OperationID:   "test_response_integer_uint64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -52905,6 +54513,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -52912,8 +54521,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64Nullable",
-			ID:   "test_response_integer_uint64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64NullableRequest(r)
@@ -52938,6 +54548,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64Nullable",
 			OperationID:   "test_response_integer_uint64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53003,6 +54614,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53010,8 +54622,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64NullableArray",
-			ID:   "test_response_integer_uint64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64NullableArrayRequest(r)
@@ -53036,6 +54649,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64NullableArray",
 			OperationID:   "test_response_integer_uint64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53101,6 +54715,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUint64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53108,8 +54723,9 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUint64NullableArrayArray",
-			ID:   "test_response_integer_uint64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUint64NullableArrayArrayRequest(r)
@@ -53134,6 +54750,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUint64NullableArrayArray",
 			OperationID:   "test_response_integer_uint64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53199,6 +54816,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUintArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53206,8 +54824,9 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUintArray",
-			ID:   "test_response_integer_uint_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintArrayRequest(r)
@@ -53232,6 +54851,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUintArray",
 			OperationID:   "test_response_integer_uint_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53297,6 +54917,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUintArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53304,8 +54925,9 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUintArrayArray",
-			ID:   "test_response_integer_uint_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintArrayArrayRequest(r)
@@ -53330,6 +54952,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUintArrayArray",
 			OperationID:   "test_response_integer_uint_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53395,6 +55018,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUintNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53402,8 +55026,9 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUintNullable",
-			ID:   "test_response_integer_uint_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintNullableRequest(r)
@@ -53428,6 +55053,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUintNullable",
 			OperationID:   "test_response_integer_uint_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53493,6 +55119,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUintNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53500,8 +55127,9 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUintNullableArray",
-			ID:   "test_response_integer_uint_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintNullableArrayRequest(r)
@@ -53526,6 +55154,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUintNullableArray",
 			OperationID:   "test_response_integer_uint_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53591,6 +55220,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUintNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53598,8 +55228,9 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUintNullableArrayArray",
-			ID:   "test_response_integer_uint_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUintNullableArrayArrayRequest(r)
@@ -53624,6 +55255,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUintNullableArrayArray",
 			OperationID:   "test_response_integer_uint_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53689,6 +55321,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53696,8 +55329,9 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnix",
-			ID:   "test_response_integer_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixRequest(r)
@@ -53722,6 +55356,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnix",
 			OperationID:   "test_response_integer_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53787,6 +55422,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53794,8 +55430,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixArray",
-			ID:   "test_response_integer_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixArrayRequest(r)
@@ -53820,6 +55457,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixArray",
 			OperationID:   "test_response_integer_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53885,6 +55523,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53892,8 +55531,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixArrayArray",
-			ID:   "test_response_integer_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixArrayArrayRequest(r)
@@ -53918,6 +55558,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixArrayArray",
 			OperationID:   "test_response_integer_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -53983,6 +55624,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -53990,8 +55632,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicro",
-			ID:   "test_response_integer_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroRequest(r)
@@ -54016,6 +55659,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicro",
 			OperationID:   "test_response_integer_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54081,6 +55725,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54088,8 +55733,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicroArray",
-			ID:   "test_response_integer_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroArrayRequest(r)
@@ -54114,6 +55760,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicroArray",
 			OperationID:   "test_response_integer_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54179,6 +55826,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54186,8 +55834,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicroArrayArray",
-			ID:   "test_response_integer_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroArrayArrayRequest(r)
@@ -54212,6 +55861,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicroArrayArray",
 			OperationID:   "test_response_integer_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54277,6 +55927,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54284,8 +55935,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicroNullable",
-			ID:   "test_response_integer_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroNullableRequest(r)
@@ -54310,6 +55962,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicroNullable",
 			OperationID:   "test_response_integer_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54375,6 +56028,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54382,8 +56036,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicroNullableArray",
-			ID:   "test_response_integer_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroNullableArrayRequest(r)
@@ -54408,6 +56063,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicroNullableArray",
 			OperationID:   "test_response_integer_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54473,6 +56129,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54480,8 +56137,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMicroNullableArrayArray",
-			ID:   "test_response_integer_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r)
@@ -54506,6 +56164,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_response_integer_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54571,6 +56230,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54578,8 +56238,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilli",
-			ID:   "test_response_integer_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliRequest(r)
@@ -54604,6 +56265,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilli",
 			OperationID:   "test_response_integer_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54669,6 +56331,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54676,8 +56339,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilliArray",
-			ID:   "test_response_integer_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliArrayRequest(r)
@@ -54702,6 +56366,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilliArray",
 			OperationID:   "test_response_integer_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54767,6 +56432,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54774,8 +56440,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilliArrayArray",
-			ID:   "test_response_integer_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliArrayArrayRequest(r)
@@ -54800,6 +56467,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilliArrayArray",
 			OperationID:   "test_response_integer_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54865,6 +56533,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54872,8 +56541,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilliNullable",
-			ID:   "test_response_integer_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliNullableRequest(r)
@@ -54898,6 +56568,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilliNullable",
 			OperationID:   "test_response_integer_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -54963,6 +56634,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -54970,8 +56642,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilliNullableArray",
-			ID:   "test_response_integer_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliNullableArrayRequest(r)
@@ -54996,6 +56669,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilliNullableArray",
 			OperationID:   "test_response_integer_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55061,6 +56735,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55068,8 +56743,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixMilliNullableArrayArray",
-			ID:   "test_response_integer_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r)
@@ -55094,6 +56770,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_response_integer_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55159,6 +56836,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55166,8 +56844,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNano",
-			ID:   "test_response_integer_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoRequest(r)
@@ -55192,6 +56871,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNano",
 			OperationID:   "test_response_integer_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55257,6 +56937,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55264,8 +56945,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNanoArray",
-			ID:   "test_response_integer_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoArrayRequest(r)
@@ -55290,6 +56972,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNanoArray",
 			OperationID:   "test_response_integer_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55355,6 +57038,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55362,8 +57046,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNanoArrayArray",
-			ID:   "test_response_integer_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoArrayArrayRequest(r)
@@ -55388,6 +57073,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNanoArrayArray",
 			OperationID:   "test_response_integer_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55453,6 +57139,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55460,8 +57147,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNanoNullable",
-			ID:   "test_response_integer_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoNullableRequest(r)
@@ -55486,6 +57174,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNanoNullable",
 			OperationID:   "test_response_integer_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55551,6 +57240,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55558,8 +57248,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNanoNullableArray",
-			ID:   "test_response_integer_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoNullableArrayRequest(r)
@@ -55584,6 +57275,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNanoNullableArray",
 			OperationID:   "test_response_integer_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55649,6 +57341,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55656,8 +57349,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNanoNullableArrayArray",
-			ID:   "test_response_integer_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r)
@@ -55682,6 +57376,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_response_integer_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55747,6 +57442,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55754,8 +57450,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNullable",
-			ID:   "test_response_integer_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNullableRequest(r)
@@ -55780,6 +57477,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNullable",
 			OperationID:   "test_response_integer_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55845,6 +57543,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55852,8 +57551,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNullableArray",
-			ID:   "test_response_integer_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNullableArrayRequest(r)
@@ -55878,6 +57578,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNullableArray",
 			OperationID:   "test_response_integer_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -55943,6 +57644,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -55950,8 +57652,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixNullableArrayArray",
-			ID:   "test_response_integer_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixNullableArrayArrayRequest(r)
@@ -55976,6 +57679,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixNullableArrayArray",
 			OperationID:   "test_response_integer_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56041,6 +57745,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56048,8 +57753,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSeconds",
-			ID:   "test_response_integer_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsRequest(r)
@@ -56074,6 +57780,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSeconds",
 			OperationID:   "test_response_integer_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56139,6 +57846,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56146,8 +57854,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSecondsArray",
-			ID:   "test_response_integer_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsArrayRequest(r)
@@ -56172,6 +57881,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSecondsArray",
 			OperationID:   "test_response_integer_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56237,6 +57947,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56244,8 +57955,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSecondsArrayArray",
-			ID:   "test_response_integer_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r)
@@ -56270,6 +57982,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSecondsArrayArray",
 			OperationID:   "test_response_integer_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56335,6 +58048,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56342,8 +58056,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSecondsNullable",
-			ID:   "test_response_integer_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsNullableRequest(r)
@@ -56368,6 +58083,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSecondsNullable",
 			OperationID:   "test_response_integer_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56433,6 +58149,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56440,8 +58157,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSecondsNullableArray",
-			ID:   "test_response_integer_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r)
@@ -56466,6 +58184,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSecondsNullableArray",
 			OperationID:   "test_response_integer_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56531,6 +58250,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseIntegerUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56538,8 +58258,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseIntegerUnixSecondsNullableArrayArray",
-			ID:   "test_response_integer_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r)
@@ -56564,6 +58285,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 			Context:       ctx,
 			OperationName: "TestResponseIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_response_integer_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56629,6 +58351,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNull
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56636,8 +58359,9 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNull",
-			ID:   "test_response_null",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullRequest(r)
@@ -56662,6 +58386,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 			Context:       ctx,
 			OperationName: "TestResponseNull",
 			OperationID:   "test_response_null",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56727,6 +58452,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNullArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56734,8 +58460,9 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNullArray",
-			ID:   "test_response_null_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullArrayRequest(r)
@@ -56760,6 +58487,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestResponseNullArray",
 			OperationID:   "test_response_null_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56825,6 +58553,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNullArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56832,8 +58561,9 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNullArrayArray",
-			ID:   "test_response_null_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullArrayArrayRequest(r)
@@ -56858,6 +58588,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseNullArrayArray",
 			OperationID:   "test_response_null_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -56923,6 +58654,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNullNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -56930,8 +58662,9 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNullNullable",
-			ID:   "test_response_null_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullNullableRequest(r)
@@ -56956,6 +58689,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseNullNullable",
 			OperationID:   "test_response_null_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57021,6 +58755,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNullNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57028,8 +58763,9 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNullNullableArray",
-			ID:   "test_response_null_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullNullableArrayRequest(r)
@@ -57054,6 +58790,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseNullNullableArray",
 			OperationID:   "test_response_null_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57119,6 +58856,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNullNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57126,8 +58864,9 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNullNullableArrayArray",
-			ID:   "test_response_null_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNullNullableArrayArrayRequest(r)
@@ -57152,6 +58891,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseNullNullableArrayArray",
 			OperationID:   "test_response_null_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57217,6 +58957,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumber
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57224,8 +58965,9 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumber",
-			ID:   "test_response_number",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberRequest(r)
@@ -57250,6 +58992,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestResponseNumber",
 			OperationID:   "test_response_number",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57315,6 +59058,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57322,8 +59066,9 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberArray",
-			ID:   "test_response_number_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberArrayRequest(r)
@@ -57348,6 +59093,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseNumberArray",
 			OperationID:   "test_response_number_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57413,6 +59159,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57420,8 +59167,9 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberArrayArray",
-			ID:   "test_response_number_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberArrayArrayRequest(r)
@@ -57446,6 +59194,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseNumberArrayArray",
 			OperationID:   "test_response_number_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57511,6 +59260,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDouble
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57518,8 +59268,9 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDouble",
-			ID:   "test_response_number_double",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleRequest(r)
@@ -57544,6 +59295,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseNumberDouble",
 			OperationID:   "test_response_number_double",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57609,6 +59361,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDoubleArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57616,8 +59369,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDoubleArray",
-			ID:   "test_response_number_double_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleArrayRequest(r)
@@ -57642,6 +59396,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseNumberDoubleArray",
 			OperationID:   "test_response_number_double_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57707,6 +59462,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDoubleArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57714,8 +59470,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDoubleArrayArray",
-			ID:   "test_response_number_double_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleArrayArrayRequest(r)
@@ -57740,6 +59497,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseNumberDoubleArrayArray",
 			OperationID:   "test_response_number_double_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57805,6 +59563,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDoubleNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57812,8 +59571,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDoubleNullable",
-			ID:   "test_response_number_double_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableRequest(r)
@@ -57838,6 +59598,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseNumberDoubleNullable",
 			OperationID:   "test_response_number_double_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -57903,6 +59664,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDoubleNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -57910,8 +59672,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDoubleNullableArray",
-			ID:   "test_response_number_double_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayRequest(r)
@@ -57936,6 +59699,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseNumberDoubleNullableArray",
 			OperationID:   "test_response_number_double_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58001,6 +59765,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberDoubleNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58008,8 +59773,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberDoubleNullableArrayArray",
-			ID:   "test_response_number_double_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayArrayRequest(r)
@@ -58034,6 +59800,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseNumberDoubleNullableArrayArray",
 			OperationID:   "test_response_number_double_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58099,6 +59866,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloat
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58106,8 +59874,9 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloat",
-			ID:   "test_response_number_float",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatRequest(r)
@@ -58132,6 +59901,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloat",
 			OperationID:   "test_response_number_float",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58197,6 +59967,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloatArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58204,8 +59975,9 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloatArray",
-			ID:   "test_response_number_float_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatArrayRequest(r)
@@ -58230,6 +60002,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloatArray",
 			OperationID:   "test_response_number_float_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58295,6 +60068,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloatArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58302,8 +60076,9 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloatArrayArray",
-			ID:   "test_response_number_float_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatArrayArrayRequest(r)
@@ -58328,6 +60103,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloatArrayArray",
 			OperationID:   "test_response_number_float_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58393,6 +60169,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloatNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58400,8 +60177,9 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloatNullable",
-			ID:   "test_response_number_float_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableRequest(r)
@@ -58426,6 +60204,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloatNullable",
 			OperationID:   "test_response_number_float_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58491,6 +60270,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloatNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58498,8 +60278,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloatNullableArray",
-			ID:   "test_response_number_float_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableArrayRequest(r)
@@ -58524,6 +60305,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloatNullableArray",
 			OperationID:   "test_response_number_float_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58589,6 +60371,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberFloatNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58596,8 +60379,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberFloatNullableArrayArray",
-			ID:   "test_response_number_float_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableArrayArrayRequest(r)
@@ -58622,6 +60406,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseNumberFloatNullableArrayArray",
 			OperationID:   "test_response_number_float_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58687,6 +60472,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58694,8 +60480,9 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32",
-			ID:   "test_response_number_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32Request(r)
@@ -58720,6 +60507,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32",
 			OperationID:   "test_response_number_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58785,6 +60573,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58792,8 +60581,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32Array",
-			ID:   "test_response_number_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32ArrayRequest(r)
@@ -58818,6 +60608,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32Array",
 			OperationID:   "test_response_number_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58883,6 +60674,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58890,8 +60682,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32ArrayArray",
-			ID:   "test_response_number_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32ArrayArrayRequest(r)
@@ -58916,6 +60709,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32ArrayArray",
 			OperationID:   "test_response_number_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -58981,6 +60775,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58988,8 +60783,9 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32Nullable",
-			ID:   "test_response_number_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableRequest(r)
@@ -59014,6 +60810,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32Nullable",
 			OperationID:   "test_response_number_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59079,6 +60876,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59086,8 +60884,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32NullableArray",
-			ID:   "test_response_number_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableArrayRequest(r)
@@ -59112,6 +60911,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32NullableArray",
 			OperationID:   "test_response_number_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59177,6 +60977,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59184,8 +60985,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt32NullableArrayArray",
-			ID:   "test_response_number_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableArrayArrayRequest(r)
@@ -59210,6 +61012,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt32NullableArrayArray",
 			OperationID:   "test_response_number_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59275,6 +61078,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59282,8 +61086,9 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64",
-			ID:   "test_response_number_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64Request(r)
@@ -59308,6 +61113,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64",
 			OperationID:   "test_response_number_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59373,6 +61179,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59380,8 +61187,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64Array",
-			ID:   "test_response_number_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64ArrayRequest(r)
@@ -59406,6 +61214,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64Array",
 			OperationID:   "test_response_number_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59471,6 +61280,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59478,8 +61288,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64ArrayArray",
-			ID:   "test_response_number_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64ArrayArrayRequest(r)
@@ -59504,6 +61315,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64ArrayArray",
 			OperationID:   "test_response_number_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59569,6 +61381,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59576,8 +61389,9 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64Nullable",
-			ID:   "test_response_number_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableRequest(r)
@@ -59602,6 +61416,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64Nullable",
 			OperationID:   "test_response_number_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59667,6 +61482,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59674,8 +61490,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64NullableArray",
-			ID:   "test_response_number_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableArrayRequest(r)
@@ -59700,6 +61517,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64NullableArray",
 			OperationID:   "test_response_number_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59765,6 +61583,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59772,8 +61591,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberInt64NullableArrayArray",
-			ID:   "test_response_number_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableArrayArrayRequest(r)
@@ -59798,6 +61618,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseNumberInt64NullableArrayArray",
 			OperationID:   "test_response_number_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59863,6 +61684,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59870,8 +61692,9 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberNullable",
-			ID:   "test_response_number_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberNullableRequest(r)
@@ -59896,6 +61719,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseNumberNullable",
 			OperationID:   "test_response_number_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -59961,6 +61785,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59968,8 +61793,9 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberNullableArray",
-			ID:   "test_response_number_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberNullableArrayRequest(r)
@@ -59994,6 +61820,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseNumberNullableArray",
 			OperationID:   "test_response_number_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60059,6 +61886,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseNumberNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60066,8 +61894,9 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseNumberNullableArrayArray",
-			ID:   "test_response_number_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseNumberNullableArrayArrayRequest(r)
@@ -60092,6 +61921,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseNumberNullableArrayArray",
 			OperationID:   "test_response_number_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60157,6 +61987,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseString
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60164,8 +61995,9 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseString",
-			ID:   "test_response_string",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringRequest(r)
@@ -60190,6 +62022,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 			Context:       ctx,
 			OperationName: "TestResponseString",
 			OperationID:   "test_response_string",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60255,6 +62088,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60262,8 +62096,9 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringArray",
-			ID:   "test_response_string_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringArrayRequest(r)
@@ -60288,6 +62123,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseStringArray",
 			OperationID:   "test_response_string_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60353,6 +62189,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60360,8 +62197,9 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringArrayArray",
-			ID:   "test_response_string_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringArrayArrayRequest(r)
@@ -60386,6 +62224,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseStringArrayArray",
 			OperationID:   "test_response_string_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60451,6 +62290,7 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60458,8 +62298,9 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64",
-			ID:   "test_response_string_base64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64Request(r)
@@ -60484,6 +62325,7 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64",
 			OperationID:   "test_response_string_base64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60549,6 +62391,7 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60556,8 +62399,9 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64Array",
-			ID:   "test_response_string_base64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64ArrayRequest(r)
@@ -60582,6 +62426,7 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64Array",
 			OperationID:   "test_response_string_base64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60647,6 +62492,7 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60654,8 +62500,9 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64ArrayArray",
-			ID:   "test_response_string_base64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64ArrayArrayRequest(r)
@@ -60680,6 +62527,7 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64ArrayArray",
 			OperationID:   "test_response_string_base64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60745,6 +62593,7 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60752,8 +62601,9 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64Nullable",
-			ID:   "test_response_string_base64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64NullableRequest(r)
@@ -60778,6 +62628,7 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64Nullable",
 			OperationID:   "test_response_string_base64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60843,6 +62694,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60850,8 +62702,9 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64NullableArray",
-			ID:   "test_response_string_base64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64NullableArrayRequest(r)
@@ -60876,6 +62729,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64NullableArray",
 			OperationID:   "test_response_string_base64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -60941,6 +62795,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBase64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -60948,8 +62803,9 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBase64NullableArrayArray",
-			ID:   "test_response_string_base64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBase64NullableArrayArrayRequest(r)
@@ -60974,6 +62830,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseStringBase64NullableArrayArray",
 			OperationID:   "test_response_string_base64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61039,6 +62896,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinary
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61046,8 +62904,9 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinary",
-			ID:   "test_response_string_binary",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryRequest(r)
@@ -61072,6 +62931,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 			Context:       ctx,
 			OperationName: "TestResponseStringBinary",
 			OperationID:   "test_response_string_binary",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61137,6 +62997,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinaryArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61144,8 +63005,9 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinaryArray",
-			ID:   "test_response_string_binary_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryArrayRequest(r)
@@ -61170,6 +63032,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseStringBinaryArray",
 			OperationID:   "test_response_string_binary_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61235,6 +63098,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinaryArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61242,8 +63106,9 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinaryArrayArray",
-			ID:   "test_response_string_binary_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryArrayArrayRequest(r)
@@ -61268,6 +63133,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringBinaryArrayArray",
 			OperationID:   "test_response_string_binary_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61333,6 +63199,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinaryNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61340,8 +63207,9 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinaryNullable",
-			ID:   "test_response_string_binary_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableRequest(r)
@@ -61366,6 +63234,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringBinaryNullable",
 			OperationID:   "test_response_string_binary_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61431,6 +63300,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinaryNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61438,8 +63308,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinaryNullableArray",
-			ID:   "test_response_string_binary_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableArrayRequest(r)
@@ -61464,6 +63335,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseStringBinaryNullableArray",
 			OperationID:   "test_response_string_binary_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61529,6 +63401,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringBinaryNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61536,8 +63409,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringBinaryNullableArrayArray",
-			ID:   "test_response_string_binary_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableArrayArrayRequest(r)
@@ -61562,6 +63436,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseStringBinaryNullableArrayArray",
 			OperationID:   "test_response_string_binary_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61627,6 +63502,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByte
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61634,8 +63510,9 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByte",
-			ID:   "test_response_string_byte",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteRequest(r)
@@ -61660,6 +63537,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringByte",
 			OperationID:   "test_response_string_byte",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61725,6 +63603,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByteArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61732,8 +63611,9 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByteArray",
-			ID:   "test_response_string_byte_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteArrayRequest(r)
@@ -61758,6 +63638,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringByteArray",
 			OperationID:   "test_response_string_byte_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61823,6 +63704,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByteArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61830,8 +63712,9 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByteArrayArray",
-			ID:   "test_response_string_byte_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteArrayArrayRequest(r)
@@ -61856,6 +63739,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringByteArrayArray",
 			OperationID:   "test_response_string_byte_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -61921,6 +63805,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByteNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -61928,8 +63813,9 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByteNullable",
-			ID:   "test_response_string_byte_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteNullableRequest(r)
@@ -61954,6 +63840,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringByteNullable",
 			OperationID:   "test_response_string_byte_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62019,6 +63906,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByteNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62026,8 +63914,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByteNullableArray",
-			ID:   "test_response_string_byte_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteNullableArrayRequest(r)
@@ -62052,6 +63941,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringByteNullableArray",
 			OperationID:   "test_response_string_byte_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62117,6 +64007,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringByteNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62124,8 +64015,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringByteNullableArrayArray",
-			ID:   "test_response_string_byte_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringByteNullableArrayArrayRequest(r)
@@ -62150,6 +64042,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringByteNullableArrayArray",
 			OperationID:   "test_response_string_byte_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62215,6 +64108,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDate
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62222,8 +64116,9 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDate",
-			ID:   "test_response_string_date",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateRequest(r)
@@ -62248,6 +64143,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringDate",
 			OperationID:   "test_response_string_date",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62313,6 +64209,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62320,8 +64217,9 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateArray",
-			ID:   "test_response_string_date_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateArrayRequest(r)
@@ -62346,6 +64244,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringDateArray",
 			OperationID:   "test_response_string_date_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62411,6 +64310,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62418,8 +64318,9 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateArrayArray",
-			ID:   "test_response_string_date_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateArrayArrayRequest(r)
@@ -62444,6 +64345,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringDateArrayArray",
 			OperationID:   "test_response_string_date_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62509,6 +64411,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62516,8 +64419,9 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateNullable",
-			ID:   "test_response_string_date_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateNullableRequest(r)
@@ -62542,6 +64446,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringDateNullable",
 			OperationID:   "test_response_string_date_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62607,6 +64512,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62614,8 +64520,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateNullableArray",
-			ID:   "test_response_string_date_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateNullableArrayRequest(r)
@@ -62640,6 +64547,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringDateNullableArray",
 			OperationID:   "test_response_string_date_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62705,6 +64613,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62712,8 +64621,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateNullableArrayArray",
-			ID:   "test_response_string_date_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateNullableArrayArrayRequest(r)
@@ -62738,6 +64648,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringDateNullableArrayArray",
 			OperationID:   "test_response_string_date_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62803,6 +64714,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62810,8 +64722,9 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTime",
-			ID:   "test_response_string_date-time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeRequest(r)
@@ -62836,6 +64749,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTime",
 			OperationID:   "test_response_string_date-time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62901,6 +64815,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -62908,8 +64823,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTimeArray",
-			ID:   "test_response_string_date-time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeArrayRequest(r)
@@ -62934,6 +64850,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTimeArray",
 			OperationID:   "test_response_string_date-time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -62999,6 +64916,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63006,8 +64924,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTimeArrayArray",
-			ID:   "test_response_string_date-time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeArrayArrayRequest(r)
@@ -63032,6 +64951,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTimeArrayArray",
 			OperationID:   "test_response_string_date-time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63097,6 +65017,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63104,8 +65025,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTimeNullable",
-			ID:   "test_response_string_date-time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableRequest(r)
@@ -63130,6 +65052,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTimeNullable",
 			OperationID:   "test_response_string_date-time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63195,6 +65118,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63202,8 +65126,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTimeNullableArray",
-			ID:   "test_response_string_date-time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayRequest(r)
@@ -63228,6 +65153,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTimeNullableArray",
 			OperationID:   "test_response_string_date-time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63293,6 +65219,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDateTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63300,8 +65227,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDateTimeNullableArrayArray",
-			ID:   "test_response_string_date-time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayArrayRequest(r)
@@ -63326,6 +65254,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestResponseStringDateTimeNullableArrayArray",
 			OperationID:   "test_response_string_date-time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63391,6 +65320,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDuration
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63398,8 +65328,9 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDuration",
-			ID:   "test_response_string_duration",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationRequest(r)
@@ -63424,6 +65355,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringDuration",
 			OperationID:   "test_response_string_duration",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63489,6 +65421,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDurationArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63496,8 +65429,9 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDurationArray",
-			ID:   "test_response_string_duration_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationArrayRequest(r)
@@ -63522,6 +65456,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringDurationArray",
 			OperationID:   "test_response_string_duration_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63587,6 +65522,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDurationArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63594,8 +65530,9 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDurationArrayArray",
-			ID:   "test_response_string_duration_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationArrayArrayRequest(r)
@@ -63620,6 +65557,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringDurationArrayArray",
 			OperationID:   "test_response_string_duration_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63685,6 +65623,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDurationNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63692,8 +65631,9 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDurationNullable",
-			ID:   "test_response_string_duration_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationNullableRequest(r)
@@ -63718,6 +65658,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringDurationNullable",
 			OperationID:   "test_response_string_duration_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63783,6 +65724,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDurationNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63790,8 +65732,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDurationNullableArray",
-			ID:   "test_response_string_duration_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationNullableArrayRequest(r)
@@ -63816,6 +65759,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringDurationNullableArray",
 			OperationID:   "test_response_string_duration_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63881,6 +65825,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringDurationNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63888,8 +65833,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringDurationNullableArrayArray",
-			ID:   "test_response_string_duration_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringDurationNullableArrayArrayRequest(r)
@@ -63914,6 +65860,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestResponseStringDurationNullableArrayArray",
 			OperationID:   "test_response_string_duration_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -63979,6 +65926,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmail
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -63986,8 +65934,9 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmail",
-			ID:   "test_response_string_email",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailRequest(r)
@@ -64012,6 +65961,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseStringEmail",
 			OperationID:   "test_response_string_email",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64077,6 +66027,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmailArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64084,8 +66035,9 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmailArray",
-			ID:   "test_response_string_email_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailArrayRequest(r)
@@ -64110,6 +66062,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseStringEmailArray",
 			OperationID:   "test_response_string_email_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64175,6 +66128,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmailArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64182,8 +66136,9 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmailArrayArray",
-			ID:   "test_response_string_email_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailArrayArrayRequest(r)
@@ -64208,6 +66163,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseStringEmailArrayArray",
 			OperationID:   "test_response_string_email_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64273,6 +66229,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmailNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64280,8 +66237,9 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmailNullable",
-			ID:   "test_response_string_email_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailNullableRequest(r)
@@ -64306,6 +66264,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringEmailNullable",
 			OperationID:   "test_response_string_email_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64371,6 +66330,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmailNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64378,8 +66338,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmailNullableArray",
-			ID:   "test_response_string_email_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailNullableArrayRequest(r)
@@ -64404,6 +66365,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringEmailNullableArray",
 			OperationID:   "test_response_string_email_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64469,6 +66431,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringEmailNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64476,8 +66439,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringEmailNullableArrayArray",
-			ID:   "test_response_string_email_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringEmailNullableArrayArrayRequest(r)
@@ -64502,6 +66466,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseStringEmailNullableArrayArray",
 			OperationID:   "test_response_string_email_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64567,6 +66532,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostname
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64574,8 +66540,9 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostname",
-			ID:   "test_response_string_hostname",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameRequest(r)
@@ -64600,6 +66567,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringHostname",
 			OperationID:   "test_response_string_hostname",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64665,6 +66633,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostnameArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64672,8 +66641,9 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostnameArray",
-			ID:   "test_response_string_hostname_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameArrayRequest(r)
@@ -64698,6 +66668,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringHostnameArray",
 			OperationID:   "test_response_string_hostname_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64763,6 +66734,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostnameArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64770,8 +66742,9 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostnameArrayArray",
-			ID:   "test_response_string_hostname_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameArrayArrayRequest(r)
@@ -64796,6 +66769,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringHostnameArrayArray",
 			OperationID:   "test_response_string_hostname_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64861,6 +66835,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostnameNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64868,8 +66843,9 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostnameNullable",
-			ID:   "test_response_string_hostname_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableRequest(r)
@@ -64894,6 +66870,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringHostnameNullable",
 			OperationID:   "test_response_string_hostname_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -64959,6 +66936,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostnameNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -64966,8 +66944,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostnameNullableArray",
-			ID:   "test_response_string_hostname_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableArrayRequest(r)
@@ -64992,6 +66971,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringHostnameNullableArray",
 			OperationID:   "test_response_string_hostname_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65057,6 +67037,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringHostnameNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65064,8 +67045,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringHostnameNullableArrayArray",
-			ID:   "test_response_string_hostname_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableArrayArrayRequest(r)
@@ -65090,6 +67072,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestResponseStringHostnameNullableArrayArray",
 			OperationID:   "test_response_string_hostname_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65155,6 +67138,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIP
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65162,8 +67146,9 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIP",
-			ID:   "test_response_string_ip",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPRequest(r)
@@ -65188,6 +67173,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "TestResponseStringIP",
 			OperationID:   "test_response_string_ip",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65253,6 +67239,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIPArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65260,8 +67247,9 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIPArray",
-			ID:   "test_response_string_ip_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPArrayRequest(r)
@@ -65286,6 +67274,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 			Context:       ctx,
 			OperationName: "TestResponseStringIPArray",
 			OperationID:   "test_response_string_ip_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65351,6 +67340,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIPArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65358,8 +67348,9 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIPArrayArray",
-			ID:   "test_response_string_ip_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPArrayArrayRequest(r)
@@ -65384,6 +67375,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringIPArrayArray",
 			OperationID:   "test_response_string_ip_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65449,6 +67441,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIPNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65456,8 +67449,9 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIPNullable",
-			ID:   "test_response_string_ip_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPNullableRequest(r)
@@ -65482,6 +67476,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseStringIPNullable",
 			OperationID:   "test_response_string_ip_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65547,6 +67542,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIPNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65554,8 +67550,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIPNullableArray",
-			ID:   "test_response_string_ip_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPNullableArrayRequest(r)
@@ -65580,6 +67577,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseStringIPNullableArray",
 			OperationID:   "test_response_string_ip_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65645,6 +67643,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIPNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65652,8 +67651,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIPNullableArrayArray",
-			ID:   "test_response_string_ip_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIPNullableArrayArrayRequest(r)
@@ -65678,6 +67678,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 			Context:       ctx,
 			OperationName: "TestResponseStringIPNullableArrayArray",
 			OperationID:   "test_response_string_ip_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65743,6 +67744,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65750,8 +67752,9 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32",
-			ID:   "test_response_string_int32",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32Request(r)
@@ -65776,6 +67779,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32",
 			OperationID:   "test_response_string_int32",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65841,6 +67845,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65848,8 +67853,9 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32Array",
-			ID:   "test_response_string_int32_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32ArrayRequest(r)
@@ -65874,6 +67880,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32Array",
 			OperationID:   "test_response_string_int32_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -65939,6 +67946,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -65946,8 +67954,9 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32ArrayArray",
-			ID:   "test_response_string_int32_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32ArrayArrayRequest(r)
@@ -65972,6 +67981,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32ArrayArray",
 			OperationID:   "test_response_string_int32_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66037,6 +68047,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66044,8 +68055,9 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32Nullable",
-			ID:   "test_response_string_int32_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32NullableRequest(r)
@@ -66070,6 +68082,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32Nullable",
 			OperationID:   "test_response_string_int32_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66135,6 +68148,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66142,8 +68156,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32NullableArray",
-			ID:   "test_response_string_int32_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32NullableArrayRequest(r)
@@ -66168,6 +68183,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32NullableArray",
 			OperationID:   "test_response_string_int32_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66233,6 +68249,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt32NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66240,8 +68257,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt32NullableArrayArray",
-			ID:   "test_response_string_int32_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt32NullableArrayArrayRequest(r)
@@ -66266,6 +68284,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseStringInt32NullableArrayArray",
 			OperationID:   "test_response_string_int32_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66331,6 +68350,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66338,8 +68358,9 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64",
-			ID:   "test_response_string_int64",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64Request(r)
@@ -66364,6 +68385,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64",
 			OperationID:   "test_response_string_int64",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66429,6 +68451,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66436,8 +68459,9 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64Array",
-			ID:   "test_response_string_int64_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64ArrayRequest(r)
@@ -66462,6 +68486,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64Array",
 			OperationID:   "test_response_string_int64_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66527,6 +68552,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66534,8 +68560,9 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64ArrayArray",
-			ID:   "test_response_string_int64_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64ArrayArrayRequest(r)
@@ -66560,6 +68587,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64ArrayArray",
 			OperationID:   "test_response_string_int64_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66625,6 +68653,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66632,8 +68661,9 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64Nullable",
-			ID:   "test_response_string_int64_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64NullableRequest(r)
@@ -66658,6 +68688,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64Nullable",
 			OperationID:   "test_response_string_int64_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66723,6 +68754,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66730,8 +68762,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64NullableArray",
-			ID:   "test_response_string_int64_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64NullableArrayRequest(r)
@@ -66756,6 +68789,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64NullableArray",
 			OperationID:   "test_response_string_int64_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66821,6 +68855,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringInt64NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66828,8 +68863,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringInt64NullableArrayArray",
-			ID:   "test_response_string_int64_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringInt64NullableArrayArrayRequest(r)
@@ -66854,6 +68890,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 			Context:       ctx,
 			OperationName: "TestResponseStringInt64NullableArrayArray",
 			OperationID:   "test_response_string_int64_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -66919,6 +68956,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -66926,8 +68964,9 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4",
-			ID:   "test_response_string_ipv4",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4Request(r)
@@ -66952,6 +68991,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4",
 			OperationID:   "test_response_string_ipv4",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67017,6 +69057,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67024,8 +69065,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4Array",
-			ID:   "test_response_string_ipv4_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4ArrayRequest(r)
@@ -67050,6 +69092,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4Array",
 			OperationID:   "test_response_string_ipv4_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67115,6 +69158,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67122,8 +69166,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4ArrayArray",
-			ID:   "test_response_string_ipv4_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4ArrayArrayRequest(r)
@@ -67148,6 +69193,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4ArrayArray",
 			OperationID:   "test_response_string_ipv4_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67213,6 +69259,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67220,8 +69267,9 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4Nullable",
-			ID:   "test_response_string_ipv4_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableRequest(r)
@@ -67246,6 +69294,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4Nullable",
 			OperationID:   "test_response_string_ipv4_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67311,6 +69360,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67318,8 +69368,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4NullableArray",
-			ID:   "test_response_string_ipv4_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableArrayRequest(r)
@@ -67344,6 +69395,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4NullableArray",
 			OperationID:   "test_response_string_ipv4_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67409,6 +69461,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv4NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67416,8 +69469,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv4NullableArrayArray",
-			ID:   "test_response_string_ipv4_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableArrayArrayRequest(r)
@@ -67442,6 +69496,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv4NullableArrayArray",
 			OperationID:   "test_response_string_ipv4_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67507,6 +69562,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67514,8 +69570,9 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6",
-			ID:   "test_response_string_ipv6",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6Request(r)
@@ -67540,6 +69597,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6",
 			OperationID:   "test_response_string_ipv6",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67605,6 +69663,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6Array
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67612,8 +69671,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6Array",
-			ID:   "test_response_string_ipv6_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6ArrayRequest(r)
@@ -67638,6 +69698,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6Array",
 			OperationID:   "test_response_string_ipv6_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67703,6 +69764,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6ArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67710,8 +69772,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6ArrayArray",
-			ID:   "test_response_string_ipv6_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6ArrayArrayRequest(r)
@@ -67736,6 +69799,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6ArrayArray",
 			OperationID:   "test_response_string_ipv6_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67801,6 +69865,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6Nullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67808,8 +69873,9 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6Nullable",
-			ID:   "test_response_string_ipv6_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableRequest(r)
@@ -67834,6 +69900,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6Nullable",
 			OperationID:   "test_response_string_ipv6_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67899,6 +69966,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6NullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -67906,8 +69974,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6NullableArray",
-			ID:   "test_response_string_ipv6_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableArrayRequest(r)
@@ -67932,6 +70001,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6NullableArray",
 			OperationID:   "test_response_string_ipv6_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -67997,6 +70067,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringIpv6NullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68004,8 +70075,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringIpv6NullableArrayArray",
-			ID:   "test_response_string_ipv6_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableArrayArrayRequest(r)
@@ -68030,6 +70102,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringIpv6NullableArrayArray",
 			OperationID:   "test_response_string_ipv6_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68095,6 +70168,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68102,8 +70176,9 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringNullable",
-			ID:   "test_response_string_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringNullableRequest(r)
@@ -68128,6 +70203,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringNullable",
 			OperationID:   "test_response_string_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68193,6 +70269,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68200,8 +70277,9 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringNullableArray",
-			ID:   "test_response_string_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringNullableArrayRequest(r)
@@ -68226,6 +70304,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringNullableArray",
 			OperationID:   "test_response_string_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68291,6 +70370,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68298,8 +70378,9 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringNullableArrayArray",
-			ID:   "test_response_string_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringNullableArrayArrayRequest(r)
@@ -68324,6 +70405,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringNullableArrayArray",
 			OperationID:   "test_response_string_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68389,6 +70471,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPassword
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68396,8 +70479,9 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPassword",
-			ID:   "test_response_string_password",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordRequest(r)
@@ -68422,6 +70506,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringPassword",
 			OperationID:   "test_response_string_password",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68487,6 +70572,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPasswordArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68494,8 +70580,9 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPasswordArray",
-			ID:   "test_response_string_password_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordArrayRequest(r)
@@ -68520,6 +70607,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringPasswordArray",
 			OperationID:   "test_response_string_password_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68585,6 +70673,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPasswordArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68592,8 +70681,9 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPasswordArrayArray",
-			ID:   "test_response_string_password_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordArrayArrayRequest(r)
@@ -68618,6 +70708,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringPasswordArrayArray",
 			OperationID:   "test_response_string_password_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68683,6 +70774,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPasswordNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68690,8 +70782,9 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPasswordNullable",
-			ID:   "test_response_string_password_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableRequest(r)
@@ -68716,6 +70809,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringPasswordNullable",
 			OperationID:   "test_response_string_password_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68781,6 +70875,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPasswordNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68788,8 +70883,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPasswordNullableArray",
-			ID:   "test_response_string_password_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableArrayRequest(r)
@@ -68814,6 +70910,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringPasswordNullableArray",
 			OperationID:   "test_response_string_password_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68879,6 +70976,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringPasswordNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68886,8 +70984,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringPasswordNullableArrayArray",
-			ID:   "test_response_string_password_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableArrayArrayRequest(r)
@@ -68912,6 +71011,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestResponseStringPasswordNullableArrayArray",
 			OperationID:   "test_response_string_password_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -68977,6 +71077,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTime
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -68984,8 +71085,9 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTime",
-			ID:   "test_response_string_time",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeRequest(r)
@@ -69010,6 +71112,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringTime",
 			OperationID:   "test_response_string_time",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69075,6 +71178,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTimeArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69082,8 +71186,9 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTimeArray",
-			ID:   "test_response_string_time_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeArrayRequest(r)
@@ -69108,6 +71213,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringTimeArray",
 			OperationID:   "test_response_string_time_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69173,6 +71279,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTimeArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69180,8 +71287,9 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTimeArrayArray",
-			ID:   "test_response_string_time_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeArrayArrayRequest(r)
@@ -69206,6 +71314,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringTimeArrayArray",
 			OperationID:   "test_response_string_time_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69271,6 +71380,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTimeNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69278,8 +71388,9 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTimeNullable",
-			ID:   "test_response_string_time_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeNullableRequest(r)
@@ -69304,6 +71415,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringTimeNullable",
 			OperationID:   "test_response_string_time_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69369,6 +71481,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTimeNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69376,8 +71489,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTimeNullableArray",
-			ID:   "test_response_string_time_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeNullableArrayRequest(r)
@@ -69402,6 +71516,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringTimeNullableArray",
 			OperationID:   "test_response_string_time_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69467,6 +71582,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringTimeNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69474,8 +71590,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringTimeNullableArrayArray",
-			ID:   "test_response_string_time_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringTimeNullableArrayArrayRequest(r)
@@ -69500,6 +71617,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringTimeNullableArrayArray",
 			OperationID:   "test_response_string_time_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69565,6 +71683,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURI
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69572,8 +71691,9 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURI",
-			ID:   "test_response_string_uri",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURIRequest(r)
@@ -69598,6 +71718,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "TestResponseStringURI",
 			OperationID:   "test_response_string_uri",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69663,6 +71784,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURIArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69670,8 +71792,9 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURIArray",
-			ID:   "test_response_string_uri_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURIArrayRequest(r)
@@ -69696,6 +71819,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringURIArray",
 			OperationID:   "test_response_string_uri_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69761,6 +71885,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURIArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69768,8 +71893,9 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURIArrayArray",
-			ID:   "test_response_string_uri_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURIArrayArrayRequest(r)
@@ -69794,6 +71920,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringURIArrayArray",
 			OperationID:   "test_response_string_uri_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69859,6 +71986,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURINullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69866,8 +71994,9 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURINullable",
-			ID:   "test_response_string_uri_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURINullableRequest(r)
@@ -69892,6 +72021,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseStringURINullable",
 			OperationID:   "test_response_string_uri_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -69957,6 +72087,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURINullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -69964,8 +72095,9 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURINullableArray",
-			ID:   "test_response_string_uri_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURINullableArrayRequest(r)
@@ -69990,6 +72122,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringURINullableArray",
 			OperationID:   "test_response_string_uri_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70055,6 +72188,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringURINullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70062,8 +72196,9 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringURINullableArrayArray",
-			ID:   "test_response_string_uri_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringURINullableArrayArrayRequest(r)
@@ -70088,6 +72223,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringURINullableArrayArray",
 			OperationID:   "test_response_string_uri_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70153,6 +72289,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUID
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70160,8 +72297,9 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUID",
-			ID:   "test_response_string_uuid",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDRequest(r)
@@ -70186,6 +72324,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringUUID",
 			OperationID:   "test_response_string_uuid",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70251,6 +72390,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUIDArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70258,8 +72398,9 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUIDArray",
-			ID:   "test_response_string_uuid_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDArrayRequest(r)
@@ -70284,6 +72425,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringUUIDArray",
 			OperationID:   "test_response_string_uuid_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70349,6 +72491,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUIDArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70356,8 +72499,9 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUIDArrayArray",
-			ID:   "test_response_string_uuid_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDArrayArrayRequest(r)
@@ -70382,6 +72526,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringUUIDArrayArray",
 			OperationID:   "test_response_string_uuid_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70447,6 +72592,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUIDNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70454,8 +72600,9 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUIDNullable",
-			ID:   "test_response_string_uuid_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableRequest(r)
@@ -70480,6 +72627,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringUUIDNullable",
 			OperationID:   "test_response_string_uuid_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70545,6 +72693,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUIDNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70552,8 +72701,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUIDNullableArray",
-			ID:   "test_response_string_uuid_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableArrayRequest(r)
@@ -70578,6 +72728,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringUUIDNullableArray",
 			OperationID:   "test_response_string_uuid_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70643,6 +72794,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUUIDNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70650,8 +72802,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUUIDNullableArrayArray",
-			ID:   "test_response_string_uuid_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableArrayArrayRequest(r)
@@ -70676,6 +72829,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringUUIDNullableArrayArray",
 			OperationID:   "test_response_string_uuid_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70741,6 +72895,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnix
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70748,8 +72903,9 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnix",
-			ID:   "test_response_string_unix",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixRequest(r)
@@ -70774,6 +72930,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 			Context:       ctx,
 			OperationName: "TestResponseStringUnix",
 			OperationID:   "test_response_string_unix",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70839,6 +72996,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70846,8 +73004,9 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixArray",
-			ID:   "test_response_string_unix_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixArrayRequest(r)
@@ -70872,6 +73031,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixArray",
 			OperationID:   "test_response_string_unix_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -70937,6 +73097,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -70944,8 +73105,9 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixArrayArray",
-			ID:   "test_response_string_unix_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixArrayArrayRequest(r)
@@ -70970,6 +73132,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixArrayArray",
 			OperationID:   "test_response_string_unix_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71035,6 +73198,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicro
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71042,8 +73206,9 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicro",
-			ID:   "test_response_string_unix-micro",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroRequest(r)
@@ -71068,6 +73233,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicro",
 			OperationID:   "test_response_string_unix-micro",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71133,6 +73299,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicroArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71140,8 +73307,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicroArray",
-			ID:   "test_response_string_unix-micro_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroArrayRequest(r)
@@ -71166,6 +73334,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicroArray",
 			OperationID:   "test_response_string_unix-micro_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71231,6 +73400,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicroArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71238,8 +73408,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicroArrayArray",
-			ID:   "test_response_string_unix-micro_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroArrayArrayRequest(r)
@@ -71264,6 +73435,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicroArrayArray",
 			OperationID:   "test_response_string_unix-micro_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71329,6 +73501,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicroNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71336,8 +73509,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicroNullable",
-			ID:   "test_response_string_unix-micro_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableRequest(r)
@@ -71362,6 +73536,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicroNullable",
 			OperationID:   "test_response_string_unix-micro_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71427,6 +73602,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicroNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71434,8 +73610,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicroNullableArray",
-			ID:   "test_response_string_unix-micro_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayRequest(r)
@@ -71460,6 +73637,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicroNullableArray",
 			OperationID:   "test_response_string_unix-micro_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71525,6 +73703,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMicroNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71532,8 +73711,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMicroNullableArrayArray",
-			ID:   "test_response_string_unix-micro_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r)
@@ -71558,6 +73738,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMicroNullableArrayArray",
 			OperationID:   "test_response_string_unix-micro_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71623,6 +73804,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilli
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71630,8 +73812,9 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilli",
-			ID:   "test_response_string_unix-milli",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliRequest(r)
@@ -71656,6 +73839,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilli",
 			OperationID:   "test_response_string_unix-milli",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71721,6 +73905,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilliArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71728,8 +73913,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilliArray",
-			ID:   "test_response_string_unix-milli_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliArrayRequest(r)
@@ -71754,6 +73940,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilliArray",
 			OperationID:   "test_response_string_unix-milli_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71819,6 +74006,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilliArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71826,8 +74014,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilliArrayArray",
-			ID:   "test_response_string_unix-milli_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliArrayArrayRequest(r)
@@ -71852,6 +74041,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilliArrayArray",
 			OperationID:   "test_response_string_unix-milli_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -71917,6 +74107,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilliNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -71924,8 +74115,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilliNullable",
-			ID:   "test_response_string_unix-milli_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableRequest(r)
@@ -71950,6 +74142,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilliNullable",
 			OperationID:   "test_response_string_unix-milli_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72015,6 +74208,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilliNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72022,8 +74216,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilliNullableArray",
-			ID:   "test_response_string_unix-milli_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayRequest(r)
@@ -72048,6 +74243,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilliNullableArray",
 			OperationID:   "test_response_string_unix-milli_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72113,6 +74309,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixMilliNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72120,8 +74317,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixMilliNullableArrayArray",
-			ID:   "test_response_string_unix-milli_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r)
@@ -72146,6 +74344,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixMilliNullableArrayArray",
 			OperationID:   "test_response_string_unix-milli_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72211,6 +74410,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNano
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72218,8 +74418,9 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNano",
-			ID:   "test_response_string_unix-nano",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoRequest(r)
@@ -72244,6 +74445,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNano",
 			OperationID:   "test_response_string_unix-nano",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72309,6 +74511,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNanoArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72316,8 +74519,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNanoArray",
-			ID:   "test_response_string_unix-nano_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoArrayRequest(r)
@@ -72342,6 +74546,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNanoArray",
 			OperationID:   "test_response_string_unix-nano_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72407,6 +74612,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNanoArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72414,8 +74620,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNanoArrayArray",
-			ID:   "test_response_string_unix-nano_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoArrayArrayRequest(r)
@@ -72440,6 +74647,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNanoArrayArray",
 			OperationID:   "test_response_string_unix-nano_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72505,6 +74713,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNanoNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72512,8 +74721,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNanoNullable",
-			ID:   "test_response_string_unix-nano_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableRequest(r)
@@ -72538,6 +74748,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNanoNullable",
 			OperationID:   "test_response_string_unix-nano_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72603,6 +74814,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNanoNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72610,8 +74822,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNanoNullableArray",
-			ID:   "test_response_string_unix-nano_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayRequest(r)
@@ -72636,6 +74849,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNanoNullableArray",
 			OperationID:   "test_response_string_unix-nano_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72701,6 +74915,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNanoNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72708,8 +74923,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNanoNullableArrayArray",
-			ID:   "test_response_string_unix-nano_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r)
@@ -72734,6 +74950,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNanoNullableArrayArray",
 			OperationID:   "test_response_string_unix-nano_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72799,6 +75016,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72806,8 +75024,9 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNullable",
-			ID:   "test_response_string_unix_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNullableRequest(r)
@@ -72832,6 +75051,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNullable",
 			OperationID:   "test_response_string_unix_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72897,6 +75117,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -72904,8 +75125,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNullableArray",
-			ID:   "test_response_string_unix_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNullableArrayRequest(r)
@@ -72930,6 +75152,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNullableArray",
 			OperationID:   "test_response_string_unix_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -72995,6 +75218,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73002,8 +75226,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixNullableArrayArray",
-			ID:   "test_response_string_unix_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixNullableArrayArrayRequest(r)
@@ -73028,6 +75253,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixNullableArrayArray",
 			OperationID:   "test_response_string_unix_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73093,6 +75319,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSeconds
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73100,8 +75327,9 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSeconds",
-			ID:   "test_response_string_unix-seconds",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsRequest(r)
@@ -73126,6 +75354,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSeconds",
 			OperationID:   "test_response_string_unix-seconds",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73191,6 +75420,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSecondsArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73198,8 +75428,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSecondsArray",
-			ID:   "test_response_string_unix-seconds_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsArrayRequest(r)
@@ -73224,6 +75455,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSecondsArray",
 			OperationID:   "test_response_string_unix-seconds_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73289,6 +75521,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSecondsArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73296,8 +75529,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSecondsArrayArray",
-			ID:   "test_response_string_unix-seconds_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsArrayArrayRequest(r)
@@ -73322,6 +75556,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSecondsArrayArray",
 			OperationID:   "test_response_string_unix-seconds_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73387,6 +75622,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSecondsNullable
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73394,8 +75630,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSecondsNullable",
-			ID:   "test_response_string_unix-seconds_nullable",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableRequest(r)
@@ -73420,6 +75657,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSecondsNullable",
 			OperationID:   "test_response_string_unix-seconds_nullable",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73485,6 +75723,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSecondsNullableArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73492,8 +75731,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSecondsNullableArray",
-			ID:   "test_response_string_unix-seconds_nullable_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayRequest(r)
@@ -73518,6 +75758,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSecondsNullableArray",
 			OperationID:   "test_response_string_unix-seconds_nullable_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -73583,6 +75824,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().TestResponseStringUnixSecondsNullableArrayArray
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -73590,8 +75832,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestResponseStringUnixSecondsNullableArrayArray",
-			ID:   "test_response_string_unix-seconds_nullable_array_array",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r)
@@ -73616,6 +75859,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 			Context:       ctx,
 			OperationName: "TestResponseStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_response_string_unix-seconds_nullable_array_array",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,

@@ -44,6 +44,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().CreatePets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -58,6 +59,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 			Context:       ctx,
 			OperationName: "CreatePets",
 			OperationID:   "createPets",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -125,6 +127,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ListPets
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -132,8 +135,9 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPets",
-			ID:   "listPets",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeListPetsParams(args, r)
@@ -153,6 +157,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "ListPets",
 			OperationID:   "listPets",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -225,6 +230,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ShowPetById
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -232,8 +238,9 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ShowPetById",
-			ID:   "showPetById",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeShowPetByIdParams(args, r)
@@ -253,6 +260,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 			Context:       ctx,
 			OperationName: "ShowPetById",
 			OperationID:   "showPetById",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

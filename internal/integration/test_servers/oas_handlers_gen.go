@@ -45,6 +45,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ProbeLiveness
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -59,6 +60,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "ProbeLiveness",
 			OperationID:   "probeLiveness",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,

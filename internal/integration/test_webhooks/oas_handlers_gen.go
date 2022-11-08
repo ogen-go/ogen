@@ -44,6 +44,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PublishEvent
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PublishEvent",
-			ID:   "publishEvent",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodePublishEventRequest(r)
@@ -77,6 +79,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 			Context:       ctx,
 			OperationName: "PublishEvent",
 			OperationID:   "publishEvent",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -149,6 +152,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getWebhooks().StatusWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -163,6 +167,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "StatusWebhook",
 			OperationID:   "statusWebhook",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -226,6 +231,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getWebhooks().UpdateDelete
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -240,6 +246,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 			Context:       ctx,
 			OperationName: "UpdateDelete",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -304,6 +311,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getWebhooks().UpdateWebhook
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -311,8 +319,9 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UpdateWebhook",
-			ID:   "updateWebhook",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeUpdateWebhookParams(args, r)
@@ -347,6 +356,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "UpdateWebhook",
 			OperationID:   "updateWebhook",
+			Op:            op,
 			Body:          request,
 			Params: middleware.Parameters{
 				{

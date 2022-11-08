@@ -39,6 +39,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ComplicatedParameterNameGet
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -46,8 +47,9 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ComplicatedParameterNameGet",
-			ID:   "",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeComplicatedParameterNameGetParams(args, r)
@@ -67,6 +69,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, w http
 			Context:       ctx,
 			OperationName: "ComplicatedParameterNameGet",
 			OperationID:   "",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -153,6 +156,7 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ContentQueryParameter
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -160,8 +164,9 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ContentQueryParameter",
-			ID:   "contentQueryParameter",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeContentQueryParameterParams(args, r)
@@ -181,6 +186,7 @@ func (s *Server) handleContentQueryParameterRequest(args [0]string, w http.Respo
 			Context:       ctx,
 			OperationName: "ContentQueryParameter",
 			OperationID:   "contentQueryParameter",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -253,6 +259,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().HeaderParameter
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -260,8 +267,9 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "HeaderParameter",
-			ID:   "headerParameter",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeHeaderParameterParams(args, r)
@@ -281,6 +289,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "HeaderParameter",
 			OperationID:   "headerParameter",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -351,6 +360,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ObjectQueryParameter
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -358,8 +368,9 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectQueryParameter",
-			ID:   "objectQueryParameter",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeObjectQueryParameterParams(args, r)
@@ -379,6 +390,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, w http.Respon
 			Context:       ctx,
 			OperationName: "ObjectQueryParameter",
 			OperationID:   "objectQueryParameter",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -453,6 +465,7 @@ func (s *Server) handlePathObjectParameterRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().PathObjectParameter
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -460,8 +473,9 @@ func (s *Server) handlePathObjectParameterRequest(args [1]string, w http.Respons
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PathObjectParameter",
-			ID:   "pathObjectParameter",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodePathObjectParameterParams(args, r)
@@ -481,6 +495,7 @@ func (s *Server) handlePathObjectParameterRequest(args [1]string, w http.Respons
 			Context:       ctx,
 			OperationName: "PathObjectParameter",
 			OperationID:   "pathObjectParameter",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{
@@ -553,6 +568,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SameName
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -560,8 +576,9 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SameName",
-			ID:   "sameName",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	params, err := decodeSameNameParams(args, r)
@@ -581,6 +598,7 @@ func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r 
 			Context:       ctx,
 			OperationName: "SameName",
 			OperationID:   "sameName",
+			Op:            op,
 			Body:          nil,
 			Params: middleware.Parameters{
 				{

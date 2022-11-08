@@ -44,6 +44,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().NullableStrings
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -51,8 +52,9 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "NullableStrings",
-			ID:   "nullableStrings",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeNullableStringsRequest(r)
@@ -77,6 +79,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "NullableStrings",
 			OperationID:   "nullableStrings",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -144,6 +147,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ObjectsWithConflictingArrayProperty
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -151,8 +155,9 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectsWithConflictingArrayProperty",
-			ID:   "objectsWithConflictingArrayProperty",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r)
@@ -177,6 +182,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			Context:       ctx,
 			OperationName: "ObjectsWithConflictingArrayProperty",
 			OperationID:   "objectsWithConflictingArrayProperty",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -244,6 +250,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ObjectsWithConflictingProperties
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -251,8 +258,9 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectsWithConflictingProperties",
-			ID:   "objectsWithConflictingProperties",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r)
@@ -277,6 +285,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			Context:       ctx,
 			OperationName: "ObjectsWithConflictingProperties",
 			OperationID:   "objectsWithConflictingProperties",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -344,6 +353,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReferencedAllof
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -351,8 +361,9 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReferencedAllof",
-			ID:   "referencedAllof",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeReferencedAllofRequest(r)
@@ -377,6 +388,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			Context:       ctx,
 			OperationName: "ReferencedAllof",
 			OperationID:   "referencedAllof",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -444,6 +456,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().ReferencedAllofOptional
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -451,8 +464,9 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReferencedAllofOptional",
-			ID:   "referencedAllofOptional",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeReferencedAllofOptionalRequest(r)
@@ -477,6 +491,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			Context:       ctx,
 			OperationName: "ReferencedAllofOptional",
 			OperationID:   "referencedAllofOptional",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -544,6 +559,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SimpleInteger
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -551,8 +567,9 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SimpleInteger",
-			ID:   "simpleInteger",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSimpleIntegerRequest(r)
@@ -577,6 +594,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SimpleInteger",
 			OperationID:   "simpleInteger",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
@@ -644,6 +662,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 
 	var (
+		op          = getPaths().SimpleObjects
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
 			span.SetStatus(codes.Error, stage)
@@ -651,8 +670,9 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SimpleObjects",
-			ID:   "simpleObjects",
+			Name:      op.Name,
+			ID:        op.ID,
+			Operation: op,
 		}
 	)
 	request, close, err := s.decodeSimpleObjectsRequest(r)
@@ -677,6 +697,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			Context:       ctx,
 			OperationName: "SimpleObjects",
 			OperationID:   "simpleObjects",
+			Op:            op,
 			Body:          request,
 			Params:        middleware.Parameters{},
 			Raw:           r,
