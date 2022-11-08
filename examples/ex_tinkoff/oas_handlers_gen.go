@@ -50,8 +50,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketBondsGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -144,8 +143,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketCandlesGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -253,8 +251,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketCurrenciesGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -347,8 +344,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketEtfsGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -441,8 +437,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketOrderbookGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -548,8 +543,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -654,8 +648,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -760,8 +753,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "MarketStocksGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -854,8 +846,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "OperationsGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -963,8 +954,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "OrdersCancelPost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1070,8 +1060,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "OrdersGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1176,8 +1165,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1298,8 +1286,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1420,8 +1407,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1526,8 +1512,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "PortfolioGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1632,8 +1617,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "SandboxClearPost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1738,8 +1722,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1859,8 +1842,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -1980,8 +1962,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "SandboxRegisterPost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -2089,8 +2070,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "SandboxRemovePost", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
@@ -2195,8 +2175,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			ID:   "",
 		}
 	)
-	sctx, err := s.securitySSOAuth(ctx, "UserAccountsGet", r)
-	if err != nil {
+	if sctx, err := s.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "SSOAuth",
