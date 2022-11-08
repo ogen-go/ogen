@@ -60,8 +60,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		err error
 		{{- if or $op.Request $op.Params $op.Security }}
 		opErrContext = ogenerrors.OperationContext{
-			Name: {{ quote $op.Name }},
-			ID: {{ quote $op.Spec.OperationID }},
+			Name: op{{ $op.Name }}Info.Name,
+			ID: op{{ $op.Name }}Info.ID,
+			Operation: op{{ $op.Name }}Info,
 		}
 		{{- end }}
 	)
@@ -118,6 +119,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			Context: ctx,
 			OperationName: {{ quote $op.Name }},
 			OperationID: {{ quote $op.Spec.OperationID }},
+			Op: op{{ $op.Name }}Info,
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
 			Params: middleware.Parameters{
 				{{- range $param := $op.Params }}

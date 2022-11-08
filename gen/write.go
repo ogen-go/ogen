@@ -284,6 +284,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"server", genServer},
 		{"client", genClient},
 		{"cfg", true},
+		{"ogenreflect", genClient || genServer},
 		{"servers", len(g.servers) > 0},
 		{"router", genServer},
 		{"defaults", g.hasDefaultFields()},

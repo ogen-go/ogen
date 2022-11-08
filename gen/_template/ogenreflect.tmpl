@@ -1,0 +1,90 @@
+{{ define "ogenreflect" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $op := $.Operations }}
+	{{- template "ogenreflect/operation" $op }}
+{{ end }}
+
+{{- range $op := $.Webhooks }}
+    {{- template "ogenreflect/operation" $op }}
+{{ end }}
+
+{{ end }}
+
+{{ define "ogenreflect/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+var op{{ $op.Name }}Info = ogenreflect.Operation{
+	Name: {{ quote $op.Name }},
+	ID: {{ quote $op.Spec.OperationID }},
+	Types: ogenreflect.OperationTypes{
+		{{- with $req := $op.Request }}
+		Request:  ogenreflect.RequestType{
+			Type: reflect.TypeOf(new({{ $req.Type.Go }})).Elem(),
+			{{- if not $req.Type.IsInterface }}
+			Implementations: nil,
+			{{- else }}
+			Implementations: []reflect.Type{
+				{{- if $req.EmptyBody }}
+				reflect.TypeOf(new(*{{ $req.EmptyBody.Go }})).Elem(),
+				{{- end }}
+				{{- range $media := $req.Contents }}
+				reflect.TypeOf(new(*{{ $media.Type.Go }})).Elem(),
+				{{- end }}
+			},
+			Contents: {{ template "ogenreflect/contents" $req.Contents -}},
+			{{- end }}
+		},
+        {{- end }}
+		{{- with $p := $op.Params }}
+		Params: ogenreflect.ParameterMap[ogenreflect.ParameterType]{
+			{{- range $param := $p }}
+			{Name: {{ quote $param.Spec.Name }}, In: {{ quote $param.Spec.In }}}: {
+				Type: reflect.TypeOf(new({{ $param.Type.Go }})).Elem(),
+				Name: {{ quote $param.Spec.Name }},
+				In: {{ quote $param.Spec.In }},
+				Style: {{ quote $param.Spec.Style }},
+				Explode: {{ $param.Spec.Explode }},
+				Required: {{ $param.Spec.Required }},
+			},
+			{{- end }}
+		},
+        {{- end }}
+		{{- with $resp := $op.Responses }}
+		Response: ogenreflect.ResponseType{
+			Type: reflect.TypeOf(new({{ $resp.Type.Go }})).Elem(),
+			{{- if not $resp.Type.IsInterface }}
+			Implementations: nil,
+			{{- else }}
+			Implementations: []reflect.Type{
+            	{{- range $info := $op.ListResponseTypes }}
+				reflect.TypeOf(new(*{{ $info.Type.Go }})).Elem(),
+				{{- end }}
+			},
+			{{- end }}
+			PatternMap: map[string]ogenreflect.Contents{
+			{{- range $code, $resp := $resp.StatusCode }}
+				{{ print $code | quote }}: {{ template "ogenreflect/contents" $resp.Contents -}},
+			{{- end }}
+			{{- range $idx, $resp := $resp.Pattern }}{{- if $resp }}
+				{{ printf "%dXX" (add $idx 1) | quote }}: {{ template "ogenreflect/contents" $resp.Contents -}},
+			{{- end }}{{- end }}
+			{{- with $resp := $resp.Default }}
+				"default": {{ template "ogenreflect/contents" $resp.Contents -}},
+			{{- end }}
+			},
+		},
+        {{- end }}
+	},
+}
+{{ end }}
+
+{{ define "ogenreflect/contents" -}}
+ogenreflect.Contents{
+	{{- range $ct, $media := $ }}
+	{{ quote $ct }}: reflect.TypeOf(new({{ $media.Type.Go }})).Elem(),
+	{{- end }}
+}
+{{- end }}
+
