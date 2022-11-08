@@ -2164,8 +2164,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			ID:   "securityTest",
 		}
 	)
-	sctx, err := s.securityAPIKey(ctx, "SecurityTest", r)
-	if err != nil {
+	if sctx, err := s.securityAPIKey(ctx, "SecurityTest", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "APIKey",

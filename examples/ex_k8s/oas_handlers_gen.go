@@ -55,8 +55,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 			ID:   "getAPIVersions",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAPIVersions", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAPIVersions", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -152,8 +151,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 			ID:   "getAdmissionregistrationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -249,8 +247,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			ID:   "getAdmissionregistrationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -346,8 +343,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 			ID:   "getApiextensionsAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -443,8 +439,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 			ID:   "getApiextensionsV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -540,8 +535,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 			ID:   "getApiregistrationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -637,8 +631,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 			ID:   "getApiregistrationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -734,8 +727,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 			ID:   "getAppsAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAppsAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAppsAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -831,8 +823,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 			ID:   "getAppsV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAppsV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAppsV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -928,8 +919,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 			ID:   "getAuthenticationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1025,8 +1015,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 			ID:   "getAuthenticationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1122,8 +1111,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 			ID:   "getAuthorizationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1219,8 +1207,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 			ID:   "getAuthorizationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1316,8 +1303,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 			ID:   "getAutoscalingAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1413,8 +1399,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 			ID:   "getAutoscalingV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1510,8 +1495,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			ID:   "getAutoscalingV2beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1607,8 +1591,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			ID:   "getAutoscalingV2beta2APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1704,8 +1687,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 			ID:   "getBatchAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetBatchAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetBatchAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1801,8 +1783,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 			ID:   "getBatchV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetBatchV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetBatchV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1898,8 +1879,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 			ID:   "getBatchV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -1995,8 +1975,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 			ID:   "getCertificatesAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2092,8 +2071,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 			ID:   "getCertificatesV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2189,8 +2167,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 			ID:   "getCodeVersion",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCodeVersion", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCodeVersion", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2286,8 +2263,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 			ID:   "getCoordinationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2383,8 +2359,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 			ID:   "getCoordinationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2480,8 +2455,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 			ID:   "getCoreAPIVersions",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCoreAPIVersions", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCoreAPIVersions", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2577,8 +2551,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 			ID:   "getCoreV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetCoreV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetCoreV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2674,8 +2647,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 			ID:   "getDiscoveryAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2771,8 +2743,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 			ID:   "getDiscoveryV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2868,8 +2839,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 			ID:   "getDiscoveryV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -2965,8 +2935,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 			ID:   "getEventsAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetEventsAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetEventsAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3062,8 +3031,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 			ID:   "getEventsV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetEventsV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetEventsV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3159,8 +3127,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 			ID:   "getEventsV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3256,8 +3223,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 			ID:   "getFlowcontrolApiserverAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3353,8 +3319,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			ID:   "getFlowcontrolApiserverV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3450,8 +3415,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			ID:   "getFlowcontrolApiserverV1beta2APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3547,8 +3511,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 			ID:   "getInternalApiserverAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3644,8 +3607,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			ID:   "getInternalApiserverV1alpha1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3741,8 +3703,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 			ID:   "getNetworkingAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3838,8 +3799,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 			ID:   "getNetworkingV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -3935,8 +3895,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 			ID:   "getNodeAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNodeAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNodeAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4032,8 +3991,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 			ID:   "getNodeV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNodeV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4129,8 +4087,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 			ID:   "getNodeV1alpha1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4226,8 +4183,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 			ID:   "getNodeV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4323,8 +4279,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 			ID:   "getPolicyAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetPolicyAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetPolicyAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4420,8 +4375,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 			ID:   "getPolicyV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetPolicyV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetPolicyV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4517,8 +4471,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 			ID:   "getPolicyV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4614,8 +4567,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 			ID:   "getRbacAuthorizationAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4711,8 +4663,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			ID:   "getRbacAuthorizationV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4808,8 +4759,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 			ID:   "getSchedulingAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -4905,8 +4855,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 			ID:   "getSchedulingV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5002,8 +4951,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			ID:   "getServiceAccountIssuerOpenIDConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5099,8 +5047,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 			ID:   "getStorageAPIGroup",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetStorageAPIGroup", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetStorageAPIGroup", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5196,8 +5143,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 			ID:   "getStorageV1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetStorageV1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5293,8 +5239,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 			ID:   "getStorageV1alpha1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5390,8 +5335,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 			ID:   "getStorageV1beta1APIResources",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5487,8 +5431,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			ID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5605,8 +5548,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			ID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5723,8 +5665,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			ID:   "listApiextensionsV1CustomResourceDefinition",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5841,8 +5782,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			ID:   "listApiregistrationV1APIService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -5959,8 +5899,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			ID:   "listAppsV1ControllerRevisionForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6077,8 +6016,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			ID:   "listAppsV1DaemonSetForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6195,8 +6133,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			ID:   "listAppsV1DeploymentForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6313,8 +6250,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			ID:   "listAppsV1NamespacedControllerRevision",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6432,8 +6368,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			ID:   "listAppsV1NamespacedDaemonSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6551,8 +6486,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			ID:   "listAppsV1NamespacedDeployment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6670,8 +6604,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			ID:   "listAppsV1NamespacedReplicaSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6789,8 +6722,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			ID:   "listAppsV1NamespacedStatefulSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -6908,8 +6840,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			ID:   "listAppsV1ReplicaSetForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7026,8 +6957,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			ID:   "listAppsV1StatefulSetForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7144,8 +7074,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			ID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7262,8 +7191,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			ID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7381,8 +7309,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			ID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7499,8 +7426,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			ID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7618,8 +7544,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			ID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7736,8 +7661,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			ID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7855,8 +7779,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			ID:   "listBatchV1CronJobForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -7973,8 +7896,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			ID:   "listBatchV1JobForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8091,8 +8013,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			ID:   "listBatchV1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8210,8 +8131,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			ID:   "listBatchV1NamespacedJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8329,8 +8249,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			ID:   "listBatchV1beta1CronJobForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8447,8 +8366,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			ID:   "listBatchV1beta1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8566,8 +8484,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			ID:   "listCertificatesV1CertificateSigningRequest",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8684,8 +8601,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			ID:   "listCoordinationV1LeaseForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8802,8 +8718,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			ID:   "listCoordinationV1NamespacedLease",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -8921,8 +8836,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			ID:   "listCoreV1ComponentStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9039,8 +8953,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			ID:   "listCoreV1ConfigMapForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9157,8 +9070,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			ID:   "listCoreV1EndpointsForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9275,8 +9187,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			ID:   "listCoreV1EventForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9393,8 +9304,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			ID:   "listCoreV1LimitRangeForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9511,8 +9421,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			ID:   "listCoreV1Namespace",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1Namespace", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1Namespace", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9629,8 +9538,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			ID:   "listCoreV1NamespacedConfigMap",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9748,8 +9656,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			ID:   "listCoreV1NamespacedEndpoints",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9867,8 +9774,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			ID:   "listCoreV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -9986,8 +9892,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			ID:   "listCoreV1NamespacedLimitRange",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10105,8 +10010,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			ID:   "listCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10224,8 +10128,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			ID:   "listCoreV1NamespacedPod",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10343,8 +10246,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			ID:   "listCoreV1NamespacedPodTemplate",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10462,8 +10364,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			ID:   "listCoreV1NamespacedReplicationController",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10581,8 +10482,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			ID:   "listCoreV1NamespacedResourceQuota",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10700,8 +10600,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			ID:   "listCoreV1NamespacedSecret",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10819,8 +10718,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			ID:   "listCoreV1NamespacedService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -10938,8 +10836,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			ID:   "listCoreV1NamespacedServiceAccount",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11057,8 +10954,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			ID:   "listCoreV1Node",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1Node", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1Node", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11175,8 +11071,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			ID:   "listCoreV1PersistentVolume",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11293,8 +11188,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			ID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11411,8 +11305,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			ID:   "listCoreV1PodForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11529,8 +11422,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			ID:   "listCoreV1PodTemplateForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11647,8 +11539,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			ID:   "listCoreV1ReplicationControllerForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11765,8 +11656,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			ID:   "listCoreV1ResourceQuotaForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -11883,8 +11773,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			ID:   "listCoreV1SecretForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12001,8 +11890,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			ID:   "listCoreV1ServiceAccountForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12119,8 +12007,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			ID:   "listCoreV1ServiceForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12237,8 +12124,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			ID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12355,8 +12241,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			ID:   "listDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12474,8 +12359,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			ID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12592,8 +12476,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			ID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12711,8 +12594,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			ID:   "listEventsV1EventForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12829,8 +12711,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			ID:   "listEventsV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -12948,8 +12829,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			ID:   "listEventsV1beta1EventForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13066,8 +12946,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			ID:   "listEventsV1beta1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13185,8 +13064,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			ID:   "listFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13303,8 +13181,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			ID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13421,8 +13298,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			ID:   "listFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13539,8 +13415,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			ID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13657,8 +13532,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			ID:   "listInternalApiserverV1alpha1StorageVersion",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13775,8 +13649,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			ID:   "listNetworkingV1IngressClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -13893,8 +13766,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			ID:   "listNetworkingV1IngressForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14011,8 +13883,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			ID:   "listNetworkingV1NamespacedIngress",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14130,8 +14001,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			ID:   "listNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14249,8 +14119,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			ID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14367,8 +14236,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			ID:   "listNodeV1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14485,8 +14353,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			ID:   "listNodeV1alpha1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14603,8 +14470,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			ID:   "listNodeV1beta1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14721,8 +14587,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			ID:   "listPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14840,8 +14705,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			ID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -14958,8 +14822,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			ID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15077,8 +14940,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			ID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15195,8 +15057,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			ID:   "listPolicyV1beta1PodSecurityPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15313,8 +15174,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			ID:   "listRbacAuthorizationV1ClusterRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15431,8 +15291,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			ID:   "listRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15549,8 +15408,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			ID:   "listRbacAuthorizationV1NamespacedRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15668,8 +15526,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			ID:   "listRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15787,8 +15644,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			ID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -15905,8 +15761,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			ID:   "listRbacAuthorizationV1RoleForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16023,8 +15878,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			ID:   "listSchedulingV1PriorityClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16141,8 +15995,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			ID:   "listStorageV1CSIDriver",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16259,8 +16112,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			ID:   "listStorageV1CSINode",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSINode", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1CSINode", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16377,8 +16229,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			ID:   "listStorageV1StorageClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1StorageClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1StorageClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16495,8 +16346,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			ID:   "listStorageV1VolumeAttachment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16613,8 +16463,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			ID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16731,8 +16580,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			ID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16850,8 +16698,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			ID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -16968,8 +16815,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			ID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17085,8 +16931,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			ID:   "logFileHandler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "LogFileHandler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "LogFileHandler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17192,8 +17037,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			ID:   "logFileListHandler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "LogFileListHandler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "LogFileListHandler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17289,8 +17133,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			ID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17399,8 +17242,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			ID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17509,8 +17351,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			ID:   "readApiextensionsV1CustomResourceDefinition",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17619,8 +17460,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			ID:   "readApiextensionsV1CustomResourceDefinitionStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17729,8 +17569,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			ID:   "readApiregistrationV1APIService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17839,8 +17678,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			ID:   "readApiregistrationV1APIServiceStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -17949,8 +17787,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			ID:   "readAppsV1NamespacedControllerRevision",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18060,8 +17897,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			ID:   "readAppsV1NamespacedDaemonSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18171,8 +18007,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			ID:   "readAppsV1NamespacedDaemonSetStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18282,8 +18117,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			ID:   "readAppsV1NamespacedDeployment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18393,8 +18227,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			ID:   "readAppsV1NamespacedDeploymentScale",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18504,8 +18337,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			ID:   "readAppsV1NamespacedDeploymentStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18615,8 +18447,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			ID:   "readAppsV1NamespacedReplicaSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18726,8 +18557,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			ID:   "readAppsV1NamespacedReplicaSetScale",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18837,8 +18667,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			ID:   "readAppsV1NamespacedReplicaSetStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -18948,8 +18777,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			ID:   "readAppsV1NamespacedStatefulSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19059,8 +18887,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			ID:   "readAppsV1NamespacedStatefulSetScale",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19170,8 +18997,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			ID:   "readAppsV1NamespacedStatefulSetStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19281,8 +19107,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19392,8 +19217,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19503,8 +19327,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19614,8 +19437,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19725,8 +19547,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19836,8 +19657,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -19947,8 +19767,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			ID:   "readBatchV1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20058,8 +19877,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			ID:   "readBatchV1NamespacedCronJobStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20169,8 +19987,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			ID:   "readBatchV1NamespacedJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20280,8 +20097,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			ID:   "readBatchV1NamespacedJobStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20391,8 +20207,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			ID:   "readBatchV1beta1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20502,8 +20317,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			ID:   "readBatchV1beta1NamespacedCronJobStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20613,8 +20427,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			ID:   "readCertificatesV1CertificateSigningRequest",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20723,8 +20536,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			ID:   "readCertificatesV1CertificateSigningRequestApproval",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20833,8 +20645,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			ID:   "readCertificatesV1CertificateSigningRequestStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -20943,8 +20754,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			ID:   "readCoordinationV1NamespacedLease",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21054,8 +20864,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			ID:   "readCoreV1ComponentStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21164,8 +20973,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			ID:   "readCoreV1Namespace",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Namespace", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Namespace", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21274,8 +21082,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			ID:   "readCoreV1NamespaceStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21384,8 +21191,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			ID:   "readCoreV1NamespacedConfigMap",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21495,8 +21301,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			ID:   "readCoreV1NamespacedEndpoints",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21606,8 +21411,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			ID:   "readCoreV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21717,8 +21521,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			ID:   "readCoreV1NamespacedLimitRange",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21828,8 +21631,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			ID:   "readCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -21939,8 +21741,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			ID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22050,8 +21851,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			ID:   "readCoreV1NamespacedPod",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22161,8 +21961,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			ID:   "readCoreV1NamespacedPodEphemeralcontainers",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22272,8 +22071,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			ID:   "readCoreV1NamespacedPodLog",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22391,8 +22189,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			ID:   "readCoreV1NamespacedPodStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22502,8 +22299,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			ID:   "readCoreV1NamespacedPodTemplate",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22613,8 +22409,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			ID:   "readCoreV1NamespacedReplicationController",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22724,8 +22519,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			ID:   "readCoreV1NamespacedReplicationControllerScale",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22835,8 +22629,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			ID:   "readCoreV1NamespacedReplicationControllerStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -22946,8 +22739,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			ID:   "readCoreV1NamespacedResourceQuota",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23057,8 +22849,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			ID:   "readCoreV1NamespacedResourceQuotaStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23168,8 +22959,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			ID:   "readCoreV1NamespacedSecret",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23279,8 +23069,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			ID:   "readCoreV1NamespacedService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23390,8 +23179,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			ID:   "readCoreV1NamespacedServiceAccount",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23501,8 +23289,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			ID:   "readCoreV1NamespacedServiceStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23612,8 +23399,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			ID:   "readCoreV1Node",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Node", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1Node", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23722,8 +23508,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			ID:   "readCoreV1NodeStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23832,8 +23617,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			ID:   "readCoreV1PersistentVolume",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -23942,8 +23726,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			ID:   "readCoreV1PersistentVolumeStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24052,8 +23835,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			ID:   "readDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24163,8 +23945,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			ID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24274,8 +24055,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			ID:   "readEventsV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24385,8 +24165,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			ID:   "readEventsV1beta1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24496,8 +24275,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			ID:   "readFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24606,8 +24384,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			ID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24716,8 +24493,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24826,8 +24602,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -24936,8 +24711,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			ID:   "readFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25046,8 +24820,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			ID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25156,8 +24929,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25266,8 +25038,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25376,8 +25147,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			ID:   "readInternalApiserverV1alpha1StorageVersion",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25486,8 +25256,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			ID:   "readInternalApiserverV1alpha1StorageVersionStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25596,8 +25365,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			ID:   "readNetworkingV1IngressClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25706,8 +25474,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			ID:   "readNetworkingV1NamespacedIngress",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25817,8 +25584,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			ID:   "readNetworkingV1NamespacedIngressStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -25928,8 +25694,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			ID:   "readNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26039,8 +25804,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			ID:   "readNodeV1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26149,8 +25913,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			ID:   "readNodeV1alpha1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26259,8 +26022,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			ID:   "readNodeV1beta1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26369,8 +26131,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			ID:   "readPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26480,8 +26241,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			ID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26591,8 +26351,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26702,8 +26461,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26813,8 +26571,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			ID:   "readPolicyV1beta1PodSecurityPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -26923,8 +26680,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			ID:   "readRbacAuthorizationV1ClusterRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27033,8 +26789,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			ID:   "readRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27143,8 +26898,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			ID:   "readRbacAuthorizationV1NamespacedRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27254,8 +27008,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			ID:   "readRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27365,8 +27118,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			ID:   "readSchedulingV1PriorityClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27475,8 +27227,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			ID:   "readStorageV1CSIDriver",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27585,8 +27336,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			ID:   "readStorageV1CSINode",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSINode", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1CSINode", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27695,8 +27445,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			ID:   "readStorageV1StorageClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27805,8 +27554,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			ID:   "readStorageV1VolumeAttachment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -27915,8 +27663,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			ID:   "readStorageV1VolumeAttachmentStatus",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28025,8 +27772,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			ID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28136,8 +27882,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			ID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28249,8 +27994,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			ID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28369,8 +28113,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			ID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28489,8 +28232,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28609,8 +28351,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28728,8 +28469,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			ID:   "watchApiextensionsV1CustomResourceDefinition",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28848,8 +28588,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			ID:   "watchApiextensionsV1CustomResourceDefinitionList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -28967,8 +28706,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			ID:   "watchApiregistrationV1APIService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29087,8 +28825,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			ID:   "watchApiregistrationV1APIServiceList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29206,8 +28943,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			ID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29325,8 +29061,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			ID:   "watchAppsV1DaemonSetListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29444,8 +29179,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			ID:   "watchAppsV1DeploymentListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29563,8 +29297,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			ID:   "watchAppsV1NamespacedControllerRevision",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29684,8 +29417,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			ID:   "watchAppsV1NamespacedControllerRevisionList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29804,8 +29536,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			ID:   "watchAppsV1NamespacedDaemonSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -29925,8 +29656,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			ID:   "watchAppsV1NamespacedDaemonSetList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30045,8 +29775,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			ID:   "watchAppsV1NamespacedDeployment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30166,8 +29895,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			ID:   "watchAppsV1NamespacedDeploymentList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30286,8 +30014,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			ID:   "watchAppsV1NamespacedReplicaSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30407,8 +30134,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			ID:   "watchAppsV1NamespacedReplicaSetList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30527,8 +30253,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			ID:   "watchAppsV1NamespacedStatefulSet",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30648,8 +30373,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			ID:   "watchAppsV1NamespacedStatefulSetList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30768,8 +30492,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			ID:   "watchAppsV1ReplicaSetListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -30887,8 +30610,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			ID:   "watchAppsV1StatefulSetListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31006,8 +30728,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			ID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31125,8 +30846,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31246,8 +30966,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31366,8 +31085,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			ID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31485,8 +31203,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31606,8 +31323,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31726,8 +31442,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			ID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31845,8 +31560,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -31966,8 +31680,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32086,8 +31799,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			ID:   "watchBatchV1CronJobListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32205,8 +31917,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			ID:   "watchBatchV1JobListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32324,8 +32035,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			ID:   "watchBatchV1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32445,8 +32155,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			ID:   "watchBatchV1NamespacedCronJobList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32565,8 +32274,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			ID:   "watchBatchV1NamespacedJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32686,8 +32394,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			ID:   "watchBatchV1NamespacedJobList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32806,8 +32513,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			ID:   "watchBatchV1beta1CronJobListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -32925,8 +32631,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			ID:   "watchBatchV1beta1NamespacedCronJob",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33046,8 +32751,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			ID:   "watchBatchV1beta1NamespacedCronJobList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33167,8 +32871,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			ID:   "watchCertificatesV1CertificateSigningRequest",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33287,8 +32990,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			ID:   "watchCertificatesV1CertificateSigningRequestList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33406,8 +33108,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			ID:   "watchCoordinationV1LeaseListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33525,8 +33226,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			ID:   "watchCoordinationV1NamespacedLease",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33646,8 +33346,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			ID:   "watchCoordinationV1NamespacedLeaseList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33766,8 +33465,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			ID:   "watchCoreV1ConfigMapListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -33885,8 +33583,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			ID:   "watchCoreV1EndpointsListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34004,8 +33701,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			ID:   "watchCoreV1EventListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34123,8 +33819,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			ID:   "watchCoreV1LimitRangeListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34242,8 +33937,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			ID:   "watchCoreV1Namespace",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Namespace", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Namespace", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34362,8 +34056,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			ID:   "watchCoreV1NamespaceList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34481,8 +34174,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			ID:   "watchCoreV1NamespacedConfigMap",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34602,8 +34294,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			ID:   "watchCoreV1NamespacedConfigMapList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34722,8 +34413,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			ID:   "watchCoreV1NamespacedEndpoints",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34843,8 +34533,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			ID:   "watchCoreV1NamespacedEndpointsList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -34963,8 +34652,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			ID:   "watchCoreV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35084,8 +34772,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			ID:   "watchCoreV1NamespacedEventList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35204,8 +34891,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			ID:   "watchCoreV1NamespacedLimitRange",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35325,8 +35011,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			ID:   "watchCoreV1NamespacedLimitRangeList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35445,8 +35130,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			ID:   "watchCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35566,8 +35250,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			ID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35686,8 +35369,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			ID:   "watchCoreV1NamespacedPod",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35807,8 +35489,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			ID:   "watchCoreV1NamespacedPodList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -35927,8 +35608,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			ID:   "watchCoreV1NamespacedPodTemplate",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36048,8 +35728,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			ID:   "watchCoreV1NamespacedPodTemplateList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36168,8 +35847,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			ID:   "watchCoreV1NamespacedReplicationController",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36289,8 +35967,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			ID:   "watchCoreV1NamespacedReplicationControllerList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36409,8 +36086,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			ID:   "watchCoreV1NamespacedResourceQuota",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36530,8 +36206,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			ID:   "watchCoreV1NamespacedResourceQuotaList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36650,8 +36325,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			ID:   "watchCoreV1NamespacedSecret",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36771,8 +36445,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			ID:   "watchCoreV1NamespacedSecretList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -36891,8 +36564,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			ID:   "watchCoreV1NamespacedService",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37012,8 +36684,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			ID:   "watchCoreV1NamespacedServiceAccount",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37133,8 +36804,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			ID:   "watchCoreV1NamespacedServiceAccountList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37253,8 +36923,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			ID:   "watchCoreV1NamespacedServiceList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37373,8 +37042,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			ID:   "watchCoreV1Node",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Node", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1Node", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37493,8 +37161,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			ID:   "watchCoreV1NodeList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NodeList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1NodeList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37612,8 +37279,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			ID:   "watchCoreV1PersistentVolume",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37732,8 +37398,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			ID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37851,8 +37516,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			ID:   "watchCoreV1PersistentVolumeList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -37970,8 +37634,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			ID:   "watchCoreV1PodListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38089,8 +37752,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			ID:   "watchCoreV1PodTemplateListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38208,8 +37870,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			ID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38327,8 +37988,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			ID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38446,8 +38106,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			ID:   "watchCoreV1SecretListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38565,8 +38224,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			ID:   "watchCoreV1ServiceAccountListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38684,8 +38342,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			ID:   "watchCoreV1ServiceListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38803,8 +38460,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			ID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -38922,8 +38578,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			ID:   "watchDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39043,8 +38698,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			ID:   "watchDiscoveryV1NamespacedEndpointSliceList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39163,8 +38817,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			ID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39282,8 +38935,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			ID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39403,8 +39055,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			ID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39523,8 +39174,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			ID:   "watchEventsV1EventListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39642,8 +39292,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			ID:   "watchEventsV1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39763,8 +39412,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			ID:   "watchEventsV1NamespacedEventList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -39883,8 +39531,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			ID:   "watchEventsV1beta1EventListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40002,8 +39649,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			ID:   "watchEventsV1beta1NamespacedEvent",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40123,8 +39769,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			ID:   "watchEventsV1beta1NamespacedEventList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40243,8 +39888,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			ID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40363,8 +40007,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			ID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40483,8 +40126,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40603,8 +40245,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40722,8 +40363,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			ID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40842,8 +40482,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			ID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -40962,8 +40601,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41082,8 +40720,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41201,8 +40838,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			ID:   "watchInternalApiserverV1alpha1StorageVersion",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41321,8 +40957,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			ID:   "watchInternalApiserverV1alpha1StorageVersionList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41440,8 +41075,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			ID:   "watchNetworkingV1IngressClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41560,8 +41194,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			ID:   "watchNetworkingV1IngressClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41679,8 +41312,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			ID:   "watchNetworkingV1IngressListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41798,8 +41430,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			ID:   "watchNetworkingV1NamespacedIngress",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -41919,8 +41550,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			ID:   "watchNetworkingV1NamespacedIngressList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42039,8 +41669,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			ID:   "watchNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42160,8 +41789,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			ID:   "watchNetworkingV1NamespacedNetworkPolicyList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42280,8 +41908,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			ID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42399,8 +42026,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			ID:   "watchNodeV1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42519,8 +42145,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			ID:   "watchNodeV1RuntimeClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42638,8 +42263,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			ID:   "watchNodeV1alpha1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42758,8 +42382,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			ID:   "watchNodeV1alpha1RuntimeClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42877,8 +42500,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			ID:   "watchNodeV1beta1RuntimeClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -42997,8 +42619,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			ID:   "watchNodeV1beta1RuntimeClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43116,8 +42737,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			ID:   "watchPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43237,8 +42857,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			ID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43357,8 +42976,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			ID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43476,8 +43094,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43597,8 +43214,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43717,8 +43333,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			ID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43836,8 +43451,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			ID:   "watchPolicyV1beta1PodSecurityPolicy",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -43956,8 +43570,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			ID:   "watchPolicyV1beta1PodSecurityPolicyList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44075,8 +43688,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			ID:   "watchRbacAuthorizationV1ClusterRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44195,8 +43807,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			ID:   "watchRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44315,8 +43926,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			ID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44434,8 +44044,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			ID:   "watchRbacAuthorizationV1ClusterRoleList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44553,8 +44162,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			ID:   "watchRbacAuthorizationV1NamespacedRole",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44674,8 +44282,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			ID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44795,8 +44402,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			ID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -44915,8 +44521,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			ID:   "watchRbacAuthorizationV1NamespacedRoleList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45035,8 +44640,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			ID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45154,8 +44758,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			ID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45273,8 +44876,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			ID:   "watchSchedulingV1PriorityClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45393,8 +44995,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			ID:   "watchSchedulingV1PriorityClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45512,8 +45113,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			ID:   "watchStorageV1CSIDriver",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45632,8 +45232,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			ID:   "watchStorageV1CSIDriverList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45751,8 +45350,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			ID:   "watchStorageV1CSINode",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINode", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINode", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45871,8 +45469,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			ID:   "watchStorageV1CSINodeList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -45990,8 +45587,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			ID:   "watchStorageV1StorageClass",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46110,8 +45706,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			ID:   "watchStorageV1StorageClassList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46229,8 +45824,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			ID:   "watchStorageV1VolumeAttachment",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46349,8 +45943,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			ID:   "watchStorageV1VolumeAttachmentList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46468,8 +46061,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			ID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46587,8 +46179,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46708,8 +46299,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46828,8 +46418,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			ID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -46947,8 +46536,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
@@ -47068,8 +46656,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
 		}
 	)
-	sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r)
-	if err != nil {
+	if sctx, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
 			Security:         "BearerToken",
