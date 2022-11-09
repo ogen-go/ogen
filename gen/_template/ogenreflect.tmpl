@@ -3,6 +3,7 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+var operations = map[string]ogenreflect.Operation{
 {{- range $op := $.Operations }}
 	{{- template "ogenreflect/operation" $op }}
 {{ end }}
@@ -10,12 +11,13 @@
 {{- range $op := $.Webhooks }}
     {{- template "ogenreflect/operation" $op }}
 {{ end }}
+}
 
 {{ end }}
 
 {{ define "ogenreflect/operation" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
-var op{{ $op.Name }}Info = ogenreflect.Operation{
+{{ quote $op.Name }}: ogenreflect.Operation{
 	Name: {{ quote $op.Name }},
 	ID: {{ quote $op.Spec.OperationID }},
 	Types: ogenreflect.OperationTypes{
@@ -77,7 +79,7 @@ var op{{ $op.Name }}Info = ogenreflect.Operation{
 		},
         {{- end }}
 	},
-}
+},
 {{ end }}
 
 {{ define "ogenreflect/contents" -}}
