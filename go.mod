@@ -10,7 +10,6 @@ require (
 	github.com/go-faster/jx v0.40.0
 	github.com/go-faster/yamlx v0.3.8
 	github.com/google/uuid v1.3.0
-	github.com/mitchellh/copystructure v1.2.0
 	github.com/stretchr/testify v1.8.1
 	github.com/valyala/fasthttp v1.41.0
 	go.opentelemetry.io/otel v1.11.1
@@ -33,7 +32,6 @@ require (
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/mattn/go-colorable v0.1.9 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
-	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
