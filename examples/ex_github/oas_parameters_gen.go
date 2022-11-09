@@ -4192,9 +4192,9 @@ type ActionsListArtifactsForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListArtifactsForRepoParams(packed map[string]any) (params ActionsListArtifactsForRepoParams) {
@@ -4360,9 +4360,9 @@ type ActionsListEnvironmentSecretsParams struct {
 	// The name of the environment.
 	EnvironmentName string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListEnvironmentSecretsParams(packed map[string]any) (params ActionsListEnvironmentSecretsParams) {
@@ -4531,11 +4531,11 @@ type ActionsListJobsForWorkflowRunParams struct {
 	// Filters jobs by their `completed_at` timestamp. Can be one of:
 	// \* `latest`: Returns jobs from the most recent execution of the workflow run.
 	// \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
-	Filter OptActionsListJobsForWorkflowRunFilter
+	Filter OptActionsListJobsForWorkflowRunFilter `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListJobsForWorkflowRunParams(packed map[string]any) (params ActionsListJobsForWorkflowRunParams) {
@@ -4788,9 +4788,9 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 type ActionsListOrgSecretsParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListOrgSecretsParams(packed map[string]any) (params ActionsListOrgSecretsParams) {
@@ -4924,9 +4924,9 @@ type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) {
@@ -5091,9 +5091,9 @@ type ActionsListRepoSecretsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListRepoSecretsParams(packed map[string]any) (params ActionsListRepoSecretsParams) {
@@ -5258,9 +5258,9 @@ type ActionsListRepoWorkflowsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListRepoWorkflowsParams(packed map[string]any) (params ActionsListRepoWorkflowsParams) {
@@ -5549,9 +5549,9 @@ type ActionsListSelectedReposForOrgSecretParams struct {
 	// Secret_name parameter.
 	SecretName string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelectedReposForOrgSecretParams(packed map[string]any) (params ActionsListSelectedReposForOrgSecretParams) {
@@ -5715,9 +5715,9 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed map[string]any) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
@@ -5849,9 +5849,9 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelfHostedRunnerGroupsForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnerGroupsForOrgParams) {
@@ -5983,9 +5983,9 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 type ActionsListSelfHostedRunnersForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelfHostedRunnersForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersForOrgParams) {
@@ -6118,9 +6118,9 @@ type ActionsListSelfHostedRunnersForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelfHostedRunnersForRepoParams(packed map[string]any) (params ActionsListSelfHostedRunnersForRepoParams) {
@@ -6286,9 +6286,9 @@ type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListSelfHostedRunnersInGroupForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersInGroupForOrgParams) {
@@ -6455,9 +6455,9 @@ type ActionsListWorkflowRunArtifactsParams struct {
 	// The id of the workflow run.
 	RunID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActionsListWorkflowRunArtifactsParams(packed map[string]any) (params ActionsListWorkflowRunArtifactsParams) {
@@ -6655,23 +6655,23 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	Repo  string
 	// Returns someone's workflow runs. Use the login for the user who created the `push` associated with
 	// the check suite or workflow run.
-	Actor OptString
+	Actor OptString `json:",omitempty"`
 	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
-	Branch OptString
+	Branch OptString `json:",omitempty"`
 	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
 	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
 	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
-	Event OptString
+	Event OptString `json:",omitempty"`
 	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
 	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
 	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
 	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
-	Status OptActionsListWorkflowRunsForRepoStatus
+	Status OptActionsListWorkflowRunsForRepoStatus `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page    OptInt
-	Created OptDateTime
+	Page    OptInt      `json:",omitempty"`
+	Created OptDateTime `json:",omitempty"`
 }
 
 func unpackActionsListWorkflowRunsForRepoParams(packed map[string]any) (params ActionsListWorkflowRunsForRepoParams) {
@@ -8687,9 +8687,9 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 type ActivityListEventsForAuthenticatedUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListEventsForAuthenticatedUserParams) {
@@ -8820,19 +8820,19 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 // ActivityListNotificationsForAuthenticatedUserParams is parameters of activity/list-notifications-for-authenticated-user operation.
 type ActivityListNotificationsForAuthenticatedUserParams struct {
 	// If `true`, show notifications marked as read.
-	All OptBool
+	All OptBool `json:",omitempty"`
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
-	Participating OptBool
+	Participating OptBool `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptDateTime
+	Before OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListNotificationsForAuthenticatedUserParams) {
@@ -9091,9 +9091,9 @@ type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Username string
 	Org      string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListOrgEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListOrgEventsForAuthenticatedUserParams) {
@@ -9256,9 +9256,9 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 // ActivityListPublicEventsParams is parameters of activity/list-public-events operation.
 type ActivityListPublicEventsParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListPublicEventsParams(packed map[string]any) (params ActivityListPublicEventsParams) {
@@ -9359,9 +9359,9 @@ type ActivityListPublicEventsForRepoNetworkParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListPublicEventsForRepoNetworkParams(packed map[string]any) (params ActivityListPublicEventsForRepoNetworkParams) {
@@ -9525,9 +9525,9 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 type ActivityListPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListPublicEventsForUserParams(packed map[string]any) (params ActivityListPublicEventsForUserParams) {
@@ -9659,9 +9659,9 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 type ActivityListPublicOrgEventsParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListPublicOrgEventsParams(packed map[string]any) (params ActivityListPublicOrgEventsParams) {
@@ -9793,9 +9793,9 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 type ActivityListReceivedEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListReceivedEventsForUserParams(packed map[string]any) (params ActivityListReceivedEventsForUserParams) {
@@ -9927,9 +9927,9 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListReceivedPublicEventsForUserParams(packed map[string]any) (params ActivityListReceivedPublicEventsForUserParams) {
@@ -10062,9 +10062,9 @@ type ActivityListRepoEventsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListRepoEventsParams(packed map[string]any) (params ActivityListRepoEventsParams) {
@@ -10229,19 +10229,19 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	Owner string
 	Repo  string
 	// If `true`, show notifications marked as read.
-	All OptBool
+	All OptBool `json:",omitempty"`
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
-	Participating OptBool
+	Participating OptBool `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptDateTime
+	Before OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListRepoNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListRepoNotificationsForAuthenticatedUserParams) {
@@ -10562,13 +10562,13 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 // ActivityListReposStarredByAuthenticatedUserParams is parameters of activity/list-repos-starred-by-authenticated-user operation.
 type ActivityListReposStarredByAuthenticatedUserParams struct {
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptActivityListReposStarredByAuthenticatedUserSort
+	Sort OptActivityListReposStarredByAuthenticatedUserSort `json:",omitempty"`
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptActivityListReposStarredByAuthenticatedUserDirection
+	Direction OptActivityListReposStarredByAuthenticatedUserDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListReposStarredByAuthenticatedUserParams(packed map[string]any) (params ActivityListReposStarredByAuthenticatedUserParams) {
@@ -10782,9 +10782,9 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 type ActivityListReposWatchedByUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListReposWatchedByUserParams(packed map[string]any) (params ActivityListReposWatchedByUserParams) {
@@ -10915,9 +10915,9 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 // ActivityListWatchedReposForAuthenticatedUserParams is parameters of activity/list-watched-repos-for-authenticated-user operation.
 type ActivityListWatchedReposForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListWatchedReposForAuthenticatedUserParams(packed map[string]any) (params ActivityListWatchedReposForAuthenticatedUserParams) {
@@ -11018,9 +11018,9 @@ type ActivityListWatchersForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackActivityListWatchersForRepoParams(packed map[string]any) (params ActivityListWatchersForRepoParams) {
@@ -12241,14 +12241,14 @@ type AppsListAccountsForPlanParams struct {
 	// Plan_id parameter.
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptAppsListAccountsForPlanSort
+	Sort OptAppsListAccountsForPlanSort `json:",omitempty"`
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
-	Direction OptAppsListAccountsForPlanDirection
+	Direction OptAppsListAccountsForPlanDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListAccountsForPlanParams(packed map[string]any) (params AppsListAccountsForPlanParams) {
@@ -12490,14 +12490,14 @@ type AppsListAccountsForPlanStubbedParams struct {
 	// Plan_id parameter.
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptAppsListAccountsForPlanStubbedSort
+	Sort OptAppsListAccountsForPlanStubbedSort `json:",omitempty"`
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
-	Direction OptAppsListAccountsForPlanStubbedDirection
+	Direction OptAppsListAccountsForPlanStubbedDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListAccountsForPlanStubbedParams(packed map[string]any) (params AppsListAccountsForPlanStubbedParams) {
@@ -12739,9 +12739,9 @@ type AppsListInstallationReposForAuthenticatedUserParams struct {
 	// Installation_id parameter.
 	InstallationID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListInstallationReposForAuthenticatedUserParams(packed map[string]any) (params AppsListInstallationReposForAuthenticatedUserParams) {
@@ -12872,9 +12872,9 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 // AppsListPlansParams is parameters of apps/list-plans operation.
 type AppsListPlansParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListPlansParams(packed map[string]any) (params AppsListPlansParams) {
@@ -12973,9 +12973,9 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsList
 // AppsListPlansStubbedParams is parameters of apps/list-plans-stubbed operation.
 type AppsListPlansStubbedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListPlansStubbedParams(packed map[string]any) (params AppsListPlansStubbedParams) {
@@ -13074,9 +13074,9 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params A
 // AppsListReposAccessibleToInstallationParams is parameters of apps/list-repos-accessible-to-installation operation.
 type AppsListReposAccessibleToInstallationParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListReposAccessibleToInstallationParams(packed map[string]any) (params AppsListReposAccessibleToInstallationParams) {
@@ -13175,9 +13175,9 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 // AppsListSubscriptionsForAuthenticatedUserParams is parameters of apps/list-subscriptions-for-authenticated-user operation.
 type AppsListSubscriptionsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListSubscriptionsForAuthenticatedUserParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserParams) {
@@ -13276,9 +13276,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 // AppsListSubscriptionsForAuthenticatedUserStubbedParams is parameters of apps/list-subscriptions-for-authenticated-user-stubbed operation.
 type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams) {
@@ -13377,10 +13377,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 // AppsListWebhookDeliveriesParams is parameters of apps/list-webhook-deliveries operation.
 type AppsListWebhookDeliveriesParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-	Cursor OptString
+	Cursor OptString `json:",omitempty"`
 }
 
 func unpackAppsListWebhookDeliveriesParams(packed map[string]any) (params AppsListWebhookDeliveriesParams) {
@@ -14496,9 +14496,9 @@ type ChecksListAnnotationsParams struct {
 	// Check_run_id parameter.
 	CheckRunID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackChecksListAnnotationsParams(packed map[string]any) (params ChecksListAnnotationsParams) {
@@ -14697,18 +14697,18 @@ type ChecksListForRefParams struct {
 	// Ref parameter.
 	Ref string
 	// Returns check runs with the specified `name`.
-	CheckName OptString
+	CheckName OptString `json:",omitempty"`
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-	Status OptChecksListForRefStatus
+	Status OptChecksListForRefStatus `json:",omitempty"`
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
-	Filter OptChecksListForRefFilter
+	Filter OptChecksListForRefFilter `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page  OptInt
-	AppID OptInt
+	Page  OptInt `json:",omitempty"`
+	AppID OptInt `json:",omitempty"`
 }
 
 func unpackChecksListForRefParams(packed map[string]any) (params ChecksListForRefParams) {
@@ -15090,17 +15090,17 @@ type ChecksListForSuiteParams struct {
 	// Check_suite_id parameter.
 	CheckSuiteID int
 	// Returns check runs with the specified `name`.
-	CheckName OptString
+	CheckName OptString `json:",omitempty"`
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-	Status OptChecksListForSuiteStatus
+	Status OptChecksListForSuiteStatus `json:",omitempty"`
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
-	Filter OptChecksListForSuiteFilter
+	Filter OptChecksListForSuiteFilter `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackChecksListForSuiteParams(packed map[string]any) (params ChecksListForSuiteParams) {
@@ -15445,13 +15445,13 @@ type ChecksListSuitesForRefParams struct {
 	// Ref parameter.
 	Ref string
 	// Filters check suites by GitHub App `id`.
-	AppID OptInt
+	AppID OptInt `json:",omitempty"`
 	// Returns check runs with the specified `name`.
-	CheckName OptString
+	CheckName OptString `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackChecksListSuitesForRefParams(packed map[string]any) (params ChecksListSuitesForRefParams) {
@@ -15918,7 +15918,7 @@ type CodeScanningDeleteAnalysisParams struct {
 	// analysis in a set without setting this parameter to `true`, you'll get a 400 response with the
 	// message: `Analysis is last of its type and deletion may result in the loss of historical alert
 	// data. Please specify confirm_delete.`.
-	ConfirmDelete OptNilString
+	ConfirmDelete OptNilString `json:",omitempty"`
 }
 
 func unpackCodeScanningDeleteAnalysisParams(packed map[string]any) (params CodeScanningDeleteAnalysisParams) {
@@ -16418,13 +16418,13 @@ type CodeScanningListAlertInstancesParams struct {
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
 	AlertNumber AlertNumber
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
 	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-	Ref OptCodeScanningRef
+	Ref OptCodeScanningRef `json:",omitempty"`
 }
 
 func unpackCodeScanningListAlertInstancesParams(packed map[string]any) (params CodeScanningListAlertInstancesParams) {
@@ -16673,21 +16673,21 @@ type CodeScanningListAlertsForRepoParams struct {
 	Repo  string
 	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
 	// tool by using either `tool_name` or `tool_guid`, but not both.
-	ToolName OptCodeScanningAnalysisToolName
+	ToolName OptCodeScanningAnalysisToolName `json:",omitempty"`
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
 	// either `tool_guid` or `tool_name`, but not both.
-	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	ToolGUID OptNilCodeScanningAnalysisToolGUID `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
 	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-	Ref OptCodeScanningRef
+	Ref OptCodeScanningRef `json:",omitempty"`
 	// Set to `open`, `fixed`, or `dismissed` to list code scanning alerts in a specific state.
-	State OptCodeScanningAlertState
+	State OptCodeScanningAlertState `json:",omitempty"`
 }
 
 func unpackCodeScanningListAlertsForRepoParams(packed map[string]any) (params CodeScanningListAlertsForRepoParams) {
@@ -17037,21 +17037,21 @@ type CodeScanningListRecentAnalysesParams struct {
 	Repo  string
 	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
 	// tool by using either `tool_name` or `tool_guid`, but not both.
-	ToolName OptCodeScanningAnalysisToolName
+	ToolName OptCodeScanningAnalysisToolName `json:",omitempty"`
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
 	// either `tool_guid` or `tool_name`, but not both.
-	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	ToolGUID OptNilCodeScanningAnalysisToolGUID `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted
 	// either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-	Ref OptCodeScanningRef
+	Ref OptCodeScanningRef `json:",omitempty"`
 	// Filter analyses belonging to the same SARIF upload.
-	SarifID OptCodeScanningAnalysisSarifID
+	SarifID OptCodeScanningAnalysisSarifID `json:",omitempty"`
 }
 
 func unpackCodeScanningListRecentAnalysesParams(packed map[string]any) (params CodeScanningListRecentAnalysesParams) {
@@ -18529,29 +18529,29 @@ type EnterpriseAdminGetAuditLogParams struct {
 	Enterprise string
 	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
 	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
-	Phrase OptString
+	Phrase OptString `json:",omitempty"`
 	// The event types to include:
 	// - `web` - returns web (non-Git) events
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-	Include OptEnterpriseAdminGetAuditLogInclude
+	Include OptEnterpriseAdminGetAuditLogInclude `json:",omitempty"`
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
-	After OptString
+	After OptString `json:",omitempty"`
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events before this cursor.
-	Before OptString
+	Before OptString `json:",omitempty"`
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-	Order OptEnterpriseAdminGetAuditLogOrder
+	Order OptEnterpriseAdminGetAuditLogOrder `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminGetAuditLogParams(packed map[string]any) (params EnterpriseAdminGetAuditLogParams) {
@@ -18947,7 +18947,7 @@ type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
 	// Identifier generated by the GitHub SCIM endpoint.
 	ScimGroupID string
 	// Attributes to exclude.
-	ExcludedAttributes OptString
+	ExcludedAttributes OptString `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) {
@@ -19307,9 +19307,9 @@ type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struc
 	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
@@ -19474,13 +19474,13 @@ type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 	// Used for pagination: the index of the first result to return.
-	StartIndex OptInt
+	StartIndex OptInt `json:",omitempty"`
 	// Used for pagination: the number of results to return.
-	Count OptInt
+	Count OptInt `json:",omitempty"`
 	// Filter results.
-	Filter OptString
+	Filter OptString `json:",omitempty"`
 	// Attributes to exclude.
-	ExcludedAttributes OptString
+	ExcludedAttributes OptString `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams) {
@@ -19677,11 +19677,11 @@ type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 	// Used for pagination: the index of the first result to return.
-	StartIndex OptInt
+	StartIndex OptInt `json:",omitempty"`
 	// Used for pagination: the number of results to return.
-	Count OptInt
+	Count OptInt `json:",omitempty"`
 	// Filter results.
-	Filter OptString
+	Filter OptString `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) {
@@ -19887,9 +19887,9 @@ type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParam
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
@@ -20022,9 +20022,9 @@ type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) {
@@ -20157,9 +20157,9 @@ type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) {
@@ -20294,9 +20294,9 @@ type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 	// Unique identifier of the self-hosted runner group.
 	RunnerGroupID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) {
@@ -21947,11 +21947,11 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 type GistsListParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListParams(packed map[string]any) (params GistsListParams) {
@@ -22089,9 +22089,9 @@ type GistsListCommentsParams struct {
 	// Gist_id parameter.
 	GistID string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListCommentsParams(packed map[string]any) (params GistsListCommentsParams) {
@@ -22224,9 +22224,9 @@ type GistsListCommitsParams struct {
 	// Gist_id parameter.
 	GistID string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListCommitsParams(packed map[string]any) (params GistsListCommitsParams) {
@@ -22359,11 +22359,11 @@ type GistsListForUserParams struct {
 	Username string
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListForUserParams(packed map[string]any) (params GistsListForUserParams) {
@@ -22533,9 +22533,9 @@ type GistsListForksParams struct {
 	// Gist_id parameter.
 	GistID string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListForksParams(packed map[string]any) (params GistsListForksParams) {
@@ -22667,11 +22667,11 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 type GistsListPublicParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListPublicParams(packed map[string]any) (params GistsListPublicParams) {
@@ -22808,11 +22808,11 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 type GistsListStarredParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGistsListStarredParams(packed map[string]any) (params GistsListStarredParams) {
@@ -24074,7 +24074,7 @@ type GitGetTreeParams struct {
 	// specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable
 	// returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent
 	// recursively returning objects or subtrees.
-	Recursive OptString
+	Recursive OptString `json:",omitempty"`
 }
 
 func unpackGitGetTreeParams(packed map[string]any) (params GitGetTreeParams) {
@@ -24226,9 +24226,9 @@ type GitListMatchingRefsParams struct {
 	// Ref parameter.
 	Ref string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackGitListMatchingRefsParams(packed map[string]any) (params GitListMatchingRefsParams) {
@@ -26294,26 +26294,26 @@ type IssuesListParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-	Filter OptIssuesListFilter
+	Filter OptIssuesListFilter `json:",omitempty"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-	State OptIssuesListState
+	State OptIssuesListState `json:",omitempty"`
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-	Labels OptString
+	Labels OptString `json:",omitempty"`
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-	Sort OptIssuesListSort
+	Sort OptIssuesListSort `json:",omitempty"`
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListDirection
+	Direction OptIssuesListDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since  OptDateTime
-	Collab OptBool
-	Orgs   OptBool
-	Owned  OptBool
-	Pulls  OptBool
+	Since  OptDateTime `json:",omitempty"`
+	Collab OptBool     `json:",omitempty"`
+	Orgs   OptBool     `json:",omitempty"`
+	Owned  OptBool     `json:",omitempty"`
+	Pulls  OptBool     `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListParams(packed map[string]any) (params IssuesListParams) {
@@ -26864,9 +26864,9 @@ type IssuesListAssigneesParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListAssigneesParams(packed map[string]any) (params IssuesListAssigneesParams) {
@@ -27034,11 +27034,11 @@ type IssuesListCommentsParams struct {
 	IssueNumber int
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListCommentsParams(packed map[string]any) (params IssuesListCommentsParams) {
@@ -27272,16 +27272,16 @@ type IssuesListCommentsForRepoParams struct {
 	Owner string
 	Repo  string
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptIssuesListCommentsForRepoSort
+	Sort OptIssuesListCommentsForRepoSort `json:",omitempty"`
 	// Either `asc` or `desc`. Ignored without the `sort` parameter.
-	Direction OptIssuesListCommentsForRepoDirection
+	Direction OptIssuesListCommentsForRepoDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListCommentsForRepoParams(packed map[string]any) (params IssuesListCommentsForRepoParams) {
@@ -27592,9 +27592,9 @@ type IssuesListEventsForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListEventsForRepoParams(packed map[string]any) (params IssuesListEventsForRepoParams) {
@@ -27763,22 +27763,22 @@ type IssuesListForAuthenticatedUserParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-	Filter OptIssuesListForAuthenticatedUserFilter
+	Filter OptIssuesListForAuthenticatedUserFilter `json:",omitempty"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-	State OptIssuesListForAuthenticatedUserState
+	State OptIssuesListForAuthenticatedUserState `json:",omitempty"`
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-	Labels OptString
+	Labels OptString `json:",omitempty"`
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-	Sort OptIssuesListForAuthenticatedUserSort
+	Sort OptIssuesListForAuthenticatedUserSort `json:",omitempty"`
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForAuthenticatedUserDirection
+	Direction OptIssuesListForAuthenticatedUserDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListForAuthenticatedUserParams(packed map[string]any) (params IssuesListForAuthenticatedUserParams) {
@@ -28186,22 +28186,22 @@ type IssuesListForOrgParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-	Filter OptIssuesListForOrgFilter
+	Filter OptIssuesListForOrgFilter `json:",omitempty"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-	State OptIssuesListForOrgState
+	State OptIssuesListForOrgState `json:",omitempty"`
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-	Labels OptString
+	Labels OptString `json:",omitempty"`
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-	Sort OptIssuesListForOrgSort
+	Sort OptIssuesListForOrgSort `json:",omitempty"`
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForOrgDirection
+	Direction OptIssuesListForOrgDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListForOrgParams(packed map[string]any) (params IssuesListForOrgParams) {
@@ -28638,29 +28638,29 @@ type IssuesListForRepoParams struct {
 	// If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*`
 	// is passed, issues with any milestone are accepted. If the string `none` is passed, issues without
 	// milestones are returned.
-	Milestone OptString
+	Milestone OptString `json:",omitempty"`
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-	State OptIssuesListForRepoState
+	State OptIssuesListForRepoState `json:",omitempty"`
 	// Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues
 	// assigned to any user.
-	Assignee OptString
+	Assignee OptString `json:",omitempty"`
 	// The user that created the issue.
-	Creator OptString
+	Creator OptString `json:",omitempty"`
 	// A user that's mentioned in the issue.
-	Mentioned OptString
+	Mentioned OptString `json:",omitempty"`
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-	Labels OptString
+	Labels OptString `json:",omitempty"`
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-	Sort OptIssuesListForRepoSort
+	Sort OptIssuesListForRepoSort `json:",omitempty"`
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForRepoDirection
+	Direction OptIssuesListForRepoDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListForRepoParams(packed map[string]any) (params IssuesListForRepoParams) {
@@ -29220,9 +29220,9 @@ type IssuesListLabelsForMilestoneParams struct {
 	// Milestone_number parameter.
 	MilestoneNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListLabelsForMilestoneParams(packed map[string]any) (params IssuesListLabelsForMilestoneParams) {
@@ -29419,9 +29419,9 @@ type IssuesListLabelsForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListLabelsForRepoParams(packed map[string]any) (params IssuesListLabelsForRepoParams) {
@@ -29588,9 +29588,9 @@ type IssuesListLabelsOnIssueParams struct {
 	// Issue_number parameter.
 	IssueNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListLabelsOnIssueParams(packed map[string]any) (params IssuesListLabelsOnIssueParams) {
@@ -29787,15 +29787,15 @@ type IssuesListMilestonesParams struct {
 	Owner string
 	Repo  string
 	// The state of the milestone. Either `open`, `closed`, or `all`.
-	State OptIssuesListMilestonesState
+	State OptIssuesListMilestonesState `json:",omitempty"`
 	// What to sort results by. Either `due_on` or `completeness`.
-	Sort OptIssuesListMilestonesSort
+	Sort OptIssuesListMilestonesSort `json:",omitempty"`
 	// The direction of the sort. Either `asc` or `desc`.
-	Direction OptIssuesListMilestonesDirection
+	Direction OptIssuesListMilestonesDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackIssuesListMilestonesParams(packed map[string]any) (params IssuesListMilestonesParams) {
@@ -31213,11 +31213,11 @@ func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGe
 
 // LicensesGetAllCommonlyUsedParams is parameters of licenses/get-all-commonly-used operation.
 type LicensesGetAllCommonlyUsedParams struct {
-	Featured OptBool
+	Featured OptBool `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackLicensesGetAllCommonlyUsedParams(packed map[string]any) (params LicensesGetAllCommonlyUsedParams) {
@@ -31761,7 +31761,7 @@ type MigrationsGetCommitAuthorsParams struct {
 	Owner string
 	Repo  string
 	// A user ID. Only return users with an ID greater than this ID.
-	Since OptInt
+	Since OptInt `json:",omitempty"`
 }
 
 func unpackMigrationsGetCommitAuthorsParams(packed map[string]any) (params MigrationsGetCommitAuthorsParams) {
@@ -32034,7 +32034,7 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 type MigrationsGetStatusForAuthenticatedUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
-	Exclude     []string
+	Exclude     []string `json:",omitempty"`
 }
 
 func unpackMigrationsGetStatusForAuthenticatedUserParams(packed map[string]any) (params MigrationsGetStatusForAuthenticatedUserParams) {
@@ -32123,7 +32123,7 @@ type MigrationsGetStatusForOrgParams struct {
 	// Migration_id parameter.
 	MigrationID int
 	// Exclude attributes from the API response to improve performance.
-	Exclude []MigrationsGetStatusForOrgExcludeItem
+	Exclude []MigrationsGetStatusForOrgExcludeItem `json:",omitempty"`
 }
 
 func unpackMigrationsGetStatusForOrgParams(packed map[string]any) (params MigrationsGetStatusForOrgParams) {
@@ -32263,9 +32263,9 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 // MigrationsListForAuthenticatedUserParams is parameters of migrations/list-for-authenticated-user operation.
 type MigrationsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackMigrationsListForAuthenticatedUserParams(packed map[string]any) (params MigrationsListForAuthenticatedUserParams) {
@@ -32365,11 +32365,11 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 type MigrationsListForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Exclude attributes from the API response to improve performance.
-	Exclude []MigrationsListForOrgExcludeItem
+	Exclude []MigrationsListForOrgExcludeItem `json:",omitempty"`
 }
 
 func unpackMigrationsListForOrgParams(packed map[string]any) (params MigrationsListForOrgParams) {
@@ -32564,9 +32564,9 @@ type MigrationsListReposForOrgParams struct {
 	// Migration_id parameter.
 	MigrationID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackMigrationsListReposForOrgParams(packed map[string]any) (params MigrationsListReposForOrgParams) {
@@ -32731,9 +32731,9 @@ type MigrationsListReposForUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackMigrationsListReposForUserParams(packed map[string]any) (params MigrationsListReposForUserParams) {
@@ -33756,11 +33756,11 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 // OAuthAuthorizationsListAuthorizationsParams is parameters of oauth-authorizations/list-authorizations operation.
 type OAuthAuthorizationsListAuthorizationsParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// The client ID of your GitHub app.
-	ClientID OptString
+	ClientID OptString `json:",omitempty"`
 }
 
 func unpackOAuthAuthorizationsListAuthorizationsParams(packed map[string]any) (params OAuthAuthorizationsListAuthorizationsParams) {
@@ -33896,11 +33896,11 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 // OAuthAuthorizationsListGrantsParams is parameters of oauth-authorizations/list-grants operation.
 type OAuthAuthorizationsListGrantsParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// The client ID of your GitHub app.
-	ClientID OptString
+	ClientID OptString `json:",omitempty"`
 }
 
 func unpackOAuthAuthorizationsListGrantsParams(packed map[string]any) (params OAuthAuthorizationsListGrantsParams) {
@@ -34766,29 +34766,29 @@ type OrgsGetAuditLogParams struct {
 	Org string
 	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
 	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
-	Phrase OptString
+	Phrase OptString `json:",omitempty"`
 	// The event types to include:
 	// - `web` - returns web (non-Git) events
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-	Include OptOrgsGetAuditLogInclude
+	Include OptOrgsGetAuditLogInclude `json:",omitempty"`
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
-	After OptString
+	After OptString `json:",omitempty"`
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events before this cursor.
-	Before OptString
+	Before OptString `json:",omitempty"`
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-	Order OptOrgsGetAuditLogOrder
+	Order OptOrgsGetAuditLogOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsGetAuditLogParams(packed map[string]any) (params OrgsGetAuditLogParams) {
@@ -35524,9 +35524,9 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 // OrgsListParams is parameters of orgs/list operation.
 type OrgsListParams struct {
 	// An organization ID. Only return organizations with an ID greater than this ID.
-	Since OptInt
+	Since OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListParams(packed map[string]any) (params OrgsListParams) {
@@ -35666,9 +35666,9 @@ func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params O
 type OrgsListFailedInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListFailedInvitationsParams(packed map[string]any) (params OrgsListFailedInvitationsParams) {
@@ -35799,9 +35799,9 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 // OrgsListForAuthenticatedUserParams is parameters of orgs/list-for-authenticated-user operation.
 type OrgsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListForAuthenticatedUserParams(packed map[string]any) (params OrgsListForAuthenticatedUserParams) {
@@ -35901,9 +35901,9 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 type OrgsListForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListForUserParams(packed map[string]any) (params OrgsListForUserParams) {
@@ -36037,9 +36037,9 @@ type OrgsListInvitationTeamsParams struct {
 	// Invitation_id parameter.
 	InvitationID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListInvitationTeamsParams(packed map[string]any) (params OrgsListInvitationTeamsParams) {
@@ -36206,16 +36206,16 @@ type OrgsListMembersParams struct {
 	// \* `2fa_disabled` - Members without [two-factor authentication](https://github.
 	// com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
 	// \* `all` - All members the authenticated user can see.
-	Filter OptOrgsListMembersFilter
+	Filter OptOrgsListMembersFilter `json:",omitempty"`
 	// Filter members returned by their role. Can be one of:
 	// \* `all` - All members of the organization, regardless of role.
 	// \* `admin` - Organization owners.
 	// \* `member` - Non-owner organization members.
-	Role OptOrgsListMembersRole
+	Role OptOrgsListMembersRole `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListMembersParams(packed map[string]any) (params OrgsListMembersParams) {
@@ -36461,11 +36461,11 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 type OrgsListMembershipsForAuthenticatedUserParams struct {
 	// Indicates the state of the memberships to return. Can be either `active` or `pending`. If not
 	// specified, the API returns both active and pending memberships.
-	State OptOrgsListMembershipsForAuthenticatedUserState
+	State OptOrgsListMembershipsForAuthenticatedUserState `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListMembershipsForAuthenticatedUserParams(packed map[string]any) (params OrgsListMembershipsForAuthenticatedUserParams) {
@@ -36620,11 +36620,11 @@ type OrgsListOutsideCollaboratorsParams struct {
 	// \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.
 	// com/blog/1614-two-factor-authentication) enabled.
 	// \* `all`: All outside collaborators.
-	Filter OptOrgsListOutsideCollaboratorsFilter
+	Filter OptOrgsListOutsideCollaboratorsFilter `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListOutsideCollaboratorsParams(packed map[string]any) (params OrgsListOutsideCollaboratorsParams) {
@@ -36813,9 +36813,9 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 type OrgsListPendingInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListPendingInvitationsParams(packed map[string]any) (params OrgsListPendingInvitationsParams) {
@@ -36947,9 +36947,9 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 type OrgsListPublicMembersParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListPublicMembersParams(packed map[string]any) (params OrgsListPublicMembersParams) {
@@ -37127,10 +37127,10 @@ type OrgsListWebhookDeliveriesParams struct {
 	Org    string
 	HookID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-	Cursor OptString
+	Cursor OptString `json:",omitempty"`
 }
 
 func unpackOrgsListWebhookDeliveriesParams(packed map[string]any) (params OrgsListWebhookDeliveriesParams) {
@@ -37289,9 +37289,9 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 type OrgsListWebhooksParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackOrgsListWebhooksParams(packed map[string]any) (params OrgsListWebhooksParams) {
@@ -39230,11 +39230,11 @@ type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struc
 	// The name of the package.
 	PackageName string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The state of the package, either active or deleted.
-	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState `json:",omitempty"`
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) {
@@ -39471,11 +39471,11 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	PackageName string
 	Org         string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The state of the package, either active or deleted.
-	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState `json:",omitempty"`
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) {
@@ -40655,7 +40655,7 @@ type PackagesListPackagesForAuthenticatedUserParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility
+	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility `json:",omitempty"`
 }
 
 func unpackPackagesListPackagesForAuthenticatedUserParams(packed map[string]any) (params PackagesListPackagesForAuthenticatedUserParams) {
@@ -40770,7 +40770,7 @@ type PackagesListPackagesForOrganizationParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForOrganizationVisibility
+	Visibility OptPackagesListPackagesForOrganizationVisibility `json:",omitempty"`
 }
 
 func unpackPackagesListPackagesForOrganizationParams(packed map[string]any) (params PackagesListPackagesForOrganizationParams) {
@@ -40916,7 +40916,7 @@ type PackagesListPackagesForUserParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForUserVisibility
+	Visibility OptPackagesListPackagesForUserVisibility `json:",omitempty"`
 	Username   string
 }
 
@@ -41062,7 +41062,7 @@ type PackagesRestorePackageForAuthenticatedUserParams struct {
 	// The name of the package.
 	PackageName string
 	// Package token.
-	Token OptString
+	Token OptString `json:",omitempty"`
 }
 
 func unpackPackagesRestorePackageForAuthenticatedUserParams(packed map[string]any) (params PackagesRestorePackageForAuthenticatedUserParams) {
@@ -41195,7 +41195,7 @@ type PackagesRestorePackageForOrgParams struct {
 	PackageName string
 	Org         string
 	// Package token.
-	Token OptString
+	Token OptString `json:",omitempty"`
 }
 
 func unpackPackagesRestorePackageForOrgParams(packed map[string]any) (params PackagesRestorePackageForOrgParams) {
@@ -41360,7 +41360,7 @@ type PackagesRestorePackageForUserParams struct {
 	PackageName string
 	Username    string
 	// Package token.
-	Token OptString
+	Token OptString `json:",omitempty"`
 }
 
 func unpackPackagesRestorePackageForUserParams(packed map[string]any) (params PackagesRestorePackageForUserParams) {
@@ -42561,11 +42561,11 @@ type ProjectsListCardsParams struct {
 	ColumnID int
 	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`,
 	// or `not_archived`.
-	ArchivedState OptProjectsListCardsArchivedState
+	ArchivedState OptProjectsListCardsArchivedState `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListCardsParams(packed map[string]any) (params ProjectsListCardsParams) {
@@ -42759,11 +42759,11 @@ type ProjectsListCollaboratorsParams struct {
 	// \* `direct`: Collaborators with permissions to a project, regardless of organization membership
 	// status.
 	// \* `all`: All collaborators the authenticated user can see.
-	Affiliation OptProjectsListCollaboratorsAffiliation
+	Affiliation OptProjectsListCollaboratorsAffiliation `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListCollaboratorsParams(packed map[string]any) (params ProjectsListCollaboratorsParams) {
@@ -42952,9 +42952,9 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 type ProjectsListColumnsParams struct {
 	ProjectID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListColumnsParams(packed map[string]any) (params ProjectsListColumnsParams) {
@@ -43086,11 +43086,11 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 type ProjectsListForOrgParams struct {
 	Org string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-	State OptProjectsListForOrgState
+	State OptProjectsListForOrgState `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListForOrgParams(packed map[string]any) (params ProjectsListForOrgParams) {
@@ -43280,11 +43280,11 @@ type ProjectsListForRepoParams struct {
 	Owner string
 	Repo  string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-	State OptProjectsListForRepoState
+	State OptProjectsListForRepoState `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListForRepoParams(packed map[string]any) (params ProjectsListForRepoParams) {
@@ -43505,11 +43505,11 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 type ProjectsListForUserParams struct {
 	Username string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-	State OptProjectsListForUserState
+	State OptProjectsListForUserState `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackProjectsListForUserParams(packed map[string]any) (params ProjectsListForUserParams) {
@@ -45332,22 +45332,22 @@ type PullsListParams struct {
 	Owner string
 	Repo  string
 	// Either `open`, `closed`, or `all` to filter by state.
-	State OptPullsListState
+	State OptPullsListState `json:",omitempty"`
 	// Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or
 	// `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
-	Head OptString
+	Head OptString `json:",omitempty"`
 	// Filter pulls by base branch name. Example: `gh-pages`.
-	Base OptString
+	Base OptString `json:",omitempty"`
 	// What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or
 	// `long-running` (age, filtering by pulls updated in the last month).
-	Sort OptPullsListSort
+	Sort OptPullsListSort `json:",omitempty"`
 	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created`
 	// or sort is not specified, otherwise `asc`.
-	Direction OptPullsListDirection
+	Direction OptPullsListDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListParams(packed map[string]any) (params PullsListParams) {
@@ -45755,9 +45755,9 @@ type PullsListCommentsForReviewParams struct {
 	// Review_id parameter.
 	ReviewID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListCommentsForReviewParams(packed map[string]any) (params PullsListCommentsForReviewParams) {
@@ -45987,9 +45987,9 @@ type PullsListCommitsParams struct {
 	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListCommitsParams(packed map[string]any) (params PullsListCommitsParams) {
@@ -46187,9 +46187,9 @@ type PullsListFilesParams struct {
 	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListFilesParams(packed map[string]any) (params PullsListFilesParams) {
@@ -46387,9 +46387,9 @@ type PullsListRequestedReviewersParams struct {
 	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListRequestedReviewersParams(packed map[string]any) (params PullsListRequestedReviewersParams) {
@@ -46587,16 +46587,16 @@ type PullsListReviewCommentsParams struct {
 	Repo       string
 	PullNumber int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptPullsListReviewCommentsSort
+	Sort OptPullsListReviewCommentsSort `json:",omitempty"`
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
-	Direction OptPullsListReviewCommentsDirection
+	Direction OptPullsListReviewCommentsDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListReviewCommentsParams(packed map[string]any) (params PullsListReviewCommentsParams) {
@@ -46938,16 +46938,16 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 type PullsListReviewCommentsForRepoParams struct {
 	Owner string
 	Repo  string
-	Sort  OptPullsListReviewCommentsForRepoSort
+	Sort  OptPullsListReviewCommentsForRepoSort `json:",omitempty"`
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
-	Direction OptPullsListReviewCommentsForRepoDirection
+	Direction OptPullsListReviewCommentsForRepoDirection `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListReviewCommentsForRepoParams(packed map[string]any) (params PullsListReviewCommentsForRepoParams) {
@@ -47254,9 +47254,9 @@ type PullsListReviewsParams struct {
 	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackPullsListReviewsParams(packed map[string]any) (params PullsListReviewsParams) {
@@ -50256,11 +50256,11 @@ type ReactionsListForCommitCommentParams struct {
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a commit comment.
-	Content OptReactionsListForCommitCommentContent
+	Content OptReactionsListForCommitCommentContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForCommitCommentParams(packed map[string]any) (params ReactionsListForCommitCommentParams) {
@@ -50512,11 +50512,11 @@ type ReactionsListForIssueParams struct {
 	IssueNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to an issue.
-	Content OptReactionsListForIssueContent
+	Content OptReactionsListForIssueContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForIssueParams(packed map[string]any) (params ReactionsListForIssueParams) {
@@ -50768,11 +50768,11 @@ type ReactionsListForIssueCommentParams struct {
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to an issue comment.
-	Content OptReactionsListForIssueCommentContent
+	Content OptReactionsListForIssueCommentContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForIssueCommentParams(packed map[string]any) (params ReactionsListForIssueCommentParams) {
@@ -51024,11 +51024,11 @@ type ReactionsListForPullRequestReviewCommentParams struct {
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a pull request review comment.
-	Content OptReactionsListForPullRequestReviewCommentContent
+	Content OptReactionsListForPullRequestReviewCommentContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForPullRequestReviewCommentParams(packed map[string]any) (params ReactionsListForPullRequestReviewCommentParams) {
@@ -51281,11 +51281,11 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	CommentNumber    int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion comment.
-	Content OptReactionsListForTeamDiscussionCommentInOrgContent
+	Content OptReactionsListForTeamDiscussionCommentInOrgContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForTeamDiscussionCommentInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentInOrgParams) {
@@ -51568,11 +51568,11 @@ type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	CommentNumber    int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion comment.
-	Content OptReactionsListForTeamDiscussionCommentLegacyContent
+	Content OptReactionsListForTeamDiscussionCommentLegacyContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForTeamDiscussionCommentLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentLegacyParams) {
@@ -51824,11 +51824,11 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 	DiscussionNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion.
-	Content OptReactionsListForTeamDiscussionInOrgContent
+	Content OptReactionsListForTeamDiscussionInOrgContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForTeamDiscussionInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionInOrgParams) {
@@ -52078,11 +52078,11 @@ type ReactionsListForTeamDiscussionLegacyParams struct {
 	DiscussionNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion.
-	Content OptReactionsListForTeamDiscussionLegacyContent
+	Content OptReactionsListForTeamDiscussionLegacyContent `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReactionsListForTeamDiscussionLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionLegacyParams) {
@@ -53093,9 +53093,9 @@ type ReposCompareCommitsParams struct {
 	Owner string
 	Repo  string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// The base branch and head branch to compare. This parameter expects the format `{base}...{head}`.
 	Basehead string
 }
@@ -57585,9 +57585,9 @@ type ReposGetAllTopicsParams struct {
 	Owner string
 	Repo  string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackReposGetAllTopicsParams(packed map[string]any) (params ReposGetAllTopicsParams) {
@@ -58200,7 +58200,7 @@ type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
 	// Must be one of: `day`, `week`.
-	Per OptReposGetClonesPer
+	Per OptReposGetClonesPer `json:",omitempty"`
 }
 
 func unpackReposGetClonesParams(packed map[string]any) (params ReposGetClonesParams) {
@@ -58529,9 +58529,9 @@ type ReposGetCombinedStatusForRefParams struct {
 	// Ref parameter.
 	Ref string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposGetCombinedStatusForRefParams(packed map[string]any) (params ReposGetCombinedStatusForRefParams) {
@@ -58728,9 +58728,9 @@ type ReposGetCommitParams struct {
 	Owner string
 	Repo  string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Ref parameter.
 	Ref string
 }
@@ -60447,7 +60447,7 @@ type ReposGetReadmeParams struct {
 	Owner string
 	Repo  string
 	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
-	Ref OptString
+	Ref OptString `json:",omitempty"`
 }
 
 func unpackReposGetReadmeParams(packed map[string]any) (params ReposGetReadmeParams) {
@@ -60567,7 +60567,7 @@ type ReposGetReadmeInDirectoryParams struct {
 	// The alternate path to look for a README file.
 	Dir string
 	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
-	Ref OptString
+	Ref OptString `json:",omitempty"`
 }
 
 func unpackReposGetReadmeInDirectoryParams(packed map[string]any) (params ReposGetReadmeInDirectoryParams) {
@@ -61545,7 +61545,7 @@ type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
 	// Must be one of: `day`, `week`.
-	Per OptReposGetViewsPer
+	Per OptReposGetViewsPer `json:",omitempty"`
 }
 
 func unpackReposGetViewsParams(packed map[string]any) (params ReposGetViewsParams) {
@@ -62049,7 +62049,7 @@ type ReposListAutolinksParams struct {
 	Owner string
 	Repo  string
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListAutolinksParams(packed map[string]any) (params ReposListAutolinksParams) {
@@ -62173,11 +62173,11 @@ type ReposListBranchesParams struct {
 	Repo  string
 	// Setting to `true` returns only protected branches. When set to `false`, only unprotected branches
 	// are returned. Omitting this parameter returns all branches.
-	Protected OptBool
+	Protected OptBool `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListBranchesParams(packed map[string]any) (params ReposListBranchesParams) {
@@ -62495,11 +62495,11 @@ type ReposListCollaboratorsParams struct {
 	// \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of
 	// organization membership status.
 	// \* `all`: All collaborators the authenticated user can see.
-	Affiliation OptReposListCollaboratorsAffiliation
+	Affiliation OptReposListCollaboratorsAffiliation `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListCollaboratorsParams(packed map[string]any) (params ReposListCollaboratorsParams) {
@@ -62723,9 +62723,9 @@ type ReposListCommentsForCommitParams struct {
 	// Commit_sha parameter.
 	CommitSha string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListCommentsForCommitParams(packed map[string]any) (params ReposListCommentsForCommitParams) {
@@ -62922,9 +62922,9 @@ type ReposListCommitCommentsForRepoParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListCommitCommentsForRepoParams(packed map[string]any) (params ReposListCommitCommentsForRepoParams) {
@@ -63091,9 +63091,9 @@ type ReposListCommitStatusesForRefParams struct {
 	// Ref parameter.
 	Ref string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListCommitStatusesForRefParams(packed map[string]any) (params ReposListCommitStatusesForRefParams) {
@@ -63291,21 +63291,21 @@ type ReposListCommitsParams struct {
 	Repo  string
 	// SHA or branch to start listing commits from. Default: the repository’s default branch (usually
 	// `master`).
-	Sha OptString
+	Sha OptString `json:",omitempty"`
 	// Only commits containing this file path will be returned.
-	Path OptString
+	Path OptString `json:",omitempty"`
 	// GitHub login or email address by which to filter by commit author.
-	Author OptString
+	Author OptString `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Until OptDateTime
+	Until OptDateTime `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListCommitsParams(packed map[string]any) (params ReposListCommitsParams) {
@@ -63655,11 +63655,11 @@ type ReposListContributorsParams struct {
 	Owner string
 	Repo  string
 	// Set to `1` or `true` to include anonymous contributors in results.
-	Anon OptString
+	Anon OptString `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListContributorsParams(packed map[string]any) (params ReposListContributorsParams) {
@@ -63861,9 +63861,9 @@ type ReposListDeployKeysParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListDeployKeysParams(packed map[string]any) (params ReposListDeployKeysParams) {
@@ -64030,9 +64030,9 @@ type ReposListDeploymentStatusesParams struct {
 	// Deployment_id parameter.
 	DeploymentID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListDeploymentStatusesParams(packed map[string]any) (params ReposListDeploymentStatusesParams) {
@@ -64229,17 +64229,17 @@ type ReposListDeploymentsParams struct {
 	Owner string
 	Repo  string
 	// The SHA recorded at creation time.
-	Sha OptString
+	Sha OptString `json:",omitempty"`
 	// The name of the ref. This can be a branch, tag, or SHA.
-	Ref OptString
+	Ref OptString `json:",omitempty"`
 	// The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
-	Task OptString
+	Task OptString `json:",omitempty"`
 	// The name of the environment that was deployed to (e.g., `staging` or `production`).
-	Environment OptNilString
+	Environment OptNilString `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListDeploymentsParams(packed map[string]any) (params ReposListDeploymentsParams) {
@@ -64571,32 +64571,32 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 type ReposListForAuthenticatedUserParams struct {
 	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
 	// or `private`.
-	Visibility OptReposListForAuthenticatedUserVisibility
+	Visibility OptReposListForAuthenticatedUserVisibility `json:",omitempty"`
 	// Comma-separated list of values. Can include:
 	// \* `owner`: Repositories that are owned by the authenticated user.
 	// \* `collaborator`: Repositories that the user has been added to as a collaborator.
 	// \* `organization_member`: Repositories that the user has access to through being a member of an
 	// organization. This includes every repository on every team that the user is on.
-	Affiliation OptString
+	Affiliation OptString `json:",omitempty"`
 	// Can be one of `all`, `owner`, `public`, `private`, `member`. Note: For GitHub AE, can be one of
 	// `all`, `owner`, `internal`, `private`, `member`. Default: `all`
 	// Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will
 	// cause a `422` error if used in the same request as **visibility** or **affiliation**.
-	Type OptReposListForAuthenticatedUserType
+	Type OptReposListForAuthenticatedUserType `json:",omitempty"`
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-	Sort OptReposListForAuthenticatedUserSort
+	Sort OptReposListForAuthenticatedUserSort `json:",omitempty"`
 	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
-	Direction OptReposListForAuthenticatedUserDirection
+	Direction OptReposListForAuthenticatedUserDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Since OptDateTime
+	Since OptDateTime `json:",omitempty"`
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Before OptDateTime
+	Before OptDateTime `json:",omitempty"`
 }
 
 func unpackReposListForAuthenticatedUserParams(packed map[string]any) (params ReposListForAuthenticatedUserParams) {
@@ -65040,15 +65040,15 @@ type ReposListForOrgParams struct {
 	// an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can
 	// also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls
 	// this API with an installation access token.
-	Type OptReposListForOrgType
+	Type OptReposListForOrgType `json:",omitempty"`
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-	Sort OptReposListForOrgSort
+	Sort OptReposListForOrgSort `json:",omitempty"`
 	// Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`.
-	Direction OptReposListForOrgDirection
+	Direction OptReposListForOrgDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListForOrgParams(packed map[string]any) (params ReposListForOrgParams) {
@@ -65341,15 +65341,15 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 type ReposListForUserParams struct {
 	Username string
 	// Can be one of `all`, `owner`, `member`.
-	Type OptReposListForUserType
+	Type OptReposListForUserType `json:",omitempty"`
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-	Sort OptReposListForUserSort
+	Sort OptReposListForUserSort `json:",omitempty"`
 	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
-	Direction OptReposListForUserDirection
+	Direction OptReposListForUserDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListForUserParams(packed map[string]any) (params ReposListForUserParams) {
@@ -65648,11 +65648,11 @@ type ReposListForksParams struct {
 	Owner string
 	Repo  string
 	// The sort order. Can be either `newest`, `oldest`, or `stargazers`.
-	Sort OptReposListForksSort
+	Sort OptReposListForksSort `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListForksParams(packed map[string]any) (params ReposListForksParams) {
@@ -65874,9 +65874,9 @@ type ReposListInvitationsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListInvitationsParams(packed map[string]any) (params ReposListInvitationsParams) {
@@ -66039,9 +66039,9 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 // ReposListInvitationsForAuthenticatedUserParams is parameters of repos/list-invitations-for-authenticated-user operation.
 type ReposListInvitationsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListInvitationsForAuthenticatedUserParams(packed map[string]any) (params ReposListInvitationsForAuthenticatedUserParams) {
@@ -66220,9 +66220,9 @@ type ReposListPagesBuildsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListPagesBuildsParams(packed map[string]any) (params ReposListPagesBuildsParams) {
@@ -66385,7 +66385,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 // ReposListPublicParams is parameters of repos/list-public operation.
 type ReposListPublicParams struct {
 	// A repository ID. Only return repositories with an ID greater than this ID.
-	Since OptInt
+	Since OptInt `json:",omitempty"`
 }
 
 func unpackReposListPublicParams(packed map[string]any) (params ReposListPublicParams) {
@@ -66441,9 +66441,9 @@ type ReposListPullRequestsAssociatedWithCommitParams struct {
 	// Commit_sha parameter.
 	CommitSha string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListPullRequestsAssociatedWithCommitParams(packed map[string]any) (params ReposListPullRequestsAssociatedWithCommitParams) {
@@ -66642,9 +66642,9 @@ type ReposListReleaseAssetsParams struct {
 	// Release_id parameter.
 	ReleaseID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListReleaseAssetsParams(packed map[string]any) (params ReposListReleaseAssetsParams) {
@@ -66841,9 +66841,9 @@ type ReposListReleasesParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListReleasesParams(packed map[string]any) (params ReposListReleasesParams) {
@@ -67008,9 +67008,9 @@ type ReposListTagsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListTagsParams(packed map[string]any) (params ReposListTagsParams) {
@@ -67175,9 +67175,9 @@ type ReposListTeamsParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListTeamsParams(packed map[string]any) (params ReposListTeamsParams) {
@@ -67343,10 +67343,10 @@ type ReposListWebhookDeliveriesParams struct {
 	Repo   string
 	HookID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-	Cursor OptString
+	Cursor OptString `json:",omitempty"`
 }
 
 func unpackReposListWebhookDeliveriesParams(packed map[string]any) (params ReposListWebhookDeliveriesParams) {
@@ -67538,9 +67538,9 @@ type ReposListWebhooksParams struct {
 	Owner string
 	Repo  string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackReposListWebhooksParams(packed map[string]any) (params ReposListWebhooksParams) {
@@ -70973,14 +70973,14 @@ type SearchCodeParams struct {
 	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has
 	// been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-	Sort OptSearchCodeSort
+	Sort OptSearchCodeSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchCodeOrder
+	Order OptSearchCodeOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchCodeParams(packed map[string]any) (params SearchCodeParams) {
@@ -71225,14 +71225,14 @@ type SearchCommitsParams struct {
 	Q string
 	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best
 	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
-	Sort OptSearchCommitsSort
+	Sort OptSearchCommitsSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchCommitsOrder
+	Order OptSearchCommitsOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchCommitsParams(packed map[string]any) (params SearchCommitsParams) {
@@ -71480,14 +71480,14 @@ type SearchIssuesAndPullRequestsParams struct {
 	// `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`,
 	// or `interactions`. You can also sort results by how recently the items were `created` or `updated`,
 	//  Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results).
-	Sort OptSearchIssuesAndPullRequestsSort
+	Sort OptSearchIssuesAndPullRequestsSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchIssuesAndPullRequestsOrder
+	Order OptSearchIssuesAndPullRequestsOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchIssuesAndPullRequestsParams(packed map[string]any) (params SearchIssuesAndPullRequestsParams) {
@@ -71732,14 +71732,14 @@ type SearchLabelsParams struct {
 	Q string
 	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best
 	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
-	Sort OptSearchLabelsSort
+	Sort OptSearchLabelsSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchLabelsOrder
+	Order OptSearchLabelsOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchLabelsParams(packed map[string]any) (params SearchLabelsParams) {
@@ -72016,14 +72016,14 @@ type SearchReposParams struct {
 	// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how
 	// recently the items were `updated`. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-	Sort OptSearchReposSort
+	Sort OptSearchReposSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchReposOrder
+	Order OptSearchReposOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchReposParams(packed map[string]any) (params SearchReposParams) {
@@ -72266,9 +72266,9 @@ type SearchTopicsParams struct {
 	// com/rest/reference/search#constructing-a-search-query).
 	Q string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchTopicsParams(packed map[string]any) (params SearchTopicsParams) {
@@ -72405,14 +72405,14 @@ type SearchUsersParams struct {
 	// Sorts the results of your query by number of `followers` or `repositories`, or when the person
 	// `joined` GitHub. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-	Sort OptSearchUsersSort
+	Sort OptSearchUsersSort `json:",omitempty"`
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchUsersOrder
+	Order OptSearchUsersOrder `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackSearchUsersParams(packed map[string]any) (params SearchUsersParams) {
@@ -72772,13 +72772,13 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 type SecretScanningListAlertsForOrgParams struct {
 	Org string
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
-	State OptSecretScanningListAlertsForOrgState
+	State OptSecretScanningListAlertsForOrgState `json:",omitempty"`
 	// A comma separated list of secret types to return. By default all secret types are returned.
-	SecretType OptString
+	SecretType OptString `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackSecretScanningListAlertsForOrgParams(packed map[string]any) (params SecretScanningListAlertsForOrgParams) {
@@ -73000,15 +73000,15 @@ type SecretScanningListAlertsForRepoParams struct {
 	Owner string
 	Repo  string
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
-	State OptSecretScanningListAlertsForRepoState
+	State OptSecretScanningListAlertsForRepoState `json:",omitempty"`
 	// A comma separated list of secret types to return. By default all secret types are returned. See
 	// "[About secret scanning for private repositories](https://docs.github.
 	// com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories)" for a complete list of secret types (API slug).
-	SecretType OptString
+	SecretType OptString `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackSecretScanningListAlertsForRepoParams(packed map[string]any) (params SecretScanningListAlertsForRepoParams) {
@@ -76433,9 +76433,9 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 type TeamsListParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListParams(packed map[string]any) (params TeamsListParams) {
@@ -76569,9 +76569,9 @@ type TeamsListChildInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListChildInOrgParams(packed map[string]any) (params TeamsListChildInOrgParams) {
@@ -76735,9 +76735,9 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 type TeamsListChildLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListChildLegacyParams(packed map[string]any) (params TeamsListChildLegacyParams) {
@@ -76872,11 +76872,11 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 	TeamSlug         string
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionCommentsInOrgDirection
+	Direction OptTeamsListDiscussionCommentsInOrgDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListDiscussionCommentsInOrgParams(packed map[string]any) (params TeamsListDiscussionCommentsInOrgParams) {
@@ -77130,11 +77130,11 @@ type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionCommentsLegacyDirection
+	Direction OptTeamsListDiscussionCommentsLegacyDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListDiscussionCommentsLegacyParams(packed map[string]any) (params TeamsListDiscussionCommentsLegacyParams) {
@@ -77357,13 +77357,13 @@ type TeamsListDiscussionsInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionsInOrgDirection
+	Direction OptTeamsListDiscussionsInOrgDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 	// Pinned discussions only filter.
-	Pinned OptString
+	Pinned OptString `json:",omitempty"`
 }
 
 func unpackTeamsListDiscussionsInOrgParams(packed map[string]any) (params TeamsListDiscussionsInOrgParams) {
@@ -77621,11 +77621,11 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 type TeamsListDiscussionsLegacyParams struct {
 	TeamID int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionsLegacyDirection
+	Direction OptTeamsListDiscussionsLegacyDirection `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListDiscussionsLegacyParams(packed map[string]any) (params TeamsListDiscussionsLegacyParams) {
@@ -77813,9 +77813,9 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 // TeamsListForAuthenticatedUserParams is parameters of teams/list-for-authenticated-user operation.
 type TeamsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListForAuthenticatedUserParams(packed map[string]any) (params TeamsListForAuthenticatedUserParams) {
@@ -77960,9 +77960,9 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (p
 type TeamsListIdpGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page token.
-	Page OptString
+	Page OptString `json:",omitempty"`
 }
 
 func unpackTeamsListIdpGroupsForOrgParams(packed map[string]any) (params TeamsListIdpGroupsForOrgParams) {
@@ -78173,11 +78173,11 @@ type TeamsListMembersInOrgParams struct {
 	// \* `member` - normal members of the team.
 	// \* `maintainer` - team maintainers.
 	// \* `all` - all members of the team.
-	Role OptTeamsListMembersInOrgRole
+	Role OptTeamsListMembersInOrgRole `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListMembersInOrgParams(packed map[string]any) (params TeamsListMembersInOrgParams) {
@@ -78401,11 +78401,11 @@ type TeamsListMembersLegacyParams struct {
 	// \* `member` - normal members of the team.
 	// \* `maintainer` - team maintainers.
 	// \* `all` - all members of the team.
-	Role OptTeamsListMembersLegacyRole
+	Role OptTeamsListMembersLegacyRole `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListMembersLegacyParams(packed map[string]any) (params TeamsListMembersLegacyParams) {
@@ -78596,9 +78596,9 @@ type TeamsListPendingInvitationsInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListPendingInvitationsInOrgParams(packed map[string]any) (params TeamsListPendingInvitationsInOrgParams) {
@@ -78762,9 +78762,9 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 type TeamsListPendingInvitationsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListPendingInvitationsLegacyParams(packed map[string]any) (params TeamsListPendingInvitationsLegacyParams) {
@@ -78898,9 +78898,9 @@ type TeamsListProjectsInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListProjectsInOrgParams(packed map[string]any) (params TeamsListProjectsInOrgParams) {
@@ -79064,9 +79064,9 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 type TeamsListProjectsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListProjectsLegacyParams(packed map[string]any) (params TeamsListProjectsLegacyParams) {
@@ -79200,9 +79200,9 @@ type TeamsListReposInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListReposInOrgParams(packed map[string]any) (params TeamsListReposInOrgParams) {
@@ -79366,9 +79366,9 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 type TeamsListReposLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackTeamsListReposLegacyParams(packed map[string]any) (params TeamsListReposLegacyParams) {
@@ -81180,9 +81180,9 @@ type UsersGetContextForUserParams struct {
 	Username string
 	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
 	// `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
-	SubjectType OptUsersGetContextForUserSubjectType
+	SubjectType OptUsersGetContextForUserSubjectType `json:",omitempty"`
 	// Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
-	SubjectID OptString
+	SubjectID OptString `json:",omitempty"`
 }
 
 func unpackUsersGetContextForUserParams(packed map[string]any) (params UsersGetContextForUserParams) {
@@ -81410,9 +81410,9 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Re
 // UsersListParams is parameters of users/list operation.
 type UsersListParams struct {
 	// A user ID. Only return users with an ID greater than this ID.
-	Since OptInt
+	Since OptInt `json:",omitempty"`
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 }
 
 func unpackUsersListParams(packed map[string]any) (params UsersListParams) {
@@ -81506,9 +81506,9 @@ func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListPar
 // UsersListEmailsForAuthenticatedParams is parameters of users/list-emails-for-authenticated operation.
 type UsersListEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListEmailsForAuthenticatedParams(packed map[string]any) (params UsersListEmailsForAuthenticatedParams) {
@@ -81607,9 +81607,9 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 // UsersListFollowedByAuthenticatedParams is parameters of users/list-followed-by-authenticated operation.
 type UsersListFollowedByAuthenticatedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListFollowedByAuthenticatedParams(packed map[string]any) (params UsersListFollowedByAuthenticatedParams) {
@@ -81708,9 +81708,9 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 // UsersListFollowersForAuthenticatedUserParams is parameters of users/list-followers-for-authenticated-user operation.
 type UsersListFollowersForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListFollowersForAuthenticatedUserParams(packed map[string]any) (params UsersListFollowersForAuthenticatedUserParams) {
@@ -81810,9 +81810,9 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 type UsersListFollowersForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListFollowersForUserParams(packed map[string]any) (params UsersListFollowersForUserParams) {
@@ -81944,9 +81944,9 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 type UsersListFollowingForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListFollowingForUserParams(packed map[string]any) (params UsersListFollowingForUserParams) {
@@ -82077,9 +82077,9 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 // UsersListGpgKeysForAuthenticatedParams is parameters of users/list-gpg-keys-for-authenticated operation.
 type UsersListGpgKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListGpgKeysForAuthenticatedParams(packed map[string]any) (params UsersListGpgKeysForAuthenticatedParams) {
@@ -82179,9 +82179,9 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 type UsersListGpgKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListGpgKeysForUserParams(packed map[string]any) (params UsersListGpgKeysForUserParams) {
@@ -82312,9 +82312,9 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 // UsersListPublicEmailsForAuthenticatedParams is parameters of users/list-public-emails-for-authenticated operation.
 type UsersListPublicEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListPublicEmailsForAuthenticatedParams(packed map[string]any) (params UsersListPublicEmailsForAuthenticatedParams) {
@@ -82414,9 +82414,9 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 type UsersListPublicKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListPublicKeysForUserParams(packed map[string]any) (params UsersListPublicKeysForUserParams) {
@@ -82547,9 +82547,9 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 // UsersListPublicSSHKeysForAuthenticatedParams is parameters of users/list-public-ssh-keys-for-authenticated operation.
 type UsersListPublicSSHKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
-	PerPage OptInt
+	PerPage OptInt `json:",omitempty"`
 	// Page number of the results to fetch.
-	Page OptInt
+	Page OptInt `json:",omitempty"`
 }
 
 func unpackUsersListPublicSSHKeysForAuthenticatedParams(packed map[string]any) (params UsersListPublicSSHKeysForAuthenticatedParams) {

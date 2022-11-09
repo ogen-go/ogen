@@ -8,15 +8,15 @@ import (
 
 // Ref: #/components/schemas/Book
 type Book struct {
-	ID           OptInt    `json:"id"`
-	MediaID      OptInt    `json:"media_id"`
-	Images       OptImages `json:"images"`
-	Title        OptTitle  `json:"title"`
-	Tags         []Tag     `json:"tags"`
-	Scanlator    OptString `json:"scanlator"`
-	UploadDate   OptInt    `json:"upload_date"`
-	NumPages     OptInt    `json:"num_pages"`
-	NumFavorites OptInt    `json:"num_favorites"`
+	ID           OptInt    `json:"id,omitempty"`
+	MediaID      OptInt    `json:"media_id,omitempty"`
+	Images       OptImages `json:"images,omitempty"`
+	Title        OptTitle  `json:"title,omitempty"`
+	Tags         []Tag     `json:"tags,omitempty"`
+	Scanlator    OptString `json:"scanlator,omitempty"`
+	UploadDate   OptInt    `json:"upload_date,omitempty"`
+	NumPages     OptInt    `json:"num_pages,omitempty"`
+	NumFavorites OptInt    `json:"num_favorites,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -172,11 +172,11 @@ func (*GetPageThumbnailImageOK) getPageThumbnailImageRes() {}
 
 // Ref: #/components/schemas/Image
 type Image struct {
-	T OptString `json:"t"`
+	T OptString `json:"t,omitempty"`
 	// Width of image.
-	W OptInt `json:"w"`
+	W OptInt `json:"w,omitempty"`
 	// Height of image.
-	H OptInt `json:"h"`
+	H OptInt `json:"h,omitempty"`
 }
 
 // GetT returns the value of T.
@@ -211,9 +211,9 @@ func (s *Image) SetH(val OptInt) {
 
 // Ref: #/components/schemas/Images
 type Images struct {
-	Pages     []Image  `json:"pages"`
-	Cover     OptImage `json:"cover"`
-	Thumbnail OptImage `json:"thumbnail"`
+	Pages     []Image  `json:"pages,omitempty"`
+	Cover     OptImage `json:"cover,omitempty"`
+	Thumbnail OptImage `json:"thumbnail,omitempty"`
 }
 
 // GetPages returns the value of Pages.
@@ -542,11 +542,11 @@ func (SearchOKApplicationJSON) searchRes() {}
 
 // Ref: #/components/schemas/SearchResponse
 type SearchResponse struct {
-	Result []Book `json:"result"`
+	Result []Book `json:"result,omitempty"`
 	// Total number of pages.
-	NumPages OptInt `json:"num_pages"`
+	NumPages OptInt `json:"num_pages,omitempty"`
 	// Elements on one page.
-	PerPage OptInt `json:"per_page"`
+	PerPage OptInt `json:"per_page,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -581,11 +581,11 @@ func (s *SearchResponse) SetPerPage(val OptInt) {
 
 // Ref: #/components/schemas/Tag
 type Tag struct {
-	ID    OptInt     `json:"id"`
-	Type  OptTagType `json:"type"`
-	Name  OptString  `json:"name"`
-	URL   OptString  `json:"url"`
-	Count OptInt     `json:"count"`
+	ID    OptInt     `json:"id,omitempty"`
+	Type  OptTagType `json:"type,omitempty"`
+	Name  OptString  `json:"name,omitempty"`
+	URL   OptString  `json:"url,omitempty"`
+	Count OptInt     `json:"count,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -652,9 +652,9 @@ const (
 
 // Ref: #/components/schemas/Title
 type Title struct {
-	English  OptString `json:"english"`
-	Japanese OptString `json:"japanese"`
-	Pretty   OptString `json:"pretty"`
+	English  OptString `json:"english,omitempty"`
+	Japanese OptString `json:"japanese,omitempty"`
+	Pretty   OptString `json:"pretty,omitempty"`
 }
 
 // GetEnglish returns the value of English.

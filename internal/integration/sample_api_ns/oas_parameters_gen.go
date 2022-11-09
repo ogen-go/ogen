@@ -17,7 +17,7 @@ type DataGetFormatParams struct {
 
 // DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
-	Default OptInt32
+	Default OptInt32 `json:",omitempty"`
 }
 
 // FoobarGetParams is parameters of foobarGet operation.
@@ -83,11 +83,11 @@ type PetUploadAvatarByIDParams struct {
 
 // TestContentParameterParams is parameters of testContentParameter operation.
 type TestContentParameterParams struct {
-	Param OptTestContentParameterParam
+	Param OptTestContentParameterParam `json:",omitempty"`
 }
 
 // TestObjectQueryParameterParams is parameters of testObjectQueryParameter operation.
 type TestObjectQueryParameterParams struct {
-	FormObject OptTestObjectQueryParameterFormObject
-	DeepObject OptTestObjectQueryParameterDeepObject
+	FormObject OptTestObjectQueryParameterFormObject `json:",omitempty"`
+	DeepObject OptTestObjectQueryParameterDeepObject `json:",omitempty"`
 }

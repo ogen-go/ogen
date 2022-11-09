@@ -17,7 +17,7 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -31,11 +31,11 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -51,24 +51,24 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) {
@@ -456,7 +456,7 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -470,11 +470,11 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -490,24 +490,24 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
@@ -895,7 +895,7 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -909,11 +909,11 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -929,24 +929,24 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ListApiextensionsV1CustomResourceDefinitionParams) {
@@ -1334,7 +1334,7 @@ type ListApiregistrationV1APIServiceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -1348,11 +1348,11 @@ type ListApiregistrationV1APIServiceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -1368,24 +1368,24 @@ type ListApiregistrationV1APIServiceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListApiregistrationV1APIServiceParams(packed map[string]any) (params ListApiregistrationV1APIServiceParams) {
@@ -1773,7 +1773,7 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -1787,11 +1787,11 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -1807,24 +1807,24 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAppsV1ControllerRevisionForAllNamespacesParams(packed map[string]any) (params ListAppsV1ControllerRevisionForAllNamespacesParams) {
@@ -2212,7 +2212,7 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -2226,11 +2226,11 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -2246,24 +2246,24 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAppsV1DaemonSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1DaemonSetForAllNamespacesParams) {
@@ -2651,7 +2651,7 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -2665,11 +2665,11 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -2685,24 +2685,24 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAppsV1DeploymentForAllNamespacesParams(packed map[string]any) (params ListAppsV1DeploymentForAllNamespacesParams) {
@@ -3090,7 +3090,7 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -3104,11 +3104,11 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -3124,26 +3124,26 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ListAppsV1NamespacedControllerRevisionParams) {
@@ -3563,7 +3563,7 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -3577,11 +3577,11 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -3597,26 +3597,26 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ListAppsV1NamespacedDaemonSetParams) {
@@ -4036,7 +4036,7 @@ type ListAppsV1NamespacedDeploymentParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -4050,11 +4050,11 @@ type ListAppsV1NamespacedDeploymentParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -4070,26 +4070,26 @@ type ListAppsV1NamespacedDeploymentParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAppsV1NamespacedDeploymentParams(packed map[string]any) (params ListAppsV1NamespacedDeploymentParams) {
@@ -4509,7 +4509,7 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -4523,11 +4523,11 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -4543,26 +4543,26 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ListAppsV1NamespacedReplicaSetParams) {
@@ -4982,7 +4982,7 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -4996,11 +4996,11 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -5016,26 +5016,26 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ListAppsV1NamespacedStatefulSetParams) {
@@ -5455,7 +5455,7 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -5469,11 +5469,11 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -5489,24 +5489,24 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAppsV1ReplicaSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1ReplicaSetForAllNamespacesParams) {
@@ -5894,7 +5894,7 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -5908,11 +5908,11 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -5928,24 +5928,24 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAppsV1StatefulSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1StatefulSetForAllNamespacesParams) {
@@ -6333,7 +6333,7 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -6347,11 +6347,11 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -6367,24 +6367,24 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) {
@@ -6772,7 +6772,7 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -6786,11 +6786,11 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -6806,26 +6806,26 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
@@ -7245,7 +7245,7 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -7259,11 +7259,11 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -7279,24 +7279,24 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) {
@@ -7684,7 +7684,7 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -7698,11 +7698,11 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -7718,26 +7718,26 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
@@ -8157,7 +8157,7 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -8171,11 +8171,11 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -8191,24 +8191,24 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) {
@@ -8596,7 +8596,7 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -8610,11 +8610,11 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -8630,26 +8630,26 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
@@ -9069,7 +9069,7 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -9083,11 +9083,11 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -9103,24 +9103,24 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListBatchV1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1CronJobForAllNamespacesParams) {
@@ -9508,7 +9508,7 @@ type ListBatchV1JobForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -9522,11 +9522,11 @@ type ListBatchV1JobForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -9542,24 +9542,24 @@ type ListBatchV1JobForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListBatchV1JobForAllNamespacesParams(packed map[string]any) (params ListBatchV1JobForAllNamespacesParams) {
@@ -9947,7 +9947,7 @@ type ListBatchV1NamespacedCronJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -9961,11 +9961,11 @@ type ListBatchV1NamespacedCronJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -9981,26 +9981,26 @@ type ListBatchV1NamespacedCronJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListBatchV1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1NamespacedCronJobParams) {
@@ -10420,7 +10420,7 @@ type ListBatchV1NamespacedJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -10434,11 +10434,11 @@ type ListBatchV1NamespacedJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -10454,26 +10454,26 @@ type ListBatchV1NamespacedJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListBatchV1NamespacedJobParams(packed map[string]any) (params ListBatchV1NamespacedJobParams) {
@@ -10893,7 +10893,7 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -10907,11 +10907,11 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -10927,24 +10927,24 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListBatchV1beta1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1beta1CronJobForAllNamespacesParams) {
@@ -11332,7 +11332,7 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -11346,11 +11346,11 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -11366,26 +11366,26 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1beta1NamespacedCronJobParams) {
@@ -11805,7 +11805,7 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -11819,11 +11819,11 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -11839,24 +11839,24 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ListCertificatesV1CertificateSigningRequestParams) {
@@ -12244,7 +12244,7 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -12258,11 +12258,11 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -12278,24 +12278,24 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoordinationV1LeaseForAllNamespacesParams(packed map[string]any) (params ListCoordinationV1LeaseForAllNamespacesParams) {
@@ -12683,7 +12683,7 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -12697,11 +12697,11 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -12717,26 +12717,26 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ListCoordinationV1NamespacedLeaseParams) {
@@ -13156,7 +13156,7 @@ type ListCoreV1ComponentStatusParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -13170,11 +13170,11 @@ type ListCoreV1ComponentStatusParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -13190,24 +13190,24 @@ type ListCoreV1ComponentStatusParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ComponentStatusParams(packed map[string]any) (params ListCoreV1ComponentStatusParams) {
@@ -13595,7 +13595,7 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -13609,11 +13609,11 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -13629,24 +13629,24 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ConfigMapForAllNamespacesParams(packed map[string]any) (params ListCoreV1ConfigMapForAllNamespacesParams) {
@@ -14034,7 +14034,7 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -14048,11 +14048,11 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -14068,24 +14068,24 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1EndpointsForAllNamespacesParams(packed map[string]any) (params ListCoreV1EndpointsForAllNamespacesParams) {
@@ -14473,7 +14473,7 @@ type ListCoreV1EventForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -14487,11 +14487,11 @@ type ListCoreV1EventForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -14507,24 +14507,24 @@ type ListCoreV1EventForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1EventForAllNamespacesParams(packed map[string]any) (params ListCoreV1EventForAllNamespacesParams) {
@@ -14912,7 +14912,7 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -14926,11 +14926,11 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -14946,24 +14946,24 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1LimitRangeForAllNamespacesParams(packed map[string]any) (params ListCoreV1LimitRangeForAllNamespacesParams) {
@@ -15351,7 +15351,7 @@ type ListCoreV1NamespaceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -15365,11 +15365,11 @@ type ListCoreV1NamespaceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -15385,24 +15385,24 @@ type ListCoreV1NamespaceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespaceParams(packed map[string]any) (params ListCoreV1NamespaceParams) {
@@ -15790,7 +15790,7 @@ type ListCoreV1NamespacedConfigMapParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -15804,11 +15804,11 @@ type ListCoreV1NamespacedConfigMapParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -15824,26 +15824,26 @@ type ListCoreV1NamespacedConfigMapParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedConfigMapParams(packed map[string]any) (params ListCoreV1NamespacedConfigMapParams) {
@@ -16263,7 +16263,7 @@ type ListCoreV1NamespacedEndpointsParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -16277,11 +16277,11 @@ type ListCoreV1NamespacedEndpointsParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -16297,26 +16297,26 @@ type ListCoreV1NamespacedEndpointsParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedEndpointsParams(packed map[string]any) (params ListCoreV1NamespacedEndpointsParams) {
@@ -16736,7 +16736,7 @@ type ListCoreV1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -16750,11 +16750,11 @@ type ListCoreV1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -16770,26 +16770,26 @@ type ListCoreV1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedEventParams(packed map[string]any) (params ListCoreV1NamespacedEventParams) {
@@ -17209,7 +17209,7 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -17223,11 +17223,11 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -17243,26 +17243,26 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ListCoreV1NamespacedLimitRangeParams) {
@@ -17682,7 +17682,7 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -17696,11 +17696,11 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -17716,26 +17716,26 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ListCoreV1NamespacedPersistentVolumeClaimParams) {
@@ -18155,7 +18155,7 @@ type ListCoreV1NamespacedPodParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -18169,11 +18169,11 @@ type ListCoreV1NamespacedPodParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -18189,26 +18189,26 @@ type ListCoreV1NamespacedPodParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedPodParams(packed map[string]any) (params ListCoreV1NamespacedPodParams) {
@@ -18628,7 +18628,7 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -18642,11 +18642,11 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -18662,26 +18662,26 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ListCoreV1NamespacedPodTemplateParams) {
@@ -19101,7 +19101,7 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -19115,11 +19115,11 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -19135,26 +19135,26 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ListCoreV1NamespacedReplicationControllerParams) {
@@ -19574,7 +19574,7 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -19588,11 +19588,11 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -19608,26 +19608,26 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ListCoreV1NamespacedResourceQuotaParams) {
@@ -20047,7 +20047,7 @@ type ListCoreV1NamespacedSecretParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -20061,11 +20061,11 @@ type ListCoreV1NamespacedSecretParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -20081,26 +20081,26 @@ type ListCoreV1NamespacedSecretParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedSecretParams(packed map[string]any) (params ListCoreV1NamespacedSecretParams) {
@@ -20520,7 +20520,7 @@ type ListCoreV1NamespacedServiceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -20534,11 +20534,11 @@ type ListCoreV1NamespacedServiceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -20554,26 +20554,26 @@ type ListCoreV1NamespacedServiceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedServiceParams(packed map[string]any) (params ListCoreV1NamespacedServiceParams) {
@@ -20993,7 +20993,7 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -21007,11 +21007,11 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -21027,26 +21027,26 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ListCoreV1NamespacedServiceAccountParams) {
@@ -21466,7 +21466,7 @@ type ListCoreV1NodeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -21480,11 +21480,11 @@ type ListCoreV1NodeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -21500,24 +21500,24 @@ type ListCoreV1NodeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1NodeParams(packed map[string]any) (params ListCoreV1NodeParams) {
@@ -21905,7 +21905,7 @@ type ListCoreV1PersistentVolumeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -21919,11 +21919,11 @@ type ListCoreV1PersistentVolumeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -21939,24 +21939,24 @@ type ListCoreV1PersistentVolumeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListCoreV1PersistentVolumeParams(packed map[string]any) (params ListCoreV1PersistentVolumeParams) {
@@ -22344,7 +22344,7 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -22358,11 +22358,11 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -22378,24 +22378,24 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams(packed map[string]any) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) {
@@ -22783,7 +22783,7 @@ type ListCoreV1PodForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -22797,11 +22797,11 @@ type ListCoreV1PodForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -22817,24 +22817,24 @@ type ListCoreV1PodForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1PodForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodForAllNamespacesParams) {
@@ -23222,7 +23222,7 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -23236,11 +23236,11 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -23256,24 +23256,24 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1PodTemplateForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodTemplateForAllNamespacesParams) {
@@ -23661,7 +23661,7 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -23675,11 +23675,11 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -23695,24 +23695,24 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ReplicationControllerForAllNamespacesParams(packed map[string]any) (params ListCoreV1ReplicationControllerForAllNamespacesParams) {
@@ -24100,7 +24100,7 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -24114,11 +24114,11 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -24134,24 +24134,24 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ResourceQuotaForAllNamespacesParams(packed map[string]any) (params ListCoreV1ResourceQuotaForAllNamespacesParams) {
@@ -24539,7 +24539,7 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -24553,11 +24553,11 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -24573,24 +24573,24 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1SecretForAllNamespacesParams(packed map[string]any) (params ListCoreV1SecretForAllNamespacesParams) {
@@ -24978,7 +24978,7 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -24992,11 +24992,11 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -25012,24 +25012,24 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ServiceAccountForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceAccountForAllNamespacesParams) {
@@ -25417,7 +25417,7 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -25431,11 +25431,11 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -25451,24 +25451,24 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListCoreV1ServiceForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceForAllNamespacesParams) {
@@ -25856,7 +25856,7 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -25870,11 +25870,11 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -25890,24 +25890,24 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListDiscoveryV1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams) {
@@ -26295,7 +26295,7 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -26309,11 +26309,11 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -26329,26 +26329,26 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1NamespacedEndpointSliceParams) {
@@ -26768,7 +26768,7 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -26782,11 +26782,11 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -26802,24 +26802,24 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) {
@@ -27207,7 +27207,7 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -27221,11 +27221,11 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -27241,26 +27241,26 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams) {
@@ -27680,7 +27680,7 @@ type ListEventsV1EventForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -27694,11 +27694,11 @@ type ListEventsV1EventForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -27714,24 +27714,24 @@ type ListEventsV1EventForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListEventsV1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1EventForAllNamespacesParams) {
@@ -28119,7 +28119,7 @@ type ListEventsV1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -28133,11 +28133,11 @@ type ListEventsV1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -28153,26 +28153,26 @@ type ListEventsV1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListEventsV1NamespacedEventParams(packed map[string]any) (params ListEventsV1NamespacedEventParams) {
@@ -28592,7 +28592,7 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -28606,11 +28606,11 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -28626,24 +28626,24 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListEventsV1beta1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1beta1EventForAllNamespacesParams) {
@@ -29031,7 +29031,7 @@ type ListEventsV1beta1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -29045,11 +29045,11 @@ type ListEventsV1beta1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -29065,26 +29065,26 @@ type ListEventsV1beta1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListEventsV1beta1NamespacedEventParams(packed map[string]any) (params ListEventsV1beta1NamespacedEventParams) {
@@ -29504,7 +29504,7 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -29518,11 +29518,11 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -29538,24 +29538,24 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams) {
@@ -29943,7 +29943,7 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -29957,11 +29957,11 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -29977,24 +29977,24 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
@@ -30382,7 +30382,7 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -30396,11 +30396,11 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -30416,24 +30416,24 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams) {
@@ -30821,7 +30821,7 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -30835,11 +30835,11 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -30855,24 +30855,24 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
@@ -31260,7 +31260,7 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -31274,11 +31274,11 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -31294,24 +31294,24 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ListInternalApiserverV1alpha1StorageVersionParams) {
@@ -31699,7 +31699,7 @@ type ListNetworkingV1IngressClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -31713,11 +31713,11 @@ type ListNetworkingV1IngressClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -31733,24 +31733,24 @@ type ListNetworkingV1IngressClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNetworkingV1IngressClassParams(packed map[string]any) (params ListNetworkingV1IngressClassParams) {
@@ -32138,7 +32138,7 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -32152,11 +32152,11 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -32172,24 +32172,24 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListNetworkingV1IngressForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1IngressForAllNamespacesParams) {
@@ -32577,7 +32577,7 @@ type ListNetworkingV1NamespacedIngressParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -32591,11 +32591,11 @@ type ListNetworkingV1NamespacedIngressParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -32611,26 +32611,26 @@ type ListNetworkingV1NamespacedIngressParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNetworkingV1NamespacedIngressParams(packed map[string]any) (params ListNetworkingV1NamespacedIngressParams) {
@@ -33050,7 +33050,7 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -33064,11 +33064,11 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -33084,26 +33084,26 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ListNetworkingV1NamespacedNetworkPolicyParams) {
@@ -33523,7 +33523,7 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -33537,11 +33537,11 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -33557,24 +33557,24 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListNetworkingV1NetworkPolicyForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams) {
@@ -33962,7 +33962,7 @@ type ListNodeV1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -33976,11 +33976,11 @@ type ListNodeV1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -33996,24 +33996,24 @@ type ListNodeV1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNodeV1RuntimeClassParams(packed map[string]any) (params ListNodeV1RuntimeClassParams) {
@@ -34401,7 +34401,7 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -34415,11 +34415,11 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -34435,24 +34435,24 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ListNodeV1alpha1RuntimeClassParams) {
@@ -34840,7 +34840,7 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -34854,11 +34854,11 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -34874,24 +34874,24 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListNodeV1beta1RuntimeClassParams(packed map[string]any) (params ListNodeV1beta1RuntimeClassParams) {
@@ -35279,7 +35279,7 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -35293,11 +35293,11 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -35313,26 +35313,26 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1NamespacedPodDisruptionBudgetParams) {
@@ -35752,7 +35752,7 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -35766,11 +35766,11 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -35786,24 +35786,24 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) {
@@ -36191,7 +36191,7 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -36205,11 +36205,11 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -36225,26 +36225,26 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
@@ -36664,7 +36664,7 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -36678,11 +36678,11 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -36698,24 +36698,24 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) {
@@ -37103,7 +37103,7 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -37117,11 +37117,11 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -37137,24 +37137,24 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ListPolicyV1beta1PodSecurityPolicyParams) {
@@ -37542,7 +37542,7 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -37556,11 +37556,11 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -37576,24 +37576,24 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleParams) {
@@ -37981,7 +37981,7 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -37995,11 +37995,11 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -38015,24 +38015,24 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleBindingParams) {
@@ -38420,7 +38420,7 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -38434,11 +38434,11 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -38454,26 +38454,26 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleParams) {
@@ -38893,7 +38893,7 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -38907,11 +38907,11 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -38927,26 +38927,26 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleBindingParams) {
@@ -39366,7 +39366,7 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -39380,11 +39380,11 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -39400,24 +39400,24 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) {
@@ -39805,7 +39805,7 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -39819,11 +39819,11 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -39839,24 +39839,24 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListRbacAuthorizationV1RoleForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleForAllNamespacesParams) {
@@ -40244,7 +40244,7 @@ type ListSchedulingV1PriorityClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -40258,11 +40258,11 @@ type ListSchedulingV1PriorityClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -40278,24 +40278,24 @@ type ListSchedulingV1PriorityClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListSchedulingV1PriorityClassParams(packed map[string]any) (params ListSchedulingV1PriorityClassParams) {
@@ -40683,7 +40683,7 @@ type ListStorageV1CSIDriverParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -40697,11 +40697,11 @@ type ListStorageV1CSIDriverParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -40717,24 +40717,24 @@ type ListStorageV1CSIDriverParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1CSIDriverParams(packed map[string]any) (params ListStorageV1CSIDriverParams) {
@@ -41122,7 +41122,7 @@ type ListStorageV1CSINodeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -41136,11 +41136,11 @@ type ListStorageV1CSINodeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -41156,24 +41156,24 @@ type ListStorageV1CSINodeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1CSINodeParams(packed map[string]any) (params ListStorageV1CSINodeParams) {
@@ -41561,7 +41561,7 @@ type ListStorageV1StorageClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -41575,11 +41575,11 @@ type ListStorageV1StorageClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -41595,24 +41595,24 @@ type ListStorageV1StorageClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1StorageClassParams(packed map[string]any) (params ListStorageV1StorageClassParams) {
@@ -42000,7 +42000,7 @@ type ListStorageV1VolumeAttachmentParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -42014,11 +42014,11 @@ type ListStorageV1VolumeAttachmentParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -42034,24 +42034,24 @@ type ListStorageV1VolumeAttachmentParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1VolumeAttachmentParams(packed map[string]any) (params ListStorageV1VolumeAttachmentParams) {
@@ -42439,7 +42439,7 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -42453,11 +42453,11 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -42473,24 +42473,24 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) {
@@ -42878,7 +42878,7 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -42892,11 +42892,11 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -42912,26 +42912,26 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) {
@@ -43351,7 +43351,7 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -43365,11 +43365,11 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -43385,24 +43385,24 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) {
@@ -43790,7 +43790,7 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -43804,11 +43804,11 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -43824,26 +43824,26 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackListStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams) {
@@ -44308,7 +44308,7 @@ type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// Name of the MutatingWebhookConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) {
@@ -44394,7 +44394,7 @@ type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// Name of the ValidatingWebhookConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
@@ -44480,7 +44480,7 @@ type ReadApiextensionsV1CustomResourceDefinitionParams struct {
 	// Name of the CustomResourceDefinition.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionParams) {
@@ -44566,7 +44566,7 @@ type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
 	// Name of the CustomResourceDefinition.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadApiextensionsV1CustomResourceDefinitionStatusParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams) {
@@ -44652,7 +44652,7 @@ type ReadApiregistrationV1APIServiceParams struct {
 	// Name of the APIService.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadApiregistrationV1APIServiceParams(packed map[string]any) (params ReadApiregistrationV1APIServiceParams) {
@@ -44738,7 +44738,7 @@ type ReadApiregistrationV1APIServiceStatusParams struct {
 	// Name of the APIService.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadApiregistrationV1APIServiceStatusParams(packed map[string]any) (params ReadApiregistrationV1APIServiceStatusParams) {
@@ -44826,7 +44826,7 @@ type ReadAppsV1NamespacedControllerRevisionParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ReadAppsV1NamespacedControllerRevisionParams) {
@@ -44946,7 +44946,7 @@ type ReadAppsV1NamespacedDaemonSetParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetParams) {
@@ -45066,7 +45066,7 @@ type ReadAppsV1NamespacedDaemonSetStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedDaemonSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetStatusParams) {
@@ -45186,7 +45186,7 @@ type ReadAppsV1NamespacedDeploymentParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedDeploymentParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentParams) {
@@ -45306,7 +45306,7 @@ type ReadAppsV1NamespacedDeploymentScaleParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedDeploymentScaleParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentScaleParams) {
@@ -45426,7 +45426,7 @@ type ReadAppsV1NamespacedDeploymentStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedDeploymentStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentStatusParams) {
@@ -45546,7 +45546,7 @@ type ReadAppsV1NamespacedReplicaSetParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetParams) {
@@ -45666,7 +45666,7 @@ type ReadAppsV1NamespacedReplicaSetScaleParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedReplicaSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetScaleParams) {
@@ -45786,7 +45786,7 @@ type ReadAppsV1NamespacedReplicaSetStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedReplicaSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetStatusParams) {
@@ -45906,7 +45906,7 @@ type ReadAppsV1NamespacedStatefulSetParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetParams) {
@@ -46026,7 +46026,7 @@ type ReadAppsV1NamespacedStatefulSetScaleParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedStatefulSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetScaleParams) {
@@ -46146,7 +46146,7 @@ type ReadAppsV1NamespacedStatefulSetStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAppsV1NamespacedStatefulSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetStatusParams) {
@@ -46266,7 +46266,7 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
@@ -46386,7 +46386,7 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) {
@@ -46506,7 +46506,7 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
@@ -46626,7 +46626,7 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct 
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) {
@@ -46746,7 +46746,7 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
@@ -46866,7 +46866,7 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct 
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) {
@@ -46986,7 +46986,7 @@ type ReadBatchV1NamespacedCronJobParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobParams) {
@@ -47106,7 +47106,7 @@ type ReadBatchV1NamespacedCronJobStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobStatusParams) {
@@ -47226,7 +47226,7 @@ type ReadBatchV1NamespacedJobParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1NamespacedJobParams(packed map[string]any) (params ReadBatchV1NamespacedJobParams) {
@@ -47346,7 +47346,7 @@ type ReadBatchV1NamespacedJobStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1NamespacedJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedJobStatusParams) {
@@ -47466,7 +47466,7 @@ type ReadBatchV1beta1NamespacedCronJobParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobParams) {
@@ -47586,7 +47586,7 @@ type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadBatchV1beta1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobStatusParams) {
@@ -47704,7 +47704,7 @@ type ReadCertificatesV1CertificateSigningRequestParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestParams) {
@@ -47790,7 +47790,7 @@ type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestApprovalParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestApprovalParams) {
@@ -47876,7 +47876,7 @@ type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestStatusParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestStatusParams) {
@@ -47964,7 +47964,7 @@ type ReadCoordinationV1NamespacedLeaseParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ReadCoordinationV1NamespacedLeaseParams) {
@@ -48082,7 +48082,7 @@ type ReadCoreV1ComponentStatusParams struct {
 	// Name of the ComponentStatus.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1ComponentStatusParams(packed map[string]any) (params ReadCoreV1ComponentStatusParams) {
@@ -48168,7 +48168,7 @@ type ReadCoreV1NamespaceParams struct {
 	// Name of the Namespace.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespaceParams(packed map[string]any) (params ReadCoreV1NamespaceParams) {
@@ -48254,7 +48254,7 @@ type ReadCoreV1NamespaceStatusParams struct {
 	// Name of the Namespace.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespaceStatusParams(packed map[string]any) (params ReadCoreV1NamespaceStatusParams) {
@@ -48342,7 +48342,7 @@ type ReadCoreV1NamespacedConfigMapParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedConfigMapParams(packed map[string]any) (params ReadCoreV1NamespacedConfigMapParams) {
@@ -48462,7 +48462,7 @@ type ReadCoreV1NamespacedEndpointsParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedEndpointsParams(packed map[string]any) (params ReadCoreV1NamespacedEndpointsParams) {
@@ -48582,7 +48582,7 @@ type ReadCoreV1NamespacedEventParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedEventParams(packed map[string]any) (params ReadCoreV1NamespacedEventParams) {
@@ -48702,7 +48702,7 @@ type ReadCoreV1NamespacedLimitRangeParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ReadCoreV1NamespacedLimitRangeParams) {
@@ -48822,7 +48822,7 @@ type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimParams) {
@@ -48942,7 +48942,7 @@ type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) {
@@ -49062,7 +49062,7 @@ type ReadCoreV1NamespacedPodParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPodParams(packed map[string]any) (params ReadCoreV1NamespacedPodParams) {
@@ -49182,7 +49182,7 @@ type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPodEphemeralcontainersParams(packed map[string]any) (params ReadCoreV1NamespacedPodEphemeralcontainersParams) {
@@ -49299,9 +49299,9 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *h
 type ReadCoreV1NamespacedPodLogParams struct {
 	// The container for which to stream logs. Defaults to only container if there is one container in
 	// the pod.
-	Container OptString
+	Container OptString `json:",omitempty"`
 	// Follow the log stream of the pod. Defaults to false.
-	Follow OptBool
+	Follow OptBool `json:",omitempty"`
 	// InsecureSkipTLSVerifyBackend indicates that the apiserver should not confirm the validity of the
 	// serving certificate of the backend it is connecting to.  This will make the HTTPS connection
 	// between the apiserver and the backend insecure. This means the apiserver cannot verify the log
@@ -49309,29 +49309,29 @@ type ReadCoreV1NamespacedPodLogParams struct {
 	// apiserver's TLS credentials, it does not mean the connection to the real kubelet is vulnerable to
 	// a man in the middle attack (e.g. an attacker could not intercept the actual log data coming from
 	// the real kubelet).
-	InsecureSkipTLSVerifyBackend OptBool
+	InsecureSkipTLSVerifyBackend OptBool `json:",omitempty"`
 	// If set, the number of bytes to read from the server before terminating the log output. This may
 	// not display a complete final line of logging, and may return slightly more or slightly less than
 	// the specified limit.
-	LimitBytes OptInt
+	LimitBytes OptInt `json:",omitempty"`
 	// Name of the Pod.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// Return previous terminated container logs. Defaults to false.
-	Previous OptBool
+	Previous OptBool `json:",omitempty"`
 	// A relative time in seconds before the current time from which to show logs. If this value precedes
 	// the time a pod was started, only logs since the pod start will be returned. If this value is in
 	// the future, no logs will be returned. Only one of sinceSeconds or sinceTime may be specified.
-	SinceSeconds OptInt
+	SinceSeconds OptInt `json:",omitempty"`
 	// If set, the number of lines from the end of the logs to show. If not specified, logs are shown
 	// from the creation of the container or sinceSeconds or sinceTime.
-	TailLines OptInt
+	TailLines OptInt `json:",omitempty"`
 	// If true, add an RFC3339 or RFC3339Nano timestamp at the beginning of every line of log output.
 	// Defaults to false.
-	Timestamps OptBool
+	Timestamps OptBool `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPodLogParams(packed map[string]any) (params ReadCoreV1NamespacedPodLogParams) {
@@ -49747,7 +49747,7 @@ type ReadCoreV1NamespacedPodStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPodStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPodStatusParams) {
@@ -49867,7 +49867,7 @@ type ReadCoreV1NamespacedPodTemplateParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ReadCoreV1NamespacedPodTemplateParams) {
@@ -49987,7 +49987,7 @@ type ReadCoreV1NamespacedReplicationControllerParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerParams) {
@@ -50107,7 +50107,7 @@ type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerScaleParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerScaleParams) {
@@ -50227,7 +50227,7 @@ type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerStatusParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerStatusParams) {
@@ -50347,7 +50347,7 @@ type ReadCoreV1NamespacedResourceQuotaParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaParams) {
@@ -50467,7 +50467,7 @@ type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedResourceQuotaStatusParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaStatusParams) {
@@ -50587,7 +50587,7 @@ type ReadCoreV1NamespacedSecretParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedSecretParams(packed map[string]any) (params ReadCoreV1NamespacedSecretParams) {
@@ -50707,7 +50707,7 @@ type ReadCoreV1NamespacedServiceParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedServiceParams(packed map[string]any) (params ReadCoreV1NamespacedServiceParams) {
@@ -50827,7 +50827,7 @@ type ReadCoreV1NamespacedServiceAccountParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ReadCoreV1NamespacedServiceAccountParams) {
@@ -50947,7 +50947,7 @@ type ReadCoreV1NamespacedServiceStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NamespacedServiceStatusParams(packed map[string]any) (params ReadCoreV1NamespacedServiceStatusParams) {
@@ -51065,7 +51065,7 @@ type ReadCoreV1NodeParams struct {
 	// Name of the Node.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NodeParams(packed map[string]any) (params ReadCoreV1NodeParams) {
@@ -51151,7 +51151,7 @@ type ReadCoreV1NodeStatusParams struct {
 	// Name of the Node.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1NodeStatusParams(packed map[string]any) (params ReadCoreV1NodeStatusParams) {
@@ -51237,7 +51237,7 @@ type ReadCoreV1PersistentVolumeParams struct {
 	// Name of the PersistentVolume.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1PersistentVolumeParams(packed map[string]any) (params ReadCoreV1PersistentVolumeParams) {
@@ -51323,7 +51323,7 @@ type ReadCoreV1PersistentVolumeStatusParams struct {
 	// Name of the PersistentVolume.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadCoreV1PersistentVolumeStatusParams(packed map[string]any) (params ReadCoreV1PersistentVolumeStatusParams) {
@@ -51411,7 +51411,7 @@ type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1NamespacedEndpointSliceParams) {
@@ -51531,7 +51531,7 @@ type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) {
@@ -51651,7 +51651,7 @@ type ReadEventsV1NamespacedEventParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadEventsV1NamespacedEventParams(packed map[string]any) (params ReadEventsV1NamespacedEventParams) {
@@ -51771,7 +51771,7 @@ type ReadEventsV1beta1NamespacedEventParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadEventsV1beta1NamespacedEventParams(packed map[string]any) (params ReadEventsV1beta1NamespacedEventParams) {
@@ -51889,7 +51889,7 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) {
@@ -51975,7 +51975,7 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) {
@@ -52061,7 +52061,7 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
@@ -52147,7 +52147,7 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struc
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) {
@@ -52233,7 +52233,7 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) {
@@ -52319,7 +52319,7 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) {
@@ -52405,7 +52405,7 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
@@ -52491,7 +52491,7 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struc
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) {
@@ -52577,7 +52577,7 @@ type ReadInternalApiserverV1alpha1StorageVersionParams struct {
 	// Name of the StorageVersion.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionParams) {
@@ -52663,7 +52663,7 @@ type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
 	// Name of the StorageVersion.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadInternalApiserverV1alpha1StorageVersionStatusParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams) {
@@ -52749,7 +52749,7 @@ type ReadNetworkingV1IngressClassParams struct {
 	// Name of the IngressClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNetworkingV1IngressClassParams(packed map[string]any) (params ReadNetworkingV1IngressClassParams) {
@@ -52837,7 +52837,7 @@ type ReadNetworkingV1NamespacedIngressParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNetworkingV1NamespacedIngressParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressParams) {
@@ -52957,7 +52957,7 @@ type ReadNetworkingV1NamespacedIngressStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNetworkingV1NamespacedIngressStatusParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressStatusParams) {
@@ -53077,7 +53077,7 @@ type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ReadNetworkingV1NamespacedNetworkPolicyParams) {
@@ -53195,7 +53195,7 @@ type ReadNodeV1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNodeV1RuntimeClassParams(packed map[string]any) (params ReadNodeV1RuntimeClassParams) {
@@ -53281,7 +53281,7 @@ type ReadNodeV1alpha1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ReadNodeV1alpha1RuntimeClassParams) {
@@ -53367,7 +53367,7 @@ type ReadNodeV1beta1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadNodeV1beta1RuntimeClassParams(packed map[string]any) (params ReadNodeV1beta1RuntimeClassParams) {
@@ -53455,7 +53455,7 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams) {
@@ -53575,7 +53575,7 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) {
@@ -53695,7 +53695,7 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
@@ -53815,7 +53815,7 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) {
@@ -53933,7 +53933,7 @@ type ReadPolicyV1beta1PodSecurityPolicyParams struct {
 	// Name of the PodSecurityPolicy.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ReadPolicyV1beta1PodSecurityPolicyParams) {
@@ -54019,7 +54019,7 @@ type ReadRbacAuthorizationV1ClusterRoleParams struct {
 	// Name of the ClusterRole.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleParams) {
@@ -54105,7 +54105,7 @@ type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// Name of the ClusterRoleBinding.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleBindingParams) {
@@ -54193,7 +54193,7 @@ type ReadRbacAuthorizationV1NamespacedRoleParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleParams) {
@@ -54313,7 +54313,7 @@ type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams) {
@@ -54431,7 +54431,7 @@ type ReadSchedulingV1PriorityClassParams struct {
 	// Name of the PriorityClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadSchedulingV1PriorityClassParams(packed map[string]any) (params ReadSchedulingV1PriorityClassParams) {
@@ -54517,7 +54517,7 @@ type ReadStorageV1CSIDriverParams struct {
 	// Name of the CSIDriver.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1CSIDriverParams(packed map[string]any) (params ReadStorageV1CSIDriverParams) {
@@ -54603,7 +54603,7 @@ type ReadStorageV1CSINodeParams struct {
 	// Name of the CSINode.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1CSINodeParams(packed map[string]any) (params ReadStorageV1CSINodeParams) {
@@ -54689,7 +54689,7 @@ type ReadStorageV1StorageClassParams struct {
 	// Name of the StorageClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1StorageClassParams(packed map[string]any) (params ReadStorageV1StorageClassParams) {
@@ -54775,7 +54775,7 @@ type ReadStorageV1VolumeAttachmentParams struct {
 	// Name of the VolumeAttachment.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1VolumeAttachmentParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentParams) {
@@ -54861,7 +54861,7 @@ type ReadStorageV1VolumeAttachmentStatusParams struct {
 	// Name of the VolumeAttachment.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1VolumeAttachmentStatusParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentStatusParams) {
@@ -54949,7 +54949,7 @@ type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) {
@@ -55069,7 +55069,7 @@ type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 }
 
 func unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) {
@@ -55188,7 +55188,7 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -55202,11 +55202,11 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -55222,26 +55222,26 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the MutatingWebhookConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) {
@@ -55661,7 +55661,7 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -55675,11 +55675,11 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -55695,24 +55695,24 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) {
@@ -56100,7 +56100,7 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -56114,11 +56114,11 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -56134,26 +56134,26 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ValidatingWebhookConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
@@ -56573,7 +56573,7 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -56587,11 +56587,11 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -56607,24 +56607,24 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) {
@@ -57012,7 +57012,7 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -57026,11 +57026,11 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -57046,26 +57046,26 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CustomResourceDefinition.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionParams) {
@@ -57485,7 +57485,7 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -57499,11 +57499,11 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -57519,24 +57519,24 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchApiextensionsV1CustomResourceDefinitionListParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionListParams) {
@@ -57924,7 +57924,7 @@ type WatchApiregistrationV1APIServiceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -57938,11 +57938,11 @@ type WatchApiregistrationV1APIServiceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -57958,26 +57958,26 @@ type WatchApiregistrationV1APIServiceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the APIService.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchApiregistrationV1APIServiceParams(packed map[string]any) (params WatchApiregistrationV1APIServiceParams) {
@@ -58397,7 +58397,7 @@ type WatchApiregistrationV1APIServiceListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -58411,11 +58411,11 @@ type WatchApiregistrationV1APIServiceListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -58431,24 +58431,24 @@ type WatchApiregistrationV1APIServiceListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchApiregistrationV1APIServiceListParams(packed map[string]any) (params WatchApiregistrationV1APIServiceListParams) {
@@ -58836,7 +58836,7 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -58850,11 +58850,11 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -58870,24 +58870,24 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams) {
@@ -59275,7 +59275,7 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -59289,11 +59289,11 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -59309,24 +59309,24 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1DaemonSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DaemonSetListForAllNamespacesParams) {
@@ -59714,7 +59714,7 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -59728,11 +59728,11 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -59748,24 +59748,24 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1DeploymentListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DeploymentListForAllNamespacesParams) {
@@ -60153,7 +60153,7 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -60167,11 +60167,11 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -60187,28 +60187,28 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ControllerRevision.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionParams) {
@@ -60660,7 +60660,7 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -60674,11 +60674,11 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -60694,26 +60694,26 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedControllerRevisionListParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionListParams) {
@@ -61133,7 +61133,7 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -61147,11 +61147,11 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -61167,28 +61167,28 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the DaemonSet.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedDaemonSetParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetParams) {
@@ -61640,7 +61640,7 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -61654,11 +61654,11 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -61674,26 +61674,26 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedDaemonSetListParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetListParams) {
@@ -62113,7 +62113,7 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -62127,11 +62127,11 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -62147,28 +62147,28 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Deployment.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedDeploymentParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentParams) {
@@ -62620,7 +62620,7 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -62634,11 +62634,11 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -62654,26 +62654,26 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedDeploymentListParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentListParams) {
@@ -63093,7 +63093,7 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -63107,11 +63107,11 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -63127,28 +63127,28 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ReplicaSet.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedReplicaSetParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetParams) {
@@ -63600,7 +63600,7 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -63614,11 +63614,11 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -63634,26 +63634,26 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedReplicaSetListParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetListParams) {
@@ -64073,7 +64073,7 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -64087,11 +64087,11 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -64107,28 +64107,28 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the StatefulSet.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedStatefulSetParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetParams) {
@@ -64580,7 +64580,7 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -64594,11 +64594,11 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -64614,26 +64614,26 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1NamespacedStatefulSetListParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetListParams) {
@@ -65053,7 +65053,7 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -65067,11 +65067,11 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -65087,24 +65087,24 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1ReplicaSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ReplicaSetListForAllNamespacesParams) {
@@ -65492,7 +65492,7 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -65506,11 +65506,11 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -65526,24 +65526,24 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAppsV1StatefulSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1StatefulSetListForAllNamespacesParams) {
@@ -65931,7 +65931,7 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -65945,11 +65945,11 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -65965,24 +65965,24 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) {
@@ -66370,7 +66370,7 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -66384,11 +66384,11 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -66404,28 +66404,28 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the HorizontalPodAutoscaler.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
@@ -66877,7 +66877,7 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -66891,11 +66891,11 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -66911,26 +66911,26 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) {
@@ -67350,7 +67350,7 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -67364,11 +67364,11 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -67384,24 +67384,24 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) {
@@ -67789,7 +67789,7 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -67803,11 +67803,11 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -67823,28 +67823,28 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the HorizontalPodAutoscaler.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
@@ -68296,7 +68296,7 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -68310,11 +68310,11 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -68330,26 +68330,26 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) {
@@ -68769,7 +68769,7 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -68783,11 +68783,11 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -68803,24 +68803,24 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) {
@@ -69208,7 +69208,7 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -69222,11 +69222,11 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -69242,28 +69242,28 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the HorizontalPodAutoscaler.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
@@ -69715,7 +69715,7 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -69729,11 +69729,11 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -69749,26 +69749,26 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) {
@@ -70188,7 +70188,7 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -70202,11 +70202,11 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -70222,24 +70222,24 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1CronJobListForAllNamespacesParams) {
@@ -70627,7 +70627,7 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -70641,11 +70641,11 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -70661,24 +70661,24 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1JobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1JobListForAllNamespacesParams) {
@@ -71066,7 +71066,7 @@ type WatchBatchV1NamespacedCronJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -71080,11 +71080,11 @@ type WatchBatchV1NamespacedCronJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -71100,28 +71100,28 @@ type WatchBatchV1NamespacedCronJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CronJob.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobParams) {
@@ -71573,7 +71573,7 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -71587,11 +71587,11 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -71607,26 +71607,26 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobListParams) {
@@ -72046,7 +72046,7 @@ type WatchBatchV1NamespacedJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -72060,11 +72060,11 @@ type WatchBatchV1NamespacedJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -72080,28 +72080,28 @@ type WatchBatchV1NamespacedJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Job.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1NamespacedJobParams(packed map[string]any) (params WatchBatchV1NamespacedJobParams) {
@@ -72553,7 +72553,7 @@ type WatchBatchV1NamespacedJobListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -72567,11 +72567,11 @@ type WatchBatchV1NamespacedJobListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -72587,26 +72587,26 @@ type WatchBatchV1NamespacedJobListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1NamespacedJobListParams(packed map[string]any) (params WatchBatchV1NamespacedJobListParams) {
@@ -73026,7 +73026,7 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -73040,11 +73040,11 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -73060,24 +73060,24 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1beta1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1beta1CronJobListForAllNamespacesParams) {
@@ -73465,7 +73465,7 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -73479,11 +73479,11 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -73499,28 +73499,28 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CronJob.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobParams) {
@@ -73972,7 +73972,7 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -73986,11 +73986,11 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -74006,26 +74006,26 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchBatchV1beta1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobListParams) {
@@ -74445,7 +74445,7 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -74459,11 +74459,11 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -74479,26 +74479,26 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CertificateSigningRequest.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestParams) {
@@ -74918,7 +74918,7 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -74932,11 +74932,11 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -74952,24 +74952,24 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCertificatesV1CertificateSigningRequestListParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestListParams) {
@@ -75357,7 +75357,7 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -75371,11 +75371,11 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -75391,24 +75391,24 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoordinationV1LeaseListForAllNamespacesParams(packed map[string]any) (params WatchCoordinationV1LeaseListForAllNamespacesParams) {
@@ -75796,7 +75796,7 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -75810,11 +75810,11 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -75830,28 +75830,28 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Lease.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoordinationV1NamespacedLeaseParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseParams) {
@@ -76303,7 +76303,7 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -76317,11 +76317,11 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -76337,26 +76337,26 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoordinationV1NamespacedLeaseListParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseListParams) {
@@ -76776,7 +76776,7 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -76790,11 +76790,11 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -76810,24 +76810,24 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1ConfigMapListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ConfigMapListForAllNamespacesParams) {
@@ -77215,7 +77215,7 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -77229,11 +77229,11 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -77249,24 +77249,24 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1EndpointsListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EndpointsListForAllNamespacesParams) {
@@ -77654,7 +77654,7 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -77668,11 +77668,11 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -77688,24 +77688,24 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1EventListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EventListForAllNamespacesParams) {
@@ -78093,7 +78093,7 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -78107,11 +78107,11 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -78127,24 +78127,24 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1LimitRangeListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1LimitRangeListForAllNamespacesParams) {
@@ -78532,7 +78532,7 @@ type WatchCoreV1NamespaceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -78546,11 +78546,11 @@ type WatchCoreV1NamespaceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -78566,26 +78566,26 @@ type WatchCoreV1NamespaceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Namespace.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespaceParams(packed map[string]any) (params WatchCoreV1NamespaceParams) {
@@ -79005,7 +79005,7 @@ type WatchCoreV1NamespaceListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -79019,11 +79019,11 @@ type WatchCoreV1NamespaceListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -79039,24 +79039,24 @@ type WatchCoreV1NamespaceListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespaceListParams(packed map[string]any) (params WatchCoreV1NamespaceListParams) {
@@ -79444,7 +79444,7 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -79458,11 +79458,11 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -79478,28 +79478,28 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ConfigMap.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedConfigMapParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapParams) {
@@ -79951,7 +79951,7 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -79965,11 +79965,11 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -79985,26 +79985,26 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedConfigMapListParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapListParams) {
@@ -80424,7 +80424,7 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -80438,11 +80438,11 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -80458,28 +80458,28 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Endpoints.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedEndpointsParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsParams) {
@@ -80931,7 +80931,7 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -80945,11 +80945,11 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -80965,26 +80965,26 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedEndpointsListParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsListParams) {
@@ -81404,7 +81404,7 @@ type WatchCoreV1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -81418,11 +81418,11 @@ type WatchCoreV1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -81438,28 +81438,28 @@ type WatchCoreV1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Event.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedEventParams(packed map[string]any) (params WatchCoreV1NamespacedEventParams) {
@@ -81911,7 +81911,7 @@ type WatchCoreV1NamespacedEventListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -81925,11 +81925,11 @@ type WatchCoreV1NamespacedEventListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -81945,26 +81945,26 @@ type WatchCoreV1NamespacedEventListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedEventListParams(packed map[string]any) (params WatchCoreV1NamespacedEventListParams) {
@@ -82384,7 +82384,7 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -82398,11 +82398,11 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -82418,28 +82418,28 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the LimitRange.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedLimitRangeParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeParams) {
@@ -82891,7 +82891,7 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -82905,11 +82905,11 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -82925,26 +82925,26 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedLimitRangeListParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeListParams) {
@@ -83364,7 +83364,7 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -83378,11 +83378,11 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -83398,28 +83398,28 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PersistentVolumeClaim.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimParams) {
@@ -83871,7 +83871,7 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -83885,11 +83885,11 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -83905,26 +83905,26 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams) {
@@ -84344,7 +84344,7 @@ type WatchCoreV1NamespacedPodParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -84358,11 +84358,11 @@ type WatchCoreV1NamespacedPodParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -84378,28 +84378,28 @@ type WatchCoreV1NamespacedPodParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Pod.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPodParams(packed map[string]any) (params WatchCoreV1NamespacedPodParams) {
@@ -84851,7 +84851,7 @@ type WatchCoreV1NamespacedPodListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -84865,11 +84865,11 @@ type WatchCoreV1NamespacedPodListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -84885,26 +84885,26 @@ type WatchCoreV1NamespacedPodListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPodListParams(packed map[string]any) (params WatchCoreV1NamespacedPodListParams) {
@@ -85324,7 +85324,7 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -85338,11 +85338,11 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -85358,28 +85358,28 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PodTemplate.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPodTemplateParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateParams) {
@@ -85831,7 +85831,7 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -85845,11 +85845,11 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -85865,26 +85865,26 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedPodTemplateListParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateListParams) {
@@ -86304,7 +86304,7 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -86318,11 +86318,11 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -86338,28 +86338,28 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ReplicationController.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerParams) {
@@ -86811,7 +86811,7 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -86825,11 +86825,11 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -86845,26 +86845,26 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedReplicationControllerListParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerListParams) {
@@ -87284,7 +87284,7 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -87298,11 +87298,11 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -87318,28 +87318,28 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ResourceQuota.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaParams) {
@@ -87791,7 +87791,7 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -87805,11 +87805,11 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -87825,26 +87825,26 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedResourceQuotaListParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaListParams) {
@@ -88264,7 +88264,7 @@ type WatchCoreV1NamespacedSecretParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -88278,11 +88278,11 @@ type WatchCoreV1NamespacedSecretParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -88298,28 +88298,28 @@ type WatchCoreV1NamespacedSecretParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Secret.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedSecretParams(packed map[string]any) (params WatchCoreV1NamespacedSecretParams) {
@@ -88771,7 +88771,7 @@ type WatchCoreV1NamespacedSecretListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -88785,11 +88785,11 @@ type WatchCoreV1NamespacedSecretListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -88805,26 +88805,26 @@ type WatchCoreV1NamespacedSecretListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedSecretListParams(packed map[string]any) (params WatchCoreV1NamespacedSecretListParams) {
@@ -89244,7 +89244,7 @@ type WatchCoreV1NamespacedServiceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -89258,11 +89258,11 @@ type WatchCoreV1NamespacedServiceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -89278,28 +89278,28 @@ type WatchCoreV1NamespacedServiceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Service.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedServiceParams(packed map[string]any) (params WatchCoreV1NamespacedServiceParams) {
@@ -89751,7 +89751,7 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -89765,11 +89765,11 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -89785,28 +89785,28 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ServiceAccount.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedServiceAccountParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountParams) {
@@ -90258,7 +90258,7 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -90272,11 +90272,11 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -90292,26 +90292,26 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedServiceAccountListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountListParams) {
@@ -90731,7 +90731,7 @@ type WatchCoreV1NamespacedServiceListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -90745,11 +90745,11 @@ type WatchCoreV1NamespacedServiceListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -90765,26 +90765,26 @@ type WatchCoreV1NamespacedServiceListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NamespacedServiceListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceListParams) {
@@ -91204,7 +91204,7 @@ type WatchCoreV1NodeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -91218,11 +91218,11 @@ type WatchCoreV1NodeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -91238,26 +91238,26 @@ type WatchCoreV1NodeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Node.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NodeParams(packed map[string]any) (params WatchCoreV1NodeParams) {
@@ -91677,7 +91677,7 @@ type WatchCoreV1NodeListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -91691,11 +91691,11 @@ type WatchCoreV1NodeListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -91711,24 +91711,24 @@ type WatchCoreV1NodeListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1NodeListParams(packed map[string]any) (params WatchCoreV1NodeListParams) {
@@ -92116,7 +92116,7 @@ type WatchCoreV1PersistentVolumeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -92130,11 +92130,11 @@ type WatchCoreV1PersistentVolumeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -92150,26 +92150,26 @@ type WatchCoreV1PersistentVolumeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PersistentVolume.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1PersistentVolumeParams(packed map[string]any) (params WatchCoreV1PersistentVolumeParams) {
@@ -92589,7 +92589,7 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -92603,11 +92603,11 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -92623,24 +92623,24 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) {
@@ -93028,7 +93028,7 @@ type WatchCoreV1PersistentVolumeListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -93042,11 +93042,11 @@ type WatchCoreV1PersistentVolumeListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -93062,24 +93062,24 @@ type WatchCoreV1PersistentVolumeListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1PersistentVolumeListParams(packed map[string]any) (params WatchCoreV1PersistentVolumeListParams) {
@@ -93467,7 +93467,7 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -93481,11 +93481,11 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -93501,24 +93501,24 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1PodListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodListForAllNamespacesParams) {
@@ -93906,7 +93906,7 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -93920,11 +93920,11 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -93940,24 +93940,24 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1PodTemplateListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodTemplateListForAllNamespacesParams) {
@@ -94345,7 +94345,7 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -94359,11 +94359,11 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -94379,24 +94379,24 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams) {
@@ -94784,7 +94784,7 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -94798,11 +94798,11 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -94818,24 +94818,24 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams) {
@@ -95223,7 +95223,7 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -95237,11 +95237,11 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -95257,24 +95257,24 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1SecretListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1SecretListForAllNamespacesParams) {
@@ -95662,7 +95662,7 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -95676,11 +95676,11 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -95696,24 +95696,24 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1ServiceAccountListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceAccountListForAllNamespacesParams) {
@@ -96101,7 +96101,7 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -96115,11 +96115,11 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -96135,24 +96135,24 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchCoreV1ServiceListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceListForAllNamespacesParams) {
@@ -96540,7 +96540,7 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -96554,11 +96554,11 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -96574,24 +96574,24 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) {
@@ -96979,7 +96979,7 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -96993,11 +96993,11 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -97013,28 +97013,28 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the EndpointSlice.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceParams) {
@@ -97486,7 +97486,7 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -97500,11 +97500,11 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -97520,26 +97520,26 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceListParams) {
@@ -97959,7 +97959,7 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -97973,11 +97973,11 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -97993,24 +97993,24 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) {
@@ -98398,7 +98398,7 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -98412,11 +98412,11 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -98432,28 +98432,28 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the EndpointSlice.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) {
@@ -98905,7 +98905,7 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -98919,11 +98919,11 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -98939,26 +98939,26 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) {
@@ -99378,7 +99378,7 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -99392,11 +99392,11 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -99412,24 +99412,24 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1EventListForAllNamespacesParams) {
@@ -99817,7 +99817,7 @@ type WatchEventsV1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -99831,11 +99831,11 @@ type WatchEventsV1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -99851,28 +99851,28 @@ type WatchEventsV1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Event.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1NamespacedEventParams(packed map[string]any) (params WatchEventsV1NamespacedEventParams) {
@@ -100324,7 +100324,7 @@ type WatchEventsV1NamespacedEventListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -100338,11 +100338,11 @@ type WatchEventsV1NamespacedEventListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -100358,26 +100358,26 @@ type WatchEventsV1NamespacedEventListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1NamespacedEventListParams) {
@@ -100797,7 +100797,7 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -100811,11 +100811,11 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -100831,24 +100831,24 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1beta1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1beta1EventListForAllNamespacesParams) {
@@ -101236,7 +101236,7 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -101250,11 +101250,11 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -101270,28 +101270,28 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Event.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1beta1NamespacedEventParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventParams) {
@@ -101743,7 +101743,7 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -101757,11 +101757,11 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -101777,26 +101777,26 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchEventsV1beta1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventListParams) {
@@ -102216,7 +102216,7 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -102230,11 +102230,11 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -102250,26 +102250,26 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) {
@@ -102689,7 +102689,7 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -102703,11 +102703,11 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -102723,24 +102723,24 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) {
@@ -103128,7 +103128,7 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -103142,11 +103142,11 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -103162,26 +103162,26 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
@@ -103601,7 +103601,7 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -103615,11 +103615,11 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -103635,24 +103635,24 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) {
@@ -104040,7 +104040,7 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -104054,11 +104054,11 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -104074,26 +104074,26 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the FlowSchema.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) {
@@ -104513,7 +104513,7 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -104527,11 +104527,11 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -104547,24 +104547,24 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) {
@@ -104952,7 +104952,7 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -104966,11 +104966,11 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -104986,26 +104986,26 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PriorityLevelConfiguration.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
@@ -105425,7 +105425,7 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -105439,11 +105439,11 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -105459,24 +105459,24 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) {
@@ -105864,7 +105864,7 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -105878,11 +105878,11 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -105898,26 +105898,26 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the StorageVersion.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionParams) {
@@ -106337,7 +106337,7 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -106351,11 +106351,11 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -106371,24 +106371,24 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchInternalApiserverV1alpha1StorageVersionListParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionListParams) {
@@ -106776,7 +106776,7 @@ type WatchNetworkingV1IngressClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -106790,11 +106790,11 @@ type WatchNetworkingV1IngressClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -106810,26 +106810,26 @@ type WatchNetworkingV1IngressClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the IngressClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1IngressClassParams(packed map[string]any) (params WatchNetworkingV1IngressClassParams) {
@@ -107249,7 +107249,7 @@ type WatchNetworkingV1IngressClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -107263,11 +107263,11 @@ type WatchNetworkingV1IngressClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -107283,24 +107283,24 @@ type WatchNetworkingV1IngressClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1IngressClassListParams(packed map[string]any) (params WatchNetworkingV1IngressClassListParams) {
@@ -107688,7 +107688,7 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -107702,11 +107702,11 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -107722,24 +107722,24 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1IngressListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1IngressListForAllNamespacesParams) {
@@ -108127,7 +108127,7 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -108141,11 +108141,11 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -108161,28 +108161,28 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Ingress.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1NamespacedIngressParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressParams) {
@@ -108634,7 +108634,7 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -108648,11 +108648,11 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -108668,26 +108668,26 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1NamespacedIngressListParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressListParams) {
@@ -109107,7 +109107,7 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -109121,11 +109121,11 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -109141,28 +109141,28 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the NetworkPolicy.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyParams) {
@@ -109614,7 +109614,7 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -109628,11 +109628,11 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -109648,26 +109648,26 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1NamespacedNetworkPolicyListParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyListParams) {
@@ -110087,7 +110087,7 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -110101,11 +110101,11 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -110121,24 +110121,24 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) {
@@ -110526,7 +110526,7 @@ type WatchNodeV1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -110540,11 +110540,11 @@ type WatchNodeV1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -110560,26 +110560,26 @@ type WatchNodeV1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1RuntimeClassParams(packed map[string]any) (params WatchNodeV1RuntimeClassParams) {
@@ -110999,7 +110999,7 @@ type WatchNodeV1RuntimeClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -111013,11 +111013,11 @@ type WatchNodeV1RuntimeClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -111033,24 +111033,24 @@ type WatchNodeV1RuntimeClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1RuntimeClassListParams) {
@@ -111438,7 +111438,7 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -111452,11 +111452,11 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -111472,26 +111472,26 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1alpha1RuntimeClassParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassParams) {
@@ -111911,7 +111911,7 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -111925,11 +111925,11 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -111945,24 +111945,24 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1alpha1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassListParams) {
@@ -112350,7 +112350,7 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -112364,11 +112364,11 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -112384,26 +112384,26 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the RuntimeClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1beta1RuntimeClassParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassParams) {
@@ -112823,7 +112823,7 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -112837,11 +112837,11 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -112857,24 +112857,24 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchNodeV1beta1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassListParams) {
@@ -113262,7 +113262,7 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -113276,11 +113276,11 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -113296,28 +113296,28 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PodDisruptionBudget.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams) {
@@ -113769,7 +113769,7 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -113783,11 +113783,11 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -113803,26 +113803,26 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) {
@@ -114242,7 +114242,7 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -114256,11 +114256,11 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -114276,24 +114276,24 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) {
@@ -114681,7 +114681,7 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -114695,11 +114695,11 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -114715,28 +114715,28 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PodDisruptionBudget.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
@@ -115188,7 +115188,7 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -115202,11 +115202,11 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -115222,26 +115222,26 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) {
@@ -115661,7 +115661,7 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -115675,11 +115675,11 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -115695,24 +115695,24 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) {
@@ -116100,7 +116100,7 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -116114,11 +116114,11 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -116134,26 +116134,26 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PodSecurityPolicy.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyParams) {
@@ -116573,7 +116573,7 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -116587,11 +116587,11 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -116607,24 +116607,24 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchPolicyV1beta1PodSecurityPolicyListParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyListParams) {
@@ -117012,7 +117012,7 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -117026,11 +117026,11 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -117046,26 +117046,26 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ClusterRole.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleParams) {
@@ -117485,7 +117485,7 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -117499,11 +117499,11 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -117519,26 +117519,26 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the ClusterRoleBinding.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingParams) {
@@ -117958,7 +117958,7 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -117972,11 +117972,11 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -117992,24 +117992,24 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams) {
@@ -118397,7 +118397,7 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -118411,11 +118411,11 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -118431,24 +118431,24 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1ClusterRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleListParams) {
@@ -118836,7 +118836,7 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -118850,11 +118850,11 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -118870,28 +118870,28 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the Role.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleParams) {
@@ -119343,7 +119343,7 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -119357,11 +119357,11 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -119377,28 +119377,28 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the RoleBinding.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams) {
@@ -119850,7 +119850,7 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -119864,11 +119864,11 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -119884,26 +119884,26 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) {
@@ -120323,7 +120323,7 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -120337,11 +120337,11 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -120357,26 +120357,26 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleListParams) {
@@ -120796,7 +120796,7 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -120810,11 +120810,11 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -120830,24 +120830,24 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) {
@@ -121235,7 +121235,7 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -121249,11 +121249,11 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -121269,24 +121269,24 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) {
@@ -121674,7 +121674,7 @@ type WatchSchedulingV1PriorityClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -121688,11 +121688,11 @@ type WatchSchedulingV1PriorityClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -121708,26 +121708,26 @@ type WatchSchedulingV1PriorityClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the PriorityClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchSchedulingV1PriorityClassParams(packed map[string]any) (params WatchSchedulingV1PriorityClassParams) {
@@ -122147,7 +122147,7 @@ type WatchSchedulingV1PriorityClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -122161,11 +122161,11 @@ type WatchSchedulingV1PriorityClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -122181,24 +122181,24 @@ type WatchSchedulingV1PriorityClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchSchedulingV1PriorityClassListParams(packed map[string]any) (params WatchSchedulingV1PriorityClassListParams) {
@@ -122586,7 +122586,7 @@ type WatchStorageV1CSIDriverParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -122600,11 +122600,11 @@ type WatchStorageV1CSIDriverParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -122620,26 +122620,26 @@ type WatchStorageV1CSIDriverParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CSIDriver.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1CSIDriverParams(packed map[string]any) (params WatchStorageV1CSIDriverParams) {
@@ -123059,7 +123059,7 @@ type WatchStorageV1CSIDriverListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -123073,11 +123073,11 @@ type WatchStorageV1CSIDriverListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -123093,24 +123093,24 @@ type WatchStorageV1CSIDriverListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1CSIDriverListParams(packed map[string]any) (params WatchStorageV1CSIDriverListParams) {
@@ -123498,7 +123498,7 @@ type WatchStorageV1CSINodeParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -123512,11 +123512,11 @@ type WatchStorageV1CSINodeParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -123532,26 +123532,26 @@ type WatchStorageV1CSINodeParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CSINode.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1CSINodeParams(packed map[string]any) (params WatchStorageV1CSINodeParams) {
@@ -123971,7 +123971,7 @@ type WatchStorageV1CSINodeListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -123985,11 +123985,11 @@ type WatchStorageV1CSINodeListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -124005,24 +124005,24 @@ type WatchStorageV1CSINodeListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1CSINodeListParams(packed map[string]any) (params WatchStorageV1CSINodeListParams) {
@@ -124410,7 +124410,7 @@ type WatchStorageV1StorageClassParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -124424,11 +124424,11 @@ type WatchStorageV1StorageClassParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -124444,26 +124444,26 @@ type WatchStorageV1StorageClassParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the StorageClass.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1StorageClassParams(packed map[string]any) (params WatchStorageV1StorageClassParams) {
@@ -124883,7 +124883,7 @@ type WatchStorageV1StorageClassListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -124897,11 +124897,11 @@ type WatchStorageV1StorageClassListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -124917,24 +124917,24 @@ type WatchStorageV1StorageClassListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1StorageClassListParams(packed map[string]any) (params WatchStorageV1StorageClassListParams) {
@@ -125322,7 +125322,7 @@ type WatchStorageV1VolumeAttachmentParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -125336,11 +125336,11 @@ type WatchStorageV1VolumeAttachmentParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -125356,26 +125356,26 @@ type WatchStorageV1VolumeAttachmentParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the VolumeAttachment.
 	Name string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1VolumeAttachmentParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentParams) {
@@ -125795,7 +125795,7 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -125809,11 +125809,11 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -125829,24 +125829,24 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1VolumeAttachmentListParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentListParams) {
@@ -126234,7 +126234,7 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -126248,11 +126248,11 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -126268,24 +126268,24 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) {
@@ -126673,7 +126673,7 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -126687,11 +126687,11 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -126707,28 +126707,28 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CSIStorageCapacity.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) {
@@ -127180,7 +127180,7 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -127194,11 +127194,11 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -127214,26 +127214,26 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) {
@@ -127653,7 +127653,7 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -127667,11 +127667,11 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -127687,24 +127687,24 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) {
@@ -128092,7 +128092,7 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -128106,11 +128106,11 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -128126,28 +128126,28 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Name of the CSIStorageCapacity.
 	Name string
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) {
@@ -128599,7 +128599,7 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
 	// not assume bookmarks are returned at any specific interval, nor may they assume the server will
 	// send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
-	AllowWatchBookmarks OptBool
+	AllowWatchBookmarks OptBool `json:",omitempty"`
 	// The continue option should be set when retrieving more results from the server. Since this value
 	// is server defined, clients may only use the continue value from a previous query result with
 	// identical query parameters (except for the value of continue) and the server may reject a continue
@@ -128613,11 +128613,11 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	// request will be included in the response, as long as their keys are after the "next key".
 	// This field is not supported when watch is true. Clients may start a watch from the last
 	// resourceVersion value returned by the server and not miss any modifications.
-	Continue OptString
+	Continue OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their fields. Defaults to everything.
-	FieldSelector OptString
+	FieldSelector OptString `json:",omitempty"`
 	// A selector to restrict the list of returned objects by their labels. Defaults to everything.
-	LabelSelector OptString
+	LabelSelector OptString `json:",omitempty"`
 	// Limit is a maximum number of responses to return for a list call. If more items exist, the server
 	// will set the `continue` field on the list metadata to a value that can be used with the same
 	// initial query to retrieve the next set of results. Setting a limit may return fewer than the
@@ -128633,26 +128633,26 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	// smaller chunks of a very large result can ensure they see all possible objects. If objects are
 	// updated during a chunked list the version of the object that was present at the time the first
 	// list result was calculated is returned.
-	Limit OptInt
+	Limit OptInt `json:",omitempty"`
 	// Object name and auth scope, such as for teams and projects.
 	Namespace string
 	// If 'true', then the output is pretty printed.
-	Pretty OptString
+	Pretty OptString `json:",omitempty"`
 	// ResourceVersion sets a constraint on what resource versions a request may be served from. See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersion OptString
+	ResourceVersion OptString `json:",omitempty"`
 	// ResourceVersionMatch determines how resourceVersion is applied to list calls. It is highly
 	// recommended that resourceVersionMatch be set for list calls where resourceVersion is set See
 	// https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
 	// Defaults to unset.
-	ResourceVersionMatch OptString
+	ResourceVersionMatch OptString `json:",omitempty"`
 	// Timeout for the list/watch call. This limits the duration of the call, regardless of any activity
 	// or inactivity.
-	TimeoutSeconds OptInt
+	TimeoutSeconds OptInt `json:",omitempty"`
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
-	Watch OptBool
+	Watch OptBool `json:",omitempty"`
 }
 
 func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) {

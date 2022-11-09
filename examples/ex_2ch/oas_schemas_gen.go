@@ -49,10 +49,10 @@ type Board struct {
 	MaxFilesSize     int      `json:"max_files_size"`
 	// Массив тегов, которые доступны на этой доске, если они
 	// включены.
-	Tags []string `json:"tags"`
+	Tags []string `json:"tags,omitempty"`
 	// Массив иконок, которые доступны на этой доске, если
 	// они включены.
-	Icons []BoardIconsItem `json:"icons"`
+	Icons []BoardIconsItem `json:"icons,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -316,9 +316,9 @@ func (s *Board) SetIcons(val []BoardIconsItem) {
 }
 
 type BoardIconsItem struct {
-	Num  OptInt    `json:"num"`
-	Name OptString `json:"name"`
-	URL  OptString `json:"url"`
+	Num  OptInt    `json:"num,omitempty"`
+	Name OptString `json:"name,omitempty"`
+	URL  OptString `json:"url,omitempty"`
 }
 
 // GetNum returns the value of Num.
@@ -356,12 +356,12 @@ type Boards []Board
 // Ref: #/components/schemas/Captcha
 type Captcha struct {
 	Result int         `json:"result"`
-	Error  OptError    `json:"error"`
+	Error  OptError    `json:"error,omitempty"`
 	Type   CaptchaType `json:"type"`
 	ID     string      `json:"id"`
 	// Время в секундах после которого id перестанет
 	// действовать.
-	Expires OptInt `json:"expires"`
+	Expires OptInt `json:"expires,omitempty"`
 	// Тип текста, изображённого на картинке капчи.
 	// Возможные варианты:
 	// * numeric - только цифры. (0123456789)
@@ -370,7 +370,7 @@ type Captcha struct {
 	// (0123456789абвгдеёжзийклмнопрстуфхцчшщъыьэюя)
 	// * all - цифры, русские и английские буквы.
 	// (0123456789abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя).
-	Input OptString `json:"input"`
+	Input OptString `json:"input,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -465,9 +465,9 @@ const (
 // Ошибка запроса.
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code OptErrorCode `json:"code"`
+	Code OptErrorCode `json:"code,omitempty"`
 	// Описание ошибки на русском языке.
-	Message OptString `json:"message"`
+	Message OptString `json:"message,omitempty"`
 }
 
 // GetCode returns the value of Code.
@@ -588,7 +588,7 @@ type File struct {
 	Displayname string    `json:"displayname"`
 	Path        string    `json:"path"`
 	Thumbnail   string    `json:"thumbnail"`
-	MD5         OptString `json:"md5"`
+	MD5         OptString `json:"md5,omitempty"`
 	Type        FileType  `json:"type"`
 	// Размер файла, в КБ.
 	Size     int `json:"size"`
@@ -598,19 +598,19 @@ type File struct {
 	TnHeight int `json:"tn_height"`
 	// Если >= 0, файл содержит NSFW контент, в данный момент
 	// реализовано не на всех досках.
-	Nsfw OptInt `json:"nsfw"`
+	Nsfw OptInt `json:"nsfw,omitempty"`
 	// В случае видео/аудио файла, содержит
 	// продолжительность в формате XX:XX:XX.
-	Duration OptString `json:"duration"`
+	Duration OptString `json:"duration,omitempty"`
 	// В случае видео/аудио файла, содержит
 	// продолжительность в секундах.
-	DurationSecs OptInt `json:"duration_secs"`
+	DurationSecs OptInt `json:"duration_secs,omitempty"`
 	// В случае стикера, содержит ID стикер пака.
-	Pack OptString `json:"pack"`
+	Pack OptString `json:"pack,omitempty"`
 	// В случае стикера, содержит ID стикера.
-	Sticker OptString `json:"sticker"`
+	Sticker OptString `json:"sticker,omitempty"`
 	// В случае стикера, содержит ссылку на установку.
-	Install OptString `json:"install"`
+	Install OptString `json:"install,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -823,8 +823,8 @@ const (
 
 // Ref: #/components/schemas/Like
 type Like struct {
-	Result OptInt   `json:"result"`
-	Error  OptError `json:"error"`
+	Result OptInt   `json:"result,omitempty"`
+	Error  OptError `json:"error,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -849,9 +849,9 @@ func (s *Like) SetError(val OptError) {
 
 // Ref: #/components/schemas/MobilePost
 type MobilePost struct {
-	Result OptInt   `json:"result"`
-	Error  OptError `json:"error"`
-	Post   OptPost  `json:"post"`
+	Result OptInt   `json:"result,omitempty"`
+	Error  OptError `json:"error,omitempty"`
+	Post   OptPost  `json:"post,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -886,9 +886,9 @@ func (s *MobilePost) SetPost(val OptPost) {
 
 // Ref: #/components/schemas/MobileThreadLastInfo
 type MobileThreadLastInfo struct {
-	Result OptInt                        `json:"result"`
-	Error  OptError                      `json:"error"`
-	Thread OptMobileThreadLastInfoThread `json:"thread"`
+	Result OptInt                        `json:"result,omitempty"`
+	Error  OptError                      `json:"error,omitempty"`
+	Thread OptMobileThreadLastInfoThread `json:"thread,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -922,9 +922,9 @@ func (s *MobileThreadLastInfo) SetThread(val OptMobileThreadLastInfoThread) {
 }
 
 type MobileThreadLastInfoThread struct {
-	Num       OptInt `json:"num"`
-	Timestamp OptInt `json:"timestamp"`
-	Posts     OptInt `json:"posts"`
+	Num       OptInt `json:"num,omitempty"`
+	Timestamp OptInt `json:"timestamp,omitempty"`
+	Posts     OptInt `json:"posts,omitempty"`
 }
 
 // GetNum returns the value of Num.
@@ -959,10 +959,10 @@ func (s *MobileThreadLastInfoThread) SetPosts(val OptInt) {
 
 // Ref: #/components/schemas/MobileThreadPostsAfter
 type MobileThreadPostsAfter struct {
-	Result        OptInt   `json:"result"`
-	Error         OptError `json:"error"`
-	UniquePosters OptInt   `json:"unique_posters"`
-	Posts         []Post   `json:"posts"`
+	Result        OptInt   `json:"result,omitempty"`
+	Error         OptError `json:"error,omitempty"`
+	UniquePosters OptInt   `json:"unique_posters,omitempty"`
+	Posts         []Post   `json:"posts,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -1513,9 +1513,9 @@ func (o OptUserReportPostReq) Or(d UserReportPostReq) UserReportPostReq {
 
 // Ref: #/components/schemas/Passcode
 type Passcode struct {
-	Result   OptInt              `json:"result"`
-	Error    OptError            `json:"error"`
-	Passcode OptPasscodePasscode `json:"passcode"`
+	Result   OptInt              `json:"result,omitempty"`
+	Error    OptError            `json:"error,omitempty"`
+	Passcode OptPasscodePasscode `json:"passcode,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -1549,8 +1549,8 @@ func (s *Passcode) SetPasscode(val OptPasscodePasscode) {
 }
 
 type PasscodePasscode struct {
-	Type    OptString `json:"type"`
-	Expires OptInt    `json:"expires"`
+	Type    OptString `json:"type,omitempty"`
+	Expires OptInt    `json:"expires,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -1582,23 +1582,23 @@ type Post struct {
 	Timestamp int       `json:"timestamp"`
 	Lasthit   int       `json:"lasthit"`
 	Date      string    `json:"date"`
-	Email     OptString `json:"email"`
-	Subject   OptString `json:"subject"`
+	Email     OptString `json:"email,omitempty"`
+	Subject   OptString `json:"subject,omitempty"`
 	Comment   string    `json:"comment"`
-	Files     []File    `json:"files"`
+	Files     []File    `json:"files,omitempty"`
 	Views     int       `json:"views"`
 	Sticky    int       `json:"sticky"`
 	Endless   int       `json:"endless"`
 	Closed    int       `json:"closed"`
 	Banned    int       `json:"banned"`
 	Op        int       `json:"op"`
-	Name      OptString `json:"name"`
-	Icon      OptString `json:"icon"`
-	Trip      OptString `json:"trip"`
-	TripStyle OptString `json:"trip_style"`
-	Tags      OptString `json:"tags"`
-	Likes     OptInt    `json:"likes"`
-	Dislikes  OptInt    `json:"dislikes"`
+	Name      OptString `json:"name,omitempty"`
+	Icon      OptString `json:"icon,omitempty"`
+	Trip      OptString `json:"trip,omitempty"`
+	TripStyle OptString `json:"trip_style,omitempty"`
+	Tags      OptString `json:"tags,omitempty"`
+	Likes     OptInt    `json:"likes,omitempty"`
+	Dislikes  OptInt    `json:"dislikes,omitempty"`
 }
 
 // GetNum returns the value of Num.
@@ -1833,10 +1833,10 @@ func (s *Post) SetDislikes(val OptInt) {
 
 // Ref: #/components/schemas/PostingNewPost
 type PostingNewPost struct {
-	Result OptInt   `json:"result"`
-	Error  OptError `json:"error"`
+	Result OptInt   `json:"result,omitempty"`
+	Error  OptError `json:"error,omitempty"`
 	// Номер нового поста.
-	Num OptInt `json:"num"`
+	Num OptInt `json:"num,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -1871,10 +1871,10 @@ func (s *PostingNewPost) SetNum(val OptInt) {
 
 // Ref: #/components/schemas/PostingNewThread
 type PostingNewThread struct {
-	Result OptInt   `json:"result"`
-	Error  OptError `json:"error"`
+	Result OptInt   `json:"result,omitempty"`
+	Error  OptError `json:"error,omitempty"`
 	// Номер нового треда.
-	Thread OptInt `json:"thread"`
+	Thread OptInt `json:"thread,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -1909,8 +1909,8 @@ func (s *PostingNewThread) SetThread(val OptInt) {
 
 // Ref: #/components/schemas/Report
 type Report struct {
-	Result OptInt   `json:"result"`
-	Error  OptError `json:"error"`
+	Result OptInt   `json:"result,omitempty"`
+	Error  OptError `json:"error,omitempty"`
 }
 
 // GetResult returns the value of Result.
@@ -2017,25 +2017,25 @@ type UserPostingPostReq struct {
 	CaptchaType CaptchaType `json:"captcha_type"`
 	Board       string      `json:"board"`
 	// Если не указано, будет создан тред.
-	Thread OptInt `json:"thread"`
+	Thread OptInt `json:"thread,omitempty"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	Tags OptString `json:"tags"`
+	Tags OptString `json:"tags,omitempty"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	Subject OptString `json:"subject"`
-	Comment OptString `json:"comment"`
-	Icon    OptInt    `json:"icon"`
+	Subject OptString `json:"subject,omitempty"`
+	Comment OptString `json:"comment,omitempty"`
+	Icon    OptInt    `json:"icon,omitempty"`
 	// Если не включено в настройках доски - поле будет
 	// проигнорировано.
-	OpMark OptInt   `json:"op_mark"`
-	File   []string `json:"file[]"`
+	OpMark OptInt   `json:"op_mark,omitempty"`
+	File   []string `json:"file[],omitempty"`
 }
 
 // GetCaptchaType returns the value of CaptchaType.
@@ -2151,7 +2151,7 @@ func (s *UserPostingPostReq) SetFile(val []string) {
 type UserReportPostReq struct {
 	Board   string `json:"board"`
 	Thread  int    `json:"thread"`
-	Post    []int  `json:"post"`
+	Post    []int  `json:"post,omitempty"`
 	Comment string `json:"comment"`
 }
 

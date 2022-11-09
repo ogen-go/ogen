@@ -335,9 +335,9 @@ type OperationsGetParams struct {
 	// Конец временного промежутка.
 	To time.Time
 	// Figi инструмента для фильтрации.
-	Figi OptString
+	Figi OptString `json:",omitempty"`
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackOperationsGetParams(packed map[string]any) (params OperationsGetParams) {
@@ -488,7 +488,7 @@ type OrdersCancelPostParams struct {
 	// ID заявки.
 	OrderId string
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackOrdersCancelPostParams(packed map[string]any) (params OrdersCancelPostParams) {
@@ -570,7 +570,7 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 // OrdersGetParams is parameters of GET /orders operation.
 type OrdersGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackOrdersGetParams(packed map[string]any) (params OrdersGetParams) {
@@ -624,7 +624,7 @@ type OrdersLimitOrderPostParams struct {
 	// FIGI инструмента.
 	Figi string
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackOrdersLimitOrderPostParams(packed map[string]any) (params OrdersLimitOrderPostParams) {
@@ -709,7 +709,7 @@ type OrdersMarketOrderPostParams struct {
 	Figi string
 	// Уникальный идентификатор счета (по умолчанию -
 	// Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackOrdersMarketOrderPostParams(packed map[string]any) (params OrdersMarketOrderPostParams) {
@@ -791,7 +791,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 // PortfolioCurrenciesGetParams is parameters of GET /portfolio/currencies operation.
 type PortfolioCurrenciesGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackPortfolioCurrenciesGetParams(packed map[string]any) (params PortfolioCurrenciesGetParams) {
@@ -843,7 +843,7 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 // PortfolioGetParams is parameters of GET /portfolio operation.
 type PortfolioGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackPortfolioGetParams(packed map[string]any) (params PortfolioGetParams) {
@@ -895,7 +895,7 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (params Portfolio
 // SandboxClearPostParams is parameters of POST /sandbox/clear operation.
 type SandboxClearPostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackSandboxClearPostParams(packed map[string]any) (params SandboxClearPostParams) {
@@ -947,7 +947,7 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 // SandboxCurrenciesBalancePostParams is parameters of POST /sandbox/currencies/balance operation.
 type SandboxCurrenciesBalancePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackSandboxCurrenciesBalancePostParams(packed map[string]any) (params SandboxCurrenciesBalancePostParams) {
@@ -999,7 +999,7 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 // SandboxPositionsBalancePostParams is parameters of POST /sandbox/positions/balance operation.
 type SandboxPositionsBalancePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackSandboxPositionsBalancePostParams(packed map[string]any) (params SandboxPositionsBalancePostParams) {
@@ -1051,7 +1051,7 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 // SandboxRemovePostParams is parameters of POST /sandbox/remove operation.
 type SandboxRemovePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
-	BrokerAccountId OptString
+	BrokerAccountId OptString `json:",omitempty"`
 }
 
 func unpackSandboxRemovePostParams(packed map[string]any) (params SandboxRemovePostParams) {

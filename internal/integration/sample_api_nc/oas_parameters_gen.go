@@ -210,7 +210,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 
 // DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
-	Default OptInt32
+	Default OptInt32 `json:",omitempty"`
 }
 
 func unpackDefaultTestParams(packed map[string]any) (params DefaultTestParams) {
@@ -848,7 +848,7 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params Pe
 
 // TestContentParameterParams is parameters of testContentParameter operation.
 type TestContentParameterParams struct {
-	Param OptTestContentParameterParam
+	Param OptTestContentParameterParam `json:",omitempty"`
 }
 
 func unpackTestContentParameterParams(packed map[string]any) (params TestContentParameterParams) {
@@ -894,8 +894,8 @@ func decodeTestContentParameterParams(args [0]string, r *http.Request) (params T
 
 // TestObjectQueryParameterParams is parameters of testObjectQueryParameter operation.
 type TestObjectQueryParameterParams struct {
-	FormObject OptTestObjectQueryParameterFormObject
-	DeepObject OptTestObjectQueryParameterDeepObject
+	FormObject OptTestObjectQueryParameterFormObject `json:",omitempty"`
+	DeepObject OptTestObjectQueryParameterDeepObject `json:",omitempty"`
 }
 
 func unpackTestObjectQueryParameterParams(packed map[string]any) (params TestObjectQueryParameterParams) {

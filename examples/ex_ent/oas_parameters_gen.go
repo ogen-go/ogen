@@ -244,9 +244,9 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeleteP
 // ListPetParams is parameters of listPet operation.
 type ListPetParams struct {
 	// What page to render.
-	Page OptInt32
+	Page OptInt32 `json:",omitempty"`
 	// Item count to render per page.
-	ItemsPerPage OptInt32
+	ItemsPerPage OptInt32 `json:",omitempty"`
 }
 
 func unpackListPetParams(packed map[string]any) (params ListPetParams) {
@@ -337,9 +337,9 @@ type ListPetCategoriesParams struct {
 	// ID of the Pet.
 	ID int
 	// What page to render.
-	Page OptInt32
+	Page OptInt32 `json:",omitempty"`
 	// Item count to render per page.
-	ItemsPerPage OptInt32
+	ItemsPerPage OptInt32 `json:",omitempty"`
 }
 
 func unpackListPetCategoriesParams(packed map[string]any) (params ListPetCategoriesParams) {
@@ -462,9 +462,9 @@ type ListPetFriendsParams struct {
 	// ID of the Pet.
 	ID int
 	// What page to render.
-	Page OptInt32
+	Page OptInt32 `json:",omitempty"`
 	// Item count to render per page.
-	ItemsPerPage OptInt32
+	ItemsPerPage OptInt32 `json:",omitempty"`
 }
 
 func unpackListPetFriendsParams(packed map[string]any) (params ListPetFriendsParams) {

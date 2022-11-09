@@ -21,16 +21,16 @@ type AddStickerToSet struct {
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
 	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
 	// from the Internet, or upload a new one using multipart/form-data.
-	PNGSticker OptString `json:"png_sticker"`
+	PNGSticker OptString `json:"png_sticker,omitempty"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#animated-sticker-requirements for technical requirements.
-	TgsSticker OptString `json:"tgs_sticker"`
+	TgsSticker OptString `json:"tgs_sticker,omitempty"`
 	// WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#video-sticker-requirements for technical requirements.
-	WebmSticker OptString `json:"webm_sticker"`
+	WebmSticker OptString `json:"webm_sticker,omitempty"`
 	// One or more emoji corresponding to the sticker.
 	Emojis       string          `json:"emojis"`
-	MaskPosition OptMaskPosition `json:"mask_position"`
+	MaskPosition OptMaskPosition `json:"mask_position,omitempty"`
 }
 
 // GetUserID returns the value of UserID.
@@ -117,13 +117,13 @@ type Animation struct {
 	Height int `json:"height"`
 	// Duration of the video in seconds as defined by sender.
 	Duration int          `json:"duration"`
-	Thumb    OptPhotoSize `json:"thumb"`
+	Thumb    OptPhotoSize `json:"thumb,omitempty"`
 	// Original animation filename as defined by sender.
-	FileName OptString `json:"file_name"`
+	FileName OptString `json:"file_name,omitempty"`
 	// MIME type of the file as defined by sender.
-	MimeType OptString `json:"mime_type"`
+	MimeType OptString `json:"mime_type,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -222,18 +222,18 @@ type AnswerCallbackQuery struct {
 	// Unique identifier for the query to be answered.
 	CallbackQueryID string `json:"callback_query_id"`
 	// Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.
-	Text OptString `json:"text"`
+	Text OptString `json:"text,omitempty"`
 	// If True, an alert will be shown by the client instead of a notification at the top of the chat
 	// screen. Defaults to false.
-	ShowAlert OptBool `json:"show_alert"`
+	ShowAlert OptBool `json:"show_alert,omitempty"`
 	// URL that will be opened by the user's client. If you have created a Game and accepted the
 	// conditions via @Botfather, specify the URL that opens your game — note that this will only work
 	// if the query comes from a callback_game button.Otherwise, you may use links like t.
 	// me/your_bot?start=XXXX that open your bot with a parameter.
-	URL OptString `json:"url"`
+	URL OptString `json:"url,omitempty"`
 	// The maximum amount of time in seconds that the result of the callback query may be cached
 	// client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
-	CacheTime OptInt `json:"cache_time"`
+	CacheTime OptInt `json:"cache_time,omitempty"`
 }
 
 // GetCallbackQueryID returns the value of CallbackQueryID.
@@ -295,17 +295,17 @@ type AnswerInlineQuery struct {
 	Results []InlineQueryResult `json:"results"`
 	// The maximum amount of time in seconds that the result of the inline query may be cached on the
 	// server. Defaults to 300.
-	CacheTime OptInt `json:"cache_time"`
+	CacheTime OptInt `json:"cache_time,omitempty"`
 	// Pass True, if results may be cached on the server side only for the user that sent the query. By
 	// default, results may be returned to any user who sends the same query.
-	IsPersonal OptBool `json:"is_personal"`
+	IsPersonal OptBool `json:"is_personal,omitempty"`
 	// Pass the offset that a client should send in the next query with the same text to receive more
 	// results. Pass an empty string if there are no more results or if you don't support pagination.
 	// Offset length can't exceed 64 bytes.
-	NextOffset OptString `json:"next_offset"`
+	NextOffset OptString `json:"next_offset,omitempty"`
 	// If passed, clients will display a button with specified text that switches the user to a private
 	// chat with the bot and sends the bot a start message with the parameter switch_pm_parameter.
-	SwitchPmText OptString `json:"switch_pm_text"`
+	SwitchPmText OptString `json:"switch_pm_text,omitempty"`
 	// Deep-linking parameter for the /start message sent to the bot when user presses the switch button.
 	// 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube
 	// videos can ask the user to connect the bot to their YouTube account to adapt search results
@@ -314,7 +314,7 @@ type AnswerInlineQuery struct {
 	// in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done,
 	// the bot can offer a switch_inline button so that the user can easily return to the chat where they
 	// wanted to use the bot's inline capabilities.
-	SwitchPmParameter OptString `json:"switch_pm_parameter"`
+	SwitchPmParameter OptString `json:"switch_pm_parameter,omitempty"`
 }
 
 // GetInlineQueryID returns the value of InlineQueryID.
@@ -399,7 +399,7 @@ type AnswerPreCheckoutQuery struct {
 	// to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black
 	// T-shirts while you were busy filling out your payment details. Please choose a different color or
 	// garment!"). Telegram will display this message to the user.
-	ErrorMessage OptString `json:"error_message"`
+	ErrorMessage OptString `json:"error_message,omitempty"`
 }
 
 // GetPreCheckoutQueryID returns the value of PreCheckoutQueryID.
@@ -441,11 +441,11 @@ type AnswerShippingQuery struct {
 	// (for example, if delivery to the specified address is not possible).
 	Ok bool `json:"ok"`
 	// Required if ok is True. A JSON-serialized array of available shipping options.
-	ShippingOptions []ShippingOption `json:"shipping_options"`
+	ShippingOptions []ShippingOption `json:"shipping_options,omitempty"`
 	// Required if ok is False. Error message in human readable form that explains why it is impossible
 	// to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram
 	// will display this message to the user.
-	ErrorMessage OptString `json:"error_message"`
+	ErrorMessage OptString `json:"error_message,omitempty"`
 }
 
 // GetShippingQueryID returns the value of ShippingQueryID.
@@ -555,16 +555,16 @@ type Audio struct {
 	// Duration of the audio in seconds as defined by sender.
 	Duration int `json:"duration"`
 	// Performer of the audio as defined by sender or by audio tags.
-	Performer OptString `json:"performer"`
+	Performer OptString `json:"performer,omitempty"`
 	// Title of the audio as defined by sender or by audio tags.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Original filename as defined by sender.
-	FileName OptString `json:"file_name"`
+	FileName OptString `json:"file_name,omitempty"`
 	// MIME type of the file as defined by sender.
-	MimeType OptString `json:"mime_type"`
+	MimeType OptString `json:"mime_type,omitempty"`
 	// File size in bytes.
-	FileSize OptInt       `json:"file_size"`
-	Thumb    OptPhotoSize `json:"thumb"`
+	FileSize OptInt       `json:"file_size,omitempty"`
+	Thumb    OptPhotoSize `json:"thumb,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -666,11 +666,11 @@ type BanChatMember struct {
 	// Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less
 	// than 30 seconds from the current time they are considered to be banned forever. Applied for
 	// supergroups and channels only.
-	UntilDate OptInt `json:"until_date"`
+	UntilDate OptInt `json:"until_date,omitempty"`
 	// Pass True to delete all messages from the chat for the user that is being removed. If False, the
 	// user will be able to see messages in the group that were sent before the user was removed. Always
 	// True for supergroups and channels.
-	RevokeMessages OptBool `json:"revoke_messages"`
+	RevokeMessages OptBool `json:"revoke_messages,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -1073,17 +1073,17 @@ type CallbackQuery struct {
 	// Unique identifier for this query.
 	ID      string     `json:"id"`
 	From    User       `json:"from"`
-	Message OptMessage `json:"message"`
+	Message OptMessage `json:"message,omitempty"`
 	// Identifier of the message sent via the bot in inline mode, that originated the query.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 	// Global identifier, uniquely corresponding to the chat to which the message with the callback
 	// button was sent. Useful for high scores in games.
 	ChatInstance string `json:"chat_instance"`
 	// Data associated with the callback button. Be aware that a bad client can send arbitrary data in
 	// this field.
-	Data OptString `json:"data"`
+	Data OptString `json:"data,omitempty"`
 	// Short name of a Game to be returned, serves as the unique identifier for the game.
-	GameShortName OptString `json:"game_short_name"`
+	GameShortName OptString `json:"game_short_name,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -1167,45 +1167,45 @@ type Chat struct {
 	// Type of chat, can be either "private", "group", "supergroup" or "channel".
 	Type ChatType `json:"type"`
 	// Title, for supergroups, channels and group chats.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Username, for private chats, supergroups and channels if available.
-	Username OptString `json:"username"`
+	Username OptString `json:"username,omitempty"`
 	// First name of the other party in a private chat.
-	FirstName OptString `json:"first_name"`
+	FirstName OptString `json:"first_name,omitempty"`
 	// Last name of the other party in a private chat.
-	LastName OptString    `json:"last_name"`
-	Photo    OptChatPhoto `json:"photo"`
+	LastName OptString    `json:"last_name,omitempty"`
+	Photo    OptChatPhoto `json:"photo,omitempty"`
 	// Bio of the other party in a private chat. Returned only in getChat.
-	Bio OptString `json:"bio"`
+	Bio OptString `json:"bio,omitempty"`
 	// True, if privacy settings of the other party in the private chat allows to use
 	// tg://user?id=<user_id> links only in chats with the user. Returned only in getChat.
-	HasPrivateForwards OptBool `json:"has_private_forwards"`
+	HasPrivateForwards OptBool `json:"has_private_forwards,omitempty"`
 	// Description, for groups, supergroups and channel chats. Returned only in getChat.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
-	InviteLink    OptString          `json:"invite_link"`
-	PinnedMessage *Message           `json:"pinned_message"`
-	Permissions   OptChatPermissions `json:"permissions"`
+	InviteLink    OptString          `json:"invite_link,omitempty"`
+	PinnedMessage *Message           `json:"pinned_message,omitempty"`
+	Permissions   OptChatPermissions `json:"permissions,omitempty"`
 	// For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged
 	// user; in seconds. Returned only in getChat.
-	SlowModeDelay OptInt `json:"slow_mode_delay"`
+	SlowModeDelay OptInt `json:"slow_mode_delay,omitempty"`
 	// The time after which all messages sent to the chat will be automatically deleted; in seconds.
 	// Returned only in getChat.
-	MessageAutoDeleteTime OptInt `json:"message_auto_delete_time"`
+	MessageAutoDeleteTime OptInt `json:"message_auto_delete_time,omitempty"`
 	// True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
-	HasProtectedContent OptBool `json:"has_protected_content"`
+	HasProtectedContent OptBool `json:"has_protected_content,omitempty"`
 	// For supergroups, name of group sticker set. Returned only in getChat.
-	StickerSetName OptString `json:"sticker_set_name"`
+	StickerSetName OptString `json:"sticker_set_name,omitempty"`
 	// True, if the bot can change the group sticker set. Returned only in getChat.
-	CanSetStickerSet OptBool `json:"can_set_sticker_set"`
+	CanSetStickerSet OptBool `json:"can_set_sticker_set,omitempty"`
 	// Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice
 	// versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some
 	// programming languages may have difficulty/silent defects in interpreting it. But it is smaller
 	// than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this
 	// identifier. Returned only in getChat.
-	LinkedChatID                OptInt64        `json:"linked_chat_id"`
-	Location                    OptChatLocation `json:"location"`
-	AllMembersAreAdministrators OptBool         `json:"all_members_are_administrators"`
+	LinkedChatID                OptInt64        `json:"linked_chat_id,omitempty"`
+	Location                    OptChatLocation `json:"location,omitempty"`
+	AllMembersAreAdministrators OptBool         `json:"all_members_are_administrators,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -1442,11 +1442,11 @@ type ChatAdministratorRights struct {
 	// True, if the user is allowed to invite new users to the chat.
 	CanInviteUsers bool `json:"can_invite_users"`
 	// True, if the administrator can post in the channel; channels only.
-	CanPostMessages OptBool `json:"can_post_messages"`
+	CanPostMessages OptBool `json:"can_post_messages,omitempty"`
 	// True, if the administrator can edit messages of other users and can pin messages; channels only.
-	CanEditMessages OptBool `json:"can_edit_messages"`
+	CanEditMessages OptBool `json:"can_edit_messages,omitempty"`
 	// True, if the user is allowed to pin messages; groups and supergroups only.
-	CanPinMessages OptBool `json:"can_pin_messages"`
+	CanPinMessages OptBool `json:"can_pin_messages,omitempty"`
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
@@ -1573,14 +1573,14 @@ type ChatInviteLink struct {
 	// True, if the link is revoked.
 	IsRevoked bool `json:"is_revoked"`
 	// Invite link name.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Point in time (Unix timestamp) when the link will expire or has been expired.
-	ExpireDate OptInt `json:"expire_date"`
+	ExpireDate OptInt `json:"expire_date,omitempty"`
 	// Maximum number of users that can be members of the chat simultaneously after joining the chat via
 	// this invite link; 1-99999.
-	MemberLimit OptInt `json:"member_limit"`
+	MemberLimit OptInt `json:"member_limit,omitempty"`
 	// Number of pending join requests created using this link.
-	PendingJoinRequestCount OptInt `json:"pending_join_request_count"`
+	PendingJoinRequestCount OptInt `json:"pending_join_request_count,omitempty"`
 }
 
 // GetInviteLink returns the value of InviteLink.
@@ -1681,8 +1681,8 @@ type ChatJoinRequest struct {
 	// Date the request was sent in Unix time.
 	Date int `json:"date"`
 	// Bio of the user.
-	Bio        OptString         `json:"bio"`
-	InviteLink OptChatInviteLink `json:"invite_link"`
+	Bio        OptString         `json:"bio,omitempty"`
+	InviteLink OptChatInviteLink `json:"invite_link,omitempty"`
 }
 
 // GetChat returns the value of Chat.
@@ -1965,13 +1965,13 @@ type ChatMemberAdministrator struct {
 	// True, if the user is allowed to invite new users to the chat.
 	CanInviteUsers bool `json:"can_invite_users"`
 	// True, if the administrator can post in the channel; channels only.
-	CanPostMessages OptBool `json:"can_post_messages"`
+	CanPostMessages OptBool `json:"can_post_messages,omitempty"`
 	// True, if the administrator can edit messages of other users and can pin messages; channels only.
-	CanEditMessages OptBool `json:"can_edit_messages"`
+	CanEditMessages OptBool `json:"can_edit_messages,omitempty"`
 	// True, if the user is allowed to pin messages; groups and supergroups only.
-	CanPinMessages OptBool `json:"can_pin_messages"`
+	CanPinMessages OptBool `json:"can_pin_messages,omitempty"`
 	// Custom title for this user.
-	CustomTitle OptString `json:"custom_title"`
+	CustomTitle OptString `json:"custom_title,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -2231,7 +2231,7 @@ type ChatMemberOwner struct {
 	// True, if the user's presence in the chat is hidden.
 	IsAnonymous bool `json:"is_anonymous"`
 	// Custom title for this user.
-	CustomTitle OptString `json:"custom_title"`
+	CustomTitle OptString `json:"custom_title,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -2432,7 +2432,7 @@ type ChatMemberUpdated struct {
 	Date          int               `json:"date"`
 	OldChatMember ChatMember        `json:"old_chat_member"`
 	NewChatMember ChatMember        `json:"new_chat_member"`
-	InviteLink    OptChatInviteLink `json:"invite_link"`
+	InviteLink    OptChatInviteLink `json:"invite_link,omitempty"`
 }
 
 // GetChat returns the value of Chat.
@@ -2499,25 +2499,25 @@ func (s *ChatMemberUpdated) SetInviteLink(val OptChatInviteLink) {
 // Ref: #/components/schemas/ChatPermissions
 type ChatPermissions struct {
 	// True, if the user is allowed to send text messages, contacts, locations and venues.
-	CanSendMessages OptBool `json:"can_send_messages"`
+	CanSendMessages OptBool `json:"can_send_messages,omitempty"`
 	// True, if the user is allowed to send audios, documents, photos, videos, video notes and voice
 	// notes, implies can_send_messages.
-	CanSendMediaMessages OptBool `json:"can_send_media_messages"`
+	CanSendMediaMessages OptBool `json:"can_send_media_messages,omitempty"`
 	// True, if the user is allowed to send polls, implies can_send_messages.
-	CanSendPolls OptBool `json:"can_send_polls"`
+	CanSendPolls OptBool `json:"can_send_polls,omitempty"`
 	// True, if the user is allowed to send animations, games, stickers and use inline bots, implies
 	// can_send_media_messages.
-	CanSendOtherMessages OptBool `json:"can_send_other_messages"`
+	CanSendOtherMessages OptBool `json:"can_send_other_messages,omitempty"`
 	// True, if the user is allowed to add web page previews to their messages, implies
 	// can_send_media_messages.
-	CanAddWebPagePreviews OptBool `json:"can_add_web_page_previews"`
+	CanAddWebPagePreviews OptBool `json:"can_add_web_page_previews,omitempty"`
 	// True, if the user is allowed to change the chat title, photo and other settings. Ignored in public
 	// supergroups.
-	CanChangeInfo OptBool `json:"can_change_info"`
+	CanChangeInfo OptBool `json:"can_change_info,omitempty"`
 	// True, if the user is allowed to invite new users to the chat.
-	CanInviteUsers OptBool `json:"can_invite_users"`
+	CanInviteUsers OptBool `json:"can_invite_users,omitempty"`
 	// True, if the user is allowed to pin messages. Ignored in public supergroups.
-	CanPinMessages OptBool `json:"can_pin_messages"`
+	CanPinMessages OptBool `json:"can_pin_messages,omitempty"`
 }
 
 // GetCanSendMessages returns the value of CanSendMessages.
@@ -2673,10 +2673,10 @@ type ChosenInlineResult struct {
 	// The unique identifier for the result that was chosen.
 	ResultID string      `json:"result_id"`
 	From     User        `json:"from"`
-	Location OptLocation `json:"location"`
+	Location OptLocation `json:"location,omitempty"`
 	// Identifier of the sent inline message. Available only if there is an inline keyboard attached to
 	// the message. Will be also received in callback queries and can be used to edit the message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 	// The query that was used to obtain the result.
 	Query string `json:"query"`
 }
@@ -2739,14 +2739,14 @@ type Contact struct {
 	// Contact's first name.
 	FirstName string `json:"first_name"`
 	// Contact's last name.
-	LastName OptString `json:"last_name"`
+	LastName OptString `json:"last_name,omitempty"`
 	// Contact's user identifier in Telegram. This number may have more than 32 significant bits and some
 	// programming languages may have difficulty/silent defects in interpreting it. But it has at most 52
 	// significant bits, so a 64-bit integer or double-precision float type are safe for storing this
 	// identifier.
-	UserID OptInt64 `json:"user_id"`
+	UserID OptInt64 `json:"user_id,omitempty"`
 	// Additional data about the contact in the form of a vCard.
-	Vcard OptString `json:"vcard"`
+	Vcard OptString `json:"vcard,omitempty"`
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
@@ -2808,21 +2808,21 @@ type CopyMessage struct {
 	MessageID int `json:"message_id"`
 	// New caption for media, 0-1024 characters after entities parsing. If not specified, the original
 	// caption is kept.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the new caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the new caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -2940,15 +2940,15 @@ func (s *CopyMessage) SetReplyMarkup(val OptSendReplyMarkup) {
 type CreateChatInviteLink struct {
 	ChatID ID `json:"chat_id"`
 	// Invite link name; 0-32 characters.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Point in time (Unix timestamp) when the link will expire.
-	ExpireDate OptInt `json:"expire_date"`
+	ExpireDate OptInt `json:"expire_date,omitempty"`
 	// Maximum number of users that can be members of the chat simultaneously after joining the chat via
 	// this invite link; 1-99999.
-	MemberLimit OptInt `json:"member_limit"`
+	MemberLimit OptInt `json:"member_limit,omitempty"`
 	// True, if users joining the chat via the link need to be approved by chat administrators. If True,
 	// member_limit can't be specified.
-	CreatesJoinRequest OptBool `json:"creates_join_request"`
+	CreatesJoinRequest OptBool `json:"creates_join_request,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3017,18 +3017,18 @@ type CreateNewStickerSet struct {
 	// and either width or height must be exactly 512px. Pass a file_id as a String to send a file that
 	// already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file
 	// from the Internet, or upload a new one using multipart/form-data.
-	PNGSticker OptString `json:"png_sticker"`
+	PNGSticker OptString `json:"png_sticker,omitempty"`
 	// TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#animated-sticker-requirements for technical requirements.
-	TgsSticker OptString `json:"tgs_sticker"`
+	TgsSticker OptString `json:"tgs_sticker,omitempty"`
 	// WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.
 	// org/stickers#video-sticker-requirements for technical requirements.
-	WebmSticker OptString `json:"webm_sticker"`
+	WebmSticker OptString `json:"webm_sticker,omitempty"`
 	// One or more emoji corresponding to the sticker.
 	Emojis string `json:"emojis"`
 	// Pass True, if a set of mask stickers should be created.
-	ContainsMasks OptBool         `json:"contains_masks"`
-	MaskPosition  OptMaskPosition `json:"mask_position"`
+	ContainsMasks OptBool         `json:"contains_masks,omitempty"`
+	MaskPosition  OptMaskPosition `json:"mask_position,omitempty"`
 }
 
 // GetUserID returns the value of UserID.
@@ -3212,10 +3212,10 @@ func (s *DeleteMessage) SetMessageID(val int) {
 // Input for deleteMyCommands.
 // Ref: #/components/schemas/deleteMyCommands
 type DeleteMyCommands struct {
-	Scope OptBotCommandScope `json:"scope"`
+	Scope OptBotCommandScope `json:"scope,omitempty"`
 	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the
 	// given scope, for whose language there are no dedicated commands.
-	LanguageCode OptString `json:"language_code"`
+	LanguageCode OptString `json:"language_code,omitempty"`
 }
 
 // GetScope returns the value of Scope.
@@ -3259,7 +3259,7 @@ func (s *DeleteStickerFromSet) SetSticker(val string) {
 // Ref: #/components/schemas/deleteWebhook
 type DeleteWebhook struct {
 	// Pass True to drop all pending updates.
-	DropPendingUpdates OptBool `json:"drop_pending_updates"`
+	DropPendingUpdates OptBool `json:"drop_pending_updates,omitempty"`
 }
 
 // GetDropPendingUpdates returns the value of DropPendingUpdates.
@@ -3310,13 +3310,13 @@ type Document struct {
 	// Unique identifier for this file, which is supposed to be the same over time and for different bots.
 	//  Can't be used to download or reuse the file.
 	FileUniqueID string       `json:"file_unique_id"`
-	Thumb        OptPhotoSize `json:"thumb"`
+	Thumb        OptPhotoSize `json:"thumb,omitempty"`
 	// Original filename as defined by sender.
-	FileName OptString `json:"file_name"`
+	FileName OptString `json:"file_name,omitempty"`
 	// MIME type of the file as defined by sender.
-	MimeType OptString `json:"mime_type"`
+	MimeType OptString `json:"mime_type,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -3386,15 +3386,15 @@ type EditChatInviteLink struct {
 	// The invite link to edit.
 	InviteLink string `json:"invite_link"`
 	// Invite link name; 0-32 characters.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Point in time (Unix timestamp) when the link will expire.
-	ExpireDate OptInt `json:"expire_date"`
+	ExpireDate OptInt `json:"expire_date,omitempty"`
 	// Maximum number of users that can be members of the chat simultaneously after joining the chat via
 	// this invite link; 1-99999.
-	MemberLimit OptInt `json:"member_limit"`
+	MemberLimit OptInt `json:"member_limit,omitempty"`
 	// True, if users joining the chat via the link need to be approved by chat administrators. If True,
 	// member_limit can't be specified.
-	CreatesJoinRequest OptBool `json:"creates_join_request"`
+	CreatesJoinRequest OptBool `json:"creates_join_request,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3460,19 +3460,19 @@ func (s *EditChatInviteLink) SetCreatesJoinRequest(val OptBool) {
 // Input for editMessageCaption.
 // Ref: #/components/schemas/editMessageCaption
 type EditMessageCaption struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message to edit.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 	// New caption of the message, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the message caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+	CaptionEntities []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3548,23 +3548,23 @@ func (s *EditMessageCaption) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 // Input for editMessageLiveLocation.
 // Ref: #/components/schemas/editMessageLiveLocation
 type EditMessageLiveLocation struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message to edit.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 	// Latitude of new location.
 	Latitude float64 `json:"latitude"`
 	// Longitude of new location.
 	Longitude float64 `json:"longitude"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
-	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy,omitempty"`
 	// Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-	Heading OptInt `json:"heading"`
+	Heading OptInt `json:"heading,omitempty"`
 	// Maximum distance for proximity alerts about approaching another chat member, in meters. Must be
 	// between 1 and 100000 if specified.
-	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
-	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3660,13 +3660,13 @@ func (s *EditMessageLiveLocation) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 // Input for editMessageMedia.
 // Ref: #/components/schemas/editMessageMedia
 type EditMessageMedia struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message to edit.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString               `json:"inline_message_id"`
+	InlineMessageID OptString               `json:"inline_message_id,omitempty"`
 	Media           InputMedia              `json:"media"`
-	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3722,12 +3722,12 @@ func (s *EditMessageMedia) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 // Input for editMessageReplyMarkup.
 // Ref: #/components/schemas/editMessageReplyMarkup
 type EditMessageReplyMarkup struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message to edit.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString               `json:"inline_message_id"`
-	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+	InlineMessageID OptString               `json:"inline_message_id,omitempty"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3773,21 +3773,21 @@ func (s *EditMessageReplyMarkup) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 // Input for editMessageText.
 // Ref: #/components/schemas/editMessageText
 type EditMessageText struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message to edit.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 	// New text of the message, 1-4096 characters after entities parsing.
 	Text string `json:"text"`
 	// Mode for parsing entities in the message text. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in message text, which can be specified
 	// instead of parse_mode.
-	Entities []MessageEntity `json:"entities"`
+	Entities []MessageEntity `json:"entities,omitempty"`
 	// Disables link previews for links in this message.
-	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview"`
-	ReplyMarkup           OptInlineKeyboardMarkup `json:"reply_markup"`
+	DisableWebPagePreview OptBool                 `json:"disable_web_page_preview,omitempty"`
+	ReplyMarkup           OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -3925,23 +3925,23 @@ type EncryptedPassportElement struct {
 	// Base64-encoded encrypted Telegram Passport element data provided by the user, available for
 	// "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and
 	// "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
-	Data OptString `json:"data"`
+	Data OptString `json:"data,omitempty"`
 	// User's verified phone number, available only for "phone_number" type.
-	PhoneNumber OptString `json:"phone_number"`
+	PhoneNumber OptString `json:"phone_number,omitempty"`
 	// User's verified email address, available only for "email" type.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// Array of encrypted files with documents provided by the user, available for "utility_bill",
 	// "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types.
 	// Files can be decrypted and verified using the accompanying EncryptedCredentials.
-	Files       []PassportFile  `json:"files"`
-	FrontSide   OptPassportFile `json:"front_side"`
-	ReverseSide OptPassportFile `json:"reverse_side"`
-	Selfie      OptPassportFile `json:"selfie"`
+	Files       []PassportFile  `json:"files,omitempty"`
+	FrontSide   OptPassportFile `json:"front_side,omitempty"`
+	ReverseSide OptPassportFile `json:"reverse_side,omitempty"`
+	Selfie      OptPassportFile `json:"selfie,omitempty"`
 	// Array of encrypted files with translated versions of documents provided by the user. Available if
 	// requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill",
 	// "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types.
 	// Files can be decrypted and verified using the accompanying EncryptedCredentials.
-	Translation []PassportFile `json:"translation"`
+	Translation []PassportFile `json:"translation,omitempty"`
 	// Base64-encoded element hash for using in PassportElementErrorUnspecified.
 	Hash string `json:"hash"`
 }
@@ -4072,7 +4072,7 @@ type Error struct {
 	Ok          bool        `json:"ok"`
 	ErrorCode   int         `json:"error_code"`
 	Description string      `json:"description"`
-	Parameters  OptResponse `json:"parameters"`
+	Parameters  OptResponse `json:"parameters,omitempty"`
 }
 
 // GetOk returns the value of Ok.
@@ -4168,9 +4168,9 @@ type File struct {
 	//  Can't be used to download or reuse the file.
 	FileUniqueID string `json:"file_unique_id"`
 	// File size in bytes, if known.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 	// File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
-	FilePath OptString `json:"file_path"`
+	FilePath OptString `json:"file_path,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -4223,11 +4223,11 @@ type ForceReply struct {
 	// 'Reply'.
 	ForceReply bool `json:"force_reply"`
 	// The placeholder to be shown in the input field when the reply is active; 1-64 characters.
-	InputFieldPlaceholder OptString `json:"input_field_placeholder"`
+	InputFieldPlaceholder OptString `json:"input_field_placeholder,omitempty"`
 	// Use this parameter if you want to force reply from specific users only. Targets: 1) users that are
 	// @mentioned in the text of the Message object; 2) if the bot's message is a reply (has
 	// reply_to_message_id), sender of the original message.
-	Selective OptBool `json:"selective"`
+	Selective OptBool `json:"selective,omitempty"`
 }
 
 // GetForceReply returns the value of ForceReply.
@@ -4266,9 +4266,9 @@ type ForwardMessage struct {
 	ChatID     ID `json:"chat_id"`
 	FromChatID ID `json:"from_chat_id"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the forwarded message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// Message identifier in the chat specified in from_chat_id.
 	MessageID int `json:"message_id"`
 }
@@ -4336,10 +4336,10 @@ type Game struct {
 	// Brief description of the game or high scores included in the game message. Can be automatically
 	// edited to include current high scores for the game when the bot calls setGameScore, or manually
 	// edited using editMessageText. 0-4096 characters.
-	Text OptString `json:"text"`
+	Text OptString `json:"text,omitempty"`
 	// Special entities that appear in text, such as usernames, URLs, bot commands, etc.
-	TextEntities []MessageEntity `json:"text_entities"`
-	Animation    OptAnimation    `json:"animation"`
+	TextEntities []MessageEntity `json:"text_entities,omitempty"`
+	Animation    OptAnimation    `json:"animation,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -4523,7 +4523,7 @@ func (s *GetChatMemberCount) SetChatID(val ID) {
 type GetChatMenuButton struct {
 	// Unique identifier for the target private chat. If not specified, default bot's menu button will be
 	// returned.
-	ChatID OptInt64 `json:"chat_id"`
+	ChatID OptInt64 `json:"chat_id,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -4559,11 +4559,11 @@ type GetGameHighScores struct {
 	// Target user id.
 	UserID int64 `json:"user_id"`
 	// Required if inline_message_id is not specified. Unique identifier for the target chat.
-	ChatID OptInt64 `json:"chat_id"`
+	ChatID OptInt64 `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the sent message.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 }
 
 // GetUserID returns the value of UserID.
@@ -4609,9 +4609,9 @@ func (s *GetGameHighScores) SetInlineMessageID(val OptString) {
 // Input for getMyCommands.
 // Ref: #/components/schemas/getMyCommands
 type GetMyCommands struct {
-	Scope OptBotCommandScope `json:"scope"`
+	Scope OptBotCommandScope `json:"scope,omitempty"`
 	// A two-letter ISO 639-1 language code or an empty string.
-	LanguageCode OptString `json:"language_code"`
+	LanguageCode OptString `json:"language_code,omitempty"`
 }
 
 // GetScope returns the value of Scope.
@@ -4639,7 +4639,7 @@ func (s *GetMyCommands) SetLanguageCode(val OptString) {
 type GetMyDefaultAdministratorRights struct {
 	// Pass True to get default administrator rights of the bot in channels. Otherwise, default
 	// administrator rights of the bot for groups and supergroups will be returned.
-	ForChannels OptBool `json:"for_channels"`
+	ForChannels OptBool `json:"for_channels,omitempty"`
 }
 
 // GetForChannels returns the value of ForChannels.
@@ -4677,19 +4677,19 @@ type GetUpdates struct {
 	// unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called
 	// with an offset higher than its update_id. The negative offset can be specified to retrieve updates
 	// starting from -offset update from the end of the updates queue. All previous updates will forgotten.
-	Offset OptInt `json:"offset"`
+	Offset OptInt `json:"offset,omitempty"`
 	// Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-	Limit OptInt `json:"limit"`
+	Limit OptInt `json:"limit,omitempty"`
 	// Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive,
 	// short polling should be used for testing purposes only.
-	Timeout OptInt `json:"timeout"`
+	Timeout OptInt `json:"timeout,omitempty"`
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
 	// ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See
 	// Update for a complete list of available update types. Specify an empty list to receive all update
 	// types except chat_member (default). If not specified, the previous setting will be used.Please
 	// note that this parameter doesn't affect updates created before the call to the getUpdates, so
 	// unwanted updates may be received for a short period of time.
-	AllowedUpdates []string `json:"allowed_updates"`
+	AllowedUpdates []string `json:"allowed_updates,omitempty"`
 }
 
 // GetOffset returns the value of Offset.
@@ -4738,9 +4738,9 @@ type GetUserProfilePhotos struct {
 	// Unique identifier of the target user.
 	UserID int64 `json:"user_id"`
 	// Sequential number of the first photo to be returned. By default, all photos are returned.
-	Offset OptInt `json:"offset"`
+	Offset OptInt `json:"offset,omitempty"`
 	// Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-	Limit OptInt `json:"limit"`
+	Limit OptInt `json:"limit,omitempty"`
 }
 
 // GetUserID returns the value of UserID.
@@ -4847,27 +4847,27 @@ type InlineKeyboardButton struct {
 	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be
 	// used to mention a user by their ID without using a username, if this is allowed by their privacy
 	// settings.
-	URL OptString `json:"url"`
+	URL OptString `json:"url,omitempty"`
 	// Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
-	CallbackData OptString     `json:"callback_data"`
-	WebApp       OptWebAppInfo `json:"web_app"`
-	LoginURL     OptLoginUrl   `json:"login_url"`
+	CallbackData OptString     `json:"callback_data,omitempty"`
+	WebApp       OptWebAppInfo `json:"web_app,omitempty"`
+	LoginURL     OptLoginUrl   `json:"login_url,omitempty"`
 	// If set, pressing the button will prompt the user to select one of their chats, open that chat and
 	// insert the bot's username and the specified inline query in the input field. Can be empty, in
 	// which case just the bot's username will be inserted.Note: This offers an easy way for users to
 	// start using your bot in inline mode when they are currently in a private chat with it. Especially
 	// useful when combined with switch_pm… actions – in this case the user will be automatically
 	// returned to the chat they switched from, skipping the chat selection screen.
-	SwitchInlineQuery OptString `json:"switch_inline_query"`
+	SwitchInlineQuery OptString `json:"switch_inline_query,omitempty"`
 	// If set, pressing the button will insert the bot's username and the specified inline query in the
 	// current chat's input field. Can be empty, in which case only the bot's username will be inserted.
 	// This offers a quick way for the user to open your bot in inline mode in the same chat – good for
 	// selecting something from multiple options.
-	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
-	CallbackGame                 *CallbackGame `json:"callback_game"`
+	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat,omitempty"`
+	CallbackGame                 *CallbackGame `json:"callback_game,omitempty"`
 	// Specify True, to send a Pay button.NOTE: This type of button must always be the first button in
 	// the first row and can only be used in invoice messages.
-	Pay OptBool `json:"pay"`
+	Pay OptBool `json:"pay,omitempty"`
 }
 
 // GetText returns the value of Text.
@@ -4992,8 +4992,8 @@ type InlineQuery struct {
 	// with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should
 	// be always known for requests sent from official clients and most third-party clients, unless the
 	// request was sent from a secret chat.
-	ChatType OptInlineQueryChatType `json:"chat_type"`
-	Location OptLocation            `json:"location"`
+	ChatType OptInlineQueryChatType `json:"chat_type,omitempty"`
+	Location OptLocation            `json:"location,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -5652,19 +5652,19 @@ type InlineQueryResultArticle struct {
 	// Title of the result.
 	Title               string                  `json:"title"`
 	InputMessageContent InputMessageContent     `json:"input_message_content"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	// URL of the result.
-	URL OptString `json:"url"`
+	URL OptString `json:"url,omitempty"`
 	// Pass True, if you don't want the URL to be shown in the message.
-	HideURL OptBool `json:"hide_url"`
+	HideURL OptBool `json:"hide_url,omitempty"`
 	// Short description of the result.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptString `json:"thumb_url"`
+	ThumbURL OptString `json:"thumb_url,omitempty"`
 	// Thumbnail width.
-	ThumbWidth OptInt `json:"thumb_width"`
+	ThumbWidth OptInt `json:"thumb_width,omitempty"`
 	// Thumbnail height.
-	ThumbHeight OptInt `json:"thumb_height"`
+	ThumbHeight OptInt `json:"thumb_height,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -5779,17 +5779,17 @@ type InlineQueryResultAudio struct {
 	// Title.
 	Title string `json:"title"`
 	// Caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the audio caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Performer.
-	Performer OptString `json:"performer"`
+	Performer OptString `json:"performer,omitempty"`
 	// Audio duration in seconds.
-	AudioDuration       OptInt                  `json:"audio_duration"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	AudioDuration       OptInt                  `json:"audio_duration,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -5904,13 +5904,13 @@ type InlineQueryResultCachedAudio struct {
 	// A valid file identifier for the audio file.
 	AudioFileID string `json:"audio_file_id"`
 	// Caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the audio caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6007,15 +6007,15 @@ type InlineQueryResultCachedDocument struct {
 	// A valid file identifier for the file.
 	DocumentFileID string `json:"document_file_id"`
 	// Short description of the result.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Caption of the document to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the document caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6130,15 +6130,15 @@ type InlineQueryResultCachedGif struct {
 	// A valid file identifier for the GIF file.
 	GIFFileID string `json:"gif_file_id"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Caption of the GIF file to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6244,15 +6244,15 @@ type InlineQueryResultCachedMpeg4Gif struct {
 	// A valid file identifier for the MP4 file.
 	Mpeg4FileID string `json:"mpeg4_file_id"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6357,17 +6357,17 @@ type InlineQueryResultCachedPhoto struct {
 	// A valid file identifier of the photo.
 	PhotoFileID string `json:"photo_file_id"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Short description of the result.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the photo caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6479,8 +6479,8 @@ type InlineQueryResultCachedSticker struct {
 	ID string `json:"id"`
 	// A valid file identifier of the sticker.
 	StickerFileID       string                  `json:"sticker_file_id"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -6537,15 +6537,15 @@ type InlineQueryResultCachedVideo struct {
 	// Title for the result.
 	Title string `json:"title"`
 	// Short description of the result.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Caption of the video to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the video caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6662,13 +6662,13 @@ type InlineQueryResultCachedVoice struct {
 	// Voice message title.
 	Title string `json:"title"`
 	// Caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the voice message caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -6773,17 +6773,17 @@ type InlineQueryResultContact struct {
 	// Contact's first name.
 	FirstName string `json:"first_name"`
 	// Contact's last name.
-	LastName OptString `json:"last_name"`
+	LastName OptString `json:"last_name,omitempty"`
 	// Additional data about the contact in the form of a vCard, 0-2048 bytes.
-	Vcard               OptString               `json:"vcard"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	Vcard               OptString               `json:"vcard,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptString `json:"thumb_url"`
+	ThumbURL OptString `json:"thumb_url,omitempty"`
 	// Thumbnail width.
-	ThumbWidth OptInt `json:"thumb_width"`
+	ThumbWidth OptInt `json:"thumb_width,omitempty"`
 	// Thumbnail height.
-	ThumbHeight OptInt `json:"thumb_height"`
+	ThumbHeight OptInt `json:"thumb_height,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -6896,25 +6896,25 @@ type InlineQueryResultDocument struct {
 	// Title for the result.
 	Title string `json:"title"`
 	// Caption of the document to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the document caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// A valid URL for the file.
 	DocumentURL string `json:"document_url"`
 	// Mime type of the content of the file, either "application/pdf" or "application/zip".
 	MimeType string `json:"mime_type"`
 	// Short description of the result.
-	Description         OptString               `json:"description"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	Description         OptString               `json:"description,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 	// URL of the thumbnail (JPEG only) for the file.
-	ThumbURL OptString `json:"thumb_url"`
+	ThumbURL OptString `json:"thumb_url,omitempty"`
 	// Thumbnail width.
-	ThumbWidth OptInt `json:"thumb_width"`
+	ThumbWidth OptInt `json:"thumb_width,omitempty"`
 	// Thumbnail height.
-	ThumbHeight OptInt `json:"thumb_height"`
+	ThumbHeight OptInt `json:"thumb_height,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7054,7 +7054,7 @@ type InlineQueryResultGame struct {
 	ID string `json:"id"`
 	// Short name of the game.
 	GameShortName string                  `json:"game_short_name"`
-	ReplyMarkup   OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyMarkup   OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7097,26 +7097,26 @@ type InlineQueryResultGif struct {
 	// A valid URL for the GIF file. File size must not exceed 1MB.
 	GIFURL string `json:"gif_url"`
 	// Width of the GIF.
-	GIFWidth OptInt `json:"gif_width"`
+	GIFWidth OptInt `json:"gif_width,omitempty"`
 	// Height of the GIF.
-	GIFHeight OptInt `json:"gif_height"`
+	GIFHeight OptInt `json:"gif_height,omitempty"`
 	// Duration of the GIF in seconds.
-	GIFDuration OptInt `json:"gif_duration"`
+	GIFDuration OptInt `json:"gif_duration,omitempty"`
 	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
 	ThumbURL string `json:"thumb_url"`
 	// MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to
 	// "image/jpeg".
-	ThumbMimeType OptString `json:"thumb_mime_type"`
+	ThumbMimeType OptString `json:"thumb_mime_type,omitempty"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Caption of the GIF file to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7263,23 +7263,23 @@ type InlineQueryResultLocation struct {
 	// Location title.
 	Title string `json:"title"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
-	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy,omitempty"`
 	// Period in seconds for which the location can be updated, should be between 60 and 86400.
-	LivePeriod OptInt `json:"live_period"`
+	LivePeriod OptInt `json:"live_period,omitempty"`
 	// For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
 	// if specified.
-	Heading OptInt `json:"heading"`
+	Heading OptInt `json:"heading,omitempty"`
 	// For live locations, a maximum distance for proximity alerts about approaching another chat member,
 	// in meters. Must be between 1 and 100000 if specified.
-	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius"`
-	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent  OptInputMessageContent  `json:"input_message_content"`
+	ProximityAlertRadius OptInt                  `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup          OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent  OptInputMessageContent  `json:"input_message_content,omitempty"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptString `json:"thumb_url"`
+	ThumbURL OptString `json:"thumb_url,omitempty"`
 	// Thumbnail width.
-	ThumbWidth OptInt `json:"thumb_width"`
+	ThumbWidth OptInt `json:"thumb_width,omitempty"`
 	// Thumbnail height.
-	ThumbHeight OptInt `json:"thumb_height"`
+	ThumbHeight OptInt `json:"thumb_height,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7422,26 +7422,26 @@ type InlineQueryResultMpeg4Gif struct {
 	// A valid URL for the MP4 file. File size must not exceed 1MB.
 	Mpeg4URL string `json:"mpeg4_url"`
 	// Video width.
-	Mpeg4Width OptInt `json:"mpeg4_width"`
+	Mpeg4Width OptInt `json:"mpeg4_width,omitempty"`
 	// Video height.
-	Mpeg4Height OptInt `json:"mpeg4_height"`
+	Mpeg4Height OptInt `json:"mpeg4_height,omitempty"`
 	// Video duration in seconds.
-	Mpeg4Duration OptInt `json:"mpeg4_duration"`
+	Mpeg4Duration OptInt `json:"mpeg4_duration,omitempty"`
 	// URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
 	ThumbURL string `json:"thumb_url"`
 	// MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to
 	// "image/jpeg".
-	ThumbMimeType OptString `json:"thumb_mime_type"`
+	ThumbMimeType OptString `json:"thumb_mime_type,omitempty"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7586,21 +7586,21 @@ type InlineQueryResultPhoto struct {
 	// URL of the thumbnail for the photo.
 	ThumbURL string `json:"thumb_url"`
 	// Width of the photo.
-	PhotoWidth OptInt `json:"photo_width"`
+	PhotoWidth OptInt `json:"photo_width,omitempty"`
 	// Height of the photo.
-	PhotoHeight OptInt `json:"photo_height"`
+	PhotoHeight OptInt `json:"photo_height,omitempty"`
 	// Title for the result.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Short description of the result.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the photo caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities     []MessageEntity         `json:"caption_entities"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	CaptionEntities     []MessageEntity         `json:"caption_entities,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7738,22 +7738,22 @@ type InlineQueryResultVenue struct {
 	// Address of the venue.
 	Address string `json:"address"`
 	// Foursquare identifier of the venue if known.
-	FoursquareID OptString `json:"foursquare_id"`
+	FoursquareID OptString `json:"foursquare_id,omitempty"`
 	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
 	// "arts_entertainment/aquarium" or "food/icecream".).
-	FoursquareType OptString `json:"foursquare_type"`
+	FoursquareType OptString `json:"foursquare_type,omitempty"`
 	// Google Places identifier of the venue.
-	GooglePlaceID OptString `json:"google_place_id"`
+	GooglePlaceID OptString `json:"google_place_id,omitempty"`
 	// Google Places type of the venue. (See supported types.).
-	GooglePlaceType     OptString               `json:"google_place_type"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	GooglePlaceType     OptString               `json:"google_place_type,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 	// URL of the thumbnail for the result.
-	ThumbURL OptString `json:"thumb_url"`
+	ThumbURL OptString `json:"thumb_url,omitempty"`
 	// Thumbnail width.
-	ThumbWidth OptInt `json:"thumb_width"`
+	ThumbWidth OptInt `json:"thumb_width,omitempty"`
 	// Thumbnail height.
-	ThumbHeight OptInt `json:"thumb_height"`
+	ThumbHeight OptInt `json:"thumb_height,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7912,21 +7912,21 @@ type InlineQueryResultVideo struct {
 	// Title for the result.
 	Title string `json:"title"`
 	// Caption of the video to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the video caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Video width.
-	VideoWidth OptInt `json:"video_width"`
+	VideoWidth OptInt `json:"video_width,omitempty"`
 	// Video height.
-	VideoHeight OptInt `json:"video_height"`
+	VideoHeight OptInt `json:"video_height,omitempty"`
 	// Video duration in seconds.
-	VideoDuration OptInt `json:"video_duration"`
+	VideoDuration OptInt `json:"video_duration,omitempty"`
 	// Short description of the result.
-	Description         OptString               `json:"description"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	Description         OptString               `json:"description,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -8081,15 +8081,15 @@ type InlineQueryResultVoice struct {
 	// Recording title.
 	Title string `json:"title"`
 	// Caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the voice message caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Recording duration in seconds.
-	VoiceDuration       OptInt                  `json:"voice_duration"`
-	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
-	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+	VoiceDuration       OptInt                  `json:"voice_duration,omitempty"`
+	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	InputMessageContent OptInputMessageContent  `json:"input_message_content,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -8190,9 +8190,9 @@ type InputContactMessageContent struct {
 	// Contact's first name.
 	FirstName string `json:"first_name"`
 	// Contact's last name.
-	LastName OptString `json:"last_name"`
+	LastName OptString `json:"last_name,omitempty"`
 	// Additional data about the contact in the form of a vCard, 0-2048 bytes.
-	Vcard OptString `json:"vcard"`
+	Vcard OptString `json:"vcard,omitempty"`
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
@@ -8256,37 +8256,37 @@ type InputInvoiceMessageContent struct {
 	// float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
 	// parameter in currencies.json, it shows the number of digits past the decimal point for each
 	// currency (2 for the majority of currencies). Defaults to 0.
-	MaxTipAmount OptInt `json:"max_tip_amount"`
+	MaxTipAmount OptInt `json:"max_tip_amount,omitempty"`
 	// A JSON-serialized array of suggested amounts of tip in the smallest units of the currency (integer,
 	//  not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts
 	// must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
-	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts"`
+	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts,omitempty"`
 	// A JSON-serialized object for data about the invoice, which will be shared with the payment
 	// provider. A detailed description of the required fields should be provided by the payment provider.
-	ProviderData OptString `json:"provider_data"`
+	ProviderData OptString `json:"provider_data,omitempty"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
-	PhotoURL OptString `json:"photo_url"`
+	PhotoURL OptString `json:"photo_url,omitempty"`
 	// Photo size.
-	PhotoSize OptInt `json:"photo_size"`
+	PhotoSize OptInt `json:"photo_size,omitempty"`
 	// Photo width.
-	PhotoWidth OptInt `json:"photo_width"`
+	PhotoWidth OptInt `json:"photo_width,omitempty"`
 	// Photo height.
-	PhotoHeight OptInt `json:"photo_height"`
+	PhotoHeight OptInt `json:"photo_height,omitempty"`
 	// Pass True, if you require the user's full name to complete the order.
-	NeedName OptBool `json:"need_name"`
+	NeedName OptBool `json:"need_name,omitempty"`
 	// Pass True, if you require the user's phone number to complete the order.
-	NeedPhoneNumber OptBool `json:"need_phone_number"`
+	NeedPhoneNumber OptBool `json:"need_phone_number,omitempty"`
 	// Pass True, if you require the user's email address to complete the order.
-	NeedEmail OptBool `json:"need_email"`
+	NeedEmail OptBool `json:"need_email,omitempty"`
 	// Pass True, if you require the user's shipping address to complete the order.
-	NeedShippingAddress OptBool `json:"need_shipping_address"`
+	NeedShippingAddress OptBool `json:"need_shipping_address,omitempty"`
 	// Pass True, if user's phone number should be sent to provider.
-	SendPhoneNumberToProvider OptBool `json:"send_phone_number_to_provider"`
+	SendPhoneNumberToProvider OptBool `json:"send_phone_number_to_provider,omitempty"`
 	// Pass True, if user's email address should be sent to provider.
-	SendEmailToProvider OptBool `json:"send_email_to_provider"`
+	SendEmailToProvider OptBool `json:"send_email_to_provider,omitempty"`
 	// Pass True, if the final price depends on the shipping method.
-	IsFlexible OptBool `json:"is_flexible"`
+	IsFlexible OptBool `json:"is_flexible,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -8497,15 +8497,15 @@ type InputLocationMessageContent struct {
 	// Longitude of the location in degrees.
 	Longitude float64 `json:"longitude"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
-	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy,omitempty"`
 	// Period in seconds for which the location can be updated, should be between 60 and 86400.
-	LivePeriod OptInt `json:"live_period"`
+	LivePeriod OptInt `json:"live_period,omitempty"`
 	// For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
 	// if specified.
-	Heading OptInt `json:"heading"`
+	Heading OptInt `json:"heading,omitempty"`
 	// For live locations, a maximum distance for proximity alerts about approaching another chat member,
 	// in meters. Must be between 1 and 100000 if specified.
-	ProximityAlertRadius OptInt `json:"proximity_alert_radius"`
+	ProximityAlertRadius OptInt `json:"proximity_alert_radius,omitempty"`
 }
 
 // GetLatitude returns the value of Latitude.
@@ -8726,19 +8726,19 @@ type InputMediaAnimation struct {
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Caption of the animation to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the animation caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Animation width.
-	Width OptInt `json:"width"`
+	Width OptInt `json:"width,omitempty"`
 	// Animation height.
-	Height OptInt `json:"height"`
+	Height OptInt `json:"height,omitempty"`
 	// Animation duration in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 }
 
 // GetMedia returns the value of Media.
@@ -8835,19 +8835,19 @@ type InputMediaAudio struct {
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Caption of the audio to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the audio caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Duration of the audio in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Performer of the audio.
-	Performer OptString `json:"performer"`
+	Performer OptString `json:"performer,omitempty"`
 	// Title of the audio.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 }
 
 // GetMedia returns the value of Media.
@@ -8944,16 +8944,16 @@ type InputMediaDocument struct {
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Caption of the document to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the document caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Disables automatic server-side content type detection for files uploaded using multipart/form-data.
 	//  Always True, if the document is sent as part of an album.
-	DisableContentTypeDetection OptBool `json:"disable_content_type_detection"`
+	DisableContentTypeDetection OptBool `json:"disable_content_type_detection,omitempty"`
 }
 
 // GetMedia returns the value of Media.
@@ -9025,11 +9025,11 @@ type InputMediaPhoto struct {
 	// <file_attach_name> name.
 	Media string `json:"media"`
 	// Caption of the photo to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the photo caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 }
 
 // GetMedia returns the value of Media.
@@ -9086,21 +9086,21 @@ type InputMediaVideo struct {
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Caption of the video to be sent, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the video caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Video width.
-	Width OptInt `json:"width"`
+	Width OptInt `json:"width,omitempty"`
 	// Video height.
-	Height OptInt `json:"height"`
+	Height OptInt `json:"height,omitempty"`
 	// Video duration in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Pass True, if the uploaded video is suitable for streaming.
-	SupportsStreaming OptBool `json:"supports_streaming"`
+	SupportsStreaming OptBool `json:"supports_streaming,omitempty"`
 }
 
 // GetMedia returns the value of Media.
@@ -9354,11 +9354,11 @@ type InputTextMessageContent struct {
 	// Text of the message to be sent, 1-4096 characters.
 	MessageText string `json:"message_text"`
 	// Mode for parsing entities in the message text. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// List of special entities that appear in message text, which can be specified instead of parse_mode.
-	Entities []MessageEntity `json:"entities"`
+	Entities []MessageEntity `json:"entities,omitempty"`
 	// Disables link previews for links in the sent message.
-	DisableWebPagePreview OptBool `json:"disable_web_page_preview"`
+	DisableWebPagePreview OptBool `json:"disable_web_page_preview,omitempty"`
 }
 
 // GetMessageText returns the value of MessageText.
@@ -9413,14 +9413,14 @@ type InputVenueMessageContent struct {
 	// Address of the venue.
 	Address string `json:"address"`
 	// Foursquare identifier of the venue, if known.
-	FoursquareID OptString `json:"foursquare_id"`
+	FoursquareID OptString `json:"foursquare_id,omitempty"`
 	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
 	// "arts_entertainment/aquarium" or "food/icecream".).
-	FoursquareType OptString `json:"foursquare_type"`
+	FoursquareType OptString `json:"foursquare_type,omitempty"`
 	// Google Places identifier of the venue.
-	GooglePlaceID OptString `json:"google_place_id"`
+	GooglePlaceID OptString `json:"google_place_id,omitempty"`
 	// Google Places type of the venue. (See supported types.).
-	GooglePlaceType OptString `json:"google_place_type"`
+	GooglePlaceType OptString `json:"google_place_type,omitempty"`
 }
 
 // GetLatitude returns the value of Latitude.
@@ -9650,12 +9650,12 @@ type KeyboardButtonObject struct {
 	Text string `json:"text"`
 	// If True, the user's phone number will be sent as a contact when the button is pressed. Available
 	// in private chats only.
-	RequestContact OptBool `json:"request_contact"`
+	RequestContact OptBool `json:"request_contact,omitempty"`
 	// If True, the user's current location will be sent when the button is pressed. Available in private
 	// chats only.
-	RequestLocation OptBool                   `json:"request_location"`
-	RequestPoll     OptKeyboardButtonPollType `json:"request_poll"`
-	WebApp          OptWebAppInfo             `json:"web_app"`
+	RequestLocation OptBool                   `json:"request_location,omitempty"`
+	RequestPoll     OptKeyboardButtonPollType `json:"request_poll,omitempty"`
+	WebApp          OptWebAppInfo             `json:"web_app,omitempty"`
 }
 
 // GetText returns the value of Text.
@@ -9715,7 +9715,7 @@ type KeyboardButtonPollType struct {
 	// If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is
 	// passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll
 	// of any type.
-	Type OptString `json:"type"`
+	Type OptString `json:"type,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -9784,15 +9784,15 @@ type Location struct {
 	// Latitude as defined by sender.
 	Latitude float64 `json:"latitude"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
-	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy,omitempty"`
 	// Time relative to the message sending date, during which the location can be updated; in seconds.
 	// For active live locations only.
-	LivePeriod OptInt `json:"live_period"`
+	LivePeriod OptInt `json:"live_period,omitempty"`
 	// The direction in which user is moving, in degrees; 1-360. For active live locations only.
-	Heading OptInt `json:"heading"`
+	Heading OptInt `json:"heading,omitempty"`
 	// Maximum distance for proximity alerts about approaching another chat member, in meters. For sent
 	// live locations only.
-	ProximityAlertRadius OptInt `json:"proximity_alert_radius"`
+	ProximityAlertRadius OptInt `json:"proximity_alert_radius,omitempty"`
 }
 
 // GetLongitude returns the value of Longitude.
@@ -9865,13 +9865,13 @@ type LoginUrl struct {
 	// the integrity of the data as described in Checking authorization.
 	URL string `json:"url"`
 	// New text of the button in forwarded messages.
-	ForwardText OptString `json:"forward_text"`
+	ForwardText OptString `json:"forward_text,omitempty"`
 	// Username of a bot, which will be used for user authorization. See Setting up a bot for more
 	// details. If not specified, the current bot's username will be assumed. The url's domain must be
 	// the same as the domain linked with the bot. See Linking your domain to the bot for more details.
-	BotUsername OptString `json:"bot_username"`
+	BotUsername OptString `json:"bot_username,omitempty"`
 	// Pass True to request the permission for your bot to send messages to the user.
-	RequestWriteAccess OptBool `json:"request_write_access"`
+	RequestWriteAccess OptBool `json:"request_write_access,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -10103,110 +10103,110 @@ func (s *MenuButtonWebApp) SetWebApp(val WebAppInfo) {
 type Message struct {
 	// Unique message identifier inside this chat.
 	MessageID  int     `json:"message_id"`
-	From       OptUser `json:"from"`
-	SenderChat OptChat `json:"sender_chat"`
+	From       OptUser `json:"from,omitempty"`
+	SenderChat OptChat `json:"sender_chat,omitempty"`
 	// Date the message was sent in Unix time.
 	Date            int     `json:"date"`
 	Chat            Chat    `json:"chat"`
-	ForwardFrom     OptUser `json:"forward_from"`
-	ForwardFromChat OptChat `json:"forward_from_chat"`
+	ForwardFrom     OptUser `json:"forward_from,omitempty"`
+	ForwardFromChat OptChat `json:"forward_from_chat,omitempty"`
 	// For messages forwarded from channels, identifier of the original message in the channel.
-	ForwardFromMessageID OptInt `json:"forward_from_message_id"`
+	ForwardFromMessageID OptInt `json:"forward_from_message_id,omitempty"`
 	// For forwarded messages that were originally sent in channels or by an anonymous chat administrator,
 	//  signature of the message sender if present.
-	ForwardSignature OptString `json:"forward_signature"`
+	ForwardSignature OptString `json:"forward_signature,omitempty"`
 	// Sender's name for messages forwarded from users who disallow adding a link to their account in
 	// forwarded messages.
-	ForwardSenderName OptString `json:"forward_sender_name"`
+	ForwardSenderName OptString `json:"forward_sender_name,omitempty"`
 	// For forwarded messages, date the original message was sent in Unix time.
-	ForwardDate OptInt `json:"forward_date"`
+	ForwardDate OptInt `json:"forward_date,omitempty"`
 	// True, if the message is a channel post that was automatically forwarded to the connected
 	// discussion group.
-	IsAutomaticForward OptBool  `json:"is_automatic_forward"`
-	ReplyToMessage     *Message `json:"reply_to_message"`
-	ViaBot             OptUser  `json:"via_bot"`
+	IsAutomaticForward OptBool  `json:"is_automatic_forward,omitempty"`
+	ReplyToMessage     *Message `json:"reply_to_message,omitempty"`
+	ViaBot             OptUser  `json:"via_bot,omitempty"`
 	// Date the message was last edited in Unix time.
-	EditDate OptInt `json:"edit_date"`
+	EditDate OptInt `json:"edit_date,omitempty"`
 	// True, if the message can't be forwarded.
-	HasProtectedContent OptBool `json:"has_protected_content"`
+	HasProtectedContent OptBool `json:"has_protected_content,omitempty"`
 	// The unique identifier of a media message group this message belongs to.
-	MediaGroupID OptString `json:"media_group_id"`
+	MediaGroupID OptString `json:"media_group_id,omitempty"`
 	// Signature of the post author for messages in channels, or the custom title of an anonymous group
 	// administrator.
-	AuthorSignature OptString `json:"author_signature"`
+	AuthorSignature OptString `json:"author_signature,omitempty"`
 	// For text messages, the actual UTF-8 text of the message, 0-4096 characters.
-	Text OptString `json:"text"`
+	Text OptString `json:"text,omitempty"`
 	// For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the
 	// text.
-	Entities  []MessageEntity `json:"entities"`
-	Animation OptAnimation    `json:"animation"`
-	Audio     OptAudio        `json:"audio"`
-	Document  OptDocument     `json:"document"`
+	Entities  []MessageEntity `json:"entities,omitempty"`
+	Animation OptAnimation    `json:"animation,omitempty"`
+	Audio     OptAudio        `json:"audio,omitempty"`
+	Document  OptDocument     `json:"document,omitempty"`
 	// Message is a photo, available sizes of the photo.
-	Photo     []PhotoSize  `json:"photo"`
-	Sticker   OptSticker   `json:"sticker"`
-	Video     OptVideo     `json:"video"`
-	VideoNote OptVideoNote `json:"video_note"`
-	Voice     OptVoice     `json:"voice"`
+	Photo     []PhotoSize  `json:"photo,omitempty"`
+	Sticker   OptSticker   `json:"sticker,omitempty"`
+	Video     OptVideo     `json:"video,omitempty"`
+	VideoNote OptVideoNote `json:"video_note,omitempty"`
+	Voice     OptVoice     `json:"voice,omitempty"`
 	// Caption for the animation, audio, document, photo, video or voice, 0-1024 characters.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear
 	// in the caption.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
-	Contact         OptContact      `json:"contact"`
-	Dice            OptDice         `json:"dice"`
-	Game            OptGame         `json:"game"`
-	Poll            OptPoll         `json:"poll"`
-	Venue           OptVenue        `json:"venue"`
-	Location        OptLocation     `json:"location"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
+	Contact         OptContact      `json:"contact,omitempty"`
+	Dice            OptDice         `json:"dice,omitempty"`
+	Game            OptGame         `json:"game,omitempty"`
+	Poll            OptPoll         `json:"poll,omitempty"`
+	Venue           OptVenue        `json:"venue,omitempty"`
+	Location        OptLocation     `json:"location,omitempty"`
 	// New members that were added to the group or supergroup and information about them (the bot itself
 	// may be one of these members).
-	NewChatMembers []User  `json:"new_chat_members"`
-	LeftChatMember OptUser `json:"left_chat_member"`
+	NewChatMembers []User  `json:"new_chat_members,omitempty"`
+	LeftChatMember OptUser `json:"left_chat_member,omitempty"`
 	// A chat title was changed to this value.
-	NewChatTitle OptString `json:"new_chat_title"`
+	NewChatTitle OptString `json:"new_chat_title,omitempty"`
 	// A chat photo was change to this value.
-	NewChatPhoto []PhotoSize `json:"new_chat_photo"`
+	NewChatPhoto []PhotoSize `json:"new_chat_photo,omitempty"`
 	// Service message: the chat photo was deleted.
-	DeleteChatPhoto OptBool `json:"delete_chat_photo"`
+	DeleteChatPhoto OptBool `json:"delete_chat_photo,omitempty"`
 	// Service message: the group has been created.
-	GroupChatCreated OptBool `json:"group_chat_created"`
+	GroupChatCreated OptBool `json:"group_chat_created,omitempty"`
 	// Service message: the supergroup has been created. This field can't be received in a message coming
 	// through updates, because bot can't be a member of a supergroup when it is created. It can only be
 	// found in reply_to_message if someone replies to a very first message in a directly created
 	// supergroup.
-	SupergroupChatCreated OptBool `json:"supergroup_chat_created"`
+	SupergroupChatCreated OptBool `json:"supergroup_chat_created,omitempty"`
 	// Service message: the channel has been created. This field can't be received in a message coming
 	// through updates, because bot can't be a member of a channel when it is created. It can only be
 	// found in reply_to_message if someone replies to a very first message in a channel.
-	ChannelChatCreated            OptBool                          `json:"channel_chat_created"`
-	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed"`
+	ChannelChatCreated            OptBool                          `json:"channel_chat_created,omitempty"`
+	MessageAutoDeleteTimerChanged OptMessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed,omitempty"`
 	// The group has been migrated to a supergroup with the specified identifier. This number may have
 	// more than 32 significant bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or
 	// double-precision float type are safe for storing this identifier.
-	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
+	MigrateToChatID OptInt64 `json:"migrate_to_chat_id,omitempty"`
 	// The supergroup has been migrated from a group with the specified identifier. This number may have
 	// more than 32 significant bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or
 	// double-precision float type are safe for storing this identifier.
-	MigrateFromChatID OptInt64             `json:"migrate_from_chat_id"`
-	PinnedMessage     *Message             `json:"pinned_message"`
-	Invoice           OptInvoice           `json:"invoice"`
-	SuccessfulPayment OptSuccessfulPayment `json:"successful_payment"`
+	MigrateFromChatID OptInt64             `json:"migrate_from_chat_id,omitempty"`
+	PinnedMessage     *Message             `json:"pinned_message,omitempty"`
+	Invoice           OptInvoice           `json:"invoice,omitempty"`
+	SuccessfulPayment OptSuccessfulPayment `json:"successful_payment,omitempty"`
 	// The domain name of the website on which the user has logged in. More about Telegram Login ».
-	ConnectedWebsite             OptString                       `json:"connected_website"`
-	PassportData                 OptPassportData                 `json:"passport_data"`
-	ProximityAlertTriggered      OptProximityAlertTriggered      `json:"proximity_alert_triggered"`
-	VideoChatScheduled           OptVideoChatScheduled           `json:"video_chat_scheduled"`
-	VideoChatStarted             *VideoChatStarted               `json:"video_chat_started"`
-	VideoChatEnded               OptVideoChatEnded               `json:"video_chat_ended"`
-	VideoChatParticipantsInvited OptVideoChatParticipantsInvited `json:"video_chat_participants_invited"`
-	WebAppData                   OptWebAppData                   `json:"web_app_data"`
-	ReplyMarkup                  OptInlineKeyboardMarkup         `json:"reply_markup"`
-	NewChatMember                OptUser                         `json:"new_chat_member"`
-	NewChatParticipant           OptUser                         `json:"new_chat_participant"`
-	LeftChatParticipant          OptUser                         `json:"left_chat_participant"`
+	ConnectedWebsite             OptString                       `json:"connected_website,omitempty"`
+	PassportData                 OptPassportData                 `json:"passport_data,omitempty"`
+	ProximityAlertTriggered      OptProximityAlertTriggered      `json:"proximity_alert_triggered,omitempty"`
+	VideoChatScheduled           OptVideoChatScheduled           `json:"video_chat_scheduled,omitempty"`
+	VideoChatStarted             *VideoChatStarted               `json:"video_chat_started,omitempty"`
+	VideoChatEnded               OptVideoChatEnded               `json:"video_chat_ended,omitempty"`
+	VideoChatParticipantsInvited OptVideoChatParticipantsInvited `json:"video_chat_participants_invited,omitempty"`
+	WebAppData                   OptWebAppData                   `json:"web_app_data,omitempty"`
+	ReplyMarkup                  OptInlineKeyboardMarkup         `json:"reply_markup,omitempty"`
+	NewChatMember                OptUser                         `json:"new_chat_member,omitempty"`
+	NewChatParticipant           OptUser                         `json:"new_chat_participant,omitempty"`
+	LeftChatParticipant          OptUser                         `json:"left_chat_participant,omitempty"`
 }
 
 // GetMessageID returns the value of MessageID.
@@ -10862,10 +10862,10 @@ type MessageEntity struct {
 	// Length of the entity in UTF-16 code units.
 	Length int `json:"length"`
 	// For "text_link" only, url that will be opened after user taps on the text.
-	URL  OptString `json:"url"`
-	User OptUser   `json:"user"`
+	URL  OptString `json:"url,omitempty"`
+	User OptUser   `json:"user,omitempty"`
 	// For "pre" only, the programming language of the entity text.
-	Language OptString `json:"language"`
+	Language OptString `json:"language,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -14380,12 +14380,12 @@ func (o OptWebhookInfo) Or(d WebhookInfo) WebhookInfo {
 // Ref: #/components/schemas/OrderInfo
 type OrderInfo struct {
 	// User name.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// User's phone number.
-	PhoneNumber OptString `json:"phone_number"`
+	PhoneNumber OptString `json:"phone_number,omitempty"`
 	// User email.
-	Email           OptString          `json:"email"`
-	ShippingAddress OptShippingAddress `json:"shipping_address"`
+	Email           OptString          `json:"email,omitempty"`
+	ShippingAddress OptShippingAddress `json:"shipping_address,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -15284,7 +15284,7 @@ type PhotoSize struct {
 	// Photo height.
 	Height int `json:"height"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -15345,7 +15345,7 @@ type PinChatMessage struct {
 	MessageID int `json:"message_id"`
 	// Pass True, if it is not necessary to send a notification to all chat members about the new pinned
 	// message. Notifications are always disabled in channels and private chats.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -15399,16 +15399,16 @@ type Poll struct {
 	AllowsMultipleAnswers bool `json:"allows_multiple_answers"`
 	// 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which
 	// are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
-	CorrectOptionID OptInt `json:"correct_option_id"`
+	CorrectOptionID OptInt `json:"correct_option_id,omitempty"`
 	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a
 	// quiz-style poll, 0-200 characters.
-	Explanation OptString `json:"explanation"`
+	Explanation OptString `json:"explanation,omitempty"`
 	// Special entities like usernames, URLs, bot commands, etc. that appear in the explanation.
-	ExplanationEntities []MessageEntity `json:"explanation_entities"`
+	ExplanationEntities []MessageEntity `json:"explanation_entities,omitempty"`
 	// Amount of time in seconds the poll will be active after creation.
-	OpenPeriod OptInt `json:"open_period"`
+	OpenPeriod OptInt `json:"open_period,omitempty"`
 	// Point in time (Unix timestamp) when the poll will be automatically closed.
-	CloseDate OptInt `json:"close_date"`
+	CloseDate OptInt `json:"close_date,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -15634,8 +15634,8 @@ type PreCheckoutQuery struct {
 	// Bot specified invoice payload.
 	InvoicePayload string `json:"invoice_payload"`
 	// Identifier of the shipping option chosen by the user.
-	ShippingOptionID OptString    `json:"shipping_option_id"`
-	OrderInfo        OptOrderInfo `json:"order_info"`
+	ShippingOptionID OptString    `json:"shipping_option_id,omitempty"`
+	OrderInfo        OptOrderInfo `json:"order_info,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -15715,32 +15715,32 @@ type PromoteChatMember struct {
 	// Unique identifier of the target user.
 	UserID int64 `json:"user_id"`
 	// Pass True, if the administrator's presence in the chat is hidden.
-	IsAnonymous OptBool `json:"is_anonymous"`
+	IsAnonymous OptBool `json:"is_anonymous,omitempty"`
 	// Pass True, if the administrator can access the chat event log, chat statistics, message statistics
 	// in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
 	//  Implied by any other administrator privilege.
-	CanManageChat OptBool `json:"can_manage_chat"`
+	CanManageChat OptBool `json:"can_manage_chat,omitempty"`
 	// Pass True, if the administrator can create channel posts, channels only.
-	CanPostMessages OptBool `json:"can_post_messages"`
+	CanPostMessages OptBool `json:"can_post_messages,omitempty"`
 	// Pass True, if the administrator can edit messages of other users and can pin messages, channels
 	// only.
-	CanEditMessages OptBool `json:"can_edit_messages"`
+	CanEditMessages OptBool `json:"can_edit_messages,omitempty"`
 	// Pass True, if the administrator can delete messages of other users.
-	CanDeleteMessages OptBool `json:"can_delete_messages"`
+	CanDeleteMessages OptBool `json:"can_delete_messages,omitempty"`
 	// Pass True, if the administrator can manage video chats.
-	CanManageVideoChats OptBool `json:"can_manage_video_chats"`
+	CanManageVideoChats OptBool `json:"can_manage_video_chats,omitempty"`
 	// Pass True, if the administrator can restrict, ban or unban chat members.
-	CanRestrictMembers OptBool `json:"can_restrict_members"`
+	CanRestrictMembers OptBool `json:"can_restrict_members,omitempty"`
 	// Pass True, if the administrator can add new administrators with a subset of their own privileges
 	// or demote administrators that he has promoted, directly or indirectly (promoted by administrators
 	// that were appointed by him).
-	CanPromoteMembers OptBool `json:"can_promote_members"`
+	CanPromoteMembers OptBool `json:"can_promote_members,omitempty"`
 	// Pass True, if the administrator can change chat title, photo and other settings.
-	CanChangeInfo OptBool `json:"can_change_info"`
+	CanChangeInfo OptBool `json:"can_change_info,omitempty"`
 	// Pass True, if the administrator can invite new users to the chat.
-	CanInviteUsers OptBool `json:"can_invite_users"`
+	CanInviteUsers OptBool `json:"can_invite_users,omitempty"`
 	// Pass True, if the administrator can pin messages, supergroups only.
-	CanPinMessages OptBool `json:"can_pin_messages"`
+	CanPinMessages OptBool `json:"can_pin_messages,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -15922,20 +15922,20 @@ type ReplyKeyboardMarkup struct {
 	// Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard
 	// smaller if there are just two rows of buttons). Defaults to false, in which case the custom
 	// keyboard is always of the same height as the app's standard keyboard.
-	ResizeKeyboard OptBool `json:"resize_keyboard"`
+	ResizeKeyboard OptBool `json:"resize_keyboard,omitempty"`
 	// Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be
 	// available, but clients will automatically display the usual letter-keyboard in the chat – the
 	// user can press a special button in the input field to see the custom keyboard again. Defaults to
 	// false.
-	OneTimeKeyboard OptBool `json:"one_time_keyboard"`
+	OneTimeKeyboard OptBool `json:"one_time_keyboard,omitempty"`
 	// The placeholder to be shown in the input field when the keyboard is active; 1-64 characters.
-	InputFieldPlaceholder OptString `json:"input_field_placeholder"`
+	InputFieldPlaceholder OptString `json:"input_field_placeholder,omitempty"`
 	// Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that
 	// are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has
 	// reply_to_message_id), sender of the original message.Example: A user requests to change the bot's
 	// language, bot replies to the request with a keyboard to select the new language. Other users in
 	// the group don't see the keyboard.
-	Selective OptBool `json:"selective"`
+	Selective OptBool `json:"selective,omitempty"`
 }
 
 // GetKeyboard returns the value of Keyboard.
@@ -16003,7 +16003,7 @@ type ReplyKeyboardRemove struct {
 	// reply_to_message_id), sender of the original message.Example: A user votes in a poll, bot returns
 	// confirmation message in reply to the vote and removes the keyboard for that user, while still
 	// showing the keyboard with poll options to users who haven't voted yet.
-	Selective OptBool `json:"selective"`
+	Selective OptBool `json:"selective,omitempty"`
 }
 
 // GetRemoveKeyboard returns the value of RemoveKeyboard.
@@ -16033,10 +16033,10 @@ type Response struct {
 	// greater than 32 bits and some programming languages may have difficulty/silent defects in
 	// interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision
 	// float type are safe for storing this identifier.
-	MigrateToChatID OptInt64 `json:"migrate_to_chat_id"`
+	MigrateToChatID OptInt64 `json:"migrate_to_chat_id,omitempty"`
 	// In case of exceeding flood control, the number of seconds left to wait before the request can be
 	// repeated.
-	RetryAfter OptInt `json:"retry_after"`
+	RetryAfter OptInt `json:"retry_after,omitempty"`
 }
 
 // GetMigrateToChatID returns the value of MigrateToChatID.
@@ -16069,7 +16069,7 @@ type RestrictChatMember struct {
 	// Date when restrictions will be lifted for the user, unix time. If user is restricted for more than
 	// 366 days or less than 30 seconds from the current time, they are considered to be restricted
 	// forever.
-	UntilDate OptInt `json:"until_date"`
+	UntilDate OptInt `json:"until_date,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -16114,7 +16114,7 @@ func (s *RestrictChatMember) SetUntilDate(val OptInt) {
 
 // Ref: #/components/schemas/Result
 type Result struct {
-	Result OptBool `json:"result"`
+	Result OptBool `json:"result,omitempty"`
 	Ok     bool    `json:"ok"`
 }
 
@@ -16140,7 +16140,7 @@ func (s *Result) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultArrayOfBotCommand
 type ResultArrayOfBotCommand struct {
-	Result []BotCommand `json:"result"`
+	Result []BotCommand `json:"result,omitempty"`
 	Ok     bool         `json:"ok"`
 }
 
@@ -16166,7 +16166,7 @@ func (s *ResultArrayOfBotCommand) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultArrayOfChatMember
 type ResultArrayOfChatMember struct {
-	Result []ChatMember `json:"result"`
+	Result []ChatMember `json:"result,omitempty"`
 	Ok     bool         `json:"ok"`
 }
 
@@ -16192,7 +16192,7 @@ func (s *ResultArrayOfChatMember) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultArrayOfGameHighScore
 type ResultArrayOfGameHighScore struct {
-	Result []GameHighScore `json:"result"`
+	Result []GameHighScore `json:"result,omitempty"`
 	Ok     bool            `json:"ok"`
 }
 
@@ -16218,7 +16218,7 @@ func (s *ResultArrayOfGameHighScore) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultArrayOfMessage
 type ResultArrayOfMessage struct {
-	Result []Message `json:"result"`
+	Result []Message `json:"result,omitempty"`
 	Ok     bool      `json:"ok"`
 }
 
@@ -16244,7 +16244,7 @@ func (s *ResultArrayOfMessage) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultArrayOfUpdate
 type ResultArrayOfUpdate struct {
-	Result []Update `json:"result"`
+	Result []Update `json:"result,omitempty"`
 	Ok     bool     `json:"ok"`
 }
 
@@ -16270,7 +16270,7 @@ func (s *ResultArrayOfUpdate) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultChat
 type ResultChat struct {
-	Result OptChat `json:"result"`
+	Result OptChat `json:"result,omitempty"`
 	Ok     bool    `json:"ok"`
 }
 
@@ -16296,7 +16296,7 @@ func (s *ResultChat) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultChatInviteLink
 type ResultChatInviteLink struct {
-	Result OptChatInviteLink `json:"result"`
+	Result OptChatInviteLink `json:"result,omitempty"`
 	Ok     bool              `json:"ok"`
 }
 
@@ -16322,7 +16322,7 @@ func (s *ResultChatInviteLink) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultChatMember
 type ResultChatMember struct {
-	Result OptChatMember `json:"result"`
+	Result OptChatMember `json:"result,omitempty"`
 	Ok     bool          `json:"ok"`
 }
 
@@ -16348,7 +16348,7 @@ func (s *ResultChatMember) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultFile
 type ResultFile struct {
-	Result OptFile `json:"result"`
+	Result OptFile `json:"result,omitempty"`
 	Ok     bool    `json:"ok"`
 }
 
@@ -16374,7 +16374,7 @@ func (s *ResultFile) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultInt
 type ResultInt struct {
-	Result OptInt `json:"result"`
+	Result OptInt `json:"result,omitempty"`
 	Ok     bool   `json:"ok"`
 }
 
@@ -16400,7 +16400,7 @@ func (s *ResultInt) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultMessage
 type ResultMessage struct {
-	Result OptMessage `json:"result"`
+	Result OptMessage `json:"result,omitempty"`
 	Ok     bool       `json:"ok"`
 }
 
@@ -16426,7 +16426,7 @@ func (s *ResultMessage) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultMessageId
 type ResultMessageId struct {
-	Result OptMessageId `json:"result"`
+	Result OptMessageId `json:"result,omitempty"`
 	Ok     bool         `json:"ok"`
 }
 
@@ -16452,7 +16452,7 @@ func (s *ResultMessageId) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultMessageOrBoolean
 type ResultMessageOrBoolean struct {
-	Result OptResultMessageOrBooleanResult `json:"result"`
+	Result OptResultMessageOrBooleanResult `json:"result,omitempty"`
 	Ok     bool                            `json:"ok"`
 }
 
@@ -16546,7 +16546,7 @@ func NewBoolResultMessageOrBooleanResult(v bool) ResultMessageOrBooleanResult {
 
 // Ref: #/components/schemas/ResultPoll
 type ResultPoll struct {
-	Result OptPoll `json:"result"`
+	Result OptPoll `json:"result,omitempty"`
 	Ok     bool    `json:"ok"`
 }
 
@@ -16572,7 +16572,7 @@ func (s *ResultPoll) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultStickerSet
 type ResultStickerSet struct {
-	Result OptStickerSet `json:"result"`
+	Result OptStickerSet `json:"result,omitempty"`
 	Ok     bool          `json:"ok"`
 }
 
@@ -16598,7 +16598,7 @@ func (s *ResultStickerSet) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultString
 type ResultString struct {
-	Result OptString `json:"result"`
+	Result OptString `json:"result,omitempty"`
 	Ok     bool      `json:"ok"`
 }
 
@@ -16624,7 +16624,7 @@ func (s *ResultString) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultUser
 type ResultUser struct {
-	Result OptUser `json:"result"`
+	Result OptUser `json:"result,omitempty"`
 	Ok     bool    `json:"ok"`
 }
 
@@ -16650,7 +16650,7 @@ func (s *ResultUser) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultUserProfilePhotos
 type ResultUserProfilePhotos struct {
-	Result OptUserProfilePhotos `json:"result"`
+	Result OptUserProfilePhotos `json:"result,omitempty"`
 	Ok     bool                 `json:"ok"`
 }
 
@@ -16676,7 +16676,7 @@ func (s *ResultUserProfilePhotos) SetOk(val bool) {
 
 // Ref: #/components/schemas/ResultWebhookInfo
 type ResultWebhookInfo struct {
-	Result OptWebhookInfo `json:"result"`
+	Result OptWebhookInfo `json:"result,omitempty"`
 	Ok     bool           `json:"ok"`
 }
 
@@ -16737,35 +16737,35 @@ type SendAnimation struct {
 	// Internet, or upload a new animation using multipart/form-data.
 	Animation string `json:"animation"`
 	// Duration of sent animation in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Animation width.
-	Width OptInt `json:"width"`
+	Width OptInt `json:"width,omitempty"`
 	// Animation height.
-	Height OptInt `json:"height"`
+	Height OptInt `json:"height,omitempty"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
 	// entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the animation caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -16917,34 +16917,34 @@ type SendAudio struct {
 	// Internet, or upload a new one using multipart/form-data.
 	Audio string `json:"audio"`
 	// Audio caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the audio caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Duration of the audio in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Performer.
-	Performer OptString `json:"performer"`
+	Performer OptString `json:"performer,omitempty"`
 	// Track name.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17127,18 +17127,18 @@ type SendContact struct {
 	// Contact's first name.
 	FirstName string `json:"first_name"`
 	// Contact's last name.
-	LastName OptString `json:"last_name"`
+	LastName OptString `json:"last_name,omitempty"`
 	// Additional data about the contact in the form of a vCard, 0-2048 bytes.
-	Vcard OptString `json:"vcard"`
+	Vcard OptString `json:"vcard,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17248,16 +17248,16 @@ type SendDice struct {
 	// Emoji on which the dice throw animation is based. Currently, must be one of "", "", "", "", "", or
 	// "". Dice can have values 1-6 for "", "" and "", values 1-5 for "" and "", and values 1-64 for "".
 	// Defaults to "".
-	Emoji OptString `json:"emoji"`
+	Emoji OptString `json:"emoji,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17344,26 +17344,26 @@ type SendDocument struct {
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Document caption (may also be used when resending documents by file_id), 0-1024 characters after
 	// entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the document caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Disables automatic server-side content type detection for files uploaded using multipart/form-data.
-	DisableContentTypeDetection OptBool `json:"disable_content_type_detection"`
+	DisableContentTypeDetection OptBool `json:"disable_content_type_detection,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17495,14 +17495,14 @@ type SendGame struct {
 	// Botfather.
 	GameShortName string `json:"game_short_name"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17597,51 +17597,51 @@ type SendInvoice struct {
 	// float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
 	// parameter in currencies.json, it shows the number of digits past the decimal point for each
 	// currency (2 for the majority of currencies). Defaults to 0.
-	MaxTipAmount OptInt `json:"max_tip_amount"`
+	MaxTipAmount OptInt `json:"max_tip_amount,omitempty"`
 	// A JSON-serialized array of suggested amounts of tips in the smallest units of the currency
 	// (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip
 	// amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
-	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts"`
+	SuggestedTipAmounts []int64 `json:"suggested_tip_amounts,omitempty"`
 	// Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay
 	// button, allowing multiple users to pay directly from the forwarded message, using the same invoice.
 	//  If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
 	// bot (instead of a Pay button), with the value used as the start parameter.
-	StartParameter OptString `json:"start_parameter"`
+	StartParameter OptString `json:"start_parameter,omitempty"`
 	// A JSON-serialized data about the invoice, which will be shared with the payment provider. A
 	// detailed description of required fields should be provided by the payment provider.
-	ProviderData OptString `json:"provider_data"`
+	ProviderData OptString `json:"provider_data,omitempty"`
 	// URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
 	// service. People like it better when they see what they are paying for.
-	PhotoURL OptString `json:"photo_url"`
+	PhotoURL OptString `json:"photo_url,omitempty"`
 	// Photo size.
-	PhotoSize OptInt `json:"photo_size"`
+	PhotoSize OptInt `json:"photo_size,omitempty"`
 	// Photo width.
-	PhotoWidth OptInt `json:"photo_width"`
+	PhotoWidth OptInt `json:"photo_width,omitempty"`
 	// Photo height.
-	PhotoHeight OptInt `json:"photo_height"`
+	PhotoHeight OptInt `json:"photo_height,omitempty"`
 	// Pass True, if you require the user's full name to complete the order.
-	NeedName OptBool `json:"need_name"`
+	NeedName OptBool `json:"need_name,omitempty"`
 	// Pass True, if you require the user's phone number to complete the order.
-	NeedPhoneNumber OptBool `json:"need_phone_number"`
+	NeedPhoneNumber OptBool `json:"need_phone_number,omitempty"`
 	// Pass True, if you require the user's email address to complete the order.
-	NeedEmail OptBool `json:"need_email"`
+	NeedEmail OptBool `json:"need_email,omitempty"`
 	// Pass True, if you require the user's shipping address to complete the order.
-	NeedShippingAddress OptBool `json:"need_shipping_address"`
+	NeedShippingAddress OptBool `json:"need_shipping_address,omitempty"`
 	// Pass True, if user's phone number should be sent to provider.
-	SendPhoneNumberToProvider OptBool `json:"send_phone_number_to_provider"`
+	SendPhoneNumberToProvider OptBool `json:"send_phone_number_to_provider,omitempty"`
 	// Pass True, if user's email address should be sent to provider.
-	SendEmailToProvider OptBool `json:"send_email_to_provider"`
+	SendEmailToProvider OptBool `json:"send_email_to_provider,omitempty"`
 	// Pass True, if the final price depends on the shipping method.
-	IsFlexible OptBool `json:"is_flexible"`
+	IsFlexible OptBool `json:"is_flexible,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool                 `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -17923,25 +17923,25 @@ type SendLocation struct {
 	// Longitude of the location.
 	Longitude float64 `json:"longitude"`
 	// The radius of uncertainty for the location, measured in meters; 0-1500.
-	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy"`
+	HorizontalAccuracy OptFloat64 `json:"horizontal_accuracy,omitempty"`
 	// Period in seconds for which the location will be updated (see Live Locations, should be between 60
 	// and 86400.
-	LivePeriod OptInt `json:"live_period"`
+	LivePeriod OptInt `json:"live_period,omitempty"`
 	// For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
 	// if specified.
-	Heading OptInt `json:"heading"`
+	Heading OptInt `json:"heading,omitempty"`
 	// For live locations, a maximum distance for proximity alerts about approaching another chat member,
 	// in meters. Must be between 1 and 100000 if specified.
-	ProximityAlertRadius OptInt `json:"proximity_alert_radius"`
+	ProximityAlertRadius OptInt `json:"proximity_alert_radius,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18071,13 +18071,13 @@ type SendMediaGroup struct {
 	// A JSON-serialized array describing messages to be sent, must include 2-10 items.
 	Media []SendMediaGroupMediaItem `json:"media"`
 	// Sends messages silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent messages from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the messages are a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply"`
+	AllowSendingWithoutReply OptBool `json:"allow_sending_without_reply,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18271,21 +18271,21 @@ type SendMessage struct {
 	// Text of the message to be sent, 1-4096 characters after entities parsing.
 	Text string `json:"text"`
 	// Mode for parsing entities in the message text. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in message text, which can be specified
 	// instead of parse_mode.
-	Entities []MessageEntity `json:"entities"`
+	Entities []MessageEntity `json:"entities,omitempty"`
 	// Disables link previews for links in this message.
-	DisableWebPagePreview OptBool `json:"disable_web_page_preview"`
+	DisableWebPagePreview OptBool `json:"disable_web_page_preview,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18399,21 +18399,21 @@ type SendPhoto struct {
 	Photo string `json:"photo"`
 	// Photo caption (may also be used when resending photos by file_id), 0-1024 characters after
 	// entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the photo caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18525,38 +18525,38 @@ type SendPoll struct {
 	// A JSON-serialized list of answer options, 2-10 strings 1-100 characters each.
 	Options []string `json:"options"`
 	// True, if the poll needs to be anonymous, defaults to True.
-	IsAnonymous OptBool `json:"is_anonymous"`
+	IsAnonymous OptBool `json:"is_anonymous,omitempty"`
 	// Poll type, "quiz" or "regular", defaults to "regular".
-	Type OptString `json:"type"`
+	Type OptString `json:"type,omitempty"`
 	// True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False.
-	AllowsMultipleAnswers OptBool `json:"allows_multiple_answers"`
+	AllowsMultipleAnswers OptBool `json:"allows_multiple_answers,omitempty"`
 	// 0-based identifier of the correct answer option, required for polls in quiz mode.
-	CorrectOptionID OptInt `json:"correct_option_id"`
+	CorrectOptionID OptInt `json:"correct_option_id,omitempty"`
 	// Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a
 	// quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing.
-	Explanation OptString `json:"explanation"`
+	Explanation OptString `json:"explanation,omitempty"`
 	// Mode for parsing entities in the explanation. See formatting options for more details.
-	ExplanationParseMode OptString `json:"explanation_parse_mode"`
+	ExplanationParseMode OptString `json:"explanation_parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the poll explanation, which can be
 	// specified instead of parse_mode.
-	ExplanationEntities []MessageEntity `json:"explanation_entities"`
+	ExplanationEntities []MessageEntity `json:"explanation_entities,omitempty"`
 	// Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together
 	// with close_date.
-	OpenPeriod OptInt `json:"open_period"`
+	OpenPeriod OptInt `json:"open_period,omitempty"`
 	// Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and
 	// no more than 600 seconds in the future. Can't be used together with open_period.
-	CloseDate OptInt `json:"close_date"`
+	CloseDate OptInt `json:"close_date,omitempty"`
 	// Pass True, if the poll needs to be immediately closed. This can be useful for poll preview.
-	IsClosed OptBool `json:"is_closed"`
+	IsClosed OptBool `json:"is_closed,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18871,14 +18871,14 @@ type SendSticker struct {
 	// upload a new one using multipart/form-data.
 	Sticker string `json:"sticker"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -18964,23 +18964,23 @@ type SendVenue struct {
 	// Address of the venue.
 	Address string `json:"address"`
 	// Foursquare identifier of the venue.
-	FoursquareID OptString `json:"foursquare_id"`
+	FoursquareID OptString `json:"foursquare_id,omitempty"`
 	// Foursquare type of the venue, if known. (For example, "arts_entertainment/default",
 	// "arts_entertainment/aquarium" or "food/icecream".).
-	FoursquareType OptString `json:"foursquare_type"`
+	FoursquareType OptString `json:"foursquare_type,omitempty"`
 	// Google Places identifier of the venue.
-	GooglePlaceID OptString `json:"google_place_id"`
+	GooglePlaceID OptString `json:"google_place_id,omitempty"`
 	// Google Places type of the venue. (See supported types.).
-	GooglePlaceType OptString `json:"google_place_type"`
+	GooglePlaceType OptString `json:"google_place_type,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19132,37 +19132,37 @@ type SendVideo struct {
 	// upload a new video using multipart/form-data.
 	Video string `json:"video"`
 	// Duration of sent video in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Video width.
-	Width OptInt `json:"width"`
+	Width OptInt `json:"width,omitempty"`
 	// Video height.
-	Height OptInt `json:"height"`
+	Height OptInt `json:"height,omitempty"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Video caption (may also be used when resending videos by file_id), 0-1024 characters after
 	// entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the video caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Pass True, if the uploaded video is suitable for streaming.
-	SupportsStreaming OptBool `json:"supports_streaming"`
+	SupportsStreaming OptBool `json:"supports_streaming,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19324,25 +19324,25 @@ type SendVideoNote struct {
 	// URL is currently unsupported.
 	VideoNote string `json:"video_note"`
 	// Duration of sent video in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Video width and height, i.e. diameter of the video message.
-	Length OptInt `json:"length"`
+	Length OptInt `json:"length,omitempty"`
 	// Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
 	// server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
 	// width and height should not exceed 320. Ignored if the file is not uploaded using
 	// multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
 	// pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under
 	// <file_attach_name>.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19454,23 +19454,23 @@ type SendVoice struct {
 	// upload a new one using multipart/form-data.
 	Voice string `json:"voice"`
 	// Voice message caption, 0-1024 characters after entities parsing.
-	Caption OptString `json:"caption"`
+	Caption OptString `json:"caption,omitempty"`
 	// Mode for parsing entities in the voice message caption. See formatting options for more details.
-	ParseMode OptString `json:"parse_mode"`
+	ParseMode OptString `json:"parse_mode,omitempty"`
 	// A JSON-serialized list of special entities that appear in the caption, which can be specified
 	// instead of parse_mode.
-	CaptionEntities []MessageEntity `json:"caption_entities"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	// Duration of the voice message in seconds.
-	Duration OptInt `json:"duration"`
+	Duration OptInt `json:"duration,omitempty"`
 	// Sends the message silently. Users will receive a notification with no sound.
-	DisableNotification OptBool `json:"disable_notification"`
+	DisableNotification OptBool `json:"disable_notification,omitempty"`
 	// Protects the contents of the sent message from forwarding and saving.
-	ProtectContent OptBool `json:"protect_content"`
+	ProtectContent OptBool `json:"protect_content,omitempty"`
 	// If the message is a reply, ID of the original message.
-	ReplyToMessageID OptInt `json:"reply_to_message_id"`
+	ReplyToMessageID OptInt `json:"reply_to_message_id,omitempty"`
 	// Pass True, if the message should be sent even if the specified replied-to message is not found.
-	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply"`
-	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup"`
+	AllowSendingWithoutReply OptBool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              OptSendReplyMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19628,7 +19628,7 @@ func (s *SetChatAdministratorCustomTitle) SetCustomTitle(val string) {
 type SetChatDescription struct {
 	ChatID ID `json:"chat_id"`
 	// New chat description, 0-255 characters.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19656,8 +19656,8 @@ func (s *SetChatDescription) SetDescription(val OptString) {
 type SetChatMenuButton struct {
 	// Unique identifier for the target private chat. If not specified, default bot's menu button will be
 	// changed.
-	ChatID     OptInt64      `json:"chat_id"`
-	MenuButton OptMenuButton `json:"menu_button"`
+	ChatID     OptInt64      `json:"chat_id,omitempty"`
+	MenuButton OptMenuButton `json:"menu_button,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -19800,15 +19800,15 @@ type SetGameScore struct {
 	Score int `json:"score"`
 	// Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or
 	// banning cheaters.
-	Force OptBool `json:"force"`
+	Force OptBool `json:"force,omitempty"`
 	// Pass True, if the game message should not be automatically edited to include the current scoreboard.
-	DisableEditMessage OptBool `json:"disable_edit_message"`
+	DisableEditMessage OptBool `json:"disable_edit_message,omitempty"`
 	// Required if inline_message_id is not specified. Unique identifier for the target chat.
-	ChatID OptInt64 `json:"chat_id"`
+	ChatID OptInt64 `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the sent message.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString `json:"inline_message_id"`
+	InlineMessageID OptString `json:"inline_message_id,omitempty"`
 }
 
 // GetUserID returns the value of UserID.
@@ -19887,10 +19887,10 @@ type SetMyCommands struct {
 	// A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100
 	// commands can be specified.
 	Commands []BotCommand       `json:"commands"`
-	Scope    OptBotCommandScope `json:"scope"`
+	Scope    OptBotCommandScope `json:"scope,omitempty"`
 	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the
 	// given scope, for whose language there are no dedicated commands.
-	LanguageCode OptString `json:"language_code"`
+	LanguageCode OptString `json:"language_code,omitempty"`
 }
 
 // GetCommands returns the value of Commands.
@@ -19926,10 +19926,10 @@ func (s *SetMyCommands) SetLanguageCode(val OptString) {
 // Input for setMyDefaultAdministratorRights.
 // Ref: #/components/schemas/setMyDefaultAdministratorRights
 type SetMyDefaultAdministratorRights struct {
-	Rights OptChatAdministratorRights `json:"rights"`
+	Rights OptChatAdministratorRights `json:"rights,omitempty"`
 	// Pass True to change the default administrator rights of the bot in channels. Otherwise, the
 	// default administrator rights of the bot for groups and supergroups will be changed.
-	ForChannels OptBool `json:"for_channels"`
+	ForChannels OptBool `json:"for_channels,omitempty"`
 }
 
 // GetRights returns the value of Rights.
@@ -20025,7 +20025,7 @@ type SetStickerSetThumb struct {
 	// as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a
 	// String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
 	//  . Animated sticker set thumbnails can't be uploaded via HTTP URL.
-	Thumb OptString `json:"thumb"`
+	Thumb OptString `json:"thumb,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -20065,23 +20065,23 @@ type SetWebhook struct {
 	URL string `json:"url"`
 	// Upload your public key certificate so that the root certificate in use can be checked. See our
 	// self-signed guide for details.
-	Certificate OptString `json:"certificate"`
+	Certificate OptString `json:"certificate,omitempty"`
 	// The fixed IP address which will be used to send webhook requests instead of the IP address
 	// resolved through DNS.
-	IPAddress OptString `json:"ip_address"`
+	IPAddress OptString `json:"ip_address,omitempty"`
 	// Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100.
 	//  Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to
 	// increase your bot's throughput.
-	MaxConnections OptInt `json:"max_connections"`
+	MaxConnections OptInt `json:"max_connections,omitempty"`
 	// A JSON-serialized list of the update types you want your bot to receive. For example, specify
 	// ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See
 	// Update for a complete list of available update types. Specify an empty list to receive all update
 	// types except chat_member (default). If not specified, the previous setting will be used.Please
 	// note that this parameter doesn't affect updates created before the call to the setWebhook, so
 	// unwanted updates may be received for a short period of time.
-	AllowedUpdates []string `json:"allowed_updates"`
+	AllowedUpdates []string `json:"allowed_updates,omitempty"`
 	// Pass True to drop all pending updates.
-	DropPendingUpdates OptBool `json:"drop_pending_updates"`
+	DropPendingUpdates OptBool `json:"drop_pending_updates,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -20329,14 +20329,14 @@ type Sticker struct {
 	IsAnimated bool `json:"is_animated"`
 	// True, if the sticker is a video sticker.
 	IsVideo bool         `json:"is_video"`
-	Thumb   OptPhotoSize `json:"thumb"`
+	Thumb   OptPhotoSize `json:"thumb,omitempty"`
 	// Emoji associated with the sticker.
-	Emoji OptString `json:"emoji"`
+	Emoji OptString `json:"emoji,omitempty"`
 	// Name of the sticker set to which the sticker belongs.
-	SetName      OptString       `json:"set_name"`
-	MaskPosition OptMaskPosition `json:"mask_position"`
+	SetName      OptString       `json:"set_name,omitempty"`
+	MaskPosition OptMaskPosition `json:"mask_position,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -20464,7 +20464,7 @@ type StickerSet struct {
 	ContainsMasks bool `json:"contains_masks"`
 	// List of all set stickers.
 	Stickers []Sticker    `json:"stickers"`
-	Thumb    OptPhotoSize `json:"thumb"`
+	Thumb    OptPhotoSize `json:"thumb,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -20540,13 +20540,13 @@ func (s *StickerSet) SetThumb(val OptPhotoSize) {
 // Input for stopMessageLiveLocation.
 // Ref: #/components/schemas/stopMessageLiveLocation
 type StopMessageLiveLocation struct {
-	ChatID OptID `json:"chat_id"`
+	ChatID OptID `json:"chat_id,omitempty"`
 	// Required if inline_message_id is not specified. Identifier of the message with live location to
 	// stop.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 	// Required if chat_id and message_id are not specified. Identifier of the inline message.
-	InlineMessageID OptString               `json:"inline_message_id"`
-	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup"`
+	InlineMessageID OptString               `json:"inline_message_id,omitempty"`
+	ReplyMarkup     OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -20595,7 +20595,7 @@ type StopPoll struct {
 	ChatID ID `json:"chat_id"`
 	// Identifier of the original message with the poll.
 	MessageID   int                     `json:"message_id"`
-	ReplyMarkup OptInlineKeyboardMarkup `json:"reply_markup"`
+	ReplyMarkup OptInlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -20640,8 +20640,8 @@ type SuccessfulPayment struct {
 	// Bot specified invoice payload.
 	InvoicePayload string `json:"invoice_payload"`
 	// Identifier of the shipping option chosen by the user.
-	ShippingOptionID OptString    `json:"shipping_option_id"`
-	OrderInfo        OptOrderInfo `json:"order_info"`
+	ShippingOptionID OptString    `json:"shipping_option_id,omitempty"`
+	OrderInfo        OptOrderInfo `json:"order_info,omitempty"`
 	// Telegram payment identifier.
 	TelegramPaymentChargeID string `json:"telegram_payment_charge_id"`
 	// Provider payment identifier.
@@ -20725,7 +20725,7 @@ type UnbanChatMember struct {
 	// Unique identifier of the target user.
 	UserID int64 `json:"user_id"`
 	// Do nothing if the user is not banned.
-	OnlyIfBanned OptBool `json:"only_if_banned"`
+	OnlyIfBanned OptBool `json:"only_if_banned,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -20808,7 +20808,7 @@ type UnpinChatMessage struct {
 	ChatID ID `json:"chat_id"`
 	// Identifier of a message to unpin. If not specified, the most recent pinned message (by sending
 	// date) will be unpinned.
-	MessageID OptInt `json:"message_id"`
+	MessageID OptInt `json:"message_id,omitempty"`
 }
 
 // GetChatID returns the value of ChatID.
@@ -20841,20 +20841,20 @@ type Update struct {
 	// order. If there are no new updates for at least a week, then identifier of the next update will be
 	// chosen randomly instead of sequentially.
 	UpdateID           int                   `json:"update_id"`
-	Message            OptMessage            `json:"message"`
-	EditedMessage      OptMessage            `json:"edited_message"`
-	ChannelPost        OptMessage            `json:"channel_post"`
-	EditedChannelPost  OptMessage            `json:"edited_channel_post"`
-	InlineQuery        OptInlineQuery        `json:"inline_query"`
-	ChosenInlineResult OptChosenInlineResult `json:"chosen_inline_result"`
-	CallbackQuery      OptCallbackQuery      `json:"callback_query"`
-	ShippingQuery      OptShippingQuery      `json:"shipping_query"`
-	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query"`
-	Poll               OptPoll               `json:"poll"`
-	PollAnswer         OptPollAnswer         `json:"poll_answer"`
-	MyChatMember       OptChatMemberUpdated  `json:"my_chat_member"`
-	ChatMember         OptChatMemberUpdated  `json:"chat_member"`
-	ChatJoinRequest    OptChatJoinRequest    `json:"chat_join_request"`
+	Message            OptMessage            `json:"message,omitempty"`
+	EditedMessage      OptMessage            `json:"edited_message,omitempty"`
+	ChannelPost        OptMessage            `json:"channel_post,omitempty"`
+	EditedChannelPost  OptMessage            `json:"edited_channel_post,omitempty"`
+	InlineQuery        OptInlineQuery        `json:"inline_query,omitempty"`
+	ChosenInlineResult OptChosenInlineResult `json:"chosen_inline_result,omitempty"`
+	CallbackQuery      OptCallbackQuery      `json:"callback_query,omitempty"`
+	ShippingQuery      OptShippingQuery      `json:"shipping_query,omitempty"`
+	PreCheckoutQuery   OptPreCheckoutQuery   `json:"pre_checkout_query,omitempty"`
+	Poll               OptPoll               `json:"poll,omitempty"`
+	PollAnswer         OptPollAnswer         `json:"poll_answer,omitempty"`
+	MyChatMember       OptChatMemberUpdated  `json:"my_chat_member,omitempty"`
+	ChatMember         OptChatMemberUpdated  `json:"chat_member,omitempty"`
+	ChatJoinRequest    OptChatJoinRequest    `json:"chat_join_request,omitempty"`
 }
 
 // GetUpdateID returns the value of UpdateID.
@@ -21050,17 +21050,17 @@ type User struct {
 	// User's or bot's first name.
 	FirstName string `json:"first_name"`
 	// User's or bot's last name.
-	LastName OptString `json:"last_name"`
+	LastName OptString `json:"last_name,omitempty"`
 	// User's or bot's username.
-	Username OptString `json:"username"`
+	Username OptString `json:"username,omitempty"`
 	// IETF language tag of the user's language.
-	LanguageCode OptString `json:"language_code"`
+	LanguageCode OptString `json:"language_code,omitempty"`
 	// True, if the bot can be invited to groups. Returned only in getMe.
-	CanJoinGroups OptBool `json:"can_join_groups"`
+	CanJoinGroups OptBool `json:"can_join_groups,omitempty"`
 	// True, if privacy mode is disabled for the bot. Returned only in getMe.
-	CanReadAllGroupMessages OptBool `json:"can_read_all_group_messages"`
+	CanReadAllGroupMessages OptBool `json:"can_read_all_group_messages,omitempty"`
 	// True, if the bot supports inline queries. Returned only in getMe.
-	SupportsInlineQueries OptBool `json:"supports_inline_queries"`
+	SupportsInlineQueries OptBool `json:"supports_inline_queries,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -21191,14 +21191,14 @@ type Venue struct {
 	// Address of the venue.
 	Address string `json:"address"`
 	// Foursquare identifier of the venue.
-	FoursquareID OptString `json:"foursquare_id"`
+	FoursquareID OptString `json:"foursquare_id,omitempty"`
 	// Foursquare type of the venue. (For example, "arts_entertainment/default",
 	// "arts_entertainment/aquarium" or "food/icecream".).
-	FoursquareType OptString `json:"foursquare_type"`
+	FoursquareType OptString `json:"foursquare_type,omitempty"`
 	// Google Places identifier of the venue.
-	GooglePlaceID OptString `json:"google_place_id"`
+	GooglePlaceID OptString `json:"google_place_id,omitempty"`
 	// Google Places type of the venue. (See supported types.).
-	GooglePlaceType OptString `json:"google_place_type"`
+	GooglePlaceType OptString `json:"google_place_type,omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -21285,13 +21285,13 @@ type Video struct {
 	Height int `json:"height"`
 	// Duration of the video in seconds as defined by sender.
 	Duration int          `json:"duration"`
-	Thumb    OptPhotoSize `json:"thumb"`
+	Thumb    OptPhotoSize `json:"thumb,omitempty"`
 	// Original filename as defined by sender.
-	FileName OptString `json:"file_name"`
+	FileName OptString `json:"file_name,omitempty"`
 	// Mime type of a file as defined by sender.
-	MimeType OptString `json:"mime_type"`
+	MimeType OptString `json:"mime_type,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -21453,9 +21453,9 @@ type VideoNote struct {
 	Length int `json:"length"`
 	// Duration of the video in seconds as defined by sender.
 	Duration int          `json:"duration"`
-	Thumb    OptPhotoSize `json:"thumb"`
+	Thumb    OptPhotoSize `json:"thumb,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -21529,9 +21529,9 @@ type Voice struct {
 	// Duration of the audio in seconds as defined by sender.
 	Duration int `json:"duration"`
 	// MIME type of the file as defined by sender.
-	MimeType OptString `json:"mime_type"`
+	MimeType OptString `json:"mime_type,omitempty"`
 	// File size in bytes.
-	FileSize OptInt `json:"file_size"`
+	FileSize OptInt `json:"file_size,omitempty"`
 }
 
 // GetFileID returns the value of FileID.
@@ -21641,19 +21641,19 @@ type WebhookInfo struct {
 	// Number of updates awaiting delivery.
 	PendingUpdateCount int `json:"pending_update_count"`
 	// Currently used webhook IP address.
-	IPAddress OptString `json:"ip_address"`
+	IPAddress OptString `json:"ip_address,omitempty"`
 	// Unix time for the most recent error that happened when trying to deliver an update via webhook.
-	LastErrorDate OptInt `json:"last_error_date"`
+	LastErrorDate OptInt `json:"last_error_date,omitempty"`
 	// Error message in human-readable format for the most recent error that happened when trying to
 	// deliver an update via webhook.
-	LastErrorMessage OptString `json:"last_error_message"`
+	LastErrorMessage OptString `json:"last_error_message,omitempty"`
 	// Unix time of the most recent error that happened when trying to synchronize available updates with
 	// Telegram datacenters.
-	LastSynchronizationErrorDate OptInt `json:"last_synchronization_error_date"`
+	LastSynchronizationErrorDate OptInt `json:"last_synchronization_error_date,omitempty"`
 	// Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery.
-	MaxConnections OptInt `json:"max_connections"`
+	MaxConnections OptInt `json:"max_connections,omitempty"`
 	// A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
-	AllowedUpdates []string `json:"allowed_updates"`
+	AllowedUpdates []string `json:"allowed_updates,omitempty"`
 }
 
 // GetURL returns the value of URL.

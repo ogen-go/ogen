@@ -159,7 +159,7 @@ func (o OptString) Or(d string) string {
 type Pet struct {
 	ID   int64     `json:"id"`
 	Name string    `json:"name"`
-	Tag  OptString `json:"tag"`
+	Tag  OptString `json:"tag,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -198,7 +198,7 @@ type Pets []Pet
 
 // PetsHeaders wraps Pets with response headers.
 type PetsHeaders struct {
-	XNext    OptString
+	XNext    OptString `json:",omitempty"`
 	Response Pets
 }
 

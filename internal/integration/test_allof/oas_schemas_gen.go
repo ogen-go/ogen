@@ -110,7 +110,7 @@ type ObjectsWithConflictingPropertiesOK struct{}
 type ObjectsWithConflictingPropertiesReq struct {
 	// Merged property.
 	Foo string `json:"foo"`
-	Bar OptInt `json:"bar"`
+	Bar OptInt `json:"bar,omitempty"`
 }
 
 // GetFoo returns the value of Foo.
@@ -350,8 +350,8 @@ type SimpleObjectsOK struct{}
 
 // Merged schema.
 type SimpleObjectsReq struct {
-	Foo OptString `json:"foo"`
-	Bar OptBool   `json:"bar"`
+	Foo OptString `json:"foo,omitempty"`
+	Bar OptBool   `json:"bar,omitempty"`
 }
 
 // GetFoo returns the value of Foo.

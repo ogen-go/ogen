@@ -71,7 +71,7 @@ func (FindPetsOKApplicationJSON) findPetsRes() {}
 // Ref: #/components/schemas/NewPet
 type NewPet struct {
 	Name string    `json:"name"`
-	Tag  OptString `json:"tag"`
+	Tag  OptString `json:"tag,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -190,7 +190,7 @@ func (o OptString) Or(d string) string {
 // Ref: #/components/schemas/Pet
 type Pet struct {
 	Name string    `json:"name"`
-	Tag  OptString `json:"tag"`
+	Tag  OptString `json:"tag,omitempty"`
 	ID   int64     `json:"id"`
 }
 

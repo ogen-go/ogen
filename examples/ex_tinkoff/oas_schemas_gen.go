@@ -246,7 +246,7 @@ const (
 type CurrencyPosition struct {
 	Currency Currency   `json:"currency"`
 	Balance  float64    `json:"balance"`
-	Blocked  OptFloat64 `json:"blocked"`
+	Blocked  OptFloat64 `json:"blocked,omitempty"`
 }
 
 // GetCurrency returns the value of Currency.
@@ -384,8 +384,8 @@ func (*Error) sandboxRemovePostRes()            {}
 func (*Error) userAccountsGetRes()              {}
 
 type ErrorPayload struct {
-	Message OptString `json:"message"`
-	Code    OptString `json:"code"`
+	Message OptString `json:"message,omitempty"`
+	Code    OptString `json:"code,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -498,14 +498,14 @@ func (*LimitOrderResponse) ordersLimitOrderPostRes() {}
 type MarketInstrument struct {
 	Figi   string    `json:"figi"`
 	Ticker string    `json:"ticker"`
-	Isin   OptString `json:"isin"`
+	Isin   OptString `json:"isin,omitempty"`
 	// Шаг цены.
-	MinPriceIncrement OptFloat64 `json:"minPriceIncrement"`
+	MinPriceIncrement OptFloat64 `json:"minPriceIncrement,omitempty"`
 	Lot               int32      `json:"lot"`
 	// Минимальное число инструментов для покупки должно
 	// быть не меньше, чем размер лота х количество лотов.
-	MinQuantity OptInt32       `json:"minQuantity"`
-	Currency    OptCurrency    `json:"currency"`
+	MinQuantity OptInt32       `json:"minQuantity,omitempty"`
+	Currency    OptCurrency    `json:"currency,omitempty"`
 	Name        string         `json:"name"`
 	Type        InstrumentType `json:"type"`
 }
@@ -764,21 +764,21 @@ func (s *MoneyAmount) SetValue(val float64) {
 type Operation struct {
 	ID         string           `json:"id"`
 	Status     OperationStatus  `json:"status"`
-	Trades     []OperationTrade `json:"trades"`
-	Commission OptMoneyAmount   `json:"commission"`
+	Trades     []OperationTrade `json:"trades,omitempty"`
+	Commission OptMoneyAmount   `json:"commission,omitempty"`
 	Currency   Currency         `json:"currency"`
 	Payment    float64          `json:"payment"`
-	Price      OptFloat64       `json:"price"`
+	Price      OptFloat64       `json:"price,omitempty"`
 	// Число инструментов в выставленной заявке.
-	Quantity OptInt32 `json:"quantity"`
+	Quantity OptInt32 `json:"quantity,omitempty"`
 	// Число инструментов, исполненных в заявке.
-	QuantityExecuted OptInt32          `json:"quantityExecuted"`
-	Figi             OptString         `json:"figi"`
-	InstrumentType   OptInstrumentType `json:"instrumentType"`
+	QuantityExecuted OptInt32          `json:"quantityExecuted,omitempty"`
+	Figi             OptString         `json:"figi,omitempty"`
+	InstrumentType   OptInstrumentType `json:"instrumentType,omitempty"`
 	IsMarginCall     bool              `json:"isMarginCall"`
 	// ISO8601.
 	Date          time.Time                      `json:"date"`
-	OperationType OptOperationTypeWithCommission `json:"operationType"`
+	OperationType OptOperationTypeWithCommission `json:"operationType,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -1636,13 +1636,13 @@ type Orderbook struct {
 	// Шаг цены.
 	MinPriceIncrement float64 `json:"minPriceIncrement"`
 	// Номинал для облигаций.
-	FaceValue  OptFloat64 `json:"faceValue"`
-	LastPrice  OptFloat64 `json:"lastPrice"`
-	ClosePrice OptFloat64 `json:"closePrice"`
+	FaceValue  OptFloat64 `json:"faceValue,omitempty"`
+	LastPrice  OptFloat64 `json:"lastPrice,omitempty"`
+	ClosePrice OptFloat64 `json:"closePrice,omitempty"`
 	// Верхняя граница цены.
-	LimitUp OptFloat64 `json:"limitUp"`
+	LimitUp OptFloat64 `json:"limitUp,omitempty"`
 	// Нижняя граница цены.
-	LimitDown OptFloat64 `json:"limitDown"`
+	LimitDown OptFloat64 `json:"limitDown,omitempty"`
 }
 
 // GetFigi returns the value of Figi.
@@ -1838,12 +1838,12 @@ type PlacedLimitOrder struct {
 	OrderId      string        `json:"orderId"`
 	Operation    OperationType `json:"operation"`
 	Status       OrderStatus   `json:"status"`
-	RejectReason OptString     `json:"rejectReason"`
+	RejectReason OptString     `json:"rejectReason,omitempty"`
 	// Сообщение об ошибке.
-	Message       OptString      `json:"message"`
+	Message       OptString      `json:"message,omitempty"`
 	RequestedLots int            `json:"requestedLots"`
 	ExecutedLots  int            `json:"executedLots"`
-	Commission    OptMoneyAmount `json:"commission"`
+	Commission    OptMoneyAmount `json:"commission,omitempty"`
 }
 
 // GetOrderId returns the value of OrderId.
@@ -1931,12 +1931,12 @@ type PlacedMarketOrder struct {
 	OrderId      string        `json:"orderId"`
 	Operation    OperationType `json:"operation"`
 	Status       OrderStatus   `json:"status"`
-	RejectReason OptString     `json:"rejectReason"`
+	RejectReason OptString     `json:"rejectReason,omitempty"`
 	// Сообщение об ошибке.
-	Message       OptString      `json:"message"`
+	Message       OptString      `json:"message,omitempty"`
 	RequestedLots int            `json:"requestedLots"`
 	ExecutedLots  int            `json:"executedLots"`
-	Commission    OptMoneyAmount `json:"commission"`
+	Commission    OptMoneyAmount `json:"commission,omitempty"`
 }
 
 // GetOrderId returns the value of OrderId.
@@ -2076,15 +2076,15 @@ func (*PortfolioCurrenciesResponse) portfolioCurrenciesGetRes() {}
 // Ref: #/components/schemas/PortfolioPosition
 type PortfolioPosition struct {
 	Figi                      string         `json:"figi"`
-	Ticker                    OptString      `json:"ticker"`
-	Isin                      OptString      `json:"isin"`
+	Ticker                    OptString      `json:"ticker,omitempty"`
+	Isin                      OptString      `json:"isin,omitempty"`
 	InstrumentType            InstrumentType `json:"instrumentType"`
 	Balance                   float64        `json:"balance"`
-	Blocked                   OptFloat64     `json:"blocked"`
-	ExpectedYield             OptMoneyAmount `json:"expectedYield"`
+	Blocked                   OptFloat64     `json:"blocked,omitempty"`
+	ExpectedYield             OptMoneyAmount `json:"expectedYield,omitempty"`
 	Lots                      int32          `json:"lots"`
-	AveragePositionPrice      OptMoneyAmount `json:"averagePositionPrice"`
-	AveragePositionPriceNoNkd OptMoneyAmount `json:"averagePositionPriceNoNkd"`
+	AveragePositionPrice      OptMoneyAmount `json:"averagePositionPrice,omitempty"`
+	AveragePositionPriceNoNkd OptMoneyAmount `json:"averagePositionPriceNoNkd,omitempty"`
 	Name                      string         `json:"name"`
 }
 
@@ -2294,7 +2294,7 @@ const (
 
 // Ref: #/components/schemas/SandboxRegisterRequest
 type SandboxRegisterRequest struct {
-	BrokerAccountType OptBrokerAccountType `json:"brokerAccountType"`
+	BrokerAccountType OptBrokerAccountType `json:"brokerAccountType,omitempty"`
 }
 
 // GetBrokerAccountType returns the value of BrokerAccountType.
@@ -2374,7 +2374,7 @@ func (s *SandboxSetCurrencyBalanceRequest) SetBalance(val float64) {
 
 // Ref: #/components/schemas/SandboxSetPositionBalanceRequest
 type SandboxSetPositionBalanceRequest struct {
-	Figi    OptString `json:"figi"`
+	Figi    OptString `json:"figi,omitempty"`
 	Balance float64   `json:"balance"`
 }
 
@@ -2402,11 +2402,11 @@ func (s *SandboxSetPositionBalanceRequest) SetBalance(val float64) {
 type SearchMarketInstrument struct {
 	Figi   string    `json:"figi"`
 	Ticker string    `json:"ticker"`
-	Isin   OptString `json:"isin"`
+	Isin   OptString `json:"isin,omitempty"`
 	// Шаг цены.
-	MinPriceIncrement OptFloat64     `json:"minPriceIncrement"`
+	MinPriceIncrement OptFloat64     `json:"minPriceIncrement,omitempty"`
 	Lot               int32          `json:"lot"`
-	Currency          OptCurrency    `json:"currency"`
+	Currency          OptCurrency    `json:"currency,omitempty"`
 	Name              string         `json:"name"`
 	Type              InstrumentType `json:"type"`
 }

@@ -257,7 +257,7 @@ func (o OptInt) Or(d int) int {
 // Ref: #/components/schemas/SimpleObject
 type SimpleObject struct {
 	Name string `json:"name"`
-	Age  OptInt `json:"age"`
+	Age  OptInt `json:"age,omitempty"`
 }
 
 // GetName returns the value of Name.

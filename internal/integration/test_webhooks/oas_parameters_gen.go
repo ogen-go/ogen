@@ -14,7 +14,7 @@ import (
 // UpdateWebhookParams is parameters of updateWebhook operation.
 type UpdateWebhookParams struct {
 	EventType     string
-	XWebhookToken OptString
+	XWebhookToken OptString `json:",omitempty"`
 }
 
 func unpackUpdateWebhookParams(packed map[string]any) (params UpdateWebhookParams) {

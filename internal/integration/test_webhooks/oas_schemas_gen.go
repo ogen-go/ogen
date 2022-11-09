@@ -175,7 +175,7 @@ func (o OptString) Or(d string) string {
 }
 
 type StatusWebhookOK struct {
-	Status OptString `json:"status"`
+	Status OptString `json:"status,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -196,7 +196,7 @@ func (*UpdateDeleteOK) updateDeleteRes() {}
 // Ref: #/components/schemas/WebhookResponse
 type WebhookResponse struct {
 	ID        uuid.UUID `json:"id"`
-	EventType OptString `json:"event_type"`
+	EventType OptString `json:"event_type,omitempty"`
 }
 
 // GetID returns the value of ID.

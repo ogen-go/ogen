@@ -14,16 +14,16 @@ import (
 // Ref: #/components/schemas/api-overview
 type APIOverview struct {
 	VerifiablePasswordAuthentication bool                             `json:"verifiable_password_authentication"`
-	SSHKeyFingerprints               OptAPIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints"`
-	Hooks                            []string                         `json:"hooks"`
-	Web                              []string                         `json:"web"`
-	API                              []string                         `json:"api"`
-	Git                              []string                         `json:"git"`
-	Packages                         []string                         `json:"packages"`
-	Pages                            []string                         `json:"pages"`
-	Importer                         []string                         `json:"importer"`
-	Actions                          []string                         `json:"actions"`
-	Dependabot                       []string                         `json:"dependabot"`
+	SSHKeyFingerprints               OptAPIOverviewSSHKeyFingerprints `json:"ssh_key_fingerprints,omitempty"`
+	Hooks                            []string                         `json:"hooks,omitempty"`
+	Web                              []string                         `json:"web,omitempty"`
+	API                              []string                         `json:"api,omitempty"`
+	Git                              []string                         `json:"git,omitempty"`
+	Packages                         []string                         `json:"packages,omitempty"`
+	Pages                            []string                         `json:"pages,omitempty"`
+	Importer                         []string                         `json:"importer,omitempty"`
+	Actions                          []string                         `json:"actions,omitempty"`
+	Dependabot                       []string                         `json:"dependabot,omitempty"`
 }
 
 // GetVerifiablePasswordAuthentication returns the value of VerifiablePasswordAuthentication.
@@ -139,10 +139,10 @@ func (s *APIOverview) SetDependabot(val []string) {
 func (*APIOverview) metaGetRes() {}
 
 type APIOverviewSSHKeyFingerprints struct {
-	SHA256RSA     OptString `json:"SHA256_RSA"`
-	SHA256DSA     OptString `json:"SHA256_DSA"`
-	SHA256ECDSA   OptString `json:"SHA256_ECDSA"`
-	SHA256ED25519 OptString `json:"SHA256_ED25519"`
+	SHA256RSA     OptString `json:"SHA256_RSA,omitempty"`
+	SHA256DSA     OptString `json:"SHA256_DSA,omitempty"`
+	SHA256ECDSA   OptString `json:"SHA256_ECDSA,omitempty"`
+	SHA256ED25519 OptString `json:"SHA256_ED25519,omitempty"`
 }
 
 // GetSHA256RSA returns the value of SHA256RSA.
@@ -273,11 +273,11 @@ func (s *ActionsBillingUsage) SetMinutesUsedBreakdown(val ActionsBillingUsageMin
 
 type ActionsBillingUsageMinutesUsedBreakdown struct {
 	// Total minutes used on Ubuntu runner machines.
-	UBUNTU OptInt `json:"UBUNTU"`
+	UBUNTU OptInt `json:"UBUNTU,omitempty"`
 	// Total minutes used on macOS runner machines.
-	MACOS OptInt `json:"MACOS"`
+	MACOS OptInt `json:"MACOS,omitempty"`
 	// Total minutes used on Windows runner machines.
-	WINDOWS OptInt `json:"WINDOWS"`
+	WINDOWS OptInt `json:"WINDOWS,omitempty"`
 }
 
 // GetUBUNTU returns the value of UBUNTU.
@@ -356,9 +356,9 @@ type ActionsCreateOrUpdateOrgSecretReq struct {
 	// io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization
 	// public key](https://docs.github.com/rest/reference/actions#get-an-organization-public-key)
 	// endpoint.
-	EncryptedValue OptString `json:"encrypted_value"`
+	EncryptedValue OptString `json:"encrypted_value,omitempty"`
 	// ID of the key you used to encrypt the secret.
-	KeyID OptString `json:"key_id"`
+	KeyID OptString `json:"key_id,omitempty"`
 	// Configures the access that repositories have to the organization secret. Can be one of:
 	// \- `all` - All repositories in an organization can access the secret.
 	// \- `private` - Private repositories in an organization can access the secret.
@@ -372,7 +372,7 @@ type ActionsCreateOrUpdateOrgSecretReq struct {
 	// com/rest/reference/actions#set-selected-repositories-for-an-organization-secret), and [Remove
 	// selected repository from an organization secret](https://docs.github.
 	// com/rest/reference/actions#remove-selected-repository-from-an-organization-secret) endpoints.
-	SelectedRepositoryIds []string `json:"selected_repository_ids"`
+	SelectedRepositoryIds []string `json:"selected_repository_ids,omitempty"`
 }
 
 // GetEncryptedValue returns the value of EncryptedValue.
@@ -440,9 +440,9 @@ type ActionsCreateOrUpdateRepoSecretReq struct {
 	// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.
 	// io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository
 	// public key](https://docs.github.com/rest/reference/actions#get-a-repository-public-key) endpoint.
-	EncryptedValue OptString `json:"encrypted_value"`
+	EncryptedValue OptString `json:"encrypted_value,omitempty"`
 	// ID of the key you used to encrypt the secret.
-	KeyID OptString `json:"key_id"`
+	KeyID OptString `json:"key_id,omitempty"`
 }
 
 // GetEncryptedValue returns the value of EncryptedValue.
@@ -470,11 +470,11 @@ type ActionsCreateSelfHostedRunnerGroupForOrgReq struct {
 	Name string `json:"name"`
 	// Visibility of a runner group. You can select all repositories, select individual repositories, or
 	// limit access to private repositories. Can be one of: `all`, `selected`, or `private`.
-	Visibility OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility `json:"visibility"`
+	Visibility OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility `json:"visibility,omitempty"`
 	// List of repository IDs that can access the runner group.
-	SelectedRepositoryIds []int `json:"selected_repository_ids"`
+	SelectedRepositoryIds []int `json:"selected_repository_ids,omitempty"`
 	// List of runner IDs to add to the runner group.
-	Runners []int `json:"runners"`
+	Runners []int `json:"runners,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -559,7 +559,7 @@ type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
 // ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
 type ActionsDownloadArtifactFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -574,7 +574,7 @@ func (s *ActionsDownloadArtifactFound) SetLocation(val OptString) {
 
 // ActionsDownloadJobLogsForWorkflowRunFound is response for ActionsDownloadJobLogsForWorkflowRun operation.
 type ActionsDownloadJobLogsForWorkflowRunFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -589,7 +589,7 @@ func (s *ActionsDownloadJobLogsForWorkflowRunFound) SetLocation(val OptString) {
 
 // ActionsDownloadWorkflowRunLogsFound is response for ActionsDownloadWorkflowRunLogs operation.
 type ActionsDownloadWorkflowRunLogsFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -612,9 +612,9 @@ type ActionsEnterprisePermissions struct {
 	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
 	// The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions,
 	//  when `enabled_organizations` is set to `selected`.
-	SelectedOrganizationsURL OptString             `json:"selected_organizations_url"`
-	AllowedActions           OptAllowedActions     `json:"allowed_actions"`
-	SelectedActionsURL       OptSelectedActionsURL `json:"selected_actions_url"`
+	SelectedOrganizationsURL OptString             `json:"selected_organizations_url,omitempty"`
+	AllowedActions           OptAllowedActions     `json:"allowed_actions,omitempty"`
+	SelectedActionsURL       OptSelectedActionsURL `json:"selected_actions_url,omitempty"`
 }
 
 // GetEnabledOrganizations returns the value of EnabledOrganizations.
@@ -684,7 +684,7 @@ func (s *ActionsListArtifactsForRepoOK) SetArtifacts(val []Artifact) {
 
 // ActionsListArtifactsForRepoOKHeaders wraps ActionsListArtifactsForRepoOK with response headers.
 type ActionsListArtifactsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListArtifactsForRepoOK
 }
 
@@ -735,7 +735,7 @@ func (s *ActionsListEnvironmentSecretsOK) SetSecrets(val []ActionsSecret) {
 
 // ActionsListEnvironmentSecretsOKHeaders wraps ActionsListEnvironmentSecretsOK with response headers.
 type ActionsListEnvironmentSecretsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListEnvironmentSecretsOK
 }
 
@@ -793,7 +793,7 @@ func (s *ActionsListJobsForWorkflowRunOK) SetJobs(val []Job) {
 
 // ActionsListJobsForWorkflowRunOKHeaders wraps ActionsListJobsForWorkflowRunOK with response headers.
 type ActionsListJobsForWorkflowRunOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListJobsForWorkflowRunOK
 }
 
@@ -844,7 +844,7 @@ func (s *ActionsListOrgSecretsOK) SetSecrets(val []OrganizationActionsSecret) {
 
 // ActionsListOrgSecretsOKHeaders wraps ActionsListOrgSecretsOK with response headers.
 type ActionsListOrgSecretsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListOrgSecretsOK
 }
 
@@ -920,7 +920,7 @@ func (s *ActionsListRepoSecretsOK) SetSecrets(val []ActionsSecret) {
 
 // ActionsListRepoSecretsOKHeaders wraps ActionsListRepoSecretsOK with response headers.
 type ActionsListRepoSecretsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListRepoSecretsOK
 }
 
@@ -971,7 +971,7 @@ func (s *ActionsListRepoWorkflowsOK) SetWorkflows(val []Workflow) {
 
 // ActionsListRepoWorkflowsOKHeaders wraps ActionsListRepoWorkflowsOK with response headers.
 type ActionsListRepoWorkflowsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListRepoWorkflowsOK
 }
 
@@ -1097,7 +1097,7 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) SetRunners(val []Runner) {
 
 // ActionsListSelfHostedRunnersForOrgOKHeaders wraps ActionsListSelfHostedRunnersForOrgOK with response headers.
 type ActionsListSelfHostedRunnersForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListSelfHostedRunnersForOrgOK
 }
 
@@ -1148,7 +1148,7 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) SetRunners(val []Runner) {
 
 // ActionsListSelfHostedRunnersForRepoOKHeaders wraps ActionsListSelfHostedRunnersForRepoOK with response headers.
 type ActionsListSelfHostedRunnersForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListSelfHostedRunnersForRepoOK
 }
 
@@ -1199,7 +1199,7 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) SetRunners(val []Runner) {
 
 // ActionsListSelfHostedRunnersInGroupForOrgOKHeaders wraps ActionsListSelfHostedRunnersInGroupForOrgOK with response headers.
 type ActionsListSelfHostedRunnersInGroupForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListSelfHostedRunnersInGroupForOrgOK
 }
 
@@ -1250,7 +1250,7 @@ func (s *ActionsListWorkflowRunArtifactsOK) SetArtifacts(val []Artifact) {
 
 // ActionsListWorkflowRunArtifactsOKHeaders wraps ActionsListWorkflowRunArtifactsOK with response headers.
 type ActionsListWorkflowRunArtifactsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListWorkflowRunArtifactsOK
 }
 
@@ -1301,7 +1301,7 @@ func (s *ActionsListWorkflowRunsForRepoOK) SetWorkflowRuns(val []WorkflowRun) {
 
 // ActionsListWorkflowRunsForRepoOKHeaders wraps ActionsListWorkflowRunsForRepoOK with response headers.
 type ActionsListWorkflowRunsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ActionsListWorkflowRunsForRepoOK
 }
 
@@ -1348,9 +1348,9 @@ type ActionsOrganizationPermissions struct {
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
 	// The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions,
 	// when `enabled_repositories` is set to `selected`.
-	SelectedRepositoriesURL OptString             `json:"selected_repositories_url"`
-	AllowedActions          OptAllowedActions     `json:"allowed_actions"`
-	SelectedActionsURL      OptSelectedActionsURL `json:"selected_actions_url"`
+	SelectedRepositoriesURL OptString             `json:"selected_repositories_url,omitempty"`
+	AllowedActions          OptAllowedActions     `json:"allowed_actions,omitempty"`
+	SelectedActionsURL      OptSelectedActionsURL `json:"selected_actions_url,omitempty"`
 }
 
 // GetEnabledRepositories returns the value of EnabledRepositories.
@@ -1400,10 +1400,10 @@ type ActionsPublicKey struct {
 	KeyID string `json:"key_id"`
 	// The Base64 encoded public key.
 	Key       string    `json:"key"`
-	ID        OptInt    `json:"id"`
-	URL       OptString `json:"url"`
-	Title     OptString `json:"title"`
-	CreatedAt OptString `json:"created_at"`
+	ID        OptInt    `json:"id,omitempty"`
+	URL       OptString `json:"url,omitempty"`
+	Title     OptString `json:"title,omitempty"`
+	CreatedAt OptString `json:"created_at,omitempty"`
 }
 
 // GetKeyID returns the value of KeyID.
@@ -1487,8 +1487,8 @@ type ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent struct{}
 // Ref: #/components/schemas/actions-repository-permissions
 type ActionsRepositoryPermissions struct {
 	Enabled            ActionsEnabled        `json:"enabled"`
-	AllowedActions     OptAllowedActions     `json:"allowed_actions"`
-	SelectedActionsURL OptSelectedActionsURL `json:"selected_actions_url"`
+	AllowedActions     OptAllowedActions     `json:"allowed_actions,omitempty"`
+	SelectedActionsURL OptSelectedActionsURL `json:"selected_actions_url,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -1622,7 +1622,7 @@ type ActionsSetGithubActionsPermissionsOrganizationNoContent struct{}
 
 type ActionsSetGithubActionsPermissionsOrganizationReq struct {
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
-	AllowedActions      OptAllowedActions   `json:"allowed_actions"`
+	AllowedActions      OptAllowedActions   `json:"allowed_actions,omitempty"`
 }
 
 // GetEnabledRepositories returns the value of EnabledRepositories.
@@ -1650,7 +1650,7 @@ type ActionsSetGithubActionsPermissionsRepositoryNoContent struct{}
 
 type ActionsSetGithubActionsPermissionsRepositoryReq struct {
 	Enabled        ActionsEnabled    `json:"enabled"`
-	AllowedActions OptAllowedActions `json:"allowed_actions"`
+	AllowedActions OptAllowedActions `json:"allowed_actions,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -1755,7 +1755,7 @@ type ActionsUpdateSelfHostedRunnerGroupForOrgReq struct {
 	Name string `json:"name"`
 	// Visibility of a runner group. You can select all repositories, select individual repositories, or
 	// all private repositories. Can be one of: `all`, `selected`, or `private`.
-	Visibility OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility `json:"visibility"`
+	Visibility OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility `json:"visibility,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -1862,7 +1862,7 @@ func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized)
 
 // ActivityListNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
 type ActivityListNotificationsForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Thread
 }
 
@@ -1915,7 +1915,7 @@ func (ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {
 
 // ActivityListRepoNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
 type ActivityListRepoNotificationsForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Thread
 }
 
@@ -1958,7 +1958,7 @@ const (
 
 // ActivityListReposStarredByAuthenticatedUserOKHeaders wraps []Repository with response headers.
 type ActivityListReposStarredByAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Repository
 }
 
@@ -1994,7 +1994,7 @@ const (
 
 // ActivityListReposWatchedByUserOKHeaders wraps []MinimalRepository with response headers.
 type ActivityListReposWatchedByUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -2030,7 +2030,7 @@ func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) 
 
 // ActivityListWatchedReposForAuthenticatedUserOKHeaders wraps []MinimalRepository with response headers.
 type ActivityListWatchedReposForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -2059,7 +2059,7 @@ func (*ActivityListWatchedReposForAuthenticatedUserOKHeaders) activityListWatche
 
 // ActivityListWatchersForRepoOKHeaders wraps []SimpleUser with response headers.
 type ActivityListWatchersForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -2084,7 +2084,7 @@ func (s *ActivityListWatchersForRepoOKHeaders) SetResponse(val []SimpleUser) {
 }
 
 type ActivityMarkNotificationsAsReadAccepted struct {
-	Message OptString `json:"message"`
+	Message OptString `json:"message,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -2111,9 +2111,9 @@ func (*ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) activityMarkN
 
 type ActivityMarkNotificationsAsReadReq struct {
 	// Describes the last point that notifications were checked.
-	LastReadAt OptDateTime `json:"last_read_at"`
+	LastReadAt OptDateTime `json:"last_read_at,omitempty"`
 	// Whether the notification has been read.
-	Read OptBool `json:"read"`
+	Read OptBool `json:"read,omitempty"`
 }
 
 // GetLastReadAt returns the value of LastReadAt.
@@ -2142,8 +2142,8 @@ type ActivityMarkNotificationsAsReadResetContent struct{}
 func (*ActivityMarkNotificationsAsReadResetContent) activityMarkNotificationsAsReadRes() {}
 
 type ActivityMarkRepoNotificationsAsReadAccepted struct {
-	Message OptString `json:"message"`
-	URL     OptString `json:"url"`
+	Message OptString `json:"message,omitempty"`
+	URL     OptString `json:"url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -2173,7 +2173,7 @@ type ActivityMarkRepoNotificationsAsReadReq struct {
 	// not be marked as read. If you omit this parameter, all notifications are marked as read. This is a
 	// timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	// Default: The current timestamp.
-	LastReadAt OptDateTime `json:"last_read_at"`
+	LastReadAt OptDateTime `json:"last_read_at,omitempty"`
 }
 
 // GetLastReadAt returns the value of LastReadAt.
@@ -2198,9 +2198,9 @@ func (*ActivityMarkThreadAsReadResetContent) activityMarkThreadAsReadRes() {}
 
 type ActivitySetRepoSubscriptionReq struct {
 	// Determines if notifications should be received from this repository.
-	Subscribed OptBool `json:"subscribed"`
+	Subscribed OptBool `json:"subscribed,omitempty"`
 	// Determines if all notifications should be blocked from this repository.
-	Ignored OptBool `json:"ignored"`
+	Ignored OptBool `json:"ignored,omitempty"`
 }
 
 // GetSubscribed returns the value of Subscribed.
@@ -2233,7 +2233,7 @@ func (*ActivitySetThreadSubscriptionApplicationJSONUnauthorized) activitySetThre
 
 type ActivitySetThreadSubscriptionReq struct {
 	// Whether to block all notifications from a thread.
-	Ignored OptBool `json:"ignored"`
+	Ignored OptBool `json:"ignored,omitempty"`
 }
 
 // GetIgnored returns the value of Ignored.
@@ -2291,7 +2291,7 @@ func (*ActivityUnstarRepoForAuthenticatedUserNoContent) activityUnstarRepoForAut
 type Actor struct {
 	ID           int       `json:"id"`
 	Login        string    `json:"login"`
-	DisplayLogin OptString `json:"display_login"`
+	DisplayLogin OptString `json:"display_login,omitempty"`
 	GravatarID   NilString `json:"gravatar_id"`
 	URL          url.URL   `json:"url"`
 	AvatarURL    url.URL   `json:"avatar_url"`
@@ -2383,97 +2383,97 @@ const (
 type AppPermissions struct {
 	// The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and
 	// artifacts. Can be one of: `read` or `write`.
-	Actions OptAppPermissionsActions `json:"actions"`
+	Actions OptAppPermissionsActions `json:"actions,omitempty"`
 	// The level of permission to grant the access token for repository creation, deletion, settings,
 	// teams, and collaborators creation. Can be one of: `read` or `write`.
-	Administration OptAppPermissionsAdministration `json:"administration"`
+	Administration OptAppPermissionsAdministration `json:"administration,omitempty"`
 	// The level of permission to grant the access token for checks on code. Can be one of: `read` or
 	// `write`.
-	Checks OptAppPermissionsChecks `json:"checks"`
+	Checks OptAppPermissionsChecks `json:"checks,omitempty"`
 	// The level of permission to grant the access token for notification of content references and
 	// creation content attachments. Can be one of: `read` or `write`.
-	ContentReferences OptAppPermissionsContentReferences `json:"content_references"`
+	ContentReferences OptAppPermissionsContentReferences `json:"content_references,omitempty"`
 	// The level of permission to grant the access token for repository contents, commits, branches,
 	// downloads, releases, and merges. Can be one of: `read` or `write`.
-	Contents OptAppPermissionsContents `json:"contents"`
+	Contents OptAppPermissionsContents `json:"contents,omitempty"`
 	// The level of permission to grant the access token for deployments and deployment statuses. Can be
 	// one of: `read` or `write`.
-	Deployments OptAppPermissionsDeployments `json:"deployments"`
+	Deployments OptAppPermissionsDeployments `json:"deployments,omitempty"`
 	// The level of permission to grant the access token for managing repository environments. Can be one
 	// of: `read` or `write`.
-	Environments OptAppPermissionsEnvironments `json:"environments"`
+	Environments OptAppPermissionsEnvironments `json:"environments,omitempty"`
 	// The level of permission to grant the access token for issues and related comments, assignees,
 	// labels, and milestones. Can be one of: `read` or `write`.
-	Issues OptAppPermissionsIssues `json:"issues"`
+	Issues OptAppPermissionsIssues `json:"issues,omitempty"`
 	// The level of permission to grant the access token to search repositories, list collaborators, and
 	// access repository metadata. Can be one of: `read` or `write`.
-	Metadata OptAppPermissionsMetadata `json:"metadata"`
+	Metadata OptAppPermissionsMetadata `json:"metadata,omitempty"`
 	// The level of permission to grant the access token for packages published to GitHub Packages. Can
 	// be one of: `read` or `write`.
-	Packages OptAppPermissionsPackages `json:"packages"`
+	Packages OptAppPermissionsPackages `json:"packages,omitempty"`
 	// The level of permission to grant the access token to retrieve Pages statuses, configuration, and
 	// builds, as well as create new builds. Can be one of: `read` or `write`.
-	Pages OptAppPermissionsPages `json:"pages"`
+	Pages OptAppPermissionsPages `json:"pages,omitempty"`
 	// The level of permission to grant the access token for pull requests and related comments,
 	// assignees, labels, milestones, and merges. Can be one of: `read` or `write`.
-	PullRequests OptAppPermissionsPullRequests `json:"pull_requests"`
+	PullRequests OptAppPermissionsPullRequests `json:"pull_requests,omitempty"`
 	// The level of permission to grant the access token to manage the post-receive hooks for a
 	// repository. Can be one of: `read` or `write`.
-	RepositoryHooks OptAppPermissionsRepositoryHooks `json:"repository_hooks"`
+	RepositoryHooks OptAppPermissionsRepositoryHooks `json:"repository_hooks,omitempty"`
 	// The level of permission to grant the access token to manage repository projects, columns, and
 	// cards. Can be one of: `read`, `write`, or `admin`.
-	RepositoryProjects OptAppPermissionsRepositoryProjects `json:"repository_projects"`
+	RepositoryProjects OptAppPermissionsRepositoryProjects `json:"repository_projects,omitempty"`
 	// The level of permission to grant the access token to view and manage secret scanning alerts. Can
 	// be one of: `read` or `write`.
-	SecretScanningAlerts OptAppPermissionsSecretScanningAlerts `json:"secret_scanning_alerts"`
+	SecretScanningAlerts OptAppPermissionsSecretScanningAlerts `json:"secret_scanning_alerts,omitempty"`
 	// The level of permission to grant the access token to manage repository secrets. Can be one of:
 	// `read` or `write`.
-	Secrets OptAppPermissionsSecrets `json:"secrets"`
+	Secrets OptAppPermissionsSecrets `json:"secrets,omitempty"`
 	// The level of permission to grant the access token to view and manage security events like code
 	// scanning alerts. Can be one of: `read` or `write`.
-	SecurityEvents OptAppPermissionsSecurityEvents `json:"security_events"`
+	SecurityEvents OptAppPermissionsSecurityEvents `json:"security_events,omitempty"`
 	// The level of permission to grant the access token to manage just a single file. Can be one of:
 	// `read` or `write`.
-	SingleFile OptAppPermissionsSingleFile `json:"single_file"`
+	SingleFile OptAppPermissionsSingleFile `json:"single_file,omitempty"`
 	// The level of permission to grant the access token for commit statuses. Can be one of: `read` or
 	// `write`.
-	Statuses OptAppPermissionsStatuses `json:"statuses"`
+	Statuses OptAppPermissionsStatuses `json:"statuses,omitempty"`
 	// The level of permission to grant the access token to retrieve Dependabot alerts. Can be one of:
 	// `read`.
-	VulnerabilityAlerts OptAppPermissionsVulnerabilityAlerts `json:"vulnerability_alerts"`
+	VulnerabilityAlerts OptAppPermissionsVulnerabilityAlerts `json:"vulnerability_alerts,omitempty"`
 	// The level of permission to grant the access token to update GitHub Actions workflow files. Can be
 	// one of: `write`.
-	Workflows OptAppPermissionsWorkflows `json:"workflows"`
+	Workflows OptAppPermissionsWorkflows `json:"workflows,omitempty"`
 	// The level of permission to grant the access token for organization teams and members. Can be one
 	// of: `read` or `write`.
-	Members OptAppPermissionsMembers `json:"members"`
+	Members OptAppPermissionsMembers `json:"members,omitempty"`
 	// The level of permission to grant the access token to manage access to an organization. Can be one
 	// of: `read` or `write`.
-	OrganizationAdministration OptAppPermissionsOrganizationAdministration `json:"organization_administration"`
+	OrganizationAdministration OptAppPermissionsOrganizationAdministration `json:"organization_administration,omitempty"`
 	// The level of permission to grant the access token to manage the post-receive hooks for an
 	// organization. Can be one of: `read` or `write`.
-	OrganizationHooks OptAppPermissionsOrganizationHooks `json:"organization_hooks"`
+	OrganizationHooks OptAppPermissionsOrganizationHooks `json:"organization_hooks,omitempty"`
 	// The level of permission to grant the access token for viewing an organization's plan. Can be one
 	// of: `read`.
-	OrganizationPlan OptAppPermissionsOrganizationPlan `json:"organization_plan"`
+	OrganizationPlan OptAppPermissionsOrganizationPlan `json:"organization_plan,omitempty"`
 	// The level of permission to grant the access token to manage organization projects, columns, and
 	// cards. Can be one of: `read`, `write`, or `admin`.
-	OrganizationProjects OptAppPermissionsOrganizationProjects `json:"organization_projects"`
+	OrganizationProjects OptAppPermissionsOrganizationProjects `json:"organization_projects,omitempty"`
 	// The level of permission to grant the access token for organization packages published to GitHub
 	// Packages. Can be one of: `read` or `write`.
-	OrganizationPackages OptAppPermissionsOrganizationPackages `json:"organization_packages"`
+	OrganizationPackages OptAppPermissionsOrganizationPackages `json:"organization_packages,omitempty"`
 	// The level of permission to grant the access token to manage organization secrets. Can be one of:
 	// `read` or `write`.
-	OrganizationSecrets OptAppPermissionsOrganizationSecrets `json:"organization_secrets"`
+	OrganizationSecrets OptAppPermissionsOrganizationSecrets `json:"organization_secrets,omitempty"`
 	// The level of permission to grant the access token to view and manage GitHub Actions self-hosted
 	// runners available to an organization. Can be one of: `read` or `write`.
-	OrganizationSelfHostedRunners OptAppPermissionsOrganizationSelfHostedRunners `json:"organization_self_hosted_runners"`
+	OrganizationSelfHostedRunners OptAppPermissionsOrganizationSelfHostedRunners `json:"organization_self_hosted_runners,omitempty"`
 	// The level of permission to grant the access token to view and manage users blocked by the
 	// organization. Can be one of: `read` or `write`.
-	OrganizationUserBlocking OptAppPermissionsOrganizationUserBlocking `json:"organization_user_blocking"`
+	OrganizationUserBlocking OptAppPermissionsOrganizationUserBlocking `json:"organization_user_blocking,omitempty"`
 	// The level of permission to grant the access token to manage team discussions and related comments.
 	// Can be one of: `read` or `write`.
-	TeamDiscussions OptAppPermissionsTeamDiscussions `json:"team_discussions"`
+	TeamDiscussions OptAppPermissionsTeamDiscussions `json:"team_discussions,omitempty"`
 }
 
 // GetActions returns the value of Actions.
@@ -3073,7 +3073,7 @@ type ApplicationGrant struct {
 	CreatedAt time.Time                `json:"created_at"`
 	UpdatedAt time.Time                `json:"updated_at"`
 	Scopes    []string                 `json:"scopes"`
-	User      OptNilNullableSimpleUser `json:"user"`
+	User      OptNilNullableSimpleUser `json:"user,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -3256,7 +3256,7 @@ type AppsCreateFromManifestCreated struct {
 	// Unique identifier of the GitHub app.
 	ID int `json:"id"`
 	// The slug name of the GitHub app.
-	Slug   OptString             `json:"slug"`
+	Slug   OptString             `json:"slug,omitempty"`
 	NodeID string                `json:"node_id"`
 	Owner  NilNullableSimpleUser `json:"owner"`
 	// The name of the GitHub app.
@@ -3271,7 +3271,7 @@ type AppsCreateFromManifestCreated struct {
 	// The list of events for the GitHub app.
 	Events []string `json:"events"`
 	// The number of installations associated with the GitHub app.
-	InstallationsCount OptInt `json:"installations_count"`
+	InstallationsCount OptInt `json:"installations_count,omitempty"`
 	// Merged property.
 	ClientID string `json:"client_id"`
 	// Merged property.
@@ -3478,11 +3478,11 @@ func (s *AppsCreateFromManifestCreatedAdditional) init() AppsCreateFromManifestC
 
 // The set of permissions for the GitHub app.
 type AppsCreateFromManifestCreatedPermissions struct {
-	Issues          OptString `json:"issues"`
-	Checks          OptString `json:"checks"`
-	Metadata        OptString `json:"metadata"`
-	Contents        OptString `json:"contents"`
-	Deployments     OptString `json:"deployments"`
+	Issues          OptString `json:"issues,omitempty"`
+	Checks          OptString `json:"checks,omitempty"`
+	Metadata        OptString `json:"metadata,omitempty"`
+	Contents        OptString `json:"contents,omitempty"`
+	Deployments     OptString `json:"deployments,omitempty"`
 	AdditionalProps AppsCreateFromManifestCreatedPermissionsAdditional
 }
 
@@ -3576,10 +3576,10 @@ func (*AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) appsCreateI
 
 type AppsCreateInstallationAccessTokenReq struct {
 	// List of repository names that the token should have access to.
-	Repositories []string `json:"repositories"`
+	Repositories []string `json:"repositories,omitempty"`
 	// List of repository IDs that the token should have access to.
-	RepositoryIds []int             `json:"repository_ids"`
-	Permissions   OptAppPermissions `json:"permissions"`
+	RepositoryIds []int             `json:"repository_ids,omitempty"`
+	Permissions   OptAppPermissions `json:"permissions,omitempty"`
 }
 
 // GetRepositories returns the value of Repositories.
@@ -3698,7 +3698,7 @@ const (
 
 // AppsListAccountsForPlanOKHeaders wraps []MarketplacePurchase with response headers.
 type AppsListAccountsForPlanOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MarketplacePurchase
 }
 
@@ -3740,7 +3740,7 @@ const (
 
 // AppsListAccountsForPlanStubbedOKHeaders wraps []MarketplacePurchase with response headers.
 type AppsListAccountsForPlanStubbedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MarketplacePurchase
 }
 
@@ -3785,7 +3785,7 @@ func (*AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) app
 
 type AppsListInstallationReposForAuthenticatedUserOK struct {
 	TotalCount          int          `json:"total_count"`
-	RepositorySelection OptString    `json:"repository_selection"`
+	RepositorySelection OptString    `json:"repository_selection,omitempty"`
 	Repositories        []Repository `json:"repositories"`
 }
 
@@ -3821,7 +3821,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) SetRepositories(val []
 
 // AppsListInstallationReposForAuthenticatedUserOKHeaders wraps AppsListInstallationReposForAuthenticatedUserOK with response headers.
 type AppsListInstallationReposForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response AppsListInstallationReposForAuthenticatedUserOK
 }
 
@@ -3858,7 +3858,7 @@ func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansRes() {}
 
 // AppsListPlansOKHeaders wraps []MarketplaceListingPlan with response headers.
 type AppsListPlansOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MarketplaceListingPlan
 }
 
@@ -3886,7 +3886,7 @@ func (*AppsListPlansOKHeaders) appsListPlansRes() {}
 
 // AppsListPlansStubbedOKHeaders wraps []MarketplaceListingPlan with response headers.
 type AppsListPlansStubbedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MarketplaceListingPlan
 }
 
@@ -3925,7 +3925,7 @@ func (*AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) appsLis
 type AppsListReposAccessibleToInstallationOK struct {
 	TotalCount          int          `json:"total_count"`
 	Repositories        []Repository `json:"repositories"`
-	RepositorySelection OptString    `json:"repository_selection"`
+	RepositorySelection OptString    `json:"repository_selection,omitempty"`
 }
 
 // GetTotalCount returns the value of TotalCount.
@@ -3960,7 +3960,7 @@ func (s *AppsListReposAccessibleToInstallationOK) SetRepositorySelection(val Opt
 
 // AppsListReposAccessibleToInstallationOKHeaders wraps AppsListReposAccessibleToInstallationOK with response headers.
 type AppsListReposAccessibleToInstallationOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response AppsListReposAccessibleToInstallationOK
 }
 
@@ -3998,7 +3998,7 @@ func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) app
 
 // AppsListSubscriptionsForAuthenticatedUserOKHeaders wraps []UserMarketplacePurchase with response headers.
 type AppsListSubscriptionsForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []UserMarketplacePurchase
 }
 
@@ -4027,7 +4027,7 @@ func (*AppsListSubscriptionsForAuthenticatedUserOKHeaders) appsListSubscriptions
 
 // AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders wraps []UserMarketplacePurchase with response headers.
 type AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []UserMarketplacePurchase
 }
 
@@ -4106,17 +4106,17 @@ type AppsScopeTokenReq struct {
 	AccessToken string `json:"access_token"`
 	// The name of the user or organization to scope the user-to-server access token to. **Required**
 	// unless `target_id` is specified.
-	Target OptString `json:"target"`
+	Target OptString `json:"target,omitempty"`
 	// The ID of the user or organization to scope the user-to-server access token to. **Required**
 	// unless `target` is specified.
-	TargetID OptInt `json:"target_id"`
+	TargetID OptInt `json:"target_id,omitempty"`
 	// The list of repository names to scope the user-to-server access token to. `repositories` may not
 	// be specified if `repository_ids` is specified.
-	Repositories []string `json:"repositories"`
+	Repositories []string `json:"repositories,omitempty"`
 	// The list of repository IDs to scope the user-to-server access token to. `repository_ids` may not
 	// be specified if `repositories` is specified.
-	RepositoryIds []int             `json:"repository_ids"`
-	Permissions   OptAppPermissions `json:"permissions"`
+	RepositoryIds []int             `json:"repository_ids,omitempty"`
+	Permissions   OptAppPermissions `json:"permissions,omitempty"`
 }
 
 // GetAccessToken returns the value of AccessToken.
@@ -4190,10 +4190,10 @@ type AppsUnsuspendInstallationNoContent struct{}
 func (*AppsUnsuspendInstallationNoContent) appsUnsuspendInstallationRes() {}
 
 type AppsUpdateWebhookConfigForAppReq struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -4358,59 +4358,59 @@ func (s *Artifact) SetUpdatedAt(val NilDateTime) {
 type AuditLogEvent struct {
 	// The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.
 	// org/wiki/Unix_time).
-	Timestamp OptInt `json:"@timestamp"`
+	Timestamp OptInt `json:"@timestamp,omitempty"`
 	// The name of the action that was performed, for example `user.login` or `repo.create`.
-	Action    OptString `json:"action"`
-	Active    OptBool   `json:"active"`
-	ActiveWas OptBool   `json:"active_was"`
+	Action    OptString `json:"action,omitempty"`
+	Active    OptBool   `json:"active,omitempty"`
+	ActiveWas OptBool   `json:"active_was,omitempty"`
 	// The actor who performed the action.
-	Actor OptString `json:"actor"`
+	Actor OptString `json:"actor,omitempty"`
 	// The id of the actor who performed the action.
-	ActorID       OptInt                        `json:"actor_id"`
-	ActorLocation OptAuditLogEventActorLocation `json:"actor_location"`
-	Data          OptAuditLogEventData          `json:"data"`
-	OrgID         OptInt                        `json:"org_id"`
+	ActorID       OptInt                        `json:"actor_id,omitempty"`
+	ActorLocation OptAuditLogEventActorLocation `json:"actor_location,omitempty"`
+	Data          OptAuditLogEventData          `json:"data,omitempty"`
+	OrgID         OptInt                        `json:"org_id,omitempty"`
 	// The username of the account being blocked.
-	BlockedUser OptString `json:"blocked_user"`
-	Business    OptString `json:"business"`
-	Config      []jx.Raw  `json:"config"`
-	ConfigWas   []jx.Raw  `json:"config_was"`
-	ContentType OptString `json:"content_type"`
+	BlockedUser OptString `json:"blocked_user,omitempty"`
+	Business    OptString `json:"business,omitempty"`
+	Config      []jx.Raw  `json:"config,omitempty"`
+	ConfigWas   []jx.Raw  `json:"config_was,omitempty"`
+	ContentType OptString `json:"content_type,omitempty"`
 	// The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.
 	// org/wiki/Unix_time).
-	CreatedAt            OptInt    `json:"created_at"`
-	DeployKeyFingerprint OptString `json:"deploy_key_fingerprint"`
+	CreatedAt            OptInt    `json:"created_at,omitempty"`
+	DeployKeyFingerprint OptString `json:"deploy_key_fingerprint,omitempty"`
 	// A unique identifier for an audit event.
-	DocumentID          OptString `json:"_document_id"`
-	Emoji               OptString `json:"emoji"`
-	Events              []jx.Raw  `json:"events"`
-	EventsWere          []jx.Raw  `json:"events_were"`
-	Explanation         OptString `json:"explanation"`
-	Fingerprint         OptString `json:"fingerprint"`
-	HookID              OptInt    `json:"hook_id"`
-	LimitedAvailability OptBool   `json:"limited_availability"`
-	Message             OptString `json:"message"`
-	Name                OptString `json:"name"`
-	OldUser             OptString `json:"old_user"`
-	OpensshPublicKey    OptString `json:"openssh_public_key"`
-	Org                 OptString `json:"org"`
-	PreviousVisibility  OptString `json:"previous_visibility"`
-	ReadOnly            OptBool   `json:"read_only"`
+	DocumentID          OptString `json:"_document_id,omitempty"`
+	Emoji               OptString `json:"emoji,omitempty"`
+	Events              []jx.Raw  `json:"events,omitempty"`
+	EventsWere          []jx.Raw  `json:"events_were,omitempty"`
+	Explanation         OptString `json:"explanation,omitempty"`
+	Fingerprint         OptString `json:"fingerprint,omitempty"`
+	HookID              OptInt    `json:"hook_id,omitempty"`
+	LimitedAvailability OptBool   `json:"limited_availability,omitempty"`
+	Message             OptString `json:"message,omitempty"`
+	Name                OptString `json:"name,omitempty"`
+	OldUser             OptString `json:"old_user,omitempty"`
+	OpensshPublicKey    OptString `json:"openssh_public_key,omitempty"`
+	Org                 OptString `json:"org,omitempty"`
+	PreviousVisibility  OptString `json:"previous_visibility,omitempty"`
+	ReadOnly            OptBool   `json:"read_only,omitempty"`
 	// The name of the repository.
-	Repo OptString `json:"repo"`
+	Repo OptString `json:"repo,omitempty"`
 	// The name of the repository.
-	Repository       OptString `json:"repository"`
-	RepositoryPublic OptBool   `json:"repository_public"`
-	TargetLogin      OptString `json:"target_login"`
-	Team             OptString `json:"team"`
+	Repository       OptString `json:"repository,omitempty"`
+	RepositoryPublic OptBool   `json:"repository_public,omitempty"`
+	TargetLogin      OptString `json:"target_login,omitempty"`
+	Team             OptString `json:"team,omitempty"`
 	// The type of protocol (for example, HTTP or SSH) used to transfer Git data.
-	TransportProtocol OptInt `json:"transport_protocol"`
+	TransportProtocol OptInt `json:"transport_protocol,omitempty"`
 	// A human readable name for the protocol (for example, HTTP or SSH) used to transfer Git data.
-	TransportProtocolName OptString `json:"transport_protocol_name"`
+	TransportProtocolName OptString `json:"transport_protocol_name,omitempty"`
 	// The user that was affected by the action performed (if available).
-	User OptString `json:"user"`
+	User OptString `json:"user,omitempty"`
 	// The repository visibility, for example `public` or `private`.
-	Visibility OptString `json:"visibility"`
+	Visibility OptString `json:"visibility,omitempty"`
 }
 
 // GetTimestamp returns the value of Timestamp.
@@ -4814,7 +4814,7 @@ func (s *AuditLogEvent) SetVisibility(val OptString) {
 }
 
 type AuditLogEventActorLocation struct {
-	CountryName OptString `json:"country_name"`
+	CountryName OptString `json:"country_name,omitempty"`
 }
 
 // GetCountryName returns the value of CountryName.
@@ -4845,12 +4845,12 @@ type AuthenticationToken struct {
 	Token string `json:"token"`
 	// The time this token expires.
 	ExpiresAt   time.Time                       `json:"expires_at"`
-	Permissions *AuthenticationTokenPermissions `json:"permissions"`
+	Permissions *AuthenticationTokenPermissions `json:"permissions,omitempty"`
 	// The repositories this token has access to.
-	Repositories []Repository `json:"repositories"`
-	SingleFile   OptNilString `json:"single_file"`
+	Repositories []Repository `json:"repositories,omitempty"`
+	SingleFile   OptNilString `json:"single_file,omitempty"`
 	// Describe whether all repositories have been selected or there's a selection involved.
-	RepositorySelection OptAuthenticationTokenRepositorySelection `json:"repository_selection"`
+	RepositorySelection OptAuthenticationTokenRepositorySelection `json:"repository_selection,omitempty"`
 }
 
 // GetToken returns the value of Token.
@@ -4954,8 +4954,8 @@ type Authorization struct {
 	UpdatedAt      time.Time                        `json:"updated_at"`
 	CreatedAt      time.Time                        `json:"created_at"`
 	Fingerprint    NilString                        `json:"fingerprint"`
-	User           OptNilNullableSimpleUser         `json:"user"`
-	Installation   OptNilNullableScopedInstallation `json:"installation"`
+	User           OptNilNullableSimpleUser         `json:"user,omitempty"`
+	Installation   OptNilNullableScopedInstallation `json:"installation,omitempty"`
 	ExpiresAt      NilDateTime                      `json:"expires_at"`
 }
 
@@ -5153,7 +5153,7 @@ func (s *AuthorizationApp) SetURL(val url.URL) {
 
 // AuthorizationHeaders wraps Authorization with response headers.
 type AuthorizationHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Authorization
 }
 
@@ -5284,7 +5284,7 @@ func (*Autolink) reposGetAutolinkRes() {}
 
 // AutolinkHeaders wraps Autolink with response headers.
 type AutolinkHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Autolink
 }
 
@@ -5329,10 +5329,10 @@ type BaseGist struct {
 	Comments    int                   `json:"comments"`
 	User        NilNullableSimpleUser `json:"user"`
 	CommentsURL url.URL               `json:"comments_url"`
-	Owner       OptSimpleUser         `json:"owner"`
-	Truncated   OptBool               `json:"truncated"`
-	Forks       []jx.Raw              `json:"forks"`
-	History     []jx.Raw              `json:"history"`
+	Owner       OptSimpleUser         `json:"owner,omitempty"`
+	Truncated   OptBool               `json:"truncated,omitempty"`
+	Forks       []jx.Raw              `json:"forks,omitempty"`
+	History     []jx.Raw              `json:"history,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -5547,11 +5547,11 @@ func (s *BaseGistFiles) init() BaseGistFiles {
 }
 
 type BaseGistFilesItem struct {
-	Filename OptString `json:"filename"`
-	Type     OptString `json:"type"`
-	Language OptString `json:"language"`
-	RawURL   OptString `json:"raw_url"`
-	Size     OptInt    `json:"size"`
+	Filename OptString `json:"filename,omitempty"`
+	Type     OptString `json:"type,omitempty"`
+	Language OptString `json:"language,omitempty"`
+	RawURL   OptString `json:"raw_url,omitempty"`
+	Size     OptInt    `json:"size,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -5606,7 +5606,7 @@ func (s *BaseGistFilesItem) SetSize(val OptInt) {
 
 // BaseGistHeaders wraps BaseGist with response headers.
 type BaseGistHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response BaseGist
 }
 
@@ -5635,10 +5635,10 @@ func (*BaseGistHeaders) gistsForkRes() {}
 // Basic Error.
 // Ref: #/components/schemas/basic-error
 type BasicError struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
-	URL              OptString `json:"url"`
-	Status           OptString `json:"status"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
+	URL              OptString `json:"url,omitempty"`
+	Status           OptString `json:"status,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -5869,7 +5869,7 @@ type Blob struct {
 	Sha                string    `json:"sha"`
 	Size               NilInt    `json:"size"`
 	NodeID             string    `json:"node_id"`
-	HighlightedContent OptString `json:"highlighted_content"`
+	HighlightedContent OptString `json:"highlighted_content,omitempty"`
 }
 
 // GetContent returns the value of Content.
@@ -5947,19 +5947,19 @@ func (*Blob) gitGetBlobRes() {}
 // Branch Protection.
 // Ref: #/components/schemas/branch-protection
 type BranchProtection struct {
-	URL                            OptString                                         `json:"url"`
-	Enabled                        OptBool                                           `json:"enabled"`
-	RequiredStatusChecks           OptBranchProtectionRequiredStatusChecks           `json:"required_status_checks"`
-	EnforceAdmins                  OptProtectedBranchAdminEnforced                   `json:"enforce_admins"`
-	RequiredPullRequestReviews     OptProtectedBranchPullRequestReview               `json:"required_pull_request_reviews"`
-	Restrictions                   OptBranchRestrictionPolicy                        `json:"restrictions"`
-	RequiredLinearHistory          OptBranchProtectionRequiredLinearHistory          `json:"required_linear_history"`
-	AllowForcePushes               OptBranchProtectionAllowForcePushes               `json:"allow_force_pushes"`
-	AllowDeletions                 OptBranchProtectionAllowDeletions                 `json:"allow_deletions"`
-	RequiredConversationResolution OptBranchProtectionRequiredConversationResolution `json:"required_conversation_resolution"`
-	Name                           OptString                                         `json:"name"`
-	ProtectionURL                  OptString                                         `json:"protection_url"`
-	RequiredSignatures             OptBranchProtectionRequiredSignatures             `json:"required_signatures"`
+	URL                            OptString                                         `json:"url,omitempty"`
+	Enabled                        OptBool                                           `json:"enabled,omitempty"`
+	RequiredStatusChecks           OptBranchProtectionRequiredStatusChecks           `json:"required_status_checks,omitempty"`
+	EnforceAdmins                  OptProtectedBranchAdminEnforced                   `json:"enforce_admins,omitempty"`
+	RequiredPullRequestReviews     OptProtectedBranchPullRequestReview               `json:"required_pull_request_reviews,omitempty"`
+	Restrictions                   OptBranchRestrictionPolicy                        `json:"restrictions,omitempty"`
+	RequiredLinearHistory          OptBranchProtectionRequiredLinearHistory          `json:"required_linear_history,omitempty"`
+	AllowForcePushes               OptBranchProtectionAllowForcePushes               `json:"allow_force_pushes,omitempty"`
+	AllowDeletions                 OptBranchProtectionAllowDeletions                 `json:"allow_deletions,omitempty"`
+	RequiredConversationResolution OptBranchProtectionRequiredConversationResolution `json:"required_conversation_resolution,omitempty"`
+	Name                           OptString                                         `json:"name,omitempty"`
+	ProtectionURL                  OptString                                         `json:"protection_url,omitempty"`
+	RequiredSignatures             OptBranchProtectionRequiredSignatures             `json:"required_signatures,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -6095,7 +6095,7 @@ func (s *BranchProtection) SetRequiredSignatures(val OptBranchProtectionRequired
 func (*BranchProtection) reposGetBranchProtectionRes() {}
 
 type BranchProtectionAllowDeletions struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled OptBool `json:"enabled,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -6109,7 +6109,7 @@ func (s *BranchProtectionAllowDeletions) SetEnabled(val OptBool) {
 }
 
 type BranchProtectionAllowForcePushes struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled OptBool `json:"enabled,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -6123,7 +6123,7 @@ func (s *BranchProtectionAllowForcePushes) SetEnabled(val OptBool) {
 }
 
 type BranchProtectionRequiredConversationResolution struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled OptBool `json:"enabled,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -6137,7 +6137,7 @@ func (s *BranchProtectionRequiredConversationResolution) SetEnabled(val OptBool)
 }
 
 type BranchProtectionRequiredLinearHistory struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled OptBool `json:"enabled,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -6176,11 +6176,11 @@ func (s *BranchProtectionRequiredSignatures) SetEnabled(val bool) {
 }
 
 type BranchProtectionRequiredStatusChecks struct {
-	URL              OptString `json:"url"`
-	EnforcementLevel OptString `json:"enforcement_level"`
+	URL              OptString `json:"url,omitempty"`
+	EnforcementLevel OptString `json:"enforcement_level,omitempty"`
 	Contexts         []string  `json:"contexts"`
-	ContextsURL      OptString `json:"contexts_url"`
-	Strict           OptBool   `json:"strict"`
+	ContextsURL      OptString `json:"contexts_url,omitempty"`
+	Strict           OptBool   `json:"strict,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -6318,18 +6318,18 @@ func (s *BranchRestrictionPolicy) SetApps(val []BranchRestrictionPolicyAppsItem)
 func (*BranchRestrictionPolicy) reposGetAccessRestrictionsRes() {}
 
 type BranchRestrictionPolicyAppsItem struct {
-	ID          OptInt                                        `json:"id"`
-	Slug        OptString                                     `json:"slug"`
-	NodeID      OptString                                     `json:"node_id"`
-	Owner       OptBranchRestrictionPolicyAppsItemOwner       `json:"owner"`
-	Name        OptString                                     `json:"name"`
-	Description OptString                                     `json:"description"`
-	ExternalURL OptString                                     `json:"external_url"`
-	HTMLURL     OptString                                     `json:"html_url"`
-	CreatedAt   OptString                                     `json:"created_at"`
-	UpdatedAt   OptString                                     `json:"updated_at"`
-	Permissions OptBranchRestrictionPolicyAppsItemPermissions `json:"permissions"`
-	Events      []string                                      `json:"events"`
+	ID          OptInt                                        `json:"id,omitempty"`
+	Slug        OptString                                     `json:"slug,omitempty"`
+	NodeID      OptString                                     `json:"node_id,omitempty"`
+	Owner       OptBranchRestrictionPolicyAppsItemOwner       `json:"owner,omitempty"`
+	Name        OptString                                     `json:"name,omitempty"`
+	Description OptString                                     `json:"description,omitempty"`
+	ExternalURL OptString                                     `json:"external_url,omitempty"`
+	HTMLURL     OptString                                     `json:"html_url,omitempty"`
+	CreatedAt   OptString                                     `json:"created_at,omitempty"`
+	UpdatedAt   OptString                                     `json:"updated_at,omitempty"`
+	Permissions OptBranchRestrictionPolicyAppsItemPermissions `json:"permissions,omitempty"`
+	Events      []string                                      `json:"events,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -6453,29 +6453,29 @@ func (s *BranchRestrictionPolicyAppsItem) SetEvents(val []string) {
 }
 
 type BranchRestrictionPolicyAppsItemOwner struct {
-	Login             OptString `json:"login"`
-	ID                OptInt    `json:"id"`
-	NodeID            OptString `json:"node_id"`
-	URL               OptString `json:"url"`
-	ReposURL          OptString `json:"repos_url"`
-	EventsURL         OptString `json:"events_url"`
-	HooksURL          OptString `json:"hooks_url"`
-	IssuesURL         OptString `json:"issues_url"`
-	MembersURL        OptString `json:"members_url"`
-	PublicMembersURL  OptString `json:"public_members_url"`
-	AvatarURL         OptString `json:"avatar_url"`
-	Description       OptString `json:"description"`
-	GravatarID        OptString `json:"gravatar_id"`
-	HTMLURL           OptString `json:"html_url"`
-	FollowersURL      OptString `json:"followers_url"`
-	FollowingURL      OptString `json:"following_url"`
-	GistsURL          OptString `json:"gists_url"`
-	StarredURL        OptString `json:"starred_url"`
-	SubscriptionsURL  OptString `json:"subscriptions_url"`
-	OrganizationsURL  OptString `json:"organizations_url"`
-	ReceivedEventsURL OptString `json:"received_events_url"`
-	Type              OptString `json:"type"`
-	SiteAdmin         OptBool   `json:"site_admin"`
+	Login             OptString `json:"login,omitempty"`
+	ID                OptInt    `json:"id,omitempty"`
+	NodeID            OptString `json:"node_id,omitempty"`
+	URL               OptString `json:"url,omitempty"`
+	ReposURL          OptString `json:"repos_url,omitempty"`
+	EventsURL         OptString `json:"events_url,omitempty"`
+	HooksURL          OptString `json:"hooks_url,omitempty"`
+	IssuesURL         OptString `json:"issues_url,omitempty"`
+	MembersURL        OptString `json:"members_url,omitempty"`
+	PublicMembersURL  OptString `json:"public_members_url,omitempty"`
+	AvatarURL         OptString `json:"avatar_url,omitempty"`
+	Description       OptString `json:"description,omitempty"`
+	GravatarID        OptString `json:"gravatar_id,omitempty"`
+	HTMLURL           OptString `json:"html_url,omitempty"`
+	FollowersURL      OptString `json:"followers_url,omitempty"`
+	FollowingURL      OptString `json:"following_url,omitempty"`
+	GistsURL          OptString `json:"gists_url,omitempty"`
+	StarredURL        OptString `json:"starred_url,omitempty"`
+	SubscriptionsURL  OptString `json:"subscriptions_url,omitempty"`
+	OrganizationsURL  OptString `json:"organizations_url,omitempty"`
+	ReceivedEventsURL OptString `json:"received_events_url,omitempty"`
+	Type              OptString `json:"type,omitempty"`
+	SiteAdmin         OptBool   `json:"site_admin,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -6709,10 +6709,10 @@ func (s *BranchRestrictionPolicyAppsItemOwner) SetSiteAdmin(val OptBool) {
 }
 
 type BranchRestrictionPolicyAppsItemPermissions struct {
-	Metadata   OptString `json:"metadata"`
-	Contents   OptString `json:"contents"`
-	Issues     OptString `json:"issues"`
-	SingleFile OptString `json:"single_file"`
+	Metadata   OptString `json:"metadata,omitempty"`
+	Contents   OptString `json:"contents,omitempty"`
+	Issues     OptString `json:"issues,omitempty"`
+	SingleFile OptString `json:"single_file,omitempty"`
 }
 
 // GetMetadata returns the value of Metadata.
@@ -6756,18 +6756,18 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) SetSingleFile(val OptString
 }
 
 type BranchRestrictionPolicyTeamsItem struct {
-	ID              OptInt       `json:"id"`
-	NodeID          OptString    `json:"node_id"`
-	URL             OptString    `json:"url"`
-	HTMLURL         OptString    `json:"html_url"`
-	Name            OptString    `json:"name"`
-	Slug            OptString    `json:"slug"`
-	Description     OptNilString `json:"description"`
-	Privacy         OptString    `json:"privacy"`
-	Permission      OptString    `json:"permission"`
-	MembersURL      OptString    `json:"members_url"`
-	RepositoriesURL OptString    `json:"repositories_url"`
-	Parent          OptNilString `json:"parent"`
+	ID              OptInt       `json:"id,omitempty"`
+	NodeID          OptString    `json:"node_id,omitempty"`
+	URL             OptString    `json:"url,omitempty"`
+	HTMLURL         OptString    `json:"html_url,omitempty"`
+	Name            OptString    `json:"name,omitempty"`
+	Slug            OptString    `json:"slug,omitempty"`
+	Description     OptNilString `json:"description,omitempty"`
+	Privacy         OptString    `json:"privacy,omitempty"`
+	Permission      OptString    `json:"permission,omitempty"`
+	MembersURL      OptString    `json:"members_url,omitempty"`
+	RepositoriesURL OptString    `json:"repositories_url,omitempty"`
+	Parent          OptNilString `json:"parent,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -6891,24 +6891,24 @@ func (s *BranchRestrictionPolicyTeamsItem) SetParent(val OptNilString) {
 }
 
 type BranchRestrictionPolicyUsersItem struct {
-	Login             OptString `json:"login"`
-	ID                OptInt    `json:"id"`
-	NodeID            OptString `json:"node_id"`
-	AvatarURL         OptString `json:"avatar_url"`
-	GravatarID        OptString `json:"gravatar_id"`
-	URL               OptString `json:"url"`
-	HTMLURL           OptString `json:"html_url"`
-	FollowersURL      OptString `json:"followers_url"`
-	FollowingURL      OptString `json:"following_url"`
-	GistsURL          OptString `json:"gists_url"`
-	StarredURL        OptString `json:"starred_url"`
-	SubscriptionsURL  OptString `json:"subscriptions_url"`
-	OrganizationsURL  OptString `json:"organizations_url"`
-	ReposURL          OptString `json:"repos_url"`
-	EventsURL         OptString `json:"events_url"`
-	ReceivedEventsURL OptString `json:"received_events_url"`
-	Type              OptString `json:"type"`
-	SiteAdmin         OptBool   `json:"site_admin"`
+	Login             OptString `json:"login,omitempty"`
+	ID                OptInt    `json:"id,omitempty"`
+	NodeID            OptString `json:"node_id,omitempty"`
+	AvatarURL         OptString `json:"avatar_url,omitempty"`
+	GravatarID        OptString `json:"gravatar_id,omitempty"`
+	URL               OptString `json:"url,omitempty"`
+	HTMLURL           OptString `json:"html_url,omitempty"`
+	FollowersURL      OptString `json:"followers_url,omitempty"`
+	FollowingURL      OptString `json:"following_url,omitempty"`
+	GistsURL          OptString `json:"gists_url,omitempty"`
+	StarredURL        OptString `json:"starred_url,omitempty"`
+	SubscriptionsURL  OptString `json:"subscriptions_url,omitempty"`
+	OrganizationsURL  OptString `json:"organizations_url,omitempty"`
+	ReposURL          OptString `json:"repos_url,omitempty"`
+	EventsURL         OptString `json:"events_url,omitempty"`
+	ReceivedEventsURL OptString `json:"received_events_url,omitempty"`
+	Type              OptString `json:"type,omitempty"`
+	SiteAdmin         OptBool   `json:"site_admin,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -7163,8 +7163,8 @@ type BranchWithProtection struct {
 	Protected                    bool                      `json:"protected"`
 	Protection                   BranchProtection          `json:"protection"`
 	ProtectionURL                url.URL                   `json:"protection_url"`
-	Pattern                      OptString                 `json:"pattern"`
-	RequiredApprovingReviewCount OptInt                    `json:"required_approving_review_count"`
+	Pattern                      OptString                 `json:"pattern,omitempty"`
+	RequiredApprovingReviewCount OptInt                    `json:"required_approving_review_count,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -7413,7 +7413,7 @@ type CheckRun struct {
 	CheckSuite   NilCheckRunCheckSuite  `json:"check_suite"`
 	App          NilNullableIntegration `json:"app"`
 	PullRequests []PullRequestMinimal   `json:"pull_requests"`
-	Deployment   OptDeploymentSimple    `json:"deployment"`
+	Deployment   OptDeploymentSimple    `json:"deployment,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -7912,7 +7912,7 @@ func (s *CheckSuitePreference) SetRepository(val MinimalRepository) {
 }
 
 type CheckSuitePreferencePreferences struct {
-	AutoTriggerChecks []CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks []CheckSuitePreferencePreferencesAutoTriggerChecksItem `json:"auto_trigger_checks,omitempty"`
 }
 
 // GetAutoTriggerChecks returns the value of AutoTriggerChecks.
@@ -7983,7 +7983,7 @@ func (s *ChecksCreateSuiteReq) SetHeadSha(val string) {
 
 // ChecksListAnnotationsOKHeaders wraps []CheckAnnotation with response headers.
 type ChecksListAnnotationsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []CheckAnnotation
 }
 
@@ -8041,7 +8041,7 @@ func (s *ChecksListForRefOK) SetCheckRuns(val []CheckRun) {
 
 // ChecksListForRefOKHeaders wraps ChecksListForRefOK with response headers.
 type ChecksListForRefOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ChecksListForRefOK
 }
 
@@ -8107,7 +8107,7 @@ func (s *ChecksListForSuiteOK) SetCheckRuns(val []CheckRun) {
 
 // ChecksListForSuiteOKHeaders wraps ChecksListForSuiteOK with response headers.
 type ChecksListForSuiteOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ChecksListForSuiteOK
 }
 
@@ -8166,7 +8166,7 @@ func (s *ChecksListSuitesForRefOK) SetCheckSuites(val []CheckSuite) {
 
 // ChecksListSuitesForRefOKHeaders wraps ChecksListSuitesForRefOK with response headers.
 type ChecksListSuitesForRefOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response ChecksListSuitesForRefOK
 }
 
@@ -8196,7 +8196,7 @@ type ChecksSetSuitesPreferencesReq struct {
 	// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled
 	// by default. See the [`auto_trigger_checks` object](https://docs.github.
 	// com/rest/reference/checks#auto_trigger_checks-object) description for details.
-	AutoTriggerChecks []ChecksSetSuitesPreferencesReqAutoTriggerChecksItem `json:"auto_trigger_checks"`
+	AutoTriggerChecks []ChecksSetSuitesPreferencesReqAutoTriggerChecksItem `json:"auto_trigger_checks,omitempty"`
 }
 
 // GetAutoTriggerChecks returns the value of AutoTriggerChecks.
@@ -8285,7 +8285,7 @@ type CodeOfConduct struct {
 	Key     string    `json:"key"`
 	Name    string    `json:"name"`
 	URL     url.URL   `json:"url"`
-	Body    OptString `json:"body"`
+	Body    OptString `json:"body,omitempty"`
 	HTMLURL NilURI    `json:"html_url"`
 }
 
@@ -8397,7 +8397,7 @@ type CodeScanningAlert struct {
 	URL       AlertURL       `json:"url"`
 	HTMLURL   AlertHTMLURL   `json:"html_url"`
 	// Deprecated: schema marks this property as deprecated.
-	Instances          jx.Raw                              `json:"instances"`
+	Instances          jx.Raw                              `json:"instances,omitempty"`
 	InstancesURL       AlertInstancesURL                   `json:"instances_url"`
 	State              CodeScanningAlertState              `json:"state"`
 	DismissedBy        NilNullableSimpleUser               `json:"dismissed_by"`
@@ -8569,18 +8569,18 @@ type CodeScanningAlertEnvironment string
 
 // Ref: #/components/schemas/code-scanning-alert-instance
 type CodeScanningAlertInstance struct {
-	Ref         OptCodeScanningRef                  `json:"ref"`
-	AnalysisKey OptCodeScanningAnalysisAnalysisKey  `json:"analysis_key"`
-	Environment OptCodeScanningAlertEnvironment     `json:"environment"`
-	Category    OptCodeScanningAnalysisCategory     `json:"category"`
-	State       OptCodeScanningAlertState           `json:"state"`
-	CommitSha   OptString                           `json:"commit_sha"`
-	Message     OptCodeScanningAlertInstanceMessage `json:"message"`
-	Location    OptCodeScanningAlertLocation        `json:"location"`
-	HTMLURL     OptString                           `json:"html_url"`
+	Ref         OptCodeScanningRef                  `json:"ref,omitempty"`
+	AnalysisKey OptCodeScanningAnalysisAnalysisKey  `json:"analysis_key,omitempty"`
+	Environment OptCodeScanningAlertEnvironment     `json:"environment,omitempty"`
+	Category    OptCodeScanningAnalysisCategory     `json:"category,omitempty"`
+	State       OptCodeScanningAlertState           `json:"state,omitempty"`
+	CommitSha   OptString                           `json:"commit_sha,omitempty"`
+	Message     OptCodeScanningAlertInstanceMessage `json:"message,omitempty"`
+	Location    OptCodeScanningAlertLocation        `json:"location,omitempty"`
+	HTMLURL     OptString                           `json:"html_url,omitempty"`
 	// Classifications that have been applied to the file that triggered the alert.
 	// For example identifying it as documentation, or a generated file.
-	Classifications []NilCodeScanningAlertClassification `json:"classifications"`
+	Classifications []NilCodeScanningAlertClassification `json:"classifications,omitempty"`
 }
 
 // GetRef returns the value of Ref.
@@ -8684,7 +8684,7 @@ func (s *CodeScanningAlertInstance) SetClassifications(val []NilCodeScanningAler
 }
 
 type CodeScanningAlertInstanceMessage struct {
-	Text OptString `json:"text"`
+	Text OptString `json:"text,omitempty"`
 }
 
 // GetText returns the value of Text.
@@ -8836,11 +8836,11 @@ func (s *CodeScanningAlertItems) SetMostRecentInstance(val CodeScanningAlertInst
 // Describe a region within a file for the alert.
 // Ref: #/components/schemas/code-scanning-alert-location
 type CodeScanningAlertLocation struct {
-	Path        OptString `json:"path"`
-	StartLine   OptInt    `json:"start_line"`
-	EndLine     OptInt    `json:"end_line"`
-	StartColumn OptInt    `json:"start_column"`
-	EndColumn   OptInt    `json:"end_column"`
+	Path        OptString `json:"path,omitempty"`
+	StartLine   OptInt    `json:"start_line,omitempty"`
+	EndLine     OptInt    `json:"end_line,omitempty"`
+	StartColumn OptInt    `json:"start_column,omitempty"`
+	EndColumn   OptInt    `json:"end_column,omitempty"`
 }
 
 // GetPath returns the value of Path.
@@ -8896,21 +8896,21 @@ func (s *CodeScanningAlertLocation) SetEndColumn(val OptInt) {
 // Ref: #/components/schemas/code-scanning-alert-rule
 type CodeScanningAlertRule struct {
 	// A unique identifier for the rule used to detect the alert.
-	ID OptNilString `json:"id"`
+	ID OptNilString `json:"id,omitempty"`
 	// The name of the rule used to detect the alert.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The severity of the alert.
-	Severity OptNilCodeScanningAlertRuleSeverity `json:"severity"`
+	Severity OptNilCodeScanningAlertRuleSeverity `json:"severity,omitempty"`
 	// The security severity of the alert.
-	SecuritySeverityLevel OptNilCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level"`
+	SecuritySeverityLevel OptNilCodeScanningAlertRuleSecuritySeverityLevel `json:"security_severity_level,omitempty"`
 	// A short description of the rule used to detect the alert.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Description of the rule used to detect the alert.
-	FullDescription OptString `json:"full_description"`
+	FullDescription OptString `json:"full_description,omitempty"`
 	// A set of tags applicable for the rule.
-	Tags OptNilStringArray `json:"tags"`
+	Tags OptNilStringArray `json:"tags,omitempty"`
 	// Detailed documentation for the rule as GitHub Flavored Markdown.
-	Help OptNilString `json:"help"`
+	Help OptNilString `json:"help,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -9016,13 +9016,13 @@ const (
 // Ref: #/components/schemas/code-scanning-alert-rule-summary
 type CodeScanningAlertRuleSummary struct {
 	// A unique identifier for the rule used to detect the alert.
-	ID OptNilString `json:"id"`
+	ID OptNilString `json:"id,omitempty"`
 	// The name of the rule used to detect the alert.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The severity of the alert.
-	Severity OptNilCodeScanningAlertRuleSummarySeverity `json:"severity"`
+	Severity OptNilCodeScanningAlertRuleSummarySeverity `json:"severity,omitempty"`
 	// A short description of the rule used to detect the alert.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -9102,7 +9102,7 @@ type CodeScanningAnalysis struct {
 	CommitSha   CodeScanningAnalysisCommitSha   `json:"commit_sha"`
 	AnalysisKey CodeScanningAnalysisAnalysisKey `json:"analysis_key"`
 	Environment CodeScanningAnalysisEnvironment `json:"environment"`
-	Category    OptCodeScanningAnalysisCategory `json:"category"`
+	Category    OptCodeScanningAnalysisCategory `json:"category,omitempty"`
 	Error       string                          `json:"error"`
 	CreatedAt   CodeScanningAnalysisCreatedAt   `json:"created_at"`
 	// The total number of results in the analysis.
@@ -9117,7 +9117,7 @@ type CodeScanningAnalysis struct {
 	Deletable bool                        `json:"deletable"`
 	// Warning generated when processing the analysis.
 	Warning  string    `json:"warning"`
-	ToolName OptString `json:"tool_name"`
+	ToolName OptString `json:"tool_name,omitempty"`
 }
 
 // GetRef returns the value of Ref.
@@ -9329,9 +9329,9 @@ type CodeScanningAnalysisSarifID string
 
 // Ref: #/components/schemas/code-scanning-analysis-tool
 type CodeScanningAnalysisTool struct {
-	Name    OptCodeScanningAnalysisToolName       `json:"name"`
-	Version OptNilCodeScanningAnalysisToolVersion `json:"version"`
-	GUID    OptNilCodeScanningAnalysisToolGUID    `json:"guid"`
+	Name    OptCodeScanningAnalysisToolName       `json:"name,omitempty"`
+	Version OptNilCodeScanningAnalysisToolVersion `json:"version,omitempty"`
+	GUID    OptNilCodeScanningAnalysisToolGUID    `json:"guid,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -9445,9 +9445,9 @@ type CodeScanningRef string
 
 // Ref: #/components/schemas/code-scanning-sarifs-receipt
 type CodeScanningSarifsReceipt struct {
-	ID OptCodeScanningAnalysisSarifID `json:"id"`
+	ID OptCodeScanningAnalysisSarifID `json:"id,omitempty"`
 	// The REST API URL for checking the status of the upload.
-	URL OptURI `json:"url"`
+	URL OptURI `json:"url,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -9476,9 +9476,9 @@ func (*CodeScanningSarifsReceipt) codeScanningUploadSarifRes() {}
 type CodeScanningSarifsStatus struct {
 	// `pending` files have not yet been processed, while `complete` means all results in the SARIF have
 	// been stored.
-	ProcessingStatus OptCodeScanningSarifsStatusProcessingStatus `json:"processing_status"`
+	ProcessingStatus OptCodeScanningSarifsStatusProcessingStatus `json:"processing_status,omitempty"`
 	// The REST API URL for getting the analyses associated with the upload.
-	AnalysesURL OptNilURI `json:"analyses_url"`
+	AnalysesURL OptNilURI `json:"analyses_url,omitempty"`
 }
 
 // GetProcessingStatus returns the value of ProcessingStatus.
@@ -9522,7 +9522,7 @@ func (*CodeScanningUpdateAlertApplicationJSONNotFound) codeScanningUpdateAlertRe
 
 type CodeScanningUpdateAlertReq struct {
 	State           CodeScanningAlertSetState              `json:"state"`
-	DismissedReason OptNilCodeScanningAlertDismissedReason `json:"dismissed_reason"`
+	DismissedReason OptNilCodeScanningAlertDismissedReason `json:"dismissed_reason,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -9565,15 +9565,15 @@ type CodeScanningUploadSarifReq struct {
 	// The base directory used in the analysis, as it appears in the SARIF file.
 	// This property is used to convert file paths from absolute to relative, so that alerts can be
 	// mapped to their correct location in the repository.
-	CheckoutURI OptURI `json:"checkout_uri"`
+	CheckoutURI OptURI `json:"checkout_uri,omitempty"`
 	// The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.
 	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	StartedAt OptDateTime `json:"started_at"`
+	StartedAt OptDateTime `json:"started_at,omitempty"`
 	// The name of the tool used to generate the code scanning analysis. If this parameter is not used,
 	// the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be
 	// available for filtering using the `tool_guid` parameter of operations such as `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts`.
-	ToolName OptString `json:"tool_name"`
+	ToolName OptString `json:"tool_name,omitempty"`
 }
 
 // GetCommitSha returns the value of CommitSha.
@@ -9652,11 +9652,11 @@ type CodeSearchResultItem struct {
 	HTMLURL        url.URL                  `json:"html_url"`
 	Repository     MinimalRepository        `json:"repository"`
 	Score          float64                  `json:"score"`
-	FileSize       OptInt                   `json:"file_size"`
-	Language       OptNilString             `json:"language"`
-	LastModifiedAt OptDateTime              `json:"last_modified_at"`
-	LineNumbers    []string                 `json:"line_numbers"`
-	TextMatches    *SearchResultTextMatches `json:"text_matches"`
+	FileSize       OptInt                   `json:"file_size,omitempty"`
+	Language       OptNilString             `json:"language,omitempty"`
+	LastModifiedAt OptDateTime              `json:"last_modified_at,omitempty"`
+	LineNumbers    []string                 `json:"line_numbers,omitempty"`
+	TextMatches    *SearchResultTextMatches `json:"text_matches,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -9798,8 +9798,8 @@ func (CodesOfConductGetAllCodesOfConductOKApplicationJSON) codesOfConductGetAllC
 type Collaborator struct {
 	Login             string                     `json:"login"`
 	ID                int                        `json:"id"`
-	Email             OptNilString               `json:"email"`
-	Name              OptNilString               `json:"name"`
+	Email             OptNilString               `json:"email,omitempty"`
+	Name              OptNilString               `json:"name,omitempty"`
 	NodeID            string                     `json:"node_id"`
 	AvatarURL         url.URL                    `json:"avatar_url"`
 	GravatarID        NilString                  `json:"gravatar_id"`
@@ -9816,7 +9816,7 @@ type Collaborator struct {
 	ReceivedEventsURL url.URL                    `json:"received_events_url"`
 	Type              string                     `json:"type"`
 	SiteAdmin         bool                       `json:"site_admin"`
-	Permissions       OptCollaboratorPermissions `json:"permissions"`
+	Permissions       OptCollaboratorPermissions `json:"permissions,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -10031,9 +10031,9 @@ func (s *Collaborator) SetPermissions(val OptCollaboratorPermissions) {
 
 type CollaboratorPermissions struct {
 	Pull     bool    `json:"pull"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Push     bool    `json:"push"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 	Admin    bool    `json:"admin"`
 }
 
@@ -10223,8 +10223,8 @@ type Commit struct {
 	Author      NilNullableSimpleUser `json:"author"`
 	Committer   NilNullableSimpleUser `json:"committer"`
 	Parents     []CommitParentsItem   `json:"parents"`
-	Stats       OptCommitStats        `json:"stats"`
-	Files       []CommitFilesItem     `json:"files"`
+	Stats       OptCommitStats        `json:"stats,omitempty"`
+	Files       []CommitFilesItem     `json:"files,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -10394,7 +10394,7 @@ type CommitComment struct {
 	CreatedAt         time.Time             `json:"created_at"`
 	UpdatedAt         time.Time             `json:"updated_at"`
 	AuthorAssociation AuthorAssociation     `json:"author_association"`
-	Reactions         OptReactionRollup     `json:"reactions"`
+	Reactions         OptReactionRollup     `json:"reactions,omitempty"`
 }
 
 // GetHTMLURL returns the value of HTMLURL.
@@ -10542,7 +10542,7 @@ func (*CommitComment) reposUpdateCommitCommentRes() {}
 
 // CommitCommentHeaders wraps CommitComment with response headers.
 type CommitCommentHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response CommitComment
 }
 
@@ -10575,7 +10575,7 @@ type CommitCommit struct {
 	Message      string             `json:"message"`
 	CommentCount int                `json:"comment_count"`
 	Tree         CommitCommitTree   `json:"tree"`
-	Verification OptVerification    `json:"verification"`
+	Verification OptVerification    `json:"verification,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -10688,7 +10688,7 @@ type CommitComparison struct {
 	BehindBy        int                    `json:"behind_by"`
 	TotalCommits    int                    `json:"total_commits"`
 	Commits         []Commit               `json:"commits"`
-	Files           []DiffEntry            `json:"files"`
+	Files           []DiffEntry            `json:"files,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -10833,17 +10833,17 @@ const (
 )
 
 type CommitFilesItem struct {
-	Filename         OptString `json:"filename"`
-	Additions        OptInt    `json:"additions"`
-	Deletions        OptInt    `json:"deletions"`
-	Changes          OptInt    `json:"changes"`
-	Status           OptString `json:"status"`
-	RawURL           OptString `json:"raw_url"`
-	BlobURL          OptString `json:"blob_url"`
-	Patch            OptString `json:"patch"`
-	Sha              OptString `json:"sha"`
-	ContentsURL      OptString `json:"contents_url"`
-	PreviousFilename OptString `json:"previous_filename"`
+	Filename         OptString `json:"filename,omitempty"`
+	Additions        OptInt    `json:"additions,omitempty"`
+	Deletions        OptInt    `json:"deletions,omitempty"`
+	Changes          OptInt    `json:"changes,omitempty"`
+	Status           OptString `json:"status,omitempty"`
+	RawURL           OptString `json:"raw_url,omitempty"`
+	BlobURL          OptString `json:"blob_url,omitempty"`
+	Patch            OptString `json:"patch,omitempty"`
+	Sha              OptString `json:"sha,omitempty"`
+	ContentsURL      OptString `json:"contents_url,omitempty"`
+	PreviousFilename OptString `json:"previous_filename,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -10959,7 +10959,7 @@ func (s *CommitFilesItem) SetPreviousFilename(val OptString) {
 type CommitParentsItem struct {
 	Sha     string  `json:"sha"`
 	URL     url.URL `json:"url"`
-	HTMLURL OptURI  `json:"html_url"`
+	HTMLURL OptURI  `json:"html_url,omitempty"`
 }
 
 // GetSha returns the value of Sha.
@@ -11006,7 +11006,7 @@ type CommitSearchResultItem struct {
 	Repository  MinimalRepository                   `json:"repository"`
 	Score       float64                             `json:"score"`
 	NodeID      string                              `json:"node_id"`
-	TextMatches *SearchResultTextMatches            `json:"text_matches"`
+	TextMatches *SearchResultTextMatches            `json:"text_matches,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -11136,7 +11136,7 @@ type CommitSearchResultItemCommit struct {
 	Message      string                             `json:"message"`
 	Tree         CommitSearchResultItemCommitTree   `json:"tree"`
 	URL          url.URL                            `json:"url"`
-	Verification OptVerification                    `json:"verification"`
+	Verification OptVerification                    `json:"verification,omitempty"`
 }
 
 // GetAuthor returns the value of Author.
@@ -11271,9 +11271,9 @@ func (s *CommitSearchResultItemCommitTree) SetURL(val url.URL) {
 }
 
 type CommitSearchResultItemParentsItem struct {
-	URL     OptString `json:"url"`
-	HTMLURL OptString `json:"html_url"`
-	Sha     OptString `json:"sha"`
+	URL     OptString `json:"url,omitempty"`
+	HTMLURL OptString `json:"html_url,omitempty"`
+	Sha     OptString `json:"sha,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -11307,9 +11307,9 @@ func (s *CommitSearchResultItemParentsItem) SetSha(val OptString) {
 }
 
 type CommitStats struct {
-	Additions OptInt `json:"additions"`
-	Deletions OptInt `json:"deletions"`
-	Total     OptInt `json:"total"`
+	Additions OptInt `json:"additions,omitempty"`
+	Deletions OptInt `json:"deletions,omitempty"`
+	Total     OptInt `json:"total,omitempty"`
 }
 
 // GetAdditions returns the value of Additions.
@@ -11350,7 +11350,7 @@ type CommunityProfile struct {
 	Documentation         NilString             `json:"documentation"`
 	Files                 CommunityProfileFiles `json:"files"`
 	UpdatedAt             NilDateTime           `json:"updated_at"`
-	ContentReportsEnabled OptBool               `json:"content_reports_enabled"`
+	ContentReportsEnabled OptBool               `json:"content_reports_enabled,omitempty"`
 }
 
 // GetHealthPercentage returns the value of HealthPercentage.
@@ -11508,8 +11508,8 @@ type ContentFile struct {
 	HTMLURL         NilURI           `json:"html_url"`
 	DownloadURL     NilURI           `json:"download_url"`
 	Links           ContentFileLinks `json:"_links"`
-	Target          OptString        `json:"target"`
-	SubmoduleGitURL OptString        `json:"submodule_git_url"`
+	Target          OptString        `json:"target,omitempty"`
+	SubmoduleGitURL OptString        `json:"submodule_git_url,omitempty"`
 }
 
 // GetType returns the value of Type.
@@ -11701,7 +11701,7 @@ type ContentReferenceAttachment struct {
 	// The body of the attachment.
 	Body string `json:"body"`
 	// The node_id of the content attachment.
-	NodeID OptString `json:"node_id"`
+	NodeID OptString `json:"node_id,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -11798,27 +11798,27 @@ func (s *ContentTraffic) SetUniques(val int) {
 // Contributor.
 // Ref: #/components/schemas/contributor
 type Contributor struct {
-	Login             OptString    `json:"login"`
-	ID                OptInt       `json:"id"`
-	NodeID            OptString    `json:"node_id"`
-	AvatarURL         OptURI       `json:"avatar_url"`
-	GravatarID        OptNilString `json:"gravatar_id"`
-	URL               OptURI       `json:"url"`
-	HTMLURL           OptURI       `json:"html_url"`
-	FollowersURL      OptURI       `json:"followers_url"`
-	FollowingURL      OptString    `json:"following_url"`
-	GistsURL          OptString    `json:"gists_url"`
-	StarredURL        OptString    `json:"starred_url"`
-	SubscriptionsURL  OptURI       `json:"subscriptions_url"`
-	OrganizationsURL  OptURI       `json:"organizations_url"`
-	ReposURL          OptURI       `json:"repos_url"`
-	EventsURL         OptString    `json:"events_url"`
-	ReceivedEventsURL OptURI       `json:"received_events_url"`
+	Login             OptString    `json:"login,omitempty"`
+	ID                OptInt       `json:"id,omitempty"`
+	NodeID            OptString    `json:"node_id,omitempty"`
+	AvatarURL         OptURI       `json:"avatar_url,omitempty"`
+	GravatarID        OptNilString `json:"gravatar_id,omitempty"`
+	URL               OptURI       `json:"url,omitempty"`
+	HTMLURL           OptURI       `json:"html_url,omitempty"`
+	FollowersURL      OptURI       `json:"followers_url,omitempty"`
+	FollowingURL      OptString    `json:"following_url,omitempty"`
+	GistsURL          OptString    `json:"gists_url,omitempty"`
+	StarredURL        OptString    `json:"starred_url,omitempty"`
+	SubscriptionsURL  OptURI       `json:"subscriptions_url,omitempty"`
+	OrganizationsURL  OptURI       `json:"organizations_url,omitempty"`
+	ReposURL          OptURI       `json:"repos_url,omitempty"`
+	EventsURL         OptString    `json:"events_url,omitempty"`
+	ReceivedEventsURL OptURI       `json:"received_events_url,omitempty"`
 	Type              string       `json:"type"`
-	SiteAdmin         OptBool      `json:"site_admin"`
+	SiteAdmin         OptBool      `json:"site_admin,omitempty"`
 	Contributions     int          `json:"contributions"`
-	Email             OptString    `json:"email"`
-	Name              OptString    `json:"name"`
+	Email             OptString    `json:"email,omitempty"`
+	Name              OptString    `json:"name,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -12070,10 +12070,10 @@ func (s *ContributorActivity) SetWeeks(val []ContributorActivityWeeksItem) {
 }
 
 type ContributorActivityWeeksItem struct {
-	W OptInt `json:"w"`
-	A OptInt `json:"a"`
-	D OptInt `json:"d"`
-	C OptInt `json:"c"`
+	W OptInt `json:"w,omitempty"`
+	A OptInt `json:"a,omitempty"`
+	D OptInt `json:"d,omitempty"`
+	C OptInt `json:"c,omitempty"`
 }
 
 // GetW returns the value of W.
@@ -12127,21 +12127,21 @@ type CredentialAuthorization struct {
 	CredentialType string `json:"credential_type"`
 	// Last eight characters of the credential. Only included in responses with credential_type of
 	// personal access token.
-	TokenLastEight OptString `json:"token_last_eight"`
+	TokenLastEight OptString `json:"token_last_eight,omitempty"`
 	// Date when the credential was authorized for use.
 	CredentialAuthorizedAt time.Time `json:"credential_authorized_at"`
 	// List of oauth scopes the token has been granted.
-	Scopes []string `json:"scopes"`
+	Scopes []string `json:"scopes,omitempty"`
 	// Unique string to distinguish the credential. Only included in responses with credential_type of
 	// SSH Key.
-	Fingerprint OptString `json:"fingerprint"`
+	Fingerprint OptString `json:"fingerprint,omitempty"`
 	// Date when the credential was last accessed. May be null if it was never accessed.
-	CredentialAccessedAt   OptNilDateTime `json:"credential_accessed_at"`
-	AuthorizedCredentialID OptNilInt      `json:"authorized_credential_id"`
+	CredentialAccessedAt   OptNilDateTime `json:"credential_accessed_at,omitempty"`
+	AuthorizedCredentialID OptNilInt      `json:"authorized_credential_id,omitempty"`
 	// The title given to the ssh key. This will only be present when the credential is an ssh key.
-	AuthorizedCredentialTitle OptNilString `json:"authorized_credential_title"`
+	AuthorizedCredentialTitle OptNilString `json:"authorized_credential_title,omitempty"`
 	// The note given to the token. This will only be present when the credential is a token.
-	AuthorizedCredentialNote OptNilString `json:"authorized_credential_note"`
+	AuthorizedCredentialNote OptNilString `json:"authorized_credential_note,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -12340,7 +12340,7 @@ func (*DeployKey) reposGetDeployKeyRes() {}
 
 // DeployKeyHeaders wraps DeployKey with response headers.
 type DeployKeyHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response DeployKey
 }
 
@@ -12379,7 +12379,7 @@ type Deployment struct {
 	// Parameter to specify a task to execute.
 	Task                string            `json:"task"`
 	Payload             DeploymentPayload `json:"payload"`
-	OriginalEnvironment OptString         `json:"original_environment"`
+	OriginalEnvironment OptString         `json:"original_environment,omitempty"`
 	// Name for the target deployment environment.
 	Environment   string                `json:"environment"`
 	Description   NilString             `json:"description"`
@@ -12390,10 +12390,10 @@ type Deployment struct {
 	RepositoryURL url.URL               `json:"repository_url"`
 	// Specifies if the given environment is will no longer exist at some point in the future. Default:
 	// false.
-	TransientEnvironment OptBool `json:"transient_environment"`
+	TransientEnvironment OptBool `json:"transient_environment,omitempty"`
 	// Specifies if the given environment is one that end-users directly interact with. Default: false.
-	ProductionEnvironment OptBool                   `json:"production_environment"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	ProductionEnvironment OptBool                   `json:"production_environment,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -12666,7 +12666,7 @@ type DeploymentSimple struct {
 	NodeID string `json:"node_id"`
 	// Parameter to specify a task to execute.
 	Task                string    `json:"task"`
-	OriginalEnvironment OptString `json:"original_environment"`
+	OriginalEnvironment OptString `json:"original_environment,omitempty"`
 	// Name for the target deployment environment.
 	Environment   string    `json:"environment"`
 	Description   NilString `json:"description"`
@@ -12676,10 +12676,10 @@ type DeploymentSimple struct {
 	RepositoryURL url.URL   `json:"repository_url"`
 	// Specifies if the given environment is will no longer exist at some point in the future. Default:
 	// false.
-	TransientEnvironment OptBool `json:"transient_environment"`
+	TransientEnvironment OptBool `json:"transient_environment,omitempty"`
 	// Specifies if the given environment is one that end-users directly interact with. Default: false.
-	ProductionEnvironment OptBool                   `json:"production_environment"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	ProductionEnvironment OptBool                   `json:"production_environment,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -12834,7 +12834,7 @@ type DeploymentStatus struct {
 	// A short description of the status.
 	Description string `json:"description"`
 	// The environment of the deployment that the status is for.
-	Environment OptString `json:"environment"`
+	Environment OptString `json:"environment,omitempty"`
 	// Deprecated: the URL to associate with this status.
 	TargetURL     url.URL   `json:"target_url"`
 	CreatedAt     time.Time `json:"created_at"`
@@ -12842,10 +12842,10 @@ type DeploymentStatus struct {
 	DeploymentURL url.URL   `json:"deployment_url"`
 	RepositoryURL url.URL   `json:"repository_url"`
 	// The URL for accessing your environment.
-	EnvironmentURL OptURI `json:"environment_url"`
+	EnvironmentURL OptURI `json:"environment_url,omitempty"`
 	// The URL to associate with this status.
-	LogURL                OptURI                    `json:"log_url"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	LogURL                OptURI                    `json:"log_url,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -13002,7 +13002,7 @@ func (*DeploymentStatus) reposGetDeploymentStatusRes() {}
 
 // DeploymentStatusHeaders wraps DeploymentStatus with response headers.
 type DeploymentStatusHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response DeploymentStatus
 }
 
@@ -13053,8 +13053,8 @@ type DiffEntry struct {
 	BlobURL          url.URL         `json:"blob_url"`
 	RawURL           url.URL         `json:"raw_url"`
 	ContentsURL      url.URL         `json:"contents_url"`
-	Patch            OptString       `json:"patch"`
-	PreviousFilename OptString       `json:"previous_filename"`
+	Patch            OptString       `json:"patch,omitempty"`
+	PreviousFilename OptString       `json:"previous_filename,omitempty"`
 }
 
 // GetSha returns the value of Sha.
@@ -13283,11 +13283,11 @@ type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq struct {
 	Name string `json:"name"`
 	// Visibility of a runner group. You can select all organizations or select individual organization.
 	// Can be one of: `all` or `selected`.
-	Visibility OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility `json:"visibility"`
+	Visibility OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility `json:"visibility,omitempty"`
 	// List of organization IDs that can access the runner group.
-	SelectedOrganizationIds []int `json:"selected_organization_ids"`
+	SelectedOrganizationIds []int `json:"selected_organization_ids,omitempty"`
 	// List of runner IDs to add to the runner group.
-	Runners []int `json:"runners"`
+	Runners []int `json:"runners,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -13448,8 +13448,8 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) SetRunnerGrou
 }
 
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseOK struct {
-	TotalCount OptFloat64 `json:"total_count"`
-	Runners    []Runner   `json:"runners"`
+	TotalCount OptFloat64 `json:"total_count,omitempty"`
+	Runners    []Runner   `json:"runners,omitempty"`
 }
 
 // GetTotalCount returns the value of TotalCount.
@@ -13474,7 +13474,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) SetRunners(val []R
 
 // EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders wraps EnterpriseAdminListSelfHostedRunnersForEnterpriseOK with response headers.
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
 }
 
@@ -13525,7 +13525,7 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) SetRunners(
 
 // EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders wraps EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK with response headers.
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
 }
 
@@ -13554,7 +13554,7 @@ type EnterpriseAdminProvisionAndInviteEnterpriseGroupReq struct {
 	Schemas []string `json:"schemas"`
 	// The name of the SCIM group. This must match the GitHub organization that the group maps to.
 	DisplayName string                                                           `json:"displayName"`
-	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem `json:"members"`
+	Members     []EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem `json:"members,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -13611,7 +13611,7 @@ type EnterpriseAdminProvisionAndInviteEnterpriseUserReq struct {
 	// List of user emails.
 	Emails []EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem `json:"emails"`
 	// List of SCIM group IDs the user is a member of.
-	Groups []EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem `json:"groups"`
+	Groups []EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem `json:"groups,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -13704,7 +13704,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) SetPrimar
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem struct {
-	Value OptString `json:"value"`
+	Value OptString `json:"value,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -13758,7 +13758,7 @@ type EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent struct{}
 
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq struct {
 	EnabledOrganizations EnabledOrganizations `json:"enabled_organizations"`
-	AllowedActions       OptAllowedActions    `json:"allowed_actions"`
+	AllowedActions       OptAllowedActions    `json:"allowed_actions,omitempty"`
 }
 
 // GetEnabledOrganizations returns the value of EnabledOrganizations.
@@ -13786,7 +13786,7 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq struct {
 	Schemas []string `json:"schemas"`
 	// The name of the SCIM group. This must match the GitHub organization that the group maps to.
 	DisplayName string                                                                     `json:"displayName"`
-	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem `json:"members"`
+	Members     []EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem `json:"members,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -13843,7 +13843,7 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq struct {
 	// List of user emails.
 	Emails []EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem `json:"emails"`
 	// List of SCIM group IDs the user is a member of.
-	Groups []EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem `json:"groups"`
+	Groups []EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem `json:"groups,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -13936,7 +13936,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 }
 
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem struct {
-	Value OptString `json:"value"`
+	Value OptString `json:"value,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -14059,8 +14059,8 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) SetOperations(val 
 
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem struct {
 	Op    EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp       `json:"op"`
-	Path  OptString                                                                 `json:"path"`
-	Value OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value"`
+	Path  OptString                                                                 `json:"path,omitempty"`
+	Value OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue `json:"value,omitempty"`
 }
 
 // GetOp returns the value of Op.
@@ -14233,10 +14233,10 @@ type EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem struct{}
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq struct {
 	// Name of the runner group.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Visibility of a runner group. You can select all organizations or select individual organizations.
 	// Can be one of: `all` or `selected`.
-	Visibility OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility `json:"visibility"`
+	Visibility OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility `json:"visibility,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -14322,16 +14322,16 @@ func (s *EnvironmentApprovals) SetComment(val string) {
 
 type EnvironmentApprovalsEnvironmentsItem struct {
 	// The id of the environment.
-	ID     OptInt    `json:"id"`
-	NodeID OptString `json:"node_id"`
+	ID     OptInt    `json:"id,omitempty"`
+	NodeID OptString `json:"node_id,omitempty"`
 	// The name of the environment.
-	Name    OptString `json:"name"`
-	URL     OptString `json:"url"`
-	HTMLURL OptString `json:"html_url"`
+	Name    OptString `json:"name,omitempty"`
+	URL     OptString `json:"url,omitempty"`
+	HTMLURL OptString `json:"html_url,omitempty"`
 	// The time that the environment was created, in ISO 8601 format.
-	CreatedAt OptDateTime `json:"created_at"`
+	CreatedAt OptDateTime `json:"created_at,omitempty"`
 	// The time that the environment was last updated, in ISO 8601 format.
-	UpdatedAt OptDateTime `json:"updated_at"`
+	UpdatedAt OptDateTime `json:"updated_at,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -14419,7 +14419,7 @@ type Event struct {
 	Type      NilString    `json:"type"`
 	Actor     Actor        `json:"actor"`
 	Repo      EventRepo    `json:"repo"`
-	Org       OptActor     `json:"org"`
+	Org       OptActor     `json:"org,omitempty"`
 	Payload   EventPayload `json:"payload"`
 	Public    bool         `json:"public"`
 	CreatedAt NilDateTime  `json:"created_at"`
@@ -14506,10 +14506,10 @@ func (s *Event) SetCreatedAt(val NilDateTime) {
 }
 
 type EventPayload struct {
-	Action  OptString               `json:"action"`
-	Issue   OptIssueSimple          `json:"issue"`
-	Comment OptIssueComment         `json:"comment"`
-	Pages   []EventPayloadPagesItem `json:"pages"`
+	Action  OptString               `json:"action,omitempty"`
+	Issue   OptIssueSimple          `json:"issue,omitempty"`
+	Comment OptIssueComment         `json:"comment,omitempty"`
+	Pages   []EventPayloadPagesItem `json:"pages,omitempty"`
 }
 
 // GetAction returns the value of Action.
@@ -14553,12 +14553,12 @@ func (s *EventPayload) SetPages(val []EventPayloadPagesItem) {
 }
 
 type EventPayloadPagesItem struct {
-	PageName OptString    `json:"page_name"`
-	Title    OptString    `json:"title"`
-	Summary  OptNilString `json:"summary"`
-	Action   OptString    `json:"action"`
-	Sha      OptString    `json:"sha"`
-	HTMLURL  OptString    `json:"html_url"`
+	PageName OptString    `json:"page_name,omitempty"`
+	Title    OptString    `json:"title,omitempty"`
+	Summary  OptNilString `json:"summary,omitempty"`
+	Action   OptString    `json:"action,omitempty"`
+	Sha      OptString    `json:"sha,omitempty"`
+	HTMLURL  OptString    `json:"html_url,omitempty"`
 }
 
 // GetPageName returns the value of PageName.
@@ -14662,12 +14662,12 @@ func (s *EventRepo) SetURL(val url.URL) {
 type Feed struct {
 	TimelineURL                 string    `json:"timeline_url"`
 	UserURL                     string    `json:"user_url"`
-	CurrentUserPublicURL        OptString `json:"current_user_public_url"`
-	CurrentUserURL              OptString `json:"current_user_url"`
-	CurrentUserActorURL         OptString `json:"current_user_actor_url"`
-	CurrentUserOrganizationURL  OptString `json:"current_user_organization_url"`
-	CurrentUserOrganizationUrls []url.URL `json:"current_user_organization_urls"`
-	SecurityAdvisoriesURL       OptString `json:"security_advisories_url"`
+	CurrentUserPublicURL        OptString `json:"current_user_public_url,omitempty"`
+	CurrentUserURL              OptString `json:"current_user_url,omitempty"`
+	CurrentUserActorURL         OptString `json:"current_user_actor_url,omitempty"`
+	CurrentUserOrganizationURL  OptString `json:"current_user_organization_url,omitempty"`
+	CurrentUserOrganizationUrls []url.URL `json:"current_user_organization_urls,omitempty"`
+	SecurityAdvisoriesURL       OptString `json:"security_advisories_url,omitempty"`
 	Links                       FeedLinks `json:"_links"`
 }
 
@@ -14764,12 +14764,12 @@ func (s *Feed) SetLinks(val FeedLinks) {
 type FeedLinks struct {
 	Timeline                 LinkWithType    `json:"timeline"`
 	User                     LinkWithType    `json:"user"`
-	SecurityAdvisories       OptLinkWithType `json:"security_advisories"`
-	CurrentUser              OptLinkWithType `json:"current_user"`
-	CurrentUserPublic        OptLinkWithType `json:"current_user_public"`
-	CurrentUserActor         OptLinkWithType `json:"current_user_actor"`
-	CurrentUserOrganization  OptLinkWithType `json:"current_user_organization"`
-	CurrentUserOrganizations []LinkWithType  `json:"current_user_organizations"`
+	SecurityAdvisories       OptLinkWithType `json:"security_advisories,omitempty"`
+	CurrentUser              OptLinkWithType `json:"current_user,omitempty"`
+	CurrentUserPublic        OptLinkWithType `json:"current_user_public,omitempty"`
+	CurrentUserActor         OptLinkWithType `json:"current_user_actor,omitempty"`
+	CurrentUserOrganization  OptLinkWithType `json:"current_user_organization,omitempty"`
+	CurrentUserOrganizations []LinkWithType  `json:"current_user_organizations,omitempty"`
 }
 
 // GetTimeline returns the value of Timeline.
@@ -14882,16 +14882,16 @@ func (s *FileCommit) SetCommit(val FileCommitCommit) {
 func (*FileCommit) reposDeleteFileRes() {}
 
 type FileCommitCommit struct {
-	Sha          OptString                       `json:"sha"`
-	NodeID       OptString                       `json:"node_id"`
-	URL          OptString                       `json:"url"`
-	HTMLURL      OptString                       `json:"html_url"`
-	Author       OptFileCommitCommitAuthor       `json:"author"`
-	Committer    OptFileCommitCommitCommitter    `json:"committer"`
-	Message      OptString                       `json:"message"`
-	Tree         OptFileCommitCommitTree         `json:"tree"`
-	Parents      []FileCommitCommitParentsItem   `json:"parents"`
-	Verification OptFileCommitCommitVerification `json:"verification"`
+	Sha          OptString                       `json:"sha,omitempty"`
+	NodeID       OptString                       `json:"node_id,omitempty"`
+	URL          OptString                       `json:"url,omitempty"`
+	HTMLURL      OptString                       `json:"html_url,omitempty"`
+	Author       OptFileCommitCommitAuthor       `json:"author,omitempty"`
+	Committer    OptFileCommitCommitCommitter    `json:"committer,omitempty"`
+	Message      OptString                       `json:"message,omitempty"`
+	Tree         OptFileCommitCommitTree         `json:"tree,omitempty"`
+	Parents      []FileCommitCommitParentsItem   `json:"parents,omitempty"`
+	Verification OptFileCommitCommitVerification `json:"verification,omitempty"`
 }
 
 // GetSha returns the value of Sha.
@@ -14995,9 +14995,9 @@ func (s *FileCommitCommit) SetVerification(val OptFileCommitCommitVerification) 
 }
 
 type FileCommitCommitAuthor struct {
-	Date  OptString `json:"date"`
-	Name  OptString `json:"name"`
-	Email OptString `json:"email"`
+	Date  OptString `json:"date,omitempty"`
+	Name  OptString `json:"name,omitempty"`
+	Email OptString `json:"email,omitempty"`
 }
 
 // GetDate returns the value of Date.
@@ -15031,9 +15031,9 @@ func (s *FileCommitCommitAuthor) SetEmail(val OptString) {
 }
 
 type FileCommitCommitCommitter struct {
-	Date  OptString `json:"date"`
-	Name  OptString `json:"name"`
-	Email OptString `json:"email"`
+	Date  OptString `json:"date,omitempty"`
+	Name  OptString `json:"name,omitempty"`
+	Email OptString `json:"email,omitempty"`
 }
 
 // GetDate returns the value of Date.
@@ -15067,9 +15067,9 @@ func (s *FileCommitCommitCommitter) SetEmail(val OptString) {
 }
 
 type FileCommitCommitParentsItem struct {
-	URL     OptString `json:"url"`
-	HTMLURL OptString `json:"html_url"`
-	Sha     OptString `json:"sha"`
+	URL     OptString `json:"url,omitempty"`
+	HTMLURL OptString `json:"html_url,omitempty"`
+	Sha     OptString `json:"sha,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -15103,8 +15103,8 @@ func (s *FileCommitCommitParentsItem) SetSha(val OptString) {
 }
 
 type FileCommitCommitTree struct {
-	URL OptString `json:"url"`
-	Sha OptString `json:"sha"`
+	URL OptString `json:"url,omitempty"`
+	Sha OptString `json:"sha,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -15128,10 +15128,10 @@ func (s *FileCommitCommitTree) SetSha(val OptString) {
 }
 
 type FileCommitCommitVerification struct {
-	Verified  OptBool      `json:"verified"`
-	Reason    OptString    `json:"reason"`
-	Signature OptNilString `json:"signature"`
-	Payload   OptNilString `json:"payload"`
+	Verified  OptBool      `json:"verified,omitempty"`
+	Reason    OptString    `json:"reason,omitempty"`
+	Signature OptNilString `json:"signature,omitempty"`
+	Payload   OptNilString `json:"payload,omitempty"`
 }
 
 // GetVerified returns the value of Verified.
@@ -15175,16 +15175,16 @@ func (s *FileCommitCommitVerification) SetPayload(val OptNilString) {
 }
 
 type FileCommitContent struct {
-	Name        OptString                 `json:"name"`
-	Path        OptString                 `json:"path"`
-	Sha         OptString                 `json:"sha"`
-	Size        OptInt                    `json:"size"`
-	URL         OptString                 `json:"url"`
-	HTMLURL     OptString                 `json:"html_url"`
-	GitURL      OptString                 `json:"git_url"`
-	DownloadURL OptString                 `json:"download_url"`
-	Type        OptString                 `json:"type"`
-	Links       OptFileCommitContentLinks `json:"_links"`
+	Name        OptString                 `json:"name,omitempty"`
+	Path        OptString                 `json:"path,omitempty"`
+	Sha         OptString                 `json:"sha,omitempty"`
+	Size        OptInt                    `json:"size,omitempty"`
+	URL         OptString                 `json:"url,omitempty"`
+	HTMLURL     OptString                 `json:"html_url,omitempty"`
+	GitURL      OptString                 `json:"git_url,omitempty"`
+	DownloadURL OptString                 `json:"download_url,omitempty"`
+	Type        OptString                 `json:"type,omitempty"`
+	Links       OptFileCommitContentLinks `json:"_links,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -15288,9 +15288,9 @@ func (s *FileCommitContent) SetLinks(val OptFileCommitContentLinks) {
 }
 
 type FileCommitContentLinks struct {
-	Self OptString `json:"self"`
-	Git  OptString `json:"git"`
-	HTML OptString `json:"html"`
+	Self OptString `json:"self,omitempty"`
+	Git  OptString `json:"git,omitempty"`
+	HTML OptString `json:"html,omitempty"`
 }
 
 // GetSelf returns the value of Self.
@@ -15324,9 +15324,9 @@ func (s *FileCommitContentLinks) SetHTML(val OptString) {
 }
 
 type ForbiddenGist struct {
-	Block            OptForbiddenGistBlock `json:"block"`
-	Message          OptString             `json:"message"`
-	DocumentationURL OptString             `json:"documentation_url"`
+	Block            OptForbiddenGistBlock `json:"block,omitempty"`
+	Message          OptString             `json:"message,omitempty"`
+	DocumentationURL OptString             `json:"documentation_url,omitempty"`
 }
 
 // GetBlock returns the value of Block.
@@ -15363,9 +15363,9 @@ func (*ForbiddenGist) gistsGetCommentRes() {}
 func (*ForbiddenGist) gistsGetRes()        {}
 
 type ForbiddenGistBlock struct {
-	Reason    OptString    `json:"reason"`
-	CreatedAt OptString    `json:"created_at"`
-	HTMLURL   OptNilString `json:"html_url"`
+	Reason    OptString    `json:"reason,omitempty"`
+	CreatedAt OptString    `json:"created_at,omitempty"`
+	HTMLURL   OptNilString `json:"html_url,omitempty"`
 }
 
 // GetReason returns the value of Reason.
@@ -15465,8 +15465,8 @@ type FullRepository struct {
 	Size             int        `json:"size"`
 	DefaultBranch    string     `json:"default_branch"`
 	OpenIssuesCount  int        `json:"open_issues_count"`
-	IsTemplate       OptBool    `json:"is_template"`
-	Topics           []string   `json:"topics"`
+	IsTemplate       OptBool    `json:"is_template,omitempty"`
+	Topics           []string   `json:"topics,omitempty"`
 	HasIssues        bool       `json:"has_issues"`
 	HasProjects      bool       `json:"has_projects"`
 	HasWiki          bool       `json:"has_wiki"`
@@ -15476,33 +15476,33 @@ type FullRepository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility          OptString                    `json:"visibility"`
+	Visibility          OptString                    `json:"visibility,omitempty"`
 	PushedAt            time.Time                    `json:"pushed_at"`
 	CreatedAt           time.Time                    `json:"created_at"`
 	UpdatedAt           time.Time                    `json:"updated_at"`
-	Permissions         OptFullRepositoryPermissions `json:"permissions"`
-	AllowRebaseMerge    OptBool                      `json:"allow_rebase_merge"`
-	TemplateRepository  OptNilNullableRepository     `json:"template_repository"`
-	TempCloneToken      OptNilString                 `json:"temp_clone_token"`
-	AllowSquashMerge    OptBool                      `json:"allow_squash_merge"`
-	AllowAutoMerge      OptBool                      `json:"allow_auto_merge"`
-	DeleteBranchOnMerge OptBool                      `json:"delete_branch_on_merge"`
-	AllowMergeCommit    OptBool                      `json:"allow_merge_commit"`
-	AllowForking        OptBool                      `json:"allow_forking"`
+	Permissions         OptFullRepositoryPermissions `json:"permissions,omitempty"`
+	AllowRebaseMerge    OptBool                      `json:"allow_rebase_merge,omitempty"`
+	TemplateRepository  OptNilNullableRepository     `json:"template_repository,omitempty"`
+	TempCloneToken      OptNilString                 `json:"temp_clone_token,omitempty"`
+	AllowSquashMerge    OptBool                      `json:"allow_squash_merge,omitempty"`
+	AllowAutoMerge      OptBool                      `json:"allow_auto_merge,omitempty"`
+	DeleteBranchOnMerge OptBool                      `json:"delete_branch_on_merge,omitempty"`
+	AllowMergeCommit    OptBool                      `json:"allow_merge_commit,omitempty"`
+	AllowForking        OptBool                      `json:"allow_forking,omitempty"`
 	SubscribersCount    int                          `json:"subscribers_count"`
 	NetworkCount        int                          `json:"network_count"`
 	License             NilNullableLicenseSimple     `json:"license"`
-	Organization        OptNilNullableSimpleUser     `json:"organization"`
-	Parent              OptRepository                `json:"parent"`
-	Source              OptRepository                `json:"source"`
+	Organization        OptNilNullableSimpleUser     `json:"organization,omitempty"`
+	Parent              OptRepository                `json:"parent,omitempty"`
+	Source              OptRepository                `json:"source,omitempty"`
 	Forks               int                          `json:"forks"`
-	MasterBranch        OptString                    `json:"master_branch"`
+	MasterBranch        OptString                    `json:"master_branch,omitempty"`
 	OpenIssues          int                          `json:"open_issues"`
 	Watchers            int                          `json:"watchers"`
 	// Whether anonymous git access is allowed.
-	AnonymousAccessEnabled OptBool                                 `json:"anonymous_access_enabled"`
-	CodeOfConduct          OptCodeOfConductSimple                  `json:"code_of_conduct"`
-	SecurityAndAnalysis    OptNilFullRepositorySecurityAndAnalysis `json:"security_and_analysis"`
+	AnonymousAccessEnabled OptBool                                 `json:"anonymous_access_enabled,omitempty"`
+	CodeOfConduct          OptCodeOfConductSimple                  `json:"code_of_conduct,omitempty"`
+	SecurityAndAnalysis    OptNilFullRepositorySecurityAndAnalysis `json:"security_and_analysis,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -16451,9 +16451,9 @@ func (*FullRepository) reposUpdateRes()     {}
 
 type FullRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Pull     bool    `json:"pull"`
 }
 
@@ -16508,8 +16508,8 @@ func (s *FullRepositoryPermissions) SetPull(val bool) {
 }
 
 type FullRepositorySecurityAndAnalysis struct {
-	AdvancedSecurity OptFullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
-	SecretScanning   OptFullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning"`
+	AdvancedSecurity OptFullRepositorySecurityAndAnalysisAdvancedSecurity `json:"advanced_security,omitempty"`
+	SecretScanning   OptFullRepositorySecurityAndAnalysisSecretScanning   `json:"secret_scanning,omitempty"`
 }
 
 // GetAdvancedSecurity returns the value of AdvancedSecurity.
@@ -16533,7 +16533,7 @@ func (s *FullRepositorySecurityAndAnalysis) SetSecretScanning(val OptFullReposit
 }
 
 type FullRepositorySecurityAndAnalysisAdvancedSecurity struct {
-	Status OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus `json:"status"`
+	Status OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus `json:"status,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -16554,7 +16554,7 @@ const (
 )
 
 type FullRepositorySecurityAndAnalysisSecretScanning struct {
-	Status OptFullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status"`
+	Status OptFullRepositorySecurityAndAnalysisSecretScanningStatus `json:"status,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -16673,7 +16673,7 @@ func (*GistComment) gistsUpdateCommentRes() {}
 
 // GistCommentHeaders wraps GistComment with response headers.
 type GistCommentHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GistComment
 }
 
@@ -16760,9 +16760,9 @@ func (s *GistCommit) SetCommittedAt(val time.Time) {
 }
 
 type GistCommitChangeStatus struct {
-	Total     OptInt `json:"total"`
-	Additions OptInt `json:"additions"`
-	Deletions OptInt `json:"deletions"`
+	Total     OptInt `json:"total,omitempty"`
+	Additions OptInt `json:"additions,omitempty"`
+	Deletions OptInt `json:"deletions,omitempty"`
 }
 
 // GetTotal returns the value of Total.
@@ -16798,11 +16798,11 @@ func (s *GistCommitChangeStatus) SetDeletions(val OptInt) {
 // Gist History.
 // Ref: #/components/schemas/gist-history
 type GistHistory struct {
-	User         OptNilNullableSimpleUser   `json:"user"`
-	Version      OptString                  `json:"version"`
-	CommittedAt  OptDateTime                `json:"committed_at"`
-	ChangeStatus OptGistHistoryChangeStatus `json:"change_status"`
-	URL          OptURI                     `json:"url"`
+	User         OptNilNullableSimpleUser   `json:"user,omitempty"`
+	Version      OptString                  `json:"version,omitempty"`
+	CommittedAt  OptDateTime                `json:"committed_at,omitempty"`
+	ChangeStatus OptGistHistoryChangeStatus `json:"change_status,omitempty"`
+	URL          OptURI                     `json:"url,omitempty"`
 }
 
 // GetUser returns the value of User.
@@ -16856,9 +16856,9 @@ func (s *GistHistory) SetURL(val OptURI) {
 }
 
 type GistHistoryChangeStatus struct {
-	Total     OptInt `json:"total"`
-	Additions OptInt `json:"additions"`
-	Deletions OptInt `json:"deletions"`
+	Total     OptInt `json:"total,omitempty"`
+	Additions OptInt `json:"additions,omitempty"`
+	Deletions OptInt `json:"deletions,omitempty"`
 }
 
 // GetTotal returns the value of Total.
@@ -16895,29 +16895,29 @@ func (s *GistHistoryChangeStatus) SetDeletions(val OptInt) {
 // Ref: #/components/schemas/gist-simple
 type GistSimple struct {
 	// Deprecated: schema marks this property as deprecated.
-	Forks OptNilGistSimpleForksItemArray `json:"forks"`
+	Forks OptNilGistSimpleForksItemArray `json:"forks,omitempty"`
 	// Deprecated: schema marks this property as deprecated.
-	History OptNilGistHistoryArray `json:"history"`
+	History OptNilGistHistoryArray `json:"history,omitempty"`
 	// Gist.
-	ForkOf      OptNilGistSimpleForkOf `json:"fork_of"`
-	URL         OptString              `json:"url"`
-	ForksURL    OptString              `json:"forks_url"`
-	CommitsURL  OptString              `json:"commits_url"`
-	ID          OptString              `json:"id"`
-	NodeID      OptString              `json:"node_id"`
-	GitPullURL  OptString              `json:"git_pull_url"`
-	GitPushURL  OptString              `json:"git_push_url"`
-	HTMLURL     OptString              `json:"html_url"`
-	Files       OptGistSimpleFiles     `json:"files"`
-	Public      OptBool                `json:"public"`
-	CreatedAt   OptString              `json:"created_at"`
-	UpdatedAt   OptString              `json:"updated_at"`
-	Description OptNilString           `json:"description"`
-	Comments    OptInt                 `json:"comments"`
-	User        OptNilString           `json:"user"`
-	CommentsURL OptString              `json:"comments_url"`
-	Owner       OptSimpleUser          `json:"owner"`
-	Truncated   OptBool                `json:"truncated"`
+	ForkOf      OptNilGistSimpleForkOf `json:"fork_of,omitempty"`
+	URL         OptString              `json:"url,omitempty"`
+	ForksURL    OptString              `json:"forks_url,omitempty"`
+	CommitsURL  OptString              `json:"commits_url,omitempty"`
+	ID          OptString              `json:"id,omitempty"`
+	NodeID      OptString              `json:"node_id,omitempty"`
+	GitPullURL  OptString              `json:"git_pull_url,omitempty"`
+	GitPushURL  OptString              `json:"git_push_url,omitempty"`
+	HTMLURL     OptString              `json:"html_url,omitempty"`
+	Files       OptGistSimpleFiles     `json:"files,omitempty"`
+	Public      OptBool                `json:"public,omitempty"`
+	CreatedAt   OptString              `json:"created_at,omitempty"`
+	UpdatedAt   OptString              `json:"updated_at,omitempty"`
+	Description OptNilString           `json:"description,omitempty"`
+	Comments    OptInt                 `json:"comments,omitempty"`
+	User        OptNilString           `json:"user,omitempty"`
+	CommentsURL OptString              `json:"comments_url,omitempty"`
+	Owner       OptSimpleUser          `json:"owner,omitempty"`
+	Truncated   OptBool                `json:"truncated,omitempty"`
 }
 
 // GetForks returns the value of Forks.
@@ -17145,13 +17145,13 @@ func (s *GistSimpleFiles) init() GistSimpleFiles {
 }
 
 type GistSimpleFilesItem struct {
-	Filename  OptString `json:"filename"`
-	Type      OptString `json:"type"`
-	Language  OptString `json:"language"`
-	RawURL    OptString `json:"raw_url"`
-	Size      OptInt    `json:"size"`
-	Truncated OptBool   `json:"truncated"`
-	Content   OptString `json:"content"`
+	Filename  OptString `json:"filename,omitempty"`
+	Type      OptString `json:"type,omitempty"`
+	Language  OptString `json:"language,omitempty"`
+	RawURL    OptString `json:"raw_url,omitempty"`
+	Size      OptInt    `json:"size,omitempty"`
+	Truncated OptBool   `json:"truncated,omitempty"`
+	Content   OptString `json:"content,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -17242,10 +17242,10 @@ type GistSimpleForkOf struct {
 	Comments    int                      `json:"comments"`
 	User        NilNullableSimpleUser    `json:"user"`
 	CommentsURL url.URL                  `json:"comments_url"`
-	Owner       OptNilNullableSimpleUser `json:"owner"`
-	Truncated   OptBool                  `json:"truncated"`
-	Forks       []jx.Raw                 `json:"forks"`
-	History     []jx.Raw                 `json:"history"`
+	Owner       OptNilNullableSimpleUser `json:"owner,omitempty"`
+	Truncated   OptBool                  `json:"truncated,omitempty"`
+	Forks       []jx.Raw                 `json:"forks,omitempty"`
+	History     []jx.Raw                 `json:"history,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -17460,11 +17460,11 @@ func (s *GistSimpleForkOfFiles) init() GistSimpleForkOfFiles {
 }
 
 type GistSimpleForkOfFilesItem struct {
-	Filename OptString `json:"filename"`
-	Type     OptString `json:"type"`
-	Language OptString `json:"language"`
-	RawURL   OptString `json:"raw_url"`
-	Size     OptInt    `json:"size"`
+	Filename OptString `json:"filename,omitempty"`
+	Type     OptString `json:"type,omitempty"`
+	Language OptString `json:"language,omitempty"`
+	RawURL   OptString `json:"raw_url,omitempty"`
+	Size     OptInt    `json:"size,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -17518,11 +17518,11 @@ func (s *GistSimpleForkOfFilesItem) SetSize(val OptInt) {
 }
 
 type GistSimpleForksItem struct {
-	ID        OptString     `json:"id"`
-	URL       OptURI        `json:"url"`
-	User      OptPublicUser `json:"user"`
-	CreatedAt OptDateTime   `json:"created_at"`
-	UpdatedAt OptDateTime   `json:"updated_at"`
+	ID        OptString     `json:"id,omitempty"`
+	URL       OptURI        `json:"url,omitempty"`
+	User      OptPublicUser `json:"user,omitempty"`
+	CreatedAt OptDateTime   `json:"created_at,omitempty"`
+	UpdatedAt OptDateTime   `json:"updated_at,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -17577,7 +17577,7 @@ func (s *GistSimpleForksItem) SetUpdatedAt(val OptDateTime) {
 
 // GistSimpleHeaders wraps GistSimple with response headers.
 type GistSimpleHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GistSimple
 }
 
@@ -17645,10 +17645,10 @@ func (s *GistsCreateCommentReq) SetBody(val string) {
 
 type GistsCreateReq struct {
 	// Description of the gist.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Names and content for the files that make up the gist.
 	Files  GistsCreateReqFiles     `json:"files"`
-	Public OptGistsCreateReqPublic `json:"public"`
+	Public OptGistsCreateReqPublic `json:"public,omitempty"`
 }
 
 // GetDescription returns the value of Description.
@@ -17833,7 +17833,7 @@ func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
 
 // GistsListCommentsOKHeaders wraps []GistComment with response headers.
 type GistsListCommentsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GistComment
 }
 
@@ -17869,7 +17869,7 @@ func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
 // GistsListCommitsOKHeaders wraps []GistCommit with response headers.
 type GistsListCommitsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GistCommit
 }
 
@@ -17897,7 +17897,7 @@ func (*GistsListCommitsOKHeaders) gistsListCommitsRes() {}
 
 // GistsListForUserOKHeaders wraps []BaseGist with response headers.
 type GistsListForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []BaseGist
 }
 
@@ -17933,7 +17933,7 @@ func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
 
 // GistsListForksOKHeaders wraps []GistSimple with response headers.
 type GistsListForksOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GistSimple
 }
 
@@ -17961,7 +17961,7 @@ func (*GistsListForksOKHeaders) gistsListForksRes() {}
 
 // GistsListOKHeaders wraps []BaseGist with response headers.
 type GistsListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []BaseGist
 }
 
@@ -17989,7 +17989,7 @@ func (*GistsListOKHeaders) gistsListRes() {}
 
 // GistsListPublicOKHeaders wraps []BaseGist with response headers.
 type GistsListPublicOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []BaseGist
 }
 
@@ -18025,7 +18025,7 @@ func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
 
 // GistsListStarredOKHeaders wraps []BaseGist with response headers.
 type GistsListStarredOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []BaseGist
 }
 
@@ -18295,7 +18295,7 @@ func (s *GitCommitCommitter) SetName(val string) {
 
 // GitCommitHeaders wraps GitCommit with response headers.
 type GitCommitHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GitCommit
 }
 
@@ -18447,7 +18447,7 @@ type GitCreateBlobReq struct {
 	// The new blob's content.
 	Content string `json:"content"`
 	// The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.
-	Encoding OptString `json:"encoding"`
+	Encoding OptString `json:"encoding,omitempty"`
 }
 
 // GetContent returns the value of Content.
@@ -18478,13 +18478,13 @@ type GitCreateCommitReq struct {
 	// The SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will
 	// be written as a root commit. For a single parent, an array of one SHA should be provided; for a
 	// merge commit, an array of more than one should be provided.
-	Parents []string `json:"parents"`
+	Parents []string `json:"parents,omitempty"`
 	// Information about the author of the commit. By default, the `author` will be the authenticated
 	// user and the current date. See the `author` and `committer` object below for details.
-	Author OptGitCreateCommitReqAuthor `json:"author"`
+	Author OptGitCreateCommitReqAuthor `json:"author,omitempty"`
 	// Information about the person who is making the commit. By default, `committer` will use the
 	// information set in `author`. See the `author` and `committer` object below for details.
-	Committer OptGitCreateCommitReqCommitter `json:"committer"`
+	Committer OptGitCreateCommitReqCommitter `json:"committer,omitempty"`
 	// The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds
 	// the signature to the `gpgsig` header of the created commit. For a commit signature to be
 	// verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string
@@ -18492,7 +18492,7 @@ type GitCreateCommitReq struct {
 	// first manually create a valid PGP signature, which can be complicated. You may find it easier to
 	// [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create
 	// signed commits.
-	Signature OptString `json:"signature"`
+	Signature OptString `json:"signature,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -18564,7 +18564,7 @@ type GitCreateCommitReqAuthor struct {
 	Email string `json:"email"`
 	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptDateTime `json:"date"`
+	Date OptDateTime `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -18601,12 +18601,12 @@ func (s *GitCreateCommitReqAuthor) SetDate(val OptDateTime) {
 // information set in `author`. See the `author` and `committer` object below for details.
 type GitCreateCommitReqCommitter struct {
 	// The name of the author (or committer) of the commit.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The email of the author (or committer) of the commit.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// Indicates when this commit was authored (or committed). This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptDateTime `json:"date"`
+	Date OptDateTime `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -18645,7 +18645,7 @@ type GitCreateRefReq struct {
 	Ref string `json:"ref"`
 	// The SHA1 value for this reference.
 	Sha string    `json:"sha"`
-	Key OptString `json:"key"`
+	Key OptString `json:"key,omitempty"`
 }
 
 // GetRef returns the value of Ref.
@@ -18689,7 +18689,7 @@ type GitCreateTagReq struct {
 	// `blob`.
 	Type GitCreateTagReqType `json:"type"`
 	// An object with information about the individual creating the tag.
-	Tagger OptGitCreateTagReqTagger `json:"tagger"`
+	Tagger OptGitCreateTagReqTagger `json:"tagger,omitempty"`
 }
 
 // GetTag returns the value of Tag.
@@ -18750,7 +18750,7 @@ type GitCreateTagReqTagger struct {
 	Email string `json:"email"`
 	// When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.
 	// org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-	Date OptDateTime `json:"date"`
+	Date OptDateTime `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -18814,7 +18814,7 @@ type GitCreateTreeReq struct {
 	// `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a
 	// part of the parent commit's tree and were not defined in the `tree` parameter will be listed as
 	// deleted by the new commit.
-	BaseTree OptString `json:"base_tree"`
+	BaseTree OptString `json:"base_tree,omitempty"`
 }
 
 // GetTree returns the value of Tree.
@@ -18839,23 +18839,23 @@ func (s *GitCreateTreeReq) SetBaseTree(val OptString) {
 
 type GitCreateTreeReqTreeItem struct {
 	// The file referenced in the tree.
-	Path OptString `json:"path"`
+	Path OptString `json:"path,omitempty"`
 	// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for
 	// subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the
 	// path of a symlink.
-	Mode OptGitCreateTreeReqTreeItemMode `json:"mode"`
+	Mode OptGitCreateTreeReqTreeItemMode `json:"mode,omitempty"`
 	// Either `blob`, `tree`, or `commit`.
-	Type OptGitCreateTreeReqTreeItemType `json:"type"`
+	Type OptGitCreateTreeReqTreeItemType `json:"type,omitempty"`
 	// The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null`
 	// then the file will be deleted.
 	// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both
 	// `tree.sha` and `content` will return an error.
-	Sha OptNilString `json:"sha"`
+	Sha OptNilString `json:"sha,omitempty"`
 	// The content you want this file to have. GitHub will write this blob out and use that SHA for this
 	// entry. Use either this, or `tree.sha`.
 	// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both
 	// `tree.sha` and `content` will return an error.
-	Content OptString `json:"content"`
+	Content OptString `json:"content,omitempty"`
 }
 
 // GetPath returns the value of Path.
@@ -18945,7 +18945,7 @@ func (*GitGetBlobApplicationJSONNotFound) gitGetBlobRes() {}
 
 // GitListMatchingRefsOKHeaders wraps []GitRef with response headers.
 type GitListMatchingRefsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GitRef
 }
 
@@ -19023,7 +19023,7 @@ func (*GitRef) gitUpdateRefRes() {}
 
 // GitRefHeaders wraps GitRef with response headers.
 type GitRefHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GitRef
 }
 
@@ -19099,7 +19099,7 @@ type GitTag struct {
 	Message      string          `json:"message"`
 	Tagger       GitTagTagger    `json:"tagger"`
 	Object       GitTagObject    `json:"object"`
-	Verification OptVerification `json:"verification"`
+	Verification OptVerification `json:"verification,omitempty"`
 }
 
 // GetNodeID returns the value of NodeID.
@@ -19186,7 +19186,7 @@ func (*GitTag) gitGetTagRes() {}
 
 // GitTagHeaders wraps GitTag with response headers.
 type GitTagHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GitTag
 }
 
@@ -19338,7 +19338,7 @@ func (*GitTree) gitGetTreeRes() {}
 
 // GitTreeHeaders wraps GitTree with response headers.
 type GitTreeHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response GitTree
 }
 
@@ -19365,12 +19365,12 @@ func (s *GitTreeHeaders) SetResponse(val GitTree) {
 func (*GitTreeHeaders) gitCreateTreeRes() {}
 
 type GitTreeTreeItem struct {
-	Path OptString `json:"path"`
-	Mode OptString `json:"mode"`
-	Type OptString `json:"type"`
-	Sha  OptString `json:"sha"`
-	Size OptInt    `json:"size"`
-	URL  OptString `json:"url"`
+	Path OptString `json:"path,omitempty"`
+	Mode OptString `json:"mode,omitempty"`
+	Type OptString `json:"type,omitempty"`
+	Sha  OptString `json:"sha,omitempty"`
+	Size OptInt    `json:"size,omitempty"`
+	URL  OptString `json:"url,omitempty"`
 }
 
 // GetPath returns the value of Path.
@@ -19438,7 +19438,7 @@ type GitUpdateRefReq struct {
 	Sha string `json:"sha"`
 	// Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving
 	// this out or setting it to `false` will make sure you're not overwriting work.
-	Force OptBool `json:"force"`
+	Force OptBool `json:"force,omitempty"`
 }
 
 // GetSha returns the value of Sha.
@@ -19646,8 +19646,8 @@ func (*GpgKey) usersCreateGpgKeyForAuthenticatedRes() {}
 func (*GpgKey) usersGetGpgKeyForAuthenticatedRes()    {}
 
 type GpgKeyEmailsItem struct {
-	Email    OptString `json:"email"`
-	Verified OptBool   `json:"verified"`
+	Email    OptString `json:"email,omitempty"`
+	Verified OptBool   `json:"verified,omitempty"`
 }
 
 // GetEmail returns the value of Email.
@@ -19671,19 +19671,19 @@ func (s *GpgKeyEmailsItem) SetVerified(val OptBool) {
 }
 
 type GpgKeySubkeysItem struct {
-	ID                OptInt       `json:"id"`
-	PrimaryKeyID      OptInt       `json:"primary_key_id"`
-	KeyID             OptString    `json:"key_id"`
-	PublicKey         OptString    `json:"public_key"`
-	Emails            []jx.Raw     `json:"emails"`
-	Subkeys           []jx.Raw     `json:"subkeys"`
-	CanSign           OptBool      `json:"can_sign"`
-	CanEncryptComms   OptBool      `json:"can_encrypt_comms"`
-	CanEncryptStorage OptBool      `json:"can_encrypt_storage"`
-	CanCertify        OptBool      `json:"can_certify"`
-	CreatedAt         OptString    `json:"created_at"`
-	ExpiresAt         OptNilString `json:"expires_at"`
-	RawKey            OptNilString `json:"raw_key"`
+	ID                OptInt       `json:"id,omitempty"`
+	PrimaryKeyID      OptInt       `json:"primary_key_id,omitempty"`
+	KeyID             OptString    `json:"key_id,omitempty"`
+	PublicKey         OptString    `json:"public_key,omitempty"`
+	Emails            []jx.Raw     `json:"emails,omitempty"`
+	Subkeys           []jx.Raw     `json:"subkeys,omitempty"`
+	CanSign           OptBool      `json:"can_sign,omitempty"`
+	CanEncryptComms   OptBool      `json:"can_encrypt_comms,omitempty"`
+	CanEncryptStorage OptBool      `json:"can_encrypt_storage,omitempty"`
+	CanCertify        OptBool      `json:"can_certify,omitempty"`
+	CreatedAt         OptString    `json:"created_at,omitempty"`
+	ExpiresAt         OptNilString `json:"expires_at,omitempty"`
+	RawKey            OptNilString `json:"raw_key,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -19820,7 +19820,7 @@ func (s *GpgKeySubkeysItem) SetRawKey(val OptNilString) {
 // Ref: #/components/schemas/group-mapping
 type GroupMapping struct {
 	// Array of groups to be mapped to this team.
-	Groups []GroupMappingGroupsItem `json:"groups"`
+	Groups []GroupMappingGroupsItem `json:"groups,omitempty"`
 }
 
 // GetGroups returns the value of Groups.
@@ -19844,9 +19844,9 @@ type GroupMappingGroupsItem struct {
 	// A description of the group.
 	GroupDescription string `json:"group_description"`
 	// Synchronization status for this group mapping.
-	Status OptString `json:"status"`
+	Status OptString `json:"status,omitempty"`
 	// The time of the last sync for this group-mapping.
-	SyncedAt OptNilString `json:"synced_at"`
+	SyncedAt OptNilString `json:"synced_at,omitempty"`
 }
 
 // GetGroupID returns the value of GroupID.
@@ -19901,7 +19901,7 @@ func (s *GroupMappingGroupsItem) SetSyncedAt(val OptNilString) {
 
 // GroupMappingHeaders wraps GroupMapping with response headers.
 type GroupMappingHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response GroupMapping
 }
 
@@ -19943,7 +19943,7 @@ type Hook struct {
 	URL           url.URL      `json:"url"`
 	TestURL       url.URL      `json:"test_url"`
 	PingURL       url.URL      `json:"ping_url"`
-	DeliveriesURL OptURI       `json:"deliveries_url"`
+	DeliveriesURL OptURI       `json:"deliveries_url,omitempty"`
 	LastResponse  HookResponse `json:"last_response"`
 }
 
@@ -20081,16 +20081,16 @@ func (*Hook) reposGetWebhookRes()    {}
 func (*Hook) reposUpdateWebhookRes() {}
 
 type HookConfig struct {
-	Email       OptString                   `json:"email"`
-	Password    OptString                   `json:"password"`
-	Room        OptString                   `json:"room"`
-	Subdomain   OptString                   `json:"subdomain"`
-	URL         OptWebhookConfigURL         `json:"url"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Digest      OptString                   `json:"digest"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	Token       OptString                   `json:"token"`
+	Email       OptString                   `json:"email,omitempty"`
+	Password    OptString                   `json:"password,omitempty"`
+	Room        OptString                   `json:"room,omitempty"`
+	Subdomain   OptString                   `json:"subdomain,omitempty"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Digest      OptString                   `json:"digest,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	Token       OptString                   `json:"token,omitempty"`
 }
 
 // GetEmail returns the value of Email.
@@ -20220,7 +20220,7 @@ type HookDelivery struct {
 	// The id of the repository associated with this event.
 	RepositoryID NilInt `json:"repository_id"`
 	// The URL target of the delivery.
-	URL      OptString            `json:"url"`
+	URL      OptString            `json:"url,omitempty"`
 	Request  HookDeliveryRequest  `json:"request"`
 	Response HookDeliveryResponse `json:"response"`
 }
@@ -20599,7 +20599,7 @@ func (s *HookDeliveryResponseHeaders) init() HookDeliveryResponseHeaders {
 
 // HookHeaders wraps Hook with response headers.
 type HookHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Hook
 }
 
@@ -20709,29 +20709,29 @@ func (s *HovercardContextsItem) SetOcticon(val string) {
 // Ref: #/components/schemas/import
 type Import struct {
 	Vcs    NilString `json:"vcs"`
-	UseLfs OptBool   `json:"use_lfs"`
+	UseLfs OptBool   `json:"use_lfs,omitempty"`
 	// The URL of the originating repository.
 	VcsURL          string                     `json:"vcs_url"`
-	SvcRoot         OptString                  `json:"svc_root"`
-	TfvcProject     OptString                  `json:"tfvc_project"`
+	SvcRoot         OptString                  `json:"svc_root,omitempty"`
+	TfvcProject     OptString                  `json:"tfvc_project,omitempty"`
 	Status          ImportStatus               `json:"status"`
-	StatusText      OptNilString               `json:"status_text"`
-	FailedStep      OptNilString               `json:"failed_step"`
-	ErrorMessage    OptNilString               `json:"error_message"`
-	ImportPercent   OptNilInt                  `json:"import_percent"`
-	CommitCount     OptNilInt                  `json:"commit_count"`
-	PushPercent     OptNilInt                  `json:"push_percent"`
-	HasLargeFiles   OptBool                    `json:"has_large_files"`
-	LargeFilesSize  OptInt                     `json:"large_files_size"`
-	LargeFilesCount OptInt                     `json:"large_files_count"`
-	ProjectChoices  []ImportProjectChoicesItem `json:"project_choices"`
-	Message         OptString                  `json:"message"`
-	AuthorsCount    OptNilInt                  `json:"authors_count"`
+	StatusText      OptNilString               `json:"status_text,omitempty"`
+	FailedStep      OptNilString               `json:"failed_step,omitempty"`
+	ErrorMessage    OptNilString               `json:"error_message,omitempty"`
+	ImportPercent   OptNilInt                  `json:"import_percent,omitempty"`
+	CommitCount     OptNilInt                  `json:"commit_count,omitempty"`
+	PushPercent     OptNilInt                  `json:"push_percent,omitempty"`
+	HasLargeFiles   OptBool                    `json:"has_large_files,omitempty"`
+	LargeFilesSize  OptInt                     `json:"large_files_size,omitempty"`
+	LargeFilesCount OptInt                     `json:"large_files_count,omitempty"`
+	ProjectChoices  []ImportProjectChoicesItem `json:"project_choices,omitempty"`
+	Message         OptString                  `json:"message,omitempty"`
+	AuthorsCount    OptNilInt                  `json:"authors_count,omitempty"`
 	URL             url.URL                    `json:"url"`
 	HTMLURL         url.URL                    `json:"html_url"`
 	AuthorsURL      url.URL                    `json:"authors_url"`
 	RepositoryURL   url.URL                    `json:"repository_url"`
-	SvnRoot         OptString                  `json:"svn_root"`
+	SvnRoot         OptString                  `json:"svn_root,omitempty"`
 }
 
 // GetVcs returns the value of Vcs.
@@ -20969,7 +20969,7 @@ func (*Import) migrationsSetLfsPreferenceRes() {}
 
 // ImportHeaders wraps Import with response headers.
 type ImportHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Import
 }
 
@@ -20996,9 +20996,9 @@ func (s *ImportHeaders) SetResponse(val Import) {
 func (*ImportHeaders) migrationsStartImportRes() {}
 
 type ImportProjectChoicesItem struct {
-	Vcs         OptString `json:"vcs"`
-	TfvcProject OptString `json:"tfvc_project"`
-	HumanName   OptString `json:"human_name"`
+	Vcs         OptString `json:"vcs,omitempty"`
+	TfvcProject OptString `json:"tfvc_project,omitempty"`
+	HumanName   OptString `json:"human_name,omitempty"`
 }
 
 // GetVcs returns the value of Vcs.
@@ -21057,12 +21057,12 @@ const (
 type InstallationToken struct {
 	Token                  string                                  `json:"token"`
 	ExpiresAt              string                                  `json:"expires_at"`
-	Permissions            OptAppPermissions                       `json:"permissions"`
-	RepositorySelection    OptInstallationTokenRepositorySelection `json:"repository_selection"`
-	Repositories           []Repository                            `json:"repositories"`
-	SingleFile             OptString                               `json:"single_file"`
-	HasMultipleSingleFiles OptBool                                 `json:"has_multiple_single_files"`
-	SingleFilePaths        []string                                `json:"single_file_paths"`
+	Permissions            OptAppPermissions                       `json:"permissions,omitempty"`
+	RepositorySelection    OptInstallationTokenRepositorySelection `json:"repository_selection,omitempty"`
+	Repositories           []Repository                            `json:"repositories,omitempty"`
+	SingleFile             OptString                               `json:"single_file,omitempty"`
+	HasMultipleSingleFiles OptBool                                 `json:"has_multiple_single_files,omitempty"`
+	SingleFilePaths        []string                                `json:"single_file_paths,omitempty"`
 }
 
 // GetToken returns the value of Token.
@@ -21162,7 +21162,7 @@ type Integration struct {
 	// Unique identifier of the GitHub app.
 	ID int `json:"id"`
 	// The slug name of the GitHub app.
-	Slug   OptString             `json:"slug"`
+	Slug   OptString             `json:"slug,omitempty"`
 	NodeID string                `json:"node_id"`
 	Owner  NilNullableSimpleUser `json:"owner"`
 	// The name of the GitHub app.
@@ -21177,11 +21177,11 @@ type Integration struct {
 	// The list of events for the GitHub app.
 	Events []string `json:"events"`
 	// The number of installations associated with the GitHub app.
-	InstallationsCount OptInt       `json:"installations_count"`
-	ClientID           OptString    `json:"client_id"`
-	ClientSecret       OptString    `json:"client_secret"`
-	WebhookSecret      OptNilString `json:"webhook_secret"`
-	Pem                OptString    `json:"pem"`
+	InstallationsCount OptInt       `json:"installations_count,omitempty"`
+	ClientID           OptString    `json:"client_id,omitempty"`
+	ClientSecret       OptString    `json:"client_secret,omitempty"`
+	WebhookSecret      OptNilString `json:"webhook_secret,omitempty"`
+	Pem                OptString    `json:"pem,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -21358,11 +21358,11 @@ func (*Integration) appsGetBySlugRes() {}
 
 // The set of permissions for the GitHub app.
 type IntegrationPermissions struct {
-	Issues          OptString `json:"issues"`
-	Checks          OptString `json:"checks"`
-	Metadata        OptString `json:"metadata"`
-	Contents        OptString `json:"contents"`
-	Deployments     OptString `json:"deployments"`
+	Issues          OptString `json:"issues,omitempty"`
+	Checks          OptString `json:"checks,omitempty"`
+	Metadata        OptString `json:"metadata,omitempty"`
+	Contents        OptString `json:"contents,omitempty"`
+	Deployments     OptString `json:"deployments,omitempty"`
 	AdditionalProps IntegrationPermissionsAdditional
 }
 
@@ -21466,7 +21466,7 @@ const (
 // Ref: #/components/schemas/interaction-limit
 type InteractionLimit struct {
 	Limit  InteractionGroup     `json:"limit"`
-	Expiry OptInteractionExpiry `json:"expiry"`
+	Expiry OptInteractionExpiry `json:"expiry,omitempty"`
 }
 
 // GetLimit returns the value of Limit.
@@ -21571,30 +21571,30 @@ type Issue struct {
 	// Title of the issue.
 	Title string `json:"title"`
 	// Contents of the issue.
-	Body OptNilString          `json:"body"`
+	Body OptNilString          `json:"body,omitempty"`
 	User NilNullableSimpleUser `json:"user"`
 	// Labels to associate with this issue; pass one or more label names to replace the set of labels on
 	// this issue; send an empty array to clear all labels from the issue; note that the labels are
 	// silently dropped for users without push access to the repository.
 	Labels                []IssueLabelsItem         `json:"labels"`
 	Assignee              NilNullableSimpleUser     `json:"assignee"`
-	Assignees             OptNilSimpleUserArray     `json:"assignees"`
+	Assignees             OptNilSimpleUserArray     `json:"assignees,omitempty"`
 	Milestone             NilNullableMilestone      `json:"milestone"`
 	Locked                bool                      `json:"locked"`
-	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
+	ActiveLockReason      OptNilString              `json:"active_lock_reason,omitempty"`
 	Comments              int                       `json:"comments"`
-	PullRequest           OptIssuePullRequest       `json:"pull_request"`
+	PullRequest           OptIssuePullRequest       `json:"pull_request,omitempty"`
 	ClosedAt              NilDateTime               `json:"closed_at"`
 	CreatedAt             time.Time                 `json:"created_at"`
 	UpdatedAt             time.Time                 `json:"updated_at"`
-	ClosedBy              OptNilNullableSimpleUser  `json:"closed_by"`
-	BodyHTML              OptString                 `json:"body_html"`
-	BodyText              OptString                 `json:"body_text"`
-	TimelineURL           OptURI                    `json:"timeline_url"`
-	Repository            OptRepository             `json:"repository"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	ClosedBy              OptNilNullableSimpleUser  `json:"closed_by,omitempty"`
+	BodyHTML              OptString                 `json:"body_html,omitempty"`
+	BodyText              OptString                 `json:"body_text,omitempty"`
+	TimelineURL           OptURI                    `json:"timeline_url,omitempty"`
+	Repository            OptRepository             `json:"repository,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
 	AuthorAssociation     AuthorAssociation         `json:"author_association"`
-	Reactions             OptReactionRollup         `json:"reactions"`
+	Reactions             OptReactionRollup         `json:"reactions,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -21929,17 +21929,17 @@ type IssueComment struct {
 	// URL for the issue comment.
 	URL url.URL `json:"url"`
 	// Contents of the issue comment.
-	Body                  OptString                 `json:"body"`
-	BodyText              OptString                 `json:"body_text"`
-	BodyHTML              OptString                 `json:"body_html"`
+	Body                  OptString                 `json:"body,omitempty"`
+	BodyText              OptString                 `json:"body_text,omitempty"`
+	BodyHTML              OptString                 `json:"body_html,omitempty"`
 	HTMLURL               url.URL                   `json:"html_url"`
 	User                  NilNullableSimpleUser     `json:"user"`
 	CreatedAt             time.Time                 `json:"created_at"`
 	UpdatedAt             time.Time                 `json:"updated_at"`
 	IssueURL              url.URL                   `json:"issue_url"`
 	AuthorAssociation     AuthorAssociation         `json:"author_association"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
-	Reactions             OptReactionRollup         `json:"reactions"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
+	Reactions             OptReactionRollup         `json:"reactions,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -22087,7 +22087,7 @@ func (*IssueComment) issuesUpdateCommentRes() {}
 
 // IssueCommentHeaders wraps IssueComment with response headers.
 type IssueCommentHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response IssueComment
 }
 
@@ -22124,20 +22124,20 @@ type IssueEvent struct {
 	CommitID              NilString                    `json:"commit_id"`
 	CommitURL             NilString                    `json:"commit_url"`
 	CreatedAt             time.Time                    `json:"created_at"`
-	Issue                 OptIssueSimple               `json:"issue"`
-	Label                 OptIssueEventLabel           `json:"label"`
-	Assignee              OptNilNullableSimpleUser     `json:"assignee"`
-	Assigner              OptNilNullableSimpleUser     `json:"assigner"`
-	ReviewRequester       OptNilNullableSimpleUser     `json:"review_requester"`
-	RequestedReviewer     OptNilNullableSimpleUser     `json:"requested_reviewer"`
-	RequestedTeam         OptTeam                      `json:"requested_team"`
-	DismissedReview       OptIssueEventDismissedReview `json:"dismissed_review"`
-	Milestone             OptIssueEventMilestone       `json:"milestone"`
-	ProjectCard           OptIssueEventProjectCard     `json:"project_card"`
-	Rename                OptIssueEventRename          `json:"rename"`
-	AuthorAssociation     OptAuthorAssociation         `json:"author_association"`
-	LockReason            OptNilString                 `json:"lock_reason"`
-	PerformedViaGithubApp OptNilNullableIntegration    `json:"performed_via_github_app"`
+	Issue                 OptIssueSimple               `json:"issue,omitempty"`
+	Label                 OptIssueEventLabel           `json:"label,omitempty"`
+	Assignee              OptNilNullableSimpleUser     `json:"assignee,omitempty"`
+	Assigner              OptNilNullableSimpleUser     `json:"assigner,omitempty"`
+	ReviewRequester       OptNilNullableSimpleUser     `json:"review_requester,omitempty"`
+	RequestedReviewer     OptNilNullableSimpleUser     `json:"requested_reviewer,omitempty"`
+	RequestedTeam         OptTeam                      `json:"requested_team,omitempty"`
+	DismissedReview       OptIssueEventDismissedReview `json:"dismissed_review,omitempty"`
+	Milestone             OptIssueEventMilestone       `json:"milestone,omitempty"`
+	ProjectCard           OptIssueEventProjectCard     `json:"project_card,omitempty"`
+	Rename                OptIssueEventRename          `json:"rename,omitempty"`
+	AuthorAssociation     OptAuthorAssociation         `json:"author_association,omitempty"`
+	LockReason            OptNilString                 `json:"lock_reason,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration    `json:"performed_via_github_app,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -22367,7 +22367,7 @@ type IssueEventDismissedReview struct {
 	State             string       `json:"state"`
 	ReviewID          int          `json:"review_id"`
 	DismissalMessage  NilString    `json:"dismissal_message"`
-	DismissalCommitID OptNilString `json:"dismissal_commit_id"`
+	DismissalCommitID OptNilString `json:"dismissal_commit_id,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -22461,7 +22461,7 @@ type IssueEventProjectCard struct {
 	ProjectURL         url.URL   `json:"project_url"`
 	ProjectID          int       `json:"project_id"`
 	ColumnName         string    `json:"column_name"`
-	PreviousColumnName OptString `json:"previous_column_name"`
+	PreviousColumnName OptString `json:"previous_column_name,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -22553,7 +22553,7 @@ func (s *IssueEventRename) SetTo(val string) {
 
 // IssueHeaders wraps Issue with response headers.
 type IssueHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Issue
 }
 
@@ -22644,13 +22644,13 @@ func NewIssueLabelsItem1IssueLabelsItem(v IssueLabelsItem1) IssueLabelsItem {
 }
 
 type IssueLabelsItem1 struct {
-	ID          OptInt64     `json:"id"`
-	NodeID      OptString    `json:"node_id"`
-	URL         OptURI       `json:"url"`
-	Name        OptString    `json:"name"`
-	Description OptNilString `json:"description"`
-	Color       OptNilString `json:"color"`
-	Default     OptBool      `json:"default"`
+	ID          OptInt64     `json:"id,omitempty"`
+	NodeID      OptString    `json:"node_id,omitempty"`
+	URL         OptURI       `json:"url,omitempty"`
+	Name        OptString    `json:"name,omitempty"`
+	Description OptNilString `json:"description,omitempty"`
+	Color       OptNilString `json:"color,omitempty"`
+	Default     OptBool      `json:"default,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -22724,7 +22724,7 @@ func (s *IssueLabelsItem1) SetDefault(val OptBool) {
 }
 
 type IssuePullRequest struct {
-	MergedAt OptNilDateTime `json:"merged_at"`
+	MergedAt OptNilDateTime `json:"merged_at,omitempty"`
 	DiffURL  NilURI         `json:"diff_url"`
 	HTMLURL  NilURI         `json:"html_url"`
 	PatchURL NilURI         `json:"patch_url"`
@@ -22795,8 +22795,8 @@ type IssueSearchResultItem struct {
 	Number                int                                 `json:"number"`
 	Title                 string                              `json:"title"`
 	Locked                bool                                `json:"locked"`
-	ActiveLockReason      OptNilString                        `json:"active_lock_reason"`
-	Assignees             OptNilSimpleUserArray               `json:"assignees"`
+	ActiveLockReason      OptNilString                        `json:"active_lock_reason,omitempty"`
+	Assignees             OptNilSimpleUserArray               `json:"assignees,omitempty"`
 	User                  NilNullableSimpleUser               `json:"user"`
 	Labels                []IssueSearchResultItemLabelsItem   `json:"labels"`
 	State                 string                              `json:"state"`
@@ -22806,17 +22806,17 @@ type IssueSearchResultItem struct {
 	CreatedAt             time.Time                           `json:"created_at"`
 	UpdatedAt             time.Time                           `json:"updated_at"`
 	ClosedAt              NilDateTime                         `json:"closed_at"`
-	TextMatches           *SearchResultTextMatches            `json:"text_matches"`
-	PullRequest           OptIssueSearchResultItemPullRequest `json:"pull_request"`
-	Body                  OptString                           `json:"body"`
+	TextMatches           *SearchResultTextMatches            `json:"text_matches,omitempty"`
+	PullRequest           OptIssueSearchResultItemPullRequest `json:"pull_request,omitempty"`
+	Body                  OptString                           `json:"body,omitempty"`
 	Score                 float64                             `json:"score"`
 	AuthorAssociation     AuthorAssociation                   `json:"author_association"`
-	Draft                 OptBool                             `json:"draft"`
-	Repository            OptRepository                       `json:"repository"`
-	BodyHTML              OptString                           `json:"body_html"`
-	BodyText              OptString                           `json:"body_text"`
-	TimelineURL           OptURI                              `json:"timeline_url"`
-	PerformedViaGithubApp OptNilNullableIntegration           `json:"performed_via_github_app"`
+	Draft                 OptBool                             `json:"draft,omitempty"`
+	Repository            OptRepository                       `json:"repository,omitempty"`
+	BodyHTML              OptString                           `json:"body_html,omitempty"`
+	BodyText              OptString                           `json:"body_text,omitempty"`
+	TimelineURL           OptURI                              `json:"timeline_url,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration           `json:"performed_via_github_app,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -23150,13 +23150,13 @@ func (s *IssueSearchResultItem) SetPerformedViaGithubApp(val OptNilNullableInteg
 }
 
 type IssueSearchResultItemLabelsItem struct {
-	ID          OptInt64     `json:"id"`
-	NodeID      OptString    `json:"node_id"`
-	URL         OptString    `json:"url"`
-	Name        OptString    `json:"name"`
-	Color       OptString    `json:"color"`
-	Default     OptBool      `json:"default"`
-	Description OptNilString `json:"description"`
+	ID          OptInt64     `json:"id,omitempty"`
+	NodeID      OptString    `json:"node_id,omitempty"`
+	URL         OptString    `json:"url,omitempty"`
+	Name        OptString    `json:"name,omitempty"`
+	Color       OptString    `json:"color,omitempty"`
+	Default     OptBool      `json:"default,omitempty"`
+	Description OptNilString `json:"description,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -23230,7 +23230,7 @@ func (s *IssueSearchResultItemLabelsItem) SetDescription(val OptNilString) {
 }
 
 type IssueSearchResultItemPullRequest struct {
-	MergedAt OptNilDateTime `json:"merged_at"`
+	MergedAt OptNilDateTime `json:"merged_at,omitempty"`
 	DiffURL  NilURI         `json:"diff_url"`
 	HTMLURL  NilURI         `json:"html_url"`
 	PatchURL NilURI         `json:"patch_url"`
@@ -23301,25 +23301,25 @@ type IssueSimple struct {
 	Number                int                       `json:"number"`
 	State                 string                    `json:"state"`
 	Title                 string                    `json:"title"`
-	Body                  OptString                 `json:"body"`
+	Body                  OptString                 `json:"body,omitempty"`
 	User                  NilNullableSimpleUser     `json:"user"`
 	Labels                []Label                   `json:"labels"`
 	Assignee              NilNullableSimpleUser     `json:"assignee"`
-	Assignees             OptNilSimpleUserArray     `json:"assignees"`
+	Assignees             OptNilSimpleUserArray     `json:"assignees,omitempty"`
 	Milestone             NilNullableMilestone      `json:"milestone"`
 	Locked                bool                      `json:"locked"`
-	ActiveLockReason      OptNilString              `json:"active_lock_reason"`
+	ActiveLockReason      OptNilString              `json:"active_lock_reason,omitempty"`
 	Comments              int                       `json:"comments"`
-	PullRequest           OptIssueSimplePullRequest `json:"pull_request"`
+	PullRequest           OptIssueSimplePullRequest `json:"pull_request,omitempty"`
 	ClosedAt              NilDateTime               `json:"closed_at"`
 	CreatedAt             time.Time                 `json:"created_at"`
 	UpdatedAt             time.Time                 `json:"updated_at"`
 	AuthorAssociation     AuthorAssociation         `json:"author_association"`
-	BodyHTML              OptString                 `json:"body_html"`
-	BodyText              OptString                 `json:"body_text"`
-	TimelineURL           OptURI                    `json:"timeline_url"`
-	Repository            OptRepository             `json:"repository"`
-	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app"`
+	BodyHTML              OptString                 `json:"body_html,omitempty"`
+	BodyText              OptString                 `json:"body_text,omitempty"`
+	TimelineURL           OptURI                    `json:"timeline_url,omitempty"`
+	Repository            OptRepository             `json:"repository,omitempty"`
+	PerformedViaGithubApp OptNilNullableIntegration `json:"performed_via_github_app,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -23623,7 +23623,7 @@ func (s *IssueSimple) SetPerformedViaGithubApp(val OptNilNullableIntegration) {
 }
 
 type IssueSimplePullRequest struct {
-	MergedAt OptNilDateTime `json:"merged_at"`
+	MergedAt OptNilDateTime `json:"merged_at,omitempty"`
 	DiffURL  NilURI         `json:"diff_url"`
 	HTMLURL  NilURI         `json:"html_url"`
 	PatchURL NilURI         `json:"patch_url"`
@@ -23683,7 +23683,7 @@ func (s *IssueSimplePullRequest) SetURL(val NilURI) {
 type IssuesAddAssigneesReq struct {
 	// Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees
 	// to an issue. Assignees are silently ignored otherwise._.
-	Assignees []string `json:"assignees"`
+	Assignees []string `json:"assignees,omitempty"`
 }
 
 // GetAssignees returns the value of Assignees.
@@ -23748,9 +23748,9 @@ type IssuesCreateLabelReq struct {
 	// ".
 	Name string `json:"name"`
 	// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
-	Color OptString `json:"color"`
+	Color OptString `json:"color,omitempty"`
 	// A short description of the label.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -23787,12 +23787,12 @@ type IssuesCreateMilestoneReq struct {
 	// The title of the milestone.
 	Title string `json:"title"`
 	// The state of the milestone. Either `open` or `closed`.
-	State OptIssuesCreateMilestoneReqState `json:"state"`
+	State OptIssuesCreateMilestoneReqState `json:"state,omitempty"`
 	// A description of the milestone.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 	// format: `YYYY-MM-DDTHH:MM:SSZ`.
-	DueOn OptDateTime `json:"due_on"`
+	DueOn OptDateTime `json:"due_on,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -23847,18 +23847,18 @@ type IssuesCreateReq struct {
 	// The title of the issue.
 	Title IssuesCreateReqTitle `json:"title"`
 	// The contents of the issue.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// Login for the user that this issue should be assigned to. _NOTE: Only users with push access can
 	// set the assignee for new issues. The assignee is silently dropped otherwise. **This field is
 	// deprecated.**_.
-	Assignee  OptNilString                   `json:"assignee"`
-	Milestone OptNilIssuesCreateReqMilestone `json:"milestone"`
+	Assignee  OptNilString                   `json:"assignee,omitempty"`
+	Milestone OptNilIssuesCreateReqMilestone `json:"milestone,omitempty"`
 	// Labels to associate with this issue. _NOTE: Only users with push access can set labels for new
 	// issues. Labels are silently dropped otherwise._.
-	Labels []IssuesCreateReqLabelsItem `json:"labels"`
+	Labels []IssuesCreateReqLabelsItem `json:"labels,omitempty"`
 	// Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for
 	// new issues. Assignees are silently dropped otherwise._.
-	Assignees []string `json:"assignees"`
+	Assignees []string `json:"assignees,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -23988,10 +23988,10 @@ func NewIssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem(v IssuesCreateReqLab
 }
 
 type IssuesCreateReqLabelsItem1 struct {
-	ID          OptInt       `json:"id"`
-	Name        OptString    `json:"name"`
-	Description OptNilString `json:"description"`
-	Color       OptNilString `json:"color"`
+	ID          OptInt       `json:"id,omitempty"`
+	Name        OptString    `json:"name,omitempty"`
+	Description OptNilString `json:"description,omitempty"`
+	Color       OptNilString `json:"color,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -24200,7 +24200,7 @@ func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventRes() {}
 
 // IssuesListAssigneesOKHeaders wraps []SimpleUser with response headers.
 type IssuesListAssigneesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -24243,7 +24243,7 @@ const (
 
 // IssuesListCommentsForRepoOKHeaders wraps []IssueComment with response headers.
 type IssuesListCommentsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []IssueComment
 }
 
@@ -24278,7 +24278,7 @@ const (
 
 // IssuesListCommentsOKHeaders wraps []IssueComment with response headers.
 type IssuesListCommentsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []IssueComment
 }
 
@@ -24313,7 +24313,7 @@ const (
 
 // IssuesListEventsForRepoOKHeaders wraps []IssueEvent with response headers.
 type IssuesListEventsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []IssueEvent
 }
 
@@ -24370,7 +24370,7 @@ const (
 
 // IssuesListForAuthenticatedUserOKHeaders wraps []Issue with response headers.
 type IssuesListForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Issue
 }
 
@@ -24432,7 +24432,7 @@ const (
 
 // IssuesListForOrgOKHeaders wraps []Issue with response headers.
 type IssuesListForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Issue
 }
 
@@ -24491,7 +24491,7 @@ const (
 
 // IssuesListForRepoOKHeaders wraps []IssueSimple with response headers.
 type IssuesListForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []IssueSimple
 }
 
@@ -24535,7 +24535,7 @@ const (
 
 // IssuesListLabelsForMilestoneOKHeaders wraps []Label with response headers.
 type IssuesListLabelsForMilestoneOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Label
 }
 
@@ -24561,7 +24561,7 @@ func (s *IssuesListLabelsForMilestoneOKHeaders) SetResponse(val []Label) {
 
 // IssuesListLabelsForRepoOKHeaders wraps []Label with response headers.
 type IssuesListLabelsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Label
 }
 
@@ -24589,7 +24589,7 @@ func (*IssuesListLabelsForRepoOKHeaders) issuesListLabelsForRepoRes() {}
 
 // IssuesListLabelsOnIssueOKHeaders wraps []Label with response headers.
 type IssuesListLabelsOnIssueOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Label
 }
 
@@ -24624,7 +24624,7 @@ const (
 
 // IssuesListMilestonesOKHeaders wraps []Milestone with response headers.
 type IssuesListMilestonesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Milestone
 }
 
@@ -24667,7 +24667,7 @@ const (
 
 // IssuesListOKHeaders wraps []Issue with response headers.
 type IssuesListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Issue
 }
 
@@ -24733,7 +24733,7 @@ type IssuesLockReq struct {
 	// \* `too heated`
 	// \* `resolved`
 	// \* `spam`.
-	LockReason OptIssuesLockReqLockReason `json:"lock_reason"`
+	LockReason OptIssuesLockReqLockReason `json:"lock_reason,omitempty"`
 }
 
 // GetLockReason returns the value of LockReason.
@@ -24769,7 +24769,7 @@ func (*IssuesRemoveAllLabelsNoContent) issuesRemoveAllLabelsRes() {}
 type IssuesRemoveAssigneesReq struct {
 	// Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove
 	// assignees from an issue. Assignees are silently ignored otherwise._.
-	Assignees []string `json:"assignees"`
+	Assignees []string `json:"assignees,omitempty"`
 }
 
 // GetAssignees returns the value of Assignees.
@@ -24844,11 +24844,11 @@ type IssuesUpdateLabelReq struct {
 	// ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png
 	// ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat
 	// sheet](https://github.com/ikatyang/emoji-cheat-sheet).".
-	NewName OptString `json:"new_name"`
+	NewName OptString `json:"new_name,omitempty"`
 	// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
-	Color OptString `json:"color"`
+	Color OptString `json:"color,omitempty"`
 	// A short description of the label.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 }
 
 // GetNewName returns the value of NewName.
@@ -24883,14 +24883,14 @@ func (s *IssuesUpdateLabelReq) SetDescription(val OptString) {
 
 type IssuesUpdateMilestoneReq struct {
 	// The title of the milestone.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The state of the milestone. Either `open` or `closed`.
-	State OptIssuesUpdateMilestoneReqState `json:"state"`
+	State OptIssuesUpdateMilestoneReqState `json:"state,omitempty"`
 	// A description of the milestone.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 	// format: `YYYY-MM-DDTHH:MM:SSZ`.
-	DueOn OptDateTime `json:"due_on"`
+	DueOn OptDateTime `json:"due_on,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -24943,23 +24943,23 @@ const (
 
 type IssuesUpdateReq struct {
 	// The title of the issue.
-	Title OptNilIssuesUpdateReqTitle `json:"title"`
+	Title OptNilIssuesUpdateReqTitle `json:"title,omitempty"`
 	// The contents of the issue.
-	Body OptNilString `json:"body"`
+	Body OptNilString `json:"body,omitempty"`
 	// Login for the user that this issue should be assigned to. **This field is deprecated.**.
-	Assignee OptNilString `json:"assignee"`
+	Assignee OptNilString `json:"assignee,omitempty"`
 	// State of the issue. Either `open` or `closed`.
-	State     OptIssuesUpdateReqState        `json:"state"`
-	Milestone OptNilIssuesUpdateReqMilestone `json:"milestone"`
+	State     OptIssuesUpdateReqState        `json:"state,omitempty"`
+	Milestone OptNilIssuesUpdateReqMilestone `json:"milestone,omitempty"`
 	// Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on
 	// this Issue. Send an empty array (`[]`) to clear all Labels from the Issue. _NOTE: Only users with
 	// push access can set labels for issues. Labels are silently dropped otherwise._.
-	Labels []IssuesUpdateReqLabelsItem `json:"labels"`
+	Labels []IssuesUpdateReqLabelsItem `json:"labels,omitempty"`
 	// Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of
 	// assignees on this Issue. Send an empty array (`[]`) to clear all assignees from the Issue. _NOTE:
 	// Only users with push access can set assignees for new issues. Assignees are silently dropped
 	// otherwise._.
-	Assignees []string `json:"assignees"`
+	Assignees []string `json:"assignees,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -25099,10 +25099,10 @@ func NewIssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem(v IssuesUpdateReqLab
 }
 
 type IssuesUpdateReqLabelsItem1 struct {
-	ID          OptInt       `json:"id"`
-	Name        OptString    `json:"name"`
-	Description OptNilString `json:"description"`
-	Color       OptNilString `json:"color"`
+	ID          OptInt       `json:"id,omitempty"`
+	Name        OptString    `json:"name,omitempty"`
+	Description OptNilString `json:"description,omitempty"`
+	Color       OptNilString `json:"color,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -25306,7 +25306,7 @@ type Job struct {
 	// The name of the job.
 	Name string `json:"name"`
 	// Steps in this job.
-	Steps       []JobStepsItem `json:"steps"`
+	Steps       []JobStepsItem `json:"steps,omitempty"`
 	CheckRunURL string         `json:"check_run_url"`
 }
 
@@ -25468,9 +25468,9 @@ type JobStepsItem struct {
 	Name   string `json:"name"`
 	Number int    `json:"number"`
 	// The time that the step started, in ISO 8601 format.
-	StartedAt OptNilDateTime `json:"started_at"`
+	StartedAt OptNilDateTime `json:"started_at,omitempty"`
 	// The time that the job finished, in ISO 8601 format.
-	CompletedAt OptNilDateTime `json:"completed_at"`
+	CompletedAt OptNilDateTime `json:"completed_at,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -25743,7 +25743,7 @@ func (*Label) issuesGetLabelRes() {}
 
 // LabelHeaders wraps Label with response headers.
 type LabelHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Label
 }
 
@@ -25780,7 +25780,7 @@ type LabelSearchResultItem struct {
 	Default     bool                     `json:"default"`
 	Description NilString                `json:"description"`
 	Score       float64                  `json:"score"`
-	TextMatches *SearchResultTextMatches `json:"text_matches"`
+	TextMatches *SearchResultTextMatches `json:"text_matches,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -26228,7 +26228,7 @@ type LicenseSimple struct {
 	URL     NilURI    `json:"url"`
 	SpdxID  NilString `json:"spdx_id"`
 	NodeID  string    `json:"node_id"`
-	HTMLURL OptURI    `json:"html_url"`
+	HTMLURL OptURI    `json:"html_url,omitempty"`
 }
 
 // GetKey returns the value of Key.
@@ -26351,10 +26351,10 @@ type MarketplaceAccount struct {
 	URL                      url.URL      `json:"url"`
 	ID                       int          `json:"id"`
 	Type                     string       `json:"type"`
-	NodeID                   OptString    `json:"node_id"`
+	NodeID                   OptString    `json:"node_id,omitempty"`
 	Login                    string       `json:"login"`
-	Email                    OptNilString `json:"email"`
-	OrganizationBillingEmail OptNilString `json:"organization_billing_email"`
+	Email                    OptNilString `json:"email,omitempty"`
+	OrganizationBillingEmail OptNilString `json:"organization_billing_email,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -26582,9 +26582,9 @@ type MarketplacePurchase struct {
 	Type                     string                                            `json:"type"`
 	ID                       int                                               `json:"id"`
 	Login                    string                                            `json:"login"`
-	OrganizationBillingEmail OptString                                         `json:"organization_billing_email"`
-	Email                    OptNilString                                      `json:"email"`
-	MarketplacePendingChange OptNilMarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change"`
+	OrganizationBillingEmail OptString                                         `json:"organization_billing_email,omitempty"`
+	Email                    OptNilString                                      `json:"email,omitempty"`
+	MarketplacePendingChange OptNilMarketplacePurchaseMarketplacePendingChange `json:"marketplace_pending_change,omitempty"`
 	MarketplacePurchase      MarketplacePurchaseMarketplacePurchase            `json:"marketplace_purchase"`
 }
 
@@ -26672,11 +26672,11 @@ func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountRes()        {}
 func (*MarketplacePurchase) appsGetSubscriptionPlanForAccountStubbedRes() {}
 
 type MarketplacePurchaseMarketplacePendingChange struct {
-	IsInstalled   OptBool                   `json:"is_installed"`
-	EffectiveDate OptString                 `json:"effective_date"`
-	UnitCount     OptNilInt                 `json:"unit_count"`
-	ID            OptInt                    `json:"id"`
-	Plan          OptMarketplaceListingPlan `json:"plan"`
+	IsInstalled   OptBool                   `json:"is_installed,omitempty"`
+	EffectiveDate OptString                 `json:"effective_date,omitempty"`
+	UnitCount     OptNilInt                 `json:"unit_count,omitempty"`
+	ID            OptInt                    `json:"id,omitempty"`
+	Plan          OptMarketplaceListingPlan `json:"plan,omitempty"`
 }
 
 // GetIsInstalled returns the value of IsInstalled.
@@ -26730,14 +26730,14 @@ func (s *MarketplacePurchaseMarketplacePendingChange) SetPlan(val OptMarketplace
 }
 
 type MarketplacePurchaseMarketplacePurchase struct {
-	BillingCycle    OptString                 `json:"billing_cycle"`
-	NextBillingDate OptNilString              `json:"next_billing_date"`
-	IsInstalled     OptBool                   `json:"is_installed"`
-	UnitCount       OptNilInt                 `json:"unit_count"`
-	OnFreeTrial     OptBool                   `json:"on_free_trial"`
-	FreeTrialEndsOn OptNilString              `json:"free_trial_ends_on"`
-	UpdatedAt       OptString                 `json:"updated_at"`
-	Plan            OptMarketplaceListingPlan `json:"plan"`
+	BillingCycle    OptString                 `json:"billing_cycle,omitempty"`
+	NextBillingDate OptNilString              `json:"next_billing_date,omitempty"`
+	IsInstalled     OptBool                   `json:"is_installed,omitempty"`
+	UnitCount       OptNilInt                 `json:"unit_count,omitempty"`
+	OnFreeTrial     OptBool                   `json:"on_free_trial,omitempty"`
+	FreeTrialEndsOn OptNilString              `json:"free_trial_ends_on,omitempty"`
+	UpdatedAt       OptString                 `json:"updated_at,omitempty"`
+	Plan            OptMarketplaceListingPlan `json:"plan,omitempty"`
 }
 
 // GetBillingCycle returns the value of BillingCycle.
@@ -26823,9 +26823,9 @@ func (s *MarketplacePurchaseMarketplacePurchase) SetPlan(val OptMarketplaceListi
 // Results of a successful merge upstream request.
 // Ref: #/components/schemas/merged-upstream
 type MergedUpstream struct {
-	Message    OptString                  `json:"message"`
-	MergeType  OptMergedUpstreamMergeType `json:"merge_type"`
-	BaseBranch OptString                  `json:"base_branch"`
+	Message    OptString                  `json:"message,omitempty"`
+	MergeType  OptMergedUpstreamMergeType `json:"merge_type,omitempty"`
+	BaseBranch OptString                  `json:"base_branch,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -26908,7 +26908,7 @@ type MetaRootOK struct {
 	CurrentUserRepositoriesURL       string    `json:"current_user_repositories_url"`
 	StarredURL                       string    `json:"starred_url"`
 	StarredGistsURL                  string    `json:"starred_gists_url"`
-	TopicSearchURL                   OptString `json:"topic_search_url"`
+	TopicSearchURL                   OptString `json:"topic_search_url,omitempty"`
 	UserURL                          string    `json:"user_url"`
 	UserOrganizationsURL             string    `json:"user_organizations_url"`
 	UserRepositoriesURL              string    `json:"user_repositories_url"`
@@ -27263,8 +27263,8 @@ type Migration struct {
 	CreatedAt            time.Time             `json:"created_at"`
 	UpdatedAt            time.Time             `json:"updated_at"`
 	NodeID               string                `json:"node_id"`
-	ArchiveURL           OptURI                `json:"archive_url"`
-	Exclude              []jx.Raw              `json:"exclude"`
+	ArchiveURL           OptURI                `json:"archive_url,omitempty"`
+	Exclude              []jx.Raw              `json:"exclude,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -27529,7 +27529,7 @@ func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrations
 
 // MigrationsListForAuthenticatedUserOKHeaders wraps []Migration with response headers.
 type MigrationsListForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Migration
 }
 
@@ -27564,7 +27564,7 @@ const (
 
 // MigrationsListForOrgOKHeaders wraps []Migration with response headers.
 type MigrationsListForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Migration
 }
 
@@ -27590,7 +27590,7 @@ func (s *MigrationsListForOrgOKHeaders) SetResponse(val []Migration) {
 
 // MigrationsListReposForOrgOKHeaders wraps []MinimalRepository with response headers.
 type MigrationsListReposForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -27618,7 +27618,7 @@ func (*MigrationsListReposForOrgOKHeaders) migrationsListReposForOrgRes() {}
 
 // MigrationsListReposForUserOKHeaders wraps []MinimalRepository with response headers.
 type MigrationsListReposForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -27646,9 +27646,9 @@ func (*MigrationsListReposForUserOKHeaders) migrationsListReposForUserRes() {}
 
 type MigrationsMapCommitAuthorReq struct {
 	// The new Git author email.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// The new Git author name.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 }
 
 // GetEmail returns the value of Email.
@@ -27708,15 +27708,15 @@ func (*MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) migration
 
 type MigrationsStartForAuthenticatedUserReq struct {
 	// Lock the repositories being migrated at the start of the migration.
-	LockRepositories OptBool `json:"lock_repositories"`
+	LockRepositories OptBool `json:"lock_repositories,omitempty"`
 	// Do not include attachments in the migration.
-	ExcludeAttachments OptBool `json:"exclude_attachments"`
+	ExcludeAttachments OptBool `json:"exclude_attachments,omitempty"`
 	// Do not include releases in the migration.
-	ExcludeReleases OptBool `json:"exclude_releases"`
+	ExcludeReleases OptBool `json:"exclude_releases,omitempty"`
 	// Indicates whether projects owned by the organization or users should be excluded.
-	ExcludeOwnerProjects OptBool `json:"exclude_owner_projects"`
+	ExcludeOwnerProjects OptBool `json:"exclude_owner_projects,omitempty"`
 	// Exclude attributes from the API response to improve performance.
-	Exclude      []MigrationsStartForAuthenticatedUserReqExcludeItem `json:"exclude"`
+	Exclude      []MigrationsStartForAuthenticatedUserReqExcludeItem `json:"exclude,omitempty"`
 	Repositories []string                                            `json:"repositories"`
 }
 
@@ -27791,17 +27791,17 @@ type MigrationsStartForOrgReq struct {
 	// A list of arrays indicating which repositories should be migrated.
 	Repositories []string `json:"repositories"`
 	// Indicates whether repositories should be locked (to prevent manipulation) while migrating data.
-	LockRepositories OptBool `json:"lock_repositories"`
+	LockRepositories OptBool `json:"lock_repositories,omitempty"`
 	// Indicates whether attachments should be excluded from the migration (to reduce migration archive
 	// file size).
-	ExcludeAttachments OptBool `json:"exclude_attachments"`
+	ExcludeAttachments OptBool `json:"exclude_attachments,omitempty"`
 	// Indicates whether releases should be excluded from the migration (to reduce migration archive file
 	// size).
-	ExcludeReleases OptBool `json:"exclude_releases"`
+	ExcludeReleases OptBool `json:"exclude_releases,omitempty"`
 	// Indicates whether projects owned by the organization or users should be excluded. from the
 	// migration.
-	ExcludeOwnerProjects OptBool                               `json:"exclude_owner_projects"`
-	Exclude              []MigrationsStartForOrgReqExcludeItem `json:"exclude"`
+	ExcludeOwnerProjects OptBool                               `json:"exclude_owner_projects,omitempty"`
+	Exclude              []MigrationsStartForOrgReqExcludeItem `json:"exclude,omitempty"`
 }
 
 // GetRepositories returns the value of Repositories.
@@ -27876,13 +27876,13 @@ type MigrationsStartImportReq struct {
 	// The originating VCS type. Can be one of `subversion`, `git`, `mercurial`, or `tfvc`. Please be
 	// aware that without this parameter, the import job will take additional time to detect the VCS type
 	// before beginning the import. This detection step will be reflected in the response.
-	Vcs OptMigrationsStartImportReqVcs `json:"vcs"`
+	Vcs OptMigrationsStartImportReqVcs `json:"vcs,omitempty"`
 	// If authentication is required, the username to provide to `vcs_url`.
-	VcsUsername OptString `json:"vcs_username"`
+	VcsUsername OptString `json:"vcs_username,omitempty"`
 	// If authentication is required, the password to provide to `vcs_url`.
-	VcsPassword OptString `json:"vcs_password"`
+	VcsPassword OptString `json:"vcs_password,omitempty"`
 	// For a tfvc import, the name of the project that is being imported.
-	TfvcProject OptString `json:"tfvc_project"`
+	TfvcProject OptString `json:"tfvc_project,omitempty"`
 }
 
 // GetVcsURL returns the value of VcsURL.
@@ -27975,11 +27975,11 @@ func (*MigrationsUnlockRepoForOrgNoContent) migrationsUnlockRepoForOrgRes() {}
 
 type MigrationsUpdateImportReq struct {
 	// The username to provide to the originating repository.
-	VcsUsername OptString `json:"vcs_username"`
+	VcsUsername OptString `json:"vcs_username,omitempty"`
 	// The password to provide to the originating repository.
-	VcsPassword OptString `json:"vcs_password"`
-	Vcs         OptString `json:"vcs"`
-	TfvcProject OptString `json:"tfvc_project"`
+	VcsPassword OptString `json:"vcs_password,omitempty"`
+	Vcs         OptString `json:"vcs,omitempty"`
+	TfvcProject OptString `json:"tfvc_project,omitempty"`
 }
 
 // GetVcsUsername returns the value of VcsUsername.
@@ -28210,7 +28210,7 @@ func (*Milestone) issuesGetMilestoneRes() {}
 
 // MilestoneHeaders wraps Milestone with response headers.
 type MilestoneHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Milestone
 }
 
@@ -28274,7 +28274,7 @@ type MinimalRepository struct {
 	GitCommitsURL       string                          `json:"git_commits_url"`
 	GitRefsURL          string                          `json:"git_refs_url"`
 	GitTagsURL          string                          `json:"git_tags_url"`
-	GitURL              OptString                       `json:"git_url"`
+	GitURL              OptString                       `json:"git_url,omitempty"`
 	IssueCommentURL     string                          `json:"issue_comment_url"`
 	IssueEventsURL      string                          `json:"issue_events_url"`
 	IssuesURL           string                          `json:"issues_url"`
@@ -28286,7 +28286,7 @@ type MinimalRepository struct {
 	NotificationsURL    string                          `json:"notifications_url"`
 	PullsURL            string                          `json:"pulls_url"`
 	ReleasesURL         string                          `json:"releases_url"`
-	SSHURL              OptString                       `json:"ssh_url"`
+	SSHURL              OptString                       `json:"ssh_url,omitempty"`
 	StargazersURL       url.URL                         `json:"stargazers_url"`
 	StatusesURL         string                          `json:"statuses_url"`
 	SubscribersURL      url.URL                         `json:"subscribers_url"`
@@ -28294,43 +28294,43 @@ type MinimalRepository struct {
 	TagsURL             url.URL                         `json:"tags_url"`
 	TeamsURL            url.URL                         `json:"teams_url"`
 	TreesURL            string                          `json:"trees_url"`
-	CloneURL            OptString                       `json:"clone_url"`
-	MirrorURL           OptNilString                    `json:"mirror_url"`
+	CloneURL            OptString                       `json:"clone_url,omitempty"`
+	MirrorURL           OptNilString                    `json:"mirror_url,omitempty"`
 	HooksURL            url.URL                         `json:"hooks_url"`
-	SvnURL              OptString                       `json:"svn_url"`
-	Homepage            OptNilString                    `json:"homepage"`
-	Language            OptNilString                    `json:"language"`
-	ForksCount          OptInt                          `json:"forks_count"`
-	StargazersCount     OptInt                          `json:"stargazers_count"`
-	WatchersCount       OptInt                          `json:"watchers_count"`
-	Size                OptInt                          `json:"size"`
-	DefaultBranch       OptString                       `json:"default_branch"`
-	OpenIssuesCount     OptInt                          `json:"open_issues_count"`
-	IsTemplate          OptBool                         `json:"is_template"`
-	Topics              []string                        `json:"topics"`
-	HasIssues           OptBool                         `json:"has_issues"`
-	HasProjects         OptBool                         `json:"has_projects"`
-	HasWiki             OptBool                         `json:"has_wiki"`
-	HasPages            OptBool                         `json:"has_pages"`
-	HasDownloads        OptBool                         `json:"has_downloads"`
-	Archived            OptBool                         `json:"archived"`
-	Disabled            OptBool                         `json:"disabled"`
-	Visibility          OptString                       `json:"visibility"`
-	PushedAt            OptNilDateTime                  `json:"pushed_at"`
-	CreatedAt           OptNilDateTime                  `json:"created_at"`
-	UpdatedAt           OptNilDateTime                  `json:"updated_at"`
-	Permissions         OptMinimalRepositoryPermissions `json:"permissions"`
-	TemplateRepository  OptNilNullableRepository        `json:"template_repository"`
-	TempCloneToken      OptString                       `json:"temp_clone_token"`
-	DeleteBranchOnMerge OptBool                         `json:"delete_branch_on_merge"`
-	SubscribersCount    OptInt                          `json:"subscribers_count"`
-	NetworkCount        OptInt                          `json:"network_count"`
-	CodeOfConduct       OptCodeOfConduct                `json:"code_of_conduct"`
-	License             OptNilMinimalRepositoryLicense  `json:"license"`
-	Forks               OptInt                          `json:"forks"`
-	OpenIssues          OptInt                          `json:"open_issues"`
-	Watchers            OptInt                          `json:"watchers"`
-	AllowForking        OptBool                         `json:"allow_forking"`
+	SvnURL              OptString                       `json:"svn_url,omitempty"`
+	Homepage            OptNilString                    `json:"homepage,omitempty"`
+	Language            OptNilString                    `json:"language,omitempty"`
+	ForksCount          OptInt                          `json:"forks_count,omitempty"`
+	StargazersCount     OptInt                          `json:"stargazers_count,omitempty"`
+	WatchersCount       OptInt                          `json:"watchers_count,omitempty"`
+	Size                OptInt                          `json:"size,omitempty"`
+	DefaultBranch       OptString                       `json:"default_branch,omitempty"`
+	OpenIssuesCount     OptInt                          `json:"open_issues_count,omitempty"`
+	IsTemplate          OptBool                         `json:"is_template,omitempty"`
+	Topics              []string                        `json:"topics,omitempty"`
+	HasIssues           OptBool                         `json:"has_issues,omitempty"`
+	HasProjects         OptBool                         `json:"has_projects,omitempty"`
+	HasWiki             OptBool                         `json:"has_wiki,omitempty"`
+	HasPages            OptBool                         `json:"has_pages,omitempty"`
+	HasDownloads        OptBool                         `json:"has_downloads,omitempty"`
+	Archived            OptBool                         `json:"archived,omitempty"`
+	Disabled            OptBool                         `json:"disabled,omitempty"`
+	Visibility          OptString                       `json:"visibility,omitempty"`
+	PushedAt            OptNilDateTime                  `json:"pushed_at,omitempty"`
+	CreatedAt           OptNilDateTime                  `json:"created_at,omitempty"`
+	UpdatedAt           OptNilDateTime                  `json:"updated_at,omitempty"`
+	Permissions         OptMinimalRepositoryPermissions `json:"permissions,omitempty"`
+	TemplateRepository  OptNilNullableRepository        `json:"template_repository,omitempty"`
+	TempCloneToken      OptString                       `json:"temp_clone_token,omitempty"`
+	DeleteBranchOnMerge OptBool                         `json:"delete_branch_on_merge,omitempty"`
+	SubscribersCount    OptInt                          `json:"subscribers_count,omitempty"`
+	NetworkCount        OptInt                          `json:"network_count,omitempty"`
+	CodeOfConduct       OptCodeOfConduct                `json:"code_of_conduct,omitempty"`
+	License             OptNilMinimalRepositoryLicense  `json:"license,omitempty"`
+	Forks               OptInt                          `json:"forks,omitempty"`
+	OpenIssues          OptInt                          `json:"open_issues,omitempty"`
+	Watchers            OptInt                          `json:"watchers,omitempty"`
+	AllowForking        OptBool                         `json:"allow_forking,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -29174,11 +29174,11 @@ func (s *MinimalRepository) SetAllowForking(val OptBool) {
 }
 
 type MinimalRepositoryLicense struct {
-	Key    OptString `json:"key"`
-	Name   OptString `json:"name"`
-	SpdxID OptString `json:"spdx_id"`
-	URL    OptString `json:"url"`
-	NodeID OptString `json:"node_id"`
+	Key    OptString `json:"key,omitempty"`
+	Name   OptString `json:"name,omitempty"`
+	SpdxID OptString `json:"spdx_id,omitempty"`
+	URL    OptString `json:"url,omitempty"`
+	NodeID OptString `json:"node_id,omitempty"`
 }
 
 // GetKey returns the value of Key.
@@ -29232,11 +29232,11 @@ func (s *MinimalRepositoryLicense) SetNodeID(val OptString) {
 }
 
 type MinimalRepositoryPermissions struct {
-	Admin    OptBool `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Push     OptBool `json:"push"`
-	Triage   OptBool `json:"triage"`
-	Pull     OptBool `json:"pull"`
+	Admin    OptBool `json:"admin,omitempty"`
+	Maintain OptBool `json:"maintain,omitempty"`
+	Push     OptBool `json:"push,omitempty"`
+	Triage   OptBool `json:"triage,omitempty"`
+	Pull     OptBool `json:"pull,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -30951,9 +30951,9 @@ func (s *NullableCommunityHealthFile) SetHTMLURL(val url.URL) {
 // Metaproperties for Git author/committer information.
 // Ref: #/components/schemas/nullable-git-user
 type NullableGitUser struct {
-	Name  OptString `json:"name"`
-	Email OptString `json:"email"`
-	Date  OptString `json:"date"`
+	Name  OptString `json:"name,omitempty"`
+	Email OptString `json:"email,omitempty"`
+	Date  OptString `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -30994,7 +30994,7 @@ type NullableIntegration struct {
 	// Unique identifier of the GitHub app.
 	ID int `json:"id"`
 	// The slug name of the GitHub app.
-	Slug   OptString             `json:"slug"`
+	Slug   OptString             `json:"slug,omitempty"`
 	NodeID string                `json:"node_id"`
 	Owner  NilNullableSimpleUser `json:"owner"`
 	// The name of the GitHub app.
@@ -31009,11 +31009,11 @@ type NullableIntegration struct {
 	// The list of events for the GitHub app.
 	Events []string `json:"events"`
 	// The number of installations associated with the GitHub app.
-	InstallationsCount OptInt       `json:"installations_count"`
-	ClientID           OptString    `json:"client_id"`
-	ClientSecret       OptString    `json:"client_secret"`
-	WebhookSecret      OptNilString `json:"webhook_secret"`
-	Pem                OptString    `json:"pem"`
+	InstallationsCount OptInt       `json:"installations_count,omitempty"`
+	ClientID           OptString    `json:"client_id,omitempty"`
+	ClientSecret       OptString    `json:"client_secret,omitempty"`
+	WebhookSecret      OptNilString `json:"webhook_secret,omitempty"`
+	Pem                OptString    `json:"pem,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -31188,11 +31188,11 @@ func (s *NullableIntegration) SetPem(val OptString) {
 
 // The set of permissions for the GitHub app.
 type NullableIntegrationPermissions struct {
-	Issues          OptString `json:"issues"`
-	Checks          OptString `json:"checks"`
-	Metadata        OptString `json:"metadata"`
-	Contents        OptString `json:"contents"`
-	Deployments     OptString `json:"deployments"`
+	Issues          OptString `json:"issues,omitempty"`
+	Checks          OptString `json:"checks,omitempty"`
+	Metadata        OptString `json:"metadata,omitempty"`
+	Contents        OptString `json:"contents,omitempty"`
+	Deployments     OptString `json:"deployments,omitempty"`
 	AdditionalProps NullableIntegrationPermissionsAdditional
 }
 
@@ -31275,7 +31275,7 @@ type NullableLicenseSimple struct {
 	URL     NilURI    `json:"url"`
 	SpdxID  NilString `json:"spdx_id"`
 	NodeID  string    `json:"node_id"`
-	HTMLURL OptURI    `json:"html_url"`
+	HTMLURL OptURI    `json:"html_url,omitempty"`
 }
 
 // GetKey returns the value of Key.
@@ -31560,7 +31560,7 @@ type NullableMinimalRepository struct {
 	GitCommitsURL       string                                  `json:"git_commits_url"`
 	GitRefsURL          string                                  `json:"git_refs_url"`
 	GitTagsURL          string                                  `json:"git_tags_url"`
-	GitURL              OptString                               `json:"git_url"`
+	GitURL              OptString                               `json:"git_url,omitempty"`
 	IssueCommentURL     string                                  `json:"issue_comment_url"`
 	IssueEventsURL      string                                  `json:"issue_events_url"`
 	IssuesURL           string                                  `json:"issues_url"`
@@ -31572,7 +31572,7 @@ type NullableMinimalRepository struct {
 	NotificationsURL    string                                  `json:"notifications_url"`
 	PullsURL            string                                  `json:"pulls_url"`
 	ReleasesURL         string                                  `json:"releases_url"`
-	SSHURL              OptString                               `json:"ssh_url"`
+	SSHURL              OptString                               `json:"ssh_url,omitempty"`
 	StargazersURL       url.URL                                 `json:"stargazers_url"`
 	StatusesURL         string                                  `json:"statuses_url"`
 	SubscribersURL      url.URL                                 `json:"subscribers_url"`
@@ -31580,43 +31580,43 @@ type NullableMinimalRepository struct {
 	TagsURL             url.URL                                 `json:"tags_url"`
 	TeamsURL            url.URL                                 `json:"teams_url"`
 	TreesURL            string                                  `json:"trees_url"`
-	CloneURL            OptString                               `json:"clone_url"`
-	MirrorURL           OptNilString                            `json:"mirror_url"`
+	CloneURL            OptString                               `json:"clone_url,omitempty"`
+	MirrorURL           OptNilString                            `json:"mirror_url,omitempty"`
 	HooksURL            url.URL                                 `json:"hooks_url"`
-	SvnURL              OptString                               `json:"svn_url"`
-	Homepage            OptNilString                            `json:"homepage"`
-	Language            OptNilString                            `json:"language"`
-	ForksCount          OptInt                                  `json:"forks_count"`
-	StargazersCount     OptInt                                  `json:"stargazers_count"`
-	WatchersCount       OptInt                                  `json:"watchers_count"`
-	Size                OptInt                                  `json:"size"`
-	DefaultBranch       OptString                               `json:"default_branch"`
-	OpenIssuesCount     OptInt                                  `json:"open_issues_count"`
-	IsTemplate          OptBool                                 `json:"is_template"`
-	Topics              []string                                `json:"topics"`
-	HasIssues           OptBool                                 `json:"has_issues"`
-	HasProjects         OptBool                                 `json:"has_projects"`
-	HasWiki             OptBool                                 `json:"has_wiki"`
-	HasPages            OptBool                                 `json:"has_pages"`
-	HasDownloads        OptBool                                 `json:"has_downloads"`
-	Archived            OptBool                                 `json:"archived"`
-	Disabled            OptBool                                 `json:"disabled"`
-	Visibility          OptString                               `json:"visibility"`
-	PushedAt            OptNilDateTime                          `json:"pushed_at"`
-	CreatedAt           OptNilDateTime                          `json:"created_at"`
-	UpdatedAt           OptNilDateTime                          `json:"updated_at"`
-	Permissions         OptNullableMinimalRepositoryPermissions `json:"permissions"`
-	TemplateRepository  OptNilNullableRepository                `json:"template_repository"`
-	TempCloneToken      OptString                               `json:"temp_clone_token"`
-	DeleteBranchOnMerge OptBool                                 `json:"delete_branch_on_merge"`
-	SubscribersCount    OptInt                                  `json:"subscribers_count"`
-	NetworkCount        OptInt                                  `json:"network_count"`
-	CodeOfConduct       OptCodeOfConduct                        `json:"code_of_conduct"`
-	License             OptNilNullableMinimalRepositoryLicense  `json:"license"`
-	Forks               OptInt                                  `json:"forks"`
-	OpenIssues          OptInt                                  `json:"open_issues"`
-	Watchers            OptInt                                  `json:"watchers"`
-	AllowForking        OptBool                                 `json:"allow_forking"`
+	SvnURL              OptString                               `json:"svn_url,omitempty"`
+	Homepage            OptNilString                            `json:"homepage,omitempty"`
+	Language            OptNilString                            `json:"language,omitempty"`
+	ForksCount          OptInt                                  `json:"forks_count,omitempty"`
+	StargazersCount     OptInt                                  `json:"stargazers_count,omitempty"`
+	WatchersCount       OptInt                                  `json:"watchers_count,omitempty"`
+	Size                OptInt                                  `json:"size,omitempty"`
+	DefaultBranch       OptString                               `json:"default_branch,omitempty"`
+	OpenIssuesCount     OptInt                                  `json:"open_issues_count,omitempty"`
+	IsTemplate          OptBool                                 `json:"is_template,omitempty"`
+	Topics              []string                                `json:"topics,omitempty"`
+	HasIssues           OptBool                                 `json:"has_issues,omitempty"`
+	HasProjects         OptBool                                 `json:"has_projects,omitempty"`
+	HasWiki             OptBool                                 `json:"has_wiki,omitempty"`
+	HasPages            OptBool                                 `json:"has_pages,omitempty"`
+	HasDownloads        OptBool                                 `json:"has_downloads,omitempty"`
+	Archived            OptBool                                 `json:"archived,omitempty"`
+	Disabled            OptBool                                 `json:"disabled,omitempty"`
+	Visibility          OptString                               `json:"visibility,omitempty"`
+	PushedAt            OptNilDateTime                          `json:"pushed_at,omitempty"`
+	CreatedAt           OptNilDateTime                          `json:"created_at,omitempty"`
+	UpdatedAt           OptNilDateTime                          `json:"updated_at,omitempty"`
+	Permissions         OptNullableMinimalRepositoryPermissions `json:"permissions,omitempty"`
+	TemplateRepository  OptNilNullableRepository                `json:"template_repository,omitempty"`
+	TempCloneToken      OptString                               `json:"temp_clone_token,omitempty"`
+	DeleteBranchOnMerge OptBool                                 `json:"delete_branch_on_merge,omitempty"`
+	SubscribersCount    OptInt                                  `json:"subscribers_count,omitempty"`
+	NetworkCount        OptInt                                  `json:"network_count,omitempty"`
+	CodeOfConduct       OptCodeOfConduct                        `json:"code_of_conduct,omitempty"`
+	License             OptNilNullableMinimalRepositoryLicense  `json:"license,omitempty"`
+	Forks               OptInt                                  `json:"forks,omitempty"`
+	OpenIssues          OptInt                                  `json:"open_issues,omitempty"`
+	Watchers            OptInt                                  `json:"watchers,omitempty"`
+	AllowForking        OptBool                                 `json:"allow_forking,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -32460,11 +32460,11 @@ func (s *NullableMinimalRepository) SetAllowForking(val OptBool) {
 }
 
 type NullableMinimalRepositoryLicense struct {
-	Key    OptString `json:"key"`
-	Name   OptString `json:"name"`
-	SpdxID OptString `json:"spdx_id"`
-	URL    OptString `json:"url"`
-	NodeID OptString `json:"node_id"`
+	Key    OptString `json:"key,omitempty"`
+	Name   OptString `json:"name,omitempty"`
+	SpdxID OptString `json:"spdx_id,omitempty"`
+	URL    OptString `json:"url,omitempty"`
+	NodeID OptString `json:"node_id,omitempty"`
 }
 
 // GetKey returns the value of Key.
@@ -32518,11 +32518,11 @@ func (s *NullableMinimalRepositoryLicense) SetNodeID(val OptString) {
 }
 
 type NullableMinimalRepositoryPermissions struct {
-	Admin    OptBool `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Push     OptBool `json:"push"`
-	Triage   OptBool `json:"triage"`
-	Pull     OptBool `json:"pull"`
+	Admin    OptBool `json:"admin,omitempty"`
+	Maintain OptBool `json:"maintain,omitempty"`
+	Push     OptBool `json:"push,omitempty"`
+	Triage   OptBool `json:"triage,omitempty"`
+	Pull     OptBool `json:"pull,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -32585,9 +32585,9 @@ type NullableRepository struct {
 	Name         string                           `json:"name"`
 	FullName     string                           `json:"full_name"`
 	License      NilNullableLicenseSimple         `json:"license"`
-	Organization OptNilNullableSimpleUser         `json:"organization"`
+	Organization OptNilNullableSimpleUser         `json:"organization,omitempty"`
 	Forks        int                              `json:"forks"`
-	Permissions  OptNullableRepositoryPermissions `json:"permissions"`
+	Permissions  OptNullableRepositoryPermissions `json:"permissions,omitempty"`
 	Owner        SimpleUser                       `json:"owner"`
 	// Whether the repository is private or public.
 	Private          bool      `json:"private"`
@@ -32646,8 +32646,8 @@ type NullableRepository struct {
 	DefaultBranch   string `json:"default_branch"`
 	OpenIssuesCount int    `json:"open_issues_count"`
 	// Whether this repository acts as a template that can be used to generate new repositories.
-	IsTemplate OptBool  `json:"is_template"`
-	Topics     []string `json:"topics"`
+	IsTemplate OptBool  `json:"is_template,omitempty"`
+	Topics     []string `json:"topics,omitempty"`
 	// Whether issues are enabled.
 	HasIssues bool `json:"has_issues"`
 	// Whether projects are enabled.
@@ -32662,30 +32662,30 @@ type NullableRepository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString   `json:"visibility"`
+	Visibility OptString   `json:"visibility,omitempty"`
 	PushedAt   NilDateTime `json:"pushed_at"`
 	CreatedAt  NilDateTime `json:"created_at"`
 	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
-	AllowRebaseMerge   OptBool                                    `json:"allow_rebase_merge"`
-	TemplateRepository OptNilNullableRepositoryTemplateRepository `json:"template_repository"`
-	TempCloneToken     OptString                                  `json:"temp_clone_token"`
+	AllowRebaseMerge   OptBool                                    `json:"allow_rebase_merge,omitempty"`
+	TemplateRepository OptNilNullableRepositoryTemplateRepository `json:"template_repository,omitempty"`
+	TempCloneToken     OptString                                  `json:"temp_clone_token,omitempty"`
 	// Whether to allow squash merges for pull requests.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Whether to allow Auto-merge to be used on pull requests.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Whether to delete head branches when pull requests are merged.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 	// Whether to allow merge commits for pull requests.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Whether to allow forking this repo.
-	AllowForking     OptBool   `json:"allow_forking"`
-	SubscribersCount OptInt    `json:"subscribers_count"`
-	NetworkCount     OptInt    `json:"network_count"`
+	AllowForking     OptBool   `json:"allow_forking,omitempty"`
+	SubscribersCount OptInt    `json:"subscribers_count,omitempty"`
+	NetworkCount     OptInt    `json:"network_count,omitempty"`
 	OpenIssues       int       `json:"open_issues"`
 	Watchers         int       `json:"watchers"`
-	MasterBranch     OptString `json:"master_branch"`
-	StarredAt        OptString `json:"starred_at"`
+	MasterBranch     OptString `json:"master_branch,omitempty"`
+	StarredAt        OptString `json:"starred_at,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -33591,9 +33591,9 @@ func (s *NullableRepository) SetStarredAt(val OptString) {
 type NullableRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
 	Pull     bool    `json:"pull"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Push     bool    `json:"push"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -33647,87 +33647,87 @@ func (s *NullableRepositoryPermissions) SetMaintain(val OptBool) {
 }
 
 type NullableRepositoryTemplateRepository struct {
-	ID                  OptInt                                             `json:"id"`
-	NodeID              OptString                                          `json:"node_id"`
-	Name                OptString                                          `json:"name"`
-	FullName            OptString                                          `json:"full_name"`
-	Owner               OptNullableRepositoryTemplateRepositoryOwner       `json:"owner"`
-	Private             OptBool                                            `json:"private"`
-	HTMLURL             OptString                                          `json:"html_url"`
-	Description         OptString                                          `json:"description"`
-	Fork                OptBool                                            `json:"fork"`
-	URL                 OptString                                          `json:"url"`
-	ArchiveURL          OptString                                          `json:"archive_url"`
-	AssigneesURL        OptString                                          `json:"assignees_url"`
-	BlobsURL            OptString                                          `json:"blobs_url"`
-	BranchesURL         OptString                                          `json:"branches_url"`
-	CollaboratorsURL    OptString                                          `json:"collaborators_url"`
-	CommentsURL         OptString                                          `json:"comments_url"`
-	CommitsURL          OptString                                          `json:"commits_url"`
-	CompareURL          OptString                                          `json:"compare_url"`
-	ContentsURL         OptString                                          `json:"contents_url"`
-	ContributorsURL     OptString                                          `json:"contributors_url"`
-	DeploymentsURL      OptString                                          `json:"deployments_url"`
-	DownloadsURL        OptString                                          `json:"downloads_url"`
-	EventsURL           OptString                                          `json:"events_url"`
-	ForksURL            OptString                                          `json:"forks_url"`
-	GitCommitsURL       OptString                                          `json:"git_commits_url"`
-	GitRefsURL          OptString                                          `json:"git_refs_url"`
-	GitTagsURL          OptString                                          `json:"git_tags_url"`
-	GitURL              OptString                                          `json:"git_url"`
-	IssueCommentURL     OptString                                          `json:"issue_comment_url"`
-	IssueEventsURL      OptString                                          `json:"issue_events_url"`
-	IssuesURL           OptString                                          `json:"issues_url"`
-	KeysURL             OptString                                          `json:"keys_url"`
-	LabelsURL           OptString                                          `json:"labels_url"`
-	LanguagesURL        OptString                                          `json:"languages_url"`
-	MergesURL           OptString                                          `json:"merges_url"`
-	MilestonesURL       OptString                                          `json:"milestones_url"`
-	NotificationsURL    OptString                                          `json:"notifications_url"`
-	PullsURL            OptString                                          `json:"pulls_url"`
-	ReleasesURL         OptString                                          `json:"releases_url"`
-	SSHURL              OptString                                          `json:"ssh_url"`
-	StargazersURL       OptString                                          `json:"stargazers_url"`
-	StatusesURL         OptString                                          `json:"statuses_url"`
-	SubscribersURL      OptString                                          `json:"subscribers_url"`
-	SubscriptionURL     OptString                                          `json:"subscription_url"`
-	TagsURL             OptString                                          `json:"tags_url"`
-	TeamsURL            OptString                                          `json:"teams_url"`
-	TreesURL            OptString                                          `json:"trees_url"`
-	CloneURL            OptString                                          `json:"clone_url"`
-	MirrorURL           OptString                                          `json:"mirror_url"`
-	HooksURL            OptString                                          `json:"hooks_url"`
-	SvnURL              OptString                                          `json:"svn_url"`
-	Homepage            OptString                                          `json:"homepage"`
-	Language            OptString                                          `json:"language"`
-	ForksCount          OptInt                                             `json:"forks_count"`
-	StargazersCount     OptInt                                             `json:"stargazers_count"`
-	WatchersCount       OptInt                                             `json:"watchers_count"`
-	Size                OptInt                                             `json:"size"`
-	DefaultBranch       OptString                                          `json:"default_branch"`
-	OpenIssuesCount     OptInt                                             `json:"open_issues_count"`
-	IsTemplate          OptBool                                            `json:"is_template"`
-	Topics              []string                                           `json:"topics"`
-	HasIssues           OptBool                                            `json:"has_issues"`
-	HasProjects         OptBool                                            `json:"has_projects"`
-	HasWiki             OptBool                                            `json:"has_wiki"`
-	HasPages            OptBool                                            `json:"has_pages"`
-	HasDownloads        OptBool                                            `json:"has_downloads"`
-	Archived            OptBool                                            `json:"archived"`
-	Disabled            OptBool                                            `json:"disabled"`
-	Visibility          OptString                                          `json:"visibility"`
-	PushedAt            OptString                                          `json:"pushed_at"`
-	CreatedAt           OptString                                          `json:"created_at"`
-	UpdatedAt           OptString                                          `json:"updated_at"`
-	Permissions         OptNullableRepositoryTemplateRepositoryPermissions `json:"permissions"`
-	AllowRebaseMerge    OptBool                                            `json:"allow_rebase_merge"`
-	TempCloneToken      OptString                                          `json:"temp_clone_token"`
-	AllowSquashMerge    OptBool                                            `json:"allow_squash_merge"`
-	AllowAutoMerge      OptBool                                            `json:"allow_auto_merge"`
-	DeleteBranchOnMerge OptBool                                            `json:"delete_branch_on_merge"`
-	AllowMergeCommit    OptBool                                            `json:"allow_merge_commit"`
-	SubscribersCount    OptInt                                             `json:"subscribers_count"`
-	NetworkCount        OptInt                                             `json:"network_count"`
+	ID                  OptInt                                             `json:"id,omitempty"`
+	NodeID              OptString                                          `json:"node_id,omitempty"`
+	Name                OptString                                          `json:"name,omitempty"`
+	FullName            OptString                                          `json:"full_name,omitempty"`
+	Owner               OptNullableRepositoryTemplateRepositoryOwner       `json:"owner,omitempty"`
+	Private             OptBool                                            `json:"private,omitempty"`
+	HTMLURL             OptString                                          `json:"html_url,omitempty"`
+	Description         OptString                                          `json:"description,omitempty"`
+	Fork                OptBool                                            `json:"fork,omitempty"`
+	URL                 OptString                                          `json:"url,omitempty"`
+	ArchiveURL          OptString                                          `json:"archive_url,omitempty"`
+	AssigneesURL        OptString                                          `json:"assignees_url,omitempty"`
+	BlobsURL            OptString                                          `json:"blobs_url,omitempty"`
+	BranchesURL         OptString                                          `json:"branches_url,omitempty"`
+	CollaboratorsURL    OptString                                          `json:"collaborators_url,omitempty"`
+	CommentsURL         OptString                                          `json:"comments_url,omitempty"`
+	CommitsURL          OptString                                          `json:"commits_url,omitempty"`
+	CompareURL          OptString                                          `json:"compare_url,omitempty"`
+	ContentsURL         OptString                                          `json:"contents_url,omitempty"`
+	ContributorsURL     OptString                                          `json:"contributors_url,omitempty"`
+	DeploymentsURL      OptString                                          `json:"deployments_url,omitempty"`
+	DownloadsURL        OptString                                          `json:"downloads_url,omitempty"`
+	EventsURL           OptString                                          `json:"events_url,omitempty"`
+	ForksURL            OptString                                          `json:"forks_url,omitempty"`
+	GitCommitsURL       OptString                                          `json:"git_commits_url,omitempty"`
+	GitRefsURL          OptString                                          `json:"git_refs_url,omitempty"`
+	GitTagsURL          OptString                                          `json:"git_tags_url,omitempty"`
+	GitURL              OptString                                          `json:"git_url,omitempty"`
+	IssueCommentURL     OptString                                          `json:"issue_comment_url,omitempty"`
+	IssueEventsURL      OptString                                          `json:"issue_events_url,omitempty"`
+	IssuesURL           OptString                                          `json:"issues_url,omitempty"`
+	KeysURL             OptString                                          `json:"keys_url,omitempty"`
+	LabelsURL           OptString                                          `json:"labels_url,omitempty"`
+	LanguagesURL        OptString                                          `json:"languages_url,omitempty"`
+	MergesURL           OptString                                          `json:"merges_url,omitempty"`
+	MilestonesURL       OptString                                          `json:"milestones_url,omitempty"`
+	NotificationsURL    OptString                                          `json:"notifications_url,omitempty"`
+	PullsURL            OptString                                          `json:"pulls_url,omitempty"`
+	ReleasesURL         OptString                                          `json:"releases_url,omitempty"`
+	SSHURL              OptString                                          `json:"ssh_url,omitempty"`
+	StargazersURL       OptString                                          `json:"stargazers_url,omitempty"`
+	StatusesURL         OptString                                          `json:"statuses_url,omitempty"`
+	SubscribersURL      OptString                                          `json:"subscribers_url,omitempty"`
+	SubscriptionURL     OptString                                          `json:"subscription_url,omitempty"`
+	TagsURL             OptString                                          `json:"tags_url,omitempty"`
+	TeamsURL            OptString                                          `json:"teams_url,omitempty"`
+	TreesURL            OptString                                          `json:"trees_url,omitempty"`
+	CloneURL            OptString                                          `json:"clone_url,omitempty"`
+	MirrorURL           OptString                                          `json:"mirror_url,omitempty"`
+	HooksURL            OptString                                          `json:"hooks_url,omitempty"`
+	SvnURL              OptString                                          `json:"svn_url,omitempty"`
+	Homepage            OptString                                          `json:"homepage,omitempty"`
+	Language            OptString                                          `json:"language,omitempty"`
+	ForksCount          OptInt                                             `json:"forks_count,omitempty"`
+	StargazersCount     OptInt                                             `json:"stargazers_count,omitempty"`
+	WatchersCount       OptInt                                             `json:"watchers_count,omitempty"`
+	Size                OptInt                                             `json:"size,omitempty"`
+	DefaultBranch       OptString                                          `json:"default_branch,omitempty"`
+	OpenIssuesCount     OptInt                                             `json:"open_issues_count,omitempty"`
+	IsTemplate          OptBool                                            `json:"is_template,omitempty"`
+	Topics              []string                                           `json:"topics,omitempty"`
+	HasIssues           OptBool                                            `json:"has_issues,omitempty"`
+	HasProjects         OptBool                                            `json:"has_projects,omitempty"`
+	HasWiki             OptBool                                            `json:"has_wiki,omitempty"`
+	HasPages            OptBool                                            `json:"has_pages,omitempty"`
+	HasDownloads        OptBool                                            `json:"has_downloads,omitempty"`
+	Archived            OptBool                                            `json:"archived,omitempty"`
+	Disabled            OptBool                                            `json:"disabled,omitempty"`
+	Visibility          OptString                                          `json:"visibility,omitempty"`
+	PushedAt            OptString                                          `json:"pushed_at,omitempty"`
+	CreatedAt           OptString                                          `json:"created_at,omitempty"`
+	UpdatedAt           OptString                                          `json:"updated_at,omitempty"`
+	Permissions         OptNullableRepositoryTemplateRepositoryPermissions `json:"permissions,omitempty"`
+	AllowRebaseMerge    OptBool                                            `json:"allow_rebase_merge,omitempty"`
+	TempCloneToken      OptString                                          `json:"temp_clone_token,omitempty"`
+	AllowSquashMerge    OptBool                                            `json:"allow_squash_merge,omitempty"`
+	AllowAutoMerge      OptBool                                            `json:"allow_auto_merge,omitempty"`
+	DeleteBranchOnMerge OptBool                                            `json:"delete_branch_on_merge,omitempty"`
+	AllowMergeCommit    OptBool                                            `json:"allow_merge_commit,omitempty"`
+	SubscribersCount    OptInt                                             `json:"subscribers_count,omitempty"`
+	NetworkCount        OptInt                                             `json:"network_count,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -34541,24 +34541,24 @@ func (s *NullableRepositoryTemplateRepository) SetNetworkCount(val OptInt) {
 }
 
 type NullableRepositoryTemplateRepositoryOwner struct {
-	Login             OptString `json:"login"`
-	ID                OptInt    `json:"id"`
-	NodeID            OptString `json:"node_id"`
-	AvatarURL         OptString `json:"avatar_url"`
-	GravatarID        OptString `json:"gravatar_id"`
-	URL               OptString `json:"url"`
-	HTMLURL           OptString `json:"html_url"`
-	FollowersURL      OptString `json:"followers_url"`
-	FollowingURL      OptString `json:"following_url"`
-	GistsURL          OptString `json:"gists_url"`
-	StarredURL        OptString `json:"starred_url"`
-	SubscriptionsURL  OptString `json:"subscriptions_url"`
-	OrganizationsURL  OptString `json:"organizations_url"`
-	ReposURL          OptString `json:"repos_url"`
-	EventsURL         OptString `json:"events_url"`
-	ReceivedEventsURL OptString `json:"received_events_url"`
-	Type              OptString `json:"type"`
-	SiteAdmin         OptBool   `json:"site_admin"`
+	Login             OptString `json:"login,omitempty"`
+	ID                OptInt    `json:"id,omitempty"`
+	NodeID            OptString `json:"node_id,omitempty"`
+	AvatarURL         OptString `json:"avatar_url,omitempty"`
+	GravatarID        OptString `json:"gravatar_id,omitempty"`
+	URL               OptString `json:"url,omitempty"`
+	HTMLURL           OptString `json:"html_url,omitempty"`
+	FollowersURL      OptString `json:"followers_url,omitempty"`
+	FollowingURL      OptString `json:"following_url,omitempty"`
+	GistsURL          OptString `json:"gists_url,omitempty"`
+	StarredURL        OptString `json:"starred_url,omitempty"`
+	SubscriptionsURL  OptString `json:"subscriptions_url,omitempty"`
+	OrganizationsURL  OptString `json:"organizations_url,omitempty"`
+	ReposURL          OptString `json:"repos_url,omitempty"`
+	EventsURL         OptString `json:"events_url,omitempty"`
+	ReceivedEventsURL OptString `json:"received_events_url,omitempty"`
+	Type              OptString `json:"type,omitempty"`
+	SiteAdmin         OptBool   `json:"site_admin,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -34742,11 +34742,11 @@ func (s *NullableRepositoryTemplateRepositoryOwner) SetSiteAdmin(val OptBool) {
 }
 
 type NullableRepositoryTemplateRepositoryPermissions struct {
-	Admin    OptBool `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Push     OptBool `json:"push"`
-	Triage   OptBool `json:"triage"`
-	Pull     OptBool `json:"pull"`
+	Admin    OptBool `json:"admin,omitempty"`
+	Maintain OptBool `json:"maintain,omitempty"`
+	Push     OptBool `json:"push,omitempty"`
+	Triage   OptBool `json:"triage,omitempty"`
+	Pull     OptBool `json:"pull,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -34805,8 +34805,8 @@ type NullableScopedInstallation struct {
 	// Describe whether all repositories have been selected or there's a selection involved.
 	RepositorySelection    NullableScopedInstallationRepositorySelection `json:"repository_selection"`
 	SingleFileName         NilString                                     `json:"single_file_name"`
-	HasMultipleSingleFiles OptBool                                       `json:"has_multiple_single_files"`
-	SingleFilePaths        []string                                      `json:"single_file_paths"`
+	HasMultipleSingleFiles OptBool                                       `json:"has_multiple_single_files,omitempty"`
+	SingleFilePaths        []string                                      `json:"single_file_paths,omitempty"`
 	RepositoriesURL        url.URL                                       `json:"repositories_url"`
 	Account                SimpleUser                                    `json:"account"`
 }
@@ -35013,8 +35013,8 @@ func (s *NullableSimpleCommitCommitter) SetEmail(val string) {
 // Simple User.
 // Ref: #/components/schemas/nullable-simple-user
 type NullableSimpleUser struct {
-	Name              OptNilString `json:"name"`
-	Email             OptNilString `json:"email"`
+	Name              OptNilString `json:"name,omitempty"`
+	Email             OptNilString `json:"email,omitempty"`
 	Login             string       `json:"login"`
 	ID                int          `json:"id"`
 	NodeID            string       `json:"node_id"`
@@ -35033,7 +35033,7 @@ type NullableSimpleUser struct {
 	ReceivedEventsURL url.URL      `json:"received_events_url"`
 	Type              string       `json:"type"`
 	SiteAdmin         bool         `json:"site_admin"`
-	StarredAt         OptString    `json:"starred_at"`
+	StarredAt         OptString    `json:"starred_at,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -35262,12 +35262,12 @@ type NullableTeamSimple struct {
 	// Permission that the team will have for its repositories.
 	Permission string `json:"permission"`
 	// The level of privacy this team should have.
-	Privacy         OptString `json:"privacy"`
+	Privacy         OptString `json:"privacy,omitempty"`
 	HTMLURL         url.URL   `json:"html_url"`
 	RepositoriesURL url.URL   `json:"repositories_url"`
 	Slug            string    `json:"slug"`
 	// Distinguished Name (DN) that team maps to within LDAP environment.
-	LdapDn OptString `json:"ldap_dn"`
+	LdapDn OptString `json:"ldap_dn,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -35407,18 +35407,18 @@ func (*OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) oAuthA
 
 type OAuthAuthorizationsCreateAuthorizationReq struct {
 	// A list of scopes that this authorization is in.
-	Scopes OptNilStringArray `json:"scopes"`
+	Scopes OptNilStringArray `json:"scopes,omitempty"`
 	// A note to remind you what the OAuth token is for.
-	Note OptString `json:"note"`
+	Note OptString `json:"note,omitempty"`
 	// A URL to remind you what app the OAuth token is for.
-	NoteURL OptString `json:"note_url"`
+	NoteURL OptString `json:"note_url,omitempty"`
 	// The OAuth app client key for which to create the token.
-	ClientID OptString `json:"client_id"`
+	ClientID OptString `json:"client_id,omitempty"`
 	// The OAuth app client secret for which to create the token.
-	ClientSecret OptString `json:"client_secret"`
+	ClientSecret OptString `json:"client_secret,omitempty"`
 	// A unique string to distinguish an authorization from others created for the same client ID and
 	// user.
-	Fingerprint OptString `json:"fingerprint"`
+	Fingerprint OptString `json:"fingerprint,omitempty"`
 }
 
 // GetScopes returns the value of Scopes.
@@ -35542,11 +35542,11 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	// The OAuth app client secret for which to create the token.
 	ClientSecret string `json:"client_secret"`
 	// A list of scopes that this authorization is in.
-	Scopes OptNilStringArray `json:"scopes"`
+	Scopes OptNilStringArray `json:"scopes,omitempty"`
 	// A note to remind you what the OAuth token is for.
-	Note OptString `json:"note"`
+	Note OptString `json:"note,omitempty"`
 	// A URL to remind you what app the OAuth token is for.
-	NoteURL OptString `json:"note_url"`
+	NoteURL OptString `json:"note_url,omitempty"`
 }
 
 // GetClientSecret returns the value of ClientSecret.
@@ -35613,14 +35613,14 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppReq struct {
 	// The OAuth app client secret for which to create the token.
 	ClientSecret string `json:"client_secret"`
 	// A list of scopes that this authorization is in.
-	Scopes OptNilStringArray `json:"scopes"`
+	Scopes OptNilStringArray `json:"scopes,omitempty"`
 	// A note to remind you what the OAuth token is for.
-	Note OptString `json:"note"`
+	Note OptString `json:"note,omitempty"`
 	// A URL to remind you what app the OAuth token is for.
-	NoteURL OptString `json:"note_url"`
+	NoteURL OptString `json:"note_url,omitempty"`
 	// A unique string to distinguish an authorization from others created for the same client ID and
 	// user.
-	Fingerprint OptString `json:"fingerprint"`
+	Fingerprint OptString `json:"fingerprint,omitempty"`
 }
 
 // GetClientSecret returns the value of ClientSecret.
@@ -35690,7 +35690,7 @@ func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAu
 
 // OAuthAuthorizationsListAuthorizationsOKHeaders wraps []Authorization with response headers.
 type OAuthAuthorizationsListAuthorizationsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Authorization
 }
 
@@ -35730,7 +35730,7 @@ func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizat
 
 // OAuthAuthorizationsListGrantsOKHeaders wraps []ApplicationGrant with response headers.
 type OAuthAuthorizationsListGrantsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ApplicationGrant
 }
 
@@ -35758,18 +35758,18 @@ func (*OAuthAuthorizationsListGrantsOKHeaders) oAuthAuthorizationsListGrantsRes(
 
 type OAuthAuthorizationsUpdateAuthorizationReq struct {
 	// A list of scopes that this authorization is in.
-	Scopes OptNilStringArray `json:"scopes"`
+	Scopes OptNilStringArray `json:"scopes,omitempty"`
 	// A list of scopes to add to this authorization.
-	AddScopes []string `json:"add_scopes"`
+	AddScopes []string `json:"add_scopes,omitempty"`
 	// A list of scopes to remove from this authorization.
-	RemoveScopes []string `json:"remove_scopes"`
+	RemoveScopes []string `json:"remove_scopes,omitempty"`
 	// A note to remind you what the OAuth token is for.
-	Note OptString `json:"note"`
+	Note OptString `json:"note,omitempty"`
 	// A URL to remind you what app the OAuth token is for.
-	NoteURL OptString `json:"note_url"`
+	NoteURL OptString `json:"note_url,omitempty"`
 	// A unique string to distinguish an authorization from others created for the same client ID and
 	// user.
-	Fingerprint OptString `json:"fingerprint"`
+	Fingerprint OptString `json:"fingerprint,omitempty"`
 }
 
 // GetScopes returns the value of Scopes.
@@ -56161,7 +56161,7 @@ type OrgHook struct {
 	ID            int           `json:"id"`
 	URL           url.URL       `json:"url"`
 	PingURL       url.URL       `json:"ping_url"`
-	DeliveriesURL OptURI        `json:"deliveries_url"`
+	DeliveriesURL OptURI        `json:"deliveries_url,omitempty"`
 	Name          string        `json:"name"`
 	Events        []string      `json:"events"`
 	Active        bool          `json:"active"`
@@ -56285,10 +56285,10 @@ func (*OrgHook) orgsGetWebhookRes()    {}
 func (*OrgHook) orgsUpdateWebhookRes() {}
 
 type OrgHookConfig struct {
-	URL         OptString `json:"url"`
-	InsecureSsl OptString `json:"insecure_ssl"`
-	ContentType OptString `json:"content_type"`
-	Secret      OptString `json:"secret"`
+	URL         OptString `json:"url,omitempty"`
+	InsecureSsl OptString `json:"insecure_ssl,omitempty"`
+	ContentType OptString `json:"content_type,omitempty"`
+	Secret      OptString `json:"secret,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -56333,7 +56333,7 @@ func (s *OrgHookConfig) SetSecret(val OptString) {
 
 // OrgHookHeaders wraps OrgHook with response headers.
 type OrgHookHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response OrgHook
 }
 
@@ -56371,7 +56371,7 @@ type OrgMembership struct {
 	OrganizationURL url.URL                     `json:"organization_url"`
 	Organization    OrganizationSimple          `json:"organization"`
 	User            NilNullableSimpleUser       `json:"user"`
-	Permissions     OptOrgMembershipPermissions `json:"permissions"`
+	Permissions     OptOrgMembershipPermissions `json:"permissions,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -56490,7 +56490,7 @@ type OrganizationActionsSecret struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// Visibility of a secret.
 	Visibility              OrganizationActionsSecretVisibility `json:"visibility"`
-	SelectedRepositoriesURL OptURI                              `json:"selected_repositories_url"`
+	SelectedRepositoriesURL OptURI                              `json:"selected_repositories_url,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -56567,13 +56567,13 @@ type OrganizationFull struct {
 	PublicMembersURL                     string                  `json:"public_members_url"`
 	AvatarURL                            string                  `json:"avatar_url"`
 	Description                          NilString               `json:"description"`
-	Name                                 OptString               `json:"name"`
-	Company                              OptString               `json:"company"`
-	Blog                                 OptURI                  `json:"blog"`
-	Location                             OptString               `json:"location"`
-	Email                                OptString               `json:"email"`
-	TwitterUsername                      OptNilString            `json:"twitter_username"`
-	IsVerified                           OptBool                 `json:"is_verified"`
+	Name                                 OptString               `json:"name,omitempty"`
+	Company                              OptString               `json:"company,omitempty"`
+	Blog                                 OptURI                  `json:"blog,omitempty"`
+	Location                             OptString               `json:"location,omitempty"`
+	Email                                OptString               `json:"email,omitempty"`
+	TwitterUsername                      OptNilString            `json:"twitter_username,omitempty"`
+	IsVerified                           OptBool                 `json:"is_verified,omitempty"`
 	HasOrganizationProjects              bool                    `json:"has_organization_projects"`
 	HasRepositoryProjects                bool                    `json:"has_repository_projects"`
 	PublicRepos                          int                     `json:"public_repos"`
@@ -56583,23 +56583,23 @@ type OrganizationFull struct {
 	HTMLURL                              url.URL                 `json:"html_url"`
 	CreatedAt                            time.Time               `json:"created_at"`
 	Type                                 string                  `json:"type"`
-	TotalPrivateRepos                    OptInt                  `json:"total_private_repos"`
-	OwnedPrivateRepos                    OptInt                  `json:"owned_private_repos"`
-	PrivateGists                         OptNilInt               `json:"private_gists"`
-	DiskUsage                            OptNilInt               `json:"disk_usage"`
-	Collaborators                        OptNilInt               `json:"collaborators"`
-	BillingEmail                         OptNilString            `json:"billing_email"`
-	Plan                                 OptOrganizationFullPlan `json:"plan"`
-	DefaultRepositoryPermission          OptNilString            `json:"default_repository_permission"`
-	MembersCanCreateRepositories         OptNilBool              `json:"members_can_create_repositories"`
-	TwoFactorRequirementEnabled          OptNilBool              `json:"two_factor_requirement_enabled"`
-	MembersAllowedRepositoryCreationType OptString               `json:"members_allowed_repository_creation_type"`
-	MembersCanCreatePublicRepositories   OptBool                 `json:"members_can_create_public_repositories"`
-	MembersCanCreatePrivateRepositories  OptBool                 `json:"members_can_create_private_repositories"`
-	MembersCanCreateInternalRepositories OptBool                 `json:"members_can_create_internal_repositories"`
-	MembersCanCreatePages                OptBool                 `json:"members_can_create_pages"`
-	MembersCanCreatePublicPages          OptBool                 `json:"members_can_create_public_pages"`
-	MembersCanCreatePrivatePages         OptBool                 `json:"members_can_create_private_pages"`
+	TotalPrivateRepos                    OptInt                  `json:"total_private_repos,omitempty"`
+	OwnedPrivateRepos                    OptInt                  `json:"owned_private_repos,omitempty"`
+	PrivateGists                         OptNilInt               `json:"private_gists,omitempty"`
+	DiskUsage                            OptNilInt               `json:"disk_usage,omitempty"`
+	Collaborators                        OptNilInt               `json:"collaborators,omitempty"`
+	BillingEmail                         OptNilString            `json:"billing_email,omitempty"`
+	Plan                                 OptOrganizationFullPlan `json:"plan,omitempty"`
+	DefaultRepositoryPermission          OptNilString            `json:"default_repository_permission,omitempty"`
+	MembersCanCreateRepositories         OptNilBool              `json:"members_can_create_repositories,omitempty"`
+	TwoFactorRequirementEnabled          OptNilBool              `json:"two_factor_requirement_enabled,omitempty"`
+	MembersAllowedRepositoryCreationType OptString               `json:"members_allowed_repository_creation_type,omitempty"`
+	MembersCanCreatePublicRepositories   OptBool                 `json:"members_can_create_public_repositories,omitempty"`
+	MembersCanCreatePrivateRepositories  OptBool                 `json:"members_can_create_private_repositories,omitempty"`
+	MembersCanCreateInternalRepositories OptBool                 `json:"members_can_create_internal_repositories,omitempty"`
+	MembersCanCreatePages                OptBool                 `json:"members_can_create_pages,omitempty"`
+	MembersCanCreatePublicPages          OptBool                 `json:"members_can_create_public_pages,omitempty"`
+	MembersCanCreatePrivatePages         OptBool                 `json:"members_can_create_private_pages,omitempty"`
 	UpdatedAt                            time.Time               `json:"updated_at"`
 }
 
@@ -57069,8 +57069,8 @@ type OrganizationFullPlan struct {
 	Name         string `json:"name"`
 	Space        int    `json:"space"`
 	PrivateRepos int    `json:"private_repos"`
-	FilledSeats  OptInt `json:"filled_seats"`
-	Seats        OptInt `json:"seats"`
+	FilledSeats  OptInt `json:"filled_seats,omitempty"`
+	Seats        OptInt `json:"seats,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -57131,8 +57131,8 @@ type OrganizationInvitation struct {
 	Email              NilString    `json:"email"`
 	Role               string       `json:"role"`
 	CreatedAt          string       `json:"created_at"`
-	FailedAt           OptNilString `json:"failed_at"`
-	FailedReason       OptNilString `json:"failed_reason"`
+	FailedAt           OptNilString `json:"failed_at,omitempty"`
+	FailedReason       OptNilString `json:"failed_reason,omitempty"`
 	Inviter            SimpleUser   `json:"inviter"`
 	TeamCount          int          `json:"team_count"`
 	NodeID             string       `json:"node_id"`
@@ -57253,22 +57253,22 @@ func (*OrganizationInvitation) orgsCreateInvitationRes() {}
 
 // Ref: #/components/schemas/organization-secret-scanning-alert
 type OrganizationSecretScanningAlert struct {
-	Number    OptAlertNumber    `json:"number"`
-	CreatedAt OptAlertCreatedAt `json:"created_at"`
-	URL       OptAlertURL       `json:"url"`
-	HTMLURL   OptAlertHTMLURL   `json:"html_url"`
+	Number    OptAlertNumber    `json:"number,omitempty"`
+	CreatedAt OptAlertCreatedAt `json:"created_at,omitempty"`
+	URL       OptAlertURL       `json:"url,omitempty"`
+	HTMLURL   OptAlertHTMLURL   `json:"html_url,omitempty"`
 	// The REST API URL of the code locations for this alert.
-	LocationsURL OptURI                              `json:"locations_url"`
-	State        OptSecretScanningAlertState         `json:"state"`
-	Resolution   OptNilSecretScanningAlertResolution `json:"resolution"`
+	LocationsURL OptURI                              `json:"locations_url,omitempty"`
+	State        OptSecretScanningAlertState         `json:"state,omitempty"`
+	Resolution   OptNilSecretScanningAlertResolution `json:"resolution,omitempty"`
 	// The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-	ResolvedAt OptNilDateTime           `json:"resolved_at"`
-	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by"`
+	ResolvedAt OptNilDateTime           `json:"resolved_at,omitempty"`
+	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by,omitempty"`
 	// The type of secret that secret scanning detected.
-	SecretType OptString `json:"secret_type"`
+	SecretType OptString `json:"secret_type,omitempty"`
 	// The secret that was detected.
-	Secret     OptString            `json:"secret"`
-	Repository OptMinimalRepository `json:"repository"`
+	Secret     OptString            `json:"secret,omitempty"`
+	Repository OptMinimalRepository `json:"repository,omitempty"`
 }
 
 // GetNumber returns the value of Number.
@@ -57545,7 +57545,7 @@ func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserRes() {}
 
 // OrgsCheckMembershipForUserFound is response for OrgsCheckMembershipForUser operation.
 type OrgsCheckMembershipForUserFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -57596,10 +57596,10 @@ func (*OrgsConvertMemberToOutsideCollaboratorNoContent) orgsConvertMemberToOutsi
 
 type OrgsCreateInvitationReq struct {
 	// **Required unless you provide `email`**. GitHub user ID for the person you are inviting.
-	InviteeID OptInt `json:"invitee_id"`
+	InviteeID OptInt `json:"invitee_id,omitempty"`
 	// **Required unless you provide `invitee_id`**. Email address of the person you are inviting, which
 	// can be an existing GitHub user.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// Specify role for new member. Can be one of:
 	// \* `admin` - Organization owners with full administrative rights to the organization and complete
 	// access to all repositories and teams.
@@ -57607,9 +57607,9 @@ type OrgsCreateInvitationReq struct {
 	// teams by invitation.
 	// \* `billing_manager` - Non-owner organization members with ability to manage the billing settings
 	// of your organization.
-	Role OptOrgsCreateInvitationReqRole `json:"role"`
+	Role OptOrgsCreateInvitationReqRole `json:"role,omitempty"`
 	// Specify IDs for the teams you want to invite new members to.
-	TeamIds []int `json:"team_ids"`
+	TeamIds []int `json:"team_ids,omitempty"`
 }
 
 // GetInviteeID returns the value of InviteeID.
@@ -57675,10 +57675,10 @@ type OrgsCreateWebhookReq struct {
 	Config OrgsCreateWebhookReqConfig `json:"config"`
 	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
 	// for.
-	Events []string `json:"events"`
+	Events []string `json:"events,omitempty"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
-	Active OptBool `json:"active"`
+	Active OptBool `json:"active,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -57725,11 +57725,11 @@ func (s *OrgsCreateWebhookReq) SetActive(val OptBool) {
 // github.com/rest/reference/orgs#create-hook-config-params).
 type OrgsCreateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	Username    OptString                   `json:"username"`
-	Password    OptString                   `json:"password"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
+	Username    OptString                   `json:"username,omitempty"`
+	Password    OptString                   `json:"password,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -57836,7 +57836,7 @@ func (OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
 // OrgsListFailedInvitationsOKHeaders wraps []OrganizationInvitation with response headers.
 type OrgsListFailedInvitationsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationInvitation
 }
 
@@ -57872,7 +57872,7 @@ func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthe
 
 // OrgsListForAuthenticatedUserOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationSimple
 }
 
@@ -57900,7 +57900,7 @@ func (*OrgsListForAuthenticatedUserOKHeaders) orgsListForAuthenticatedUserRes() 
 
 // OrgsListForUserOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationSimple
 }
 
@@ -57926,7 +57926,7 @@ func (s *OrgsListForUserOKHeaders) SetResponse(val []OrganizationSimple) {
 
 // OrgsListInvitationTeamsOKHeaders wraps []Team with response headers.
 type OrgsListInvitationTeamsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Team
 }
 
@@ -57961,7 +57961,7 @@ const (
 
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -57978,7 +57978,7 @@ func (*OrgsListMembersFound) orgsListMembersRes() {}
 
 // OrgsListMembersOKHeaders wraps []SimpleUser with response headers.
 type OrgsListMembersOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -58024,7 +58024,7 @@ func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) orgsL
 
 // OrgsListMembershipsForAuthenticatedUserOKHeaders wraps []OrgMembership with response headers.
 type OrgsListMembershipsForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrgMembership
 }
 
@@ -58060,7 +58060,7 @@ const (
 
 // OrgsListOKHeaders wraps []OrganizationSimple with response headers.
 type OrgsListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationSimple
 }
 
@@ -58095,7 +58095,7 @@ const (
 
 // OrgsListOutsideCollaboratorsOKHeaders wraps []SimpleUser with response headers.
 type OrgsListOutsideCollaboratorsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -58121,7 +58121,7 @@ func (s *OrgsListOutsideCollaboratorsOKHeaders) SetResponse(val []SimpleUser) {
 
 // OrgsListPendingInvitationsOKHeaders wraps []OrganizationInvitation with response headers.
 type OrgsListPendingInvitationsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationInvitation
 }
 
@@ -58149,7 +58149,7 @@ func (*OrgsListPendingInvitationsOKHeaders) orgsListPendingInvitationsRes() {}
 
 // OrgsListPublicMembersOKHeaders wraps []SimpleUser with response headers.
 type OrgsListPublicMembersOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -58179,7 +58179,7 @@ func (OrgsListWebhookDeliveriesOKApplicationJSON) orgsListWebhookDeliveriesRes()
 
 // OrgsListWebhooksOKHeaders wraps []OrgHook with response headers.
 type OrgsListWebhooksOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrgHook
 }
 
@@ -58234,8 +58234,8 @@ type OrgsRemoveOutsideCollaboratorNoContent struct{}
 func (*OrgsRemoveOutsideCollaboratorNoContent) orgsRemoveOutsideCollaboratorRes() {}
 
 type OrgsRemoveOutsideCollaboratorUnprocessableEntity struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -58272,7 +58272,7 @@ type OrgsSetMembershipForUserReq struct {
 	// The role to give the user in the organization. Can be one of:
 	// \* `admin` - The user will become an owner of the organization.
 	// \* `member` - The user will become a non-owner member of the organization.
-	Role OptOrgsSetMembershipForUserReqRole `json:"role"`
+	Role OptOrgsSetMembershipForUserReqRole `json:"role,omitempty"`
 }
 
 // GetRole returns the value of Role.
@@ -58337,10 +58337,10 @@ const (
 )
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -58386,14 +58386,14 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) SetInsecureSsl(val OptWebhookConfigIn
 type OrgsUpdateWebhookReq struct {
 	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
 	// github.com/rest/reference/orgs#update-hook-config-params).
-	Config OptOrgsUpdateWebhookReqConfig `json:"config"`
+	Config OptOrgsUpdateWebhookReqConfig `json:"config,omitempty"`
 	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
 	// for.
-	Events []string `json:"events"`
+	Events []string `json:"events,omitempty"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
-	Active OptBool   `json:"active"`
-	Name   OptString `json:"name"`
+	Active OptBool   `json:"active,omitempty"`
+	Name   OptString `json:"name,omitempty"`
 }
 
 // GetConfig returns the value of Config.
@@ -58440,9 +58440,9 @@ func (s *OrgsUpdateWebhookReq) SetName(val OptString) {
 // github.com/rest/reference/orgs#update-hook-config-params).
 type OrgsUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -58498,8 +58498,8 @@ type Package struct {
 	// The number of versions of the package.
 	VersionCount int                             `json:"version_count"`
 	Visibility   PackageVisibility               `json:"visibility"`
-	Owner        OptNilNullableSimpleUser        `json:"owner"`
-	Repository   OptNilNullableMinimalRepository `json:"repository"`
+	Owner        OptNilNullableSimpleUser        `json:"owner,omitempty"`
+	Repository   OptNilNullableMinimalRepository `json:"repository,omitempty"`
 	CreatedAt    time.Time                       `json:"created_at"`
 	UpdatedAt    time.Time                       `json:"updated_at"`
 }
@@ -58634,13 +58634,13 @@ type PackageVersion struct {
 	Name           string                    `json:"name"`
 	URL            string                    `json:"url"`
 	PackageHTMLURL string                    `json:"package_html_url"`
-	HTMLURL        OptString                 `json:"html_url"`
-	License        OptString                 `json:"license"`
-	Description    OptString                 `json:"description"`
+	HTMLURL        OptString                 `json:"html_url,omitempty"`
+	License        OptString                 `json:"license,omitempty"`
+	Description    OptString                 `json:"description,omitempty"`
 	CreatedAt      time.Time                 `json:"created_at"`
 	UpdatedAt      time.Time                 `json:"updated_at"`
-	DeletedAt      OptDateTime               `json:"deleted_at"`
-	Metadata       OptPackageVersionMetadata `json:"metadata"`
+	DeletedAt      OptDateTime               `json:"deleted_at,omitempty"`
+	Metadata       OptPackageVersionMetadata `json:"metadata,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -58755,8 +58755,8 @@ func (s *PackageVersion) SetMetadata(val OptPackageVersionMetadata) {
 
 type PackageVersionMetadata struct {
 	PackageType PackageVersionMetadataPackageType  `json:"package_type"`
-	Container   OptPackageVersionMetadataContainer `json:"container"`
-	Docker      OptPackageVersionMetadataDocker    `json:"docker"`
+	Container   OptPackageVersionMetadataContainer `json:"container,omitempty"`
+	Docker      OptPackageVersionMetadataDocker    `json:"docker,omitempty"`
 }
 
 // GetPackageType returns the value of PackageType.
@@ -58804,7 +58804,7 @@ func (s *PackageVersionMetadataContainer) SetTags(val []jx.Raw) {
 }
 
 type PackageVersionMetadataDocker struct {
-	Tag []jx.Raw `json:"tag"`
+	Tag []jx.Raw `json:"tag,omitempty"`
 }
 
 // GetTag returns the value of Tag.
@@ -59506,21 +59506,21 @@ type Page struct {
 	// The Pages site's custom domain.
 	Cname NilString `json:"cname"`
 	// The state if the domain is protected.
-	ProtectedDomainState OptNilPageProtectedDomainState `json:"protected_domain_state"`
+	ProtectedDomainState OptNilPageProtectedDomainState `json:"protected_domain_state,omitempty"`
 	// The timestamp when a pending domain becomes unverified.
-	PendingDomainUnverifiedAt OptNilDateTime `json:"pending_domain_unverified_at"`
+	PendingDomainUnverifiedAt OptNilDateTime `json:"pending_domain_unverified_at,omitempty"`
 	// Whether the Page has a custom 404 page.
 	Custom404 bool `json:"custom_404"`
 	// The web address the Page can be accessed from.
-	HTMLURL OptURI             `json:"html_url"`
-	Source  OptPagesSourceHash `json:"source"`
+	HTMLURL OptURI             `json:"html_url,omitempty"`
+	Source  OptPagesSourceHash `json:"source,omitempty"`
 	// Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to
 	// anyone on the internet. If set to `false`, the site will only be accessible to users who have at
 	// least `read` access to the repository that published the site.
 	Public           bool                     `json:"public"`
-	HTTPSCertificate OptPagesHTTPSCertificate `json:"https_certificate"`
+	HTTPSCertificate OptPagesHTTPSCertificate `json:"https_certificate,omitempty"`
 	// Whether https is enabled on the domain.
-	HTTPSEnforced OptBool `json:"https_enforced"`
+	HTTPSEnforced OptBool `json:"https_enforced,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -59794,7 +59794,7 @@ type PagesHTTPSCertificate struct {
 	Description string                     `json:"description"`
 	// Array of the domain set and its alternate name (if it is configured).
 	Domains   []jx.Raw `json:"domains"`
-	ExpiresAt OptDate  `json:"expires_at"`
+	ExpiresAt OptDate  `json:"expires_at,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -59857,8 +59857,8 @@ const (
 // Pages Health Check Status.
 // Ref: #/components/schemas/pages-health-check
 type PagesHealthCheck struct {
-	Domain    OptPagesHealthCheckDomain       `json:"domain"`
-	AltDomain OptNilPagesHealthCheckAltDomain `json:"alt_domain"`
+	Domain    OptPagesHealthCheckDomain       `json:"domain,omitempty"`
+	AltDomain OptNilPagesHealthCheckAltDomain `json:"alt_domain,omitempty"`
 }
 
 // GetDomain returns the value of Domain.
@@ -59884,34 +59884,34 @@ func (s *PagesHealthCheck) SetAltDomain(val OptNilPagesHealthCheckAltDomain) {
 func (*PagesHealthCheck) reposGetPagesHealthCheckRes() {}
 
 type PagesHealthCheckAltDomain struct {
-	Host                          OptString    `json:"host"`
-	URI                           OptString    `json:"uri"`
-	Nameservers                   OptString    `json:"nameservers"`
-	DNSResolves                   OptBool      `json:"dns_resolves"`
-	IsProxied                     OptNilBool   `json:"is_proxied"`
-	IsCloudflareIP                OptNilBool   `json:"is_cloudflare_ip"`
-	IsFastlyIP                    OptNilBool   `json:"is_fastly_ip"`
-	IsOldIPAddress                OptNilBool   `json:"is_old_ip_address"`
-	IsARecord                     OptNilBool   `json:"is_a_record"`
-	HasCnameRecord                OptNilBool   `json:"has_cname_record"`
-	HasMxRecordsPresent           OptNilBool   `json:"has_mx_records_present"`
-	IsValidDomain                 OptBool      `json:"is_valid_domain"`
-	IsApexDomain                  OptBool      `json:"is_apex_domain"`
-	ShouldBeARecord               OptNilBool   `json:"should_be_a_record"`
-	IsCnameToGithubUserDomain     OptNilBool   `json:"is_cname_to_github_user_domain"`
-	IsCnameToPagesDotGithubDotCom OptNilBool   `json:"is_cname_to_pages_dot_github_dot_com"`
-	IsCnameToFastly               OptNilBool   `json:"is_cname_to_fastly"`
-	IsPointedToGithubPagesIP      OptNilBool   `json:"is_pointed_to_github_pages_ip"`
-	IsNonGithubPagesIPPresent     OptNilBool   `json:"is_non_github_pages_ip_present"`
-	IsPagesDomain                 OptBool      `json:"is_pages_domain"`
-	IsServedByPages               OptNilBool   `json:"is_served_by_pages"`
-	IsValid                       OptBool      `json:"is_valid"`
-	Reason                        OptNilString `json:"reason"`
-	RespondsToHTTPS               OptBool      `json:"responds_to_https"`
-	EnforcesHTTPS                 OptBool      `json:"enforces_https"`
-	HTTPSError                    OptNilString `json:"https_error"`
-	IsHTTPSEligible               OptNilBool   `json:"is_https_eligible"`
-	CaaError                      OptNilString `json:"caa_error"`
+	Host                          OptString    `json:"host,omitempty"`
+	URI                           OptString    `json:"uri,omitempty"`
+	Nameservers                   OptString    `json:"nameservers,omitempty"`
+	DNSResolves                   OptBool      `json:"dns_resolves,omitempty"`
+	IsProxied                     OptNilBool   `json:"is_proxied,omitempty"`
+	IsCloudflareIP                OptNilBool   `json:"is_cloudflare_ip,omitempty"`
+	IsFastlyIP                    OptNilBool   `json:"is_fastly_ip,omitempty"`
+	IsOldIPAddress                OptNilBool   `json:"is_old_ip_address,omitempty"`
+	IsARecord                     OptNilBool   `json:"is_a_record,omitempty"`
+	HasCnameRecord                OptNilBool   `json:"has_cname_record,omitempty"`
+	HasMxRecordsPresent           OptNilBool   `json:"has_mx_records_present,omitempty"`
+	IsValidDomain                 OptBool      `json:"is_valid_domain,omitempty"`
+	IsApexDomain                  OptBool      `json:"is_apex_domain,omitempty"`
+	ShouldBeARecord               OptNilBool   `json:"should_be_a_record,omitempty"`
+	IsCnameToGithubUserDomain     OptNilBool   `json:"is_cname_to_github_user_domain,omitempty"`
+	IsCnameToPagesDotGithubDotCom OptNilBool   `json:"is_cname_to_pages_dot_github_dot_com,omitempty"`
+	IsCnameToFastly               OptNilBool   `json:"is_cname_to_fastly,omitempty"`
+	IsPointedToGithubPagesIP      OptNilBool   `json:"is_pointed_to_github_pages_ip,omitempty"`
+	IsNonGithubPagesIPPresent     OptNilBool   `json:"is_non_github_pages_ip_present,omitempty"`
+	IsPagesDomain                 OptBool      `json:"is_pages_domain,omitempty"`
+	IsServedByPages               OptNilBool   `json:"is_served_by_pages,omitempty"`
+	IsValid                       OptBool      `json:"is_valid,omitempty"`
+	Reason                        OptNilString `json:"reason,omitempty"`
+	RespondsToHTTPS               OptBool      `json:"responds_to_https,omitempty"`
+	EnforcesHTTPS                 OptBool      `json:"enforces_https,omitempty"`
+	HTTPSError                    OptNilString `json:"https_error,omitempty"`
+	IsHTTPSEligible               OptNilBool   `json:"is_https_eligible,omitempty"`
+	CaaError                      OptNilString `json:"caa_error,omitempty"`
 }
 
 // GetHost returns the value of Host.
@@ -60195,34 +60195,34 @@ func (s *PagesHealthCheckAltDomain) SetCaaError(val OptNilString) {
 }
 
 type PagesHealthCheckDomain struct {
-	Host                          OptString    `json:"host"`
-	URI                           OptString    `json:"uri"`
-	Nameservers                   OptString    `json:"nameservers"`
-	DNSResolves                   OptBool      `json:"dns_resolves"`
-	IsProxied                     OptNilBool   `json:"is_proxied"`
-	IsCloudflareIP                OptNilBool   `json:"is_cloudflare_ip"`
-	IsFastlyIP                    OptNilBool   `json:"is_fastly_ip"`
-	IsOldIPAddress                OptNilBool   `json:"is_old_ip_address"`
-	IsARecord                     OptNilBool   `json:"is_a_record"`
-	HasCnameRecord                OptNilBool   `json:"has_cname_record"`
-	HasMxRecordsPresent           OptNilBool   `json:"has_mx_records_present"`
-	IsValidDomain                 OptBool      `json:"is_valid_domain"`
-	IsApexDomain                  OptBool      `json:"is_apex_domain"`
-	ShouldBeARecord               OptNilBool   `json:"should_be_a_record"`
-	IsCnameToGithubUserDomain     OptNilBool   `json:"is_cname_to_github_user_domain"`
-	IsCnameToPagesDotGithubDotCom OptNilBool   `json:"is_cname_to_pages_dot_github_dot_com"`
-	IsCnameToFastly               OptNilBool   `json:"is_cname_to_fastly"`
-	IsPointedToGithubPagesIP      OptNilBool   `json:"is_pointed_to_github_pages_ip"`
-	IsNonGithubPagesIPPresent     OptNilBool   `json:"is_non_github_pages_ip_present"`
-	IsPagesDomain                 OptBool      `json:"is_pages_domain"`
-	IsServedByPages               OptNilBool   `json:"is_served_by_pages"`
-	IsValid                       OptBool      `json:"is_valid"`
-	Reason                        OptNilString `json:"reason"`
-	RespondsToHTTPS               OptBool      `json:"responds_to_https"`
-	EnforcesHTTPS                 OptBool      `json:"enforces_https"`
-	HTTPSError                    OptNilString `json:"https_error"`
-	IsHTTPSEligible               OptNilBool   `json:"is_https_eligible"`
-	CaaError                      OptNilString `json:"caa_error"`
+	Host                          OptString    `json:"host,omitempty"`
+	URI                           OptString    `json:"uri,omitempty"`
+	Nameservers                   OptString    `json:"nameservers,omitempty"`
+	DNSResolves                   OptBool      `json:"dns_resolves,omitempty"`
+	IsProxied                     OptNilBool   `json:"is_proxied,omitempty"`
+	IsCloudflareIP                OptNilBool   `json:"is_cloudflare_ip,omitempty"`
+	IsFastlyIP                    OptNilBool   `json:"is_fastly_ip,omitempty"`
+	IsOldIPAddress                OptNilBool   `json:"is_old_ip_address,omitempty"`
+	IsARecord                     OptNilBool   `json:"is_a_record,omitempty"`
+	HasCnameRecord                OptNilBool   `json:"has_cname_record,omitempty"`
+	HasMxRecordsPresent           OptNilBool   `json:"has_mx_records_present,omitempty"`
+	IsValidDomain                 OptBool      `json:"is_valid_domain,omitempty"`
+	IsApexDomain                  OptBool      `json:"is_apex_domain,omitempty"`
+	ShouldBeARecord               OptNilBool   `json:"should_be_a_record,omitempty"`
+	IsCnameToGithubUserDomain     OptNilBool   `json:"is_cname_to_github_user_domain,omitempty"`
+	IsCnameToPagesDotGithubDotCom OptNilBool   `json:"is_cname_to_pages_dot_github_dot_com,omitempty"`
+	IsCnameToFastly               OptNilBool   `json:"is_cname_to_fastly,omitempty"`
+	IsPointedToGithubPagesIP      OptNilBool   `json:"is_pointed_to_github_pages_ip,omitempty"`
+	IsNonGithubPagesIPPresent     OptNilBool   `json:"is_non_github_pages_ip_present,omitempty"`
+	IsPagesDomain                 OptBool      `json:"is_pages_domain,omitempty"`
+	IsServedByPages               OptNilBool   `json:"is_served_by_pages,omitempty"`
+	IsValid                       OptBool      `json:"is_valid,omitempty"`
+	Reason                        OptNilString `json:"reason,omitempty"`
+	RespondsToHTTPS               OptBool      `json:"responds_to_https,omitempty"`
+	EnforcesHTTPS                 OptBool      `json:"enforces_https,omitempty"`
+	HTTPSError                    OptNilString `json:"https_error,omitempty"`
+	IsHTTPSEligible               OptNilBool   `json:"is_https_eligible,omitempty"`
+	CaaError                      OptNilString `json:"caa_error,omitempty"`
 }
 
 // GetHost returns the value of Host.
@@ -60772,7 +60772,7 @@ type PrivateUser struct {
 	Email                   NilString          `json:"email"`
 	Hireable                NilBool            `json:"hireable"`
 	Bio                     NilString          `json:"bio"`
-	TwitterUsername         OptNilString       `json:"twitter_username"`
+	TwitterUsername         OptNilString       `json:"twitter_username,omitempty"`
 	PublicRepos             int                `json:"public_repos"`
 	PublicGists             int                `json:"public_gists"`
 	Followers               int                `json:"followers"`
@@ -60785,10 +60785,10 @@ type PrivateUser struct {
 	DiskUsage               int                `json:"disk_usage"`
 	Collaborators           int                `json:"collaborators"`
 	TwoFactorAuthentication bool               `json:"two_factor_authentication"`
-	Plan                    OptPrivateUserPlan `json:"plan"`
-	SuspendedAt             OptNilDateTime     `json:"suspended_at"`
-	BusinessPlus            OptBool            `json:"business_plus"`
-	LdapDn                  OptString          `json:"ldap_dn"`
+	Plan                    OptPrivateUserPlan `json:"plan,omitempty"`
+	SuspendedAt             OptNilDateTime     `json:"suspended_at,omitempty"`
+	BusinessPlus            OptBool            `json:"business_plus,omitempty"`
+	LdapDn                  OptString          `json:"ldap_dn,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -61281,9 +61281,9 @@ type Project struct {
 	UpdatedAt time.Time             `json:"updated_at"`
 	// The baseline permission that all organization members have on this project. Only present if owner
 	// is an organization.
-	OrganizationPermission OptProjectOrganizationPermission `json:"organization_permission"`
+	OrganizationPermission OptProjectOrganizationPermission `json:"organization_permission,omitempty"`
 	// Whether or not this project can be seen by everyone. Only present if owner is an organization.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 }
 
 // GetOwnerURL returns the value of OwnerURL.
@@ -61454,11 +61454,11 @@ type ProjectCard struct {
 	CreatedAt time.Time             `json:"created_at"`
 	UpdatedAt time.Time             `json:"updated_at"`
 	// Whether or not the card is archived.
-	Archived   OptBool   `json:"archived"`
-	ColumnName OptString `json:"column_name"`
-	ProjectID  OptString `json:"project_id"`
+	Archived   OptBool   `json:"archived,omitempty"`
+	ColumnName OptString `json:"column_name,omitempty"`
+	ProjectID  OptString `json:"project_id,omitempty"`
 	ColumnURL  url.URL   `json:"column_url"`
-	ContentURL OptURI    `json:"content_url"`
+	ContentURL OptURI    `json:"content_url,omitempty"`
 	ProjectURL url.URL   `json:"project_url"`
 }
 
@@ -61724,7 +61724,7 @@ func (*ProjectsAddCollaboratorNoContent) projectsAddCollaboratorRes() {}
 
 type ProjectsAddCollaboratorReq struct {
 	// The permission to grant the collaborator.
-	Permission OptProjectsAddCollaboratorReqPermission `json:"permission"`
+	Permission OptProjectsAddCollaboratorReqPermission `json:"permission,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -61783,7 +61783,7 @@ type ProjectsCreateForAuthenticatedUserReq struct {
 	// Name of the project.
 	Name string `json:"name"`
 	// Body of the project.
-	Body OptNilString `json:"body"`
+	Body OptNilString `json:"body,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -61826,7 +61826,7 @@ type ProjectsCreateForOrgReq struct {
 	// The name of the project.
 	Name string `json:"name"`
 	// The description of the project.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -61869,7 +61869,7 @@ type ProjectsCreateForRepoReq struct {
 	// The name of the project.
 	Name string `json:"name"`
 	// The description of the project.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -61913,9 +61913,9 @@ type ProjectsDeleteCardApplicationJSONUnauthorized BasicError
 func (*ProjectsDeleteCardApplicationJSONUnauthorized) projectsDeleteCardRes() {}
 
 type ProjectsDeleteCardForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Errors           []string  `json:"errors"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
+	Errors           []string  `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -61969,9 +61969,9 @@ type ProjectsDeleteColumnNoContent struct{}
 func (*ProjectsDeleteColumnNoContent) projectsDeleteColumnRes() {}
 
 type ProjectsDeleteForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Errors           []string  `json:"errors"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
+	Errors           []string  `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -62073,7 +62073,7 @@ const (
 
 // ProjectsListCardsOKHeaders wraps []ProjectCard with response headers.
 type ProjectsListCardsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ProjectCard
 }
 
@@ -62121,7 +62121,7 @@ func (*ProjectsListCollaboratorsApplicationJSONUnauthorized) projectsListCollabo
 
 // ProjectsListCollaboratorsOKHeaders wraps []SimpleUser with response headers.
 type ProjectsListCollaboratorsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -62157,7 +62157,7 @@ func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() 
 
 // ProjectsListColumnsOKHeaders wraps []ProjectColumn with response headers.
 type ProjectsListColumnsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ProjectColumn
 }
 
@@ -62185,7 +62185,7 @@ func (*ProjectsListColumnsOKHeaders) projectsListColumnsRes() {}
 
 // ProjectsListForOrgOKHeaders wraps []Project with response headers.
 type ProjectsListForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Project
 }
 
@@ -62237,7 +62237,7 @@ func (*ProjectsListForRepoApplicationJSONUnauthorized) projectsListForRepoRes() 
 
 // ProjectsListForRepoOKHeaders wraps []Project with response headers.
 type ProjectsListForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Project
 }
 
@@ -62273,7 +62273,7 @@ const (
 
 // ProjectsListForUserOKHeaders wraps []Project with response headers.
 type ProjectsListForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Project
 }
 
@@ -62312,9 +62312,9 @@ type ProjectsMoveCardCreated struct{}
 func (*ProjectsMoveCardCreated) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbidden struct {
-	Message          OptString                             `json:"message"`
-	DocumentationURL OptString                             `json:"documentation_url"`
-	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors"`
+	Message          OptString                             `json:"message,omitempty"`
+	DocumentationURL OptString                             `json:"documentation_url,omitempty"`
+	Errors           []ProjectsMoveCardForbiddenErrorsItem `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -62350,10 +62350,10 @@ func (s *ProjectsMoveCardForbidden) SetErrors(val []ProjectsMoveCardForbiddenErr
 func (*ProjectsMoveCardForbidden) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbiddenErrorsItem struct {
-	Code     OptString `json:"code"`
-	Message  OptString `json:"message"`
-	Resource OptString `json:"resource"`
-	Field    OptString `json:"field"`
+	Code     OptString `json:"code,omitempty"`
+	Message  OptString `json:"message,omitempty"`
+	Resource OptString `json:"resource,omitempty"`
+	Field    OptString `json:"field,omitempty"`
 }
 
 // GetCode returns the value of Code.
@@ -62401,7 +62401,7 @@ type ProjectsMoveCardReq struct {
 	// place after the specified card.
 	Position string `json:"position"`
 	// The unique identifier of the column the card should be moved to.
-	ColumnID OptInt `json:"column_id"`
+	ColumnID OptInt `json:"column_id,omitempty"`
 }
 
 // GetPosition returns the value of Position.
@@ -62425,10 +62425,10 @@ func (s *ProjectsMoveCardReq) SetColumnID(val OptInt) {
 }
 
 type ProjectsMoveCardServiceUnavailable struct {
-	Code             OptString                                      `json:"code"`
-	Message          OptString                                      `json:"message"`
-	DocumentationURL OptString                                      `json:"documentation_url"`
-	Errors           []ProjectsMoveCardServiceUnavailableErrorsItem `json:"errors"`
+	Code             OptString                                      `json:"code,omitempty"`
+	Message          OptString                                      `json:"message,omitempty"`
+	DocumentationURL OptString                                      `json:"documentation_url,omitempty"`
+	Errors           []ProjectsMoveCardServiceUnavailableErrorsItem `json:"errors,omitempty"`
 }
 
 // GetCode returns the value of Code.
@@ -62474,8 +62474,8 @@ func (s *ProjectsMoveCardServiceUnavailable) SetErrors(val []ProjectsMoveCardSer
 func (*ProjectsMoveCardServiceUnavailable) projectsMoveCardRes() {}
 
 type ProjectsMoveCardServiceUnavailableErrorsItem struct {
-	Code    OptString `json:"code"`
-	Message OptString `json:"message"`
+	Code    OptString `json:"code,omitempty"`
+	Message OptString `json:"message,omitempty"`
 }
 
 // GetCode returns the value of Code.
@@ -62565,9 +62565,9 @@ func (*ProjectsUpdateCardApplicationJSONUnauthorized) projectsUpdateCardRes() {}
 
 type ProjectsUpdateCardReq struct {
 	// The project card's note.
-	Note OptNilString `json:"note"`
+	Note OptNilString `json:"note,omitempty"`
 	// Whether or not the card is archived.
-	Archived OptBool `json:"archived"`
+	Archived OptBool `json:"archived,omitempty"`
 }
 
 // GetNote returns the value of Note.
@@ -62614,9 +62614,9 @@ func (s *ProjectsUpdateColumnReq) SetName(val string) {
 }
 
 type ProjectsUpdateForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
-	Errors           []string  `json:"errors"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
+	Errors           []string  `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -62658,15 +62658,15 @@ func (*ProjectsUpdateNotFound) projectsUpdateRes() {}
 
 type ProjectsUpdateReq struct {
 	// Name of the project.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Body of the project.
-	Body OptNilString `json:"body"`
+	Body OptNilString `json:"body,omitempty"`
 	// State of the project; either 'open' or 'closed'.
-	State OptString `json:"state"`
+	State OptString `json:"state,omitempty"`
 	// The baseline permission that all organization members have on this project.
-	OrganizationPermission OptProjectsUpdateReqOrganizationPermission `json:"organization_permission"`
+	OrganizationPermission OptProjectsUpdateReqOrganizationPermission `json:"organization_permission,omitempty"`
 	// Whether or not this project can be seen by everyone.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -62733,15 +62733,15 @@ const (
 // Ref: #/components/schemas/protected-branch
 type ProtectedBranch struct {
 	URL                            url.URL                                          `json:"url"`
-	RequiredStatusChecks           OptStatusCheckPolicy                             `json:"required_status_checks"`
-	RequiredPullRequestReviews     OptProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews"`
-	RequiredSignatures             OptProtectedBranchRequiredSignatures             `json:"required_signatures"`
-	EnforceAdmins                  OptProtectedBranchEnforceAdmins                  `json:"enforce_admins"`
-	RequiredLinearHistory          OptProtectedBranchRequiredLinearHistory          `json:"required_linear_history"`
-	AllowForcePushes               OptProtectedBranchAllowForcePushes               `json:"allow_force_pushes"`
-	AllowDeletions                 OptProtectedBranchAllowDeletions                 `json:"allow_deletions"`
-	Restrictions                   OptBranchRestrictionPolicy                       `json:"restrictions"`
-	RequiredConversationResolution OptProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution"`
+	RequiredStatusChecks           OptStatusCheckPolicy                             `json:"required_status_checks,omitempty"`
+	RequiredPullRequestReviews     OptProtectedBranchRequiredPullRequestReviews     `json:"required_pull_request_reviews,omitempty"`
+	RequiredSignatures             OptProtectedBranchRequiredSignatures             `json:"required_signatures,omitempty"`
+	EnforceAdmins                  OptProtectedBranchEnforceAdmins                  `json:"enforce_admins,omitempty"`
+	RequiredLinearHistory          OptProtectedBranchRequiredLinearHistory          `json:"required_linear_history,omitempty"`
+	AllowForcePushes               OptProtectedBranchAllowForcePushes               `json:"allow_force_pushes,omitempty"`
+	AllowDeletions                 OptProtectedBranchAllowDeletions                 `json:"allow_deletions,omitempty"`
+	Restrictions                   OptBranchRestrictionPolicy                       `json:"restrictions,omitempty"`
+	RequiredConversationResolution OptProtectedBranchRequiredConversationResolution `json:"required_conversation_resolution,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -62932,11 +62932,11 @@ func (s *ProtectedBranchEnforceAdmins) SetEnabled(val bool) {
 // Protected Branch Pull Request Review.
 // Ref: #/components/schemas/protected-branch-pull-request-review
 type ProtectedBranchPullRequestReview struct {
-	URL                          OptURI                                                   `json:"url"`
-	DismissalRestrictions        OptProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions"`
+	URL                          OptURI                                                   `json:"url,omitempty"`
+	DismissalRestrictions        OptProtectedBranchPullRequestReviewDismissalRestrictions `json:"dismissal_restrictions,omitempty"`
 	DismissStaleReviews          bool                                                     `json:"dismiss_stale_reviews"`
 	RequireCodeOwnerReviews      bool                                                     `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptInt                                                   `json:"required_approving_review_count"`
+	RequiredApprovingReviewCount OptInt                                                   `json:"required_approving_review_count,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -62993,12 +62993,12 @@ func (*ProtectedBranchPullRequestReview) reposUpdatePullRequestReviewProtectionR
 
 type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 	// The list of users with review dismissal access.
-	Users []SimpleUser `json:"users"`
+	Users []SimpleUser `json:"users,omitempty"`
 	// The list of teams with review dismissal access.
-	Teams    []Team    `json:"teams"`
-	URL      OptString `json:"url"`
-	UsersURL OptString `json:"users_url"`
-	TeamsURL OptString `json:"teams_url"`
+	Teams    []Team    `json:"teams,omitempty"`
+	URL      OptString `json:"url,omitempty"`
+	UsersURL OptString `json:"users_url,omitempty"`
+	TeamsURL OptString `json:"teams_url,omitempty"`
 }
 
 // GetUsers returns the value of Users.
@@ -63052,7 +63052,7 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) SetTeamsURL(val 
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
-	Enabled OptBool `json:"enabled"`
+	Enabled OptBool `json:"enabled,omitempty"`
 }
 
 // GetEnabled returns the value of Enabled.
@@ -63081,10 +63081,10 @@ func (s *ProtectedBranchRequiredLinearHistory) SetEnabled(val bool) {
 
 type ProtectedBranchRequiredPullRequestReviews struct {
 	URL                          url.URL                                                           `json:"url"`
-	DismissStaleReviews          OptBool                                                           `json:"dismiss_stale_reviews"`
-	RequireCodeOwnerReviews      OptBool                                                           `json:"require_code_owner_reviews"`
-	RequiredApprovingReviewCount OptInt                                                            `json:"required_approving_review_count"`
-	DismissalRestrictions        OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	DismissStaleReviews          OptBool                                                           `json:"dismiss_stale_reviews,omitempty"`
+	RequireCodeOwnerReviews      OptBool                                                           `json:"require_code_owner_reviews,omitempty"`
+	RequiredApprovingReviewCount OptInt                                                            `json:"required_approving_review_count,omitempty"`
+	DismissalRestrictions        OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -63248,20 +63248,20 @@ type PublicUser struct {
 	Email             NilString         `json:"email"`
 	Hireable          NilBool           `json:"hireable"`
 	Bio               NilString         `json:"bio"`
-	TwitterUsername   OptNilString      `json:"twitter_username"`
+	TwitterUsername   OptNilString      `json:"twitter_username,omitempty"`
 	PublicRepos       int               `json:"public_repos"`
 	PublicGists       int               `json:"public_gists"`
 	Followers         int               `json:"followers"`
 	Following         int               `json:"following"`
 	CreatedAt         time.Time         `json:"created_at"`
 	UpdatedAt         time.Time         `json:"updated_at"`
-	Plan              OptPublicUserPlan `json:"plan"`
-	SuspendedAt       OptNilDateTime    `json:"suspended_at"`
-	PrivateGists      OptInt            `json:"private_gists"`
-	TotalPrivateRepos OptInt            `json:"total_private_repos"`
-	OwnedPrivateRepos OptInt            `json:"owned_private_repos"`
-	DiskUsage         OptInt            `json:"disk_usage"`
-	Collaborators     OptInt            `json:"collaborators"`
+	Plan              OptPublicUserPlan `json:"plan,omitempty"`
+	SuspendedAt       OptNilDateTime    `json:"suspended_at,omitempty"`
+	PrivateGists      OptInt            `json:"private_gists,omitempty"`
+	TotalPrivateRepos OptInt            `json:"total_private_repos,omitempty"`
+	OwnedPrivateRepos OptInt            `json:"owned_private_repos,omitempty"`
+	DiskUsage         OptInt            `json:"disk_usage,omitempty"`
+	Collaborators     OptInt            `json:"collaborators,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -63729,26 +63729,26 @@ type PullRequest struct {
 	Body               NilString               `json:"body"`
 	Labels             []PullRequestLabelsItem `json:"labels"`
 	Milestone          NilNullableMilestone    `json:"milestone"`
-	ActiveLockReason   OptNilString            `json:"active_lock_reason"`
+	ActiveLockReason   OptNilString            `json:"active_lock_reason,omitempty"`
 	CreatedAt          time.Time               `json:"created_at"`
 	UpdatedAt          time.Time               `json:"updated_at"`
 	ClosedAt           NilDateTime             `json:"closed_at"`
 	MergedAt           NilDateTime             `json:"merged_at"`
 	MergeCommitSha     NilString               `json:"merge_commit_sha"`
 	Assignee           NilNullableSimpleUser   `json:"assignee"`
-	Assignees          OptNilSimpleUserArray   `json:"assignees"`
-	RequestedReviewers OptNilSimpleUserArray   `json:"requested_reviewers"`
-	RequestedTeams     OptNilTeamSimpleArray   `json:"requested_teams"`
+	Assignees          OptNilSimpleUserArray   `json:"assignees,omitempty"`
+	RequestedReviewers OptNilSimpleUserArray   `json:"requested_reviewers,omitempty"`
+	RequestedTeams     OptNilTeamSimpleArray   `json:"requested_teams,omitempty"`
 	Head               PullRequestHead         `json:"head"`
 	Base               PullRequestBase         `json:"base"`
 	Links              PullRequestLinks        `json:"_links"`
 	AuthorAssociation  AuthorAssociation       `json:"author_association"`
 	AutoMerge          NilAutoMerge            `json:"auto_merge"`
 	// Indicates whether or not the pull request is a draft.
-	Draft          OptBool               `json:"draft"`
+	Draft          OptBool               `json:"draft,omitempty"`
 	Merged         bool                  `json:"merged"`
 	Mergeable      NilBool               `json:"mergeable"`
-	Rebaseable     OptNilBool            `json:"rebaseable"`
+	Rebaseable     OptNilBool            `json:"rebaseable,omitempty"`
 	MergeableState string                `json:"mergeable_state"`
 	MergedBy       NilNullableSimpleUser `json:"merged_by"`
 	Comments       int                   `json:"comments"`
@@ -64361,29 +64361,29 @@ type PullRequestBaseRepo struct {
 	HasPages         bool                              `json:"has_pages"`
 	Homepage         NilURI                            `json:"homepage"`
 	Language         NilString                         `json:"language"`
-	MasterBranch     OptString                         `json:"master_branch"`
+	MasterBranch     OptString                         `json:"master_branch,omitempty"`
 	Archived         bool                              `json:"archived"`
 	Disabled         bool                              `json:"disabled"`
 	MirrorURL        NilURI                            `json:"mirror_url"`
 	OpenIssues       int                               `json:"open_issues"`
 	OpenIssuesCount  int                               `json:"open_issues_count"`
-	Permissions      OptPullRequestBaseRepoPermissions `json:"permissions"`
-	TempCloneToken   OptString                         `json:"temp_clone_token"`
-	AllowMergeCommit OptBool                           `json:"allow_merge_commit"`
-	AllowSquashMerge OptBool                           `json:"allow_squash_merge"`
-	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge"`
+	Permissions      OptPullRequestBaseRepoPermissions `json:"permissions,omitempty"`
+	TempCloneToken   OptString                         `json:"temp_clone_token,omitempty"`
+	AllowMergeCommit OptBool                           `json:"allow_merge_commit,omitempty"`
+	AllowSquashMerge OptBool                           `json:"allow_squash_merge,omitempty"`
+	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge,omitempty"`
 	License          NilNullableLicenseSimple          `json:"license"`
 	PushedAt         time.Time                         `json:"pushed_at"`
 	Size             int                               `json:"size"`
 	SSHURL           string                            `json:"ssh_url"`
 	StargazersCount  int                               `json:"stargazers_count"`
 	SvnURL           url.URL                           `json:"svn_url"`
-	Topics           []string                          `json:"topics"`
+	Topics           []string                          `json:"topics,omitempty"`
 	Watchers         int                               `json:"watchers"`
 	WatchersCount    int                               `json:"watchers_count"`
 	CreatedAt        time.Time                         `json:"created_at"`
 	UpdatedAt        time.Time                         `json:"updated_at"`
-	AllowForking     OptBool                           `json:"allow_forking"`
+	AllowForking     OptBool                           `json:"allow_forking,omitempty"`
 }
 
 // GetArchiveURL returns the value of ArchiveURL.
@@ -65399,9 +65399,9 @@ func (s *PullRequestBaseRepoOwner) SetURL(val url.URL) {
 
 type PullRequestBaseRepoPermissions struct {
 	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Pull     bool    `json:"pull"`
 }
 
@@ -65773,29 +65773,29 @@ type PullRequestHeadRepo struct {
 	HasPages         bool                              `json:"has_pages"`
 	Homepage         NilURI                            `json:"homepage"`
 	Language         NilString                         `json:"language"`
-	MasterBranch     OptString                         `json:"master_branch"`
+	MasterBranch     OptString                         `json:"master_branch,omitempty"`
 	Archived         bool                              `json:"archived"`
 	Disabled         bool                              `json:"disabled"`
 	MirrorURL        NilURI                            `json:"mirror_url"`
 	OpenIssues       int                               `json:"open_issues"`
 	OpenIssuesCount  int                               `json:"open_issues_count"`
-	Permissions      OptPullRequestHeadRepoPermissions `json:"permissions"`
-	TempCloneToken   OptString                         `json:"temp_clone_token"`
-	AllowMergeCommit OptBool                           `json:"allow_merge_commit"`
-	AllowSquashMerge OptBool                           `json:"allow_squash_merge"`
-	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge"`
+	Permissions      OptPullRequestHeadRepoPermissions `json:"permissions,omitempty"`
+	TempCloneToken   OptString                         `json:"temp_clone_token,omitempty"`
+	AllowMergeCommit OptBool                           `json:"allow_merge_commit,omitempty"`
+	AllowSquashMerge OptBool                           `json:"allow_squash_merge,omitempty"`
+	AllowRebaseMerge OptBool                           `json:"allow_rebase_merge,omitempty"`
 	License          NilPullRequestHeadRepoLicense     `json:"license"`
 	PushedAt         time.Time                         `json:"pushed_at"`
 	Size             int                               `json:"size"`
 	SSHURL           string                            `json:"ssh_url"`
 	StargazersCount  int                               `json:"stargazers_count"`
 	SvnURL           url.URL                           `json:"svn_url"`
-	Topics           []string                          `json:"topics"`
+	Topics           []string                          `json:"topics,omitempty"`
 	Watchers         int                               `json:"watchers"`
 	WatchersCount    int                               `json:"watchers_count"`
 	CreatedAt        time.Time                         `json:"created_at"`
 	UpdatedAt        time.Time                         `json:"updated_at"`
-	AllowForking     OptBool                           `json:"allow_forking"`
+	AllowForking     OptBool                           `json:"allow_forking,omitempty"`
 }
 
 // GetArchiveURL returns the value of ArchiveURL.
@@ -66869,9 +66869,9 @@ func (s *PullRequestHeadRepoOwner) SetURL(val url.URL) {
 
 type PullRequestHeadRepoPermissions struct {
 	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Pull     bool    `json:"pull"`
 }
 
@@ -67128,7 +67128,7 @@ func (s *PullRequestHeadUser) SetURL(val url.URL) {
 
 // PullRequestHeaders wraps PullRequest with response headers.
 type PullRequestHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response PullRequest
 }
 
@@ -67155,13 +67155,13 @@ func (s *PullRequestHeaders) SetResponse(val PullRequest) {
 func (*PullRequestHeaders) pullsCreateRes() {}
 
 type PullRequestLabelsItem struct {
-	ID          OptInt64     `json:"id"`
-	NodeID      OptString    `json:"node_id"`
-	URL         OptString    `json:"url"`
-	Name        OptString    `json:"name"`
-	Description OptNilString `json:"description"`
-	Color       OptString    `json:"color"`
-	Default     OptBool      `json:"default"`
+	ID          OptInt64     `json:"id,omitempty"`
+	NodeID      OptString    `json:"node_id,omitempty"`
+	URL         OptString    `json:"url,omitempty"`
+	Name        OptString    `json:"name,omitempty"`
+	Description OptNilString `json:"description,omitempty"`
+	Color       OptString    `json:"color,omitempty"`
+	Default     OptBool      `json:"default,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -67581,11 +67581,11 @@ type PullRequestReview struct {
 	HTMLURL        url.URL                `json:"html_url"`
 	PullRequestURL url.URL                `json:"pull_request_url"`
 	Links          PullRequestReviewLinks `json:"_links"`
-	SubmittedAt    OptDateTime            `json:"submitted_at"`
+	SubmittedAt    OptDateTime            `json:"submitted_at,omitempty"`
 	// A commit SHA for the review.
 	CommitID          string            `json:"commit_id"`
-	BodyHTML          OptString         `json:"body_html"`
-	BodyText          OptString         `json:"body_text"`
+	BodyHTML          OptString         `json:"body_html,omitempty"`
+	BodyText          OptString         `json:"body_text,omitempty"`
 	AuthorAssociation AuthorAssociation `json:"author_association"`
 }
 
@@ -67750,7 +67750,7 @@ type PullRequestReviewComment struct {
 	// The SHA of the original commit to which the comment applies.
 	OriginalCommitID string `json:"original_commit_id"`
 	// The comment ID to reply to.
-	InReplyToID OptInt     `json:"in_reply_to_id"`
+	InReplyToID OptInt     `json:"in_reply_to_id,omitempty"`
 	User        SimpleUser `json:"user"`
 	// The text of the comment.
 	Body      string    `json:"body"`
@@ -67763,23 +67763,23 @@ type PullRequestReviewComment struct {
 	AuthorAssociation AuthorAssociation             `json:"author_association"`
 	Links             PullRequestReviewCommentLinks `json:"_links"`
 	// The first line of the range for a multi-line comment.
-	StartLine OptNilInt `json:"start_line"`
+	StartLine OptNilInt `json:"start_line,omitempty"`
 	// The first line of the range for a multi-line comment.
-	OriginalStartLine OptNilInt `json:"original_start_line"`
+	OriginalStartLine OptNilInt `json:"original_start_line,omitempty"`
 	// The side of the first line of the range for a multi-line comment.
-	StartSide OptNilPullRequestReviewCommentStartSide `json:"start_side"`
+	StartSide OptNilPullRequestReviewCommentStartSide `json:"start_side,omitempty"`
 	// The line of the blob to which the comment applies. The last line of the range for a multi-line
 	// comment.
-	Line OptInt `json:"line"`
+	Line OptInt `json:"line,omitempty"`
 	// The line of the blob to which the comment applies. The last line of the range for a multi-line
 	// comment.
-	OriginalLine OptInt `json:"original_line"`
+	OriginalLine OptInt `json:"original_line,omitempty"`
 	// The side of the diff to which the comment applies. The side of the last line of the range for a
 	// multi-line comment.
-	Side      OptPullRequestReviewCommentSide `json:"side"`
-	Reactions OptReactionRollup               `json:"reactions"`
-	BodyHTML  OptString                       `json:"body_html"`
-	BodyText  OptString                       `json:"body_text"`
+	Side      OptPullRequestReviewCommentSide `json:"side,omitempty"`
+	Reactions OptReactionRollup               `json:"reactions,omitempty"`
+	BodyHTML  OptString                       `json:"body_html,omitempty"`
+	BodyText  OptString                       `json:"body_text,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -68066,7 +68066,7 @@ func (*PullRequestReviewComment) pullsGetReviewCommentRes() {}
 
 // PullRequestReviewCommentHeaders wraps PullRequestReviewComment with response headers.
 type PullRequestReviewCommentHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response PullRequestReviewComment
 }
 
@@ -68270,7 +68270,7 @@ func (s *PullRequestReviewRequest) SetTeams(val []Team) {
 
 // PullRequestReviewRequestHeaders wraps PullRequestReviewRequest with response headers.
 type PullRequestReviewRequestHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response PullRequestReviewRequest
 }
 
@@ -68317,23 +68317,23 @@ type PullRequestSimple struct {
 	Body               NilString                     `json:"body"`
 	Labels             []PullRequestSimpleLabelsItem `json:"labels"`
 	Milestone          NilNullableMilestone          `json:"milestone"`
-	ActiveLockReason   OptNilString                  `json:"active_lock_reason"`
+	ActiveLockReason   OptNilString                  `json:"active_lock_reason,omitempty"`
 	CreatedAt          time.Time                     `json:"created_at"`
 	UpdatedAt          time.Time                     `json:"updated_at"`
 	ClosedAt           NilDateTime                   `json:"closed_at"`
 	MergedAt           NilDateTime                   `json:"merged_at"`
 	MergeCommitSha     NilString                     `json:"merge_commit_sha"`
 	Assignee           NilNullableSimpleUser         `json:"assignee"`
-	Assignees          OptNilSimpleUserArray         `json:"assignees"`
-	RequestedReviewers OptNilSimpleUserArray         `json:"requested_reviewers"`
-	RequestedTeams     OptNilTeamArray               `json:"requested_teams"`
+	Assignees          OptNilSimpleUserArray         `json:"assignees,omitempty"`
+	RequestedReviewers OptNilSimpleUserArray         `json:"requested_reviewers,omitempty"`
+	RequestedTeams     OptNilTeamArray               `json:"requested_teams,omitempty"`
 	Head               PullRequestSimpleHead         `json:"head"`
 	Base               PullRequestSimpleBase         `json:"base"`
 	Links              PullRequestSimpleLinks        `json:"_links"`
 	AuthorAssociation  AuthorAssociation             `json:"author_association"`
 	AutoMerge          NilAutoMerge                  `json:"auto_merge"`
 	// Indicates whether or not the pull request is a draft.
-	Draft OptBool `json:"draft"`
+	Draft OptBool `json:"draft,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -68815,13 +68815,13 @@ func (s *PullRequestSimpleHead) SetUser(val NilNullableSimpleUser) {
 }
 
 type PullRequestSimpleLabelsItem struct {
-	ID          OptInt64  `json:"id"`
-	NodeID      OptString `json:"node_id"`
-	URL         OptString `json:"url"`
-	Name        OptString `json:"name"`
-	Description OptString `json:"description"`
-	Color       OptString `json:"color"`
-	Default     OptBool   `json:"default"`
+	ID          OptInt64  `json:"id,omitempty"`
+	NodeID      OptString `json:"node_id,omitempty"`
+	URL         OptString `json:"url,omitempty"`
+	Name        OptString `json:"name,omitempty"`
+	Description OptString `json:"description,omitempty"`
+	Color       OptString `json:"color,omitempty"`
+	Default     OptBool   `json:"default,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -69020,7 +69020,7 @@ func (s *PullsCreateReplyForReviewCommentReq) SetBody(val string) {
 
 type PullsCreateReq struct {
 	// The title of the new pull request.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The name of the branch where your changes are implemented. For cross-repository pull requests in
 	// the same network, namespace `head` with a user like this: `username:branch`.
 	Head string `json:"head"`
@@ -69029,15 +69029,15 @@ type PullsCreateReq struct {
 	// base of another repository.
 	Base string `json:"base"`
 	// The contents of the pull request.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// Indicates whether [maintainers can modify](https://help.github.
 	// com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.
-	MaintainerCanModify OptBool `json:"maintainer_can_modify"`
+	MaintainerCanModify OptBool `json:"maintainer_can_modify,omitempty"`
 	// Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://help.github.
 	// com/en/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to
 	// learn more.
-	Draft OptBool `json:"draft"`
-	Issue OptInt  `json:"issue"`
+	Draft OptBool `json:"draft,omitempty"`
+	Issue OptInt  `json:"issue,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -69115,13 +69115,13 @@ type PullsCreateReviewCommentReq struct {
 	Body string `json:"body"`
 	// The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment
 	// outdated if a subsequent commit modifies the line you specify as the `position`.
-	CommitID OptString `json:"commit_id"`
+	CommitID OptString `json:"commit_id,omitempty"`
 	// The relative path to the file that necessitates a comment.
-	Path OptString `json:"path"`
+	Path OptString `json:"path,omitempty"`
 	// **Required without `comfort-fade` preview**. The position in the diff where you want to add a
 	// review comment. Note this value is not the same as the line number in the file. For help finding
 	// the position value, read the note above.
-	Position OptInt `json:"position"`
+	Position OptInt `json:"position,omitempty"`
 	// **Required with `comfort-fade` preview**. In a split diff view, the side of the diff that the pull
 	// request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red.
 	//  Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are
@@ -69129,26 +69129,26 @@ type PullsCreateReviewCommentReq struct {
 	// range is a deletion or addition. For more information, see "[Diff view options](https://help.
 	// github.com/en/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub
 	// Help documentation.
-	Side OptPullsCreateReviewCommentReqSide `json:"side"`
+	Side OptPullsCreateReviewCommentReqSide `json:"side,omitempty"`
 	// **Required with `comfort-fade` preview**. The line of the blob in the pull request diff that the
 	// comment applies to. For a multi-line comment, the last line of the range that your comment applies
 	// to.
-	Line OptInt `json:"line"`
+	Line OptInt `json:"line,omitempty"`
 	// **Required when using multi-line comments**. To create multi-line comments, you must use the
 	// `comfort-fade` preview header. The `start_line` is the first line in the pull request diff that
 	// your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a
 	// pull request](https://help.github.
 	// com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the
 	// GitHub Help documentation.
-	StartLine OptInt `json:"start_line"`
+	StartLine OptInt `json:"start_line,omitempty"`
 	// **Required when using multi-line comments**. To create multi-line comments, you must use the
 	// `comfort-fade` preview header. The `start_side` is the starting side of the diff that the comment
 	// applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on
 	// a pull request](https://help.github.
 	// com/en/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the
 	// GitHub Help documentation. See `side` in this table for additional context.
-	StartSide OptPullsCreateReviewCommentReqStartSide `json:"start_side"`
-	InReplyTo OptInt                                  `json:"in_reply_to"`
+	StartSide OptPullsCreateReviewCommentReqStartSide `json:"start_side,omitempty"`
+	InReplyTo OptInt                                  `json:"in_reply_to,omitempty"`
 }
 
 // GetBody returns the value of Body.
@@ -69275,18 +69275,18 @@ type PullsCreateReviewReq struct {
 	// The SHA of the commit that needs a review. Not using the latest commit SHA may render your review
 	// comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults
 	// to the most recent commit in the pull request when you do not specify a value.
-	CommitID OptString `json:"commit_id"`
+	CommitID OptString `json:"commit_id,omitempty"`
 	// **Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of
 	// the pull request review.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
 	// or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you
 	// will need to [submit the pull request review](https://docs.github.
 	// com/rest/reference/pulls#submit-a-review-for-a-pull-request) when you are ready.
-	Event OptPullsCreateReviewReqEvent `json:"event"`
+	Event OptPullsCreateReviewReqEvent `json:"event,omitempty"`
 	// Use the following table to specify the location, destination, and contents of the draft review
 	// comment.
-	Comments []PullsCreateReviewReqCommentsItem `json:"comments"`
+	Comments []PullsCreateReviewReqCommentsItem `json:"comments,omitempty"`
 }
 
 // GetCommitID returns the value of CommitID.
@@ -69334,13 +69334,13 @@ type PullsCreateReviewReqCommentsItem struct {
 	Path string `json:"path"`
 	// The position in the diff where you want to add a review comment. Note this value is not the same
 	// as the line number in the file. For help finding the position value, read the note below.
-	Position OptInt `json:"position"`
+	Position OptInt `json:"position,omitempty"`
 	// Text of the review comment.
 	Body      string    `json:"body"`
-	Line      OptInt    `json:"line"`
-	Side      OptString `json:"side"`
-	StartLine OptInt    `json:"start_line"`
-	StartSide OptString `json:"start_side"`
+	Line      OptInt    `json:"line,omitempty"`
+	Side      OptString `json:"side,omitempty"`
+	StartLine OptInt    `json:"start_line,omitempty"`
+	StartSide OptString `json:"start_side,omitempty"`
 }
 
 // GetPath returns the value of Path.
@@ -69433,7 +69433,7 @@ func (*PullsDeleteReviewCommentNoContent) pullsDeleteReviewCommentRes() {}
 type PullsDismissReviewReq struct {
 	// The message for the pull request review dismissal.
 	Message string    `json:"message"`
-	Event   OptString `json:"event"`
+	Event   OptString `json:"event,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -69466,7 +69466,7 @@ func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
 
 // PullsListCommentsForReviewOKHeaders wraps []ReviewComment with response headers.
 type PullsListCommentsForReviewOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ReviewComment
 }
 
@@ -69494,7 +69494,7 @@ func (*PullsListCommentsForReviewOKHeaders) pullsListCommentsForReviewRes() {}
 
 // PullsListCommitsOKHeaders wraps []Commit with response headers.
 type PullsListCommitsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Commit
 }
 
@@ -69527,7 +69527,7 @@ const (
 
 // PullsListFilesOKHeaders wraps []DiffEntry with response headers.
 type PullsListFilesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []DiffEntry
 }
 
@@ -69555,7 +69555,7 @@ func (*PullsListFilesOKHeaders) pullsListFilesRes() {}
 
 // PullsListOKHeaders wraps []PullRequestSimple with response headers.
 type PullsListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PullRequestSimple
 }
 
@@ -69597,7 +69597,7 @@ const (
 
 // PullsListReviewCommentsForRepoOKHeaders wraps []PullRequestReviewComment with response headers.
 type PullsListReviewCommentsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PullRequestReviewComment
 }
 
@@ -69631,7 +69631,7 @@ const (
 
 // PullsListReviewCommentsOKHeaders wraps []PullRequestReviewComment with response headers.
 type PullsListReviewCommentsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PullRequestReviewComment
 }
 
@@ -69664,7 +69664,7 @@ const (
 
 // PullsListReviewsOKHeaders wraps []PullRequestReview with response headers.
 type PullsListReviewsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PullRequestReview
 }
 
@@ -69714,8 +69714,8 @@ type PullsMergeApplicationJSONNotFound BasicError
 func (*PullsMergeApplicationJSONNotFound) pullsMergeRes() {}
 
 type PullsMergeConflict struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -69741,8 +69741,8 @@ func (s *PullsMergeConflict) SetDocumentationURL(val OptString) {
 func (*PullsMergeConflict) pullsMergeRes() {}
 
 type PullsMergeMethodNotAllowed struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -69769,13 +69769,13 @@ func (*PullsMergeMethodNotAllowed) pullsMergeRes() {}
 
 type PullsMergeReq struct {
 	// Title for the automatic commit message.
-	CommitTitle OptString `json:"commit_title"`
+	CommitTitle OptString `json:"commit_title,omitempty"`
 	// Extra detail to append to automatic commit message.
-	CommitMessage OptString `json:"commit_message"`
+	CommitMessage OptString `json:"commit_message,omitempty"`
 	// SHA that pull request head must match to allow merge.
-	Sha OptString `json:"sha"`
+	Sha OptString `json:"sha,omitempty"`
 	// Merge method to use. Possible values are `merge`, `squash` or `rebase`. Default is `merge`.
-	MergeMethod OptPullsMergeReqMergeMethod `json:"merge_method"`
+	MergeMethod OptPullsMergeReqMergeMethod `json:"merge_method,omitempty"`
 }
 
 // GetCommitTitle returns the value of CommitTitle.
@@ -69831,7 +69831,7 @@ type PullsRemoveRequestedReviewersReq struct {
 	// An array of user `login`s that will be removed.
 	Reviewers []string `json:"reviewers"`
 	// An array of team `slug`s that will be removed.
-	TeamReviewers []string `json:"team_reviewers"`
+	TeamReviewers []string `json:"team_reviewers,omitempty"`
 }
 
 // GetReviewers returns the value of Reviewers.
@@ -69864,7 +69864,7 @@ func (*PullsSubmitReviewApplicationJSONNotFound) pullsSubmitReviewRes() {}
 
 type PullsSubmitReviewReq struct {
 	// The body text of the pull request review.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`,
 	// or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and
 	// sets the review action state to `PENDING`, which means you will need to re-submit the pull request
@@ -69905,8 +69905,8 @@ const (
 )
 
 type PullsUpdateBranchAccepted struct {
-	Message OptString `json:"message"`
-	URL     OptString `json:"url"`
+	Message OptString `json:"message,omitempty"`
+	URL     OptString `json:"url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -69937,7 +69937,7 @@ type PullsUpdateBranchReq struct {
 	// `422 Unprocessable Entity` status. You can use the "[List commits](https://docs.github.
 	// com/rest/reference/repos#list-commits)" endpoint to find the most recent commit SHA. Default: SHA
 	// of the pull request's current HEAD ref.
-	ExpectedHeadSha OptString `json:"expected_head_sha"`
+	ExpectedHeadSha OptString `json:"expected_head_sha,omitempty"`
 }
 
 // GetExpectedHeadSha returns the value of ExpectedHeadSha.
@@ -69952,18 +69952,18 @@ func (s *PullsUpdateBranchReq) SetExpectedHeadSha(val OptString) {
 
 type PullsUpdateReq struct {
 	// The title of the pull request.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The contents of the pull request.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// State of this Pull Request. Either `open` or `closed`.
-	State OptPullsUpdateReqState `json:"state"`
+	State OptPullsUpdateReqState `json:"state,omitempty"`
 	// The name of the branch you want your changes pulled into. This should be an existing branch on the
 	// current repository. You cannot update the base branch on a pull request to point to another
 	// repository.
-	Base OptString `json:"base"`
+	Base OptString `json:"base,omitempty"`
 	// Indicates whether [maintainers can modify](https://help.github.
 	// com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.
-	MaintainerCanModify OptBool `json:"maintainer_can_modify"`
+	MaintainerCanModify OptBool `json:"maintainer_can_modify,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -70131,9 +70131,9 @@ func (s *RateLimitOverview) SetRate(val RateLimit) {
 
 // RateLimitOverviewHeaders wraps RateLimitOverview with response headers.
 type RateLimitOverviewHeaders struct {
-	XRateLimitLimit     OptInt
-	XRateLimitRemaining OptInt
-	XRateLimitReset     OptInt
+	XRateLimitLimit     OptInt `json:",omitempty"`
+	XRateLimitRemaining OptInt `json:",omitempty"`
+	XRateLimitReset     OptInt `json:",omitempty"`
 	Response            RateLimitOverview
 }
 
@@ -70181,12 +70181,12 @@ func (*RateLimitOverviewHeaders) rateLimitGetRes() {}
 
 type RateLimitOverviewResources struct {
 	Core                      RateLimit    `json:"core"`
-	Graphql                   OptRateLimit `json:"graphql"`
+	Graphql                   OptRateLimit `json:"graphql,omitempty"`
 	Search                    RateLimit    `json:"search"`
-	SourceImport              OptRateLimit `json:"source_import"`
-	IntegrationManifest       OptRateLimit `json:"integration_manifest"`
-	CodeScanningUpload        OptRateLimit `json:"code_scanning_upload"`
-	ActionsRunnerRegistration OptRateLimit `json:"actions_runner_registration"`
+	SourceImport              OptRateLimit `json:"source_import,omitempty"`
+	IntegrationManifest       OptRateLimit `json:"integration_manifest,omitempty"`
+	CodeScanningUpload        OptRateLimit `json:"code_scanning_upload,omitempty"`
+	ActionsRunnerRegistration OptRateLimit `json:"actions_runner_registration,omitempty"`
 }
 
 // GetCore returns the value of Core.
@@ -70838,7 +70838,7 @@ const (
 
 // ReactionsListForCommitCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForCommitCommentOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -70887,7 +70887,7 @@ const (
 
 // ReactionsListForIssueCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForIssueCommentOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -70928,7 +70928,7 @@ const (
 
 // ReactionsListForIssueOKHeaders wraps []Reaction with response headers.
 type ReactionsListForIssueOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -70969,7 +70969,7 @@ const (
 
 // ReactionsListForPullRequestReviewCommentOKHeaders wraps []Reaction with response headers.
 type ReactionsListForPullRequestReviewCommentOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -71011,7 +71011,7 @@ const (
 
 // ReactionsListForTeamDiscussionCommentInOrgOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionCommentInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -71050,7 +71050,7 @@ const (
 
 // ReactionsListForTeamDiscussionCommentLegacyOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionCommentLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -71089,7 +71089,7 @@ const (
 
 // ReactionsListForTeamDiscussionInOrgOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -71128,7 +71128,7 @@ const (
 
 // ReactionsListForTeamDiscussionLegacyOKHeaders wraps []Reaction with response headers.
 type ReactionsListForTeamDiscussionLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Reaction
 }
 
@@ -71206,7 +71206,7 @@ type Release struct {
 	// Specifies the commitish value that determines where the Git tag is created from.
 	TargetCommitish string       `json:"target_commitish"`
 	Name            NilString    `json:"name"`
-	Body            OptNilString `json:"body"`
+	Body            OptNilString `json:"body,omitempty"`
 	// True to create a draft (unpublished) release, false to create a published one.
 	Draft bool `json:"draft"`
 	// Whether to identify the release as a prerelease or a full release.
@@ -71215,12 +71215,12 @@ type Release struct {
 	PublishedAt   NilDateTime    `json:"published_at"`
 	Author        SimpleUser     `json:"author"`
 	Assets        []ReleaseAsset `json:"assets"`
-	BodyHTML      OptString      `json:"body_html"`
-	BodyText      OptString      `json:"body_text"`
-	MentionsCount OptInt         `json:"mentions_count"`
+	BodyHTML      OptString      `json:"body_html,omitempty"`
+	BodyText      OptString      `json:"body_text,omitempty"`
+	MentionsCount OptInt         `json:"mentions_count,omitempty"`
 	// The URL of the release discussion.
-	DiscussionURL OptURI            `json:"discussion_url"`
-	Reactions     OptReactionRollup `json:"reactions"`
+	DiscussionURL OptURI            `json:"discussion_url,omitempty"`
+	Reactions     OptReactionRollup `json:"reactions,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -71619,7 +71619,7 @@ const (
 
 // ReleaseHeaders wraps Release with response headers.
 type ReleaseHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Release
 }
 
@@ -71668,7 +71668,7 @@ type RepoSearchResultItem struct {
 	Language         NilString             `json:"language"`
 	ForksCount       int                   `json:"forks_count"`
 	OpenIssuesCount  int                   `json:"open_issues_count"`
-	MasterBranch     OptString             `json:"master_branch"`
+	MasterBranch     OptString             `json:"master_branch,omitempty"`
 	DefaultBranch    string                `json:"default_branch"`
 	Score            float64               `json:"score"`
 	ForksURL         url.URL               `json:"forks_url"`
@@ -71714,7 +71714,7 @@ type RepoSearchResultItem struct {
 	Forks            int                   `json:"forks"`
 	OpenIssues       int                   `json:"open_issues"`
 	Watchers         int                   `json:"watchers"`
-	Topics           []string              `json:"topics"`
+	Topics           []string              `json:"topics,omitempty"`
 	MirrorURL        NilURI                `json:"mirror_url"`
 	HasIssues        bool                  `json:"has_issues"`
 	HasProjects      bool                  `json:"has_projects"`
@@ -71725,15 +71725,15 @@ type RepoSearchResultItem struct {
 	// Returns whether or not this repository disabled.
 	Disabled            bool                               `json:"disabled"`
 	License             NilNullableLicenseSimple           `json:"license"`
-	Permissions         OptRepoSearchResultItemPermissions `json:"permissions"`
-	TextMatches         *SearchResultTextMatches           `json:"text_matches"`
-	TempCloneToken      OptString                          `json:"temp_clone_token"`
-	AllowMergeCommit    OptBool                            `json:"allow_merge_commit"`
-	AllowSquashMerge    OptBool                            `json:"allow_squash_merge"`
-	AllowRebaseMerge    OptBool                            `json:"allow_rebase_merge"`
-	AllowAutoMerge      OptBool                            `json:"allow_auto_merge"`
-	DeleteBranchOnMerge OptBool                            `json:"delete_branch_on_merge"`
-	AllowForking        OptBool                            `json:"allow_forking"`
+	Permissions         OptRepoSearchResultItemPermissions `json:"permissions,omitempty"`
+	TextMatches         *SearchResultTextMatches           `json:"text_matches,omitempty"`
+	TempCloneToken      OptString                          `json:"temp_clone_token,omitempty"`
+	AllowMergeCommit    OptBool                            `json:"allow_merge_commit,omitempty"`
+	AllowSquashMerge    OptBool                            `json:"allow_squash_merge,omitempty"`
+	AllowRebaseMerge    OptBool                            `json:"allow_rebase_merge,omitempty"`
+	AllowAutoMerge      OptBool                            `json:"allow_auto_merge,omitempty"`
+	DeleteBranchOnMerge OptBool                            `json:"delete_branch_on_merge,omitempty"`
+	AllowForking        OptBool                            `json:"allow_forking,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -72588,9 +72588,9 @@ func (s *RepoSearchResultItem) SetAllowForking(val OptBool) {
 
 type RepoSearchResultItemPermissions struct {
 	Admin    bool    `json:"admin"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 	Push     bool    `json:"push"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Pull     bool    `json:"pull"`
 }
 
@@ -72765,8 +72765,8 @@ type ReposAddCollaboratorReq struct {
 	// without write access.
 	// \* custom repository role name - Can assign a custom repository role if the owning organization
 	// has defined any.
-	Permission  OptReposAddCollaboratorReqPermission `json:"permission"`
-	Permissions OptString                            `json:"permissions"`
+	Permission  OptReposAddCollaboratorReqPermission `json:"permission,omitempty"`
+	Permissions OptString                            `json:"permissions,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -73139,11 +73139,11 @@ type ReposCreateCommitCommentReq struct {
 	// The contents of the comment.
 	Body string `json:"body"`
 	// Relative path of the file to comment on.
-	Path OptString `json:"path"`
+	Path OptString `json:"path,omitempty"`
 	// Line index in the diff to comment on.
-	Position OptInt `json:"position"`
+	Position OptInt `json:"position,omitempty"`
 	// **Deprecated**. Use **position** parameter instead. Line number in the file to comment on.
-	Line OptInt `json:"line"`
+	Line OptInt `json:"line,omitempty"`
 }
 
 // GetBody returns the value of Body.
@@ -73194,12 +73194,12 @@ type ReposCreateCommitStatusReq struct {
 	// For example, if your continuous integration system is posting build status, you would want to
 	// provide the deep link for the build output for this specific SHA:
 	// `http://ci.example.com/user/repo/build/sha`.
-	TargetURL OptString `json:"target_url"`
+	TargetURL OptString `json:"target_url,omitempty"`
 	// A short description of the status.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// A string label to differentiate this status from the status of other systems. This field is
 	// case-insensitive.
-	Context OptString `json:"context"`
+	Context OptString `json:"context,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -73254,7 +73254,7 @@ const (
 
 type ReposCreateDeployKeyReq struct {
 	// A name for the key.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The contents of the key.
 	Key string `json:"key"`
 	// If `true`, the key will only be able to read repository contents. Otherwise, the key will be able
@@ -73265,7 +73265,7 @@ type ReposCreateDeployKeyReq struct {
 	// com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a
 	// user account repository](https://help.github.
 	// com/articles/permission-levels-for-a-user-account-repository/).".
-	ReadOnly OptBool `json:"read_only"`
+	ReadOnly OptBool `json:"read_only,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -73299,7 +73299,7 @@ func (s *ReposCreateDeployKeyReq) SetReadOnly(val OptBool) {
 }
 
 type ReposCreateDeploymentAccepted struct {
-	Message OptString `json:"message"`
+	Message OptString `json:"message,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -73323,32 +73323,32 @@ type ReposCreateDeploymentReq struct {
 	// The ref to deploy. This can be a branch, tag, or SHA.
 	Ref string `json:"ref"`
 	// Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).
-	Task OptString `json:"task"`
+	Task OptString `json:"task,omitempty"`
 	// Attempts to automatically merge the default branch into the requested ref, if it's behind the
 	// default branch.
-	AutoMerge OptBool `json:"auto_merge"`
+	AutoMerge OptBool `json:"auto_merge,omitempty"`
 	// The [status](https://docs.github.com/rest/reference/repos#statuses) contexts to verify against
 	// commit status checks. If you omit this parameter, GitHub verifies all unique contexts before
 	// creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique
 	// contexts.
-	RequiredContexts []string                           `json:"required_contexts"`
-	Payload          OptReposCreateDeploymentReqPayload `json:"payload"`
+	RequiredContexts []string                           `json:"required_contexts,omitempty"`
+	Payload          OptReposCreateDeploymentReqPayload `json:"payload,omitempty"`
 	// Name for the target deployment environment (e.g., `production`, `staging`, `qa`).
-	Environment OptString `json:"environment"`
+	Environment OptString `json:"environment,omitempty"`
 	// Short description of the deployment.
-	Description OptNilString `json:"description"`
+	Description OptNilString `json:"description,omitempty"`
 	// Specifies if the given environment is specific to the deployment and will no longer exist at some
 	// point in the future. Default: `false`
 	// **Note:** This parameter requires you to use the [`application/vnd.github.
 	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
 	// custom media type.
-	TransientEnvironment OptBool `json:"transient_environment"`
+	TransientEnvironment OptBool `json:"transient_environment,omitempty"`
 	// Specifies if the given environment is one that end-users directly interact with. Default: `true`
 	// when `environment` is `production` and `false` otherwise.
 	// **Note:** This parameter requires you to use the [`application/vnd.github.
 	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
 	// custom media type.
-	ProductionEnvironment OptBool `json:"production_environment"`
+	ProductionEnvironment OptBool `json:"production_environment,omitempty"`
 }
 
 // GetRef returns the value of Ref.
@@ -73533,26 +73533,26 @@ type ReposCreateDeploymentStatusReq struct {
 	// The target URL to associate with this status. This URL should contain output to keep the user
 	// updated while the task is running or serve as historical information for what happened in the
 	// deployment. **Note:** It's recommended to use the `log_url` parameter, which replaces `target_url`.
-	TargetURL OptString `json:"target_url"`
+	TargetURL OptString `json:"target_url,omitempty"`
 	// The full URL of the deployment's output. This parameter replaces `target_url`. We will continue to
 	// accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`.
 	//  Setting `log_url` will automatically set `target_url` to the same value. Default: `""`
 	// **Note:** This parameter requires you to use the [`application/vnd.github.
 	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
 	// custom media type.
-	LogURL OptString `json:"log_url"`
+	LogURL OptString `json:"log_url,omitempty"`
 	// A short description of the status. The maximum description length is 140 characters.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Name for the target deployment environment, which can be changed when setting a deploy status. For
 	// example, `production`, `staging`, or `qa`. **Note:** This parameter requires you to use the
 	// [`application/vnd.github.flash-preview+json`](https://docs.github.
 	// com/rest/overview/api-previews#deployment-statuses) custom media type.
-	Environment OptReposCreateDeploymentStatusReqEnvironment `json:"environment"`
+	Environment OptReposCreateDeploymentStatusReqEnvironment `json:"environment,omitempty"`
 	// Sets the URL for accessing your environment. Default: `""`
 	// **Note:** This parameter requires you to use the [`application/vnd.github.
 	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
 	// custom media type.
-	EnvironmentURL OptString `json:"environment_url"`
+	EnvironmentURL OptString `json:"environment_url,omitempty"`
 	// Adds a new `inactive` status to all prior non-transient, non-production environment deployments
 	// with the same repository and `environment` name as the created status's deployment. An `inactive`
 	// status is only added to deployments that had a `success` state. Default: `true`
@@ -73562,7 +73562,7 @@ type ReposCreateDeploymentStatusReq struct {
 	// **Note:** This parameter requires you to use the [`application/vnd.github.
 	// ant-man-preview+json`](https://docs.github.com/rest/overview/api-previews#enhanced-deployments)
 	// custom media type.
-	AutoInactive OptBool `json:"auto_inactive"`
+	AutoInactive OptBool `json:"auto_inactive,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -73676,7 +73676,7 @@ type ReposCreateDispatchEventReq struct {
 	// A custom webhook event name.
 	EventType string `json:"event_type"`
 	// JSON payload with extra information about the webhook event that your action or worklow may use.
-	ClientPayload OptReposCreateDispatchEventReqClientPayload `json:"client_payload"`
+	ClientPayload OptReposCreateDispatchEventReqClientPayload `json:"client_payload,omitempty"`
 }
 
 // GetEventType returns the value of EventType.
@@ -73734,40 +73734,40 @@ type ReposCreateForAuthenticatedUserReq struct {
 	// The name of the repository.
 	Name string `json:"name"`
 	// A short description of the repository.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// A URL with more information about the repository.
-	Homepage OptString `json:"homepage"`
+	Homepage OptString `json:"homepage,omitempty"`
 	// Whether the repository is private.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 	// Whether issues are enabled.
-	HasIssues OptBool `json:"has_issues"`
+	HasIssues OptBool `json:"has_issues,omitempty"`
 	// Whether projects are enabled.
-	HasProjects OptBool `json:"has_projects"`
+	HasProjects OptBool `json:"has_projects,omitempty"`
 	// Whether the wiki is enabled.
-	HasWiki OptBool `json:"has_wiki"`
+	HasWiki OptBool `json:"has_wiki,omitempty"`
 	// The id of the team that will be granted access to this repository. This is only valid when
 	// creating a repository in an organization.
-	TeamID OptInt `json:"team_id"`
+	TeamID OptInt `json:"team_id,omitempty"`
 	// Whether the repository is initialized with a minimal README.
-	AutoInit OptBool `json:"auto_init"`
+	AutoInit OptBool `json:"auto_init,omitempty"`
 	// The desired language or platform to apply to the .gitignore.
-	GitignoreTemplate OptString `json:"gitignore_template"`
+	GitignoreTemplate OptString `json:"gitignore_template,omitempty"`
 	// The license keyword of the open source license for this repository.
-	LicenseTemplate OptString `json:"license_template"`
+	LicenseTemplate OptString `json:"license_template,omitempty"`
 	// Whether to allow squash merges for pull requests.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Whether to allow merge commits for pull requests.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Whether to allow rebase merges for pull requests.
-	AllowRebaseMerge OptBool `json:"allow_rebase_merge"`
+	AllowRebaseMerge OptBool `json:"allow_rebase_merge,omitempty"`
 	// Whether to allow Auto-merge to be used on pull requests.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Whether to delete head branches when pull requests are merged.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 	// Whether downloads are enabled.
-	HasDownloads OptBool `json:"has_downloads"`
+	HasDownloads OptBool `json:"has_downloads,omitempty"`
 	// Whether this repository acts as a template that can be used to generate new repositories.
-	IsTemplate OptBool `json:"is_template"`
+	IsTemplate OptBool `json:"is_template,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -73964,7 +73964,7 @@ func (*ReposCreateForkApplicationJSONNotFound) reposCreateForkRes() {}
 
 type ReposCreateForkReq struct {
 	// Optional parameter to specify the organization name if forking into an organization.
-	Organization OptString `json:"organization"`
+	Organization OptString `json:"organization,omitempty"`
 }
 
 // GetOrganization returns the value of Organization.
@@ -73981,11 +73981,11 @@ type ReposCreateInOrgReq struct {
 	// The name of the repository.
 	Name string `json:"name"`
 	// A short description of the repository.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// A URL with more information about the repository.
-	Homepage OptString `json:"homepage"`
+	Homepage OptString `json:"homepage,omitempty"`
 	// Whether the repository is private.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 	// Can be `public` or `private`. If your organization is associated with an enterprise account using
 	// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
 	// Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories
@@ -73994,42 +73994,42 @@ type ReposCreateInOrgReq struct {
 	// com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
 	// The `visibility` parameter overrides the `private` parameter when you use both parameters with the
 	// `nebula-preview` preview header.
-	Visibility OptReposCreateInOrgReqVisibility `json:"visibility"`
+	Visibility OptReposCreateInOrgReqVisibility `json:"visibility,omitempty"`
 	// Either `true` to enable issues for this repository or `false` to disable them.
-	HasIssues OptBool `json:"has_issues"`
+	HasIssues OptBool `json:"has_issues,omitempty"`
 	// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If
 	// you're creating a repository in an organization that has disabled repository projects, the default
 	// is `false`, and if you pass `true`, the API returns an error.
-	HasProjects OptBool `json:"has_projects"`
+	HasProjects OptBool `json:"has_projects,omitempty"`
 	// Either `true` to enable the wiki for this repository or `false` to disable it.
-	HasWiki OptBool `json:"has_wiki"`
+	HasWiki OptBool `json:"has_wiki,omitempty"`
 	// Either `true` to make this repo available as a template repository or `false` to prevent it.
-	IsTemplate OptBool `json:"is_template"`
+	IsTemplate OptBool `json:"is_template,omitempty"`
 	// The id of the team that will be granted access to this repository. This is only valid when
 	// creating a repository in an organization.
-	TeamID OptInt `json:"team_id"`
+	TeamID OptInt `json:"team_id,omitempty"`
 	// Pass `true` to create an initial commit with empty README.
-	AutoInit OptBool `json:"auto_init"`
+	AutoInit OptBool `json:"auto_init,omitempty"`
 	// Desired language or platform [.gitignore template](https://github.com/github/gitignore) to apply.
 	// Use the name of the template without the extension. For example, "Haskell".
-	GitignoreTemplate OptString `json:"gitignore_template"`
+	GitignoreTemplate OptString `json:"gitignore_template,omitempty"`
 	// Choose an [open source license template](https://choosealicense.com/) that best suits your needs,
 	// and then use the [license keyword](https://help.github.
 	// com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template`
 	// string. For example, "mit" or "mpl-2.0".
-	LicenseTemplate OptString `json:"license_template"`
+	LicenseTemplate OptString `json:"license_template,omitempty"`
 	// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging
 	// pull requests with merge commits.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
-	AllowRebaseMerge OptBool `json:"allow_rebase_merge"`
+	AllowRebaseMerge OptBool `json:"allow_rebase_merge,omitempty"`
 	// Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Either `true` to allow automatically deleting head branches when pull requests are merged, or
 	// `false` to prevent automatic deletion.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74251,13 +74251,13 @@ type ReposCreateOrUpdateFileContentsReq struct {
 	// The new file content, using Base64 encoding.
 	Content string `json:"content"`
 	// **Required if you are updating a file**. The blob SHA of the file being replaced.
-	Sha OptString `json:"sha"`
+	Sha OptString `json:"sha,omitempty"`
 	// The branch name. Default: the repository’s default branch (usually `master`).
-	Branch OptString `json:"branch"`
+	Branch OptString `json:"branch,omitempty"`
 	// The person that committed the file. Default: the authenticated user.
-	Committer OptReposCreateOrUpdateFileContentsReqCommitter `json:"committer"`
+	Committer OptReposCreateOrUpdateFileContentsReqCommitter `json:"committer,omitempty"`
 	// The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.
-	Author OptReposCreateOrUpdateFileContentsReqAuthor `json:"author"`
+	Author OptReposCreateOrUpdateFileContentsReqAuthor `json:"author,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -74328,7 +74328,7 @@ type ReposCreateOrUpdateFileContentsReqAuthor struct {
 	// The email of the author or committer of the commit. You'll receive a `422` status code if `email`
 	// is omitted.
 	Email string    `json:"email"`
-	Date  OptString `json:"date"`
+	Date  OptString `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74369,7 +74369,7 @@ type ReposCreateOrUpdateFileContentsReqCommitter struct {
 	// The email of the author or committer of the commit. You'll receive a `422` status code if `email`
 	// is omitted.
 	Email string    `json:"email"`
-	Date  OptString `json:"date"`
+	Date  OptString `json:"date,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74424,7 +74424,7 @@ type ReposCreatePagesSiteReqSource struct {
 	Branch string `json:"branch"`
 	// The repository directory that includes the source files for the Pages site. Allowed paths are `/`
 	// or `/docs`. Default: `/`.
-	Path OptReposCreatePagesSiteReqSourcePath `json:"path"`
+	Path OptReposCreatePagesSiteReqSourcePath `json:"path,omitempty"`
 }
 
 // GetBranch returns the value of Branch.
@@ -74462,20 +74462,20 @@ type ReposCreateReleaseReq struct {
 	// Specifies the commitish value that determines where the Git tag is created from. Can be any branch
 	// or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch
 	// (usually `master`).
-	TargetCommitish OptString `json:"target_commitish"`
+	TargetCommitish OptString `json:"target_commitish,omitempty"`
 	// The name of the release.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Text describing the contents of the tag.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// `true` to create a draft (unpublished) release, `false` to create a published one.
-	Draft OptBool `json:"draft"`
+	Draft OptBool `json:"draft,omitempty"`
 	// `true` to identify the release as a prerelease. `false` to identify the release as a full release.
-	Prerelease OptBool `json:"prerelease"`
+	Prerelease OptBool `json:"prerelease,omitempty"`
 	// If specified, a discussion of the specified category is created and linked to the release. The
 	// value must be a category that already exists in the repository. For more information, see
 	// "[Managing categories for discussions in your repository](https://docs.github.
 	// com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).".
-	DiscussionCategoryName OptString `json:"discussion_category_name"`
+	DiscussionCategoryName OptString `json:"discussion_category_name,omitempty"`
 }
 
 // GetTagName returns the value of TagName.
@@ -74551,16 +74551,16 @@ func (s *ReposCreateReleaseReq) SetDiscussionCategoryName(val OptString) {
 type ReposCreateUsingTemplateReq struct {
 	// The organization or person who will own the new repository. To create a new repository in an
 	// organization, the authenticated user must be a member of the specified organization.
-	Owner OptString `json:"owner"`
+	Owner OptString `json:"owner,omitempty"`
 	// The name of the new repository.
 	Name string `json:"name"`
 	// A short description of the new repository.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// Set to `true` to include the directory structure and files from all branches in the template
 	// repository, and not just the default branch. Default: `false`.
-	IncludeAllBranches OptBool `json:"include_all_branches"`
+	IncludeAllBranches OptBool `json:"include_all_branches,omitempty"`
 	// Either `true` to create a new private repository or `false` to create a new public one.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 }
 
 // GetOwner returns the value of Owner.
@@ -74623,16 +74623,16 @@ func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
 
 type ReposCreateWebhookReq struct {
 	// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
 	// github.com/rest/reference/repos#create-hook-config-params).
-	Config OptReposCreateWebhookReqConfig `json:"config"`
+	Config OptReposCreateWebhookReqConfig `json:"config,omitempty"`
 	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
 	// for.
-	Events []string `json:"events"`
+	Events []string `json:"events,omitempty"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
-	Active OptBool `json:"active"`
+	Active OptBool `json:"active,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74678,12 +74678,12 @@ func (s *ReposCreateWebhookReq) SetActive(val OptBool) {
 // Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
 // github.com/rest/reference/repos#create-hook-config-params).
 type ReposCreateWebhookReqConfig struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	Token       OptString                   `json:"token"`
-	Digest      OptString                   `json:"digest"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
+	Token       OptString                   `json:"token,omitempty"`
+	Digest      OptString                   `json:"digest,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -74824,11 +74824,11 @@ type ReposDeleteFileReq struct {
 	// The blob SHA of the file being replaced.
 	Sha string `json:"sha"`
 	// The branch name. Default: the repository’s default branch (usually `master`).
-	Branch OptString `json:"branch"`
+	Branch OptString `json:"branch,omitempty"`
 	// Object containing information about the committer.
-	Committer OptReposDeleteFileReqCommitter `json:"committer"`
+	Committer OptReposDeleteFileReqCommitter `json:"committer,omitempty"`
 	// Object containing information about the author.
-	Author OptReposDeleteFileReqAuthor `json:"author"`
+	Author OptReposDeleteFileReqAuthor `json:"author,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -74884,9 +74884,9 @@ func (s *ReposDeleteFileReq) SetAuthor(val OptReposDeleteFileReqAuthor) {
 // Object containing information about the author.
 type ReposDeleteFileReqAuthor struct {
 	// The name of the author (or committer) of the commit.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The email of the author (or committer) of the commit.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74912,9 +74912,9 @@ func (s *ReposDeleteFileReqAuthor) SetEmail(val OptString) {
 // Object containing information about the committer.
 type ReposDeleteFileReqCommitter struct {
 	// The name of the author (or committer) of the commit.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The email of the author (or committer) of the commit.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -74938,8 +74938,8 @@ func (s *ReposDeleteFileReqCommitter) SetEmail(val OptString) {
 }
 
 type ReposDeleteForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -75004,7 +75004,7 @@ type ReposDisableVulnerabilityAlertsNoContent struct{}
 
 // ReposDownloadTarballArchiveFound is response for ReposDownloadTarballArchive operation.
 type ReposDownloadTarballArchiveFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -75019,7 +75019,7 @@ func (s *ReposDownloadTarballArchiveFound) SetLocation(val OptString) {
 
 // ReposDownloadZipballArchiveFound is response for ReposDownloadZipballArchive operation.
 type ReposDownloadZipballArchiveFound struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 }
 
 // GetLocation returns the value of Location.
@@ -75146,7 +75146,7 @@ func (ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadC
 
 // ReposListBranchesOKHeaders wraps []ShortBranch with response headers.
 type ReposListBranchesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ShortBranch
 }
 
@@ -75182,7 +75182,7 @@ const (
 
 // ReposListCollaboratorsOKHeaders wraps []Collaborator with response headers.
 type ReposListCollaboratorsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Collaborator
 }
 
@@ -75210,7 +75210,7 @@ func (*ReposListCollaboratorsOKHeaders) reposListCollaboratorsRes() {}
 
 // ReposListCommentsForCommitOKHeaders wraps []CommitComment with response headers.
 type ReposListCommentsForCommitOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []CommitComment
 }
 
@@ -75236,7 +75236,7 @@ func (s *ReposListCommentsForCommitOKHeaders) SetResponse(val []CommitComment) {
 
 // ReposListCommitCommentsForRepoOKHeaders wraps []CommitComment with response headers.
 type ReposListCommitCommentsForRepoOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []CommitComment
 }
 
@@ -75262,7 +75262,7 @@ func (s *ReposListCommitCommentsForRepoOKHeaders) SetResponse(val []CommitCommen
 
 // ReposListCommitStatusesForRefOKHeaders wraps []Status with response headers.
 type ReposListCommitStatusesForRefOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Status
 }
 
@@ -75306,7 +75306,7 @@ func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsRes() {}
 
 // ReposListCommitsOKHeaders wraps []Commit with response headers.
 type ReposListCommitsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Commit
 }
 
@@ -75347,7 +75347,7 @@ func (*ReposListContributorsNoContent) reposListContributorsRes() {}
 
 // ReposListContributorsOKHeaders wraps []Contributor with response headers.
 type ReposListContributorsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Contributor
 }
 
@@ -75375,7 +75375,7 @@ func (*ReposListContributorsOKHeaders) reposListContributorsRes() {}
 
 // ReposListDeployKeysOKHeaders wraps []DeployKey with response headers.
 type ReposListDeployKeysOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []DeployKey
 }
 
@@ -75401,7 +75401,7 @@ func (s *ReposListDeployKeysOKHeaders) SetResponse(val []DeployKey) {
 
 // ReposListDeploymentStatusesOKHeaders wraps []DeploymentStatus with response headers.
 type ReposListDeploymentStatusesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []DeploymentStatus
 }
 
@@ -75429,7 +75429,7 @@ func (*ReposListDeploymentStatusesOKHeaders) reposListDeploymentStatusesRes() {}
 
 // ReposListDeploymentsOKHeaders wraps []Deployment with response headers.
 type ReposListDeploymentsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Deployment
 }
 
@@ -75508,7 +75508,7 @@ const (
 
 // ReposListForOrgOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -75562,7 +75562,7 @@ const (
 
 // ReposListForUserOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -75605,7 +75605,7 @@ const (
 
 // ReposListForksOKHeaders wraps []MinimalRepository with response headers.
 type ReposListForksOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -75657,7 +75657,7 @@ func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) repo
 
 // ReposListInvitationsForAuthenticatedUserOKHeaders wraps []RepositoryInvitation with response headers.
 type ReposListInvitationsForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []RepositoryInvitation
 }
 
@@ -75686,7 +75686,7 @@ func (*ReposListInvitationsForAuthenticatedUserOKHeaders) reposListInvitationsFo
 
 // ReposListInvitationsOKHeaders wraps []RepositoryInvitation with response headers.
 type ReposListInvitationsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []RepositoryInvitation
 }
 
@@ -75712,7 +75712,7 @@ func (s *ReposListInvitationsOKHeaders) SetResponse(val []RepositoryInvitation) 
 
 // ReposListPagesBuildsOKHeaders wraps []PageBuild with response headers.
 type ReposListPagesBuildsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PageBuild
 }
 
@@ -75738,7 +75738,7 @@ func (s *ReposListPagesBuildsOKHeaders) SetResponse(val []PageBuild) {
 
 // ReposListPublicOKHeaders wraps []MinimalRepository with response headers.
 type ReposListPublicOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -75766,7 +75766,7 @@ func (*ReposListPublicOKHeaders) reposListPublicRes() {}
 
 // ReposListPullRequestsAssociatedWithCommitOKHeaders wraps []PullRequestSimple with response headers.
 type ReposListPullRequestsAssociatedWithCommitOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []PullRequestSimple
 }
 
@@ -75792,7 +75792,7 @@ func (s *ReposListPullRequestsAssociatedWithCommitOKHeaders) SetResponse(val []P
 
 // ReposListReleaseAssetsOKHeaders wraps []ReleaseAsset with response headers.
 type ReposListReleaseAssetsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []ReleaseAsset
 }
 
@@ -75818,7 +75818,7 @@ func (s *ReposListReleaseAssetsOKHeaders) SetResponse(val []ReleaseAsset) {
 
 // ReposListReleasesOKHeaders wraps []Release with response headers.
 type ReposListReleasesOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Release
 }
 
@@ -75846,7 +75846,7 @@ func (*ReposListReleasesOKHeaders) reposListReleasesRes() {}
 
 // ReposListTagsOKHeaders wraps []Tag with response headers.
 type ReposListTagsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Tag
 }
 
@@ -75872,7 +75872,7 @@ func (s *ReposListTagsOKHeaders) SetResponse(val []Tag) {
 
 // ReposListTeamsOKHeaders wraps []Team with response headers.
 type ReposListTeamsOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Team
 }
 
@@ -75902,7 +75902,7 @@ func (ReposListWebhookDeliveriesOKApplicationJSON) reposListWebhookDeliveriesRes
 
 // ReposListWebhooksOKHeaders wraps []Hook with response headers.
 type ReposListWebhooksOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Hook
 }
 
@@ -75949,7 +75949,7 @@ type ReposMergeReq struct {
 	// The head to merge. This can be a branch name or a commit SHA1.
 	Head string `json:"head"`
 	// Commit message to use for the merge commit. If omitted, a default message will be used.
-	CommitMessage OptString `json:"commit_message"`
+	CommitMessage OptString `json:"commit_message,omitempty"`
 }
 
 // GetBase returns the value of Base.
@@ -76764,7 +76764,7 @@ type ReposTransferReq struct {
 	NewOwner string `json:"new_owner"`
 	// ID of the team or teams to add to the repository. Teams can only be added to organization-owned
 	// repositories.
-	TeamIds []int `json:"team_ids"`
+	TeamIds []int `json:"team_ids,omitempty"`
 }
 
 // GetNewOwner returns the value of NewOwner.
@@ -76825,22 +76825,22 @@ type ReposUpdateBranchProtectionReq struct {
 	// history](https://help.github.
 	// com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help
 	// documentation.
-	RequiredLinearHistory OptBool `json:"required_linear_history"`
+	RequiredLinearHistory OptBool `json:"required_linear_history,omitempty"`
 	// Permits force pushes to the protected branch by anyone with write access to the repository. Set to
 	// `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`.
 	// For more information, see "[Enabling force pushes to a protected branch](https://help.github.
 	// com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the
 	// GitHub Help documentation.".
-	AllowForcePushes OptNilBool `json:"allow_force_pushes"`
+	AllowForcePushes OptNilBool `json:"allow_force_pushes,omitempty"`
 	// Allows deletion of the protected branch by anyone with write access to the repository. Set to
 	// `false` to prevent deletion of the protected branch. Default: `false`. For more information, see
 	// "[Enabling force pushes to a protected branch](https://help.github.
 	// com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the
 	// GitHub Help documentation.
-	AllowDeletions OptBool `json:"allow_deletions"`
+	AllowDeletions OptBool `json:"allow_deletions,omitempty"`
 	// Requires all conversations on code to be resolved before a pull request can be merged into a
 	// branch that matches this rule. Set to `false` to disable. Default: `false`.
-	RequiredConversationResolution OptBool `json:"required_conversation_resolution"`
+	RequiredConversationResolution OptBool `json:"required_conversation_resolution,omitempty"`
 }
 
 // GetRequiredStatusChecks returns the value of RequiredStatusChecks.
@@ -76928,15 +76928,15 @@ type ReposUpdateBranchProtectionReqRequiredPullRequestReviews struct {
 	// Specify which users and teams can dismiss pull request reviews. Pass an empty
 	// `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only
 	// available for organization-owned repositories. Omit this parameter for personal repositories.
-	DismissalRestrictions OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions"`
+	DismissalRestrictions OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions `json:"dismissal_restrictions,omitempty"`
 	// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new
 	// commit.
-	DismissStaleReviews OptBool `json:"dismiss_stale_reviews"`
+	DismissStaleReviews OptBool `json:"dismiss_stale_reviews,omitempty"`
 	// Blocks merging pull requests until [code owners](https://help.github.
 	// com/articles/about-code-owners/) review them.
-	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews"`
+	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews,omitempty"`
 	// Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6.
-	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count"`
+	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count,omitempty"`
 }
 
 // GetDismissalRestrictions returns the value of DismissalRestrictions.
@@ -76984,9 +76984,9 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) SetRequiredAp
 // available for organization-owned repositories. Omit this parameter for personal repositories.
 type ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions struct {
 	// The list of user `login`s with dismissal access.
-	Users []string `json:"users"`
+	Users []string `json:"users,omitempty"`
 	// The list of team `slug`s with dismissal access.
-	Teams []string `json:"teams"`
+	Teams []string `json:"teams,omitempty"`
 }
 
 // GetUsers returns the value of Users.
@@ -77045,7 +77045,7 @@ type ReposUpdateBranchProtectionReqRestrictions struct {
 	// The list of team `slug`s with push access.
 	Teams []string `json:"teams"`
 	// The list of app `slug`s with push access.
-	Apps []string `json:"apps"`
+	Apps []string `json:"apps,omitempty"`
 }
 
 // GetUsers returns the value of Users.
@@ -77096,7 +77096,7 @@ func (s *ReposUpdateCommitCommentReq) SetBody(val string) {
 type ReposUpdateInvitationReq struct {
 	// The permissions that the associated user will have on the repository. Valid values are `read`,
 	// `write`, `maintain`, `triage`, and `admin`.
-	Permissions OptReposUpdateInvitationReqPermissions `json:"permissions"`
+	Permissions OptReposUpdateInvitationReqPermissions `json:"permissions,omitempty"`
 }
 
 // GetPermissions returns the value of Permissions.
@@ -77125,15 +77125,15 @@ type ReposUpdatePullRequestReviewProtectionReq struct {
 	// Specify which users and teams can dismiss pull request reviews. Pass an empty
 	// `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only
 	// available for organization-owned repositories. Omit this parameter for personal repositories.
-	DismissalRestrictions OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions `json:"dismissal_restrictions"`
+	DismissalRestrictions OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions `json:"dismissal_restrictions,omitempty"`
 	// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new
 	// commit.
-	DismissStaleReviews OptBool `json:"dismiss_stale_reviews"`
+	DismissStaleReviews OptBool `json:"dismiss_stale_reviews,omitempty"`
 	// Blocks merging pull requests until [code owners](https://help.github.
 	// com/articles/about-code-owners/) have reviewed.
-	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews"`
+	RequireCodeOwnerReviews OptBool `json:"require_code_owner_reviews,omitempty"`
 	// Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6.
-	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count"`
+	RequiredApprovingReviewCount OptInt `json:"required_approving_review_count,omitempty"`
 }
 
 // GetDismissalRestrictions returns the value of DismissalRestrictions.
@@ -77181,9 +77181,9 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) SetRequiredApprovingReviewCo
 // available for organization-owned repositories. Omit this parameter for personal repositories.
 type ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions struct {
 	// The list of user `login`s with dismissal access.
-	Users []string `json:"users"`
+	Users []string `json:"users,omitempty"`
 	// The list of team `slug`s with dismissal access.
-	Teams []string `json:"teams"`
+	Teams []string `json:"teams,omitempty"`
 }
 
 // GetUsers returns the value of Users.
@@ -77208,10 +77208,10 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetTeam
 
 type ReposUpdateReleaseAssetReq struct {
 	// The file name of the asset.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// An alternate short description of the asset. Used in place of the filename.
-	Label OptString `json:"label"`
-	State OptString `json:"state"`
+	Label OptString `json:"label,omitempty"`
+	State OptString `json:"state,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -77246,25 +77246,25 @@ func (s *ReposUpdateReleaseAssetReq) SetState(val OptString) {
 
 type ReposUpdateReleaseReq struct {
 	// The name of the tag.
-	TagName OptString `json:"tag_name"`
+	TagName OptString `json:"tag_name,omitempty"`
 	// Specifies the commitish value that determines where the Git tag is created from. Can be any branch
 	// or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch
 	// (usually `master`).
-	TargetCommitish OptString `json:"target_commitish"`
+	TargetCommitish OptString `json:"target_commitish,omitempty"`
 	// The name of the release.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// Text describing the contents of the tag.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 	// `true` makes the release a draft, and `false` publishes the release.
-	Draft OptBool `json:"draft"`
+	Draft OptBool `json:"draft,omitempty"`
 	// `true` to identify the release as a prerelease, `false` to identify the release as a full release.
-	Prerelease OptBool `json:"prerelease"`
+	Prerelease OptBool `json:"prerelease,omitempty"`
 	// If specified, a discussion of the specified category is created and linked to the release. The
 	// value must be a category that already exists in the repository. If there is already a discussion
 	// linked to the release, this parameter is ignored. For more information, see "[Managing categories
 	// for discussions in your repository](https://docs.github.
 	// com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).".
-	DiscussionCategoryName OptString `json:"discussion_category_name"`
+	DiscussionCategoryName OptString `json:"discussion_category_name,omitempty"`
 }
 
 // GetTagName returns the value of TagName.
@@ -77339,55 +77339,55 @@ func (s *ReposUpdateReleaseReq) SetDiscussionCategoryName(val OptString) {
 
 type ReposUpdateReq struct {
 	// The name of the repository.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// A short description of the repository.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// A URL with more information about the repository.
-	Homepage OptString `json:"homepage"`
+	Homepage OptString `json:"homepage,omitempty"`
 	// Either `true` to make the repository private or `false` to make it public. Default: `false`.
 	// **Note**: You will get a `422` error if the organization restricts [changing repository
 	// visibility](https://help.github.
 	// com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private. **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://help.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 	// Can be `public` or `private`. If your organization is associated with an enterprise account using
 	// GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`.
 	// The `visibility` parameter overrides the `private` parameter when you use both along with the
 	// `nebula-preview` preview header.
-	Visibility OptReposUpdateReqVisibility `json:"visibility"`
+	Visibility OptReposUpdateReqVisibility `json:"visibility,omitempty"`
 	// Specify which security and analysis features to enable or disable. For example, to enable GitHub
 	// Advanced Security, use this data in the body of the PATCH request: `{"security_and_analysis":
 	// {"advanced_security": {"status": "enabled"}}}`. If you have admin permissions for a private
 	// repository covered by an Advanced Security license, you can check which security and analysis
 	// features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
-	SecurityAndAnalysis OptNilReposUpdateReqSecurityAndAnalysis `json:"security_and_analysis"`
+	SecurityAndAnalysis OptNilReposUpdateReqSecurityAndAnalysis `json:"security_and_analysis,omitempty"`
 	// Either `true` to enable issues for this repository or `false` to disable them.
-	HasIssues OptBool `json:"has_issues"`
+	HasIssues OptBool `json:"has_issues,omitempty"`
 	// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If
 	// you're creating a repository in an organization that has disabled repository projects, the default
 	// is `false`, and if you pass `true`, the API returns an error.
-	HasProjects OptBool `json:"has_projects"`
+	HasProjects OptBool `json:"has_projects,omitempty"`
 	// Either `true` to enable the wiki for this repository or `false` to disable it.
-	HasWiki OptBool `json:"has_wiki"`
+	HasWiki OptBool `json:"has_wiki,omitempty"`
 	// Either `true` to make this repo available as a template repository or `false` to prevent it.
-	IsTemplate OptBool `json:"is_template"`
+	IsTemplate OptBool `json:"is_template,omitempty"`
 	// Updates the default branch for this repository.
-	DefaultBranch OptString `json:"default_branch"`
+	DefaultBranch OptString `json:"default_branch,omitempty"`
 	// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging
 	// pull requests with merge commits.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
-	AllowRebaseMerge OptBool `json:"allow_rebase_merge"`
+	AllowRebaseMerge OptBool `json:"allow_rebase_merge,omitempty"`
 	// Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Either `true` to allow automatically deleting head branches when pull requests are merged, or
 	// `false` to prevent automatic deletion.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 	// `true` to archive this repository. **Note**: You cannot unarchive repositories through the API.
-	Archived OptBool `json:"archived"`
+	Archived OptBool `json:"archived,omitempty"`
 	// Either `true` to allow private forks, or `false` to prevent private forks.
-	AllowForking OptBool `json:"allow_forking"`
+	AllowForking OptBool `json:"allow_forking,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -77579,10 +77579,10 @@ type ReposUpdateReqSecurityAndAnalysis struct {
 	// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For
 	// more information, see "[About GitHub Advanced
 	// Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security).".
-	AdvancedSecurity OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity `json:"advanced_security"`
+	AdvancedSecurity OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity `json:"advanced_security,omitempty"`
 	// Use the `status` property to enable or disable secret scanning for this repository. For more
 	// information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning).".
-	SecretScanning OptReposUpdateReqSecurityAndAnalysisSecretScanning `json:"secret_scanning"`
+	SecretScanning OptReposUpdateReqSecurityAndAnalysisSecretScanning `json:"secret_scanning,omitempty"`
 }
 
 // GetAdvancedSecurity returns the value of AdvancedSecurity.
@@ -77610,7 +77610,7 @@ func (s *ReposUpdateReqSecurityAndAnalysis) SetSecretScanning(val OptReposUpdate
 // Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security).".
 type ReposUpdateReqSecurityAndAnalysisAdvancedSecurity struct {
 	// Can be `enabled` or `disabled`.
-	Status OptString `json:"status"`
+	Status OptString `json:"status,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -77627,7 +77627,7 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) SetStatus(val OptStr
 // information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning).".
 type ReposUpdateReqSecurityAndAnalysisSecretScanning struct {
 	// Can be `enabled` or `disabled`.
-	Status OptString `json:"status"`
+	Status OptString `json:"status,omitempty"`
 }
 
 // GetStatus returns the value of Status.
@@ -77655,9 +77655,9 @@ const (
 
 type ReposUpdateStatusCheckProtectionReq struct {
 	// Require branches to be up to date before merging.
-	Strict OptBool `json:"strict"`
+	Strict OptBool `json:"strict,omitempty"`
 	// The list of status checks to require in order to merge into this branch.
-	Contexts []string `json:"contexts"`
+	Contexts []string `json:"contexts,omitempty"`
 }
 
 // GetStrict returns the value of Strict.
@@ -77681,10 +77681,10 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetContexts(val []string) {
 }
 
 type ReposUpdateWebhookConfigForRepoReq struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -77730,17 +77730,17 @@ func (s *ReposUpdateWebhookConfigForRepoReq) SetInsecureSsl(val OptWebhookConfig
 type ReposUpdateWebhookReq struct {
 	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
 	// github.com/rest/reference/repos#create-hook-config-params).
-	Config OptReposUpdateWebhookReqConfig `json:"config"`
+	Config OptReposUpdateWebhookReqConfig `json:"config,omitempty"`
 	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
 	// for. This replaces the entire array of events.
-	Events []string `json:"events"`
+	Events []string `json:"events,omitempty"`
 	// Determines a list of events to be added to the list of events that the Hook triggers for.
-	AddEvents []string `json:"add_events"`
+	AddEvents []string `json:"add_events,omitempty"`
 	// Determines a list of events to be removed from the list of events that the Hook triggers for.
-	RemoveEvents []string `json:"remove_events"`
+	RemoveEvents []string `json:"remove_events,omitempty"`
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
-	Active OptBool `json:"active"`
+	Active OptBool `json:"active,omitempty"`
 }
 
 // GetConfig returns the value of Config.
@@ -77797,11 +77797,11 @@ func (s *ReposUpdateWebhookReq) SetActive(val OptBool) {
 // github.com/rest/reference/repos#create-hook-config-params).
 type ReposUpdateWebhookReqConfig struct {
 	URL         WebhookConfigURL            `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	Address     OptString                   `json:"address"`
-	Room        OptString                   `json:"room"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
+	Address     OptString                   `json:"address,omitempty"`
+	Room        OptString                   `json:"room,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -77874,9 +77874,9 @@ type Repository struct {
 	Name         string                   `json:"name"`
 	FullName     string                   `json:"full_name"`
 	License      NilNullableLicenseSimple `json:"license"`
-	Organization OptNilNullableSimpleUser `json:"organization"`
+	Organization OptNilNullableSimpleUser `json:"organization,omitempty"`
 	Forks        int                      `json:"forks"`
-	Permissions  OptRepositoryPermissions `json:"permissions"`
+	Permissions  OptRepositoryPermissions `json:"permissions,omitempty"`
 	Owner        SimpleUser               `json:"owner"`
 	// Whether the repository is private or public.
 	Private          bool      `json:"private"`
@@ -77935,8 +77935,8 @@ type Repository struct {
 	DefaultBranch   string `json:"default_branch"`
 	OpenIssuesCount int    `json:"open_issues_count"`
 	// Whether this repository acts as a template that can be used to generate new repositories.
-	IsTemplate OptBool  `json:"is_template"`
-	Topics     []string `json:"topics"`
+	IsTemplate OptBool  `json:"is_template,omitempty"`
+	Topics     []string `json:"topics,omitempty"`
 	// Whether issues are enabled.
 	HasIssues bool `json:"has_issues"`
 	// Whether projects are enabled.
@@ -77951,30 +77951,30 @@ type Repository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString   `json:"visibility"`
+	Visibility OptString   `json:"visibility,omitempty"`
 	PushedAt   NilDateTime `json:"pushed_at"`
 	CreatedAt  NilDateTime `json:"created_at"`
 	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
-	AllowRebaseMerge   OptBool                            `json:"allow_rebase_merge"`
-	TemplateRepository OptNilRepositoryTemplateRepository `json:"template_repository"`
-	TempCloneToken     OptString                          `json:"temp_clone_token"`
+	AllowRebaseMerge   OptBool                            `json:"allow_rebase_merge,omitempty"`
+	TemplateRepository OptNilRepositoryTemplateRepository `json:"template_repository,omitempty"`
+	TempCloneToken     OptString                          `json:"temp_clone_token,omitempty"`
 	// Whether to allow squash merges for pull requests.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Whether to allow Auto-merge to be used on pull requests.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Whether to delete head branches when pull requests are merged.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 	// Whether to allow merge commits for pull requests.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Whether to allow forking this repo.
-	AllowForking     OptBool   `json:"allow_forking"`
-	SubscribersCount OptInt    `json:"subscribers_count"`
-	NetworkCount     OptInt    `json:"network_count"`
+	AllowForking     OptBool   `json:"allow_forking,omitempty"`
+	SubscribersCount OptInt    `json:"subscribers_count,omitempty"`
+	NetworkCount     OptInt    `json:"network_count,omitempty"`
 	OpenIssues       int       `json:"open_issues"`
 	Watchers         int       `json:"watchers"`
-	MasterBranch     OptString `json:"master_branch"`
-	StarredAt        OptString `json:"starred_at"`
+	MasterBranch     OptString `json:"master_branch,omitempty"`
+	StarredAt        OptString `json:"starred_at,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -78909,7 +78909,7 @@ func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelRes(
 
 // RepositoryHeaders wraps Repository with response headers.
 type RepositoryHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Repository
 }
 
@@ -78948,7 +78948,7 @@ type RepositoryInvitation struct {
 	Permissions RepositoryInvitationPermissions `json:"permissions"`
 	CreatedAt   time.Time                       `json:"created_at"`
 	// Whether or not the invitation has expired.
-	Expired OptBool `json:"expired"`
+	Expired OptBool `json:"expired,omitempty"`
 	// URL for the repository invitation.
 	URL     string `json:"url"`
 	HTMLURL string `json:"html_url"`
@@ -79071,9 +79071,9 @@ const (
 type RepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
 	Pull     bool    `json:"pull"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Push     bool    `json:"push"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -79202,87 +79202,87 @@ func (s *RepositorySubscription) SetRepositoryURL(val url.URL) {
 func (*RepositorySubscription) activityGetRepoSubscriptionRes() {}
 
 type RepositoryTemplateRepository struct {
-	ID                  OptInt                                     `json:"id"`
-	NodeID              OptString                                  `json:"node_id"`
-	Name                OptString                                  `json:"name"`
-	FullName            OptString                                  `json:"full_name"`
-	Owner               OptRepositoryTemplateRepositoryOwner       `json:"owner"`
-	Private             OptBool                                    `json:"private"`
-	HTMLURL             OptString                                  `json:"html_url"`
-	Description         OptString                                  `json:"description"`
-	Fork                OptBool                                    `json:"fork"`
-	URL                 OptString                                  `json:"url"`
-	ArchiveURL          OptString                                  `json:"archive_url"`
-	AssigneesURL        OptString                                  `json:"assignees_url"`
-	BlobsURL            OptString                                  `json:"blobs_url"`
-	BranchesURL         OptString                                  `json:"branches_url"`
-	CollaboratorsURL    OptString                                  `json:"collaborators_url"`
-	CommentsURL         OptString                                  `json:"comments_url"`
-	CommitsURL          OptString                                  `json:"commits_url"`
-	CompareURL          OptString                                  `json:"compare_url"`
-	ContentsURL         OptString                                  `json:"contents_url"`
-	ContributorsURL     OptString                                  `json:"contributors_url"`
-	DeploymentsURL      OptString                                  `json:"deployments_url"`
-	DownloadsURL        OptString                                  `json:"downloads_url"`
-	EventsURL           OptString                                  `json:"events_url"`
-	ForksURL            OptString                                  `json:"forks_url"`
-	GitCommitsURL       OptString                                  `json:"git_commits_url"`
-	GitRefsURL          OptString                                  `json:"git_refs_url"`
-	GitTagsURL          OptString                                  `json:"git_tags_url"`
-	GitURL              OptString                                  `json:"git_url"`
-	IssueCommentURL     OptString                                  `json:"issue_comment_url"`
-	IssueEventsURL      OptString                                  `json:"issue_events_url"`
-	IssuesURL           OptString                                  `json:"issues_url"`
-	KeysURL             OptString                                  `json:"keys_url"`
-	LabelsURL           OptString                                  `json:"labels_url"`
-	LanguagesURL        OptString                                  `json:"languages_url"`
-	MergesURL           OptString                                  `json:"merges_url"`
-	MilestonesURL       OptString                                  `json:"milestones_url"`
-	NotificationsURL    OptString                                  `json:"notifications_url"`
-	PullsURL            OptString                                  `json:"pulls_url"`
-	ReleasesURL         OptString                                  `json:"releases_url"`
-	SSHURL              OptString                                  `json:"ssh_url"`
-	StargazersURL       OptString                                  `json:"stargazers_url"`
-	StatusesURL         OptString                                  `json:"statuses_url"`
-	SubscribersURL      OptString                                  `json:"subscribers_url"`
-	SubscriptionURL     OptString                                  `json:"subscription_url"`
-	TagsURL             OptString                                  `json:"tags_url"`
-	TeamsURL            OptString                                  `json:"teams_url"`
-	TreesURL            OptString                                  `json:"trees_url"`
-	CloneURL            OptString                                  `json:"clone_url"`
-	MirrorURL           OptString                                  `json:"mirror_url"`
-	HooksURL            OptString                                  `json:"hooks_url"`
-	SvnURL              OptString                                  `json:"svn_url"`
-	Homepage            OptString                                  `json:"homepage"`
-	Language            OptString                                  `json:"language"`
-	ForksCount          OptInt                                     `json:"forks_count"`
-	StargazersCount     OptInt                                     `json:"stargazers_count"`
-	WatchersCount       OptInt                                     `json:"watchers_count"`
-	Size                OptInt                                     `json:"size"`
-	DefaultBranch       OptString                                  `json:"default_branch"`
-	OpenIssuesCount     OptInt                                     `json:"open_issues_count"`
-	IsTemplate          OptBool                                    `json:"is_template"`
-	Topics              []string                                   `json:"topics"`
-	HasIssues           OptBool                                    `json:"has_issues"`
-	HasProjects         OptBool                                    `json:"has_projects"`
-	HasWiki             OptBool                                    `json:"has_wiki"`
-	HasPages            OptBool                                    `json:"has_pages"`
-	HasDownloads        OptBool                                    `json:"has_downloads"`
-	Archived            OptBool                                    `json:"archived"`
-	Disabled            OptBool                                    `json:"disabled"`
-	Visibility          OptString                                  `json:"visibility"`
-	PushedAt            OptString                                  `json:"pushed_at"`
-	CreatedAt           OptString                                  `json:"created_at"`
-	UpdatedAt           OptString                                  `json:"updated_at"`
-	Permissions         OptRepositoryTemplateRepositoryPermissions `json:"permissions"`
-	AllowRebaseMerge    OptBool                                    `json:"allow_rebase_merge"`
-	TempCloneToken      OptString                                  `json:"temp_clone_token"`
-	AllowSquashMerge    OptBool                                    `json:"allow_squash_merge"`
-	AllowAutoMerge      OptBool                                    `json:"allow_auto_merge"`
-	DeleteBranchOnMerge OptBool                                    `json:"delete_branch_on_merge"`
-	AllowMergeCommit    OptBool                                    `json:"allow_merge_commit"`
-	SubscribersCount    OptInt                                     `json:"subscribers_count"`
-	NetworkCount        OptInt                                     `json:"network_count"`
+	ID                  OptInt                                     `json:"id,omitempty"`
+	NodeID              OptString                                  `json:"node_id,omitempty"`
+	Name                OptString                                  `json:"name,omitempty"`
+	FullName            OptString                                  `json:"full_name,omitempty"`
+	Owner               OptRepositoryTemplateRepositoryOwner       `json:"owner,omitempty"`
+	Private             OptBool                                    `json:"private,omitempty"`
+	HTMLURL             OptString                                  `json:"html_url,omitempty"`
+	Description         OptString                                  `json:"description,omitempty"`
+	Fork                OptBool                                    `json:"fork,omitempty"`
+	URL                 OptString                                  `json:"url,omitempty"`
+	ArchiveURL          OptString                                  `json:"archive_url,omitempty"`
+	AssigneesURL        OptString                                  `json:"assignees_url,omitempty"`
+	BlobsURL            OptString                                  `json:"blobs_url,omitempty"`
+	BranchesURL         OptString                                  `json:"branches_url,omitempty"`
+	CollaboratorsURL    OptString                                  `json:"collaborators_url,omitempty"`
+	CommentsURL         OptString                                  `json:"comments_url,omitempty"`
+	CommitsURL          OptString                                  `json:"commits_url,omitempty"`
+	CompareURL          OptString                                  `json:"compare_url,omitempty"`
+	ContentsURL         OptString                                  `json:"contents_url,omitempty"`
+	ContributorsURL     OptString                                  `json:"contributors_url,omitempty"`
+	DeploymentsURL      OptString                                  `json:"deployments_url,omitempty"`
+	DownloadsURL        OptString                                  `json:"downloads_url,omitempty"`
+	EventsURL           OptString                                  `json:"events_url,omitempty"`
+	ForksURL            OptString                                  `json:"forks_url,omitempty"`
+	GitCommitsURL       OptString                                  `json:"git_commits_url,omitempty"`
+	GitRefsURL          OptString                                  `json:"git_refs_url,omitempty"`
+	GitTagsURL          OptString                                  `json:"git_tags_url,omitempty"`
+	GitURL              OptString                                  `json:"git_url,omitempty"`
+	IssueCommentURL     OptString                                  `json:"issue_comment_url,omitempty"`
+	IssueEventsURL      OptString                                  `json:"issue_events_url,omitempty"`
+	IssuesURL           OptString                                  `json:"issues_url,omitempty"`
+	KeysURL             OptString                                  `json:"keys_url,omitempty"`
+	LabelsURL           OptString                                  `json:"labels_url,omitempty"`
+	LanguagesURL        OptString                                  `json:"languages_url,omitempty"`
+	MergesURL           OptString                                  `json:"merges_url,omitempty"`
+	MilestonesURL       OptString                                  `json:"milestones_url,omitempty"`
+	NotificationsURL    OptString                                  `json:"notifications_url,omitempty"`
+	PullsURL            OptString                                  `json:"pulls_url,omitempty"`
+	ReleasesURL         OptString                                  `json:"releases_url,omitempty"`
+	SSHURL              OptString                                  `json:"ssh_url,omitempty"`
+	StargazersURL       OptString                                  `json:"stargazers_url,omitempty"`
+	StatusesURL         OptString                                  `json:"statuses_url,omitempty"`
+	SubscribersURL      OptString                                  `json:"subscribers_url,omitempty"`
+	SubscriptionURL     OptString                                  `json:"subscription_url,omitempty"`
+	TagsURL             OptString                                  `json:"tags_url,omitempty"`
+	TeamsURL            OptString                                  `json:"teams_url,omitempty"`
+	TreesURL            OptString                                  `json:"trees_url,omitempty"`
+	CloneURL            OptString                                  `json:"clone_url,omitempty"`
+	MirrorURL           OptString                                  `json:"mirror_url,omitempty"`
+	HooksURL            OptString                                  `json:"hooks_url,omitempty"`
+	SvnURL              OptString                                  `json:"svn_url,omitempty"`
+	Homepage            OptString                                  `json:"homepage,omitempty"`
+	Language            OptString                                  `json:"language,omitempty"`
+	ForksCount          OptInt                                     `json:"forks_count,omitempty"`
+	StargazersCount     OptInt                                     `json:"stargazers_count,omitempty"`
+	WatchersCount       OptInt                                     `json:"watchers_count,omitempty"`
+	Size                OptInt                                     `json:"size,omitempty"`
+	DefaultBranch       OptString                                  `json:"default_branch,omitempty"`
+	OpenIssuesCount     OptInt                                     `json:"open_issues_count,omitempty"`
+	IsTemplate          OptBool                                    `json:"is_template,omitempty"`
+	Topics              []string                                   `json:"topics,omitempty"`
+	HasIssues           OptBool                                    `json:"has_issues,omitempty"`
+	HasProjects         OptBool                                    `json:"has_projects,omitempty"`
+	HasWiki             OptBool                                    `json:"has_wiki,omitempty"`
+	HasPages            OptBool                                    `json:"has_pages,omitempty"`
+	HasDownloads        OptBool                                    `json:"has_downloads,omitempty"`
+	Archived            OptBool                                    `json:"archived,omitempty"`
+	Disabled            OptBool                                    `json:"disabled,omitempty"`
+	Visibility          OptString                                  `json:"visibility,omitempty"`
+	PushedAt            OptString                                  `json:"pushed_at,omitempty"`
+	CreatedAt           OptString                                  `json:"created_at,omitempty"`
+	UpdatedAt           OptString                                  `json:"updated_at,omitempty"`
+	Permissions         OptRepositoryTemplateRepositoryPermissions `json:"permissions,omitempty"`
+	AllowRebaseMerge    OptBool                                    `json:"allow_rebase_merge,omitempty"`
+	TempCloneToken      OptString                                  `json:"temp_clone_token,omitempty"`
+	AllowSquashMerge    OptBool                                    `json:"allow_squash_merge,omitempty"`
+	AllowAutoMerge      OptBool                                    `json:"allow_auto_merge,omitempty"`
+	DeleteBranchOnMerge OptBool                                    `json:"delete_branch_on_merge,omitempty"`
+	AllowMergeCommit    OptBool                                    `json:"allow_merge_commit,omitempty"`
+	SubscribersCount    OptInt                                     `json:"subscribers_count,omitempty"`
+	NetworkCount        OptInt                                     `json:"network_count,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -80096,24 +80096,24 @@ func (s *RepositoryTemplateRepository) SetNetworkCount(val OptInt) {
 }
 
 type RepositoryTemplateRepositoryOwner struct {
-	Login             OptString `json:"login"`
-	ID                OptInt    `json:"id"`
-	NodeID            OptString `json:"node_id"`
-	AvatarURL         OptString `json:"avatar_url"`
-	GravatarID        OptString `json:"gravatar_id"`
-	URL               OptString `json:"url"`
-	HTMLURL           OptString `json:"html_url"`
-	FollowersURL      OptString `json:"followers_url"`
-	FollowingURL      OptString `json:"following_url"`
-	GistsURL          OptString `json:"gists_url"`
-	StarredURL        OptString `json:"starred_url"`
-	SubscriptionsURL  OptString `json:"subscriptions_url"`
-	OrganizationsURL  OptString `json:"organizations_url"`
-	ReposURL          OptString `json:"repos_url"`
-	EventsURL         OptString `json:"events_url"`
-	ReceivedEventsURL OptString `json:"received_events_url"`
-	Type              OptString `json:"type"`
-	SiteAdmin         OptBool   `json:"site_admin"`
+	Login             OptString `json:"login,omitempty"`
+	ID                OptInt    `json:"id,omitempty"`
+	NodeID            OptString `json:"node_id,omitempty"`
+	AvatarURL         OptString `json:"avatar_url,omitempty"`
+	GravatarID        OptString `json:"gravatar_id,omitempty"`
+	URL               OptString `json:"url,omitempty"`
+	HTMLURL           OptString `json:"html_url,omitempty"`
+	FollowersURL      OptString `json:"followers_url,omitempty"`
+	FollowingURL      OptString `json:"following_url,omitempty"`
+	GistsURL          OptString `json:"gists_url,omitempty"`
+	StarredURL        OptString `json:"starred_url,omitempty"`
+	SubscriptionsURL  OptString `json:"subscriptions_url,omitempty"`
+	OrganizationsURL  OptString `json:"organizations_url,omitempty"`
+	ReposURL          OptString `json:"repos_url,omitempty"`
+	EventsURL         OptString `json:"events_url,omitempty"`
+	ReceivedEventsURL OptString `json:"received_events_url,omitempty"`
+	Type              OptString `json:"type,omitempty"`
+	SiteAdmin         OptBool   `json:"site_admin,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -80297,11 +80297,11 @@ func (s *RepositoryTemplateRepositoryOwner) SetSiteAdmin(val OptBool) {
 }
 
 type RepositoryTemplateRepositoryPermissions struct {
-	Admin    OptBool `json:"admin"`
-	Maintain OptBool `json:"maintain"`
-	Push     OptBool `json:"push"`
-	Triage   OptBool `json:"triage"`
-	Pull     OptBool `json:"pull"`
+	Admin    OptBool `json:"admin,omitempty"`
+	Maintain OptBool `json:"maintain,omitempty"`
+	Push     OptBool `json:"push,omitempty"`
+	Triage   OptBool `json:"triage,omitempty"`
+	Pull     OptBool `json:"pull,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -80367,7 +80367,7 @@ type ReviewComment struct {
 	OriginalPosition    int                   `json:"original_position"`
 	CommitID            string                `json:"commit_id"`
 	OriginalCommitID    string                `json:"original_commit_id"`
-	InReplyToID         OptInt                `json:"in_reply_to_id"`
+	InReplyToID         OptInt                `json:"in_reply_to_id,omitempty"`
 	User                NilNullableSimpleUser `json:"user"`
 	Body                string                `json:"body"`
 	CreatedAt           time.Time             `json:"created_at"`
@@ -80376,23 +80376,23 @@ type ReviewComment struct {
 	PullRequestURL      url.URL               `json:"pull_request_url"`
 	AuthorAssociation   AuthorAssociation     `json:"author_association"`
 	Links               ReviewCommentLinks    `json:"_links"`
-	BodyText            OptString             `json:"body_text"`
-	BodyHTML            OptString             `json:"body_html"`
-	Reactions           OptReactionRollup     `json:"reactions"`
+	BodyText            OptString             `json:"body_text,omitempty"`
+	BodyHTML            OptString             `json:"body_html,omitempty"`
+	Reactions           OptReactionRollup     `json:"reactions,omitempty"`
 	// The side of the first line of the range for a multi-line comment.
-	Side OptReviewCommentSide `json:"side"`
+	Side OptReviewCommentSide `json:"side,omitempty"`
 	// The side of the first line of the range for a multi-line comment.
-	StartSide OptNilReviewCommentStartSide `json:"start_side"`
+	StartSide OptNilReviewCommentStartSide `json:"start_side,omitempty"`
 	// The line of the blob to which the comment applies. The last line of the range for a multi-line
 	// comment.
-	Line OptInt `json:"line"`
+	Line OptInt `json:"line,omitempty"`
 	// The original line of the blob to which the comment applies. The last line of the range for a
 	// multi-line comment.
-	OriginalLine OptInt `json:"original_line"`
+	OriginalLine OptInt `json:"original_line,omitempty"`
 	// The first line of the range for a multi-line comment.
-	StartLine OptNilInt `json:"start_line"`
+	StartLine OptNilInt `json:"start_line,omitempty"`
 	// The original first line of the range for a multi-line comment.
-	OriginalStartLine OptNilInt `json:"original_start_line"`
+	OriginalStartLine OptNilInt `json:"original_start_line,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -80810,8 +80810,8 @@ type RunnerApplication struct {
 	DownloadURL  string `json:"download_url"`
 	Filename     string `json:"filename"`
 	// A short lived bearer token used to download the runner, if needed.
-	TempDownloadToken OptString `json:"temp_download_token"`
-	SHA256Checksum    OptString `json:"sha256_checksum"`
+	TempDownloadToken OptString `json:"temp_download_token,omitempty"`
+	SHA256Checksum    OptString `json:"sha256_checksum,omitempty"`
 }
 
 // GetOs returns the value of Os.
@@ -80880,7 +80880,7 @@ type RunnerGroupsEnterprise struct {
 	Name                     string    `json:"name"`
 	Visibility               string    `json:"visibility"`
 	Default                  bool      `json:"default"`
-	SelectedOrganizationsURL OptString `json:"selected_organizations_url"`
+	SelectedOrganizationsURL OptString `json:"selected_organizations_url,omitempty"`
 	RunnersURL               string    `json:"runners_url"`
 	AllowsPublicRepositories bool      `json:"allows_public_repositories"`
 }
@@ -80963,10 +80963,10 @@ type RunnerGroupsOrg struct {
 	Default    bool    `json:"default"`
 	// Link to the selected repositories resource for this runner group. Not present unless visibility
 	// was set to `selected`.
-	SelectedRepositoriesURL           OptString `json:"selected_repositories_url"`
+	SelectedRepositoriesURL           OptString `json:"selected_repositories_url,omitempty"`
 	RunnersURL                        string    `json:"runners_url"`
 	Inherited                         bool      `json:"inherited"`
-	InheritedAllowsPublicRepositories OptBool   `json:"inherited_allows_public_repositories"`
+	InheritedAllowsPublicRepositories OptBool   `json:"inherited_allows_public_repositories,omitempty"`
 	AllowsPublicRepositories          bool      `json:"allows_public_repositories"`
 }
 
@@ -81062,11 +81062,11 @@ func (s *RunnerGroupsOrg) SetAllowsPublicRepositories(val bool) {
 
 type RunnerLabelsItem struct {
 	// Unique identifier of the label.
-	ID OptInt `json:"id"`
+	ID OptInt `json:"id,omitempty"`
 	// Name of the label.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The type of label. Read-only labels are applied automatically when the runner is configured.
-	Type OptRunnerLabelsItemType `json:"type"`
+	Type OptRunnerLabelsItemType `json:"type,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -81124,10 +81124,10 @@ func (*ScimDeleteUserFromOrgNoContent) scimDeleteUserFromOrgRes() {}
 type ScimEnterpriseGroup struct {
 	Schemas     []string                         `json:"schemas"`
 	ID          string                           `json:"id"`
-	ExternalId  OptNilString                     `json:"externalId"`
-	DisplayName OptString                        `json:"displayName"`
-	Members     []ScimEnterpriseGroupMembersItem `json:"members"`
-	Meta        OptScimEnterpriseGroupMeta       `json:"meta"`
+	ExternalId  OptNilString                     `json:"externalId,omitempty"`
+	DisplayName OptString                        `json:"displayName,omitempty"`
+	Members     []ScimEnterpriseGroupMembersItem `json:"members,omitempty"`
+	Meta        OptScimEnterpriseGroupMeta       `json:"meta,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -81191,9 +81191,9 @@ func (s *ScimEnterpriseGroup) SetMeta(val OptScimEnterpriseGroupMeta) {
 }
 
 type ScimEnterpriseGroupMembersItem struct {
-	Value   OptString `json:"value"`
-	Ref     OptString `json:"$ref"`
-	Display OptString `json:"display"`
+	Value   OptString `json:"value,omitempty"`
+	Ref     OptString `json:"$ref,omitempty"`
+	Display OptString `json:"display,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81227,10 +81227,10 @@ func (s *ScimEnterpriseGroupMembersItem) SetDisplay(val OptString) {
 }
 
 type ScimEnterpriseGroupMeta struct {
-	ResourceType OptString `json:"resourceType"`
-	Created      OptString `json:"created"`
-	LastModified OptString `json:"lastModified"`
-	Location     OptString `json:"location"`
+	ResourceType OptString `json:"resourceType,omitempty"`
+	Created      OptString `json:"created,omitempty"`
+	LastModified OptString `json:"lastModified,omitempty"`
+	Location     OptString `json:"location,omitempty"`
 }
 
 // GetResourceType returns the value of ResourceType.
@@ -81277,13 +81277,13 @@ func (s *ScimEnterpriseGroupMeta) SetLocation(val OptString) {
 type ScimEnterpriseUser struct {
 	Schemas    []string                       `json:"schemas"`
 	ID         string                         `json:"id"`
-	ExternalId OptString                      `json:"externalId"`
-	UserName   OptString                      `json:"userName"`
-	Name       OptScimEnterpriseUserName      `json:"name"`
-	Emails     []ScimEnterpriseUserEmailsItem `json:"emails"`
-	Groups     []ScimEnterpriseUserGroupsItem `json:"groups"`
-	Active     OptBool                        `json:"active"`
-	Meta       OptScimEnterpriseUserMeta      `json:"meta"`
+	ExternalId OptString                      `json:"externalId,omitempty"`
+	UserName   OptString                      `json:"userName,omitempty"`
+	Name       OptScimEnterpriseUserName      `json:"name,omitempty"`
+	Emails     []ScimEnterpriseUserEmailsItem `json:"emails,omitempty"`
+	Groups     []ScimEnterpriseUserGroupsItem `json:"groups,omitempty"`
+	Active     OptBool                        `json:"active,omitempty"`
+	Meta       OptScimEnterpriseUserMeta      `json:"meta,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -81377,9 +81377,9 @@ func (s *ScimEnterpriseUser) SetMeta(val OptScimEnterpriseUserMeta) {
 }
 
 type ScimEnterpriseUserEmailsItem struct {
-	Value   OptString `json:"value"`
-	Type    OptString `json:"type"`
-	Primary OptBool   `json:"primary"`
+	Value   OptString `json:"value,omitempty"`
+	Type    OptString `json:"type,omitempty"`
+	Primary OptBool   `json:"primary,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81413,7 +81413,7 @@ func (s *ScimEnterpriseUserEmailsItem) SetPrimary(val OptBool) {
 }
 
 type ScimEnterpriseUserGroupsItem struct {
-	Value OptString `json:"value"`
+	Value OptString `json:"value,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81427,10 +81427,10 @@ func (s *ScimEnterpriseUserGroupsItem) SetValue(val OptString) {
 }
 
 type ScimEnterpriseUserMeta struct {
-	ResourceType OptString `json:"resourceType"`
-	Created      OptString `json:"created"`
-	LastModified OptString `json:"lastModified"`
-	Location     OptString `json:"location"`
+	ResourceType OptString `json:"resourceType,omitempty"`
+	Created      OptString `json:"created,omitempty"`
+	LastModified OptString `json:"lastModified,omitempty"`
+	Location     OptString `json:"location,omitempty"`
 }
 
 // GetResourceType returns the value of ResourceType.
@@ -81474,8 +81474,8 @@ func (s *ScimEnterpriseUserMeta) SetLocation(val OptString) {
 }
 
 type ScimEnterpriseUserName struct {
-	GivenName  OptString `json:"givenName"`
-	FamilyName OptString `json:"familyName"`
+	GivenName  OptString `json:"givenName,omitempty"`
+	FamilyName OptString `json:"familyName,omitempty"`
 }
 
 // GetGivenName returns the value of GivenName.
@@ -81501,12 +81501,12 @@ func (s *ScimEnterpriseUserName) SetFamilyName(val OptString) {
 // Scim Error.
 // Ref: #/components/schemas/scim-error
 type ScimError struct {
-	Message          OptNilString `json:"message"`
-	DocumentationURL OptNilString `json:"documentation_url"`
-	Detail           OptNilString `json:"detail"`
-	Status           OptInt       `json:"status"`
-	ScimType         OptNilString `json:"scimType"`
-	Schemas          []string     `json:"schemas"`
+	Message          OptNilString `json:"message,omitempty"`
+	DocumentationURL OptNilString `json:"documentation_url,omitempty"`
+	Detail           OptNilString `json:"detail,omitempty"`
+	Status           OptInt       `json:"status,omitempty"`
+	ScimType         OptNilString `json:"scimType,omitempty"`
+	Schemas          []string     `json:"schemas,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -81631,10 +81631,10 @@ func (s *ScimGroupListEnterprise) SetResources(val []ScimGroupListEnterpriseReso
 type ScimGroupListEnterpriseResourcesItem struct {
 	Schemas     []string                                          `json:"schemas"`
 	ID          string                                            `json:"id"`
-	ExternalId  OptNilString                                      `json:"externalId"`
-	DisplayName OptString                                         `json:"displayName"`
-	Members     []ScimGroupListEnterpriseResourcesItemMembersItem `json:"members"`
-	Meta        OptScimGroupListEnterpriseResourcesItemMeta       `json:"meta"`
+	ExternalId  OptNilString                                      `json:"externalId,omitempty"`
+	DisplayName OptString                                         `json:"displayName,omitempty"`
+	Members     []ScimGroupListEnterpriseResourcesItemMembersItem `json:"members,omitempty"`
+	Meta        OptScimGroupListEnterpriseResourcesItemMeta       `json:"meta,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -81698,9 +81698,9 @@ func (s *ScimGroupListEnterpriseResourcesItem) SetMeta(val OptScimGroupListEnter
 }
 
 type ScimGroupListEnterpriseResourcesItemMembersItem struct {
-	Value   OptString `json:"value"`
-	Ref     OptString `json:"$ref"`
-	Display OptString `json:"display"`
+	Value   OptString `json:"value,omitempty"`
+	Ref     OptString `json:"$ref,omitempty"`
+	Display OptString `json:"display,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81734,10 +81734,10 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) SetDisplay(val OptStri
 }
 
 type ScimGroupListEnterpriseResourcesItemMeta struct {
-	ResourceType OptString `json:"resourceType"`
-	Created      OptString `json:"created"`
-	LastModified OptString `json:"lastModified"`
-	Location     OptString `json:"location"`
+	ResourceType OptString `json:"resourceType,omitempty"`
+	Created      OptString `json:"created,omitempty"`
+	LastModified OptString `json:"lastModified,omitempty"`
+	Location     OptString `json:"location,omitempty"`
 }
 
 // GetResourceType returns the value of ResourceType.
@@ -81842,13 +81842,13 @@ func (s *ScimUserListEnterprise) SetResources(val []ScimUserListEnterpriseResour
 type ScimUserListEnterpriseResourcesItem struct {
 	Schemas    []string                                        `json:"schemas"`
 	ID         string                                          `json:"id"`
-	ExternalId OptString                                       `json:"externalId"`
-	UserName   OptString                                       `json:"userName"`
-	Name       OptScimUserListEnterpriseResourcesItemName      `json:"name"`
-	Emails     []ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails"`
-	Groups     []ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups"`
-	Active     OptBool                                         `json:"active"`
-	Meta       OptScimUserListEnterpriseResourcesItemMeta      `json:"meta"`
+	ExternalId OptString                                       `json:"externalId,omitempty"`
+	UserName   OptString                                       `json:"userName,omitempty"`
+	Name       OptScimUserListEnterpriseResourcesItemName      `json:"name,omitempty"`
+	Emails     []ScimUserListEnterpriseResourcesItemEmailsItem `json:"emails,omitempty"`
+	Groups     []ScimUserListEnterpriseResourcesItemGroupsItem `json:"groups,omitempty"`
+	Active     OptBool                                         `json:"active,omitempty"`
+	Meta       OptScimUserListEnterpriseResourcesItemMeta      `json:"meta,omitempty"`
 }
 
 // GetSchemas returns the value of Schemas.
@@ -81942,9 +81942,9 @@ func (s *ScimUserListEnterpriseResourcesItem) SetMeta(val OptScimUserListEnterpr
 }
 
 type ScimUserListEnterpriseResourcesItemEmailsItem struct {
-	Value   OptString `json:"value"`
-	Primary OptBool   `json:"primary"`
-	Type    OptString `json:"type"`
+	Value   OptString `json:"value,omitempty"`
+	Primary OptBool   `json:"primary,omitempty"`
+	Type    OptString `json:"type,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81978,7 +81978,7 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) SetType(val OptString) {
 }
 
 type ScimUserListEnterpriseResourcesItemGroupsItem struct {
-	Value OptString `json:"value"`
+	Value OptString `json:"value,omitempty"`
 }
 
 // GetValue returns the value of Value.
@@ -81992,10 +81992,10 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) SetValue(val OptString) 
 }
 
 type ScimUserListEnterpriseResourcesItemMeta struct {
-	ResourceType OptString `json:"resourceType"`
-	Created      OptString `json:"created"`
-	LastModified OptString `json:"lastModified"`
-	Location     OptString `json:"location"`
+	ResourceType OptString `json:"resourceType,omitempty"`
+	Created      OptString `json:"created,omitempty"`
+	LastModified OptString `json:"lastModified,omitempty"`
+	Location     OptString `json:"location,omitempty"`
 }
 
 // GetResourceType returns the value of ResourceType.
@@ -82039,8 +82039,8 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) SetLocation(val OptString) {
 }
 
 type ScimUserListEnterpriseResourcesItemName struct {
-	GivenName  OptString `json:"givenName"`
-	FamilyName OptString `json:"familyName"`
+	GivenName  OptString `json:"givenName,omitempty"`
+	FamilyName OptString `json:"familyName,omitempty"`
 }
 
 // GetGivenName returns the value of GivenName.
@@ -82344,11 +82344,11 @@ const (
 type SearchResultTextMatches []SearchResultTextMatchesItem
 
 type SearchResultTextMatchesItem struct {
-	ObjectURL  OptString                                `json:"object_url"`
-	ObjectType OptNilString                             `json:"object_type"`
-	Property   OptString                                `json:"property"`
-	Fragment   OptString                                `json:"fragment"`
-	Matches    []SearchResultTextMatchesItemMatchesItem `json:"matches"`
+	ObjectURL  OptString                                `json:"object_url,omitempty"`
+	ObjectType OptNilString                             `json:"object_type,omitempty"`
+	Property   OptString                                `json:"property,omitempty"`
+	Fragment   OptString                                `json:"fragment,omitempty"`
+	Matches    []SearchResultTextMatchesItemMatchesItem `json:"matches,omitempty"`
 }
 
 // GetObjectURL returns the value of ObjectURL.
@@ -82402,8 +82402,8 @@ func (s *SearchResultTextMatchesItem) SetMatches(val []SearchResultTextMatchesIt
 }
 
 type SearchResultTextMatchesItemMatchesItem struct {
-	Text    OptString `json:"text"`
-	Indices []int     `json:"indices"`
+	Text    OptString `json:"text,omitempty"`
+	Indices []int     `json:"indices,omitempty"`
 }
 
 // GetText returns the value of Text.
@@ -82519,21 +82519,21 @@ const (
 
 // Ref: #/components/schemas/secret-scanning-alert
 type SecretScanningAlert struct {
-	Number    OptAlertNumber    `json:"number"`
-	CreatedAt OptAlertCreatedAt `json:"created_at"`
-	URL       OptAlertURL       `json:"url"`
-	HTMLURL   OptAlertHTMLURL   `json:"html_url"`
+	Number    OptAlertNumber    `json:"number,omitempty"`
+	CreatedAt OptAlertCreatedAt `json:"created_at,omitempty"`
+	URL       OptAlertURL       `json:"url,omitempty"`
+	HTMLURL   OptAlertHTMLURL   `json:"html_url,omitempty"`
 	// The REST API URL of the code locations for this alert.
-	LocationsURL OptURI                              `json:"locations_url"`
-	State        OptSecretScanningAlertState         `json:"state"`
-	Resolution   OptNilSecretScanningAlertResolution `json:"resolution"`
+	LocationsURL OptURI                              `json:"locations_url,omitempty"`
+	State        OptSecretScanningAlertState         `json:"state,omitempty"`
+	Resolution   OptNilSecretScanningAlertResolution `json:"resolution,omitempty"`
 	// The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-	ResolvedAt OptNilDateTime           `json:"resolved_at"`
-	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by"`
+	ResolvedAt OptNilDateTime           `json:"resolved_at,omitempty"`
+	ResolvedBy OptNilNullableSimpleUser `json:"resolved_by,omitempty"`
 	// The type of secret that secret scanning detected.
-	SecretType OptString `json:"secret_type"`
+	SecretType OptString `json:"secret_type,omitempty"`
 	// The secret that was detected.
-	Secret OptString `json:"secret"`
+	Secret OptString `json:"secret,omitempty"`
 }
 
 // GetNumber returns the value of Number.
@@ -82678,7 +82678,7 @@ func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
 // SecretScanningListAlertsForOrgOKHeaders wraps []OrganizationSecretScanningAlert with response headers.
 type SecretScanningListAlertsForOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationSecretScanningAlert
 }
 
@@ -82734,7 +82734,7 @@ func (*SecretScanningUpdateAlertNotFound) secretScanningUpdateAlertRes() {}
 
 type SecretScanningUpdateAlertReq struct {
 	State      SecretScanningAlertState            `json:"state"`
-	Resolution OptNilSecretScanningAlertResolution `json:"resolution"`
+	Resolution OptNilSecretScanningAlertResolution `json:"resolution,omitempty"`
 }
 
 // GetState returns the value of State.
@@ -82766,13 +82766,13 @@ func (*SecretScanningUpdateAlertUnprocessableEntity) secretScanningUpdateAlertRe
 type SelectedActions struct {
 	// Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions`
 	// organization.
-	GithubOwnedAllowed OptBool `json:"github_owned_allowed"`
+	GithubOwnedAllowed OptBool `json:"github_owned_allowed,omitempty"`
 	// Whether actions in GitHub Marketplace from verified creators are allowed. Set to `true` to allow
 	// all GitHub Marketplace actions by verified creators.
-	VerifiedAllowed OptBool `json:"verified_allowed"`
+	VerifiedAllowed OptBool `json:"verified_allowed,omitempty"`
 	// Specifies a list of string-matching patterns to allow specific action(s). Wildcards, tags, and
 	// SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.".
-	PatternsAllowed []string `json:"patterns_allowed"`
+	PatternsAllowed []string `json:"patterns_allowed,omitempty"`
 }
 
 // GetGithubOwnedAllowed returns the value of GithubOwnedAllowed.
@@ -82808,9 +82808,9 @@ func (s *SelectedActions) SetPatternsAllowed(val []string) {
 type SelectedActionsURL string
 
 type ServiceUnavailable struct {
-	Code             OptString `json:"code"`
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Code             OptString `json:"code,omitempty"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetCode returns the value of Code.
@@ -82894,7 +82894,7 @@ func (s *ShortBlob) SetSha(val string) {
 
 // ShortBlobHeaders wraps ShortBlob with response headers.
 type ShortBlobHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response ShortBlob
 }
 
@@ -82926,8 +82926,8 @@ type ShortBranch struct {
 	Name          string              `json:"name"`
 	Commit        ShortBranchCommit   `json:"commit"`
 	Protected     bool                `json:"protected"`
-	Protection    OptBranchProtection `json:"protection"`
-	ProtectionURL OptURI              `json:"protection_url"`
+	Protection    OptBranchProtection `json:"protection,omitempty"`
+	ProtectionURL OptURI              `json:"protection_url,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -83134,7 +83134,7 @@ type SimpleCommitStatus struct {
 	State       string     `json:"state"`
 	Context     string     `json:"context"`
 	TargetURL   url.URL    `json:"target_url"`
-	Required    OptNilBool `json:"required"`
+	Required    OptNilBool `json:"required,omitempty"`
 	AvatarURL   NilURI     `json:"avatar_url"`
 	URL         url.URL    `json:"url"`
 	CreatedAt   time.Time  `json:"created_at"`
@@ -83254,8 +83254,8 @@ func (s *SimpleCommitStatus) SetUpdatedAt(val time.Time) {
 // Simple User.
 // Ref: #/components/schemas/simple-user
 type SimpleUser struct {
-	Name              OptNilString `json:"name"`
-	Email             OptNilString `json:"email"`
+	Name              OptNilString `json:"name,omitempty"`
+	Email             OptNilString `json:"email,omitempty"`
 	Login             string       `json:"login"`
 	ID                int          `json:"id"`
 	NodeID            string       `json:"node_id"`
@@ -83274,7 +83274,7 @@ type SimpleUser struct {
 	ReceivedEventsURL url.URL      `json:"received_events_url"`
 	Type              string       `json:"type"`
 	SiteAdmin         bool         `json:"site_admin"`
-	StarredAt         OptString    `json:"starred_at"`
+	StarredAt         OptString    `json:"starred_at,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -83667,7 +83667,7 @@ func (*StatusCheckPolicy) reposUpdateStatusCheckProtectionRes() {}
 
 // StatusHeaders wraps Status with response headers.
 type StatusHeaders struct {
-	Location OptString
+	Location OptString `json:",omitempty"`
 	Response Status
 }
 
@@ -83784,9 +83784,9 @@ type Team struct {
 	Name            string                `json:"name"`
 	Slug            string                `json:"slug"`
 	Description     NilString             `json:"description"`
-	Privacy         OptString             `json:"privacy"`
+	Privacy         OptString             `json:"privacy,omitempty"`
 	Permission      string                `json:"permission"`
-	Permissions     OptTeamPermissions    `json:"permissions"`
+	Permissions     OptTeamPermissions    `json:"permissions,omitempty"`
 	URL             url.URL               `json:"url"`
 	HTMLURL         url.URL               `json:"html_url"`
 	MembersURL      string                `json:"members_url"`
@@ -83952,7 +83952,7 @@ type TeamDiscussion struct {
 	Title     string            `json:"title"`
 	UpdatedAt time.Time         `json:"updated_at"`
 	URL       url.URL           `json:"url"`
-	Reactions OptReactionRollup `json:"reactions"`
+	Reactions OptReactionRollup `json:"reactions,omitempty"`
 }
 
 // GetAuthor returns the value of Author.
@@ -84154,7 +84154,7 @@ type TeamDiscussionComment struct {
 	Number    int               `json:"number"`
 	UpdatedAt time.Time         `json:"updated_at"`
 	URL       url.URL           `json:"url"`
-	Reactions OptReactionRollup `json:"reactions"`
+	Reactions OptReactionRollup `json:"reactions,omitempty"`
 }
 
 // GetAuthor returns the value of Author.
@@ -84301,19 +84301,19 @@ type TeamFull struct {
 	Slug        string    `json:"slug"`
 	Description NilString `json:"description"`
 	// The level of privacy this team should have.
-	Privacy OptTeamFullPrivacy `json:"privacy"`
+	Privacy OptTeamFullPrivacy `json:"privacy,omitempty"`
 	// Permission that the team will have for its repositories.
 	Permission      string                   `json:"permission"`
 	MembersURL      string                   `json:"members_url"`
 	RepositoriesURL url.URL                  `json:"repositories_url"`
-	Parent          OptNilNullableTeamSimple `json:"parent"`
+	Parent          OptNilNullableTeamSimple `json:"parent,omitempty"`
 	MembersCount    int                      `json:"members_count"`
 	ReposCount      int                      `json:"repos_count"`
 	CreatedAt       time.Time                `json:"created_at"`
 	UpdatedAt       time.Time                `json:"updated_at"`
 	Organization    OrganizationFull         `json:"organization"`
 	// Distinguished Name (DN) that team maps to within LDAP environment.
-	LdapDn OptString `json:"ldap_dn"`
+	LdapDn OptString `json:"ldap_dn,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -84644,9 +84644,9 @@ type TeamProject struct {
 	CreatedAt  string     `json:"created_at"`
 	UpdatedAt  string     `json:"updated_at"`
 	// The organization permission for this project. Only present when owner is an organization.
-	OrganizationPermission OptString `json:"organization_permission"`
+	OrganizationPermission OptString `json:"organization_permission,omitempty"`
 	// Whether the project is private or not. Only present when owner is an organization.
-	Private     OptBool                `json:"private"`
+	Private     OptBool                `json:"private,omitempty"`
 	Permissions TeamProjectPermissions `json:"permissions"`
 }
 
@@ -84860,7 +84860,7 @@ type TeamRepository struct {
 	FullName    string                       `json:"full_name"`
 	License     NilNullableLicenseSimple     `json:"license"`
 	Forks       int                          `json:"forks"`
-	Permissions OptTeamRepositoryPermissions `json:"permissions"`
+	Permissions OptTeamRepositoryPermissions `json:"permissions,omitempty"`
 	Owner       NilNullableSimpleUser        `json:"owner"`
 	// Whether the repository is private or public.
 	Private          bool      `json:"private"`
@@ -84919,8 +84919,8 @@ type TeamRepository struct {
 	DefaultBranch   string `json:"default_branch"`
 	OpenIssuesCount int    `json:"open_issues_count"`
 	// Whether this repository acts as a template that can be used to generate new repositories.
-	IsTemplate OptBool  `json:"is_template"`
-	Topics     []string `json:"topics"`
+	IsTemplate OptBool  `json:"is_template,omitempty"`
+	Topics     []string `json:"topics,omitempty"`
 	// Whether issues are enabled.
 	HasIssues bool `json:"has_issues"`
 	// Whether projects are enabled.
@@ -84935,29 +84935,29 @@ type TeamRepository struct {
 	// Returns whether or not this repository disabled.
 	Disabled bool `json:"disabled"`
 	// The repository visibility: public, private, or internal.
-	Visibility OptString   `json:"visibility"`
+	Visibility OptString   `json:"visibility,omitempty"`
 	PushedAt   NilDateTime `json:"pushed_at"`
 	CreatedAt  NilDateTime `json:"created_at"`
 	UpdatedAt  NilDateTime `json:"updated_at"`
 	// Whether to allow rebase merges for pull requests.
-	AllowRebaseMerge   OptBool                  `json:"allow_rebase_merge"`
-	TemplateRepository OptNilNullableRepository `json:"template_repository"`
-	TempCloneToken     OptString                `json:"temp_clone_token"`
+	AllowRebaseMerge   OptBool                  `json:"allow_rebase_merge,omitempty"`
+	TemplateRepository OptNilNullableRepository `json:"template_repository,omitempty"`
+	TempCloneToken     OptString                `json:"temp_clone_token,omitempty"`
 	// Whether to allow squash merges for pull requests.
-	AllowSquashMerge OptBool `json:"allow_squash_merge"`
+	AllowSquashMerge OptBool `json:"allow_squash_merge,omitempty"`
 	// Whether to allow Auto-merge to be used on pull requests.
-	AllowAutoMerge OptBool `json:"allow_auto_merge"`
+	AllowAutoMerge OptBool `json:"allow_auto_merge,omitempty"`
 	// Whether to delete head branches when pull requests are merged.
-	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge"`
+	DeleteBranchOnMerge OptBool `json:"delete_branch_on_merge,omitempty"`
 	// Whether to allow merge commits for pull requests.
-	AllowMergeCommit OptBool `json:"allow_merge_commit"`
+	AllowMergeCommit OptBool `json:"allow_merge_commit,omitempty"`
 	// Whether to allow forking this repo.
-	AllowForking     OptBool   `json:"allow_forking"`
-	SubscribersCount OptInt    `json:"subscribers_count"`
-	NetworkCount     OptInt    `json:"network_count"`
+	AllowForking     OptBool   `json:"allow_forking,omitempty"`
+	SubscribersCount OptInt    `json:"subscribers_count,omitempty"`
+	NetworkCount     OptInt    `json:"network_count,omitempty"`
 	OpenIssues       int       `json:"open_issues"`
 	Watchers         int       `json:"watchers"`
-	MasterBranch     OptString `json:"master_branch"`
+	MasterBranch     OptString `json:"master_branch,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -85846,9 +85846,9 @@ func (*TeamRepository) teamsCheckPermissionsForRepoLegacyRes() {}
 type TeamRepositoryPermissions struct {
 	Admin    bool    `json:"admin"`
 	Pull     bool    `json:"pull"`
-	Triage   OptBool `json:"triage"`
+	Triage   OptBool `json:"triage,omitempty"`
 	Push     bool    `json:"push"`
-	Maintain OptBool `json:"maintain"`
+	Maintain OptBool `json:"maintain,omitempty"`
 }
 
 // GetAdmin returns the value of Admin.
@@ -85917,12 +85917,12 @@ type TeamSimple struct {
 	// Permission that the team will have for its repositories.
 	Permission string `json:"permission"`
 	// The level of privacy this team should have.
-	Privacy         OptString `json:"privacy"`
+	Privacy         OptString `json:"privacy,omitempty"`
 	HTMLURL         url.URL   `json:"html_url"`
 	RepositoriesURL url.URL   `json:"repositories_url"`
 	Slug            string    `json:"slug"`
 	// Distinguished Name (DN) that team maps to within LDAP environment.
-	LdapDn OptString `json:"ldap_dn"`
+	LdapDn OptString `json:"ldap_dn,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -86070,7 +86070,7 @@ type TeamsAddOrUpdateMembershipForUserInOrgReq struct {
 	// \* `member` - a normal member of the team.
 	// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 	// members to team maintainer, and edit the team's name and description.
-	Role OptTeamsAddOrUpdateMembershipForUserInOrgReqRole `json:"role"`
+	Role OptTeamsAddOrUpdateMembershipForUserInOrgReqRole `json:"role,omitempty"`
 }
 
 // GetRole returns the value of Role.
@@ -86111,7 +86111,7 @@ type TeamsAddOrUpdateMembershipForUserLegacyReq struct {
 	// \* `member` - a normal member of the team.
 	// \* `maintainer` - a team maintainer. Able to add/remove other team members, promote other team
 	// members to team maintainer, and edit the team's name and description.
-	Role OptTeamsAddOrUpdateMembershipForUserLegacyReqRole `json:"role"`
+	Role OptTeamsAddOrUpdateMembershipForUserLegacyReqRole `json:"role,omitempty"`
 }
 
 // GetRole returns the value of Role.
@@ -86142,8 +86142,8 @@ func (*TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) teamsAddOrUpd
 }
 
 type TeamsAddOrUpdateProjectPermissionsInOrgForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -86184,7 +86184,7 @@ type TeamsAddOrUpdateProjectPermissionsInOrgReq struct {
 	// team on this project. Note that, if you choose not to pass any parameters, you'll need to set
 	// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
 	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
-	Permission OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission `json:"permission"`
+	Permission OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission `json:"permission,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -86214,8 +86214,8 @@ const (
 )
 
 type TeamsAddOrUpdateProjectPermissionsLegacyForbidden struct {
-	Message          OptString `json:"message"`
-	DocumentationURL OptString `json:"documentation_url"`
+	Message          OptString `json:"message,omitempty"`
+	DocumentationURL OptString `json:"documentation_url,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -86256,7 +86256,7 @@ type TeamsAddOrUpdateProjectPermissionsLegacyReq struct {
 	// team on this project. Note that, if you choose not to pass any parameters, you'll need to set
 	// `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP
 	// verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs).".
-	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission `json:"permission"`
+	Permission OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission `json:"permission,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -86300,7 +86300,7 @@ type TeamsAddOrUpdateRepoPermissionsInOrgReq struct {
 	// organizations.
 	// If no permission is specified, the team's `permission` attribute will be used to determine what
 	// permission to grant the team on this repository.
-	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission `json:"permission"`
+	Permission OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission `json:"permission,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -86346,7 +86346,7 @@ type TeamsAddOrUpdateRepoPermissionsLegacyReq struct {
 	// \* `admin` - team members can pull, push and administer this repository.
 	// If no permission is specified, the team's `permission` attribute will be used to determine what
 	// permission to grant the team on this repository.
-	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission `json:"permission"`
+	Permission OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission `json:"permission,omitempty"`
 }
 
 // GetPermission returns the value of Permission.
@@ -86440,7 +86440,7 @@ type TeamsCreateDiscussionInOrgReq struct {
 	Body string `json:"body"`
 	// Private posts are only visible to team members, organization owners, and team maintainers. Public
 	// posts are visible to all members of the organization. Set to `true` to create a private post.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -86480,7 +86480,7 @@ type TeamsCreateDiscussionLegacyReq struct {
 	Body string `json:"body"`
 	// Private posts are only visible to team members, organization owners, and team maintainers. Public
 	// posts are visible to all members of the organization. Set to `true` to create a private post.
-	Private OptBool `json:"private"`
+	Private OptBool `json:"private,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -86516,7 +86516,7 @@ func (s *TeamsCreateDiscussionLegacyReq) SetPrivate(val OptBool) {
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq struct {
 	// The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will
 	// replace the original one. You must include any existing groups that you don't want to remove.
-	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups"`
+	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups,omitempty"`
 }
 
 // GetGroups returns the value of Groups.
@@ -86572,7 +86572,7 @@ type TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq struct {
 	// The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will
 	// replace the original one. You must include any existing groups that you don't want to remove.
 	Groups   []TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem `json:"groups"`
-	SyncedAt OptString                                                   `json:"synced_at"`
+	SyncedAt OptString                                                   `json:"synced_at,omitempty"`
 }
 
 // GetGroups returns the value of Groups.
@@ -86602,9 +86602,9 @@ type TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem struct {
 	GroupName string `json:"group_name"`
 	// Description of the IdP group.
 	GroupDescription string    `json:"group_description"`
-	ID               OptString `json:"id"`
-	Name             OptString `json:"name"`
-	Description      OptString `json:"description"`
+	ID               OptString `json:"id,omitempty"`
+	Name             OptString `json:"name,omitempty"`
+	Description      OptString `json:"description,omitempty"`
 }
 
 // GetGroupID returns the value of GroupID.
@@ -86671,11 +86671,11 @@ type TeamsCreateReq struct {
 	// The name of the team.
 	Name string `json:"name"`
 	// The description of the team.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// List GitHub IDs for organization members who will become team maintainers.
-	Maintainers []string `json:"maintainers"`
+	Maintainers []string `json:"maintainers,omitempty"`
 	// The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
-	RepoNames []string `json:"repo_names"`
+	RepoNames []string `json:"repo_names,omitempty"`
 	// The level of privacy this team should have. The options are:
 	// **For a non-nested team:**
 	// \* `secret` - only visible to organization owners and members of this team.
@@ -86684,15 +86684,15 @@ type TeamsCreateReq struct {
 	// **For a parent or child team:**
 	// \* `closed` - visible to all members of this organization.
 	// Default for child team: `closed`.
-	Privacy OptTeamsCreateReqPrivacy `json:"privacy"`
+	Privacy OptTeamsCreateReqPrivacy `json:"privacy,omitempty"`
 	// **Deprecated**. The permission that new repositories will be added to the team with when none is
 	// specified. Can be one of:
 	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
 	// \* `push` - team members can pull and push, but not administer newly-added repositories.
 	// \* `admin` - team members can pull, push and administer newly-added repositories.
-	Permission OptTeamsCreateReqPermission `json:"permission"`
+	Permission OptTeamsCreateReqPermission `json:"permission,omitempty"`
 	// The ID of a team to set as the parent team.
-	ParentTeamID OptInt `json:"parent_team_id"`
+	ParentTeamID OptInt `json:"parent_team_id,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -86830,7 +86830,7 @@ func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes
 
 // TeamsListChildInOrgOKHeaders wraps []Team with response headers.
 type TeamsListChildInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Team
 }
 
@@ -86864,7 +86864,7 @@ func (*TeamsListChildLegacyApplicationJSONNotFound) teamsListChildLegacyRes() {}
 
 // TeamsListChildLegacyOKHeaders wraps []Team with response headers.
 type TeamsListChildLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Team
 }
 
@@ -86899,7 +86899,7 @@ const (
 
 // TeamsListDiscussionCommentsInOrgOKHeaders wraps []TeamDiscussionComment with response headers.
 type TeamsListDiscussionCommentsInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamDiscussionComment
 }
 
@@ -86932,7 +86932,7 @@ const (
 
 // TeamsListDiscussionCommentsLegacyOKHeaders wraps []TeamDiscussionComment with response headers.
 type TeamsListDiscussionCommentsLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamDiscussionComment
 }
 
@@ -86965,7 +86965,7 @@ const (
 
 // TeamsListDiscussionsInOrgOKHeaders wraps []TeamDiscussion with response headers.
 type TeamsListDiscussionsInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamDiscussion
 }
 
@@ -86998,7 +86998,7 @@ const (
 
 // TeamsListDiscussionsLegacyOKHeaders wraps []TeamDiscussion with response headers.
 type TeamsListDiscussionsLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamDiscussion
 }
 
@@ -87032,7 +87032,7 @@ func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthent
 
 // TeamsListForAuthenticatedUserOKHeaders wraps []TeamFull with response headers.
 type TeamsListForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamFull
 }
 
@@ -87068,7 +87068,7 @@ func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsFor
 
 // TeamsListMembersInOrgOKHeaders wraps []SimpleUser with response headers.
 type TeamsListMembersInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -87102,7 +87102,7 @@ const (
 
 // TeamsListMembersLegacyOKHeaders wraps []SimpleUser with response headers.
 type TeamsListMembersLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -87138,7 +87138,7 @@ const (
 
 // TeamsListOKHeaders wraps []Team with response headers.
 type TeamsListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Team
 }
 
@@ -87166,7 +87166,7 @@ func (*TeamsListOKHeaders) teamsListRes() {}
 
 // TeamsListPendingInvitationsInOrgOKHeaders wraps []OrganizationInvitation with response headers.
 type TeamsListPendingInvitationsInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationInvitation
 }
 
@@ -87192,7 +87192,7 @@ func (s *TeamsListPendingInvitationsInOrgOKHeaders) SetResponse(val []Organizati
 
 // TeamsListPendingInvitationsLegacyOKHeaders wraps []OrganizationInvitation with response headers.
 type TeamsListPendingInvitationsLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []OrganizationInvitation
 }
 
@@ -87218,7 +87218,7 @@ func (s *TeamsListPendingInvitationsLegacyOKHeaders) SetResponse(val []Organizat
 
 // TeamsListProjectsInOrgOKHeaders wraps []TeamProject with response headers.
 type TeamsListProjectsInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamProject
 }
 
@@ -87244,7 +87244,7 @@ func (s *TeamsListProjectsInOrgOKHeaders) SetResponse(val []TeamProject) {
 
 // TeamsListProjectsLegacyOKHeaders wraps []TeamProject with response headers.
 type TeamsListProjectsLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []TeamProject
 }
 
@@ -87272,7 +87272,7 @@ func (*TeamsListProjectsLegacyOKHeaders) teamsListProjectsLegacyRes() {}
 
 // TeamsListReposInOrgOKHeaders wraps []MinimalRepository with response headers.
 type TeamsListReposInOrgOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -87298,7 +87298,7 @@ func (s *TeamsListReposInOrgOKHeaders) SetResponse(val []MinimalRepository) {
 
 // TeamsListReposLegacyOKHeaders wraps []MinimalRepository with response headers.
 type TeamsListReposLegacyOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []MinimalRepository
 }
 
@@ -87400,9 +87400,9 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) SetBody(val string) {
 
 type TeamsUpdateDiscussionInOrgReq struct {
 	// The discussion post's title.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The discussion post's body text.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -87427,9 +87427,9 @@ func (s *TeamsUpdateDiscussionInOrgReq) SetBody(val OptString) {
 
 type TeamsUpdateDiscussionLegacyReq struct {
 	// The discussion post's title.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The discussion post's body text.
-	Body OptString `json:"body"`
+	Body OptString `json:"body,omitempty"`
 }
 
 // GetTitle returns the value of Title.
@@ -87454,9 +87454,9 @@ func (s *TeamsUpdateDiscussionLegacyReq) SetBody(val OptString) {
 
 type TeamsUpdateInOrgReq struct {
 	// The name of the team.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The description of the team.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// The level of privacy this team should have. Editing teams without specifying this parameter leaves
 	// `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The
 	// options are:
@@ -87465,15 +87465,15 @@ type TeamsUpdateInOrgReq struct {
 	// \* `closed` - visible to all members of this organization.
 	// **For a parent or child team:**
 	// \* `closed` - visible to all members of this organization.
-	Privacy OptTeamsUpdateInOrgReqPrivacy `json:"privacy"`
+	Privacy OptTeamsUpdateInOrgReqPrivacy `json:"privacy,omitempty"`
 	// **Deprecated**. The permission that new repositories will be added to the team with when none is
 	// specified. Can be one of:
 	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
 	// \* `push` - team members can pull and push, but not administer newly-added repositories.
 	// \* `admin` - team members can pull, push and administer newly-added repositories.
-	Permission OptTeamsUpdateInOrgReqPermission `json:"permission"`
+	Permission OptTeamsUpdateInOrgReqPermission `json:"permission,omitempty"`
 	// The ID of a team to set as the parent team.
-	ParentTeamID OptNilInt `json:"parent_team_id"`
+	ParentTeamID OptNilInt `json:"parent_team_id,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -87574,7 +87574,7 @@ type TeamsUpdateLegacyReq struct {
 	// The name of the team.
 	Name string `json:"name"`
 	// The description of the team.
-	Description OptString `json:"description"`
+	Description OptString `json:"description,omitempty"`
 	// The level of privacy this team should have. Editing teams without specifying this parameter leaves
 	// `privacy` intact. The options are:
 	// **For a non-nested team:**
@@ -87582,15 +87582,15 @@ type TeamsUpdateLegacyReq struct {
 	// \* `closed` - visible to all members of this organization.
 	// **For a parent or child team:**
 	// \* `closed` - visible to all members of this organization.
-	Privacy OptTeamsUpdateLegacyReqPrivacy `json:"privacy"`
+	Privacy OptTeamsUpdateLegacyReqPrivacy `json:"privacy,omitempty"`
 	// **Deprecated**. The permission that new repositories will be added to the team with when none is
 	// specified. Can be one of:
 	// \* `pull` - team members can pull, but not push to or administer newly-added repositories.
 	// \* `push` - team members can pull and push, but not administer newly-added repositories.
 	// \* `admin` - team members can pull, push and administer newly-added repositories.
-	Permission OptTeamsUpdateLegacyReqPermission `json:"permission"`
+	Permission OptTeamsUpdateLegacyReqPermission `json:"permission,omitempty"`
 	// The ID of a team to set as the parent team.
-	ParentTeamID OptNilInt `json:"parent_team_id"`
+	ParentTeamID OptNilInt `json:"parent_team_id,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -87831,8 +87831,8 @@ type ThreadSubscription struct {
 	Reason        NilString   `json:"reason"`
 	CreatedAt     NilDateTime `json:"created_at"`
 	URL           url.URL     `json:"url"`
-	ThreadURL     OptURI      `json:"thread_url"`
-	RepositoryURL OptURI      `json:"repository_url"`
+	ThreadURL     OptURI      `json:"thread_url,omitempty"`
+	RepositoryURL OptURI      `json:"repository_url,omitempty"`
 }
 
 // GetSubscribed returns the value of Subscribed.
@@ -87941,11 +87941,11 @@ type TopicSearchResultItem struct {
 	Featured         bool                                        `json:"featured"`
 	Curated          bool                                        `json:"curated"`
 	Score            float64                                     `json:"score"`
-	RepositoryCount  OptNilInt                                   `json:"repository_count"`
-	LogoURL          OptNilURI                                   `json:"logo_url"`
-	TextMatches      *SearchResultTextMatches                    `json:"text_matches"`
-	Related          OptNilTopicSearchResultItemRelatedItemArray `json:"related"`
-	Aliases          OptNilTopicSearchResultItemAliasesItemArray `json:"aliases"`
+	RepositoryCount  OptNilInt                                   `json:"repository_count,omitempty"`
+	LogoURL          OptNilURI                                   `json:"logo_url,omitempty"`
+	TextMatches      *SearchResultTextMatches                    `json:"text_matches,omitempty"`
+	Related          OptNilTopicSearchResultItemRelatedItemArray `json:"related,omitempty"`
+	Aliases          OptNilTopicSearchResultItemAliasesItemArray `json:"aliases,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -88109,7 +88109,7 @@ func (s *TopicSearchResultItem) SetAliases(val OptNilTopicSearchResultItemAliase
 }
 
 type TopicSearchResultItemAliasesItem struct {
-	TopicRelation OptTopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation"`
+	TopicRelation OptTopicSearchResultItemAliasesItemTopicRelation `json:"topic_relation,omitempty"`
 }
 
 // GetTopicRelation returns the value of TopicRelation.
@@ -88123,10 +88123,10 @@ func (s *TopicSearchResultItemAliasesItem) SetTopicRelation(val OptTopicSearchRe
 }
 
 type TopicSearchResultItemAliasesItemTopicRelation struct {
-	ID           OptInt    `json:"id"`
-	Name         OptString `json:"name"`
-	TopicID      OptInt    `json:"topic_id"`
-	RelationType OptString `json:"relation_type"`
+	ID           OptInt    `json:"id,omitempty"`
+	Name         OptString `json:"name,omitempty"`
+	TopicID      OptInt    `json:"topic_id,omitempty"`
+	RelationType OptString `json:"relation_type,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -88170,7 +88170,7 @@ func (s *TopicSearchResultItemAliasesItemTopicRelation) SetRelationType(val OptS
 }
 
 type TopicSearchResultItemRelatedItem struct {
-	TopicRelation OptTopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation"`
+	TopicRelation OptTopicSearchResultItemRelatedItemTopicRelation `json:"topic_relation,omitempty"`
 }
 
 // GetTopicRelation returns the value of TopicRelation.
@@ -88184,10 +88184,10 @@ func (s *TopicSearchResultItemRelatedItem) SetTopicRelation(val OptTopicSearchRe
 }
 
 type TopicSearchResultItemRelatedItemTopicRelation struct {
-	ID           OptInt    `json:"id"`
-	Name         OptString `json:"name"`
-	TopicID      OptInt    `json:"topic_id"`
-	RelationType OptString `json:"relation_type"`
+	ID           OptInt    `json:"id,omitempty"`
+	Name         OptString `json:"name,omitempty"`
+	TopicID      OptInt    `json:"topic_id,omitempty"`
+	RelationType OptString `json:"relation_type,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -88381,22 +88381,22 @@ type UserSearchResultItem struct {
 	GistsURL          string                   `json:"gists_url"`
 	StarredURL        string                   `json:"starred_url"`
 	EventsURL         string                   `json:"events_url"`
-	PublicRepos       OptInt                   `json:"public_repos"`
-	PublicGists       OptInt                   `json:"public_gists"`
-	Followers         OptInt                   `json:"followers"`
-	Following         OptInt                   `json:"following"`
-	CreatedAt         OptDateTime              `json:"created_at"`
-	UpdatedAt         OptDateTime              `json:"updated_at"`
-	Name              OptNilString             `json:"name"`
-	Bio               OptNilString             `json:"bio"`
-	Email             OptNilString             `json:"email"`
-	Location          OptNilString             `json:"location"`
+	PublicRepos       OptInt                   `json:"public_repos,omitempty"`
+	PublicGists       OptInt                   `json:"public_gists,omitempty"`
+	Followers         OptInt                   `json:"followers,omitempty"`
+	Following         OptInt                   `json:"following,omitempty"`
+	CreatedAt         OptDateTime              `json:"created_at,omitempty"`
+	UpdatedAt         OptDateTime              `json:"updated_at,omitempty"`
+	Name              OptNilString             `json:"name,omitempty"`
+	Bio               OptNilString             `json:"bio,omitempty"`
+	Email             OptNilString             `json:"email,omitempty"`
+	Location          OptNilString             `json:"location,omitempty"`
 	SiteAdmin         bool                     `json:"site_admin"`
-	Hireable          OptNilBool               `json:"hireable"`
-	TextMatches       *SearchResultTextMatches `json:"text_matches"`
-	Blog              OptNilString             `json:"blog"`
-	Company           OptNilString             `json:"company"`
-	SuspendedAt       OptNilDateTime           `json:"suspended_at"`
+	Hireable          OptNilBool               `json:"hireable,omitempty"`
+	TextMatches       *SearchResultTextMatches `json:"text_matches,omitempty"`
+	Blog              OptNilString             `json:"blog,omitempty"`
+	Company           OptNilString             `json:"company,omitempty"`
+	SuspendedAt       OptNilDateTime           `json:"suspended_at,omitempty"`
 }
 
 // GetLogin returns the value of Login.
@@ -88980,7 +88980,7 @@ func (*UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) users
 
 type UsersCreatePublicSSHKeyForAuthenticatedReq struct {
 	// A descriptive name for the new key.
-	Title OptString `json:"title"`
+	Title OptString `json:"title,omitempty"`
 	// The public SSH key to add to your GitHub account.
 	Key string `json:"key"`
 }
@@ -89412,7 +89412,7 @@ func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmai
 
 // UsersListEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
 type UsersListEmailsForAuthenticatedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Email
 }
 
@@ -89450,7 +89450,7 @@ func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFol
 
 // UsersListFollowedByAuthenticatedOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowedByAuthenticatedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -89488,7 +89488,7 @@ func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersL
 
 // UsersListFollowersForAuthenticatedUserOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowersForAuthenticatedUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -89516,7 +89516,7 @@ func (*UsersListFollowersForAuthenticatedUserOKHeaders) usersListFollowersForAut
 
 // UsersListFollowersForUserOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowersForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -89542,7 +89542,7 @@ func (s *UsersListFollowersForUserOKHeaders) SetResponse(val []SimpleUser) {
 
 // UsersListFollowingForUserOKHeaders wraps []SimpleUser with response headers.
 type UsersListFollowingForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -89583,7 +89583,7 @@ func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpg
 
 // UsersListGpgKeysForAuthenticatedOKHeaders wraps []GpgKey with response headers.
 type UsersListGpgKeysForAuthenticatedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GpgKey
 }
 
@@ -89611,7 +89611,7 @@ func (*UsersListGpgKeysForAuthenticatedOKHeaders) usersListGpgKeysForAuthenticat
 
 // UsersListGpgKeysForUserOKHeaders wraps []GpgKey with response headers.
 type UsersListGpgKeysForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []GpgKey
 }
 
@@ -89637,7 +89637,7 @@ func (s *UsersListGpgKeysForUserOKHeaders) SetResponse(val []GpgKey) {
 
 // UsersListOKHeaders wraps []SimpleUser with response headers.
 type UsersListOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []SimpleUser
 }
 
@@ -89680,7 +89680,7 @@ func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersLi
 
 // UsersListPublicEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
 type UsersListPublicEmailsForAuthenticatedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Email
 }
 
@@ -89708,7 +89708,7 @@ func (*UsersListPublicEmailsForAuthenticatedOKHeaders) usersListPublicEmailsForA
 
 // UsersListPublicKeysForUserOKHeaders wraps []KeySimple with response headers.
 type UsersListPublicKeysForUserOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []KeySimple
 }
 
@@ -89749,7 +89749,7 @@ func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersL
 
 // UsersListPublicSSHKeysForAuthenticatedOKHeaders wraps []Key with response headers.
 type UsersListPublicSSHKeysForAuthenticatedOKHeaders struct {
-	Link     OptString
+	Link     OptString `json:",omitempty"`
 	Response []Key
 }
 
@@ -89866,21 +89866,21 @@ func (*UsersUpdateAuthenticatedApplicationJSONUnauthorized) usersUpdateAuthentic
 
 type UsersUpdateAuthenticatedReq struct {
 	// The new name of the user.
-	Name OptString `json:"name"`
+	Name OptString `json:"name,omitempty"`
 	// The publicly visible email address of the user.
-	Email OptString `json:"email"`
+	Email OptString `json:"email,omitempty"`
 	// The new blog URL of the user.
-	Blog OptString `json:"blog"`
+	Blog OptString `json:"blog,omitempty"`
 	// The new Twitter username of the user.
-	TwitterUsername OptNilString `json:"twitter_username"`
+	TwitterUsername OptNilString `json:"twitter_username,omitempty"`
 	// The new company of the user.
-	Company OptString `json:"company"`
+	Company OptString `json:"company,omitempty"`
 	// The new location of the user.
-	Location OptString `json:"location"`
+	Location OptString `json:"location,omitempty"`
 	// The new hiring availability of the user.
-	Hireable OptBool `json:"hireable"`
+	Hireable OptBool `json:"hireable,omitempty"`
 	// The new short biography of the user.
-	Bio OptString `json:"bio"`
+	Bio OptString `json:"bio,omitempty"`
 }
 
 // GetName returns the value of Name.
@@ -89968,7 +89968,7 @@ func (s *UsersUpdateAuthenticatedReq) SetBio(val OptString) {
 type ValidationError struct {
 	Message          string                      `json:"message"`
 	DocumentationURL string                      `json:"documentation_url"`
-	Errors           []ValidationErrorErrorsItem `json:"errors"`
+	Errors           []ValidationErrorErrorsItem `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -90147,12 +90147,12 @@ func (*ValidationError) usersSetPrimaryEmailVisibilityForAuthenticatedRes()     
 func (*ValidationError) usersUpdateAuthenticatedRes()                                        {}
 
 type ValidationErrorErrorsItem struct {
-	Resource OptString                         `json:"resource"`
-	Field    OptString                         `json:"field"`
-	Message  OptString                         `json:"message"`
+	Resource OptString                         `json:"resource,omitempty"`
+	Field    OptString                         `json:"field,omitempty"`
+	Message  OptString                         `json:"message,omitempty"`
 	Code     string                            `json:"code"`
-	Index    OptInt                            `json:"index"`
-	Value    OptValidationErrorErrorsItemValue `json:"value"`
+	Index    OptInt                            `json:"index,omitempty"`
+	Value    OptValidationErrorErrorsItemValue `json:"value,omitempty"`
 }
 
 // GetResource returns the value of Resource.
@@ -90344,7 +90344,7 @@ func NewStringArrayValidationErrorErrorsItemValue(v []string) ValidationErrorErr
 type ValidationErrorSimple struct {
 	Message          string   `json:"message"`
 	DocumentationURL string   `json:"documentation_url"`
-	Errors           []string `json:"errors"`
+	Errors           []string `json:"errors,omitempty"`
 }
 
 // GetMessage returns the value of Message.
@@ -90487,10 +90487,10 @@ func (*ViewTraffic) reposGetViewsRes() {}
 // Configuration object of the webhook.
 // Ref: #/components/schemas/webhook-config
 type WebhookConfig struct {
-	URL         OptWebhookConfigURL         `json:"url"`
-	ContentType OptWebhookConfigContentType `json:"content_type"`
-	Secret      OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
+	URL         OptWebhookConfigURL         `json:"url,omitempty"`
+	ContentType OptWebhookConfigContentType `json:"content_type,omitempty"`
+	Secret      OptWebhookConfigSecret      `json:"secret,omitempty"`
+	InsecureSsl OptWebhookConfigInsecureSsl `json:"insecure_ssl,omitempty"`
 }
 
 // GetURL returns the value of URL.
@@ -90617,7 +90617,7 @@ type Workflow struct {
 	URL       string        `json:"url"`
 	HTMLURL   string        `json:"html_url"`
 	BadgeURL  string        `json:"badge_url"`
-	DeletedAt OptDateTime   `json:"deleted_at"`
+	DeletedAt OptDateTime   `json:"deleted_at,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -90736,19 +90736,19 @@ type WorkflowRun struct {
 	// The ID of the workflow run.
 	ID int `json:"id"`
 	// The name of the workflow run.
-	Name   OptNilString `json:"name"`
+	Name   OptNilString `json:"name,omitempty"`
 	NodeID string       `json:"node_id"`
 	// The ID of the associated check suite.
-	CheckSuiteID OptInt `json:"check_suite_id"`
+	CheckSuiteID OptInt `json:"check_suite_id,omitempty"`
 	// The node ID of the associated check suite.
-	CheckSuiteNodeID OptString `json:"check_suite_node_id"`
+	CheckSuiteNodeID OptString `json:"check_suite_node_id,omitempty"`
 	HeadBranch       NilString `json:"head_branch"`
 	// The SHA of the head commit that points to the version of the worflow being run.
 	HeadSha string `json:"head_sha"`
 	// The auto incrementing run number for the workflow run.
 	RunNumber int `json:"run_number"`
 	// Attempt number of the run, 1 for first attempt and higher if the workflow was retried.
-	RunAttempt OptInt    `json:"run_attempt"`
+	RunAttempt OptInt    `json:"run_attempt,omitempty"`
 	Event      string    `json:"event"`
 	Status     NilString `json:"status"`
 	Conclusion NilString `json:"conclusion"`
@@ -90773,13 +90773,13 @@ type WorkflowRun struct {
 	// The URL to rerun the workflow run.
 	RerunURL string `json:"rerun_url"`
 	// The URL to the previous attempted run of this workflow, if one exists.
-	PreviousAttemptURL OptNilString `json:"previous_attempt_url"`
+	PreviousAttemptURL OptNilString `json:"previous_attempt_url,omitempty"`
 	// The URL to the workflow.
 	WorkflowURL      string                  `json:"workflow_url"`
 	HeadCommit       NilNullableSimpleCommit `json:"head_commit"`
 	Repository       MinimalRepository       `json:"repository"`
 	HeadRepository   MinimalRepository       `json:"head_repository"`
-	HeadRepositoryID OptInt                  `json:"head_repository_id"`
+	HeadRepositoryID OptInt                  `json:"head_repository_id,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -91086,7 +91086,7 @@ func (s *WorkflowRun) SetHeadRepositoryID(val OptInt) {
 // Ref: #/components/schemas/workflow-run-usage
 type WorkflowRunUsage struct {
 	Billable      WorkflowRunUsageBillable `json:"billable"`
-	RunDurationMs OptInt                   `json:"run_duration_ms"`
+	RunDurationMs OptInt                   `json:"run_duration_ms,omitempty"`
 }
 
 // GetBillable returns the value of Billable.
@@ -91110,9 +91110,9 @@ func (s *WorkflowRunUsage) SetRunDurationMs(val OptInt) {
 }
 
 type WorkflowRunUsageBillable struct {
-	UBUNTU  OptWorkflowRunUsageBillableUBUNTU  `json:"UBUNTU"`
-	MACOS   OptWorkflowRunUsageBillableMACOS   `json:"MACOS"`
-	WINDOWS OptWorkflowRunUsageBillableWINDOWS `json:"WINDOWS"`
+	UBUNTU  OptWorkflowRunUsageBillableUBUNTU  `json:"UBUNTU,omitempty"`
+	MACOS   OptWorkflowRunUsageBillableMACOS   `json:"MACOS,omitempty"`
+	WINDOWS OptWorkflowRunUsageBillableWINDOWS `json:"WINDOWS,omitempty"`
 }
 
 // GetUBUNTU returns the value of UBUNTU.

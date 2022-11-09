@@ -286,8 +286,8 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 
 // Ref: #/components/schemas/SharedRequest
 type SharedRequest struct {
-	Filename OptString `json:"filename"`
-	File     OptString `json:"file"`
+	Filename OptString `json:"filename,omitempty"`
+	File     OptString `json:"file,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -314,8 +314,8 @@ func (*SharedRequest) testShareFormSchemaReq() {}
 
 // Ref: #/components/schemas/SharedRequest
 type SharedRequestForm struct {
-	Filename OptString        `json:"filename"`
-	File     OptMultipartFile `json:"file"`
+	Filename OptString        `json:"filename,omitempty"`
+	File     OptMultipartFile `json:"file,omitempty"`
 }
 
 // GetFilename returns the value of Filename.
@@ -342,12 +342,12 @@ func (*SharedRequestForm) testShareFormSchemaReq() {}
 
 // Ref: #/components/schemas/TestForm
 type TestForm struct {
-	ID          OptInt                `json:"id"`
-	UUID        OptUUID               `json:"uuid"`
+	ID          OptInt                `json:"id,omitempty"`
+	UUID        OptUUID               `json:"uuid,omitempty"`
 	Description string                `json:"description"`
-	Array       []string              `json:"array"`
-	Object      OptTestFormObject     `json:"object"`
-	DeepObject  OptTestFormDeepObject `json:"deepObject"`
+	Array       []string              `json:"array,omitempty"`
+	Object      OptTestFormObject     `json:"object,omitempty"`
+	DeepObject  OptTestFormDeepObject `json:"deepObject,omitempty"`
 }
 
 // GetID returns the value of ID.
@@ -411,7 +411,7 @@ func (s *TestForm) SetDeepObject(val OptTestFormDeepObject) {
 }
 
 type TestFormDeepObject struct {
-	Min OptInt `json:"min"`
+	Min OptInt `json:"min,omitempty"`
 	Max int    `json:"max"`
 }
 
@@ -436,7 +436,7 @@ func (s *TestFormDeepObject) SetMax(val int) {
 }
 
 type TestFormObject struct {
-	Min OptInt `json:"min"`
+	Min OptInt `json:"min,omitempty"`
 	Max int    `json:"max"`
 }
 
@@ -468,7 +468,7 @@ type TestMultipartOK struct{}
 
 type TestMultipartUploadOK struct {
 	File         string    `json:"file"`
-	OptionalFile OptString `json:"optional_file"`
+	OptionalFile OptString `json:"optional_file,omitempty"`
 	Files        []string  `json:"files"`
 }
 
@@ -503,10 +503,10 @@ func (s *TestMultipartUploadOK) SetFiles(val []string) {
 }
 
 type TestMultipartUploadReq struct {
-	OrderId      OptInt    `json:"orderId"`
-	UserId       OptInt    `json:"userId"`
+	OrderId      OptInt    `json:"orderId,omitempty"`
+	UserId       OptInt    `json:"userId,omitempty"`
 	File         string    `json:"file"`
-	OptionalFile OptString `json:"optional_file"`
+	OptionalFile OptString `json:"optional_file,omitempty"`
 	Files        []string  `json:"files"`
 }
 
@@ -561,10 +561,10 @@ func (s *TestMultipartUploadReq) SetFiles(val []string) {
 }
 
 type TestMultipartUploadReqForm struct {
-	OrderId      OptInt             `json:"orderId"`
-	UserId       OptInt             `json:"userId"`
+	OrderId      OptInt             `json:"orderId,omitempty"`
+	UserId       OptInt             `json:"userId,omitempty"`
 	File         ht.MultipartFile   `json:"file"`
-	OptionalFile OptMultipartFile   `json:"optional_file"`
+	OptionalFile OptMultipartFile   `json:"optional_file,omitempty"`
 	Files        []ht.MultipartFile `json:"files"`
 }
 
