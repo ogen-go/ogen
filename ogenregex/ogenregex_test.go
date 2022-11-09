@@ -16,9 +16,13 @@ func TestCompile(t *testing.T) {
 	}{
 		{`\d`, goRegexp{}, `\d`, false},
 		{`\w`, goRegexp{}, `\w`, false},
+		{`.*`, goRegexp{}, re2Dot + `*`, false},
+		{`\s`, goRegexp{}, `[` + whitespaceChars + `]`, false},
+		{`\S`, goRegexp{}, `[^` + whitespaceChars + `]`, false},
 		{`^(?!examples/)`, regexp2Regexp{}, `^(?!examples/)`, false},
 
 		{")", nil, ``, true},
+		{"(?`)", nil, ``, true},
 	}
 	for i, tt := range tests {
 		tt := tt
