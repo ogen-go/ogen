@@ -4672,7 +4672,7 @@ func (s *OnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OnlyPatternedPropsObject to nil")
 	}
 	m := s.init()
-	pattern := regexMap["string_.*"]
+	pattern := regexMap["string_[^\r\n\u2028\u2029]*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
@@ -6069,7 +6069,7 @@ func (s *PatternRecursiveMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode PatternRecursiveMap to nil")
 	}
 	m := s.init()
-	pattern := regexMap["foo.*"]
+	pattern := regexMap["foo[^\r\n\u2028\u2029]*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
@@ -7198,7 +7198,7 @@ func (s *StringIntMap) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var handled bool
-			switch match, err := regexMap["string_.*"].Match(k); {
+			switch match, err := regexMap["string_[^\r\n\u2028\u2029]*"].Match(k); {
 			case err != nil:
 				return errors.Wrap(err, "execute regex")
 			case match:
@@ -7331,7 +7331,7 @@ func (s *StringIntMapPattern0) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode StringIntMapPattern0 to nil")
 	}
 	m := s.init()
-	pattern := regexMap["string_.*"]
+	pattern := regexMap["string_[^\r\n\u2028\u2029]*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
