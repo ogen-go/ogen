@@ -380,10 +380,24 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		return nil, err
 	}
 
+	// Do not modify reference fields, as they may still refer to the original schema.
 	if mergedSchema.Ref == "" {
 		mergedSchema.Ref = schema.Ref
 	}
 	return g.generate(name, mergedSchema, false)
+}
+
+// shallowSchemaCopy returns a shallow copy of the given schema.
+//
+// If given schema is nil, nil is returned.
+//
+// All references in Schema are shallow copied.
+func shallowSchemaCopy(s *jsonschema.Schema) *jsonschema.Schema {
+	if s == nil {
+		return nil
+	}
+	cpy := *s
+	return &cpy
 }
 
 func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
@@ -391,7 +405,7 @@ func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	case 0:
 		panic("unreachable")
 	case 1:
-		return ss[0].Clone(), nil
+		return shallowSchemaCopy(ss[0]), nil
 	}
 
 	root := ss[0]
@@ -445,9 +459,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	switch a, b := containsValidators(s1), containsValidators(s2); [2]bool{a, b} {
 	case [2]bool{true, true}, [2]bool{false, false}:
 	case [2]bool{true, false}:
-		return s1.Clone(), nil
+		return shallowSchemaCopy(s1), nil
 	case [2]bool{false, true}:
-		return s2.Clone(), nil
+		return shallowSchemaCopy(s2), nil
 	}
 
 	if a, b := s1.Type, s2.Type; a != "" && b != "" && a != b {
