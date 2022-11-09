@@ -64,7 +64,7 @@ type Type struct {
 	Implementations     map[*Type]struct{}  // only for interface
 	InterfaceMethods    map[string]struct{} // only for interface
 	Schema              *jsonschema.Schema  // for all kinds except pointer, interface. Can be nil.
-	NilSemantic         NilSemantic         // only for pointer
+	NilSemantic         NilSemantic         // only for pointer, array
 	GenericOf           *Type               // only for generic
 	GenericVariant      GenericVariant      // only for generic
 	MapPattern          ogenregex.Regexp    // only for map

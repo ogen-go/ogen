@@ -43,6 +43,27 @@ type Field struct {
 	Spec *jsonschema.Property
 }
 
+// StructTag returns struct tag for field.
+func (f Field) StructTag() string {
+	var (
+		tag        = f.Tag.JSON
+		isOptional = f.Type.GenericVariant.Optional ||
+			(f.Spec != nil && !f.Spec.Required)
+	)
+	if tag == "" && !isOptional {
+		return ""
+	}
+
+	if isOptional {
+		tag += ",omitempty"
+	}
+	s := "json:" + strconv.Quote(tag)
+	if strconv.CanBackquote(s) {
+		return "`" + s + "`"
+	}
+	return strconv.Quote(s)
+}
+
 // ValidationName returns name for FieldError.
 func (f Field) ValidationName() string {
 	if f.Spec != nil {
