@@ -4607,7 +4607,7 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 // Ref: #/components/schemas/StringIntMap
 type StringIntMap struct {
 	AdditionalProps StringIntMapAdditional
-	// Pattern: "string_.*".
+	// Pattern: "string_[^\r\n\u2028\u2029]*".
 	Pattern0Props StringIntMapPattern0
 }
 

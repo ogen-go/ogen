@@ -20,9 +20,9 @@ import (
 
 var regexMap = map[string]ogenregex.Regexp{
 	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": ogenregex.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
-	"^\\d-\\d$": ogenregex.MustCompile("^\\d-\\d$"),
-	"foo.*":     ogenregex.MustCompile("foo.*"),
-	"string_.*": ogenregex.MustCompile("string_.*"),
+	"^\\d-\\d$":                   ogenregex.MustCompile("^\\d-\\d$"),
+	"foo[^\r\n\u2028\u2029]*":     ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
+	"string_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
 }
 var ratMap = map[string]*big.Rat{
 	"10": func() *big.Rat {

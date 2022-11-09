@@ -65,8 +65,10 @@ type Regexp interface {
 // NOTE: this function may compile the same expression multiple times and can
 // be slow. Compile the expression once and reuse it.
 func Compile(exp string) (Regexp, error) {
-	if re, err := regexp.Compile(exp); err == nil {
-		return goRegexp{re}, nil
+	if converted, ok := Convert(exp); ok {
+		if re, err := regexp.Compile(converted); err == nil {
+			return goRegexp{re}, nil
+		}
 	}
 	re, err := regexp2.Compile(exp, regexp2.ECMAScript|regexp2.Unicode)
 	if err != nil {
