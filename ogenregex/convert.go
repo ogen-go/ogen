@@ -17,8 +17,13 @@ import (
 // https://github.com/dop251/goja/blob/3b8a68ca89b4fa7086a4236695032e10a69b2472/parser/regexp.go#L58
 
 const (
-	whitespaceChars = " \f\n\r\t\v\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
-	re2Dot          = "[^\r\n\u2028\u2029]"
+	whitespaceChars = " \f\n\r\t\v" +
+		"\u00a0\u1680" +
+		"\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a" +
+		"\u2028\u2029" +
+		"\u202f\u205f" +
+		"\u3000\ufeff"
+	re2Dot = "[^\r\n\u2028\u2029]"
 )
 
 func digitValue(chr rune) int {
@@ -34,20 +39,27 @@ func digitValue(chr rune) int {
 }
 
 var (
-	unicodeRangeIdNeg      = rangetable.Merge(unicode.Pattern_Syntax, unicode.Pattern_White_Space)
-	unicodeRangeIdStartPos = rangetable.Merge(unicode.Letter, unicode.Nl, unicode.Other_ID_Start)
-	unicodeRangeIdContPos  = rangetable.Merge(unicodeRangeIdStartPos, unicode.Mn, unicode.Mc, unicode.Nd, unicode.Pc, unicode.Other_ID_Continue)
+	unicodeRangeIDNeg      = rangetable.Merge(unicode.Pattern_Syntax, unicode.Pattern_White_Space)
+	unicodeRangeIDStartPos = rangetable.Merge(unicode.Letter, unicode.Nl, unicode.Other_ID_Start)
+	unicodeRangeIDContPos  = rangetable.Merge(
+		unicodeRangeIDStartPos,
+		unicode.Mn,
+		unicode.Mc,
+		unicode.Nd,
+		unicode.Pc,
+		unicode.Other_ID_Continue,
+	)
 )
 
-func isIdPartUnicode(r rune) bool {
-	return unicode.Is(unicodeRangeIdContPos, r) && !unicode.Is(unicodeRangeIdNeg, r) || r == '\u200C' || r == '\u200D'
+func isIDPartUnicode(r rune) bool {
+	return unicode.Is(unicodeRangeIDContPos, r) && !unicode.Is(unicodeRangeIDNeg, r) || r == '\u200C' || r == '\u200D'
 }
 
 func isIdentifierPart(chr rune) bool {
 	return chr == '$' || chr == '_' || chr == '\\' ||
 		'a' <= chr && chr <= 'z' || 'A' <= chr && chr <= 'Z' ||
 		'0' <= chr && chr <= '9' ||
-		chr >= utf8.RuneSelf && isIdPartUnicode(chr)
+		chr >= utf8.RuneSelf && isIDPartUnicode(chr)
 }
 
 // Convert converts a ECMA-262 regular expression to Go's regular expression.
@@ -215,7 +227,7 @@ func (p *parser) scanBracket() {
 	if strings.HasPrefix(str, "[]") {
 		// [] -- Empty character class
 		p.writeString("[^\u0000-\U0001FFFF]")
-		p.offset += 1
+		p.offset++
 		p.read()
 		return
 	}
@@ -251,7 +263,6 @@ func (p *parser) scanEscape(inClass bool) {
 
 	var length, base uint32
 	switch p.chr {
-
 	case '0', '1', '2', '3', '4', '5', '6', '7':
 		var value int64
 		size := 0
@@ -263,7 +274,7 @@ func (p *parser) scanEscape(inClass bool) {
 			}
 			value = value*8 + digit
 			p.read()
-			size += 1
+			size++
 		}
 		if size == 1 { // The number of characters read
 			if value != 0 {
@@ -329,11 +340,12 @@ func (p *parser) scanEscape(inClass bool) {
 	case 'c':
 		p.read()
 		var value int64
-		if 'a' <= p.chr && p.chr <= 'z' {
+		switch {
+		case 'a' <= p.chr && p.chr <= 'z':
 			value = int64(p.chr - 'a' + 1)
-		} else if 'A' <= p.chr && p.chr <= 'Z' {
+		case 'A' <= p.chr && p.chr <= 'Z':
 			value = int64(p.chr - 'A' + 1)
-		} else {
+		default:
 			p.writeByte('c')
 			return
 		}
@@ -359,9 +371,8 @@ func (p *parser) scanEscape(inClass bool) {
 		if inClass {
 			p.error(false, "S in class")
 			return
-		} else {
-			p.writeString("[^" + whitespaceChars + "]")
 		}
+		p.writeString("[^" + whitespaceChars + "]")
 		p.read()
 		return
 	default:
@@ -401,26 +412,22 @@ func (p *parser) scanEscape(inClass bool) {
 		}
 	}
 
-	if length == 4 || length == 0 {
-		p.write([]byte{
-			'\\',
-			'x',
-			'{',
-		})
+	switch length {
+	case 0, 4:
+		p.write([]byte{'\\', 'x', '{'})
 		p.passString(valueOffset, p.chrOffset)
 		if length != 0 {
 			p.writeByte('}')
 		}
-	} else if length == 2 {
+	case 2:
 		p.passString(offset-1, valueOffset+2)
-	} else {
+	default:
 		// Should never, ever get here...
 		p.error(true, "re2: Illegal branch in scanEscape")
 		return
 	}
 
 	return
-
 skip:
 	p.passString(offset, p.chrOffset)
 }

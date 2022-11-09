@@ -123,6 +123,11 @@ issues:
       linters: [ gocritic ]
       text: sprintfQuotedString
 
+    # Keep empty fallthrough for better readability.
+    - path: ogenregex[/\\]convert\.go
+      linters: [ gocritic ]
+      text: emptyFallthrough
+
     # Not supposed to be constant.
     - linters: [ goconst ]
       text: 'string `(string|number|u?int\d{0,2})`'
