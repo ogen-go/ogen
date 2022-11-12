@@ -32,6 +32,9 @@ func (t *Type) FakeValue() string {
 	case UUID:
 		return "uuid.New()"
 	case IP:
+		if s := t.Schema; s != nil && s.Format == "ipv6" {
+			return `netip.MustParseAddr("::1")`
+		}
 		return `netip.MustParseAddr("127.0.0.1")`
 	case URL:
 		return `url.URL{Scheme:"https", Host:"github.com", Path:"/ogen-go/ogen"}`
