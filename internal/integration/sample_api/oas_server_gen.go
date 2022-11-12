@@ -57,7 +57,7 @@ type Handler interface {
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug
-	OneofBug(ctx context.Context, req OneOfBugs) (OneofBugOK, error)
+	OneofBug(ctx context.Context, req OneOfBugs) error
 	// PatternRecursiveMapGet implements GET /patternRecursiveMap operation.
 	//
 	// GET /patternRecursiveMap
@@ -141,7 +141,7 @@ type Handler interface {
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation
-	TestFloatValidation(ctx context.Context, req TestFloatValidation) (TestFloatValidationOK, error)
+	TestFloatValidation(ctx context.Context, req TestFloatValidation) error
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs

@@ -103,11 +103,11 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			mreq,
 			unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+				return Response{}, s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+		err = s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -308,11 +308,11 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			mreq,
 			unpackActionsAddSelfHostedRunnerToGroupForOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+				return Response{}, s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+		err = s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -1640,11 +1640,11 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 			mreq,
 			unpackActionsDeleteArtifactParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteArtifact(ctx, params)
+				return Response{}, s.h.ActionsDeleteArtifact(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteArtifact(ctx, params)
+		err = s.h.ActionsDeleteArtifact(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -1740,11 +1740,11 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 			mreq,
 			unpackActionsDeleteEnvironmentSecretParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteEnvironmentSecret(ctx, params)
+				return Response{}, s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteEnvironmentSecret(ctx, params)
+		err = s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -1839,11 +1839,11 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 			mreq,
 			unpackActionsDeleteOrgSecretParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteOrgSecret(ctx, params)
+				return Response{}, s.h.ActionsDeleteOrgSecret(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteOrgSecret(ctx, params)
+		err = s.h.ActionsDeleteOrgSecret(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -1939,11 +1939,11 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 			mreq,
 			unpackActionsDeleteRepoSecretParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteRepoSecret(ctx, params)
+				return Response{}, s.h.ActionsDeleteRepoSecret(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteRepoSecret(ctx, params)
+		err = s.h.ActionsDeleteRepoSecret(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2038,11 +2038,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			mreq,
 			unpackActionsDeleteSelfHostedRunnerFromOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+				return Response{}, s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+		err = s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2139,11 +2139,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			mreq,
 			unpackActionsDeleteSelfHostedRunnerFromRepoParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+				return Response{}, s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+		err = s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2240,11 +2240,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			mreq,
 			unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+				return Response{}, s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+		err = s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2342,11 +2342,11 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 			mreq,
 			unpackActionsDeleteWorkflowRunParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteWorkflowRun(ctx, params)
+				return Response{}, s.h.ActionsDeleteWorkflowRun(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteWorkflowRun(ctx, params)
+		err = s.h.ActionsDeleteWorkflowRun(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2442,11 +2442,11 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 			mreq,
 			unpackActionsDeleteWorkflowRunLogsParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
+				return Response{}, s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
+		err = s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2544,11 +2544,11 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			mreq,
 			unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+				return Response{}, s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+		err = s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2961,11 +2961,11 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			mreq,
 			unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+				return Response{}, s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+		err = s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -6703,11 +6703,11 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			mreq,
 			unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+				return Response{}, s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+		err = s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -6908,11 +6908,11 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			mreq,
 			unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+				return Response{}, s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+		err = s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7243,11 +7243,11 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			mreq,
 			unpackActionsSetAllowedActionsOrganizationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
+				return Response{}, s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
+		err = s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7364,11 +7364,11 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			mreq,
 			unpackActionsSetAllowedActionsRepositoryParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
+				return Response{}, s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
+		err = s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7480,11 +7480,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			mreq,
 			unpackActionsSetGithubActionsPermissionsOrganizationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+				return Response{}, s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+		err = s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7598,11 +7598,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			mreq,
 			unpackActionsSetGithubActionsPermissionsRepositoryParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+				return Response{}, s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+		err = s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7715,11 +7715,11 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			mreq,
 			unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+				return Response{}, s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+		err = s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7831,11 +7831,11 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			mreq,
 			unpackActionsSetSelectedReposForOrgSecretParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+				return Response{}, s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+		err = s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -7947,11 +7947,11 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			mreq,
 			unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+				return Response{}, s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+		err = s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -8063,11 +8063,11 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			mreq,
 			unpackActionsSetSelfHostedRunnersInGroupForOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+				return Response{}, s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+		err = s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -8375,11 +8375,11 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 			mreq,
 			unpackActivityDeleteRepoSubscriptionParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ActivityDeleteRepoSubscription(ctx, params)
+				return Response{}, s.h.ActivityDeleteRepoSubscription(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ActivityDeleteRepoSubscription(ctx, params)
+		err = s.h.ActivityDeleteRepoSubscription(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -13912,11 +13912,11 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.AppsRevokeInstallationAccessToken(ctx)
+				return Response{}, s.h.AppsRevokeInstallationAccessToken(ctx)
 			},
 		)
 	} else {
-		response, err = s.h.AppsRevokeInstallationAccessToken(ctx)
+		err = s.h.AppsRevokeInstallationAccessToken(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -17635,11 +17635,11 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			mreq,
 			unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -17735,11 +17735,11 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			mreq,
 			unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18153,11 +18153,11 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			mreq,
 			unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18252,11 +18252,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			mreq,
 			unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18350,11 +18350,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			mreq,
 			unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18448,11 +18448,11 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			mreq,
 			unpackEnterpriseAdminDeleteUserFromEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18549,11 +18549,11 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			mreq,
 			unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -18650,11 +18650,11 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			mreq,
 			unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -20501,11 +20501,11 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			mreq,
 			unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -20601,11 +20601,11 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			mreq,
 			unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+				return Response{}, s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+		err = s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -20716,11 +20716,11 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			mreq,
 			unpackEnterpriseAdminSetAllowedActionsEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+				return Response{}, s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+		err = s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -20828,11 +20828,11 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			mreq,
 			unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+				return Response{}, s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+		err = s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -21181,11 +21181,11 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			mreq,
 			unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+				return Response{}, s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+		err = s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -21296,11 +21296,11 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			mreq,
 			unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+				return Response{}, s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+		err = s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -21409,11 +21409,11 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			mreq,
 			unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+				return Response{}, s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+		err = s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -25444,11 +25444,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+				return Response{}, s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 			},
 		)
 	} else {
-		response, err = s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+		err = s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -25541,11 +25541,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			mreq,
 			unpackInteractionsRemoveRestrictionsForOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
+				return Response{}, s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
+		err = s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -26747,11 +26747,11 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 			mreq,
 			unpackIssuesDeleteCommentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.IssuesDeleteComment(ctx, params)
+				return Response{}, s.h.IssuesDeleteComment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.IssuesDeleteComment(ctx, params)
+		err = s.h.IssuesDeleteComment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -26845,11 +26845,11 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 			mreq,
 			unpackIssuesDeleteLabelParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.IssuesDeleteLabel(ctx, params)
+				return Response{}, s.h.IssuesDeleteLabel(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.IssuesDeleteLabel(ctx, params)
+		err = s.h.IssuesDeleteLabel(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -30325,11 +30325,11 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 			mreq,
 			unpackMigrationsCancelImportParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.MigrationsCancelImport(ctx, params)
+				return Response{}, s.h.MigrationsCancelImport(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.MigrationsCancelImport(ctx, params)
+		err = s.h.MigrationsCancelImport(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -37334,11 +37334,11 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			mreq,
 			unpackOrgsRemovePublicMembershipForAuthenticatedUserParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+				return Response{}, s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+		err = s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -37760,11 +37760,11 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 			mreq,
 			unpackOrgsUnblockUserParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OrgsUnblockUser(ctx, params)
+				return Response{}, s.h.OrgsUnblockUser(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.OrgsUnblockUser(ctx, params)
+		err = s.h.OrgsUnblockUser(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47195,11 +47195,11 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 			mreq,
 			unpackReactionsDeleteForCommitCommentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForCommitComment(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForCommitComment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForCommitComment(ctx, params)
+		err = s.h.ReactionsDeleteForCommitComment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47296,11 +47296,11 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 			mreq,
 			unpackReactionsDeleteForIssueParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForIssue(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForIssue(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForIssue(ctx, params)
+		err = s.h.ReactionsDeleteForIssue(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47397,11 +47397,11 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 			mreq,
 			unpackReactionsDeleteForIssueCommentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForIssueComment(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForIssueComment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForIssueComment(ctx, params)
+		err = s.h.ReactionsDeleteForIssueComment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47499,11 +47499,11 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			mreq,
 			unpackReactionsDeleteForPullRequestCommentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForPullRequestComment(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForPullRequestComment(ctx, params)
+		err = s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47605,11 +47605,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 			mreq,
 			unpackReactionsDeleteForTeamDiscussionParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
+		err = s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -47710,11 +47710,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			mreq,
 			unpackReactionsDeleteForTeamDiscussionCommentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+				return Response{}, s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+		err = s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -51924,11 +51924,11 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 			mreq,
 			unpackReposDeleteAccessRestrictionsParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteAccessRestrictions(ctx, params)
+				return Response{}, s.h.ReposDeleteAccessRestrictions(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteAccessRestrictions(ctx, params)
+		err = s.h.ReposDeleteAccessRestrictions(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -52126,11 +52126,11 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 			mreq,
 			unpackReposDeleteAnEnvironmentParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteAnEnvironment(ctx, params)
+				return Response{}, s.h.ReposDeleteAnEnvironment(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteAnEnvironment(ctx, params)
+		err = s.h.ReposDeleteAnEnvironment(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -52629,11 +52629,11 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 			mreq,
 			unpackReposDeleteDeployKeyParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteDeployKey(ctx, params)
+				return Response{}, s.h.ReposDeleteDeployKey(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteDeployKey(ctx, params)
+		err = s.h.ReposDeleteDeployKey(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -52953,11 +52953,11 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 			mreq,
 			unpackReposDeleteInvitationParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteInvitation(ctx, params)
+				return Response{}, s.h.ReposDeleteInvitation(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteInvitation(ctx, params)
+		err = s.h.ReposDeleteInvitation(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -53250,11 +53250,11 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 			mreq,
 			unpackReposDeleteReleaseParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteRelease(ctx, params)
+				return Response{}, s.h.ReposDeleteRelease(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteRelease(ctx, params)
+		err = s.h.ReposDeleteRelease(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -53348,11 +53348,11 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 			mreq,
 			unpackReposDeleteReleaseAssetParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDeleteReleaseAsset(ctx, params)
+				return Response{}, s.h.ReposDeleteReleaseAsset(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDeleteReleaseAsset(ctx, params)
+		err = s.h.ReposDeleteReleaseAsset(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -53545,11 +53545,11 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			mreq,
 			unpackReposDisableAutomatedSecurityFixesParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
+				return Response{}, s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
+		err = s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -53642,11 +53642,11 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 			mreq,
 			unpackReposDisableLfsForRepoParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDisableLfsForRepo(ctx, params)
+				return Response{}, s.h.ReposDisableLfsForRepo(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDisableLfsForRepo(ctx, params)
+		err = s.h.ReposDisableLfsForRepo(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -53742,11 +53742,11 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 			mreq,
 			unpackReposDisableVulnerabilityAlertsParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposDisableVulnerabilityAlerts(ctx, params)
+				return Response{}, s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposDisableVulnerabilityAlerts(ctx, params)
+		err = s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -54047,11 +54047,11 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			mreq,
 			unpackReposEnableAutomatedSecurityFixesParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
+				return Response{}, s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
+		err = s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -54244,11 +54244,11 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 			mreq,
 			unpackReposEnableVulnerabilityAlertsParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposEnableVulnerabilityAlerts(ctx, params)
+				return Response{}, s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposEnableVulnerabilityAlerts(ctx, params)
+		err = s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -62224,11 +62224,11 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 			mreq,
 			unpackReposRemoveCollaboratorParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposRemoveCollaborator(ctx, params)
+				return Response{}, s.h.ReposRemoveCollaborator(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposRemoveCollaborator(ctx, params)
+		err = s.h.ReposRemoveCollaborator(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -62443,11 +62443,11 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 			mreq,
 			unpackReposRemoveStatusCheckProtectionParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.ReposRemoveStatusCheckProtection(ctx, params)
+				return Response{}, s.h.ReposRemoveStatusCheckProtection(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.ReposRemoveStatusCheckProtection(ctx, params)
+		err = s.h.ReposRemoveStatusCheckProtection(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -67086,11 +67086,11 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			mreq,
 			unpackTeamsAddOrUpdateRepoPermissionsInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+				return Response{}, s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+		err = s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -68586,11 +68586,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			mreq,
 			unpackTeamsDeleteDiscussionCommentInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+				return Response{}, s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+		err = s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -68690,11 +68690,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			mreq,
 			unpackTeamsDeleteDiscussionCommentLegacyParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+				return Response{}, s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+		err = s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -68791,11 +68791,11 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 			mreq,
 			unpackTeamsDeleteDiscussionInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsDeleteDiscussionInOrg(ctx, params)
+				return Response{}, s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsDeleteDiscussionInOrg(ctx, params)
+		err = s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -68894,11 +68894,11 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 			mreq,
 			unpackTeamsDeleteDiscussionLegacyParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsDeleteDiscussionLegacy(ctx, params)
+				return Response{}, s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsDeleteDiscussionLegacy(ctx, params)
+		err = s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -68995,11 +68995,11 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 			mreq,
 			unpackTeamsDeleteInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsDeleteInOrg(ctx, params)
+				return Response{}, s.h.TeamsDeleteInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsDeleteInOrg(ctx, params)
+		err = s.h.TeamsDeleteInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -72420,11 +72420,11 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 			mreq,
 			unpackTeamsRemoveProjectInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsRemoveProjectInOrg(ctx, params)
+				return Response{}, s.h.TeamsRemoveProjectInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsRemoveProjectInOrg(ctx, params)
+		err = s.h.TeamsRemoveProjectInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -72629,11 +72629,11 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 			mreq,
 			unpackTeamsRemoveRepoInOrgParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsRemoveRepoInOrg(ctx, params)
+				return Response{}, s.h.TeamsRemoveRepoInOrg(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsRemoveRepoInOrg(ctx, params)
+		err = s.h.TeamsRemoveRepoInOrg(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -72735,11 +72735,11 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 			mreq,
 			unpackTeamsRemoveRepoLegacyParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TeamsRemoveRepoLegacy(ctx, params)
+				return Response{}, s.h.TeamsRemoveRepoLegacy(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.TeamsRemoveRepoLegacy(ctx, params)
+		err = s.h.TeamsRemoveRepoLegacy(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)

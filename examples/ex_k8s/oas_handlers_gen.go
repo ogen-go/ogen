@@ -16981,11 +16981,11 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			mreq,
 			unpackLogFileHandlerParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.LogFileHandler(ctx, params)
+				return Response{}, s.h.LogFileHandler(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.LogFileHandler(ctx, params)
+		err = s.h.LogFileHandler(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -17075,11 +17075,11 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.LogFileListHandler(ctx)
+				return Response{}, s.h.LogFileListHandler(ctx)
 			},
 		)
 	} else {
-		response, err = s.h.LogFileListHandler(ctx)
+		err = s.h.LogFileListHandler(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)

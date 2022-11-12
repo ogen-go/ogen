@@ -452,11 +452,11 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+				return Response{}, s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 			},
 		)
 	} else {
-		response, err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+		err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -623,11 +623,11 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.APICaptchaRecaptchaMobileGet(ctx)
+				return Response{}, s.h.APICaptchaRecaptchaMobileGet(ctx)
 			},
 		)
 	} else {
-		response, err = s.h.APICaptchaRecaptchaMobileGet(ctx)
+		err = s.h.APICaptchaRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
 		recordError("Internal", err)

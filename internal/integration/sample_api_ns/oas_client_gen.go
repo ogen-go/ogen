@@ -781,7 +781,12 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 // OneofBug invokes oneofBug operation.
 //
 // POST /oneofBug
-func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
+func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (err error) {
+	_, err = c.callOneofBug(ctx, request)
+	return err
+}
+
+func (c *Client) callOneofBug(ctx context.Context, request OneOfBugs) (res OneofBugOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
 	}
@@ -2077,7 +2082,12 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 // TestFloatValidation invokes testFloatValidation operation.
 //
 // POST /testFloatValidation
-func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValidation) (res TestFloatValidationOK, err error) {
+func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValidation) (err error) {
+	_, err = c.callTestFloatValidation(ctx, request)
+	return err
+}
+
+func (c *Client) callTestFloatValidation(ctx context.Context, request TestFloatValidation) (res TestFloatValidationOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
 	}

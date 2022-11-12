@@ -448,7 +448,12 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
-func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (err error) {
+	_, err = c.callAPICaptchaInvisibleRecaptchaMobileGet(ctx)
+	return err
+}
+
+func (c *Client) callAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -604,7 +609,12 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 // Получение html страницы для решения капчи, CORS отключён.
 //
 // GET /api/captcha/recaptcha/mobile
-func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
+func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (err error) {
+	_, err = c.callAPICaptchaRecaptchaMobileGet(ctx)
+	return err
+}
+
+func (c *Client) callAPICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.

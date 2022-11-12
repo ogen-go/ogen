@@ -94,11 +94,11 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestFormURLEncoded(ctx, request)
+				return Response{}, s.h.TestFormURLEncoded(ctx, request)
 			},
 		)
 	} else {
-		response, err = s.h.TestFormURLEncoded(ctx, request)
+		err = s.h.TestFormURLEncoded(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -191,11 +191,11 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestMultipart(ctx, request)
+				return Response{}, s.h.TestMultipart(ctx, request)
 			},
 		)
 	} else {
-		response, err = s.h.TestMultipart(ctx, request)
+		err = s.h.TestMultipart(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -385,11 +385,11 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestShareFormSchema(ctx, request)
+				return Response{}, s.h.TestShareFormSchema(ctx, request)
 			},
 		)
 	} else {
-		response, err = s.h.TestShareFormSchema(ctx, request)
+		err = s.h.TestShareFormSchema(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)

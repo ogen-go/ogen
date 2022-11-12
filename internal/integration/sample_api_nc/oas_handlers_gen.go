@@ -906,11 +906,11 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.OneofBug(ctx, request)
+				return Response{}, s.h.OneofBug(ctx, request)
 			},
 		)
 	} else {
-		response, err = s.h.OneofBug(ctx, request)
+		err = s.h.OneofBug(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
@@ -2468,11 +2468,11 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.TestFloatValidation(ctx, request)
+				return Response{}, s.h.TestFloatValidation(ctx, request)
 			},
 		)
 	} else {
-		response, err = s.h.TestFloatValidation(ctx, request)
+		err = s.h.TestFloatValidation(ctx, request)
 	}
 	if err != nil {
 		recordError("Internal", err)
