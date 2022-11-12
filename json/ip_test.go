@@ -24,6 +24,30 @@ func BenchmarkEncodeIP(b *testing.B) {
 	}
 }
 
+func BenchmarkDecodeIP(b *testing.B) {
+	data := []byte(`"127.0.0.1"`)
+	d := jx.GetDecoder()
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	var (
+		ip  netip.Addr
+		err error
+	)
+	for i := 0; i < b.N; i++ {
+		d.ResetBytes(data)
+		ip, err = DecodeIP(d)
+	}
+
+	if err != nil {
+		b.Fatal(err)
+	}
+	if !ip.Is4() {
+		b.Fatal("wrong ip version")
+	}
+}
+
 func TestIPv4(t *testing.T) {
 	addr := netip.MustParseAddr
 	tests := []struct {
