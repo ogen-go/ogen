@@ -95,7 +95,21 @@ func NewWebhookClient(opts ...Option) (*WebhookClient, error) {
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
+
+{{- if $op.Responses.BlankType }}
 func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
+	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
+	{{- if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ if not $op.Responses.BlankType }}res {{ $op.Responses.Type.Go }}, {{ end}}err error) {
+	_, err = c.call{{ $op.Name }}(ctx,
+		{{- if $op.WebhookInfo }}targetURL,{{ end -}}
+		{{- if $op.Request }}request,{{ end -}}
+		{{- if $op.Params }}params,{{ end -}}
+	)
+	return err
+}
+{{ end }}
+func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ if $op.Responses.BlankType }}call{{ end }}{{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
