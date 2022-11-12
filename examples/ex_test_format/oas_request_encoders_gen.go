@@ -5525,7 +5525,7 @@ func encodeTestRequestRequiredStringIpv4Request(
 	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
-		json.EncodeIP(e, req)
+		json.EncodeIPv4(e, req)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
@@ -5541,7 +5541,7 @@ func encodeTestRequestRequiredStringIpv4ArrayRequest(
 	{
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv4(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -5561,7 +5561,7 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayRequest(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -5633,7 +5633,7 @@ func encodeTestRequestRequiredStringIpv6Request(
 	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
-		json.EncodeIP(e, req)
+		json.EncodeIPv6(e, req)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
@@ -5649,7 +5649,7 @@ func encodeTestRequestRequiredStringIpv6ArrayRequest(
 	{
 		e.ArrStart()
 		for _, elem := range req {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv6(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -5669,7 +5669,7 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayRequest(
 		for _, elem := range req {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -8128,7 +8128,7 @@ func encodeTestRequestStringIpv4ArrayRequest(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -8150,7 +8150,7 @@ func encodeTestRequestStringIpv4ArrayArrayRequest(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv4(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -8256,7 +8256,7 @@ func encodeTestRequestStringIpv6ArrayRequest(
 		if req != nil {
 			e.ArrStart()
 			for _, elem := range req {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -8278,7 +8278,7 @@ func encodeTestRequestStringIpv6ArrayArrayRequest(
 			for _, elem := range req {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv6(e, elem)
 				}
 				e.ArrEnd()
 			}

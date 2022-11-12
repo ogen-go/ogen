@@ -9969,7 +9969,7 @@ func encodeTestResponseStringIpv4Response(response netip.Addr, w http.ResponseWr
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeIP(e, response)
+	json.EncodeIPv4(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9985,7 +9985,7 @@ func encodeTestResponseStringIpv4ArrayResponse(response []netip.Addr, w http.Res
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeIP(e, elem)
+		json.EncodeIPv4(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -10005,7 +10005,7 @@ func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]netip.Addr, w h
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv4(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -10077,7 +10077,7 @@ func encodeTestResponseStringIpv6Response(response netip.Addr, w http.ResponseWr
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeIP(e, response)
+	json.EncodeIPv6(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -10093,7 +10093,7 @@ func encodeTestResponseStringIpv6ArrayResponse(response []netip.Addr, w http.Res
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeIP(e, elem)
+		json.EncodeIPv6(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -10113,7 +10113,7 @@ func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]netip.Addr, w h
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv6(e, elem)
 		}
 		e.ArrEnd()
 	}

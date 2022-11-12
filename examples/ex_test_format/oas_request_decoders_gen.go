@@ -23039,7 +23039,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeIP(d)
+			v, err := json.DecodeIPv4(d)
 			request = v
 			if err != nil {
 				return err
@@ -23102,7 +23102,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem netip.Addr
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				elem = v
 				if err != nil {
 					return err
@@ -23181,7 +23181,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -23507,7 +23507,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeIP(d)
+			v, err := json.DecodeIPv6(d)
 			request = v
 			if err != nil {
 				return err
@@ -23570,7 +23570,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem netip.Addr
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				elem = v
 				if err != nil {
 					return err
@@ -23649,7 +23649,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -33677,7 +33677,7 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem netip.Addr
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				elem = v
 				if err != nil {
 					return err
@@ -33751,7 +33751,7 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -34141,7 +34141,7 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem netip.Addr
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				elem = v
 				if err != nil {
 					return err
@@ -34215,7 +34215,7 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elemElem = v
 					if err != nil {
 						return err

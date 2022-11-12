@@ -864,7 +864,7 @@ func (s *OptIPv4) SetFake() {
 func (s *OptIPv6) SetFake() {
 	var elem netip.Addr
 	{
-		elem = netip.MustParseAddr("127.0.0.1")
+		elem = netip.MustParseAddr("::1")
 	}
 	s.SetTo(elem)
 }
@@ -1139,7 +1139,7 @@ func (s *Pet) SetFake() {
 	}
 	{
 		{
-			s.IPV6 = netip.MustParseAddr("127.0.0.1")
+			s.IPV6 = netip.MustParseAddr("::1")
 		}
 	}
 	{

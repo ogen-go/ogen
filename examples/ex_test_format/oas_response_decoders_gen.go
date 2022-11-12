@@ -25376,7 +25376,7 @@ func decodeTestResponseStringIpv4Response(resp *http.Response) (res netip.Addr, 
 			d := jx.DecodeBytes(b)
 			var response netip.Addr
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				response = v
 				if err != nil {
 					return err
@@ -25417,7 +25417,7 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response) (res []netip
 				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -25466,7 +25466,7 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response) (res []
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -25646,7 +25646,7 @@ func decodeTestResponseStringIpv6Response(resp *http.Response) (res netip.Addr, 
 			d := jx.DecodeBytes(b)
 			var response netip.Addr
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				response = v
 				if err != nil {
 					return err
@@ -25687,7 +25687,7 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response) (res []netip
 				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -25736,7 +25736,7 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response) (res []
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
