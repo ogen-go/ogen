@@ -132,5 +132,5 @@ issues:
     - linters: [ goconst ]
       text: 'string `(string|number|u?int\d{0,2})`'
     - linters: [ goconst ]
-      text: 'string `(Unix|unix|date|time)'
+      text: 'string `(Unix|unix|date|time|ipv6)'
 
