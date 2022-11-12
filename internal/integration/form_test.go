@@ -56,14 +56,14 @@ type testFormServer struct {
 	a *assert.Assertions
 }
 
-func (s testFormServer) TestFormURLEncoded(ctx context.Context, req *api.TestForm) (*api.TestFormURLEncodedOK, error) {
+func (s testFormServer) TestFormURLEncoded(ctx context.Context, req *api.TestForm) error {
 	s.a.Equal(testForm(), req)
-	return new(api.TestFormURLEncodedOK), nil
+	return nil
 }
 
-func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestForm) (*api.TestMultipartOK, error) {
+func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestForm) error {
 	s.a.Equal(testForm(), req)
-	return new(api.TestMultipartOK), nil
+	return nil
 }
 
 func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReqForm) (
@@ -110,11 +110,8 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMu
 	return r, nil
 }
 
-func (s testFormServer) TestShareFormSchema(
-	ctx context.Context,
-	req api.TestShareFormSchemaReq,
-) (*api.TestShareFormSchemaOK, error) {
-	return &api.TestShareFormSchemaOK{}, nil
+func (s testFormServer) TestShareFormSchema(ctx context.Context, req api.TestShareFormSchemaReq) error {
+	return nil
 }
 
 func TestURIEncodingE2E(t *testing.T) {
@@ -167,7 +164,7 @@ func TestURIEncodingE2E(t *testing.T) {
 			client, err := api.NewClient(s.URL)
 			require.NoError(t, err)
 
-			_, err = client.TestFormURLEncoded(ctx, testForm())
+			err = client.TestFormURLEncoded(ctx, testForm())
 			a.NoError(err)
 		})
 	}
@@ -195,7 +192,7 @@ func TestMultipartEncodingE2E(t *testing.T) {
 	client, err := api.NewClient(s.URL)
 	require.NoError(t, err)
 
-	_, err = client.TestMultipart(ctx, testForm())
+	err = client.TestMultipart(ctx, testForm())
 	a.NoError(err)
 }
 
