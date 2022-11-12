@@ -1,0 +1,153 @@
+# Features
+
+* No reflection or `interface{}`
+  * The json encoding is code-generated, optimized and uses [go-faster/jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
+  * Validation is code-generated according to spec
+* Code-generated static radix router
+* No more boilerplate
+  * Structures are generated from OpenAPI v3 specification
+  * Arguments, headers, url queries are parsed according to specification into structures
+  * String formats like `uuid`, `date`, `date-time`, `uri` are represented by go types directly
+* Statically typed client and server
+* Convenient support for optional, nullable and optional nullable fields
+  * No more pointers
+  * Generated Optional[T], Nullable[T] or OptionalNullable[T] wrappers with helpers
+  * Special case for array handling with `nil` semantics relevant to specification
+    * When array is optional, `nil` denotes absence of value
+    * When nullable, `nil` denotes that value is `nil`
+    * When required, `nil` currently the same as `[]`, but is actually invalid
+    * If both nullable and required, wrapper will be generated (TODO)
+* Generated sum types for oneOf
+  * Primitive types (`string`, `number`) are detected by type
+  * Discriminator field is used if defined in schema
+  * Type is inferred by unique fields if possible
+* OpenTelemetry tracing and metrics
+
+Example generated structure from schema:
+```go
+// Pet describes #/components/schemas/Pet.
+type Pet struct {
+	Birthday     time.Time     `json:"birthday"`
+	Friends      []Pet         `json:"friends"`
+	ID           int64         `json:"id"`
+	IP           net.IP        `json:"ip"`
+	IPV4         net.IP        `json:"ip_v4"`
+	IPV6         net.IP        `json:"ip_v6"`
+	Kind         PetKind       `json:"kind"`
+	Name         string        `json:"name"`
+	Next         OptData       `json:"next"`
+	Nickname     NilString     `json:"nickname"`
+	NullStr      OptNilString  `json:"nullStr"`
+	Rate         time.Duration `json:"rate"`
+	Tag          OptUUID       `json:"tag"`
+	TestArray1   [][]string    `json:"testArray1"`
+	TestDate     OptTime       `json:"testDate"`
+	TestDateTime OptTime       `json:"testDateTime"`
+	TestDuration OptDuration   `json:"testDuration"`
+	TestFloat1   OptFloat64    `json:"testFloat1"`
+	TestInteger1 OptInt        `json:"testInteger1"`
+	TestTime     OptTime       `json:"testTime"`
+	Type         OptPetType    `json:"type"`
+	URI          url.URL       `json:"uri"`
+	UniqueID     uuid.UUID     `json:"unique_id"`
+}
+```
+
+Example generated server interface:
+```go
+// Server handles operations described by OpenAPI v3 specification.
+type Server interface {
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
+	// ...
+}
+```
+
+Example generated client method signature:
+```go
+type PetGetByNameParams struct {
+    Name string
+}
+
+// GET /pet/{name}
+func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error)
+```
+
+## Generics
+Instead of using pointers, `ogen` generates generic wrappers.
+
+For example, `OptNilString` is `string` that is optional (no value) and can be `null`.
+```go
+// OptNilString is optional nullable string.
+type OptNilString struct {
+	Value string
+	Set   bool
+	Null  bool
+}
+```
+
+Multiple convenience helper methods and functions are generated, some of them:
+```go
+func (OptNilString) Get() (v string, ok bool)
+func (OptNilString) IsNull() bool
+func (OptNilString) IsSet() bool
+
+func NewOptNilString(v string) OptNilString
+```
+
+## Recursive types
+If `ogen` encounters recursive types that can't be expressed in go, pointers are used as fallback.
+
+## Sum types
+For `oneOf` sum-types are generated. `ID` that is one of `[string, integer]` will be represented like that:
+```go
+type ID struct {
+	Type   IDType
+	String string
+	Int    int
+}
+
+// Also, some helpers:
+func NewStringID(v string) ID
+func NewIntID(v int) ID
+```
+
+## JSON
+
+Code generation provides very efficient and flexible encoding and decoding of json:
+```go
+// Decode decodes Error from json.
+func (s *Error) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Error to nil")
+	}
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "code":
+			if err := func() error {
+				v, err := d.Int64()
+				s.Code = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"code\"")
+			}
+		case "message":
+			if err := func() error {
+				v, err := d.Str()
+				s.Message = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"message\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+```
