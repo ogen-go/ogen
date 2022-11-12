@@ -137,8 +137,12 @@ func (j JSON) Format() string {
 		return "DateTime"
 	case "duration":
 		return "Duration"
-	case "ip", "ipv4", "ipv6":
+	case "ip":
 		return "IP"
+	case "ipv4":
+		return "IPv4"
+	case "ipv6":
+		return "IPv6"
 	case "uri":
 		return "URI"
 	case "int8",

@@ -425,7 +425,7 @@ func (o NilIPv4) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv4(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -444,7 +444,7 @@ func (o *NilIPv4) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv4(d)
 	if err != nil {
 		return err
 	}
@@ -471,7 +471,7 @@ func (o NilIPv6) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv6(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -490,7 +490,7 @@ func (o *NilIPv6) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv6(d)
 	if err != nil {
 		return err
 	}
@@ -1681,7 +1681,7 @@ func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv4(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -1690,7 +1690,7 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv4(d)
 	if err != nil {
 		return err
 	}
@@ -1716,7 +1716,7 @@ func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv6(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -1725,7 +1725,7 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv6(d)
 	if err != nil {
 		return err
 	}
@@ -2268,7 +2268,7 @@ func (o OptNilIPv4) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv4(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -2289,7 +2289,7 @@ func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv4(d)
 	if err != nil {
 		return err
 	}
@@ -2319,7 +2319,7 @@ func (o OptNilIPv6) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv6(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -2340,7 +2340,7 @@ func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv6(d)
 	if err != nil {
 		return err
 	}
@@ -4381,7 +4381,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv4(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -4390,7 +4390,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv6(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -4880,7 +4880,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -4893,7 +4893,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -5160,12 +5160,12 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
+		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
 
 		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
+		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
 
@@ -5527,7 +5527,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv4 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -5537,7 +5537,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv6 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -6068,7 +6068,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv4(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -6082,7 +6082,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv6(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -7324,7 +7324,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -7344,7 +7344,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -8397,7 +8397,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -8425,7 +8425,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -9033,7 +9033,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_string_ipv4":
 			requiredBitSet[14] |= 1 << 0
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				s.RequiredStringIpv4 = v
 				if err != nil {
 					return err
@@ -9045,7 +9045,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_string_ipv6":
 			requiredBitSet[14] |= 1 << 1
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				s.RequiredStringIpv6 = v
 				if err != nil {
 					return err
@@ -9746,7 +9746,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -9765,7 +9765,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -10776,7 +10776,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -10803,7 +10803,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -11881,7 +11881,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv4(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -11890,7 +11890,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv6(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -12380,7 +12380,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -12393,7 +12393,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -12660,12 +12660,12 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
+		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
 
 		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
+		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
 
@@ -13027,7 +13027,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv4 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -13037,7 +13037,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv6 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -13568,7 +13568,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv4(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -13582,7 +13582,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv6(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -14824,7 +14824,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -14844,7 +14844,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -15897,7 +15897,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -15925,7 +15925,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -16533,7 +16533,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_string_ipv4":
 			requiredBitSet[14] |= 1 << 0
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				s.RequiredStringIpv4 = v
 				if err != nil {
 					return err
@@ -16545,7 +16545,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_string_ipv6":
 			requiredBitSet[14] |= 1 << 1
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				s.RequiredStringIpv6 = v
 				if err != nil {
 					return err
@@ -17246,7 +17246,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -17265,7 +17265,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -18276,7 +18276,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -18303,7 +18303,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -19381,7 +19381,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv4 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv4(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -19390,7 +19390,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIpv6 {
-			json.EncodeIP(e, elem)
+			json.EncodeIPv6(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -19880,7 +19880,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -19893,7 +19893,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
 			e.ArrStart()
 			for _, elem := range elem {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -20160,12 +20160,12 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required_string_ipv4")
-		json.EncodeIP(e, s.RequiredStringIpv4)
+		json.EncodeIPv4(e, s.RequiredStringIpv4)
 	}
 	{
 
 		e.FieldStart("required_string_ipv6")
-		json.EncodeIP(e, s.RequiredStringIpv6)
+		json.EncodeIPv6(e, s.RequiredStringIpv6)
 	}
 	{
 
@@ -20527,7 +20527,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv4 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv4(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -20537,7 +20537,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringIpv6 {
-				json.EncodeIP(e, elem)
+				json.EncodeIPv6(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -21068,7 +21068,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv4(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -21082,7 +21082,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
 				e.ArrStart()
 				for _, elem := range elem {
-					json.EncodeIP(e, elem)
+					json.EncodeIPv6(e, elem)
 				}
 				e.ArrEnd()
 			}
@@ -22324,7 +22324,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -22344,7 +22344,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -23397,7 +23397,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -23425,7 +23425,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -24033,7 +24033,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_string_ipv4":
 			requiredBitSet[14] |= 1 << 0
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				s.RequiredStringIpv4 = v
 				if err != nil {
 					return err
@@ -24045,7 +24045,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_string_ipv6":
 			requiredBitSet[14] |= 1 << 1
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				s.RequiredStringIpv6 = v
 				if err != nil {
 					return err
@@ -24746,7 +24746,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv4(d)
 					elem = v
 					if err != nil {
 						return err
@@ -24765,7 +24765,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elem netip.Addr
-					v, err := json.DecodeIP(d)
+					v, err := json.DecodeIPv6(d)
 					elem = v
 					if err != nil {
 						return err
@@ -25776,7 +25776,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv4(d)
 						elemElem = v
 						if err != nil {
 							return err
@@ -25803,7 +25803,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
 						var elemElem netip.Addr
-						v, err := json.DecodeIP(d)
+						v, err := json.DecodeIPv6(d)
 						elemElem = v
 						if err != nil {
 							return err

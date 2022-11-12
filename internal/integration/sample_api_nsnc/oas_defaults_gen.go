@@ -34,11 +34,11 @@ func (s *DefaultTest) setDefaults() {
 		s.IP.SetTo(val)
 	}
 	{
-		val, _ := json.DecodeIP(jx.DecodeStr("\"1.1.1.1\""))
+		val, _ := json.DecodeIPv4(jx.DecodeStr("\"1.1.1.1\""))
 		s.IPV4.SetTo(val)
 	}
 	{
-		val, _ := json.DecodeIP(jx.DecodeStr("\"2001:db8:85a3::8a2e:370:7334\""))
+		val, _ := json.DecodeIPv6(jx.DecodeStr("\"2001:db8:85a3::8a2e:370:7334\""))
 		s.IPV6.SetTo(val)
 	}
 	{

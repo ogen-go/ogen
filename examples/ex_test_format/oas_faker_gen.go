@@ -246,7 +246,7 @@ func (s *OptIPv4) SetFake() {
 func (s *OptIPv6) SetFake() {
 	var elem netip.Addr
 	{
-		elem = netip.MustParseAddr("127.0.0.1")
+		elem = netip.MustParseAddr("::1")
 	}
 	s.SetTo(elem)
 }
@@ -1018,7 +1018,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -1736,7 +1736,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2063,7 +2063,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
 		}
 	}
 	{
@@ -2494,7 +2494,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -3212,7 +3212,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3978,7 +3978,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -4696,7 +4696,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5023,7 +5023,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
 		}
 	}
 	{
@@ -5454,7 +5454,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -6172,7 +6172,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6938,7 +6938,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -7656,7 +7656,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -7983,7 +7983,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
 		}
 	}
 	{
@@ -8414,7 +8414,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
 				{
-					elem = netip.MustParseAddr("127.0.0.1")
+					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -9132,7 +9132,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem netip.Addr
 						{
-							elemElem = netip.MustParseAddr("127.0.0.1")
+							elemElem = netip.MustParseAddr("::1")
 						}
 						elem = append(elem, elemElem)
 					}

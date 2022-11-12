@@ -5125,7 +5125,7 @@ func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv4(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -5134,7 +5134,7 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv4(d)
 	if err != nil {
 		return err
 	}
@@ -5160,7 +5160,7 @@ func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	json.EncodeIP(e, o.Value)
+	json.EncodeIPv6(e, o.Value)
 }
 
 // Decode decodes netip.Addr from json.
@@ -5169,7 +5169,7 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")
 	}
 	o.Set = true
-	v, err := json.DecodeIP(d)
+	v, err := json.DecodeIPv6(d)
 	if err != nil {
 		return err
 	}
@@ -6163,12 +6163,12 @@ func (s Pet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ip_v4")
-		json.EncodeIP(e, s.IPV4)
+		json.EncodeIPv4(e, s.IPV4)
 	}
 	{
 
 		e.FieldStart("ip_v6")
-		json.EncodeIP(e, s.IPV6)
+		json.EncodeIPv6(e, s.IPV6)
 	}
 	{
 
@@ -6442,7 +6442,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		case "ip_v4":
 			requiredBitSet[1] |= 1 << 0
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv4(d)
 				s.IPV4 = v
 				if err != nil {
 					return err
@@ -6454,7 +6454,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 		case "ip_v6":
 			requiredBitSet[1] |= 1 << 1
 			if err := func() error {
-				v, err := json.DecodeIP(d)
+				v, err := json.DecodeIPv6(d)
 				s.IPV6 = v
 				if err != nil {
 					return err
