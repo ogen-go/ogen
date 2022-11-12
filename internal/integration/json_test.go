@@ -1109,3 +1109,21 @@ func TestJSONNull(t *testing.T) {
 		})
 	}
 }
+
+func TestJSONIP(t *testing.T) {
+	var (
+		ipv4 api.OptIPv4
+		ipv6 api.OptIPv6
+		ip   api.OptIP
+	)
+
+	a := require.New(t)
+	a.NoError(ipv4.Decode(jx.DecodeStr(`"1.1.1.1"`)))
+	a.Error(ipv4.Decode(jx.DecodeStr(`"2001:db8::68"`)))
+
+	a.NoError(ipv6.Decode(jx.DecodeStr(`"2001:db8::68"`)))
+	a.Error(ipv6.Decode(jx.DecodeStr(`"1.1.1.1"`)))
+
+	a.NoError(ip.Decode(jx.DecodeStr(`"2001:db8::68"`)))
+	a.NoError(ip.Decode(jx.DecodeStr(`"1.1.1.1"`)))
+}
