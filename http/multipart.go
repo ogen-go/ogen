@@ -16,7 +16,11 @@ func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadClose
 	wg.Go(func() (rerr error) {
 		defer func() {
 			_ = mw.Close()
-			_ = pipew.Close()
+			if rerr != nil {
+				_ = pipew.CloseWithError(rerr)
+			} else {
+				_ = pipew.Close()
+			}
 		}()
 		return cb(mw)
 	})
@@ -38,12 +42,12 @@ type bodyReader struct {
 	wg *errgroup.Group
 }
 
-func (w bodyReader) Read(p []byte) (int, error) {
-	return w.r.Read(p)
+func (r bodyReader) Read(p []byte) (int, error) {
+	return r.r.Read(p)
 }
 
-func (w bodyReader) Close() (rerr error) {
-	rerr = w.r.Close()
-	_ = w.wg.Wait()
+func (r bodyReader) Close() (rerr error) {
+	rerr = r.r.Close()
+	_ = r.wg.Wait()
 	return rerr
 }
