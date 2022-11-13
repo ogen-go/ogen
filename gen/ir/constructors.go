@@ -66,9 +66,10 @@ func Any(schema *jsonschema.Schema) *Type {
 	}
 }
 
-func Stream(name string) *Type {
+func Stream(name string, schema *jsonschema.Schema) *Type {
 	return &Type{
-		Kind: KindStream,
-		Name: name,
+		Kind:   KindStream,
+		Name:   name,
+		Schema: schema,
 	}
 }
