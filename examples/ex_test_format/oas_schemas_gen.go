@@ -4239,6 +4239,7 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayNumberInt32                   []int32              `json:"required_array_number_int32"`
 	RequiredArrayNumberInt64                   []int64              `json:"required_array_number_int64"`
 	RequiredArrayString                        []string             `json:"required_array_string"`
+	RequiredArrayStringBase64                  [][]byte             `json:"required_array_string_base64"`
 	RequiredArrayStringBinary                  []string             `json:"required_array_string_binary"`
 	RequiredArrayStringByte                    [][]byte             `json:"required_array_string_byte"`
 	RequiredArrayStringDate                    []time.Time          `json:"required_array_string_date"`
@@ -4281,6 +4282,7 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayNumberInt32             [][]int32            `json:"required_double_array_number_int32"`
 	RequiredDoubleArrayNumberInt64             [][]int64            `json:"required_double_array_number_int64"`
 	RequiredDoubleArrayString                  [][]string           `json:"required_double_array_string"`
+	RequiredDoubleArrayStringBase64            [][][]byte           `json:"required_double_array_string_base64"`
 	RequiredDoubleArrayStringBinary            [][]string           `json:"required_double_array_string_binary"`
 	RequiredDoubleArrayStringByte              [][][]byte           `json:"required_double_array_string_byte"`
 	RequiredDoubleArrayStringDate              [][]time.Time        `json:"required_double_array_string_date"`
@@ -4320,6 +4322,7 @@ type TestRequestFormatTestReq struct {
 	RequiredNumberInt32                        int32                `json:"required_number_int32"`
 	RequiredNumberInt64                        int64                `json:"required_number_int64"`
 	RequiredString                             string               `json:"required_string"`
+	RequiredStringBase64                       []byte               `json:"required_string_base64"`
 	RequiredStringBinary                       string               `json:"required_string_binary"`
 	RequiredStringByte                         []byte               `json:"required_string_byte"`
 	RequiredStringDate                         time.Time            `json:"required_string_date"`
@@ -4362,6 +4365,7 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayNumberInt32                   []int32              `json:"optional_array_number_int32"`
 	OptionalArrayNumberInt64                   []int64              `json:"optional_array_number_int64"`
 	OptionalArrayString                        []string             `json:"optional_array_string"`
+	OptionalArrayStringBase64                  [][]byte             `json:"optional_array_string_base64"`
 	OptionalArrayStringBinary                  []string             `json:"optional_array_string_binary"`
 	OptionalArrayStringByte                    [][]byte             `json:"optional_array_string_byte"`
 	OptionalArrayStringDate                    []time.Time          `json:"optional_array_string_date"`
@@ -4404,6 +4408,7 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayNumberInt32             [][]int32            `json:"optional_double_array_number_int32"`
 	OptionalDoubleArrayNumberInt64             [][]int64            `json:"optional_double_array_number_int64"`
 	OptionalDoubleArrayString                  [][]string           `json:"optional_double_array_string"`
+	OptionalDoubleArrayStringBase64            [][][]byte           `json:"optional_double_array_string_base64"`
 	OptionalDoubleArrayStringBinary            [][]string           `json:"optional_double_array_string_binary"`
 	OptionalDoubleArrayStringByte              [][][]byte           `json:"optional_double_array_string_byte"`
 	OptionalDoubleArrayStringDate              [][]time.Time        `json:"optional_double_array_string_date"`
@@ -4443,6 +4448,7 @@ type TestRequestFormatTestReq struct {
 	OptionalNumberInt32                        OptInt32             `json:"optional_number_int32"`
 	OptionalNumberInt64                        OptInt64             `json:"optional_number_int64"`
 	OptionalString                             OptString            `json:"optional_string"`
+	OptionalStringBase64                       []byte               `json:"optional_string_base64"`
 	OptionalStringBinary                       OptString            `json:"optional_string_binary"`
 	OptionalStringByte                         []byte               `json:"optional_string_byte"`
 	OptionalStringDate                         OptDate              `json:"optional_string_date"`
@@ -4569,6 +4575,11 @@ func (s TestRequestFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
 // GetRequiredArrayString returns the value of RequiredArrayString.
 func (s TestRequestFormatTestReq) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
+	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
@@ -4781,6 +4792,11 @@ func (s TestRequestFormatTestReq) GetRequiredDoubleArrayString() [][]string {
 	return s.RequiredDoubleArrayString
 }
 
+// GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
+	return s.RequiredDoubleArrayStringBase64
+}
+
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
 func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
@@ -4974,6 +4990,11 @@ func (s TestRequestFormatTestReq) GetRequiredNumberInt64() int64 {
 // GetRequiredString returns the value of RequiredString.
 func (s TestRequestFormatTestReq) GetRequiredString() string {
 	return s.RequiredString
+}
+
+// GetRequiredStringBase64 returns the value of RequiredStringBase64.
+func (s TestRequestFormatTestReq) GetRequiredStringBase64() []byte {
+	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
@@ -5186,6 +5207,11 @@ func (s TestRequestFormatTestReq) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
+// GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
+	return s.OptionalArrayStringBase64
+}
+
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
 func (s TestRequestFormatTestReq) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
@@ -5396,6 +5422,11 @@ func (s TestRequestFormatTestReq) GetOptionalDoubleArrayString() [][]string {
 	return s.OptionalDoubleArrayString
 }
 
+// GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
+	return s.OptionalDoubleArrayStringBase64
+}
+
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
 func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
@@ -5589,6 +5620,11 @@ func (s TestRequestFormatTestReq) GetOptionalNumberInt64() OptInt64 {
 // GetOptionalString returns the value of OptionalString.
 func (s TestRequestFormatTestReq) GetOptionalString() OptString {
 	return s.OptionalString
+}
+
+// GetOptionalStringBase64 returns the value of OptionalStringBase64.
+func (s TestRequestFormatTestReq) GetOptionalStringBase64() []byte {
+	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
@@ -5801,6 +5837,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayString(val []string) {
 	s.RequiredArrayString = val
 }
 
+// SetRequiredArrayStringBase64 sets the value of RequiredArrayStringBase64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringBase64(val [][]byte) {
+	s.RequiredArrayStringBase64 = val
+}
+
 // SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringBinary(val []string) {
 	s.RequiredArrayStringBinary = val
@@ -6011,6 +6052,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayString(val [][]string) 
 	s.RequiredDoubleArrayString = val
 }
 
+// SetRequiredDoubleArrayStringBase64 sets the value of RequiredDoubleArrayStringBase64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringBase64(val [][][]byte) {
+	s.RequiredDoubleArrayStringBase64 = val
+}
+
 // SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringBinary(val [][]string) {
 	s.RequiredDoubleArrayStringBinary = val
@@ -6204,6 +6250,11 @@ func (s *TestRequestFormatTestReq) SetRequiredNumberInt64(val int64) {
 // SetRequiredString sets the value of RequiredString.
 func (s *TestRequestFormatTestReq) SetRequiredString(val string) {
 	s.RequiredString = val
+}
+
+// SetRequiredStringBase64 sets the value of RequiredStringBase64.
+func (s *TestRequestFormatTestReq) SetRequiredStringBase64(val []byte) {
+	s.RequiredStringBase64 = val
 }
 
 // SetRequiredStringBinary sets the value of RequiredStringBinary.
@@ -6416,6 +6467,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayString(val []string) {
 	s.OptionalArrayString = val
 }
 
+// SetOptionalArrayStringBase64 sets the value of OptionalArrayStringBase64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringBase64(val [][]byte) {
+	s.OptionalArrayStringBase64 = val
+}
+
 // SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringBinary(val []string) {
 	s.OptionalArrayStringBinary = val
@@ -6626,6 +6682,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayString(val [][]string) 
 	s.OptionalDoubleArrayString = val
 }
 
+// SetOptionalDoubleArrayStringBase64 sets the value of OptionalDoubleArrayStringBase64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringBase64(val [][][]byte) {
+	s.OptionalDoubleArrayStringBase64 = val
+}
+
 // SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringBinary(val [][]string) {
 	s.OptionalDoubleArrayStringBinary = val
@@ -6821,6 +6882,11 @@ func (s *TestRequestFormatTestReq) SetOptionalString(val OptString) {
 	s.OptionalString = val
 }
 
+// SetOptionalStringBase64 sets the value of OptionalStringBase64.
+func (s *TestRequestFormatTestReq) SetOptionalStringBase64(val []byte) {
+	s.OptionalStringBase64 = val
+}
+
 // SetOptionalStringBinary sets the value of OptionalStringBinary.
 func (s *TestRequestFormatTestReq) SetOptionalStringBinary(val OptString) {
 	s.OptionalStringBinary = val
@@ -6950,6 +7016,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayNumberInt32                   []int32              `json:"required_array_number_int32"`
 	RequiredArrayNumberInt64                   []int64              `json:"required_array_number_int64"`
 	RequiredArrayString                        []string             `json:"required_array_string"`
+	RequiredArrayStringBase64                  [][]byte             `json:"required_array_string_base64"`
 	RequiredArrayStringBinary                  []string             `json:"required_array_string_binary"`
 	RequiredArrayStringByte                    [][]byte             `json:"required_array_string_byte"`
 	RequiredArrayStringDate                    []time.Time          `json:"required_array_string_date"`
@@ -6992,6 +7059,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayNumberInt32             [][]int32            `json:"required_double_array_number_int32"`
 	RequiredDoubleArrayNumberInt64             [][]int64            `json:"required_double_array_number_int64"`
 	RequiredDoubleArrayString                  [][]string           `json:"required_double_array_string"`
+	RequiredDoubleArrayStringBase64            [][][]byte           `json:"required_double_array_string_base64"`
 	RequiredDoubleArrayStringBinary            [][]string           `json:"required_double_array_string_binary"`
 	RequiredDoubleArrayStringByte              [][][]byte           `json:"required_double_array_string_byte"`
 	RequiredDoubleArrayStringDate              [][]time.Time        `json:"required_double_array_string_date"`
@@ -7031,6 +7099,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredNumberInt32                        int32                `json:"required_number_int32"`
 	RequiredNumberInt64                        int64                `json:"required_number_int64"`
 	RequiredString                             string               `json:"required_string"`
+	RequiredStringBase64                       []byte               `json:"required_string_base64"`
 	RequiredStringBinary                       string               `json:"required_string_binary"`
 	RequiredStringByte                         []byte               `json:"required_string_byte"`
 	RequiredStringDate                         time.Time            `json:"required_string_date"`
@@ -7073,6 +7142,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayNumberInt32                   []int32              `json:"optional_array_number_int32"`
 	OptionalArrayNumberInt64                   []int64              `json:"optional_array_number_int64"`
 	OptionalArrayString                        []string             `json:"optional_array_string"`
+	OptionalArrayStringBase64                  [][]byte             `json:"optional_array_string_base64"`
 	OptionalArrayStringBinary                  []string             `json:"optional_array_string_binary"`
 	OptionalArrayStringByte                    [][]byte             `json:"optional_array_string_byte"`
 	OptionalArrayStringDate                    []time.Time          `json:"optional_array_string_date"`
@@ -7115,6 +7185,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayNumberInt32             [][]int32            `json:"optional_double_array_number_int32"`
 	OptionalDoubleArrayNumberInt64             [][]int64            `json:"optional_double_array_number_int64"`
 	OptionalDoubleArrayString                  [][]string           `json:"optional_double_array_string"`
+	OptionalDoubleArrayStringBase64            [][][]byte           `json:"optional_double_array_string_base64"`
 	OptionalDoubleArrayStringBinary            [][]string           `json:"optional_double_array_string_binary"`
 	OptionalDoubleArrayStringByte              [][][]byte           `json:"optional_double_array_string_byte"`
 	OptionalDoubleArrayStringDate              [][]time.Time        `json:"optional_double_array_string_date"`
@@ -7154,6 +7225,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalNumberInt32                        OptInt32             `json:"optional_number_int32"`
 	OptionalNumberInt64                        OptInt64             `json:"optional_number_int64"`
 	OptionalString                             OptString            `json:"optional_string"`
+	OptionalStringBase64                       []byte               `json:"optional_string_base64"`
 	OptionalStringBinary                       OptString            `json:"optional_string_binary"`
 	OptionalStringByte                         []byte               `json:"optional_string_byte"`
 	OptionalStringDate                         OptDate              `json:"optional_string_date"`
@@ -7280,6 +7352,11 @@ func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt64() []int64 
 // GetRequiredArrayString returns the value of RequiredArrayString.
 func (s TestRequestRequiredFormatTestReq) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
+	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
@@ -7492,6 +7569,11 @@ func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayString() [][]str
 	return s.RequiredDoubleArrayString
 }
 
+// GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
+	return s.RequiredDoubleArrayStringBase64
+}
+
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
 func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
@@ -7685,6 +7767,11 @@ func (s TestRequestRequiredFormatTestReq) GetRequiredNumberInt64() int64 {
 // GetRequiredString returns the value of RequiredString.
 func (s TestRequestRequiredFormatTestReq) GetRequiredString() string {
 	return s.RequiredString
+}
+
+// GetRequiredStringBase64 returns the value of RequiredStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringBase64() []byte {
+	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
@@ -7897,6 +7984,11 @@ func (s TestRequestRequiredFormatTestReq) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
+// GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
+	return s.OptionalArrayStringBase64
+}
+
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
 func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
@@ -8107,6 +8199,11 @@ func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayString() [][]str
 	return s.OptionalDoubleArrayString
 }
 
+// GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
+	return s.OptionalDoubleArrayStringBase64
+}
+
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
 func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
@@ -8300,6 +8397,11 @@ func (s TestRequestRequiredFormatTestReq) GetOptionalNumberInt64() OptInt64 {
 // GetOptionalString returns the value of OptionalString.
 func (s TestRequestRequiredFormatTestReq) GetOptionalString() OptString {
 	return s.OptionalString
+}
+
+// GetOptionalStringBase64 returns the value of OptionalStringBase64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringBase64() []byte {
+	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
@@ -8512,6 +8614,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayString(val []string) 
 	s.RequiredArrayString = val
 }
 
+// SetRequiredArrayStringBase64 sets the value of RequiredArrayStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringBase64(val [][]byte) {
+	s.RequiredArrayStringBase64 = val
+}
+
 // SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringBinary(val []string) {
 	s.RequiredArrayStringBinary = val
@@ -8722,6 +8829,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayString(val [][]
 	s.RequiredDoubleArrayString = val
 }
 
+// SetRequiredDoubleArrayStringBase64 sets the value of RequiredDoubleArrayStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringBase64(val [][][]byte) {
+	s.RequiredDoubleArrayStringBase64 = val
+}
+
 // SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringBinary(val [][]string) {
 	s.RequiredDoubleArrayStringBinary = val
@@ -8915,6 +9027,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredNumberInt64(val int64) {
 // SetRequiredString sets the value of RequiredString.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredString(val string) {
 	s.RequiredString = val
+}
+
+// SetRequiredStringBase64 sets the value of RequiredStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringBase64(val []byte) {
+	s.RequiredStringBase64 = val
 }
 
 // SetRequiredStringBinary sets the value of RequiredStringBinary.
@@ -9127,6 +9244,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayString(val []string) 
 	s.OptionalArrayString = val
 }
 
+// SetOptionalArrayStringBase64 sets the value of OptionalArrayStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringBase64(val [][]byte) {
+	s.OptionalArrayStringBase64 = val
+}
+
 // SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringBinary(val []string) {
 	s.OptionalArrayStringBinary = val
@@ -9337,6 +9459,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayString(val [][]
 	s.OptionalDoubleArrayString = val
 }
 
+// SetOptionalDoubleArrayStringBase64 sets the value of OptionalDoubleArrayStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringBase64(val [][][]byte) {
+	s.OptionalDoubleArrayStringBase64 = val
+}
+
 // SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringBinary(val [][]string) {
 	s.OptionalDoubleArrayStringBinary = val
@@ -9532,6 +9659,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalString(val OptString) {
 	s.OptionalString = val
 }
 
+// SetOptionalStringBase64 sets the value of OptionalStringBase64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringBase64(val []byte) {
+	s.OptionalStringBase64 = val
+}
+
 // SetOptionalStringBinary sets the value of OptionalStringBinary.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringBinary(val OptString) {
 	s.OptionalStringBinary = val
@@ -9661,6 +9793,7 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayNumberInt32                   []int32              `json:"required_array_number_int32"`
 	RequiredArrayNumberInt64                   []int64              `json:"required_array_number_int64"`
 	RequiredArrayString                        []string             `json:"required_array_string"`
+	RequiredArrayStringBase64                  [][]byte             `json:"required_array_string_base64"`
 	RequiredArrayStringBinary                  []string             `json:"required_array_string_binary"`
 	RequiredArrayStringByte                    [][]byte             `json:"required_array_string_byte"`
 	RequiredArrayStringDate                    []time.Time          `json:"required_array_string_date"`
@@ -9703,6 +9836,7 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayNumberInt32             [][]int32            `json:"required_double_array_number_int32"`
 	RequiredDoubleArrayNumberInt64             [][]int64            `json:"required_double_array_number_int64"`
 	RequiredDoubleArrayString                  [][]string           `json:"required_double_array_string"`
+	RequiredDoubleArrayStringBase64            [][][]byte           `json:"required_double_array_string_base64"`
 	RequiredDoubleArrayStringBinary            [][]string           `json:"required_double_array_string_binary"`
 	RequiredDoubleArrayStringByte              [][][]byte           `json:"required_double_array_string_byte"`
 	RequiredDoubleArrayStringDate              [][]time.Time        `json:"required_double_array_string_date"`
@@ -9742,6 +9876,7 @@ type TestResponseFormatTestOK struct {
 	RequiredNumberInt32                        int32                `json:"required_number_int32"`
 	RequiredNumberInt64                        int64                `json:"required_number_int64"`
 	RequiredString                             string               `json:"required_string"`
+	RequiredStringBase64                       []byte               `json:"required_string_base64"`
 	RequiredStringBinary                       string               `json:"required_string_binary"`
 	RequiredStringByte                         []byte               `json:"required_string_byte"`
 	RequiredStringDate                         time.Time            `json:"required_string_date"`
@@ -9784,6 +9919,7 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayNumberInt32                   []int32              `json:"optional_array_number_int32"`
 	OptionalArrayNumberInt64                   []int64              `json:"optional_array_number_int64"`
 	OptionalArrayString                        []string             `json:"optional_array_string"`
+	OptionalArrayStringBase64                  [][]byte             `json:"optional_array_string_base64"`
 	OptionalArrayStringBinary                  []string             `json:"optional_array_string_binary"`
 	OptionalArrayStringByte                    [][]byte             `json:"optional_array_string_byte"`
 	OptionalArrayStringDate                    []time.Time          `json:"optional_array_string_date"`
@@ -9826,6 +9962,7 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayNumberInt32             [][]int32            `json:"optional_double_array_number_int32"`
 	OptionalDoubleArrayNumberInt64             [][]int64            `json:"optional_double_array_number_int64"`
 	OptionalDoubleArrayString                  [][]string           `json:"optional_double_array_string"`
+	OptionalDoubleArrayStringBase64            [][][]byte           `json:"optional_double_array_string_base64"`
 	OptionalDoubleArrayStringBinary            [][]string           `json:"optional_double_array_string_binary"`
 	OptionalDoubleArrayStringByte              [][][]byte           `json:"optional_double_array_string_byte"`
 	OptionalDoubleArrayStringDate              [][]time.Time        `json:"optional_double_array_string_date"`
@@ -9865,6 +10002,7 @@ type TestResponseFormatTestOK struct {
 	OptionalNumberInt32                        OptInt32             `json:"optional_number_int32"`
 	OptionalNumberInt64                        OptInt64             `json:"optional_number_int64"`
 	OptionalString                             OptString            `json:"optional_string"`
+	OptionalStringBase64                       []byte               `json:"optional_string_base64"`
 	OptionalStringBinary                       OptString            `json:"optional_string_binary"`
 	OptionalStringByte                         []byte               `json:"optional_string_byte"`
 	OptionalStringDate                         OptDate              `json:"optional_string_date"`
@@ -9991,6 +10129,11 @@ func (s TestResponseFormatTestOK) GetRequiredArrayNumberInt64() []int64 {
 // GetRequiredArrayString returns the value of RequiredArrayString.
 func (s TestResponseFormatTestOK) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringBase64() [][]byte {
+	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
@@ -10203,6 +10346,11 @@ func (s TestResponseFormatTestOK) GetRequiredDoubleArrayString() [][]string {
 	return s.RequiredDoubleArrayString
 }
 
+// GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringBase64() [][][]byte {
+	return s.RequiredDoubleArrayStringBase64
+}
+
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
 func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
@@ -10396,6 +10544,11 @@ func (s TestResponseFormatTestOK) GetRequiredNumberInt64() int64 {
 // GetRequiredString returns the value of RequiredString.
 func (s TestResponseFormatTestOK) GetRequiredString() string {
 	return s.RequiredString
+}
+
+// GetRequiredStringBase64 returns the value of RequiredStringBase64.
+func (s TestResponseFormatTestOK) GetRequiredStringBase64() []byte {
+	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
@@ -10608,6 +10761,11 @@ func (s TestResponseFormatTestOK) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
+// GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringBase64() [][]byte {
+	return s.OptionalArrayStringBase64
+}
+
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
 func (s TestResponseFormatTestOK) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
@@ -10818,6 +10976,11 @@ func (s TestResponseFormatTestOK) GetOptionalDoubleArrayString() [][]string {
 	return s.OptionalDoubleArrayString
 }
 
+// GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringBase64() [][][]byte {
+	return s.OptionalDoubleArrayStringBase64
+}
+
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
 func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
@@ -11011,6 +11174,11 @@ func (s TestResponseFormatTestOK) GetOptionalNumberInt64() OptInt64 {
 // GetOptionalString returns the value of OptionalString.
 func (s TestResponseFormatTestOK) GetOptionalString() OptString {
 	return s.OptionalString
+}
+
+// GetOptionalStringBase64 returns the value of OptionalStringBase64.
+func (s TestResponseFormatTestOK) GetOptionalStringBase64() []byte {
+	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
@@ -11223,6 +11391,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayString(val []string) {
 	s.RequiredArrayString = val
 }
 
+// SetRequiredArrayStringBase64 sets the value of RequiredArrayStringBase64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringBase64(val [][]byte) {
+	s.RequiredArrayStringBase64 = val
+}
+
 // SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringBinary(val []string) {
 	s.RequiredArrayStringBinary = val
@@ -11433,6 +11606,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayString(val [][]string) 
 	s.RequiredDoubleArrayString = val
 }
 
+// SetRequiredDoubleArrayStringBase64 sets the value of RequiredDoubleArrayStringBase64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringBase64(val [][][]byte) {
+	s.RequiredDoubleArrayStringBase64 = val
+}
+
 // SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringBinary(val [][]string) {
 	s.RequiredDoubleArrayStringBinary = val
@@ -11626,6 +11804,11 @@ func (s *TestResponseFormatTestOK) SetRequiredNumberInt64(val int64) {
 // SetRequiredString sets the value of RequiredString.
 func (s *TestResponseFormatTestOK) SetRequiredString(val string) {
 	s.RequiredString = val
+}
+
+// SetRequiredStringBase64 sets the value of RequiredStringBase64.
+func (s *TestResponseFormatTestOK) SetRequiredStringBase64(val []byte) {
+	s.RequiredStringBase64 = val
 }
 
 // SetRequiredStringBinary sets the value of RequiredStringBinary.
@@ -11838,6 +12021,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayString(val []string) {
 	s.OptionalArrayString = val
 }
 
+// SetOptionalArrayStringBase64 sets the value of OptionalArrayStringBase64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringBase64(val [][]byte) {
+	s.OptionalArrayStringBase64 = val
+}
+
 // SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringBinary(val []string) {
 	s.OptionalArrayStringBinary = val
@@ -12048,6 +12236,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayString(val [][]string) 
 	s.OptionalDoubleArrayString = val
 }
 
+// SetOptionalDoubleArrayStringBase64 sets the value of OptionalDoubleArrayStringBase64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringBase64(val [][][]byte) {
+	s.OptionalDoubleArrayStringBase64 = val
+}
+
 // SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringBinary(val [][]string) {
 	s.OptionalDoubleArrayStringBinary = val
@@ -12241,6 +12434,11 @@ func (s *TestResponseFormatTestOK) SetOptionalNumberInt64(val OptInt64) {
 // SetOptionalString sets the value of OptionalString.
 func (s *TestResponseFormatTestOK) SetOptionalString(val OptString) {
 	s.OptionalString = val
+}
+
+// SetOptionalStringBase64 sets the value of OptionalStringBase64.
+func (s *TestResponseFormatTestOK) SetOptionalStringBase64(val []byte) {
+	s.OptionalStringBase64 = val
 }
 
 // SetOptionalStringBinary sets the value of OptionalStringBinary.

@@ -882,6 +882,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringBase64 = append(s.RequiredArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -1519,6 +1531,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBase64 = append(s.RequiredDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -2008,6 +2039,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringBase64 = []byte("[]byte")
+		}
+	}
+	{
+		{
 			s.RequiredStringBinary = "string"
 		}
 	}
@@ -2353,6 +2389,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringBase64 = append(s.OptionalArrayStringBase64, elem)
 			}
 		}
 	}
@@ -2995,6 +3043,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBase64 = append(s.OptionalDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -3480,6 +3547,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBase64 = []byte("[]byte")
 		}
 	}
 	{
@@ -3842,6 +3914,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringBase64 = append(s.RequiredArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -4479,6 +4563,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBase64 = append(s.RequiredDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -4968,6 +5071,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringBase64 = []byte("[]byte")
+		}
+	}
+	{
+		{
 			s.RequiredStringBinary = "string"
 		}
 	}
@@ -5313,6 +5421,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringBase64 = append(s.OptionalArrayStringBase64, elem)
 			}
 		}
 	}
@@ -5955,6 +6075,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBase64 = append(s.OptionalDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -6440,6 +6579,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBase64 = []byte("[]byte")
 		}
 	}
 	{
@@ -6802,6 +6946,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringBase64 = append(s.RequiredArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -7439,6 +7595,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBase64 = append(s.RequiredDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -7928,6 +8103,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredStringBase64 = []byte("[]byte")
+		}
+	}
+	{
+		{
 			s.RequiredStringBinary = "string"
 		}
 	}
@@ -8273,6 +8453,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringBase64 = append(s.OptionalArrayStringBase64, elem)
 			}
 		}
 	}
@@ -8915,6 +9107,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringBase64 = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBase64 = append(s.OptionalDoubleArrayStringBase64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -9400,6 +9611,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalString.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringBase64 = []byte("[]byte")
 		}
 	}
 	{

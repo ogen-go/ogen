@@ -1601,6 +1601,48 @@ func (UnimplementedHandler) TestRequestRequiredStringArrayArray(ctx context.Cont
 	return r, ht.ErrNotImplemented
 }
 
+// TestRequestRequiredStringBase64 implements test_request_required_string_base64 operation.
+//
+// POST /test_request_required_string_base64
+func (UnimplementedHandler) TestRequestRequiredStringBase64(ctx context.Context, req []byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringBase64Array implements test_request_required_string_base64_array operation.
+//
+// POST /test_request_required_string_base64_array
+func (UnimplementedHandler) TestRequestRequiredStringBase64Array(ctx context.Context, req [][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringBase64ArrayArray implements test_request_required_string_base64_array_array operation.
+//
+// POST /test_request_required_string_base64_array_array
+func (UnimplementedHandler) TestRequestRequiredStringBase64ArrayArray(ctx context.Context, req [][][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringBase64Nullable implements test_request_required_string_base64_nullable operation.
+//
+// POST /test_request_required_string_base64_nullable
+func (UnimplementedHandler) TestRequestRequiredStringBase64Nullable(ctx context.Context, req []byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringBase64NullableArray implements test_request_required_string_base64_nullable_array operation.
+//
+// POST /test_request_required_string_base64_nullable_array
+func (UnimplementedHandler) TestRequestRequiredStringBase64NullableArray(ctx context.Context, req [][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringBase64NullableArrayArray implements test_request_required_string_base64_nullable_array_array operation.
+//
+// POST /test_request_required_string_base64_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredStringBase64NullableArrayArray(ctx context.Context, req [][][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestRequiredStringBinary implements test_request_required_string_binary operation.
 //
 // POST /test_request_required_string_binary
@@ -2522,6 +2564,48 @@ func (UnimplementedHandler) TestRequestStringArray(ctx context.Context, req []st
 //
 // POST /test_request_string_array_array
 func (UnimplementedHandler) TestRequestStringArrayArray(ctx context.Context, req [][]string) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64 implements test_request_string_base64 operation.
+//
+// POST /test_request_string_base64
+func (UnimplementedHandler) TestRequestStringBase64(ctx context.Context, req []byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64Array implements test_request_string_base64_array operation.
+//
+// POST /test_request_string_base64_array
+func (UnimplementedHandler) TestRequestStringBase64Array(ctx context.Context, req [][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64ArrayArray implements test_request_string_base64_array_array operation.
+//
+// POST /test_request_string_base64_array_array
+func (UnimplementedHandler) TestRequestStringBase64ArrayArray(ctx context.Context, req [][][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64Nullable implements test_request_string_base64_nullable operation.
+//
+// POST /test_request_string_base64_nullable
+func (UnimplementedHandler) TestRequestStringBase64Nullable(ctx context.Context, req OptNilByte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64NullableArray implements test_request_string_base64_nullable_array operation.
+//
+// POST /test_request_string_base64_nullable_array
+func (UnimplementedHandler) TestRequestStringBase64NullableArray(ctx context.Context, req [][]byte) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringBase64NullableArrayArray implements test_request_string_base64_nullable_array_array operation.
+//
+// POST /test_request_string_base64_nullable_array_array
+func (UnimplementedHandler) TestRequestStringBase64NullableArrayArray(ctx context.Context, req [][][]byte) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4223,6 +4307,48 @@ func (UnimplementedHandler) TestResponseStringArray(ctx context.Context, req str
 //
 // POST /test_response_string_array_array
 func (UnimplementedHandler) TestResponseStringArrayArray(ctx context.Context, req string) (r [][]string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64 implements test_response_string_base64 operation.
+//
+// POST /test_response_string_base64
+func (UnimplementedHandler) TestResponseStringBase64(ctx context.Context, req string) (r []byte, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64Array implements test_response_string_base64_array operation.
+//
+// POST /test_response_string_base64_array
+func (UnimplementedHandler) TestResponseStringBase64Array(ctx context.Context, req string) (r [][]byte, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64ArrayArray implements test_response_string_base64_array_array operation.
+//
+// POST /test_response_string_base64_array_array
+func (UnimplementedHandler) TestResponseStringBase64ArrayArray(ctx context.Context, req string) (r [][][]byte, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64Nullable implements test_response_string_base64_nullable operation.
+//
+// POST /test_response_string_base64_nullable
+func (UnimplementedHandler) TestResponseStringBase64Nullable(ctx context.Context, req string) (r []byte, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64NullableArray implements test_response_string_base64_nullable_array operation.
+//
+// POST /test_response_string_base64_nullable_array
+func (UnimplementedHandler) TestResponseStringBase64NullableArray(ctx context.Context, req string) (r [][]byte, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringBase64NullableArrayArray implements test_response_string_base64_nullable_array_array operation.
+//
+// POST /test_response_string_base64_nullable_array_array
+func (UnimplementedHandler) TestResponseStringBase64NullableArrayArray(ctx context.Context, req string) (r [][][]byte, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

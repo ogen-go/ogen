@@ -4888,6 +4888,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 									switch elem[0] {
+									case 'a': // Prefix: "ase64"
+										if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringBase64Request([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringBase64ArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringBase64ArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringBase64NullableRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringBase64NullableArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
 									case 'i': // Prefix: "inary"
 										if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 											elem = elem[l:]
@@ -7713,6 +7837,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case 'a': // Prefix: "ase64"
+									if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringBase64Request([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringBase64ArrayRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringBase64ArrayArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringBase64NullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringBase64NullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case 'i': // Prefix: "inary"
 									if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 										elem = elem[l:]
@@ -12907,6 +13155,130 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
+								case 'a': // Prefix: "ase64"
+									if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringBase64Request([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringBase64ArrayRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringBase64ArrayArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringBase64NullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringBase64NullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringBase64NullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
 								case 'i': // Prefix: "inary"
 									if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 										elem = elem[l:]
@@ -21012,6 +21384,142 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										break
 									}
 									switch elem[0] {
+									case 'a': // Prefix: "ase64"
+										if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredStringBase64"
+												r.operationID = "test_request_required_string_base64"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringBase64Array"
+														r.operationID = "test_request_required_string_base64_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringBase64ArrayArray
+															r.name = "TestRequestRequiredStringBase64ArrayArray"
+															r.operationID = "test_request_required_string_base64_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringBase64Nullable"
+														r.operationID = "test_request_required_string_base64_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredStringBase64NullableArray"
+															r.operationID = "test_request_required_string_base64_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredStringBase64NullableArrayArray
+																r.name = "TestRequestRequiredStringBase64NullableArrayArray"
+																r.operationID = "test_request_required_string_base64_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
 									case 'i': // Prefix: "inary"
 										if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 											elem = elem[l:]
@@ -24101,6 +24609,142 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case 'a': // Prefix: "ase64"
+									if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestStringBase64"
+											r.operationID = "test_request_string_base64"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringBase64Array"
+													r.operationID = "test_request_string_base64_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringBase64ArrayArray
+														r.name = "TestRequestStringBase64ArrayArray"
+														r.operationID = "test_request_string_base64_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringBase64Nullable"
+													r.operationID = "test_request_string_base64_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestStringBase64NullableArray"
+														r.operationID = "test_request_string_base64_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestStringBase64NullableArrayArray
+															r.name = "TestRequestStringBase64NullableArrayArray"
+															r.operationID = "test_request_string_base64_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'i': // Prefix: "inary"
 									if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 										elem = elem[l:]
@@ -29781,6 +30425,142 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
+								case 'a': // Prefix: "ase64"
+									if l := len("ase64"); len(elem) >= l && elem[0:l] == "ase64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseStringBase64"
+											r.operationID = "test_response_string_base64"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringBase64Array"
+													r.operationID = "test_response_string_base64_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringBase64ArrayArray
+														r.name = "TestResponseStringBase64ArrayArray"
+														r.operationID = "test_response_string_base64_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringBase64Nullable"
+													r.operationID = "test_response_string_base64_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseStringBase64NullableArray"
+														r.operationID = "test_response_string_base64_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseStringBase64NullableArrayArray
+															r.name = "TestResponseStringBase64NullableArrayArray"
+															r.operationID = "test_response_string_base64_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
 								case 'i': // Prefix: "inary"
 									if l := len("inary"); len(elem) >= l && elem[0:l] == "inary" {
 										elem = elem[l:]
