@@ -13,6 +13,438 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// ConnectCoreV1DeleteNamespacedPodProxy implements connectCoreV1DeleteNamespacedPodProxy operation.
+//
+// Connect DELETE requests to proxy of Pod.
+//
+// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (r ConnectCoreV1DeleteNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1DeleteNamespacedPodProxyWithPath implements connectCoreV1DeleteNamespacedPodProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Pod.
+//
+// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (r ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1DeleteNamespacedServiceProxy implements connectCoreV1DeleteNamespacedServiceProxy operation.
+//
+// Connect DELETE requests to proxy of Service.
+//
+// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (r ConnectCoreV1DeleteNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1DeleteNamespacedServiceProxyWithPath implements connectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Service.
+//
+// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (r ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1DeleteNodeProxy implements connectCoreV1DeleteNodeProxy operation.
+//
+// Connect DELETE requests to proxy of Node.
+//
+// DELETE /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (r ConnectCoreV1DeleteNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1DeleteNodeProxyWithPath implements connectCoreV1DeleteNodeProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Node.
+//
+// DELETE /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (r ConnectCoreV1DeleteNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedPodAttach implements connectCoreV1GetNamespacedPodAttach operation.
+//
+// Connect GET requests to attach of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/attach
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (r ConnectCoreV1GetNamespacedPodAttachRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedPodExec implements connectCoreV1GetNamespacedPodExec operation.
+//
+// Connect GET requests to exec of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/exec
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (r ConnectCoreV1GetNamespacedPodExecRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedPodPortforward implements connectCoreV1GetNamespacedPodPortforward operation.
+//
+// Connect GET requests to portforward of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (r ConnectCoreV1GetNamespacedPodPortforwardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedPodProxy implements connectCoreV1GetNamespacedPodProxy operation.
+//
+// Connect GET requests to proxy of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (r ConnectCoreV1GetNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedPodProxyWithPath implements connectCoreV1GetNamespacedPodProxyWithPath operation.
+//
+// Connect GET requests to proxy of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (r ConnectCoreV1GetNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedServiceProxy implements connectCoreV1GetNamespacedServiceProxy operation.
+//
+// Connect GET requests to proxy of Service.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (r ConnectCoreV1GetNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNamespacedServiceProxyWithPath implements connectCoreV1GetNamespacedServiceProxyWithPath operation.
+//
+// Connect GET requests to proxy of Service.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (r ConnectCoreV1GetNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNodeProxy implements connectCoreV1GetNodeProxy operation.
+//
+// Connect GET requests to proxy of Node.
+//
+// GET /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (r ConnectCoreV1GetNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1GetNodeProxyWithPath implements connectCoreV1GetNodeProxyWithPath operation.
+//
+// Connect GET requests to proxy of Node.
+//
+// GET /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (r ConnectCoreV1GetNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNamespacedPodProxy implements connectCoreV1HeadNamespacedPodProxy operation.
+//
+// Connect HEAD requests to proxy of Pod.
+//
+// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (r ConnectCoreV1HeadNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNamespacedPodProxyWithPath implements connectCoreV1HeadNamespacedPodProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Pod.
+//
+// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (r ConnectCoreV1HeadNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNamespacedServiceProxy implements connectCoreV1HeadNamespacedServiceProxy operation.
+//
+// Connect HEAD requests to proxy of Service.
+//
+// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (r ConnectCoreV1HeadNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNamespacedServiceProxyWithPath implements connectCoreV1HeadNamespacedServiceProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Service.
+//
+// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (r ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNodeProxy implements connectCoreV1HeadNodeProxy operation.
+//
+// Connect HEAD requests to proxy of Node.
+//
+// HEAD /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (r ConnectCoreV1HeadNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1HeadNodeProxyWithPath implements connectCoreV1HeadNodeProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Node.
+//
+// HEAD /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (r ConnectCoreV1HeadNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNamespacedPodProxy implements connectCoreV1OptionsNamespacedPodProxy operation.
+//
+// Connect OPTIONS requests to proxy of Pod.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (r ConnectCoreV1OptionsNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNamespacedPodProxyWithPath implements connectCoreV1OptionsNamespacedPodProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Pod.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (r ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxy implements connectCoreV1OptionsNamespacedServiceProxy operation.
+//
+// Connect OPTIONS requests to proxy of Service.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (r ConnectCoreV1OptionsNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxyWithPath implements connectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Service.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (r ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNodeProxy implements connectCoreV1OptionsNodeProxy operation.
+//
+// Connect OPTIONS requests to proxy of Node.
+//
+// OPTIONS /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (r ConnectCoreV1OptionsNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1OptionsNodeProxyWithPath implements connectCoreV1OptionsNodeProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Node.
+//
+// OPTIONS /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (r ConnectCoreV1OptionsNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNamespacedPodProxy implements connectCoreV1PatchNamespacedPodProxy operation.
+//
+// Connect PATCH requests to proxy of Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (r ConnectCoreV1PatchNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNamespacedPodProxyWithPath implements connectCoreV1PatchNamespacedPodProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (r ConnectCoreV1PatchNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNamespacedServiceProxy implements connectCoreV1PatchNamespacedServiceProxy operation.
+//
+// Connect PATCH requests to proxy of Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (r ConnectCoreV1PatchNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNamespacedServiceProxyWithPath implements connectCoreV1PatchNamespacedServiceProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (r ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNodeProxy implements connectCoreV1PatchNodeProxy operation.
+//
+// Connect PATCH requests to proxy of Node.
+//
+// PATCH /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (r ConnectCoreV1PatchNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PatchNodeProxyWithPath implements connectCoreV1PatchNodeProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Node.
+//
+// PATCH /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (r ConnectCoreV1PatchNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedPodAttach implements connectCoreV1PostNamespacedPodAttach operation.
+//
+// Connect POST requests to attach of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/attach
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (r ConnectCoreV1PostNamespacedPodAttachRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedPodExec implements connectCoreV1PostNamespacedPodExec operation.
+//
+// Connect POST requests to exec of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/exec
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (r ConnectCoreV1PostNamespacedPodExecRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedPodPortforward implements connectCoreV1PostNamespacedPodPortforward operation.
+//
+// Connect POST requests to portforward of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (r ConnectCoreV1PostNamespacedPodPortforwardRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedPodProxy implements connectCoreV1PostNamespacedPodProxy operation.
+//
+// Connect POST requests to proxy of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (r ConnectCoreV1PostNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedPodProxyWithPath implements connectCoreV1PostNamespacedPodProxyWithPath operation.
+//
+// Connect POST requests to proxy of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (r ConnectCoreV1PostNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedServiceProxy implements connectCoreV1PostNamespacedServiceProxy operation.
+//
+// Connect POST requests to proxy of Service.
+//
+// POST /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (r ConnectCoreV1PostNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNamespacedServiceProxyWithPath implements connectCoreV1PostNamespacedServiceProxyWithPath operation.
+//
+// Connect POST requests to proxy of Service.
+//
+// POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (r ConnectCoreV1PostNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNodeProxy implements connectCoreV1PostNodeProxy operation.
+//
+// Connect POST requests to proxy of Node.
+//
+// POST /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (r ConnectCoreV1PostNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PostNodeProxyWithPath implements connectCoreV1PostNodeProxyWithPath operation.
+//
+// Connect POST requests to proxy of Node.
+//
+// POST /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (r ConnectCoreV1PostNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNamespacedPodProxy implements connectCoreV1PutNamespacedPodProxy operation.
+//
+// Connect PUT requests to proxy of Pod.
+//
+// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (r ConnectCoreV1PutNamespacedPodProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNamespacedPodProxyWithPath implements connectCoreV1PutNamespacedPodProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Pod.
+//
+// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (r ConnectCoreV1PutNamespacedPodProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNamespacedServiceProxy implements connectCoreV1PutNamespacedServiceProxy operation.
+//
+// Connect PUT requests to proxy of Service.
+//
+// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (r ConnectCoreV1PutNamespacedServiceProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNamespacedServiceProxyWithPath implements connectCoreV1PutNamespacedServiceProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Service.
+//
+// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (r ConnectCoreV1PutNamespacedServiceProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNodeProxy implements connectCoreV1PutNodeProxy operation.
+//
+// Connect PUT requests to proxy of Node.
+//
+// PUT /api/v1/nodes/{name}/proxy
+func (UnimplementedHandler) ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (r ConnectCoreV1PutNodeProxyRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// ConnectCoreV1PutNodeProxyWithPath implements connectCoreV1PutNodeProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Node.
+//
+// PUT /api/v1/nodes/{name}/proxy/{path}
+func (UnimplementedHandler) ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (r ConnectCoreV1PutNodeProxyWithPathRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // GetAPIVersions implements getAPIVersions operation.
 //
 // Get available API versions.
@@ -478,6 +910,15 @@ func (UnimplementedHandler) GetSchedulingV1APIResources(ctx context.Context) (r 
 //
 // GET /.well-known/openid-configuration/
 func (UnimplementedHandler) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (r GetServiceAccountIssuerOpenIDConfigurationRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// GetServiceAccountIssuerOpenIDKeyset implements getServiceAccountIssuerOpenIDKeyset operation.
+//
+// Get service account issuer OpenID JSON Web Key Set (contains public token verification keys).
+//
+// GET /openid/v1/jwks/
+func (UnimplementedHandler) GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r GetServiceAccountIssuerOpenIDKeysetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

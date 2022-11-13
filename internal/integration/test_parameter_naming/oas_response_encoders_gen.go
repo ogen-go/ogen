@@ -12,13 +12,13 @@ import (
 func encodeHealthzGetResponse(response HealthzGetOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	return nil
 
+	return nil
 }
 
 func encodeSameNameResponse(response SameNameOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	return nil
 
+	return nil
 }

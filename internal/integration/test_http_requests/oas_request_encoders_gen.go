@@ -4,6 +4,8 @@ package api
 
 import (
 	"bytes"
+	"encoding/base64"
+	"io"
 	"mime"
 	"mime/multipart"
 	"net/http"
@@ -33,7 +35,8 @@ func encodeAllRequestBodiesRequest(
 		return nil
 	case *AllRequestBodiesReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesApplicationXWwwFormUrlencoded:
 		const contentType = "application/x-www-form-urlencoded"
@@ -112,11 +115,12 @@ func encodeAllRequestBodiesRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	case *AllRequestBodiesReqTextPlain:
 		const contentType = "text/plain"
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -142,7 +146,8 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalReqApplicationOctetStream:
 		const contentType = "application/octet-stream"
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		const contentType = "application/x-www-form-urlencoded"
@@ -221,15 +226,32 @@ func encodeAllRequestBodiesOptionalRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	case *AllRequestBodiesOptionalReqTextPlain:
 		const contentType = "text/plain"
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
 	}
+}
+
+func encodeBase64RequestRequest(
+	req Base64RequestReq,
+	r *http.Request,
+) error {
+	const contentType = "text/plain"
+	body := ht.CreateBodyWriter(func(w io.Writer) error {
+		writer := base64.NewEncoder(base64.StdEncoding, w)
+		defer writer.Close()
+
+		_, err := io.Copy(writer, req)
+		return err
+	})
+	ht.SetCloserBody(r, body, contentType)
+	return nil
 }
 
 func encodeMaskContentTypeRequest(
@@ -242,7 +264,8 @@ func encodeMaskContentTypeRequest(
 	}
 	{
 		req := req.Content
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	}
 }
@@ -257,7 +280,8 @@ func encodeMaskContentTypeOptionalRequest(
 	}
 	{
 		req := req.Content
-		ht.SetBody(r, req, contentType)
+		body := req
+		ht.SetBody(r, body, contentType)
 		return nil
 	}
 }

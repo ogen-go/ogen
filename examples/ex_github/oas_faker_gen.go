@@ -13280,6 +13280,30 @@ func (s *LinkWithType) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *MarkdownRenderReq) SetFake() {
+	{
+		{
+			s.Text = "string"
+		}
+	}
+	{
+		{
+			s.Mode.SetFake()
+		}
+	}
+	{
+		{
+			s.Context.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *MarkdownRenderReqMode) SetFake() {
+	*s = MarkdownRenderReqModeMarkdown
+}
+
+// SetFake set fake values.
 func (s *MarketplaceAccount) SetFake() {
 	{
 		{
@@ -18486,6 +18510,15 @@ func (s *OptIssuesUpdateReqState) SetFake() {
 // SetFake set fake values.
 func (s *OptLinkWithType) SetFake() {
 	var elem LinkWithType
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptMarkdownRenderReqMode) SetFake() {
+	var elem MarkdownRenderReqMode
 	{
 		elem.SetFake()
 	}

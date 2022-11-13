@@ -3,6 +3,7 @@
 package api
 
 import (
+	"encoding/base64"
 	"io"
 	"mime"
 	"net/http"
@@ -72,7 +73,8 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		}
 		return &request, close, nil
 	case ct == "application/octet-stream":
-		request := AllRequestBodiesReqApplicationOctetStream{Data: r.Body}
+		reader := r.Body
+		request := AllRequestBodiesReqApplicationOctetStream{Data: reader}
 		return &request, close, nil
 	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
@@ -230,7 +232,8 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		}
 		return &request, close, nil
 	case ct == "text/plain":
-		request := AllRequestBodiesReqTextPlain{Data: r.Body}
+		reader := r.Body
+		request := AllRequestBodiesReqTextPlain{Data: reader}
 		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -295,7 +298,8 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 		}
 		return &request, close, nil
 	case ct == "application/octet-stream":
-		request := AllRequestBodiesOptionalReqApplicationOctetStream{Data: r.Body}
+		reader := r.Body
+		request := AllRequestBodiesOptionalReqApplicationOctetStream{Data: reader}
 		return &request, close, nil
 	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
@@ -453,8 +457,43 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 		}
 		return &request, close, nil
 	case ct == "text/plain":
-		request := AllRequestBodiesOptionalReqTextPlain{Data: r.Body}
+		reader := r.Body
+		request := AllRequestBodiesOptionalReqTextPlain{Data: reader}
 		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeBase64RequestRequest(r *http.Request) (
+	req Base64RequestReq,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ct == "text/plain":
+		reader := base64.NewDecoder(base64.StdEncoding, r.Body)
+		request := Base64RequestReq{Data: reader}
+		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -486,7 +525,8 @@ func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 	}
 	switch {
 	case ht.MatchContentType("application/*", ct):
-		request := MaskContentTypeReq{Data: r.Body}
+		reader := r.Body
+		request := MaskContentTypeReq{Data: reader}
 		wrapped := MaskContentTypeReqWithContentType{
 			ContentType: ct,
 			Content:     request,
@@ -526,7 +566,8 @@ func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 	}
 	switch {
 	case ht.MatchContentType("application/*", ct):
-		request := MaskContentTypeOptionalReq{Data: r.Body}
+		reader := r.Body
+		request := MaskContentTypeOptionalReq{Data: reader}
 		wrapped := MaskContentTypeOptionalReqWithContentType{
 			ContentType: ct,
 			Content:     request,

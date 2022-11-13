@@ -9400,6 +9400,19 @@ type CodeScanningGetAnalysisApplicationJSONNotFound BasicError
 
 func (*CodeScanningGetAnalysisApplicationJSONNotFound) codeScanningGetAnalysisRes() {}
 
+type CodeScanningGetAnalysisOKApplicationJSONSarif struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s CodeScanningGetAnalysisOKApplicationJSONSarif) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*CodeScanningGetAnalysisOKApplicationJSONSarif) codeScanningGetAnalysisRes() {}
+
 // CodeScanningGetSarifNotFound is response for CodeScanningGetSarif operation.
 type CodeScanningGetSarifNotFound struct{}
 
@@ -26346,6 +26359,172 @@ func (s *LinkWithType) SetType(val string) {
 	s.Type = val
 }
 
+type MarkdownRenderOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s MarkdownRenderOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+// MarkdownRenderOKHeaders wraps MarkdownRenderOK with response headers.
+type MarkdownRenderOKHeaders struct {
+	ContentLength        OptString
+	XCommonMarkerVersion OptString
+	Response             MarkdownRenderOK
+}
+
+// GetContentLength returns the value of ContentLength.
+func (s MarkdownRenderOKHeaders) GetContentLength() OptString {
+	return s.ContentLength
+}
+
+// GetXCommonMarkerVersion returns the value of XCommonMarkerVersion.
+func (s MarkdownRenderOKHeaders) GetXCommonMarkerVersion() OptString {
+	return s.XCommonMarkerVersion
+}
+
+// GetResponse returns the value of Response.
+func (s MarkdownRenderOKHeaders) GetResponse() MarkdownRenderOK {
+	return s.Response
+}
+
+// SetContentLength sets the value of ContentLength.
+func (s *MarkdownRenderOKHeaders) SetContentLength(val OptString) {
+	s.ContentLength = val
+}
+
+// SetXCommonMarkerVersion sets the value of XCommonMarkerVersion.
+func (s *MarkdownRenderOKHeaders) SetXCommonMarkerVersion(val OptString) {
+	s.XCommonMarkerVersion = val
+}
+
+// SetResponse sets the value of Response.
+func (s *MarkdownRenderOKHeaders) SetResponse(val MarkdownRenderOK) {
+	s.Response = val
+}
+
+func (*MarkdownRenderOKHeaders) markdownRenderRes() {}
+
+type MarkdownRenderRawOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s MarkdownRenderRawOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+// MarkdownRenderRawOKHeaders wraps MarkdownRenderRawOK with response headers.
+type MarkdownRenderRawOKHeaders struct {
+	XCommonMarkerVersion OptString
+	Response             MarkdownRenderRawOK
+}
+
+// GetXCommonMarkerVersion returns the value of XCommonMarkerVersion.
+func (s MarkdownRenderRawOKHeaders) GetXCommonMarkerVersion() OptString {
+	return s.XCommonMarkerVersion
+}
+
+// GetResponse returns the value of Response.
+func (s MarkdownRenderRawOKHeaders) GetResponse() MarkdownRenderRawOK {
+	return s.Response
+}
+
+// SetXCommonMarkerVersion sets the value of XCommonMarkerVersion.
+func (s *MarkdownRenderRawOKHeaders) SetXCommonMarkerVersion(val OptString) {
+	s.XCommonMarkerVersion = val
+}
+
+// SetResponse sets the value of Response.
+func (s *MarkdownRenderRawOKHeaders) SetResponse(val MarkdownRenderRawOK) {
+	s.Response = val
+}
+
+func (*MarkdownRenderRawOKHeaders) markdownRenderRawRes() {}
+
+type MarkdownRenderRawReqEmptyBody struct{}
+
+func (*MarkdownRenderRawReqEmptyBody) markdownRenderRawReq() {}
+
+type MarkdownRenderRawReqTextPlain struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s MarkdownRenderRawReqTextPlain) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MarkdownRenderRawReqTextPlain) markdownRenderRawReq() {}
+
+type MarkdownRenderRawReqTextXMarkdown struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s MarkdownRenderRawReqTextXMarkdown) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*MarkdownRenderRawReqTextXMarkdown) markdownRenderRawReq() {}
+
+type MarkdownRenderReq struct {
+	// The Markdown text to render in HTML.
+	Text string `json:"text"`
+	// The rendering mode.
+	Mode OptMarkdownRenderReqMode `json:"mode"`
+	// The repository context to use when creating references in `gfm` mode.
+	Context OptString `json:"context"`
+}
+
+// GetText returns the value of Text.
+func (s MarkdownRenderReq) GetText() string {
+	return s.Text
+}
+
+// GetMode returns the value of Mode.
+func (s MarkdownRenderReq) GetMode() OptMarkdownRenderReqMode {
+	return s.Mode
+}
+
+// GetContext returns the value of Context.
+func (s MarkdownRenderReq) GetContext() OptString {
+	return s.Context
+}
+
+// SetText sets the value of Text.
+func (s *MarkdownRenderReq) SetText(val string) {
+	s.Text = val
+}
+
+// SetMode sets the value of Mode.
+func (s *MarkdownRenderReq) SetMode(val OptMarkdownRenderReqMode) {
+	s.Mode = val
+}
+
+// SetContext sets the value of Context.
+func (s *MarkdownRenderReq) SetContext(val OptString) {
+	s.Context = val
+}
+
+// The rendering mode.
+type MarkdownRenderReqMode string
+
+const (
+	MarkdownRenderReqModeMarkdown MarkdownRenderReqMode = "markdown"
+	MarkdownRenderReqModeGfm      MarkdownRenderReqMode = "gfm"
+)
+
 // Ref: #/components/schemas/marketplace-account
 type MarketplaceAccount struct {
 	URL                      url.URL      `json:"url"`
@@ -26867,6 +27046,17 @@ const (
 	MergedUpstreamMergeTypeFastForward MergedUpstreamMergeType = "fast-forward"
 	MergedUpstreamMergeTypeNone        MergedUpstreamMergeType = "none"
 )
+
+type MetaGetOctocatOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s MetaGetOctocatOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
 
 type MetaGetZenOK struct {
 	Data io.Reader
@@ -30791,6 +30981,8 @@ func (*NotModified) issuesListForAuthenticatedUserRes()                    {}
 func (*NotModified) issuesListRes()                                        {}
 func (*NotModified) licensesGetAllCommonlyUsedRes()                        {}
 func (*NotModified) licensesGetRes()                                       {}
+func (*NotModified) markdownRenderRawRes()                                 {}
+func (*NotModified) markdownRenderRes()                                    {}
 func (*NotModified) metaGetRes()                                           {}
 func (*NotModified) migrationsDeleteArchiveForAuthenticatedUserRes()       {}
 func (*NotModified) migrationsGetArchiveForAuthenticatedUserRes()          {}
@@ -43238,6 +43430,52 @@ func (o OptLinkWithType) Get() (v LinkWithType, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptLinkWithType) Or(d LinkWithType) LinkWithType {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMarkdownRenderReqMode returns new OptMarkdownRenderReqMode with value set to v.
+func NewOptMarkdownRenderReqMode(v MarkdownRenderReqMode) OptMarkdownRenderReqMode {
+	return OptMarkdownRenderReqMode{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMarkdownRenderReqMode is optional MarkdownRenderReqMode.
+type OptMarkdownRenderReqMode struct {
+	Value MarkdownRenderReqMode
+	Set   bool
+}
+
+// IsSet returns true if OptMarkdownRenderReqMode was set.
+func (o OptMarkdownRenderReqMode) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMarkdownRenderReqMode) Reset() {
+	var v MarkdownRenderReqMode
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMarkdownRenderReqMode) SetTo(v MarkdownRenderReqMode) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMarkdownRenderReqMode) Get() (v MarkdownRenderReqMode, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMarkdownRenderReqMode) Or(d MarkdownRenderReqMode) MarkdownRenderReqMode {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -77862,6 +78100,44 @@ func (s *ReposUpdateWebhookReqConfig) SetAddress(val OptString) {
 // SetRoom sets the value of Room.
 func (s *ReposUpdateWebhookReqConfig) SetRoom(val OptString) {
 	s.Room = val
+}
+
+// The raw file data.
+type ReposUploadReleaseAssetReq struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ReposUploadReleaseAssetReq) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+// ReposUploadReleaseAssetReqWithContentType wraps ReposUploadReleaseAssetReq with Content-Type.
+type ReposUploadReleaseAssetReqWithContentType struct {
+	ContentType string
+	Content     ReposUploadReleaseAssetReq
+}
+
+// GetContentType returns the value of ContentType.
+func (s ReposUploadReleaseAssetReqWithContentType) GetContentType() string {
+	return s.ContentType
+}
+
+// GetContent returns the value of Content.
+func (s ReposUploadReleaseAssetReqWithContentType) GetContent() ReposUploadReleaseAssetReq {
+	return s.Content
+}
+
+// SetContentType sets the value of ContentType.
+func (s *ReposUploadReleaseAssetReqWithContentType) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetContent sets the value of Content.
+func (s *ReposUploadReleaseAssetReqWithContentType) SetContent(val ReposUploadReleaseAssetReq) {
+	s.Content = val
 }
 
 // A git repository.

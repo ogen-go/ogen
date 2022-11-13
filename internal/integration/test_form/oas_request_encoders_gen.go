@@ -242,7 +242,7 @@ func encodeTestMultipartRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 
@@ -310,7 +310,7 @@ func encodeTestMultipartUploadRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 
@@ -360,7 +360,7 @@ func encodeTestShareFormSchemaRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)

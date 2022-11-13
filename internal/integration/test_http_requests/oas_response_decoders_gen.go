@@ -4,6 +4,7 @@ package api
 
 import (
 	"bytes"
+	"encoding/base64"
 	"io"
 	"mime"
 	"net/http"
@@ -24,7 +25,8 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -48,12 +50,38 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
 
 			response := AllRequestBodiesOptionalOK{Data: bytes.NewReader(b)}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "text/plain":
+			reader := base64.NewDecoder(base64.StdEncoding, resp.Body)
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
+
+			response := Base64RequestOK{Data: bytes.NewReader(b)}
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

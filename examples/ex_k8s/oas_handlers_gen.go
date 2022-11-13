@@ -16,6 +16,5818 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// handleConnectCoreV1DeleteNamespacedPodProxyRequest handles connectCoreV1DeleteNamespacedPodProxy operation.
+//
+// Connect DELETE requests to proxy of Pod.
+//
+// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNamespacedPodProxy",
+			ID:   "connectCoreV1DeleteNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNamespacedPodProxy",
+			OperationID:   "connectCoreV1DeleteNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNamespacedPodProxyParams
+			Response = ConnectCoreV1DeleteNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest handles connectCoreV1DeleteNamespacedPodProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Pod.
+//
+// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1DeleteNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1DeleteNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1DeleteNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1DeleteNamespacedServiceProxyRequest handles connectCoreV1DeleteNamespacedServiceProxy operation.
+//
+// Connect DELETE requests to proxy of Service.
+//
+// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNamespacedServiceProxy",
+			ID:   "connectCoreV1DeleteNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNamespacedServiceProxy",
+			OperationID:   "connectCoreV1DeleteNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNamespacedServiceProxyParams
+			Response = ConnectCoreV1DeleteNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest handles connectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Service.
+//
+// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1DeleteNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1DeleteNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1DeleteNodeProxyRequest handles connectCoreV1DeleteNodeProxy operation.
+//
+// Connect DELETE requests to proxy of Node.
+//
+// DELETE /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNodeProxy",
+			ID:   "connectCoreV1DeleteNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNodeProxy",
+			OperationID:   "connectCoreV1DeleteNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNodeProxyParams
+			Response = ConnectCoreV1DeleteNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1DeleteNodeProxyWithPathRequest handles connectCoreV1DeleteNodeProxyWithPath operation.
+//
+// Connect DELETE requests to proxy of Node.
+//
+// DELETE /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1DeleteNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1DeleteNodeProxyWithPath",
+			ID:   "connectCoreV1DeleteNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1DeleteNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1DeleteNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1DeleteNodeProxyWithPath",
+			OperationID:   "connectCoreV1DeleteNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1DeleteNodeProxyWithPathParams
+			Response = ConnectCoreV1DeleteNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1DeleteNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1DeleteNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1DeleteNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1DeleteNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedPodAttachRequest handles connectCoreV1GetNamespacedPodAttach operation.
+//
+// Connect GET requests to attach of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/attach
+func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedPodAttach"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodAttach",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedPodAttach",
+			ID:   "connectCoreV1GetNamespacedPodAttach",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedPodAttachParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedPodAttachRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedPodAttach",
+			OperationID:   "connectCoreV1GetNamespacedPodAttach",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "container",
+					In:   "query",
+				}: params.Container,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "stderr",
+					In:   "query",
+				}: params.Stderr,
+				{
+					Name: "stdin",
+					In:   "query",
+				}: params.Stdin,
+				{
+					Name: "stdout",
+					In:   "query",
+				}: params.Stdout,
+				{
+					Name: "tty",
+					In:   "query",
+				}: params.Tty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedPodAttachParams
+			Response = ConnectCoreV1GetNamespacedPodAttachRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedPodAttachParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedPodAttach(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedPodAttach(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedPodAttachResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedPodExecRequest handles connectCoreV1GetNamespacedPodExec operation.
+//
+// Connect GET requests to exec of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/exec
+func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedPodExec"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodExec",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedPodExec",
+			ID:   "connectCoreV1GetNamespacedPodExec",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedPodExecParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedPodExecRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedPodExec",
+			OperationID:   "connectCoreV1GetNamespacedPodExec",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "command",
+					In:   "query",
+				}: params.Command,
+				{
+					Name: "container",
+					In:   "query",
+				}: params.Container,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "stderr",
+					In:   "query",
+				}: params.Stderr,
+				{
+					Name: "stdin",
+					In:   "query",
+				}: params.Stdin,
+				{
+					Name: "stdout",
+					In:   "query",
+				}: params.Stdout,
+				{
+					Name: "tty",
+					In:   "query",
+				}: params.Tty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedPodExecParams
+			Response = ConnectCoreV1GetNamespacedPodExecRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedPodExecParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedPodExec(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedPodExec(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedPodExecResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedPodPortforwardRequest handles connectCoreV1GetNamespacedPodPortforward operation.
+//
+// Connect GET requests to portforward of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
+func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedPodPortforward"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodPortforward",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedPodPortforward",
+			ID:   "connectCoreV1GetNamespacedPodPortforward",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedPodPortforwardParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedPodPortforwardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedPodPortforward",
+			OperationID:   "connectCoreV1GetNamespacedPodPortforward",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "ports",
+					In:   "query",
+				}: params.Ports,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedPodPortforwardParams
+			Response = ConnectCoreV1GetNamespacedPodPortforwardRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedPodPortforwardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedPodPortforward(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedPodPortforward(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedPodPortforwardResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedPodProxyRequest handles connectCoreV1GetNamespacedPodProxy operation.
+//
+// Connect GET requests to proxy of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedPodProxy",
+			ID:   "connectCoreV1GetNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedPodProxy",
+			OperationID:   "connectCoreV1GetNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedPodProxyParams
+			Response = ConnectCoreV1GetNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedPodProxyWithPathRequest handles connectCoreV1GetNamespacedPodProxyWithPath operation.
+//
+// Connect GET requests to proxy of Pod.
+//
+// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1GetNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1GetNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1GetNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedServiceProxyRequest handles connectCoreV1GetNamespacedServiceProxy operation.
+//
+// Connect GET requests to proxy of Service.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedServiceProxy",
+			ID:   "connectCoreV1GetNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedServiceProxy",
+			OperationID:   "connectCoreV1GetNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedServiceProxyParams
+			Response = ConnectCoreV1GetNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest handles connectCoreV1GetNamespacedServiceProxyWithPath operation.
+//
+// Connect GET requests to proxy of Service.
+//
+// GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1GetNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1GetNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1GetNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNodeProxyRequest handles connectCoreV1GetNodeProxy operation.
+//
+// Connect GET requests to proxy of Node.
+//
+// GET /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNodeProxy",
+			ID:   "connectCoreV1GetNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNodeProxy",
+			OperationID:   "connectCoreV1GetNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNodeProxyParams
+			Response = ConnectCoreV1GetNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1GetNodeProxyWithPathRequest handles connectCoreV1GetNodeProxyWithPath operation.
+//
+// Connect GET requests to proxy of Node.
+//
+// GET /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1GetNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1GetNodeProxyWithPath",
+			ID:   "connectCoreV1GetNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1GetNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1GetNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1GetNodeProxyWithPath",
+			OperationID:   "connectCoreV1GetNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1GetNodeProxyWithPathParams
+			Response = ConnectCoreV1GetNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1GetNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1GetNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1GetNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1GetNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNamespacedPodProxyRequest handles connectCoreV1HeadNamespacedPodProxy operation.
+//
+// Connect HEAD requests to proxy of Pod.
+//
+// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNamespacedPodProxy",
+			ID:   "connectCoreV1HeadNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNamespacedPodProxy",
+			OperationID:   "connectCoreV1HeadNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNamespacedPodProxyParams
+			Response = ConnectCoreV1HeadNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest handles connectCoreV1HeadNamespacedPodProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Pod.
+//
+// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1HeadNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1HeadNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1HeadNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNamespacedServiceProxyRequest handles connectCoreV1HeadNamespacedServiceProxy operation.
+//
+// Connect HEAD requests to proxy of Service.
+//
+// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNamespacedServiceProxy",
+			ID:   "connectCoreV1HeadNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNamespacedServiceProxy",
+			OperationID:   "connectCoreV1HeadNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNamespacedServiceProxyParams
+			Response = ConnectCoreV1HeadNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest handles connectCoreV1HeadNamespacedServiceProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Service.
+//
+// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1HeadNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1HeadNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1HeadNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNodeProxyRequest handles connectCoreV1HeadNodeProxy operation.
+//
+// Connect HEAD requests to proxy of Node.
+//
+// HEAD /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNodeProxy",
+			ID:   "connectCoreV1HeadNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNodeProxy",
+			OperationID:   "connectCoreV1HeadNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNodeProxyParams
+			Response = ConnectCoreV1HeadNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1HeadNodeProxyWithPathRequest handles connectCoreV1HeadNodeProxyWithPath operation.
+//
+// Connect HEAD requests to proxy of Node.
+//
+// HEAD /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1HeadNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1HeadNodeProxyWithPath",
+			ID:   "connectCoreV1HeadNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1HeadNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1HeadNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1HeadNodeProxyWithPath",
+			OperationID:   "connectCoreV1HeadNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1HeadNodeProxyWithPathParams
+			Response = ConnectCoreV1HeadNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1HeadNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1HeadNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1HeadNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1HeadNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNamespacedPodProxyRequest handles connectCoreV1OptionsNamespacedPodProxy operation.
+//
+// Connect OPTIONS requests to proxy of Pod.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNamespacedPodProxy",
+			ID:   "connectCoreV1OptionsNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNamespacedPodProxy",
+			OperationID:   "connectCoreV1OptionsNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNamespacedPodProxyParams
+			Response = ConnectCoreV1OptionsNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest handles connectCoreV1OptionsNamespacedPodProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Pod.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1OptionsNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1OptionsNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1OptionsNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNamespacedServiceProxyRequest handles connectCoreV1OptionsNamespacedServiceProxy operation.
+//
+// Connect OPTIONS requests to proxy of Service.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNamespacedServiceProxy",
+			ID:   "connectCoreV1OptionsNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNamespacedServiceProxy",
+			OperationID:   "connectCoreV1OptionsNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNamespacedServiceProxyParams
+			Response = ConnectCoreV1OptionsNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest handles connectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Service.
+//
+// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1OptionsNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1OptionsNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNodeProxyRequest handles connectCoreV1OptionsNodeProxy operation.
+//
+// Connect OPTIONS requests to proxy of Node.
+//
+// OPTIONS /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNodeProxy",
+			ID:   "connectCoreV1OptionsNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNodeProxy",
+			OperationID:   "connectCoreV1OptionsNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNodeProxyParams
+			Response = ConnectCoreV1OptionsNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1OptionsNodeProxyWithPathRequest handles connectCoreV1OptionsNodeProxyWithPath operation.
+//
+// Connect OPTIONS requests to proxy of Node.
+//
+// OPTIONS /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1OptionsNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1OptionsNodeProxyWithPath",
+			ID:   "connectCoreV1OptionsNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1OptionsNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1OptionsNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1OptionsNodeProxyWithPath",
+			OperationID:   "connectCoreV1OptionsNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1OptionsNodeProxyWithPathParams
+			Response = ConnectCoreV1OptionsNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1OptionsNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1OptionsNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1OptionsNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1OptionsNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNamespacedPodProxyRequest handles connectCoreV1PatchNamespacedPodProxy operation.
+//
+// Connect PATCH requests to proxy of Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNamespacedPodProxy",
+			ID:   "connectCoreV1PatchNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNamespacedPodProxy",
+			OperationID:   "connectCoreV1PatchNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNamespacedPodProxyParams
+			Response = ConnectCoreV1PatchNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest handles connectCoreV1PatchNamespacedPodProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Pod.
+//
+// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1PatchNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1PatchNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1PatchNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNamespacedServiceProxyRequest handles connectCoreV1PatchNamespacedServiceProxy operation.
+//
+// Connect PATCH requests to proxy of Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNamespacedServiceProxy",
+			ID:   "connectCoreV1PatchNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNamespacedServiceProxy",
+			OperationID:   "connectCoreV1PatchNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNamespacedServiceProxyParams
+			Response = ConnectCoreV1PatchNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest handles connectCoreV1PatchNamespacedServiceProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Service.
+//
+// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1PatchNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1PatchNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1PatchNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNodeProxyRequest handles connectCoreV1PatchNodeProxy operation.
+//
+// Connect PATCH requests to proxy of Node.
+//
+// PATCH /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNodeProxy",
+			ID:   "connectCoreV1PatchNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNodeProxy",
+			OperationID:   "connectCoreV1PatchNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNodeProxyParams
+			Response = ConnectCoreV1PatchNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PatchNodeProxyWithPathRequest handles connectCoreV1PatchNodeProxyWithPath operation.
+//
+// Connect PATCH requests to proxy of Node.
+//
+// PATCH /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PatchNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PatchNodeProxyWithPath",
+			ID:   "connectCoreV1PatchNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PatchNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PatchNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PatchNodeProxyWithPath",
+			OperationID:   "connectCoreV1PatchNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PatchNodeProxyWithPathParams
+			Response = ConnectCoreV1PatchNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PatchNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PatchNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PatchNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PatchNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedPodAttachRequest handles connectCoreV1PostNamespacedPodAttach operation.
+//
+// Connect POST requests to attach of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/attach
+func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedPodAttach"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodAttach",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedPodAttach",
+			ID:   "connectCoreV1PostNamespacedPodAttach",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedPodAttachParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedPodAttachRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedPodAttach",
+			OperationID:   "connectCoreV1PostNamespacedPodAttach",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "container",
+					In:   "query",
+				}: params.Container,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "stderr",
+					In:   "query",
+				}: params.Stderr,
+				{
+					Name: "stdin",
+					In:   "query",
+				}: params.Stdin,
+				{
+					Name: "stdout",
+					In:   "query",
+				}: params.Stdout,
+				{
+					Name: "tty",
+					In:   "query",
+				}: params.Tty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedPodAttachParams
+			Response = ConnectCoreV1PostNamespacedPodAttachRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedPodAttachParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedPodAttach(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedPodAttach(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedPodAttachResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedPodExecRequest handles connectCoreV1PostNamespacedPodExec operation.
+//
+// Connect POST requests to exec of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/exec
+func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedPodExec"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodExec",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedPodExec",
+			ID:   "connectCoreV1PostNamespacedPodExec",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedPodExecParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedPodExecRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedPodExec",
+			OperationID:   "connectCoreV1PostNamespacedPodExec",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "command",
+					In:   "query",
+				}: params.Command,
+				{
+					Name: "container",
+					In:   "query",
+				}: params.Container,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "stderr",
+					In:   "query",
+				}: params.Stderr,
+				{
+					Name: "stdin",
+					In:   "query",
+				}: params.Stdin,
+				{
+					Name: "stdout",
+					In:   "query",
+				}: params.Stdout,
+				{
+					Name: "tty",
+					In:   "query",
+				}: params.Tty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedPodExecParams
+			Response = ConnectCoreV1PostNamespacedPodExecRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedPodExecParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedPodExec(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedPodExec(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedPodExecResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedPodPortforwardRequest handles connectCoreV1PostNamespacedPodPortforward operation.
+//
+// Connect POST requests to portforward of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
+func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedPodPortforward"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodPortforward",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedPodPortforward",
+			ID:   "connectCoreV1PostNamespacedPodPortforward",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedPodPortforwardParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedPodPortforwardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedPodPortforward",
+			OperationID:   "connectCoreV1PostNamespacedPodPortforward",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "ports",
+					In:   "query",
+				}: params.Ports,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedPodPortforwardParams
+			Response = ConnectCoreV1PostNamespacedPodPortforwardRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedPodPortforwardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedPodPortforward(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedPodPortforward(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedPodPortforwardResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedPodProxyRequest handles connectCoreV1PostNamespacedPodProxy operation.
+//
+// Connect POST requests to proxy of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedPodProxy",
+			ID:   "connectCoreV1PostNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedPodProxy",
+			OperationID:   "connectCoreV1PostNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedPodProxyParams
+			Response = ConnectCoreV1PostNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedPodProxyWithPathRequest handles connectCoreV1PostNamespacedPodProxyWithPath operation.
+//
+// Connect POST requests to proxy of Pod.
+//
+// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1PostNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1PostNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1PostNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedServiceProxyRequest handles connectCoreV1PostNamespacedServiceProxy operation.
+//
+// Connect POST requests to proxy of Service.
+//
+// POST /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedServiceProxy",
+			ID:   "connectCoreV1PostNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedServiceProxy",
+			OperationID:   "connectCoreV1PostNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedServiceProxyParams
+			Response = ConnectCoreV1PostNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest handles connectCoreV1PostNamespacedServiceProxyWithPath operation.
+//
+// Connect POST requests to proxy of Service.
+//
+// POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1PostNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1PostNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1PostNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNodeProxyRequest handles connectCoreV1PostNodeProxy operation.
+//
+// Connect POST requests to proxy of Node.
+//
+// POST /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNodeProxy",
+			ID:   "connectCoreV1PostNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNodeProxy",
+			OperationID:   "connectCoreV1PostNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNodeProxyParams
+			Response = ConnectCoreV1PostNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PostNodeProxyWithPathRequest handles connectCoreV1PostNodeProxyWithPath operation.
+//
+// Connect POST requests to proxy of Node.
+//
+// POST /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PostNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PostNodeProxyWithPath",
+			ID:   "connectCoreV1PostNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PostNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PostNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PostNodeProxyWithPath",
+			OperationID:   "connectCoreV1PostNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PostNodeProxyWithPathParams
+			Response = ConnectCoreV1PostNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PostNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PostNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PostNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PostNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNamespacedPodProxyRequest handles connectCoreV1PutNamespacedPodProxy operation.
+//
+// Connect PUT requests to proxy of Pod.
+//
+// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
+func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNamespacedPodProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedPodProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNamespacedPodProxy",
+			ID:   "connectCoreV1PutNamespacedPodProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNamespacedPodProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNamespacedPodProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNamespacedPodProxy",
+			OperationID:   "connectCoreV1PutNamespacedPodProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNamespacedPodProxyParams
+			Response = ConnectCoreV1PutNamespacedPodProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNamespacedPodProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNamespacedPodProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNamespacedPodProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNamespacedPodProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNamespacedPodProxyWithPathRequest handles connectCoreV1PutNamespacedPodProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Pod.
+//
+// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNamespacedPodProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedPodProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNamespacedPodProxyWithPath",
+			ID:   "connectCoreV1PutNamespacedPodProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNamespacedPodProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNamespacedPodProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNamespacedPodProxyWithPath",
+			OperationID:   "connectCoreV1PutNamespacedPodProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNamespacedPodProxyWithPathParams
+			Response = ConnectCoreV1PutNamespacedPodProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNamespacedPodProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNamespacedPodProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNamespacedPodProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNamespacedServiceProxyRequest handles connectCoreV1PutNamespacedServiceProxy operation.
+//
+// Connect PUT requests to proxy of Service.
+//
+// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
+func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedServiceProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNamespacedServiceProxy",
+			ID:   "connectCoreV1PutNamespacedServiceProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNamespacedServiceProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNamespacedServiceProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNamespacedServiceProxy",
+			OperationID:   "connectCoreV1PutNamespacedServiceProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNamespacedServiceProxyParams
+			Response = ConnectCoreV1PutNamespacedServiceProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNamespacedServiceProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNamespacedServiceProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNamespacedServiceProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNamespacedServiceProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest handles connectCoreV1PutNamespacedServiceProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Service.
+//
+// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNamespacedServiceProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+			ID:   "connectCoreV1PutNamespacedServiceProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNamespacedServiceProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNamespacedServiceProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+			OperationID:   "connectCoreV1PutNamespacedServiceProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNamespacedServiceProxyWithPathParams
+			Response = ConnectCoreV1PutNamespacedServiceProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNamespacedServiceProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNodeProxyRequest handles connectCoreV1PutNodeProxy operation.
+//
+// Connect PUT requests to proxy of Node.
+//
+// PUT /api/v1/nodes/{name}/proxy
+func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNodeProxy"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNodeProxy",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNodeProxy",
+			ID:   "connectCoreV1PutNodeProxy",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNodeProxyParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNodeProxyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNodeProxy",
+			OperationID:   "connectCoreV1PutNodeProxy",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNodeProxyParams
+			Response = ConnectCoreV1PutNodeProxyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNodeProxyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNodeProxy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNodeProxy(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNodeProxyResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleConnectCoreV1PutNodeProxyWithPathRequest handles connectCoreV1PutNodeProxyWithPath operation.
+//
+// Connect PUT requests to proxy of Node.
+//
+// PUT /api/v1/nodes/{name}/proxy/{path}
+func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("connectCoreV1PutNodeProxyWithPath"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNodeProxyWithPath",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ConnectCoreV1PutNodeProxyWithPath",
+			ID:   "connectCoreV1PutNodeProxyWithPath",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+	params, err := decodeConnectCoreV1PutNodeProxyWithPathParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response ConnectCoreV1PutNodeProxyWithPathRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ConnectCoreV1PutNodeProxyWithPath",
+			OperationID:   "connectCoreV1PutNodeProxyWithPath",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ConnectCoreV1PutNodeProxyWithPathParams
+			Response = ConnectCoreV1PutNodeProxyWithPathRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackConnectCoreV1PutNodeProxyWithPathParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ConnectCoreV1PutNodeProxyWithPath(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ConnectCoreV1PutNodeProxyWithPath(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeConnectCoreV1PutNodeProxyWithPathResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
 // handleGetAPIVersionsRequest handles getAPIVersions operation.
 //
 // Get available API versions.
@@ -5002,6 +10814,102 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	}
 
 	if err := encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleGetServiceAccountIssuerOpenIDKeysetRequest handles getServiceAccountIssuerOpenIDKeyset operation.
+//
+// Get service account issuer OpenID JSON Web Key Set (contains public token verification keys).
+//
+// GET /openid/v1/jwks/
+func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getServiceAccountIssuerOpenIDKeyset"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetServiceAccountIssuerOpenIDKeyset",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetServiceAccountIssuerOpenIDKeyset",
+			ID:   "getServiceAccountIssuerOpenIDKeyset",
+		}
+	)
+	if sctx, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r); err != nil {
+		err = &ogenerrors.SecurityError{
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
+		}
+		recordError("Security:BearerToken", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	} else {
+		ctx = sctx
+	}
+
+	var response GetServiceAccountIssuerOpenIDKeysetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetServiceAccountIssuerOpenIDKeyset",
+			OperationID:   "getServiceAccountIssuerOpenIDKeyset",
+			Body:          nil,
+			Params:        middleware.Parameters{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetServiceAccountIssuerOpenIDKeysetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetServiceAccountIssuerOpenIDKeyset(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetServiceAccountIssuerOpenIDKeyset(ctx)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeGetServiceAccountIssuerOpenIDKeysetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

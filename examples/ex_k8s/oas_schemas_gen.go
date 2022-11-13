@@ -21,6 +21,911 @@ func (s *BearerToken) SetAPIKey(val string) {
 	s.APIKey = val
 }
 
+type ConnectCoreV1DeleteNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyOK) connectCoreV1DeleteNamespacedPodProxyRes() {}
+
+// ConnectCoreV1DeleteNamespacedPodProxyUnauthorized is response for ConnectCoreV1DeleteNamespacedPodProxy operation.
+type ConnectCoreV1DeleteNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyUnauthorized) connectCoreV1DeleteNamespacedPodProxyRes() {
+}
+
+type ConnectCoreV1DeleteNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathOK) connectCoreV1DeleteNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNamespacedPodProxyWithPath operation.
+type ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNamespacedPodProxyWithPathUnauthorized) connectCoreV1DeleteNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1DeleteNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyOK) connectCoreV1DeleteNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized is response for ConnectCoreV1DeleteNamespacedServiceProxy operation.
+type ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyUnauthorized) connectCoreV1DeleteNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathOK) connectCoreV1DeleteNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNamespacedServiceProxyWithPathUnauthorized) connectCoreV1DeleteNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1DeleteNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNodeProxyOK) connectCoreV1DeleteNodeProxyRes() {}
+
+// ConnectCoreV1DeleteNodeProxyUnauthorized is response for ConnectCoreV1DeleteNodeProxy operation.
+type ConnectCoreV1DeleteNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNodeProxyUnauthorized) connectCoreV1DeleteNodeProxyRes() {}
+
+type ConnectCoreV1DeleteNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1DeleteNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1DeleteNodeProxyWithPathOK) connectCoreV1DeleteNodeProxyWithPathRes() {}
+
+// ConnectCoreV1DeleteNodeProxyWithPathUnauthorized is response for ConnectCoreV1DeleteNodeProxyWithPath operation.
+type ConnectCoreV1DeleteNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1DeleteNodeProxyWithPathUnauthorized) connectCoreV1DeleteNodeProxyWithPathRes() {}
+
+type ConnectCoreV1GetNamespacedPodAttachOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedPodAttachOK) connectCoreV1GetNamespacedPodAttachRes() {}
+
+// ConnectCoreV1GetNamespacedPodAttachUnauthorized is response for ConnectCoreV1GetNamespacedPodAttach operation.
+type ConnectCoreV1GetNamespacedPodAttachUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedPodAttachUnauthorized) connectCoreV1GetNamespacedPodAttachRes() {}
+
+type ConnectCoreV1GetNamespacedPodExecOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedPodExecOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedPodExecOK) connectCoreV1GetNamespacedPodExecRes() {}
+
+// ConnectCoreV1GetNamespacedPodExecUnauthorized is response for ConnectCoreV1GetNamespacedPodExec operation.
+type ConnectCoreV1GetNamespacedPodExecUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedPodExecUnauthorized) connectCoreV1GetNamespacedPodExecRes() {}
+
+type ConnectCoreV1GetNamespacedPodPortforwardOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedPodPortforwardOK) connectCoreV1GetNamespacedPodPortforwardRes() {}
+
+// ConnectCoreV1GetNamespacedPodPortforwardUnauthorized is response for ConnectCoreV1GetNamespacedPodPortforward operation.
+type ConnectCoreV1GetNamespacedPodPortforwardUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedPodPortforwardUnauthorized) connectCoreV1GetNamespacedPodPortforwardRes() {
+}
+
+type ConnectCoreV1GetNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedPodProxyOK) connectCoreV1GetNamespacedPodProxyRes() {}
+
+// ConnectCoreV1GetNamespacedPodProxyUnauthorized is response for ConnectCoreV1GetNamespacedPodProxy operation.
+type ConnectCoreV1GetNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedPodProxyUnauthorized) connectCoreV1GetNamespacedPodProxyRes() {}
+
+type ConnectCoreV1GetNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedPodProxyWithPathOK) connectCoreV1GetNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1GetNamespacedPodProxyWithPath operation.
+type ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedPodProxyWithPathUnauthorized) connectCoreV1GetNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1GetNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyOK) connectCoreV1GetNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1GetNamespacedServiceProxyUnauthorized is response for ConnectCoreV1GetNamespacedServiceProxy operation.
+type ConnectCoreV1GetNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyUnauthorized) connectCoreV1GetNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1GetNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyWithPathOK) connectCoreV1GetNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1GetNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1GetNamespacedServiceProxyWithPathUnauthorized) connectCoreV1GetNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1GetNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNodeProxyOK) connectCoreV1GetNodeProxyRes() {}
+
+// ConnectCoreV1GetNodeProxyUnauthorized is response for ConnectCoreV1GetNodeProxy operation.
+type ConnectCoreV1GetNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1GetNodeProxyUnauthorized) connectCoreV1GetNodeProxyRes() {}
+
+type ConnectCoreV1GetNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1GetNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1GetNodeProxyWithPathOK) connectCoreV1GetNodeProxyWithPathRes() {}
+
+// ConnectCoreV1GetNodeProxyWithPathUnauthorized is response for ConnectCoreV1GetNodeProxyWithPath operation.
+type ConnectCoreV1GetNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1GetNodeProxyWithPathUnauthorized) connectCoreV1GetNodeProxyWithPathRes() {}
+
+type ConnectCoreV1HeadNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyOK) connectCoreV1HeadNamespacedPodProxyRes() {}
+
+// ConnectCoreV1HeadNamespacedPodProxyUnauthorized is response for ConnectCoreV1HeadNamespacedPodProxy operation.
+type ConnectCoreV1HeadNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyUnauthorized) connectCoreV1HeadNamespacedPodProxyRes() {}
+
+type ConnectCoreV1HeadNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyWithPathOK) connectCoreV1HeadNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1HeadNamespacedPodProxyWithPath operation.
+type ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNamespacedPodProxyWithPathUnauthorized) connectCoreV1HeadNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1HeadNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyOK) connectCoreV1HeadNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1HeadNamespacedServiceProxyUnauthorized is response for ConnectCoreV1HeadNamespacedServiceProxy operation.
+type ConnectCoreV1HeadNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyUnauthorized) connectCoreV1HeadNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1HeadNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathOK) connectCoreV1HeadNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1HeadNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNamespacedServiceProxyWithPathUnauthorized) connectCoreV1HeadNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1HeadNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNodeProxyOK) connectCoreV1HeadNodeProxyRes() {}
+
+// ConnectCoreV1HeadNodeProxyUnauthorized is response for ConnectCoreV1HeadNodeProxy operation.
+type ConnectCoreV1HeadNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNodeProxyUnauthorized) connectCoreV1HeadNodeProxyRes() {}
+
+type ConnectCoreV1HeadNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1HeadNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1HeadNodeProxyWithPathOK) connectCoreV1HeadNodeProxyWithPathRes() {}
+
+// ConnectCoreV1HeadNodeProxyWithPathUnauthorized is response for ConnectCoreV1HeadNodeProxyWithPath operation.
+type ConnectCoreV1HeadNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1HeadNodeProxyWithPathUnauthorized) connectCoreV1HeadNodeProxyWithPathRes() {}
+
+type ConnectCoreV1OptionsNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyOK) connectCoreV1OptionsNamespacedPodProxyRes() {}
+
+// ConnectCoreV1OptionsNamespacedPodProxyUnauthorized is response for ConnectCoreV1OptionsNamespacedPodProxy operation.
+type ConnectCoreV1OptionsNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyUnauthorized) connectCoreV1OptionsNamespacedPodProxyRes() {
+}
+
+type ConnectCoreV1OptionsNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathOK) connectCoreV1OptionsNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNamespacedPodProxyWithPath operation.
+type ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNamespacedPodProxyWithPathUnauthorized) connectCoreV1OptionsNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1OptionsNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyOK) connectCoreV1OptionsNamespacedServiceProxyRes() {
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized is response for ConnectCoreV1OptionsNamespacedServiceProxy operation.
+type ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyUnauthorized) connectCoreV1OptionsNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathOK) connectCoreV1OptionsNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNamespacedServiceProxyWithPathUnauthorized) connectCoreV1OptionsNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1OptionsNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNodeProxyOK) connectCoreV1OptionsNodeProxyRes() {}
+
+// ConnectCoreV1OptionsNodeProxyUnauthorized is response for ConnectCoreV1OptionsNodeProxy operation.
+type ConnectCoreV1OptionsNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNodeProxyUnauthorized) connectCoreV1OptionsNodeProxyRes() {}
+
+type ConnectCoreV1OptionsNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1OptionsNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1OptionsNodeProxyWithPathOK) connectCoreV1OptionsNodeProxyWithPathRes() {}
+
+// ConnectCoreV1OptionsNodeProxyWithPathUnauthorized is response for ConnectCoreV1OptionsNodeProxyWithPath operation.
+type ConnectCoreV1OptionsNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1OptionsNodeProxyWithPathUnauthorized) connectCoreV1OptionsNodeProxyWithPathRes() {
+}
+
+type ConnectCoreV1PatchNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyOK) connectCoreV1PatchNamespacedPodProxyRes() {}
+
+// ConnectCoreV1PatchNamespacedPodProxyUnauthorized is response for ConnectCoreV1PatchNamespacedPodProxy operation.
+type ConnectCoreV1PatchNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyUnauthorized) connectCoreV1PatchNamespacedPodProxyRes() {}
+
+type ConnectCoreV1PatchNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyWithPathOK) connectCoreV1PatchNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PatchNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNamespacedPodProxyWithPathUnauthorized) connectCoreV1PatchNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1PatchNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyOK) connectCoreV1PatchNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1PatchNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PatchNamespacedServiceProxy operation.
+type ConnectCoreV1PatchNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyUnauthorized) connectCoreV1PatchNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1PatchNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathOK) connectCoreV1PatchNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PatchNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNamespacedServiceProxyWithPathUnauthorized) connectCoreV1PatchNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1PatchNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNodeProxyOK) connectCoreV1PatchNodeProxyRes() {}
+
+// ConnectCoreV1PatchNodeProxyUnauthorized is response for ConnectCoreV1PatchNodeProxy operation.
+type ConnectCoreV1PatchNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNodeProxyUnauthorized) connectCoreV1PatchNodeProxyRes() {}
+
+type ConnectCoreV1PatchNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PatchNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PatchNodeProxyWithPathOK) connectCoreV1PatchNodeProxyWithPathRes() {}
+
+// ConnectCoreV1PatchNodeProxyWithPathUnauthorized is response for ConnectCoreV1PatchNodeProxyWithPath operation.
+type ConnectCoreV1PatchNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PatchNodeProxyWithPathUnauthorized) connectCoreV1PatchNodeProxyWithPathRes() {}
+
+type ConnectCoreV1PostNamespacedPodAttachOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedPodAttachOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedPodAttachOK) connectCoreV1PostNamespacedPodAttachRes() {}
+
+// ConnectCoreV1PostNamespacedPodAttachUnauthorized is response for ConnectCoreV1PostNamespacedPodAttach operation.
+type ConnectCoreV1PostNamespacedPodAttachUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedPodAttachUnauthorized) connectCoreV1PostNamespacedPodAttachRes() {}
+
+type ConnectCoreV1PostNamespacedPodExecOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedPodExecOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedPodExecOK) connectCoreV1PostNamespacedPodExecRes() {}
+
+// ConnectCoreV1PostNamespacedPodExecUnauthorized is response for ConnectCoreV1PostNamespacedPodExec operation.
+type ConnectCoreV1PostNamespacedPodExecUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedPodExecUnauthorized) connectCoreV1PostNamespacedPodExecRes() {}
+
+type ConnectCoreV1PostNamespacedPodPortforwardOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedPodPortforwardOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedPodPortforwardOK) connectCoreV1PostNamespacedPodPortforwardRes() {}
+
+// ConnectCoreV1PostNamespacedPodPortforwardUnauthorized is response for ConnectCoreV1PostNamespacedPodPortforward operation.
+type ConnectCoreV1PostNamespacedPodPortforwardUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedPodPortforwardUnauthorized) connectCoreV1PostNamespacedPodPortforwardRes() {
+}
+
+type ConnectCoreV1PostNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedPodProxyOK) connectCoreV1PostNamespacedPodProxyRes() {}
+
+// ConnectCoreV1PostNamespacedPodProxyUnauthorized is response for ConnectCoreV1PostNamespacedPodProxy operation.
+type ConnectCoreV1PostNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedPodProxyUnauthorized) connectCoreV1PostNamespacedPodProxyRes() {}
+
+type ConnectCoreV1PostNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedPodProxyWithPathOK) connectCoreV1PostNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PostNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedPodProxyWithPathUnauthorized) connectCoreV1PostNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1PostNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyOK) connectCoreV1PostNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1PostNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PostNamespacedServiceProxy operation.
+type ConnectCoreV1PostNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyUnauthorized) connectCoreV1PostNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1PostNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyWithPathOK) connectCoreV1PostNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PostNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PostNamespacedServiceProxyWithPathUnauthorized) connectCoreV1PostNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1PostNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNodeProxyOK) connectCoreV1PostNodeProxyRes() {}
+
+// ConnectCoreV1PostNodeProxyUnauthorized is response for ConnectCoreV1PostNodeProxy operation.
+type ConnectCoreV1PostNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PostNodeProxyUnauthorized) connectCoreV1PostNodeProxyRes() {}
+
+type ConnectCoreV1PostNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PostNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PostNodeProxyWithPathOK) connectCoreV1PostNodeProxyWithPathRes() {}
+
+// ConnectCoreV1PostNodeProxyWithPathUnauthorized is response for ConnectCoreV1PostNodeProxyWithPath operation.
+type ConnectCoreV1PostNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PostNodeProxyWithPathUnauthorized) connectCoreV1PostNodeProxyWithPathRes() {}
+
+type ConnectCoreV1PutNamespacedPodProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNamespacedPodProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNamespacedPodProxyOK) connectCoreV1PutNamespacedPodProxyRes() {}
+
+// ConnectCoreV1PutNamespacedPodProxyUnauthorized is response for ConnectCoreV1PutNamespacedPodProxy operation.
+type ConnectCoreV1PutNamespacedPodProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PutNamespacedPodProxyUnauthorized) connectCoreV1PutNamespacedPodProxyRes() {}
+
+type ConnectCoreV1PutNamespacedPodProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNamespacedPodProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNamespacedPodProxyWithPathOK) connectCoreV1PutNamespacedPodProxyWithPathRes() {
+}
+
+// ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized is response for ConnectCoreV1PutNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PutNamespacedPodProxyWithPathUnauthorized) connectCoreV1PutNamespacedPodProxyWithPathRes() {
+}
+
+type ConnectCoreV1PutNamespacedServiceProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNamespacedServiceProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyOK) connectCoreV1PutNamespacedServiceProxyRes() {}
+
+// ConnectCoreV1PutNamespacedServiceProxyUnauthorized is response for ConnectCoreV1PutNamespacedServiceProxy operation.
+type ConnectCoreV1PutNamespacedServiceProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyUnauthorized) connectCoreV1PutNamespacedServiceProxyRes() {
+}
+
+type ConnectCoreV1PutNamespacedServiceProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNamespacedServiceProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyWithPathOK) connectCoreV1PutNamespacedServiceProxyWithPathRes() {
+}
+
+// ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized is response for ConnectCoreV1PutNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PutNamespacedServiceProxyWithPathUnauthorized) connectCoreV1PutNamespacedServiceProxyWithPathRes() {
+}
+
+type ConnectCoreV1PutNodeProxyOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNodeProxyOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNodeProxyOK) connectCoreV1PutNodeProxyRes() {}
+
+// ConnectCoreV1PutNodeProxyUnauthorized is response for ConnectCoreV1PutNodeProxy operation.
+type ConnectCoreV1PutNodeProxyUnauthorized struct{}
+
+func (*ConnectCoreV1PutNodeProxyUnauthorized) connectCoreV1PutNodeProxyRes() {}
+
+type ConnectCoreV1PutNodeProxyWithPathOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ConnectCoreV1PutNodeProxyWithPathOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ConnectCoreV1PutNodeProxyWithPathOK) connectCoreV1PutNodeProxyWithPathRes() {}
+
+// ConnectCoreV1PutNodeProxyWithPathUnauthorized is response for ConnectCoreV1PutNodeProxyWithPath operation.
+type ConnectCoreV1PutNodeProxyWithPathUnauthorized struct{}
+
+func (*ConnectCoreV1PutNodeProxyWithPathUnauthorized) connectCoreV1PutNodeProxyWithPathRes() {}
+
 // GetAPIVersionsUnauthorized is response for GetAPIVersions operation.
 type GetAPIVersionsUnauthorized struct{}
 
@@ -290,6 +1195,24 @@ type GetServiceAccountIssuerOpenIDConfigurationUnauthorized struct{}
 
 func (*GetServiceAccountIssuerOpenIDConfigurationUnauthorized) getServiceAccountIssuerOpenIDConfigurationRes() {
 }
+
+type GetServiceAccountIssuerOpenIDKeysetOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s GetServiceAccountIssuerOpenIDKeysetOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*GetServiceAccountIssuerOpenIDKeysetOK) getServiceAccountIssuerOpenIDKeysetRes() {}
+
+// GetServiceAccountIssuerOpenIDKeysetUnauthorized is response for GetServiceAccountIssuerOpenIDKeyset operation.
+type GetServiceAccountIssuerOpenIDKeysetUnauthorized struct{}
+
+func (*GetServiceAccountIssuerOpenIDKeysetUnauthorized) getServiceAccountIssuerOpenIDKeysetRes() {}
 
 // GetStorageAPIGroupUnauthorized is response for GetStorageAPIGroup operation.
 type GetStorageAPIGroupUnauthorized struct{}
@@ -46678,6 +47601,33 @@ func (*ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) readCoreV1Namespa
 type ReadCoreV1NamespacedPodLogOKApplicationJSON string
 
 func (*ReadCoreV1NamespacedPodLogOKApplicationJSON) readCoreV1NamespacedPodLogRes() {}
+
+type ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ReadCoreV1NamespacedPodLogOKApplicationVndKubernetesProtobuf) readCoreV1NamespacedPodLogRes() {
+}
+
+type ReadCoreV1NamespacedPodLogOKApplicationYaml struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s ReadCoreV1NamespacedPodLogOKApplicationYaml) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+func (*ReadCoreV1NamespacedPodLogOKApplicationYaml) readCoreV1NamespacedPodLogRes() {}
 
 type ReadCoreV1NamespacedPodLogOKTextPlain struct {
 	Data io.Reader

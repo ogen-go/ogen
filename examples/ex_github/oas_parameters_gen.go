@@ -35947,6 +35947,64 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 	return params, nil
 }
 
+// MetaGetOctocatParams is parameters of meta/get-octocat operation.
+type MetaGetOctocatParams struct {
+	// The words to show in Octocat's speech bubble.
+	S OptString
+}
+
+func unpackMetaGetOctocatParams(packed middleware.Parameters) (params MetaGetOctocatParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "s",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.S = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeMetaGetOctocatParams(args [0]string, r *http.Request) (params MetaGetOctocatParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: s.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "s",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotSVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotSVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.S.SetTo(paramsDotSVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: s: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
 // MigrationsCancelImportParams is parameters of migrations/cancel-import operation.
 type MigrationsCancelImportParams struct {
 	Owner string
@@ -81229,6 +81287,218 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+// ReposUploadReleaseAssetParams is parameters of repos/upload-release-asset operation.
+type ReposUploadReleaseAssetParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
+	Name      string
+	Label     OptString
+}
+
+func unpackReposUploadReleaseAssetParams(packed middleware.Parameters) (params ReposUploadReleaseAssetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "query",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "label",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Label = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeReposUploadReleaseAssetParams(args [3]string, r *http.Request) (params ReposUploadReleaseAssetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: owner: parse")
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: repo: parse")
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: release_id.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "release_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.ReleaseID = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: release_id: parse")
+			}
+		} else {
+			return params, errors.New("path: release_id: not specified")
+		}
+	}
+	// Decode query: name.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: name: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: label.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "label",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotLabelVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotLabelVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Label.SetTo(paramsDotLabelVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: label: parse")
+			}
 		}
 	}
 	return params, nil

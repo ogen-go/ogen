@@ -18,8 +18,8 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -29,6 +29,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	case *GetBookForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:
@@ -41,7 +42,9 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 	case *GetPageCoverImageOK:
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		if _, err := io.Copy(w, response); err != nil {
+
+		writer := w
+		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
@@ -49,6 +52,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 	case *GetPageCoverImageForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:
@@ -61,7 +65,9 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 	case *GetPageImageOK:
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		if _, err := io.Copy(w, response); err != nil {
+
+		writer := w
+		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
@@ -69,6 +75,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 	case *GetPageImageForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:
@@ -81,7 +88,9 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 	case *GetPageThumbnailImageOK:
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		if _, err := io.Copy(w, response); err != nil {
+
+		writer := w
+		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
@@ -89,6 +98,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 	case *GetPageThumbnailImageForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:
@@ -102,8 +112,8 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -113,6 +123,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 	case *SearchForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:
@@ -126,8 +137,8 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -137,6 +148,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDForbidden:
 		w.WriteHeader(403)
 		span.SetStatus(codes.Error, http.StatusText(403))
+
 		return nil
 
 	default:

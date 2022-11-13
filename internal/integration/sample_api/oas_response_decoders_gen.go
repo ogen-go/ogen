@@ -552,7 +552,8 @@ func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRe
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -610,7 +611,8 @@ func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNa
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}

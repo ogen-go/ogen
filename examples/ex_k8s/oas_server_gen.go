@@ -8,6 +8,294 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// ConnectCoreV1DeleteNamespacedPodProxy implements connectCoreV1DeleteNamespacedPodProxy operation.
+	//
+	// Connect DELETE requests to proxy of Pod.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyParams) (ConnectCoreV1DeleteNamespacedPodProxyRes, error)
+	// ConnectCoreV1DeleteNamespacedPodProxyWithPath implements connectCoreV1DeleteNamespacedPodProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Pod.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) (ConnectCoreV1DeleteNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1DeleteNamespacedServiceProxy implements connectCoreV1DeleteNamespacedServiceProxy operation.
+	//
+	// Connect DELETE requests to proxy of Service.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyParams) (ConnectCoreV1DeleteNamespacedServiceProxyRes, error)
+	// ConnectCoreV1DeleteNamespacedServiceProxyWithPath implements connectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Service.
+	//
+	// DELETE /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) (ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1DeleteNodeProxy implements connectCoreV1DeleteNodeProxy operation.
+	//
+	// Connect DELETE requests to proxy of Node.
+	//
+	// DELETE /api/v1/nodes/{name}/proxy
+	ConnectCoreV1DeleteNodeProxy(ctx context.Context, params ConnectCoreV1DeleteNodeProxyParams) (ConnectCoreV1DeleteNodeProxyRes, error)
+	// ConnectCoreV1DeleteNodeProxyWithPath implements connectCoreV1DeleteNodeProxyWithPath operation.
+	//
+	// Connect DELETE requests to proxy of Node.
+	//
+	// DELETE /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, params ConnectCoreV1DeleteNodeProxyWithPathParams) (ConnectCoreV1DeleteNodeProxyWithPathRes, error)
+	// ConnectCoreV1GetNamespacedPodAttach implements connectCoreV1GetNamespacedPodAttach operation.
+	//
+	// Connect GET requests to attach of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/attach
+	ConnectCoreV1GetNamespacedPodAttach(ctx context.Context, params ConnectCoreV1GetNamespacedPodAttachParams) (ConnectCoreV1GetNamespacedPodAttachRes, error)
+	// ConnectCoreV1GetNamespacedPodExec implements connectCoreV1GetNamespacedPodExec operation.
+	//
+	// Connect GET requests to exec of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/exec
+	ConnectCoreV1GetNamespacedPodExec(ctx context.Context, params ConnectCoreV1GetNamespacedPodExecParams) (ConnectCoreV1GetNamespacedPodExecRes, error)
+	// ConnectCoreV1GetNamespacedPodPortforward implements connectCoreV1GetNamespacedPodPortforward operation.
+	//
+	// Connect GET requests to portforward of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/portforward
+	ConnectCoreV1GetNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1GetNamespacedPodPortforwardParams) (ConnectCoreV1GetNamespacedPodPortforwardRes, error)
+	// ConnectCoreV1GetNamespacedPodProxy implements connectCoreV1GetNamespacedPodProxy operation.
+	//
+	// Connect GET requests to proxy of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1GetNamespacedPodProxy(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyParams) (ConnectCoreV1GetNamespacedPodProxyRes, error)
+	// ConnectCoreV1GetNamespacedPodProxyWithPath implements connectCoreV1GetNamespacedPodProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Pod.
+	//
+	// GET /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedPodProxyWithPathParams) (ConnectCoreV1GetNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1GetNamespacedServiceProxy implements connectCoreV1GetNamespacedServiceProxy operation.
+	//
+	// Connect GET requests to proxy of Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1GetNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyParams) (ConnectCoreV1GetNamespacedServiceProxyRes, error)
+	// ConnectCoreV1GetNamespacedServiceProxyWithPath implements connectCoreV1GetNamespacedServiceProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Service.
+	//
+	// GET /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) (ConnectCoreV1GetNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1GetNodeProxy implements connectCoreV1GetNodeProxy operation.
+	//
+	// Connect GET requests to proxy of Node.
+	//
+	// GET /api/v1/nodes/{name}/proxy
+	ConnectCoreV1GetNodeProxy(ctx context.Context, params ConnectCoreV1GetNodeProxyParams) (ConnectCoreV1GetNodeProxyRes, error)
+	// ConnectCoreV1GetNodeProxyWithPath implements connectCoreV1GetNodeProxyWithPath operation.
+	//
+	// Connect GET requests to proxy of Node.
+	//
+	// GET /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1GetNodeProxyWithPath(ctx context.Context, params ConnectCoreV1GetNodeProxyWithPathParams) (ConnectCoreV1GetNodeProxyWithPathRes, error)
+	// ConnectCoreV1HeadNamespacedPodProxy implements connectCoreV1HeadNamespacedPodProxy operation.
+	//
+	// Connect HEAD requests to proxy of Pod.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyParams) (ConnectCoreV1HeadNamespacedPodProxyRes, error)
+	// ConnectCoreV1HeadNamespacedPodProxyWithPath implements connectCoreV1HeadNamespacedPodProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Pod.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) (ConnectCoreV1HeadNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1HeadNamespacedServiceProxy implements connectCoreV1HeadNamespacedServiceProxy operation.
+	//
+	// Connect HEAD requests to proxy of Service.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyParams) (ConnectCoreV1HeadNamespacedServiceProxyRes, error)
+	// ConnectCoreV1HeadNamespacedServiceProxyWithPath implements connectCoreV1HeadNamespacedServiceProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Service.
+	//
+	// HEAD /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) (ConnectCoreV1HeadNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1HeadNodeProxy implements connectCoreV1HeadNodeProxy operation.
+	//
+	// Connect HEAD requests to proxy of Node.
+	//
+	// HEAD /api/v1/nodes/{name}/proxy
+	ConnectCoreV1HeadNodeProxy(ctx context.Context, params ConnectCoreV1HeadNodeProxyParams) (ConnectCoreV1HeadNodeProxyRes, error)
+	// ConnectCoreV1HeadNodeProxyWithPath implements connectCoreV1HeadNodeProxyWithPath operation.
+	//
+	// Connect HEAD requests to proxy of Node.
+	//
+	// HEAD /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, params ConnectCoreV1HeadNodeProxyWithPathParams) (ConnectCoreV1HeadNodeProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNamespacedPodProxy implements connectCoreV1OptionsNamespacedPodProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Pod.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyParams) (ConnectCoreV1OptionsNamespacedPodProxyRes, error)
+	// ConnectCoreV1OptionsNamespacedPodProxyWithPath implements connectCoreV1OptionsNamespacedPodProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Pod.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) (ConnectCoreV1OptionsNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNamespacedServiceProxy implements connectCoreV1OptionsNamespacedServiceProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Service.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyParams) (ConnectCoreV1OptionsNamespacedServiceProxyRes, error)
+	// ConnectCoreV1OptionsNamespacedServiceProxyWithPath implements connectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Service.
+	//
+	// OPTIONS /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) (ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1OptionsNodeProxy implements connectCoreV1OptionsNodeProxy operation.
+	//
+	// Connect OPTIONS requests to proxy of Node.
+	//
+	// OPTIONS /api/v1/nodes/{name}/proxy
+	ConnectCoreV1OptionsNodeProxy(ctx context.Context, params ConnectCoreV1OptionsNodeProxyParams) (ConnectCoreV1OptionsNodeProxyRes, error)
+	// ConnectCoreV1OptionsNodeProxyWithPath implements connectCoreV1OptionsNodeProxyWithPath operation.
+	//
+	// Connect OPTIONS requests to proxy of Node.
+	//
+	// OPTIONS /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, params ConnectCoreV1OptionsNodeProxyWithPathParams) (ConnectCoreV1OptionsNodeProxyWithPathRes, error)
+	// ConnectCoreV1PatchNamespacedPodProxy implements connectCoreV1PatchNamespacedPodProxy operation.
+	//
+	// Connect PATCH requests to proxy of Pod.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyParams) (ConnectCoreV1PatchNamespacedPodProxyRes, error)
+	// ConnectCoreV1PatchNamespacedPodProxyWithPath implements connectCoreV1PatchNamespacedPodProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Pod.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) (ConnectCoreV1PatchNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PatchNamespacedServiceProxy implements connectCoreV1PatchNamespacedServiceProxy operation.
+	//
+	// Connect PATCH requests to proxy of Service.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PatchNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyParams) (ConnectCoreV1PatchNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PatchNamespacedServiceProxyWithPath implements connectCoreV1PatchNamespacedServiceProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Service.
+	//
+	// PATCH /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) (ConnectCoreV1PatchNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PatchNodeProxy implements connectCoreV1PatchNodeProxy operation.
+	//
+	// Connect PATCH requests to proxy of Node.
+	//
+	// PATCH /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PatchNodeProxy(ctx context.Context, params ConnectCoreV1PatchNodeProxyParams) (ConnectCoreV1PatchNodeProxyRes, error)
+	// ConnectCoreV1PatchNodeProxyWithPath implements connectCoreV1PatchNodeProxyWithPath operation.
+	//
+	// Connect PATCH requests to proxy of Node.
+	//
+	// PATCH /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PatchNodeProxyWithPathParams) (ConnectCoreV1PatchNodeProxyWithPathRes, error)
+	// ConnectCoreV1PostNamespacedPodAttach implements connectCoreV1PostNamespacedPodAttach operation.
+	//
+	// Connect POST requests to attach of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/attach
+	ConnectCoreV1PostNamespacedPodAttach(ctx context.Context, params ConnectCoreV1PostNamespacedPodAttachParams) (ConnectCoreV1PostNamespacedPodAttachRes, error)
+	// ConnectCoreV1PostNamespacedPodExec implements connectCoreV1PostNamespacedPodExec operation.
+	//
+	// Connect POST requests to exec of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/exec
+	ConnectCoreV1PostNamespacedPodExec(ctx context.Context, params ConnectCoreV1PostNamespacedPodExecParams) (ConnectCoreV1PostNamespacedPodExecRes, error)
+	// ConnectCoreV1PostNamespacedPodPortforward implements connectCoreV1PostNamespacedPodPortforward operation.
+	//
+	// Connect POST requests to portforward of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/portforward
+	ConnectCoreV1PostNamespacedPodPortforward(ctx context.Context, params ConnectCoreV1PostNamespacedPodPortforwardParams) (ConnectCoreV1PostNamespacedPodPortforwardRes, error)
+	// ConnectCoreV1PostNamespacedPodProxy implements connectCoreV1PostNamespacedPodProxy operation.
+	//
+	// Connect POST requests to proxy of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PostNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyParams) (ConnectCoreV1PostNamespacedPodProxyRes, error)
+	// ConnectCoreV1PostNamespacedPodProxyWithPath implements connectCoreV1PostNamespacedPodProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Pod.
+	//
+	// POST /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedPodProxyWithPathParams) (ConnectCoreV1PostNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PostNamespacedServiceProxy implements connectCoreV1PostNamespacedServiceProxy operation.
+	//
+	// Connect POST requests to proxy of Service.
+	//
+	// POST /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PostNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyParams) (ConnectCoreV1PostNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PostNamespacedServiceProxyWithPath implements connectCoreV1PostNamespacedServiceProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Service.
+	//
+	// POST /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) (ConnectCoreV1PostNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PostNodeProxy implements connectCoreV1PostNodeProxy operation.
+	//
+	// Connect POST requests to proxy of Node.
+	//
+	// POST /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PostNodeProxy(ctx context.Context, params ConnectCoreV1PostNodeProxyParams) (ConnectCoreV1PostNodeProxyRes, error)
+	// ConnectCoreV1PostNodeProxyWithPath implements connectCoreV1PostNodeProxyWithPath operation.
+	//
+	// Connect POST requests to proxy of Node.
+	//
+	// POST /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PostNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PostNodeProxyWithPathParams) (ConnectCoreV1PostNodeProxyWithPathRes, error)
+	// ConnectCoreV1PutNamespacedPodProxy implements connectCoreV1PutNamespacedPodProxy operation.
+	//
+	// Connect PUT requests to proxy of Pod.
+	//
+	// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy
+	ConnectCoreV1PutNamespacedPodProxy(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyParams) (ConnectCoreV1PutNamespacedPodProxyRes, error)
+	// ConnectCoreV1PutNamespacedPodProxyWithPath implements connectCoreV1PutNamespacedPodProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Pod.
+	//
+	// PUT /api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}
+	ConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedPodProxyWithPathParams) (ConnectCoreV1PutNamespacedPodProxyWithPathRes, error)
+	// ConnectCoreV1PutNamespacedServiceProxy implements connectCoreV1PutNamespacedServiceProxy operation.
+	//
+	// Connect PUT requests to proxy of Service.
+	//
+	// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy
+	ConnectCoreV1PutNamespacedServiceProxy(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyParams) (ConnectCoreV1PutNamespacedServiceProxyRes, error)
+	// ConnectCoreV1PutNamespacedServiceProxyWithPath implements connectCoreV1PutNamespacedServiceProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Service.
+	//
+	// PUT /api/v1/namespaces/{namespace}/services/{name}/proxy/{path}
+	ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.Context, params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) (ConnectCoreV1PutNamespacedServiceProxyWithPathRes, error)
+	// ConnectCoreV1PutNodeProxy implements connectCoreV1PutNodeProxy operation.
+	//
+	// Connect PUT requests to proxy of Node.
+	//
+	// PUT /api/v1/nodes/{name}/proxy
+	ConnectCoreV1PutNodeProxy(ctx context.Context, params ConnectCoreV1PutNodeProxyParams) (ConnectCoreV1PutNodeProxyRes, error)
+	// ConnectCoreV1PutNodeProxyWithPath implements connectCoreV1PutNodeProxyWithPath operation.
+	//
+	// Connect PUT requests to proxy of Node.
+	//
+	// PUT /api/v1/nodes/{name}/proxy/{path}
+	ConnectCoreV1PutNodeProxyWithPath(ctx context.Context, params ConnectCoreV1PutNodeProxyWithPathParams) (ConnectCoreV1PutNodeProxyWithPathRes, error)
 	// GetAPIVersions implements getAPIVersions operation.
 	//
 	// Get available API versions.
@@ -320,6 +608,12 @@ type Handler interface {
 	//
 	// GET /.well-known/openid-configuration/
 	GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (GetServiceAccountIssuerOpenIDConfigurationRes, error)
+	// GetServiceAccountIssuerOpenIDKeyset implements getServiceAccountIssuerOpenIDKeyset operation.
+	//
+	// Get service account issuer OpenID JSON Web Key Set (contains public token verification keys).
+	//
+	// GET /openid/v1/jwks/
+	GetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (GetServiceAccountIssuerOpenIDKeysetRes, error)
 	// GetStorageAPIGroup implements getStorageAPIGroup operation.
 	//
 	// Get information of a group.

@@ -64,7 +64,8 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -91,7 +92,8 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err e
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -118,7 +120,8 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 		}
 		switch {
 		case ht.MatchContentType("image/*", ct):
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}

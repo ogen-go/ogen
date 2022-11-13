@@ -45,7 +45,7 @@ func encodeUserPassloginPostRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 
@@ -243,7 +243,7 @@ func encodeUserPostingPostRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
 
@@ -326,6 +326,6 @@ func encodeUserReportPostRequest(
 		}
 		return nil
 	})
-	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+	ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }

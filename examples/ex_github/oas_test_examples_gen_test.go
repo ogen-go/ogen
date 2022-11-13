@@ -11593,6 +11593,59 @@ func TestLinkWithType_EncodeDecode(t *testing.T) {
 	var typ2 LinkWithType
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestMarkdownRenderReq_EncodeDecode(t *testing.T) {
+	var typ MarkdownRenderReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarkdownRenderReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMarkdownRenderReqMode_EncodeDecode(t *testing.T) {
+	var typ MarkdownRenderReqMode
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarkdownRenderReqMode
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMarkdownRenderReqMode_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "\"markdown\""},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MarkdownRenderReqMode
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MarkdownRenderReqMode
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestMarketplaceAccount_EncodeDecode(t *testing.T) {
 	var typ MarketplaceAccount
 	typ.SetFake()
