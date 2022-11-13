@@ -84,7 +84,18 @@ func encode{{ $op.Name }}Request(
 {{- end }}
 
 {{- if $type.IsStream }}
-	ht.SetBody(r, req, contentType)
+	{{- if $type.IsBase64Stream }}
+	body := ht.CreateBodyWriter(func(w io.Writer) error {
+		writer := base64.NewEncoder(base64.StdEncoding, w)
+		defer writer.Close()
+
+		_, err := io.Copy(writer, req)
+		return err
+	})
+	{{- else }}
+	body := req
+	{{- end }}
+	ht.SetBody(r, body, contentType)
 	return nil
 {{- else if $encoding.JSON }}
 	e := jx.GetEncoder()
