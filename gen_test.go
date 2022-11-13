@@ -134,7 +134,6 @@ func TestGenerate(t *testing.T) {
 				"discriminator inference",
 				"sum types with same names",
 				"sum type parameter",
-				"unsupported content types",
 				"array defaults",
 			},
 			"manga.json":            {},
