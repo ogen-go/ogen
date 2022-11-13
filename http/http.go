@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"golang.org/x/sync/errgroup"
 )
 
 // Client represents http client.
@@ -55,4 +57,43 @@ func SetBody(req *http.Request, body io.Reader, contentType string) {
 		}
 	default:
 	}
+}
+
+// CreateBodyWriter is a helper to create a reader from a writer body.
+func CreateBodyWriter(cb func(w io.Writer) error) io.ReadCloser {
+	piper, pipew := io.Pipe()
+
+	wg := new(errgroup.Group)
+	wg.Go(func() (rerr error) {
+		defer func() {
+			if rerr != nil {
+				_ = pipew.CloseWithError(rerr)
+			} else {
+				_ = pipew.Close()
+			}
+		}()
+		return cb(pipew)
+	})
+
+	return bodyReader{
+		r:  piper,
+		w:  pipew,
+		wg: wg,
+	}
+}
+
+type bodyReader struct {
+	r  *io.PipeReader
+	w  *io.PipeWriter
+	wg *errgroup.Group
+}
+
+func (w bodyReader) Read(p []byte) (int, error) {
+	return w.r.Read(p)
+}
+
+func (w bodyReader) Close() (rerr error) {
+	rerr = w.r.Close()
+	_ = w.wg.Wait()
+	return rerr
 }

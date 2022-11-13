@@ -1,53 +1,32 @@
 package http
 
 import (
+	"crypto/rand"
+	"fmt"
 	"io"
 	"mime/multipart"
-
-	"golang.org/x/sync/errgroup"
 )
+
+func randomBoundary() string {
+	var buf [30]byte
+	if _, err := io.ReadFull(rand.Reader, buf[:]); err != nil {
+		panic(err)
+	}
+	return fmt.Sprintf("%x", buf[:])
+}
 
 // CreateMultipartBody is helper for streaming multipart/form-data.
 func CreateMultipartBody(cb func(mw *multipart.Writer) error) (body io.ReadCloser, boundary string) {
-	piper, pipew := io.Pipe()
-
-	mw := multipart.NewWriter(pipew)
-	wg := new(errgroup.Group)
-	wg.Go(func() (rerr error) {
+	boundary = randomBoundary()
+	body = CreateBodyWriter(func(w io.Writer) error {
+		mw := multipart.NewWriter(w)
+		if err := mw.SetBoundary(boundary); err != nil {
+			return err
+		}
 		defer func() {
 			_ = mw.Close()
-			if rerr != nil {
-				_ = pipew.CloseWithError(rerr)
-			} else {
-				_ = pipew.Close()
-			}
 		}()
 		return cb(mw)
 	})
-
-	body = bodyReader{
-		mw: mw,
-		r:  piper,
-		w:  pipew,
-		wg: wg,
-	}
-	boundary = mw.Boundary()
 	return body, boundary
-}
-
-type bodyReader struct {
-	mw *multipart.Writer
-	r  *io.PipeReader
-	w  *io.PipeWriter
-	wg *errgroup.Group
-}
-
-func (r bodyReader) Read(p []byte) (int, error) {
-	return r.r.Read(p)
-}
-
-func (r bodyReader) Close() (rerr error) {
-	rerr = r.r.Close()
-	_ = r.wg.Wait()
-	return rerr
 }
