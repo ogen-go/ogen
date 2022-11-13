@@ -2,6 +2,7 @@ package integration_test
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"io"
 	"net/http"
@@ -16,6 +17,12 @@ import (
 )
 
 type testHTTPRequests struct {
+}
+
+func (t testHTTPRequests) Base64Request(ctx context.Context, req api.Base64RequestReq) (api.Base64RequestOK, error) {
+	return api.Base64RequestOK{
+		Data: req,
+	}, nil
 }
 
 func (t testHTTPRequests) AllRequestBodies(
@@ -216,6 +223,55 @@ func TestRequests(t *testing.T) {
 		a.Equal("application/json", resp.ContentType)
 		a.Equal(testData, resp.Content)
 	})
+}
+
+func TestRequestBase64(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	testData := "bababoi"
+	srv, err := api.NewServer(testHTTPRequests{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	resp, err := client.Base64Request(ctx, api.Base64RequestReq{
+		Data: strings.NewReader(testData),
+	})
+	a.NoError(err)
+
+	var sb strings.Builder
+	_, err = io.Copy(&sb, resp.Data)
+	a.NoError(err)
+	a.Equal(testData, sb.String())
+
+	{
+		encoded := base64.StdEncoding.EncodeToString([]byte(testData))
+		req, err := http.NewRequestWithContext(
+			ctx,
+			http.MethodPost,
+			s.URL+"/base64Request",
+			strings.NewReader(encoded),
+		)
+		a.NoError(err)
+		req.Header.Set("Content-Type", "text/plain")
+
+		resp, err := s.Client().Do(req)
+		a.NoError(err)
+		defer resp.Body.Close()
+
+		a.Equal(http.StatusOK, resp.StatusCode)
+		a.Equal("text/plain", resp.Header.Get("Content-Type"))
+
+		var sb strings.Builder
+		_, err = io.Copy(&sb, base64.NewDecoder(base64.StdEncoding, resp.Body))
+		a.NoError(err)
+		a.Equal(testData, sb.String())
+	}
 }
 
 func TestRequestJSONTrailingData(t *testing.T) {

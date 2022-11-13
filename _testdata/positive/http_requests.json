@@ -158,6 +158,35 @@
           }
         }
       }
+    },
+    "/base64Request": {
+      "post": {
+        "operationId": "base64Request",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "format": "base64"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "base64"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
