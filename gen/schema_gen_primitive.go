@@ -190,6 +190,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 		},
 		jsonschema.String: {
 			"byte":      ir.ByteSlice,
+			"base64":    ir.ByteSlice,
 			"date-time": ir.Time,
 			"date":      ir.Time,
 			"time":      ir.Time,
