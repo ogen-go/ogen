@@ -3181,6 +3181,90 @@ func encodeTestRequestRequiredStringArrayArrayResponse(response Error, w http.Re
 
 }
 
+func encodeTestRequestRequiredStringBase64Response(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestRequiredStringBase64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestRequiredStringBase64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestRequiredStringBase64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestRequiredStringBase64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestRequiredStringBase64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
 func encodeTestRequestRequiredStringBinaryResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -5016,6 +5100,90 @@ func encodeTestRequestStringArrayResponse(response Error, w http.ResponseWriter,
 }
 
 func encodeTestRequestStringArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64Response(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestRequestStringBase64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8872,6 +9040,114 @@ func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.Resp
 		e.ArrStart()
 		for _, elem := range elem {
 			e.Str(elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64Response(response []byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.Base64(response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64ArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.Base64(elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64ArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Base64(elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64NullableResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.Base64(response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64NullableArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.Base64(elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+
+func encodeTestResponseStringBase64NullableArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Base64(elem)
 		}
 		e.ArrEnd()
 	}

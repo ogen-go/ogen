@@ -55,6 +55,8 @@ type TestQueryParameterParams struct {
 	NumberInt64Array        []int64
 	String                  string
 	StringArray             []string
+	StringBase64            []byte
+	StringBase64Array       [][]byte
 	StringBinary            string
 	StringBinaryArray       []string
 	StringByte              []byte
@@ -136,6 +138,8 @@ func unpackTestQueryParameterParams(packed map[string]any) (params TestQueryPara
 	params.NumberInt64Array = packed["number_int64_array"].([]int64)
 	params.String = packed["string"].(string)
 	params.StringArray = packed["string_array"].([]string)
+	params.StringBase64 = packed["string_base64"].([]byte)
+	params.StringBase64Array = packed["string_base64_array"].([][]byte)
 	params.StringBinary = packed["string_binary"].(string)
 	params.StringBinaryArray = packed["string_binary_array"].([]string)
 	params.StringByte = packed["string_byte"].([]byte)
@@ -1603,6 +1607,81 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: string_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: string_base64.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_base64",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToBytes(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringBase64 = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: string_base64: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: string_base64_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_base64_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringBase64ArrayVal []byte
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToBytes(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringBase64ArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringBase64Array = append(params.StringBase64Array, paramsDotStringBase64ArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: string_base64_array: parse")
+			}
+			if err := func() error {
+				if params.StringBase64Array == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: string_base64_array: invalid")
 			}
 		} else {
 			return params, errors.Wrap(err, "query")

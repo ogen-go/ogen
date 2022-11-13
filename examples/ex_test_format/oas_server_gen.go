@@ -918,6 +918,30 @@ type Handler interface {
 	//
 	// POST /test_request_required_string_array_array
 	TestRequestRequiredStringArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestRequiredStringBase64 implements test_request_required_string_base64 operation.
+	//
+	// POST /test_request_required_string_base64
+	TestRequestRequiredStringBase64(ctx context.Context, req []byte) (Error, error)
+	// TestRequestRequiredStringBase64Array implements test_request_required_string_base64_array operation.
+	//
+	// POST /test_request_required_string_base64_array
+	TestRequestRequiredStringBase64Array(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestRequiredStringBase64ArrayArray implements test_request_required_string_base64_array_array operation.
+	//
+	// POST /test_request_required_string_base64_array_array
+	TestRequestRequiredStringBase64ArrayArray(ctx context.Context, req [][][]byte) (Error, error)
+	// TestRequestRequiredStringBase64Nullable implements test_request_required_string_base64_nullable operation.
+	//
+	// POST /test_request_required_string_base64_nullable
+	TestRequestRequiredStringBase64Nullable(ctx context.Context, req []byte) (Error, error)
+	// TestRequestRequiredStringBase64NullableArray implements test_request_required_string_base64_nullable_array operation.
+	//
+	// POST /test_request_required_string_base64_nullable_array
+	TestRequestRequiredStringBase64NullableArray(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestRequiredStringBase64NullableArrayArray implements test_request_required_string_base64_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_base64_nullable_array_array
+	TestRequestRequiredStringBase64NullableArrayArray(ctx context.Context, req [][][]byte) (Error, error)
 	// TestRequestRequiredStringBinary implements test_request_required_string_binary operation.
 	//
 	// POST /test_request_required_string_binary
@@ -1446,6 +1470,30 @@ type Handler interface {
 	//
 	// POST /test_request_string_array_array
 	TestRequestStringArrayArray(ctx context.Context, req [][]string) (Error, error)
+	// TestRequestStringBase64 implements test_request_string_base64 operation.
+	//
+	// POST /test_request_string_base64
+	TestRequestStringBase64(ctx context.Context, req []byte) (Error, error)
+	// TestRequestStringBase64Array implements test_request_string_base64_array operation.
+	//
+	// POST /test_request_string_base64_array
+	TestRequestStringBase64Array(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestStringBase64ArrayArray implements test_request_string_base64_array_array operation.
+	//
+	// POST /test_request_string_base64_array_array
+	TestRequestStringBase64ArrayArray(ctx context.Context, req [][][]byte) (Error, error)
+	// TestRequestStringBase64Nullable implements test_request_string_base64_nullable operation.
+	//
+	// POST /test_request_string_base64_nullable
+	TestRequestStringBase64Nullable(ctx context.Context, req OptNilByte) (Error, error)
+	// TestRequestStringBase64NullableArray implements test_request_string_base64_nullable_array operation.
+	//
+	// POST /test_request_string_base64_nullable_array
+	TestRequestStringBase64NullableArray(ctx context.Context, req [][]byte) (Error, error)
+	// TestRequestStringBase64NullableArrayArray implements test_request_string_base64_nullable_array_array operation.
+	//
+	// POST /test_request_string_base64_nullable_array_array
+	TestRequestStringBase64NullableArrayArray(ctx context.Context, req [][][]byte) (Error, error)
 	// TestRequestStringBinary implements test_request_string_binary operation.
 	//
 	// POST /test_request_string_binary
@@ -2418,6 +2466,30 @@ type Handler interface {
 	//
 	// POST /test_response_string_array_array
 	TestResponseStringArrayArray(ctx context.Context, req string) ([][]string, error)
+	// TestResponseStringBase64 implements test_response_string_base64 operation.
+	//
+	// POST /test_response_string_base64
+	TestResponseStringBase64(ctx context.Context, req string) ([]byte, error)
+	// TestResponseStringBase64Array implements test_response_string_base64_array operation.
+	//
+	// POST /test_response_string_base64_array
+	TestResponseStringBase64Array(ctx context.Context, req string) ([][]byte, error)
+	// TestResponseStringBase64ArrayArray implements test_response_string_base64_array_array operation.
+	//
+	// POST /test_response_string_base64_array_array
+	TestResponseStringBase64ArrayArray(ctx context.Context, req string) ([][][]byte, error)
+	// TestResponseStringBase64Nullable implements test_response_string_base64_nullable operation.
+	//
+	// POST /test_response_string_base64_nullable
+	TestResponseStringBase64Nullable(ctx context.Context, req string) ([]byte, error)
+	// TestResponseStringBase64NullableArray implements test_response_string_base64_nullable_array operation.
+	//
+	// POST /test_response_string_base64_nullable_array
+	TestResponseStringBase64NullableArray(ctx context.Context, req string) ([][]byte, error)
+	// TestResponseStringBase64NullableArrayArray implements test_response_string_base64_nullable_array_array operation.
+	//
+	// POST /test_response_string_base64_nullable_array_array
+	TestResponseStringBase64NullableArrayArray(ctx context.Context, req string) ([][][]byte, error)
 	// TestResponseStringBinary implements test_response_string_binary operation.
 	//
 	// POST /test_response_string_binary
