@@ -55,6 +55,35 @@
           }
         }
       }
+    },
+    "/same_name/{path}" : {
+      "get": {
+        "operationId": "sameName",
+        "summary": "parameter with different location, but the same name",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+            "200": {
+                "description": "User info"
+            }
+        }
+      }
     }
   }
 }
