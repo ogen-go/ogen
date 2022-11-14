@@ -10,6 +10,7 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -23,12 +24,42 @@ type DataGetFormatParams struct {
 	Kek string
 }
 
-func unpackDataGetFormatParams(packed map[string]any) (params DataGetFormatParams) {
-	params.ID = packed["id"].(int)
-	params.Foo = packed["foo"].(string)
-	params.Bar = packed["bar"].(string)
-	params.Baz = packed["baz"].(string)
-	params.Kek = packed["kek"].(string)
+func unpackDataGetFormatParams(packed middleware.Parameters) (params DataGetFormatParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "foo",
+			In:   "path",
+		}
+		params.Foo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "bar",
+			In:   "path",
+		}
+		params.Bar = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "baz",
+			In:   "path",
+		}
+		params.Baz = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "kek",
+			In:   "path",
+		}
+		params.Kek = packed[key].(string)
+	}
 	return params
 }
 
@@ -213,9 +244,15 @@ type DefaultTestParams struct {
 	Default OptInt32
 }
 
-func unpackDefaultTestParams(packed map[string]any) (params DefaultTestParams) {
-	if v, ok := packed["default"]; ok {
-		params.Default = v.(OptInt32)
+func unpackDefaultTestParams(packed middleware.Parameters) (params DefaultTestParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "default",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Default = v.(OptInt32)
+		}
 	}
 	return params
 }
@@ -272,9 +309,21 @@ type FoobarGetParams struct {
 	Skip int32
 }
 
-func unpackFoobarGetParams(packed map[string]any) (params FoobarGetParams) {
-	params.InlinedParam = packed["inlinedParam"].(int64)
-	params.Skip = packed["skip"].(int32)
+func unpackFoobarGetParams(packed middleware.Parameters) (params FoobarGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "inlinedParam",
+			In:   "query",
+		}
+		params.InlinedParam = packed[key].(int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "skip",
+			In:   "query",
+		}
+		params.Skip = packed[key].(int32)
+	}
 	return params
 }
 
@@ -346,8 +395,14 @@ type GetHeaderParams struct {
 	XAuthToken string
 }
 
-func unpackGetHeaderParams(packed map[string]any) (params GetHeaderParams) {
-	params.XAuthToken = packed["x-auth-token"].(string)
+func unpackGetHeaderParams(packed middleware.Parameters) (params GetHeaderParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "x-auth-token",
+			In:   "header",
+		}
+		params.XAuthToken = packed[key].(string)
+	}
 	return params
 }
 
@@ -389,8 +444,14 @@ type PetFriendsNamesByIDParams struct {
 	ID int
 }
 
-func unpackPetFriendsNamesByIDParams(packed map[string]any) (params PetFriendsNamesByIDParams) {
-	params.ID = packed["id"].(int)
+func unpackPetFriendsNamesByIDParams(packed middleware.Parameters) (params PetFriendsNamesByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -441,11 +502,35 @@ type PetGetParams struct {
 	Token string
 }
 
-func unpackPetGetParams(packed map[string]any) (params PetGetParams) {
-	params.PetID = packed["petID"].(int64)
-	params.XTags = packed["x-tags"].([]uuid.UUID)
-	params.XScope = packed["x-scope"].([]string)
-	params.Token = packed["token"].(string)
+func unpackPetGetParams(packed middleware.Parameters) (params PetGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "petID",
+			In:   "query",
+		}
+		params.PetID = packed[key].(int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "x-tags",
+			In:   "header",
+		}
+		params.XTags = packed[key].([]uuid.UUID)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "x-scope",
+			In:   "header",
+		}
+		params.XScope = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "token",
+			In:   "query",
+		}
+		params.Token = packed[key].(string)
+	}
 	return params
 }
 
@@ -624,8 +709,14 @@ type PetGetAvatarByIDParams struct {
 	PetID int64
 }
 
-func unpackPetGetAvatarByIDParams(packed map[string]any) (params PetGetAvatarByIDParams) {
-	params.PetID = packed["petID"].(int64)
+func unpackPetGetAvatarByIDParams(packed middleware.Parameters) (params PetGetAvatarByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "petID",
+			In:   "query",
+		}
+		params.PetID = packed[key].(int64)
+	}
 	return params
 }
 
@@ -669,8 +760,14 @@ type PetGetAvatarByNameParams struct {
 	Name string
 }
 
-func unpackPetGetAvatarByNameParams(packed map[string]any) (params PetGetAvatarByNameParams) {
-	params.Name = packed["name"].(string)
+func unpackPetGetAvatarByNameParams(packed middleware.Parameters) (params PetGetAvatarByNameParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -715,8 +812,14 @@ type PetGetByNameParams struct {
 	Name string
 }
 
-func unpackPetGetByNameParams(packed map[string]any) (params PetGetByNameParams) {
-	params.Name = packed["name"].(string)
+func unpackPetGetByNameParams(packed middleware.Parameters) (params PetGetByNameParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -761,8 +864,14 @@ type PetNameByIDParams struct {
 	ID int
 }
 
-func unpackPetNameByIDParams(packed map[string]any) (params PetNameByIDParams) {
-	params.ID = packed["id"].(int)
+func unpackPetNameByIDParams(packed middleware.Parameters) (params PetNameByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -807,8 +916,14 @@ type PetUploadAvatarByIDParams struct {
 	PetID int64
 }
 
-func unpackPetUploadAvatarByIDParams(packed map[string]any) (params PetUploadAvatarByIDParams) {
-	params.PetID = packed["petID"].(int64)
+func unpackPetUploadAvatarByIDParams(packed middleware.Parameters) (params PetUploadAvatarByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "petID",
+			In:   "query",
+		}
+		params.PetID = packed[key].(int64)
+	}
 	return params
 }
 
@@ -851,9 +966,15 @@ type TestContentParameterParams struct {
 	Param OptTestContentParameterParam
 }
 
-func unpackTestContentParameterParams(packed map[string]any) (params TestContentParameterParams) {
-	if v, ok := packed["param"]; ok {
-		params.Param = v.(OptTestContentParameterParam)
+func unpackTestContentParameterParams(packed middleware.Parameters) (params TestContentParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "param",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Param = v.(OptTestContentParameterParam)
+		}
 	}
 	return params
 }
@@ -898,12 +1019,24 @@ type TestObjectQueryParameterParams struct {
 	DeepObject OptTestObjectQueryParameterDeepObject
 }
 
-func unpackTestObjectQueryParameterParams(packed map[string]any) (params TestObjectQueryParameterParams) {
-	if v, ok := packed["formObject"]; ok {
-		params.FormObject = v.(OptTestObjectQueryParameterFormObject)
+func unpackTestObjectQueryParameterParams(packed middleware.Parameters) (params TestObjectQueryParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "formObject",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FormObject = v.(OptTestObjectQueryParameterFormObject)
+		}
 	}
-	if v, ok := packed["deepObject"]; ok {
-		params.DeepObject = v.(OptTestObjectQueryParameterDeepObject)
+	{
+		key := middleware.ParameterKey{
+			Name: "deepObject",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.DeepObject = v.(OptTestObjectQueryParameterDeepObject)
+		}
 	}
 	return params
 }

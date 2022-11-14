@@ -73,12 +73,27 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			OperationName: "DataGetFormat",
 			OperationID:   "dataGetFormat",
 			Body:          nil,
-			Params: map[string]any{
-				"id":  params.ID,
-				"foo": params.Foo,
-				"bar": params.Bar,
-				"baz": params.Baz,
-				"kek": params.Kek,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
+				{
+					Name: "foo",
+					In:   "path",
+				}: params.Foo,
+				{
+					Name: "bar",
+					In:   "path",
+				}: params.Bar,
+				{
+					Name: "baz",
+					In:   "path",
+				}: params.Baz,
+				{
+					Name: "kek",
+					In:   "path",
+				}: params.Kek,
 			},
 			Raw: r,
 		}
@@ -186,8 +201,11 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "DefaultTest",
 			OperationID:   "defaultTest",
 			Body:          request,
-			Params: map[string]any{
-				"default": params.Default,
+			Params: middleware.Parameters{
+				{
+					Name: "default",
+					In:   "query",
+				}: params.Default,
 			},
 			Raw: r,
 		}
@@ -268,7 +286,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "ErrorGet",
 			OperationID:   "errorGet",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -362,9 +380,15 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "FoobarGet",
 			OperationID:   "foobarGet",
 			Body:          nil,
-			Params: map[string]any{
-				"inlinedParam": params.InlinedParam,
-				"skip":         params.Skip,
+			Params: middleware.Parameters{
+				{
+					Name: "inlinedParam",
+					In:   "query",
+				}: params.InlinedParam,
+				{
+					Name: "skip",
+					In:   "query",
+				}: params.Skip,
 			},
 			Raw: r,
 		}
@@ -464,7 +488,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "FoobarPost",
 			OperationID:   "foobarPost",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -539,7 +563,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "FoobarPut",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -633,8 +657,11 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "GetHeader",
 			OperationID:   "getHeader",
 			Body:          nil,
-			Params: map[string]any{
-				"x-auth-token": params.XAuthToken,
+			Params: middleware.Parameters{
+				{
+					Name: "x-auth-token",
+					In:   "header",
+				}: params.XAuthToken,
 			},
 			Raw: r,
 		}
@@ -713,7 +740,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 			OperationName: "NoAdditionalPropertiesTest",
 			OperationID:   "noAdditionalPropertiesTest",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -791,7 +818,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 			OperationName: "NullableDefaultResponse",
 			OperationID:   "nullableDefaultResponse",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -888,7 +915,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "OneofBug",
 			OperationID:   "oneofBug",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -963,7 +990,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 			OperationName: "PatternRecursiveMapGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1062,7 +1089,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "PetCreate",
 			OperationID:   "petCreate",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1156,8 +1183,11 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			OperationName: "PetFriendsNamesByID",
 			OperationID:   "petFriendsNamesByID",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -1252,11 +1282,23 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			OperationName: "PetGet",
 			OperationID:   "petGet",
 			Body:          nil,
-			Params: map[string]any{
-				"petID":   params.PetID,
-				"x-tags":  params.XTags,
-				"x-scope": params.XScope,
-				"token":   params.Token,
+			Params: middleware.Parameters{
+				{
+					Name: "petID",
+					In:   "query",
+				}: params.PetID,
+				{
+					Name: "x-tags",
+					In:   "header",
+				}: params.XTags,
+				{
+					Name: "x-scope",
+					In:   "header",
+				}: params.XScope,
+				{
+					Name: "token",
+					In:   "query",
+				}: params.Token,
 			},
 			Raw: r,
 		}
@@ -1351,8 +1393,11 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			OperationName: "PetGetAvatarByID",
 			OperationID:   "petGetAvatarByID",
 			Body:          nil,
-			Params: map[string]any{
-				"petID": params.PetID,
+			Params: middleware.Parameters{
+				{
+					Name: "petID",
+					In:   "query",
+				}: params.PetID,
 			},
 			Raw: r,
 		}
@@ -1447,8 +1492,11 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			OperationName: "PetGetAvatarByName",
 			OperationID:   "petGetAvatarByName",
 			Body:          nil,
-			Params: map[string]any{
-				"name": params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -1543,8 +1591,11 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			OperationName: "PetGetByName",
 			OperationID:   "petGetByName",
 			Body:          nil,
-			Params: map[string]any{
-				"name": params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -1639,8 +1690,11 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "PetNameByID",
 			OperationID:   "petNameByID",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -1735,7 +1789,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			OperationName: "PetUpdateNameAliasPost",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1829,7 +1883,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			OperationName: "PetUpdateNamePost",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1938,8 +1992,11 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			OperationName: "PetUploadAvatarByID",
 			OperationID:   "petUploadAvatarByID",
 			Body:          request,
-			Params: map[string]any{
-				"petID": params.PetID,
+			Params: middleware.Parameters{
+				{
+					Name: "petID",
+					In:   "query",
+				}: params.PetID,
 			},
 			Raw: r,
 		}
@@ -2015,7 +2072,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 			OperationName: "RecursiveArrayGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2090,7 +2147,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 			OperationName: "RecursiveMapGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2184,7 +2241,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SecurityTest",
 			OperationID:   "securityTest",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2259,7 +2316,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 			OperationName: "StringIntMapGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2351,8 +2408,11 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 			OperationName: "TestContentParameter",
 			OperationID:   "testContentParameter",
 			Body:          nil,
-			Params: map[string]any{
-				"param": params.Param,
+			Params: middleware.Parameters{
+				{
+					Name: "param",
+					In:   "query",
+				}: params.Param,
 			},
 			Raw: r,
 		}
@@ -2450,7 +2510,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			OperationName: "TestFloatValidation",
 			OperationID:   "testFloatValidation",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2528,7 +2588,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 			OperationName: "TestNullableOneofs",
 			OperationID:   "testNullableOneofs",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2620,9 +2680,15 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 			OperationName: "TestObjectQueryParameter",
 			OperationID:   "testObjectQueryParameter",
 			Body:          nil,
-			Params: map[string]any{
-				"formObject": params.FormObject,
-				"deepObject": params.DeepObject,
+			Params: middleware.Parameters{
+				{
+					Name: "formObject",
+					In:   "query",
+				}: params.FormObject,
+				{
+					Name: "deepObject",
+					In:   "query",
+				}: params.DeepObject,
 			},
 			Raw: r,
 		}

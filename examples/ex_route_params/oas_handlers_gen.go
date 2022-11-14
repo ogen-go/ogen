@@ -73,9 +73,15 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 			OperationName: "DataGet",
 			OperationID:   "dataGet",
 			Body:          nil,
-			Params: map[string]any{
-				"id":  params.ID,
-				"key": params.Key,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
+				{
+					Name: "key",
+					In:   "path",
+				}: params.Key,
 			},
 			Raw: r,
 		}
@@ -156,7 +162,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "DataGetAny",
 			OperationID:   "dataGetAny",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -250,8 +256,11 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "DataGetID",
 			OperationID:   "dataGetID",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}

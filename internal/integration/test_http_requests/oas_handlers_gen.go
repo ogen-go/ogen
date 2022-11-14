@@ -76,7 +76,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			OperationName: "AllRequestBodies",
 			OperationID:   "allRequestBodies",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -173,7 +173,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			OperationName: "AllRequestBodiesOptional",
 			OperationID:   "allRequestBodiesOptional",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -270,7 +270,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			OperationName: "MaskContentType",
 			OperationID:   "maskContentType",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -367,7 +367,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			OperationName: "MaskContentTypeOptional",
 			OperationID:   "maskContentTypeOptional",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

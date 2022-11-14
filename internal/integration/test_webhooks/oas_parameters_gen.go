@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -17,10 +18,22 @@ type UpdateWebhookParams struct {
 	XWebhookToken OptString
 }
 
-func unpackUpdateWebhookParams(packed map[string]any) (params UpdateWebhookParams) {
-	params.EventType = packed["event_type"].(string)
-	if v, ok := packed["X-Webhook-Token"]; ok {
-		params.XWebhookToken = v.(OptString)
+func unpackUpdateWebhookParams(packed middleware.Parameters) (params UpdateWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "event_type",
+			In:   "query",
+		}
+		params.EventType = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "X-Webhook-Token",
+			In:   "header",
+		}
+		if v, ok := packed[key]; ok {
+			params.XWebhookToken = v.(OptString)
+		}
 	}
 	return params
 }

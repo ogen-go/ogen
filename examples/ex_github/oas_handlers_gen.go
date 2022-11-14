@@ -81,10 +81,19 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			OperationName: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"repository_id":   params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -183,10 +192,19 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 			OperationName: "ActionsAddSelectedRepoToOrgSecret",
 			OperationID:   "actions/add-selected-repo-to-org-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"secret_name":   params.SecretName,
-				"repository_id": params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -286,10 +304,19 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			OperationName: "ActionsAddSelfHostedRunnerToGroupForOrg",
 			OperationID:   "actions/add-self-hosted-runner-to-group-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"runner_id":       params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -388,10 +415,19 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 			OperationName: "ActionsApproveWorkflowRun",
 			OperationID:   "actions/approve-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -488,10 +524,19 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 			OperationName: "ActionsCancelWorkflowRun",
 			OperationID:   "actions/cancel-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -654,10 +699,19 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 			OperationName: "ActionsCreateOrUpdateEnvironmentSecret",
 			OperationID:   "actions/create-or-update-environment-secret",
 			Body:          request,
-			Params: map[string]any{
-				"repository_id":    params.RepositoryID,
-				"environment_name": params.EnvironmentName,
-				"secret_name":      params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -820,9 +874,15 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 			OperationName: "ActionsCreateOrUpdateOrgSecret",
 			OperationID:   "actions/create-or-update-org-secret",
 			Body:          request,
-			Params: map[string]any{
-				"org":         params.Org,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -985,10 +1045,19 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 			OperationName: "ActionsCreateOrUpdateRepoSecret",
 			OperationID:   "actions/create-or-update-repo-secret",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -1090,8 +1159,11 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 			OperationName: "ActionsCreateRegistrationTokenForOrg",
 			OperationID:   "actions/create-registration-token-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -1194,9 +1266,15 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 			OperationName: "ActionsCreateRegistrationTokenForRepo",
 			OperationID:   "actions/create-registration-token-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -1300,8 +1378,11 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 			OperationName: "ActionsCreateRemoveTokenForOrg",
 			OperationID:   "actions/create-remove-token-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -1404,9 +1485,15 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 			OperationName: "ActionsCreateRemoveTokenForRepo",
 			OperationID:   "actions/create-remove-token-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -1520,8 +1607,11 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 			OperationName: "ActionsCreateSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/create-self-hosted-runner-group-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -1618,10 +1708,19 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 			OperationName: "ActionsDeleteArtifact",
 			OperationID:   "actions/delete-artifact",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"artifact_id": params.ArtifactID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "artifact_id",
+					In:   "path",
+				}: params.ArtifactID,
 			},
 			Raw: r,
 		}
@@ -1718,10 +1817,19 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 			OperationName: "ActionsDeleteEnvironmentSecret",
 			OperationID:   "actions/delete-environment-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"repository_id":    params.RepositoryID,
-				"environment_name": params.EnvironmentName,
-				"secret_name":      params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -1818,9 +1926,15 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 			OperationName: "ActionsDeleteOrgSecret",
 			OperationID:   "actions/delete-org-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -1917,10 +2031,19 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 			OperationName: "ActionsDeleteRepoSecret",
 			OperationID:   "actions/delete-repo-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -2017,9 +2140,15 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			OperationName: "ActionsDeleteSelfHostedRunnerFromOrg",
 			OperationID:   "actions/delete-self-hosted-runner-from-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"runner_id": params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -2117,10 +2246,19 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			OperationName: "ActionsDeleteSelfHostedRunnerFromRepo",
 			OperationID:   "actions/delete-self-hosted-runner-from-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"runner_id": params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -2219,9 +2357,15 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			OperationName: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
 			OperationID:   "actions/delete-self-hosted-runner-group-from-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -2320,10 +2464,19 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 			OperationName: "ActionsDeleteWorkflowRun",
 			OperationID:   "actions/delete-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -2420,10 +2573,19 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 			OperationName: "ActionsDeleteWorkflowRunLogs",
 			OperationID:   "actions/delete-workflow-run-logs",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -2523,9 +2685,15 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			OperationName: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
 			OperationID:   "actions/disable-selected-repository-github-actions-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"repository_id": params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -2626,11 +2794,23 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 			OperationName: "ActionsDownloadArtifact",
 			OperationID:   "actions/download-artifact",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":          params.Owner,
-				"repo":           params.Repo,
-				"artifact_id":    params.ArtifactID,
-				"archive_format": params.ArchiveFormat,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "artifact_id",
+					In:   "path",
+				}: params.ArtifactID,
+				{
+					Name: "archive_format",
+					In:   "path",
+				}: params.ArchiveFormat,
 			},
 			Raw: r,
 		}
@@ -2733,10 +2913,19 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 			OperationName: "ActionsDownloadJobLogsForWorkflowRun",
 			OperationID:   "actions/download-job-logs-for-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"job_id": params.JobID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "job_id",
+					In:   "path",
+				}: params.JobID,
 			},
 			Raw: r,
 		}
@@ -2837,10 +3026,19 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 			OperationName: "ActionsDownloadWorkflowRunLogs",
 			OperationID:   "actions/download-workflow-run-logs",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -2940,9 +3138,15 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			OperationName: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
 			OperationID:   "actions/enable-selected-repository-github-actions-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"repository_id": params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -3042,8 +3246,11 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 			OperationName: "ActionsGetAllowedActionsOrganization",
 			OperationID:   "actions/get-allowed-actions-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -3143,9 +3350,15 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 			OperationName: "ActionsGetAllowedActionsRepository",
 			OperationID:   "actions/get-allowed-actions-repository",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -3242,10 +3455,19 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 			OperationName: "ActionsGetArtifact",
 			OperationID:   "actions/get-artifact",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"artifact_id": params.ArtifactID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "artifact_id",
+					In:   "path",
+				}: params.ArtifactID,
 			},
 			Raw: r,
 		}
@@ -3343,9 +3565,15 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 			OperationName: "ActionsGetEnvironmentPublicKey",
 			OperationID:   "actions/get-environment-public-key",
 			Body:          nil,
-			Params: map[string]any{
-				"repository_id":    params.RepositoryID,
-				"environment_name": params.EnvironmentName,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
 			},
 			Raw: r,
 		}
@@ -3442,10 +3670,19 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 			OperationName: "ActionsGetEnvironmentSecret",
 			OperationID:   "actions/get-environment-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"repository_id":    params.RepositoryID,
-				"environment_name": params.EnvironmentName,
-				"secret_name":      params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -3542,8 +3779,11 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 			OperationName: "ActionsGetGithubActionsPermissionsOrganization",
 			OperationID:   "actions/get-github-actions-permissions-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -3641,9 +3881,15 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 			OperationName: "ActionsGetGithubActionsPermissionsRepository",
 			OperationID:   "actions/get-github-actions-permissions-repository",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -3740,10 +3986,19 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 			OperationName: "ActionsGetJobForWorkflowRun",
 			OperationID:   "actions/get-job-for-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"job_id": params.JobID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "job_id",
+					In:   "path",
+				}: params.JobID,
 			},
 			Raw: r,
 		}
@@ -3841,8 +4096,11 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 			OperationName: "ActionsGetOrgPublicKey",
 			OperationID:   "actions/get-org-public-key",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -3939,9 +4197,15 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 			OperationName: "ActionsGetOrgSecret",
 			OperationID:   "actions/get-org-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -4039,9 +4303,15 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 			OperationName: "ActionsGetRepoPublicKey",
 			OperationID:   "actions/get-repo-public-key",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -4138,10 +4408,19 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 			OperationName: "ActionsGetRepoSecret",
 			OperationID:   "actions/get-repo-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -4238,10 +4517,19 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 			OperationName: "ActionsGetReviewsForRun",
 			OperationID:   "actions/get-reviews-for-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -4337,9 +4625,15 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 			OperationName: "ActionsGetSelfHostedRunnerForOrg",
 			OperationID:   "actions/get-self-hosted-runner-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"runner_id": params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -4436,10 +4730,19 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 			OperationName: "ActionsGetSelfHostedRunnerForRepo",
 			OperationID:   "actions/get-self-hosted-runner-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"runner_id": params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -4538,9 +4841,15 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 			OperationName: "ActionsGetSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/get-self-hosted-runner-group-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -4637,10 +4946,19 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 			OperationName: "ActionsGetWorkflowRun",
 			OperationID:   "actions/get-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -4744,10 +5062,19 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 			OperationName: "ActionsGetWorkflowRunUsage",
 			OperationID:   "actions/get-workflow-run-usage",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -4844,11 +5171,23 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 			OperationName: "ActionsListArtifactsForRepo",
 			OperationID:   "actions/list-artifacts-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -4945,11 +5284,23 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 			OperationName: "ActionsListEnvironmentSecrets",
 			OperationID:   "actions/list-environment-secrets",
 			Body:          nil,
-			Params: map[string]any{
-				"repository_id":    params.RepositoryID,
-				"environment_name": params.EnvironmentName,
-				"per_page":         params.PerPage,
-				"page":             params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5048,13 +5399,31 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 			OperationName: "ActionsListJobsForWorkflowRun",
 			OperationID:   "actions/list-jobs-for-workflow-run",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"run_id":   params.RunID,
-				"filter":   params.Filter,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5151,10 +5520,19 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 			OperationName: "ActionsListOrgSecrets",
 			OperationID:   "actions/list-org-secrets",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5253,11 +5631,23 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 			OperationName: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"page":            params.Page,
-				"per_page":        params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -5354,11 +5744,23 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 			OperationName: "ActionsListRepoSecrets",
 			OperationID:   "actions/list-repo-secrets",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5455,11 +5857,23 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 			OperationName: "ActionsListRepoWorkflows",
 			OperationID:   "actions/list-repo-workflows",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5555,8 +5969,11 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 			OperationName: "ActionsListRunnerApplicationsForOrg",
 			OperationID:   "actions/list-runner-applications-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -5652,9 +6069,15 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 			OperationName: "ActionsListRunnerApplicationsForRepo",
 			OperationID:   "actions/list-runner-applications-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -5752,11 +6175,23 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 			OperationName: "ActionsListSelectedReposForOrgSecret",
 			OperationID:   "actions/list-selected-repos-for-org-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"secret_name": params.SecretName,
-				"page":        params.Page,
-				"per_page":    params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -5856,10 +6291,19 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 			OperationName: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
 			OperationID:   "actions/list-selected-repositories-enabled-github-actions-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -5958,10 +6402,19 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 			OperationName: "ActionsListSelfHostedRunnerGroupsForOrg",
 			OperationID:   "actions/list-self-hosted-runner-groups-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -6057,10 +6510,19 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 			OperationName: "ActionsListSelfHostedRunnersForOrg",
 			OperationID:   "actions/list-self-hosted-runners-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -6156,11 +6618,23 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 			OperationName: "ActionsListSelfHostedRunnersForRepo",
 			OperationID:   "actions/list-self-hosted-runners-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -6259,11 +6733,23 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 			OperationName: "ActionsListSelfHostedRunnersInGroupForOrg",
 			OperationID:   "actions/list-self-hosted-runners-in-group-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"per_page":        params.PerPage,
-				"page":            params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -6360,12 +6846,27 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 			OperationName: "ActionsListWorkflowRunArtifacts",
 			OperationID:   "actions/list-workflow-run-artifacts",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"run_id":   params.RunID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -6465,16 +6966,43 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 			OperationName: "ActionsListWorkflowRunsForRepo",
 			OperationID:   "actions/list-workflow-runs-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"actor":    params.Actor,
-				"branch":   params.Branch,
-				"event":    params.Event,
-				"status":   params.Status,
-				"per_page": params.PerPage,
-				"page":     params.Page,
-				"created":  params.Created,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "actor",
+					In:   "query",
+				}: params.Actor,
+				{
+					Name: "branch",
+					In:   "query",
+				}: params.Branch,
+				{
+					Name: "event",
+					In:   "query",
+				}: params.Event,
+				{
+					Name: "status",
+					In:   "query",
+				}: params.Status,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "created",
+					In:   "query",
+				}: params.Created,
 			},
 			Raw: r,
 		}
@@ -6576,10 +7104,19 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 			OperationName: "ActionsReRunWorkflow",
 			OperationID:   "actions/re-run-workflow",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -6681,10 +7218,19 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			OperationName: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"repository_id":   params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -6783,10 +7329,19 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 			OperationName: "ActionsRemoveSelectedRepoFromOrgSecret",
 			OperationID:   "actions/remove-selected-repo-from-org-secret",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"secret_name":   params.SecretName,
-				"repository_id": params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -6886,10 +7441,19 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			OperationName: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
 			OperationID:   "actions/remove-self-hosted-runner-from-group-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
-				"runner_id":       params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -6986,10 +7550,19 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 			OperationName: "ActionsRetryWorkflow",
 			OperationID:   "actions/retry-workflow",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -7100,10 +7673,19 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 			OperationName: "ActionsReviewPendingDeploymentsForRun",
 			OperationID:   "actions/review-pending-deployments-for-run",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"run_id": params.RunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "run_id",
+					In:   "path",
+				}: params.RunID,
 			},
 			Raw: r,
 		}
@@ -7223,8 +7805,11 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			OperationName: "ActionsSetAllowedActionsOrganization",
 			OperationID:   "actions/set-allowed-actions-organization",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -7343,9 +7928,15 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			OperationName: "ActionsSetAllowedActionsRepository",
 			OperationID:   "actions/set-allowed-actions-repository",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -7460,8 +8051,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			OperationName: "ActionsSetGithubActionsPermissionsOrganization",
 			OperationID:   "actions/set-github-actions-permissions-organization",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -7577,9 +8171,15 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			OperationName: "ActionsSetGithubActionsPermissionsRepository",
 			OperationID:   "actions/set-github-actions-permissions-repository",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -7694,9 +8294,15 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			OperationName: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
 			OperationID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -7810,9 +8416,15 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			OperationName: "ActionsSetSelectedReposForOrgSecret",
 			OperationID:   "actions/set-selected-repos-for-org-secret",
 			Body:          request,
-			Params: map[string]any{
-				"org":         params.Org,
-				"secret_name": params.SecretName,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "secret_name",
+					In:   "path",
+				}: params.SecretName,
 			},
 			Raw: r,
 		}
@@ -7927,8 +8539,11 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			OperationName: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
 			OperationID:   "actions/set-selected-repositories-enabled-github-actions-organization",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -8042,9 +8657,15 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			OperationName: "ActionsSetSelfHostedRunnersInGroupForOrg",
 			OperationID:   "actions/set-self-hosted-runners-in-group-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -8158,9 +8779,15 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 			OperationName: "ActionsUpdateSelfHostedRunnerGroupForOrg",
 			OperationID:   "actions/update-self-hosted-runner-group-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":             params.Org,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -8255,9 +8882,15 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 			OperationName: "ActivityCheckRepoIsStarredByAuthenticatedUser",
 			OperationID:   "activity/check-repo-is-starred-by-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -8354,9 +8987,15 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 			OperationName: "ActivityDeleteRepoSubscription",
 			OperationID:   "activity/delete-repo-subscription",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -8455,8 +9094,11 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 			OperationName: "ActivityDeleteThreadSubscription",
 			OperationID:   "activity/delete-thread-subscription",
 			Body:          nil,
-			Params: map[string]any{
-				"thread_id": params.ThreadID,
+			Params: middleware.Parameters{
+				{
+					Name: "thread_id",
+					In:   "path",
+				}: params.ThreadID,
 			},
 			Raw: r,
 		}
@@ -8551,7 +9193,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 			OperationName: "ActivityGetFeeds",
 			OperationID:   "activity/get-feeds",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8645,9 +9287,15 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 			OperationName: "ActivityGetRepoSubscription",
 			OperationID:   "activity/get-repo-subscription",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -8742,8 +9390,11 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 			OperationName: "ActivityGetThread",
 			OperationID:   "activity/get-thread",
 			Body:          nil,
-			Params: map[string]any{
-				"thread_id": params.ThreadID,
+			Params: middleware.Parameters{
+				{
+					Name: "thread_id",
+					In:   "path",
+				}: params.ThreadID,
 			},
 			Raw: r,
 		}
@@ -8841,8 +9492,11 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 			OperationName: "ActivityGetThreadSubscriptionForAuthenticatedUser",
 			OperationID:   "activity/get-thread-subscription-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"thread_id": params.ThreadID,
+			Params: middleware.Parameters{
+				{
+					Name: "thread_id",
+					In:   "path",
+				}: params.ThreadID,
 			},
 			Raw: r,
 		}
@@ -8938,10 +9592,19 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 			OperationName: "ActivityListEventsForAuthenticatedUser",
 			OperationID:   "activity/list-events-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9036,13 +9699,31 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 			OperationName: "ActivityListNotificationsForAuthenticatedUser",
 			OperationID:   "activity/list-notifications-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"all":           params.All,
-				"participating": params.Participating,
-				"since":         params.Since,
-				"before":        params.Before,
-				"per_page":      params.PerPage,
-				"page":          params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "all",
+					In:   "query",
+				}: params.All,
+				{
+					Name: "participating",
+					In:   "query",
+				}: params.Participating,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "before",
+					In:   "query",
+				}: params.Before,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9137,11 +9818,23 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 			OperationName: "ActivityListOrgEventsForAuthenticatedUser",
 			OperationID:   "activity/list-org-events-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9237,9 +9930,15 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 			OperationName: "ActivityListPublicEvents",
 			OperationID:   "activity/list-public-events",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9334,11 +10033,23 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 			OperationName: "ActivityListPublicEventsForRepoNetwork",
 			OperationID:   "activity/list-public-events-for-repo-network",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9433,10 +10144,19 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 			OperationName: "ActivityListPublicEventsForUser",
 			OperationID:   "activity/list-public-events-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9531,10 +10251,19 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 			OperationName: "ActivityListPublicOrgEvents",
 			OperationID:   "activity/list-public-org-events",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9631,10 +10360,19 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 			OperationName: "ActivityListReceivedEventsForUser",
 			OperationID:   "activity/list-received-events-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9729,10 +10467,19 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 			OperationName: "ActivityListReceivedPublicEventsForUser",
 			OperationID:   "activity/list-received-public-events-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9827,11 +10574,23 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 			OperationName: "ActivityListRepoEvents",
 			OperationID:   "activity/list-repo-events",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -9926,15 +10685,39 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 			OperationName: "ActivityListRepoNotificationsForAuthenticatedUser",
 			OperationID:   "activity/list-repo-notifications-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"all":           params.All,
-				"participating": params.Participating,
-				"since":         params.Since,
-				"before":        params.Before,
-				"per_page":      params.PerPage,
-				"page":          params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "all",
+					In:   "query",
+				}: params.All,
+				{
+					Name: "participating",
+					In:   "query",
+				}: params.Participating,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "before",
+					In:   "query",
+				}: params.Before,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -10031,11 +10814,23 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 			OperationName: "ActivityListReposStarredByAuthenticatedUser",
 			OperationID:   "activity/list-repos-starred-by-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -10130,10 +10925,19 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 			OperationName: "ActivityListReposWatchedByUser",
 			OperationID:   "activity/list-repos-watched-by-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -10228,9 +11032,15 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 			OperationName: "ActivityListWatchedReposForAuthenticatedUser",
 			OperationID:   "activity/list-watched-repos-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -10325,11 +11135,23 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 			OperationName: "ActivityListWatchersForRepo",
 			OperationID:   "activity/list-watchers-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -10435,7 +11257,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 			OperationName: "ActivityMarkNotificationsAsRead",
 			OperationID:   "activity/mark-notifications-as-read",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10550,9 +11372,15 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 			OperationName: "ActivityMarkRepoNotificationsAsRead",
 			OperationID:   "activity/mark-repo-notifications-as-read",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -10647,8 +11475,11 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 			OperationName: "ActivityMarkThreadAsRead",
 			OperationID:   "activity/mark-thread-as-read",
 			Body:          nil,
-			Params: map[string]any{
-				"thread_id": params.ThreadID,
+			Params: middleware.Parameters{
+				{
+					Name: "thread_id",
+					In:   "path",
+				}: params.ThreadID,
 			},
 			Raw: r,
 		}
@@ -10761,9 +11592,15 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 			OperationName: "ActivitySetRepoSubscription",
 			OperationID:   "activity/set-repo-subscription",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -10880,8 +11717,11 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 			OperationName: "ActivitySetThreadSubscription",
 			OperationID:   "activity/set-thread-subscription",
 			Body:          request,
-			Params: map[string]any{
-				"thread_id": params.ThreadID,
+			Params: middleware.Parameters{
+				{
+					Name: "thread_id",
+					In:   "path",
+				}: params.ThreadID,
 			},
 			Raw: r,
 		}
@@ -10978,9 +11818,15 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 			OperationName: "ActivityStarRepoForAuthenticatedUser",
 			OperationID:   "activity/star-repo-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -11075,9 +11921,15 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 			OperationName: "ActivityUnstarRepoForAuthenticatedUser",
 			OperationID:   "activity/unstar-repo-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -11177,9 +12029,15 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 			OperationName: "AppsAddRepoToInstallation",
 			OperationID:   "apps/add-repo-to-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
-				"repository_id":   params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -11294,8 +12152,11 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 			OperationName: "AppsCheckToken",
 			OperationID:   "apps/check-token",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -11414,10 +12275,19 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 			OperationName: "AppsCreateContentAttachment",
 			OperationID:   "apps/create-content-attachment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":                params.Owner,
-				"repo":                 params.Repo,
-				"content_reference_id": params.ContentReferenceID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "content_reference_id",
+					In:   "path",
+				}: params.ContentReferenceID,
 			},
 			Raw: r,
 		}
@@ -11530,8 +12400,11 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 			OperationName: "AppsCreateFromManifest",
 			OperationID:   "apps/create-from-manifest",
 			Body:          request,
-			Params: map[string]any{
-				"code": params.Code,
+			Params: middleware.Parameters{
+				{
+					Name: "code",
+					In:   "path",
+				}: params.Code,
 			},
 			Raw: r,
 		}
@@ -11650,8 +12523,11 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 			OperationName: "AppsCreateInstallationAccessToken",
 			OperationID:   "apps/create-installation-access-token",
 			Body:          request,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
 			},
 			Raw: r,
 		}
@@ -11770,8 +12646,11 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 			OperationName: "AppsDeleteAuthorization",
 			OperationID:   "apps/delete-authorization",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -11871,8 +12750,11 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 			OperationName: "AppsDeleteInstallation",
 			OperationID:   "apps/delete-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
 			},
 			Raw: r,
 		}
@@ -11985,8 +12867,11 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 			OperationName: "AppsDeleteToken",
 			OperationID:   "apps/delete-token",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -12074,7 +12959,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 			OperationName: "AppsGetAuthenticated",
 			OperationID:   "apps/get-authenticated",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12175,8 +13060,11 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 			OperationName: "AppsGetBySlug",
 			OperationID:   "apps/get-by-slug",
 			Body:          nil,
-			Params: map[string]any{
-				"app_slug": params.AppSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "app_slug",
+					In:   "path",
+				}: params.AppSlug,
 			},
 			Raw: r,
 		}
@@ -12278,8 +13166,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 			OperationName: "AppsGetSubscriptionPlanForAccount",
 			OperationID:   "apps/get-subscription-plan-for-account",
 			Body:          nil,
-			Params: map[string]any{
-				"account_id": params.AccountID,
+			Params: middleware.Parameters{
+				{
+					Name: "account_id",
+					In:   "path",
+				}: params.AccountID,
 			},
 			Raw: r,
 		}
@@ -12381,8 +13272,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 			OperationName: "AppsGetSubscriptionPlanForAccountStubbed",
 			OperationID:   "apps/get-subscription-plan-for-account-stubbed",
 			Body:          nil,
-			Params: map[string]any{
-				"account_id": params.AccountID,
+			Params: middleware.Parameters{
+				{
+					Name: "account_id",
+					In:   "path",
+				}: params.AccountID,
 			},
 			Raw: r,
 		}
@@ -12467,7 +13361,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 			OperationName: "AppsGetWebhookConfigForApp",
 			OperationID:   "apps/get-webhook-config-for-app",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12564,8 +13458,11 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 			OperationName: "AppsGetWebhookDelivery",
 			OperationID:   "apps/get-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -12668,12 +13565,27 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 			OperationName: "AppsListAccountsForPlan",
 			OperationID:   "apps/list-accounts-for-plan",
 			Body:          nil,
-			Params: map[string]any{
-				"plan_id":   params.PlanID,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "plan_id",
+					In:   "path",
+				}: params.PlanID,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -12776,12 +13688,27 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 			OperationName: "AppsListAccountsForPlanStubbed",
 			OperationID:   "apps/list-accounts-for-plan-stubbed",
 			Body:          nil,
-			Params: map[string]any{
-				"plan_id":   params.PlanID,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "plan_id",
+					In:   "path",
+				}: params.PlanID,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -12882,10 +13809,19 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 			OperationName: "AppsListInstallationReposForAuthenticatedUser",
 			OperationID:   "apps/list-installation-repos-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
-				"per_page":        params.PerPage,
-				"page":            params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -12985,9 +13921,15 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 			OperationName: "AppsListPlans",
 			OperationID:   "apps/list-plans",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -13087,9 +14029,15 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 			OperationName: "AppsListPlansStubbed",
 			OperationID:   "apps/list-plans-stubbed",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -13187,9 +14135,15 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 			OperationName: "AppsListReposAccessibleToInstallation",
 			OperationID:   "apps/list-repos-accessible-to-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -13286,9 +14240,15 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 			OperationName: "AppsListSubscriptionsForAuthenticatedUser",
 			OperationID:   "apps/list-subscriptions-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -13385,9 +14345,15 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 			OperationName: "AppsListSubscriptionsForAuthenticatedUserStubbed",
 			OperationID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -13485,9 +14451,15 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 			OperationName: "AppsListWebhookDeliveries",
 			OperationID:   "apps/list-webhook-deliveries",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"cursor":   params.Cursor,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "cursor",
+					In:   "query",
+				}: params.Cursor,
 			},
 			Raw: r,
 		}
@@ -13585,8 +14557,11 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 			OperationName: "AppsRedeliverWebhookDelivery",
 			OperationID:   "apps/redeliver-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -13686,9 +14661,15 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 			OperationName: "AppsRemoveRepoFromInstallation",
 			OperationID:   "apps/remove-repo-from-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
-				"repository_id":   params.RepositoryID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
+				{
+					Name: "repository_id",
+					In:   "path",
+				}: params.RepositoryID,
 			},
 			Raw: r,
 		}
@@ -13803,8 +14784,11 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 			OperationName: "AppsResetToken",
 			OperationID:   "apps/reset-token",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -13894,7 +14878,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 			OperationName: "AppsRevokeInstallationAccessToken",
 			OperationID:   "apps/revoke-installation-access-token",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14008,8 +14992,11 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 			OperationName: "AppsScopeToken",
 			OperationID:   "apps/scope-token",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -14109,8 +15096,11 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 			OperationName: "AppsSuspendInstallation",
 			OperationID:   "apps/suspend-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
 			},
 			Raw: r,
 		}
@@ -14208,8 +15198,11 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 			OperationName: "AppsUnsuspendInstallation",
 			OperationID:   "apps/unsuspend-installation",
 			Body:          nil,
-			Params: map[string]any{
-				"installation_id": params.InstallationID,
+			Params: middleware.Parameters{
+				{
+					Name: "installation_id",
+					In:   "path",
+				}: params.InstallationID,
 			},
 			Raw: r,
 		}
@@ -14313,7 +15306,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 			OperationName: "AppsUpdateWebhookConfigForApp",
 			OperationID:   "apps/update-webhook-config-for-app",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14414,8 +15407,11 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 			OperationName: "BillingGetGithubActionsBillingGhe",
 			OperationID:   "billing/get-github-actions-billing-ghe",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -14517,8 +15513,11 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 			OperationName: "BillingGetGithubActionsBillingOrg",
 			OperationID:   "billing/get-github-actions-billing-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -14620,8 +15619,11 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 			OperationName: "BillingGetGithubActionsBillingUser",
 			OperationID:   "billing/get-github-actions-billing-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -14720,8 +15722,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 			OperationName: "BillingGetGithubPackagesBillingGhe",
 			OperationID:   "billing/get-github-packages-billing-ghe",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -14820,8 +15825,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 			OperationName: "BillingGetGithubPackagesBillingOrg",
 			OperationID:   "billing/get-github-packages-billing-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -14920,8 +15928,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 			OperationName: "BillingGetGithubPackagesBillingUser",
 			OperationID:   "billing/get-github-packages-billing-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -15020,8 +16031,11 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 			OperationName: "BillingGetSharedStorageBillingGhe",
 			OperationID:   "billing/get-shared-storage-billing-ghe",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -15120,8 +16134,11 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 			OperationName: "BillingGetSharedStorageBillingOrg",
 			OperationID:   "billing/get-shared-storage-billing-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -15220,8 +16237,11 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 			OperationName: "BillingGetSharedStorageBillingUser",
 			OperationID:   "billing/get-shared-storage-billing-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -15339,9 +16359,15 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 			OperationName: "ChecksCreateSuite",
 			OperationID:   "checks/create-suite",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -15441,10 +16467,19 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 			OperationName: "ChecksGet",
 			OperationID:   "checks/get",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"check_run_id": params.CheckRunID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "check_run_id",
+					In:   "path",
+				}: params.CheckRunID,
 			},
 			Raw: r,
 		}
@@ -15544,10 +16579,19 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 			OperationName: "ChecksGetSuite",
 			OperationID:   "checks/get-suite",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":          params.Owner,
-				"repo":           params.Repo,
-				"check_suite_id": params.CheckSuiteID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "check_suite_id",
+					In:   "path",
+				}: params.CheckSuiteID,
 			},
 			Raw: r,
 		}
@@ -15645,12 +16689,27 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 			OperationName: "ChecksListAnnotations",
 			OperationID:   "checks/list-annotations",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"check_run_id": params.CheckRunID,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "check_run_id",
+					In:   "path",
+				}: params.CheckRunID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -15751,16 +16810,43 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 			OperationName: "ChecksListForRef",
 			OperationID:   "checks/list-for-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"ref":        params.Ref,
-				"check_name": params.CheckName,
-				"status":     params.Status,
-				"filter":     params.Filter,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
-				"app_id":     params.AppID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
+				{
+					Name: "check_name",
+					In:   "query",
+				}: params.CheckName,
+				{
+					Name: "status",
+					In:   "query",
+				}: params.Status,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "app_id",
+					In:   "query",
+				}: params.AppID,
 			},
 			Raw: r,
 		}
@@ -15860,15 +16946,39 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 			OperationName: "ChecksListForSuite",
 			OperationID:   "checks/list-for-suite",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":          params.Owner,
-				"repo":           params.Repo,
-				"check_suite_id": params.CheckSuiteID,
-				"check_name":     params.CheckName,
-				"status":         params.Status,
-				"filter":         params.Filter,
-				"per_page":       params.PerPage,
-				"page":           params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "check_suite_id",
+					In:   "path",
+				}: params.CheckSuiteID,
+				{
+					Name: "check_name",
+					In:   "query",
+				}: params.CheckName,
+				{
+					Name: "status",
+					In:   "query",
+				}: params.Status,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -15969,14 +17079,35 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 			OperationName: "ChecksListSuitesForRef",
 			OperationID:   "checks/list-suites-for-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"ref":        params.Ref,
-				"app_id":     params.AppID,
-				"check_name": params.CheckName,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
+				{
+					Name: "app_id",
+					In:   "query",
+				}: params.AppID,
+				{
+					Name: "check_name",
+					In:   "query",
+				}: params.CheckName,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -16076,10 +17207,19 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 			OperationName: "ChecksRerequestSuite",
 			OperationID:   "checks/rerequest-suite",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":          params.Owner,
-				"repo":           params.Repo,
-				"check_suite_id": params.CheckSuiteID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "check_suite_id",
+					In:   "path",
+				}: params.CheckSuiteID,
 			},
 			Raw: r,
 		}
@@ -16193,9 +17333,15 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 			OperationName: "ChecksSetSuitesPreferences",
 			OperationID:   "checks/set-suites-preferences",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -16348,11 +17494,23 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 			OperationName: "CodeScanningDeleteAnalysis",
 			OperationID:   "code-scanning/delete-analysis",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":          params.Owner,
-				"repo":           params.Repo,
-				"analysis_id":    params.AnalysisID,
-				"confirm_delete": params.ConfirmDelete,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "analysis_id",
+					In:   "path",
+				}: params.AnalysisID,
+				{
+					Name: "confirm_delete",
+					In:   "query",
+				}: params.ConfirmDelete,
 			},
 			Raw: r,
 		}
@@ -16453,10 +17611,19 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 			OperationName: "CodeScanningGetAlert",
 			OperationID:   "code-scanning/get-alert",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"alert_number": params.AlertNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "alert_number",
+					In:   "path",
+				}: params.AlertNumber,
 			},
 			Raw: r,
 		}
@@ -16569,10 +17736,19 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 			OperationName: "CodeScanningGetAnalysis",
 			OperationID:   "code-scanning/get-analysis",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"analysis_id": params.AnalysisID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "analysis_id",
+					In:   "path",
+				}: params.AnalysisID,
 			},
 			Raw: r,
 		}
@@ -16672,10 +17848,19 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 			OperationName: "CodeScanningGetSarif",
 			OperationID:   "code-scanning/get-sarif",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"sarif_id": params.SarifID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sarif_id",
+					In:   "path",
+				}: params.SarifID,
 			},
 			Raw: r,
 		}
@@ -16772,13 +17957,31 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 			OperationName: "CodeScanningListAlertInstances",
 			OperationID:   "code-scanning/list-alert-instances",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"alert_number": params.AlertNumber,
-				"page":         params.Page,
-				"per_page":     params.PerPage,
-				"ref":          params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "alert_number",
+					In:   "path",
+				}: params.AlertNumber,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -16880,15 +18083,39 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 			OperationName: "CodeScanningListAlertsForRepo",
 			OperationID:   "code-scanning/list-alerts-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"tool_name": params.ToolName,
-				"tool_guid": params.ToolGUID,
-				"page":      params.Page,
-				"per_page":  params.PerPage,
-				"ref":       params.Ref,
-				"state":     params.State,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "tool_name",
+					In:   "query",
+				}: params.ToolName,
+				{
+					Name: "tool_guid",
+					In:   "query",
+				}: params.ToolGUID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
 			},
 			Raw: r,
 		}
@@ -16997,15 +18224,39 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 			OperationName: "CodeScanningListRecentAnalyses",
 			OperationID:   "code-scanning/list-recent-analyses",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"tool_name": params.ToolName,
-				"tool_guid": params.ToolGUID,
-				"page":      params.Page,
-				"per_page":  params.PerPage,
-				"ref":       params.Ref,
-				"sarif_id":  params.SarifID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "tool_name",
+					In:   "query",
+				}: params.ToolName,
+				{
+					Name: "tool_guid",
+					In:   "query",
+				}: params.ToolGUID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
+				{
+					Name: "sarif_id",
+					In:   "query",
+				}: params.SarifID,
 			},
 			Raw: r,
 		}
@@ -17117,10 +18368,19 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 			OperationName: "CodeScanningUpdateAlert",
 			OperationID:   "code-scanning/update-alert",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"alert_number": params.AlertNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "alert_number",
+					In:   "path",
+				}: params.AlertNumber,
 			},
 			Raw: r,
 		}
@@ -17256,9 +18516,15 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 			OperationName: "CodeScanningUploadSarif",
 			OperationID:   "code-scanning/upload-sarif",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -17339,7 +18605,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 			OperationName: "CodesOfConductGetAllCodesOfConduct",
 			OperationID:   "codes-of-conduct/get-all-codes-of-conduct",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17433,8 +18699,11 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 			OperationName: "CodesOfConductGetConductCode",
 			OperationID:   "codes-of-conduct/get-conduct-code",
 			Body:          nil,
-			Params: map[string]any{
-				"key": params.Key,
+			Params: middleware.Parameters{
+				{
+					Name: "key",
+					In:   "path",
+				}: params.Key,
 			},
 			Raw: r,
 		}
@@ -17515,7 +18784,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "EmojisGet",
 			OperationID:   "emojis/get",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17613,10 +18882,19 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			OperationName: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"org_id":          params.OrgID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "org_id",
+					In:   "path",
+				}: params.OrgID,
 			},
 			Raw: r,
 		}
@@ -17713,10 +18991,19 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			OperationName: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
 			OperationID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"runner_id":       params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -17818,8 +19105,11 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 			OperationName: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
 			OperationID:   "enterprise-admin/create-registration-token-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -17923,8 +19213,11 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 			OperationName: "EnterpriseAdminCreateRemoveTokenForEnterprise",
 			OperationID:   "enterprise-admin/create-remove-token-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -18035,8 +19328,11 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			OperationName: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -18132,9 +19428,15 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			OperationName: "EnterpriseAdminDeleteScimGroupFromEnterprise",
 			OperationID:   "enterprise-admin/delete-scim-group-from-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":    params.Enterprise,
-				"scim_group_id": params.ScimGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_group_id",
+					In:   "path",
+				}: params.ScimGroupID,
 			},
 			Raw: r,
 		}
@@ -18231,9 +19533,15 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
 			OperationID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"runner_id":  params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -18329,9 +19637,15 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
 			OperationID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -18427,9 +19741,15 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			OperationName: "EnterpriseAdminDeleteUserFromEnterprise",
 			OperationID:   "enterprise-admin/delete-user-from-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":   params.Enterprise,
-				"scim_user_id": params.ScimUserID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
 			},
 			Raw: r,
 		}
@@ -18528,9 +19848,15 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			OperationName: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"org_id":     params.OrgID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "org_id",
+					In:   "path",
+				}: params.OrgID,
 			},
 			Raw: r,
 		}
@@ -18629,9 +19955,15 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			OperationName: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"org_id":     params.OrgID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "org_id",
+					In:   "path",
+				}: params.OrgID,
 			},
 			Raw: r,
 		}
@@ -18730,8 +20062,11 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 			OperationName: "EnterpriseAdminGetAllowedActionsEnterprise",
 			OperationID:   "enterprise-admin/get-allowed-actions-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -18827,15 +20162,39 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 			OperationName: "EnterpriseAdminGetAuditLog",
 			OperationID:   "enterprise-admin/get-audit-log",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"phrase":     params.Phrase,
-				"include":    params.Include,
-				"after":      params.After,
-				"before":     params.Before,
-				"order":      params.Order,
-				"page":       params.Page,
-				"per_page":   params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "phrase",
+					In:   "query",
+				}: params.Phrase,
+				{
+					Name: "include",
+					In:   "query",
+				}: params.Include,
+				{
+					Name: "after",
+					In:   "query",
+				}: params.After,
+				{
+					Name: "before",
+					In:   "query",
+				}: params.Before,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -18931,8 +20290,11 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 			OperationName: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
 			OperationID:   "enterprise-admin/get-github-actions-permissions-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -19028,10 +20390,19 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
 			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":         params.Enterprise,
-				"scim_group_id":      params.ScimGroupID,
-				"excludedAttributes": params.ExcludedAttributes,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_group_id",
+					In:   "path",
+				}: params.ScimGroupID,
+				{
+					Name: "excludedAttributes",
+					In:   "query",
+				}: params.ExcludedAttributes,
 			},
 			Raw: r,
 		}
@@ -19127,9 +20498,15 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
 			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":   params.Enterprise,
-				"scim_user_id": params.ScimUserID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
 			},
 			Raw: r,
 		}
@@ -19225,9 +20602,15 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 			OperationName: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
 			OperationID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"runner_id":  params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -19323,9 +20706,15 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 			OperationName: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -19421,11 +20810,23 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 			OperationName: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"per_page":        params.PerPage,
-				"page":            params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -19521,12 +20922,27 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 			OperationName: "EnterpriseAdminListProvisionedGroupsEnterprise",
 			OperationID:   "enterprise-admin/list-provisioned-groups-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":         params.Enterprise,
-				"startIndex":         params.StartIndex,
-				"count":              params.Count,
-				"filter":             params.Filter,
-				"excludedAttributes": params.ExcludedAttributes,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "startIndex",
+					In:   "query",
+				}: params.StartIndex,
+				{
+					Name: "count",
+					In:   "query",
+				}: params.Count,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "excludedAttributes",
+					In:   "query",
+				}: params.ExcludedAttributes,
 			},
 			Raw: r,
 		}
@@ -19647,11 +21063,23 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 			OperationName: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
 			OperationID:   "enterprise-admin/list-provisioned-identities-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"startIndex": params.StartIndex,
-				"count":      params.Count,
-				"filter":     params.Filter,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "startIndex",
+					In:   "query",
+				}: params.StartIndex,
+				{
+					Name: "count",
+					In:   "query",
+				}: params.Count,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
 			},
 			Raw: r,
 		}
@@ -19747,8 +21175,11 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 			OperationName: "EnterpriseAdminListRunnerApplicationsForEnterprise",
 			OperationID:   "enterprise-admin/list-runner-applications-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -19847,10 +21278,19 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 			OperationName: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -19946,10 +21386,19 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 			OperationName: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -20045,10 +21494,19 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 			OperationName: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -20144,11 +21602,23 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 			OperationName: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
 			OperationID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"per_page":        params.PerPage,
-				"page":            params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -20262,8 +21732,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
 			OperationID:   "enterprise-admin/provision-and-invite-enterprise-group",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -20379,8 +21852,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
 			OperationID:   "enterprise-admin/provision-and-invite-enterprise-user",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -20479,10 +21955,19 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			OperationName: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"org_id":          params.OrgID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "org_id",
+					In:   "path",
+				}: params.OrgID,
 			},
 			Raw: r,
 		}
@@ -20579,10 +22064,19 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			OperationName: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
 			OperationID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
 			Body:          nil,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
-				"runner_id":       params.RunnerID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
+				{
+					Name: "runner_id",
+					In:   "path",
+				}: params.RunnerID,
 			},
 			Raw: r,
 		}
@@ -20696,8 +22190,11 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			OperationName: "EnterpriseAdminSetAllowedActionsEnterprise",
 			OperationID:   "enterprise-admin/set-allowed-actions-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -20808,8 +22305,11 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			OperationName: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
 			OperationID:   "enterprise-admin/set-github-actions-permissions-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -20925,9 +22425,15 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
 			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":    params.Enterprise,
-				"scim_group_id": params.ScimGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_group_id",
+					In:   "path",
+				}: params.ScimGroupID,
 			},
 			Raw: r,
 		}
@@ -21046,9 +22552,15 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
 			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":   params.Enterprise,
-				"scim_user_id": params.ScimUserID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
 			},
 			Raw: r,
 		}
@@ -21160,9 +22672,15 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			OperationName: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
 			OperationID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -21276,8 +22794,11 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			OperationName: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
 			OperationID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise": params.Enterprise,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
 			},
 			Raw: r,
 		}
@@ -21388,9 +22909,15 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			OperationName: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
 			OperationID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -21505,9 +23032,15 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
 			OperationID:   "enterprise-admin/update-attribute-for-enterprise-group",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":    params.Enterprise,
-				"scim_group_id": params.ScimGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_group_id",
+					In:   "path",
+				}: params.ScimGroupID,
 			},
 			Raw: r,
 		}
@@ -21639,9 +23172,15 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
 			OperationID:   "enterprise-admin/update-attribute-for-enterprise-user",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":   params.Enterprise,
-				"scim_user_id": params.ScimUserID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
 			},
 			Raw: r,
 		}
@@ -21752,9 +23291,15 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			OperationName: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
 			OperationID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
 			Body:          request,
-			Params: map[string]any{
-				"enterprise":      params.Enterprise,
-				"runner_group_id": params.RunnerGroupID,
+			Params: middleware.Parameters{
+				{
+					Name: "enterprise",
+					In:   "path",
+				}: params.Enterprise,
+				{
+					Name: "runner_group_id",
+					In:   "path",
+				}: params.RunnerGroupID,
 			},
 			Raw: r,
 		}
@@ -21849,8 +23394,11 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 			OperationName: "GistsCheckIsStarred",
 			OperationID:   "gists/check-is-starred",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -21952,7 +23500,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "GistsCreate",
 			OperationID:   "gists/create",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22061,8 +23609,11 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 			OperationName: "GistsCreateComment",
 			OperationID:   "gists/create-comment",
 			Body:          request,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -22157,8 +23708,11 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "GistsDelete",
 			OperationID:   "gists/delete",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -22253,9 +23807,15 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 			OperationName: "GistsDeleteComment",
 			OperationID:   "gists/delete-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id":    params.GistID,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -22350,8 +23910,11 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "GistsFork",
 			OperationID:   "gists/fork",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -22446,8 +24009,11 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 			OperationName: "GistsGet",
 			OperationID:   "gists/get",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -22542,9 +24108,15 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 			OperationName: "GistsGetComment",
 			OperationID:   "gists/get-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id":    params.GistID,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -22639,9 +24211,15 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 			OperationName: "GistsGetRevision",
 			OperationID:   "gists/get-revision",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
-				"sha":     params.Sha,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "sha",
+					In:   "path",
+				}: params.Sha,
 			},
 			Raw: r,
 		}
@@ -22737,10 +24315,19 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "GistsList",
 			OperationID:   "gists/list",
 			Body:          nil,
-			Params: map[string]any{
-				"since":    params.Since,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -22835,10 +24422,19 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 			OperationName: "GistsListComments",
 			OperationID:   "gists/list-comments",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id":  params.GistID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -22933,10 +24529,19 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 			OperationName: "GistsListCommits",
 			OperationID:   "gists/list-commits",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id":  params.GistID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -23031,11 +24636,23 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 			OperationName: "GistsListForUser",
 			OperationID:   "gists/list-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"since":    params.Since,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -23130,10 +24747,19 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 			OperationName: "GistsListForks",
 			OperationID:   "gists/list-forks",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id":  params.GistID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -23231,10 +24857,19 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 			OperationName: "GistsListPublic",
 			OperationID:   "gists/list-public",
 			Body:          nil,
-			Params: map[string]any{
-				"since":    params.Since,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -23329,10 +24964,19 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 			OperationName: "GistsListStarred",
 			OperationID:   "gists/list-starred",
 			Body:          nil,
-			Params: map[string]any{
-				"since":    params.Since,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -23429,8 +25073,11 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "GistsStar",
 			OperationID:   "gists/star",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -23525,8 +25172,11 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "GistsUnstar",
 			OperationID:   "gists/unstar",
 			Body:          nil,
-			Params: map[string]any{
-				"gist_id": params.GistID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
 			},
 			Raw: r,
 		}
@@ -23636,9 +25286,15 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 			OperationName: "GistsUpdateComment",
 			OperationID:   "gists/update-comment",
 			Body:          request,
-			Params: map[string]any{
-				"gist_id":    params.GistID,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "gist_id",
+					In:   "path",
+				}: params.GistID,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -23748,9 +25404,15 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 			OperationName: "GitCreateBlob",
 			OperationID:   "git/create-blob",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -23893,9 +25555,15 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 			OperationName: "GitCreateCommit",
 			OperationID:   "git/create-commit",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -24007,9 +25675,15 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 			OperationName: "GitCreateRef",
 			OperationID:   "git/create-ref",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -24155,9 +25829,15 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 			OperationName: "GitCreateTag",
 			OperationID:   "git/create-tag",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -24273,9 +25953,15 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 			OperationName: "GitCreateTree",
 			OperationID:   "git/create-tree",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -24370,10 +26056,19 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 			OperationName: "GitDeleteRef",
 			OperationID:   "git/delete-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -24469,10 +26164,19 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 			OperationName: "GitGetBlob",
 			OperationID:   "git/get-blob",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"file_sha": params.FileSha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "file_sha",
+					In:   "path",
+				}: params.FileSha,
 			},
 			Raw: r,
 		}
@@ -24600,10 +26304,19 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 			OperationName: "GitGetCommit",
 			OperationID:   "git/get-commit",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"commit_sha": params.CommitSha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "commit_sha",
+					In:   "path",
+				}: params.CommitSha,
 			},
 			Raw: r,
 		}
@@ -24705,10 +26418,19 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 			OperationName: "GitGetRef",
 			OperationID:   "git/get-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -24834,10 +26556,19 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 			OperationName: "GitGetTag",
 			OperationID:   "git/get-tag",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"tag_sha": params.TagSha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "tag_sha",
+					In:   "path",
+				}: params.TagSha,
 			},
 			Raw: r,
 		}
@@ -24935,11 +26666,23 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 			OperationName: "GitGetTree",
 			OperationID:   "git/get-tree",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"tree_sha":  params.TreeSha,
-				"recursive": params.Recursive,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "tree_sha",
+					In:   "path",
+				}: params.TreeSha,
+				{
+					Name: "recursive",
+					In:   "query",
+				}: params.Recursive,
 			},
 			Raw: r,
 		}
@@ -25048,12 +26791,27 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 			OperationName: "GitListMatchingRefs",
 			OperationID:   "git/list-matching-refs",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"ref":      params.Ref,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -25163,10 +26921,19 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 			OperationName: "GitUpdateRef",
 			OperationID:   "git/update-ref",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -25248,7 +27015,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 			OperationName: "GitignoreGetAllTemplates",
 			OperationID:   "gitignore/get-all-templates",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25344,8 +27111,11 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 			OperationName: "GitignoreGetTemplate",
 			OperationID:   "gitignore/get-template",
 			Body:          nil,
-			Params: map[string]any{
-				"name": params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -25426,7 +27196,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 			OperationName: "InteractionsRemoveRestrictionsForAuthenticatedUser",
 			OperationID:   "interactions/remove-restrictions-for-authenticated-user",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25521,8 +27291,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			OperationName: "InteractionsRemoveRestrictionsForOrg",
 			OperationID:   "interactions/remove-restrictions-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -25620,9 +27393,15 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 			OperationName: "InteractionsRemoveRestrictionsForRepo",
 			OperationID:   "interactions/remove-restrictions-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -25724,7 +27503,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 			OperationName: "InteractionsSetRestrictionsForAuthenticatedUser",
 			OperationID:   "interactions/set-restrictions-for-authenticated-user",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25836,8 +27615,11 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 			OperationName: "InteractionsSetRestrictionsForOrg",
 			OperationID:   "interactions/set-restrictions-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -25950,9 +27732,15 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 			OperationName: "InteractionsSetRestrictionsForRepo",
 			OperationID:   "interactions/set-restrictions-for-repo",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -26062,10 +27850,19 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 			OperationName: "IssuesAddAssignees",
 			OperationID:   "issues/add-assignees",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -26163,10 +27960,19 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 			OperationName: "IssuesCheckUserCanBeAssigned",
 			OperationID:   "issues/check-user-can-be-assigned",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"assignee": params.Assignee,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "assignee",
+					In:   "path",
+				}: params.Assignee,
 			},
 			Raw: r,
 		}
@@ -26285,9 +28091,15 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 			OperationName: "IssuesCreate",
 			OperationID:   "issues/create",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -26403,10 +28215,19 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 			OperationName: "IssuesCreateComment",
 			OperationID:   "issues/create-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -26516,9 +28337,15 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 			OperationName: "IssuesCreateLabel",
 			OperationID:   "issues/create-label",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -26628,9 +28455,15 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 			OperationName: "IssuesCreateMilestone",
 			OperationID:   "issues/create-milestone",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -26725,10 +28558,19 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 			OperationName: "IssuesDeleteComment",
 			OperationID:   "issues/delete-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -26823,10 +28665,19 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 			OperationName: "IssuesDeleteLabel",
 			OperationID:   "issues/delete-label",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"name":  params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -26921,10 +28772,19 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 			OperationName: "IssuesDeleteMilestone",
 			OperationID:   "issues/delete-milestone",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":            params.Owner,
-				"repo":             params.Repo,
-				"milestone_number": params.MilestoneNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "milestone_number",
+					In:   "path",
+				}: params.MilestoneNumber,
 			},
 			Raw: r,
 		}
@@ -27037,10 +28897,19 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 			OperationName: "IssuesGet",
 			OperationID:   "issues/get",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -27135,10 +29004,19 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 			OperationName: "IssuesGetComment",
 			OperationID:   "issues/get-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -27233,10 +29111,19 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 			OperationName: "IssuesGetEvent",
 			OperationID:   "issues/get-event",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"event_id": params.EventID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "event_id",
+					In:   "path",
+				}: params.EventID,
 			},
 			Raw: r,
 		}
@@ -27331,10 +29218,19 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 			OperationName: "IssuesGetLabel",
 			OperationID:   "issues/get-label",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"name":  params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -27429,10 +29325,19 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 			OperationName: "IssuesGetMilestone",
 			OperationID:   "issues/get-milestone",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":            params.Owner,
-				"repo":             params.Repo,
-				"milestone_number": params.MilestoneNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "milestone_number",
+					In:   "path",
+				}: params.MilestoneNumber,
 			},
 			Raw: r,
 		}
@@ -27539,19 +29444,55 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "IssuesList",
 			OperationID:   "issues/list",
 			Body:          nil,
-			Params: map[string]any{
-				"filter":    params.Filter,
-				"state":     params.State,
-				"labels":    params.Labels,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"collab":    params.Collab,
-				"orgs":      params.Orgs,
-				"owned":     params.Owned,
-				"pulls":     params.Pulls,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "labels",
+					In:   "query",
+				}: params.Labels,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "collab",
+					In:   "query",
+				}: params.Collab,
+				{
+					Name: "orgs",
+					In:   "query",
+				}: params.Orgs,
+				{
+					Name: "owned",
+					In:   "query",
+				}: params.Owned,
+				{
+					Name: "pulls",
+					In:   "query",
+				}: params.Pulls,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -27647,11 +29588,23 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 			OperationName: "IssuesListAssignees",
 			OperationID:   "issues/list-assignees",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -27746,13 +29699,31 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 			OperationName: "IssuesListComments",
 			OperationID:   "issues/list-comments",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
-				"since":        params.Since,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -27847,14 +29818,35 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 			OperationName: "IssuesListCommentsForRepo",
 			OperationID:   "issues/list-comments-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -27949,11 +29941,23 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 			OperationName: "IssuesListEventsForRepo",
 			OperationID:   "issues/list-events-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28056,15 +30060,39 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 			OperationName: "IssuesListForAuthenticatedUser",
 			OperationID:   "issues/list-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"filter":    params.Filter,
-				"state":     params.State,
-				"labels":    params.Labels,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "labels",
+					In:   "query",
+				}: params.Labels,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28167,16 +30195,43 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 			OperationName: "IssuesListForOrg",
 			OperationID:   "issues/list-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"filter":    params.Filter,
-				"state":     params.State,
-				"labels":    params.Labels,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "labels",
+					In:   "query",
+				}: params.Labels,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28279,20 +30334,59 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 			OperationName: "IssuesListForRepo",
 			OperationID:   "issues/list-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"milestone": params.Milestone,
-				"state":     params.State,
-				"assignee":  params.Assignee,
-				"creator":   params.Creator,
-				"mentioned": params.Mentioned,
-				"labels":    params.Labels,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "milestone",
+					In:   "query",
+				}: params.Milestone,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "assignee",
+					In:   "query",
+				}: params.Assignee,
+				{
+					Name: "creator",
+					In:   "query",
+				}: params.Creator,
+				{
+					Name: "mentioned",
+					In:   "query",
+				}: params.Mentioned,
+				{
+					Name: "labels",
+					In:   "query",
+				}: params.Labels,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28387,12 +30481,27 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 			OperationName: "IssuesListLabelsForMilestone",
 			OperationID:   "issues/list-labels-for-milestone",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":            params.Owner,
-				"repo":             params.Repo,
-				"milestone_number": params.MilestoneNumber,
-				"per_page":         params.PerPage,
-				"page":             params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "milestone_number",
+					In:   "path",
+				}: params.MilestoneNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28487,11 +30596,23 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 			OperationName: "IssuesListLabelsForRepo",
 			OperationID:   "issues/list-labels-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28586,12 +30707,27 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 			OperationName: "IssuesListLabelsOnIssue",
 			OperationID:   "issues/list-labels-on-issue",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28686,14 +30822,35 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 			OperationName: "IssuesListMilestones",
 			OperationID:   "issues/list-milestones",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"state":     params.State,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -28806,10 +30963,19 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 			OperationName: "IssuesLock",
 			OperationID:   "issues/lock",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -28904,10 +31070,19 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 			OperationName: "IssuesRemoveAllLabels",
 			OperationID:   "issues/remove-all-labels",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -29017,10 +31192,19 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 			OperationName: "IssuesRemoveAssignees",
 			OperationID:   "issues/remove-assignees",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -29116,11 +31300,23 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 			OperationName: "IssuesRemoveLabel",
 			OperationID:   "issues/remove-label",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
-				"name":         params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -29215,10 +31411,19 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 			OperationName: "IssuesUnlock",
 			OperationID:   "issues/unlock",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -29328,10 +31533,19 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 			OperationName: "IssuesUpdate",
 			OperationID:   "issues/update",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -29441,10 +31655,19 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 			OperationName: "IssuesUpdateComment",
 			OperationID:   "issues/update-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -29554,10 +31777,19 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 			OperationName: "IssuesUpdateLabel",
 			OperationID:   "issues/update-label",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"name":  params.Name,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
 			},
 			Raw: r,
 		}
@@ -29667,10 +31899,19 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 			OperationName: "IssuesUpdateMilestone",
 			OperationID:   "issues/update-milestone",
 			Body:          request,
-			Params: map[string]any{
-				"owner":            params.Owner,
-				"repo":             params.Repo,
-				"milestone_number": params.MilestoneNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "milestone_number",
+					In:   "path",
+				}: params.MilestoneNumber,
 			},
 			Raw: r,
 		}
@@ -29765,8 +32006,11 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "LicensesGet",
 			OperationID:   "licenses/get",
 			Body:          nil,
-			Params: map[string]any{
-				"license": params.License,
+			Params: middleware.Parameters{
+				{
+					Name: "license",
+					In:   "path",
+				}: params.License,
 			},
 			Raw: r,
 		}
@@ -29861,10 +32105,19 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 			OperationName: "LicensesGetAllCommonlyUsed",
 			OperationID:   "licenses/get-all-commonly-used",
 			Body:          nil,
-			Params: map[string]any{
-				"featured": params.Featured,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "featured",
+					In:   "query",
+				}: params.Featured,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -29963,9 +32216,15 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 			OperationName: "LicensesGetForRepo",
 			OperationID:   "licenses/get-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -30050,7 +32309,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "MetaGet",
 			OperationID:   "meta/get",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30130,7 +32389,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "MetaGetZen",
 			OperationID:   "meta/get-zen",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30210,7 +32469,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "MetaRoot",
 			OperationID:   "meta/root",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30304,9 +32563,15 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 			OperationName: "MigrationsCancelImport",
 			OperationID:   "migrations/cancel-import",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -30405,8 +32670,11 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 			OperationName: "MigrationsDeleteArchiveForAuthenticatedUser",
 			OperationID:   "migrations/delete-archive-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"migration_id": params.MigrationID,
+			Params: middleware.Parameters{
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
 			},
 			Raw: r,
 		}
@@ -30502,9 +32770,15 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 			OperationName: "MigrationsDeleteArchiveForOrg",
 			OperationID:   "migrations/delete-archive-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"migration_id": params.MigrationID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
 			},
 			Raw: r,
 		}
@@ -30599,9 +32873,15 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 			OperationName: "MigrationsDownloadArchiveForOrg",
 			OperationID:   "migrations/download-archive-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"migration_id": params.MigrationID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
 			},
 			Raw: r,
 		}
@@ -30716,8 +32996,11 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 			OperationName: "MigrationsGetArchiveForAuthenticatedUser",
 			OperationID:   "migrations/get-archive-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"migration_id": params.MigrationID,
+			Params: middleware.Parameters{
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
 			},
 			Raw: r,
 		}
@@ -30819,10 +33102,19 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 			OperationName: "MigrationsGetCommitAuthors",
 			OperationID:   "migrations/get-commit-authors",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"since": params.Since,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
 			},
 			Raw: r,
 		}
@@ -30969,9 +33261,15 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 			OperationName: "MigrationsGetImportStatus",
 			OperationID:   "migrations/get-import-status",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -31066,9 +33364,15 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 			OperationName: "MigrationsGetLargeFiles",
 			OperationID:   "migrations/get-large-files",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -31170,9 +33474,15 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 			OperationName: "MigrationsGetStatusForAuthenticatedUser",
 			OperationID:   "migrations/get-status-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"migration_id": params.MigrationID,
-				"exclude":      params.Exclude,
+			Params: middleware.Parameters{
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "exclude",
+					In:   "query",
+				}: params.Exclude,
 			},
 			Raw: r,
 		}
@@ -31272,10 +33582,19 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 			OperationName: "MigrationsGetStatusForOrg",
 			OperationID:   "migrations/get-status-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"migration_id": params.MigrationID,
-				"exclude":      params.Exclude,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "exclude",
+					In:   "query",
+				}: params.Exclude,
 			},
 			Raw: r,
 		}
@@ -31370,9 +33689,15 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 			OperationName: "MigrationsListForAuthenticatedUser",
 			OperationID:   "migrations/list-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -31467,11 +33792,23 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 			OperationName: "MigrationsListForOrg",
 			OperationID:   "migrations/list-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
-				"exclude":  params.Exclude,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "exclude",
+					In:   "query",
+				}: params.Exclude,
 			},
 			Raw: r,
 		}
@@ -31566,11 +33903,23 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 			OperationName: "MigrationsListReposForOrg",
 			OperationID:   "migrations/list-repos-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"migration_id": params.MigrationID,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -31665,10 +34014,19 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 			OperationName: "MigrationsListReposForUser",
 			OperationID:   "migrations/list-repos-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"migration_id": params.MigrationID,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -31779,10 +34137,19 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 			OperationName: "MigrationsMapCommitAuthor",
 			OperationID:   "migrations/map-commit-author",
 			Body:          request,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"author_id": params.AuthorID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "author_id",
+					In:   "path",
+				}: params.AuthorID,
 			},
 			Raw: r,
 		}
@@ -31895,9 +34262,15 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 			OperationName: "MigrationsSetLfsPreference",
 			OperationID:   "migrations/set-lfs-preference",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -31997,7 +34370,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 			OperationName: "MigrationsStartForAuthenticatedUser",
 			OperationID:   "migrations/start-for-authenticated-user",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32106,8 +34479,11 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 			OperationName: "MigrationsStartForOrg",
 			OperationID:   "migrations/start-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -32217,9 +34593,15 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 			OperationName: "MigrationsStartImport",
 			OperationID:   "migrations/start-import",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -32318,9 +34700,15 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 			OperationName: "MigrationsUnlockRepoForAuthenticatedUser",
 			OperationID:   "migrations/unlock-repo-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"migration_id": params.MigrationID,
-				"repo_name":    params.RepoName,
+			Params: middleware.Parameters{
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "repo_name",
+					In:   "path",
+				}: params.RepoName,
 			},
 			Raw: r,
 		}
@@ -32417,10 +34805,19 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 			OperationName: "MigrationsUnlockRepoForOrg",
 			OperationID:   "migrations/unlock-repo-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"migration_id": params.MigrationID,
-				"repo_name":    params.RepoName,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "migration_id",
+					In:   "path",
+				}: params.MigrationID,
+				{
+					Name: "repo_name",
+					In:   "path",
+				}: params.RepoName,
 			},
 			Raw: r,
 		}
@@ -32532,9 +34929,15 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 			OperationName: "MigrationsUpdateImport",
 			OperationID:   "migrations/update-import",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -32663,7 +35066,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 			OperationName: "OAuthAuthorizationsCreateAuthorization",
 			OperationID:   "oauth-authorizations/create-authorization",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32766,8 +35169,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 			OperationName: "OAuthAuthorizationsDeleteAuthorization",
 			OperationID:   "oauth-authorizations/delete-authorization",
 			Body:          nil,
-			Params: map[string]any{
-				"authorization_id": params.AuthorizationID,
+			Params: middleware.Parameters{
+				{
+					Name: "authorization_id",
+					In:   "path",
+				}: params.AuthorizationID,
 			},
 			Raw: r,
 		}
@@ -32874,8 +35280,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 			OperationName: "OAuthAuthorizationsDeleteGrant",
 			OperationID:   "oauth-authorizations/delete-grant",
 			Body:          nil,
-			Params: map[string]any{
-				"grant_id": params.GrantID,
+			Params: middleware.Parameters{
+				{
+					Name: "grant_id",
+					In:   "path",
+				}: params.GrantID,
 			},
 			Raw: r,
 		}
@@ -32979,8 +35388,11 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 			OperationName: "OAuthAuthorizationsGetAuthorization",
 			OperationID:   "oauth-authorizations/get-authorization",
 			Body:          nil,
-			Params: map[string]any{
-				"authorization_id": params.AuthorizationID,
+			Params: middleware.Parameters{
+				{
+					Name: "authorization_id",
+					In:   "path",
+				}: params.AuthorizationID,
 			},
 			Raw: r,
 		}
@@ -33084,8 +35496,11 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 			OperationName: "OAuthAuthorizationsGetGrant",
 			OperationID:   "oauth-authorizations/get-grant",
 			Body:          nil,
-			Params: map[string]any{
-				"grant_id": params.GrantID,
+			Params: middleware.Parameters{
+				{
+					Name: "grant_id",
+					In:   "path",
+				}: params.GrantID,
 			},
 			Raw: r,
 		}
@@ -33223,8 +35638,11 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
 			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app",
 			Body:          request,
-			Params: map[string]any{
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -33357,9 +35775,15 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
 			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
 			Body:          request,
-			Params: map[string]any{
-				"client_id":   params.ClientID,
-				"fingerprint": params.Fingerprint,
+			Params: middleware.Parameters{
+				{
+					Name: "client_id",
+					In:   "path",
+				}: params.ClientID,
+				{
+					Name: "fingerprint",
+					In:   "path",
+				}: params.Fingerprint,
 			},
 			Raw: r,
 		}
@@ -33463,10 +35887,19 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 			OperationName: "OAuthAuthorizationsListAuthorizations",
 			OperationID:   "oauth-authorizations/list-authorizations",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page":  params.PerPage,
-				"page":      params.Page,
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "client_id",
+					In:   "query",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -33581,10 +36014,19 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 			OperationName: "OAuthAuthorizationsListGrants",
 			OperationID:   "oauth-authorizations/list-grants",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page":  params.PerPage,
-				"page":      params.Page,
-				"client_id": params.ClientID,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "client_id",
+					In:   "query",
+				}: params.ClientID,
 			},
 			Raw: r,
 		}
@@ -33707,8 +36149,11 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 			OperationName: "OAuthAuthorizationsUpdateAuthorization",
 			OperationID:   "oauth-authorizations/update-authorization",
 			Body:          request,
-			Params: map[string]any{
-				"authorization_id": params.AuthorizationID,
+			Params: middleware.Parameters{
+				{
+					Name: "authorization_id",
+					In:   "path",
+				}: params.AuthorizationID,
 			},
 			Raw: r,
 		}
@@ -33803,9 +36248,15 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 			OperationName: "OrgsBlockUser",
 			OperationID:   "orgs/block-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -33903,9 +36354,15 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 			OperationName: "OrgsCancelInvitation",
 			OperationID:   "orgs/cancel-invitation",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"invitation_id": params.InvitationID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
 			},
 			Raw: r,
 		}
@@ -34000,9 +36457,15 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 			OperationName: "OrgsCheckBlockedUser",
 			OperationID:   "orgs/check-blocked-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -34097,9 +36560,15 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 			OperationName: "OrgsCheckMembershipForUser",
 			OperationID:   "orgs/check-membership-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -34194,9 +36663,15 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 			OperationName: "OrgsCheckPublicMembershipForUser",
 			OperationID:   "orgs/check-public-membership-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -34295,9 +36770,15 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 			OperationName: "OrgsConvertMemberToOutsideCollaborator",
 			OperationID:   "orgs/convert-member-to-outside-collaborator",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -34415,8 +36896,11 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 			OperationName: "OrgsCreateInvitation",
 			OperationID:   "orgs/create-invitation",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -34526,8 +37010,11 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 			OperationName: "OrgsCreateWebhook",
 			OperationID:   "orgs/create-webhook",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -34622,9 +37109,15 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 			OperationName: "OrgsDeleteWebhook",
 			OperationID:   "orgs/delete-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -34727,8 +37220,11 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 			OperationName: "OrgsGet",
 			OperationID:   "orgs/get",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -34828,15 +37324,39 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 			OperationName: "OrgsGetAuditLog",
 			OperationID:   "orgs/get-audit-log",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"phrase":   params.Phrase,
-				"include":  params.Include,
-				"after":    params.After,
-				"before":   params.Before,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "phrase",
+					In:   "query",
+				}: params.Phrase,
+				{
+					Name: "include",
+					In:   "query",
+				}: params.Include,
+				{
+					Name: "after",
+					In:   "query",
+				}: params.After,
+				{
+					Name: "before",
+					In:   "query",
+				}: params.Before,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -34931,8 +37451,11 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 			OperationName: "OrgsGetMembershipForAuthenticatedUser",
 			OperationID:   "orgs/get-membership-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -35029,9 +37552,15 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 			OperationName: "OrgsGetMembershipForUser",
 			OperationID:   "orgs/get-membership-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -35128,9 +37657,15 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 			OperationName: "OrgsGetWebhook",
 			OperationID:   "orgs/get-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -35229,9 +37764,15 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 			OperationName: "OrgsGetWebhookConfigForOrg",
 			OperationID:   "orgs/get-webhook-config-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -35326,10 +37867,19 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 			OperationName: "OrgsGetWebhookDelivery",
 			OperationID:   "orgs/get-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"hook_id":     params.HookID,
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -35427,9 +37977,15 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "OrgsList",
 			OperationID:   "orgs/list",
 			Body:          nil,
-			Params: map[string]any{
-				"since":    params.Since,
-				"per_page": params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -35524,8 +38080,11 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 			OperationName: "OrgsListBlockedUsers",
 			OperationID:   "orgs/list-blocked-users",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -35621,10 +38180,19 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 			OperationName: "OrgsListFailedInvitations",
 			OperationID:   "orgs/list-failed-invitations",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -35724,9 +38292,15 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 			OperationName: "OrgsListForAuthenticatedUser",
 			OperationID:   "orgs/list-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -35826,10 +38400,19 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 			OperationName: "OrgsListForUser",
 			OperationID:   "orgs/list-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -35925,11 +38508,23 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 			OperationName: "OrgsListInvitationTeams",
 			OperationID:   "orgs/list-invitation-teams",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"invitation_id": params.InvitationID,
-				"per_page":      params.PerPage,
-				"page":          params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36025,12 +38620,27 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 			OperationName: "OrgsListMembers",
 			OperationID:   "orgs/list-members",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"filter":   params.Filter,
-				"role":     params.Role,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "role",
+					In:   "query",
+				}: params.Role,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36125,10 +38735,19 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 			OperationName: "OrgsListMembershipsForAuthenticatedUser",
 			OperationID:   "orgs/list-memberships-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"state":    params.State,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36223,11 +38842,23 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 			OperationName: "OrgsListOutsideCollaborators",
 			OperationID:   "orgs/list-outside-collaborators",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"filter":   params.Filter,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "filter",
+					In:   "query",
+				}: params.Filter,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36325,10 +38956,19 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 			OperationName: "OrgsListPendingInvitations",
 			OperationID:   "orgs/list-pending-invitations",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36423,10 +39063,19 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 			OperationName: "OrgsListPublicMembers",
 			OperationID:   "orgs/list-public-members",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36528,8 +39177,11 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 			OperationName: "OrgsListSamlSSOAuthorizations",
 			OperationID:   "orgs/list-saml-sso-authorizations",
 			Body:          nil,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -36624,11 +39276,23 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 			OperationName: "OrgsListWebhookDeliveries",
 			OperationID:   "orgs/list-webhook-deliveries",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"hook_id":  params.HookID,
-				"per_page": params.PerPage,
-				"cursor":   params.Cursor,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "cursor",
+					In:   "query",
+				}: params.Cursor,
 			},
 			Raw: r,
 		}
@@ -36723,10 +39387,19 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 			OperationName: "OrgsListWebhooks",
 			OperationID:   "orgs/list-webhooks",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -36822,9 +39495,15 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 			OperationName: "OrgsPingWebhook",
 			OperationID:   "orgs/ping-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -36919,10 +39598,19 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 			OperationName: "OrgsRedeliverWebhookDelivery",
 			OperationID:   "orgs/redeliver-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"hook_id":     params.HookID,
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -37018,9 +39706,15 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 			OperationName: "OrgsRemoveMember",
 			OperationID:   "orgs/remove-member",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37119,9 +39813,15 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 			OperationName: "OrgsRemoveMembershipForUser",
 			OperationID:   "orgs/remove-membership-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37216,9 +39916,15 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 			OperationName: "OrgsRemoveOutsideCollaborator",
 			OperationID:   "orgs/remove-outside-collaborator",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37313,9 +40019,15 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			OperationName: "OrgsRemovePublicMembershipForAuthenticatedUser",
 			OperationID:   "orgs/remove-public-membership-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37416,9 +40128,15 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 			OperationName: "OrgsRemoveSamlSSOAuthorization",
 			OperationID:   "orgs/remove-saml-sso-authorization",
 			Body:          nil,
-			Params: map[string]any{
-				"org":           params.Org,
-				"credential_id": params.CredentialID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "credential_id",
+					In:   "path",
+				}: params.CredentialID,
 			},
 			Raw: r,
 		}
@@ -37541,9 +40259,15 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 			OperationName: "OrgsSetMembershipForUser",
 			OperationID:   "orgs/set-membership-for-user",
 			Body:          request,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37642,9 +40366,15 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 			OperationName: "OrgsSetPublicMembershipForAuthenticatedUser",
 			OperationID:   "orgs/set-public-membership-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37739,9 +40469,15 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 			OperationName: "OrgsUnblockUser",
 			OperationID:   "orgs/unblock-user",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -37851,8 +40587,11 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 			OperationName: "OrgsUpdateMembershipForAuthenticatedUser",
 			OperationID:   "orgs/update-membership-for-authenticated-user",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -37966,9 +40705,15 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 			OperationName: "OrgsUpdateWebhook",
 			OperationID:   "orgs/update-webhook",
 			Body:          request,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -38082,9 +40827,15 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 			OperationName: "OrgsUpdateWebhookConfigForOrg",
 			OperationID:   "orgs/update-webhook-config-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":     params.Org,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -38184,9 +40935,15 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 			OperationName: "PackagesDeletePackageForAuthenticatedUser",
 			OperationID:   "packages/delete-package-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
 			},
 			Raw: r,
 		}
@@ -38288,10 +41045,19 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 			OperationName: "PackagesDeletePackageForOrg",
 			OperationID:   "packages/delete-package-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"org":          params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -38393,10 +41159,19 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 			OperationName: "PackagesDeletePackageForUser",
 			OperationID:   "packages/delete-package-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"username":     params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -38496,10 +41271,19 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 			OperationName: "PackagesDeletePackageVersionForAuthenticatedUser",
 			OperationID:   "packages/delete-package-version-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -38601,11 +41385,23 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 			OperationName: "PackagesDeletePackageVersionForOrg",
 			OperationID:   "packages/delete-package-version-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"org":                params.Org,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -38707,11 +41503,23 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 			OperationName: "PackagesDeletePackageVersionForUser",
 			OperationID:   "packages/delete-package-version-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"username":           params.Username,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -38808,12 +41616,27 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"page":         params.Page,
-				"per_page":     params.PerPage,
-				"state":        params.State,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
 			},
 			Raw: r,
 		}
@@ -38910,13 +41733,31 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-org",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"org":          params.Org,
-				"page":         params.Page,
-				"per_page":     params.PerPage,
-				"state":        params.State,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
 			},
 			Raw: r,
 		}
@@ -39013,10 +41854,19 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
 			OperationID:   "packages/get-all-package-versions-for-package-owned-by-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"username":     params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -39113,9 +41963,15 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 			OperationName: "PackagesGetPackageForAuthenticatedUser",
 			OperationID:   "packages/get-package-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
 			},
 			Raw: r,
 		}
@@ -39212,10 +42068,19 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 			OperationName: "PackagesGetPackageForOrganization",
 			OperationID:   "packages/get-package-for-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"org":          params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -39312,10 +42177,19 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 			OperationName: "PackagesGetPackageForUser",
 			OperationID:   "packages/get-package-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"username":     params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -39412,10 +42286,19 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 			OperationName: "PackagesGetPackageVersionForAuthenticatedUser",
 			OperationID:   "packages/get-package-version-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -39512,11 +42395,23 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 			OperationName: "PackagesGetPackageVersionForOrganization",
 			OperationID:   "packages/get-package-version-for-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"org":                params.Org,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -39614,11 +42509,23 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 			OperationName: "PackagesGetPackageVersionForUser",
 			OperationID:   "packages/get-package-version-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"package_version_id": params.PackageVersionID,
-				"username":           params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -39715,9 +42622,15 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 			OperationName: "PackagesListPackagesForAuthenticatedUser",
 			OperationID:   "packages/list-packages-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"visibility":   params.Visibility,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "query",
+				}: params.PackageType,
+				{
+					Name: "visibility",
+					In:   "query",
+				}: params.Visibility,
 			},
 			Raw: r,
 		}
@@ -39814,10 +42727,19 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 			OperationName: "PackagesListPackagesForOrganization",
 			OperationID:   "packages/list-packages-for-organization",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"org":          params.Org,
-				"visibility":   params.Visibility,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "query",
+				}: params.PackageType,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "visibility",
+					In:   "query",
+				}: params.Visibility,
 			},
 			Raw: r,
 		}
@@ -39914,10 +42836,19 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 			OperationName: "PackagesListPackagesForUser",
 			OperationID:   "packages/list-packages-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"visibility":   params.Visibility,
-				"username":     params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "query",
+				}: params.PackageType,
+				{
+					Name: "visibility",
+					In:   "query",
+				}: params.Visibility,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -40021,10 +42952,19 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 			OperationName: "PackagesRestorePackageForAuthenticatedUser",
 			OperationID:   "packages/restore-package-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"token":        params.Token,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "token",
+					In:   "query",
+				}: params.Token,
 			},
 			Raw: r,
 		}
@@ -40130,11 +43070,23 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 			OperationName: "PackagesRestorePackageForOrg",
 			OperationID:   "packages/restore-package-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"org":          params.Org,
-				"token":        params.Token,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "token",
+					In:   "query",
+				}: params.Token,
 			},
 			Raw: r,
 		}
@@ -40240,11 +43192,23 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 			OperationName: "PackagesRestorePackageForUser",
 			OperationID:   "packages/restore-package-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type": params.PackageType,
-				"package_name": params.PackageName,
-				"username":     params.Username,
-				"token":        params.Token,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "token",
+					In:   "query",
+				}: params.Token,
 			},
 			Raw: r,
 		}
@@ -40348,10 +43312,19 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 			OperationName: "PackagesRestorePackageVersionForAuthenticatedUser",
 			OperationID:   "packages/restore-package-version-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -40457,11 +43430,23 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 			OperationName: "PackagesRestorePackageVersionForOrg",
 			OperationID:   "packages/restore-package-version-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"org":                params.Org,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -40567,11 +43552,23 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 			OperationName: "PackagesRestorePackageVersionForUser",
 			OperationID:   "packages/restore-package-version-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"package_type":       params.PackageType,
-				"package_name":       params.PackageName,
-				"username":           params.Username,
-				"package_version_id": params.PackageVersionID,
+			Params: middleware.Parameters{
+				{
+					Name: "package_type",
+					In:   "path",
+				}: params.PackageType,
+				{
+					Name: "package_name",
+					In:   "path",
+				}: params.PackageName,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "package_version_id",
+					In:   "path",
+				}: params.PackageVersionID,
 			},
 			Raw: r,
 		}
@@ -40682,9 +43679,15 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 			OperationName: "ProjectsAddCollaborator",
 			OperationID:   "projects/add-collaborator",
 			Body:          request,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
-				"username":   params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -40794,8 +43797,11 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 			OperationName: "ProjectsCreateColumn",
 			OperationID:   "projects/create-column",
 			Body:          request,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -40895,7 +43901,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 			OperationName: "ProjectsCreateForAuthenticatedUser",
 			OperationID:   "projects/create-for-authenticated-user",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41006,8 +44012,11 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 			OperationName: "ProjectsCreateForOrg",
 			OperationID:   "projects/create-for-org",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -41119,9 +44128,15 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 			OperationName: "ProjectsCreateForRepo",
 			OperationID:   "projects/create-for-repo",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -41216,8 +44231,11 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 			OperationName: "ProjectsDelete",
 			OperationID:   "projects/delete",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -41312,8 +44330,11 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 			OperationName: "ProjectsDeleteCard",
 			OperationID:   "projects/delete-card",
 			Body:          nil,
-			Params: map[string]any{
-				"card_id": params.CardID,
+			Params: middleware.Parameters{
+				{
+					Name: "card_id",
+					In:   "path",
+				}: params.CardID,
 			},
 			Raw: r,
 		}
@@ -41408,8 +44429,11 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 			OperationName: "ProjectsDeleteColumn",
 			OperationID:   "projects/delete-column",
 			Body:          nil,
-			Params: map[string]any{
-				"column_id": params.ColumnID,
+			Params: middleware.Parameters{
+				{
+					Name: "column_id",
+					In:   "path",
+				}: params.ColumnID,
 			},
 			Raw: r,
 		}
@@ -41506,8 +44530,11 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "ProjectsGet",
 			OperationID:   "projects/get",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -41602,8 +44629,11 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 			OperationName: "ProjectsGetCard",
 			OperationID:   "projects/get-card",
 			Body:          nil,
-			Params: map[string]any{
-				"card_id": params.CardID,
+			Params: middleware.Parameters{
+				{
+					Name: "card_id",
+					In:   "path",
+				}: params.CardID,
 			},
 			Raw: r,
 		}
@@ -41698,8 +44728,11 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 			OperationName: "ProjectsGetColumn",
 			OperationID:   "projects/get-column",
 			Body:          nil,
-			Params: map[string]any{
-				"column_id": params.ColumnID,
+			Params: middleware.Parameters{
+				{
+					Name: "column_id",
+					In:   "path",
+				}: params.ColumnID,
 			},
 			Raw: r,
 		}
@@ -41796,9 +44829,15 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 			OperationName: "ProjectsGetPermissionForUser",
 			OperationID:   "projects/get-permission-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
-				"username":   params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -41893,11 +44932,23 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 			OperationName: "ProjectsListCards",
 			OperationID:   "projects/list-cards",
 			Body:          nil,
-			Params: map[string]any{
-				"column_id":      params.ColumnID,
-				"archived_state": params.ArchivedState,
-				"per_page":       params.PerPage,
-				"page":           params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "column_id",
+					In:   "path",
+				}: params.ColumnID,
+				{
+					Name: "archived_state",
+					In:   "query",
+				}: params.ArchivedState,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -41996,11 +45047,23 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 			OperationName: "ProjectsListCollaborators",
 			OperationID:   "projects/list-collaborators",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id":  params.ProjectID,
-				"affiliation": params.Affiliation,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
+				{
+					Name: "affiliation",
+					In:   "query",
+				}: params.Affiliation,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -42095,10 +45158,19 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 			OperationName: "ProjectsListColumns",
 			OperationID:   "projects/list-columns",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -42195,11 +45267,23 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 			OperationName: "ProjectsListForOrg",
 			OperationID:   "projects/list-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"state":    params.State,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -42296,12 +45380,27 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 			OperationName: "ProjectsListForRepo",
 			OperationID:   "projects/list-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"state":    params.State,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -42396,11 +45495,23 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 			OperationName: "ProjectsListForUser",
 			OperationID:   "projects/list-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"state":    params.State,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -42510,8 +45621,11 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 			OperationName: "ProjectsMoveCard",
 			OperationID:   "projects/move-card",
 			Body:          request,
-			Params: map[string]any{
-				"card_id": params.CardID,
+			Params: middleware.Parameters{
+				{
+					Name: "card_id",
+					In:   "path",
+				}: params.CardID,
 			},
 			Raw: r,
 		}
@@ -42621,8 +45735,11 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 			OperationName: "ProjectsMoveColumn",
 			OperationID:   "projects/move-column",
 			Body:          request,
-			Params: map[string]any{
-				"column_id": params.ColumnID,
+			Params: middleware.Parameters{
+				{
+					Name: "column_id",
+					In:   "path",
+				}: params.ColumnID,
 			},
 			Raw: r,
 		}
@@ -42718,9 +45835,15 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 			OperationName: "ProjectsRemoveCollaborator",
 			OperationID:   "projects/remove-collaborator",
 			Body:          nil,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
-				"username":   params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -42832,8 +45955,11 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 			OperationName: "ProjectsUpdate",
 			OperationID:   "projects/update",
 			Body:          request,
-			Params: map[string]any{
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -42943,8 +46069,11 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 			OperationName: "ProjectsUpdateCard",
 			OperationID:   "projects/update-card",
 			Body:          request,
-			Params: map[string]any{
-				"card_id": params.CardID,
+			Params: middleware.Parameters{
+				{
+					Name: "card_id",
+					In:   "path",
+				}: params.CardID,
 			},
 			Raw: r,
 		}
@@ -43054,8 +46183,11 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 			OperationName: "ProjectsUpdateColumn",
 			OperationID:   "projects/update-column",
 			Body:          request,
-			Params: map[string]any{
-				"column_id": params.ColumnID,
+			Params: middleware.Parameters{
+				{
+					Name: "column_id",
+					In:   "path",
+				}: params.ColumnID,
 			},
 			Raw: r,
 		}
@@ -43150,10 +46282,19 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 			OperationName: "PullsCheckIfMerged",
 			OperationID:   "pulls/check-if-merged",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -43278,9 +46419,15 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 			OperationName: "PullsCreate",
 			OperationID:   "pulls/create",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -43399,11 +46546,23 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 			OperationName: "PullsCreateReplyForReviewComment",
 			OperationID:   "pulls/create-reply-for-review-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"comment_id":  params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -43531,10 +46690,19 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 			OperationName: "PullsCreateReview",
 			OperationID:   "pulls/create-review",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -43663,10 +46831,19 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 			OperationName: "PullsCreateReviewComment",
 			OperationID:   "pulls/create-review-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -43761,11 +46938,23 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 			OperationName: "PullsDeletePendingReview",
 			OperationID:   "pulls/delete-pending-review",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
 			},
 			Raw: r,
 		}
@@ -43860,10 +47049,19 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 			OperationName: "PullsDeleteReviewComment",
 			OperationID:   "pulls/delete-review-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -43975,11 +47173,23 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 			OperationName: "PullsDismissReview",
 			OperationID:   "pulls/dismiss-review",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
 			},
 			Raw: r,
 		}
@@ -44107,10 +47317,19 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 			OperationName: "PullsGet",
 			OperationID:   "pulls/get",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -44205,11 +47424,23 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 			OperationName: "PullsGetReview",
 			OperationID:   "pulls/get-review",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
 			},
 			Raw: r,
 		}
@@ -44304,10 +47535,19 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 			OperationName: "PullsGetReviewComment",
 			OperationID:   "pulls/get-review-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -44406,16 +47646,43 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 			OperationName: "PullsList",
 			OperationID:   "pulls/list",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"state":     params.State,
-				"head":      params.Head,
-				"base":      params.Base,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "head",
+					In:   "query",
+				}: params.Head,
+				{
+					Name: "base",
+					In:   "query",
+				}: params.Base,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -44510,13 +47777,31 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 			OperationName: "PullsListCommentsForReview",
 			OperationID:   "pulls/list-comments-for-review",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -44613,12 +47898,27 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 			OperationName: "PullsListCommits",
 			OperationID:   "pulls/list-commits",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -44714,12 +48014,27 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 			OperationName: "PullsListFiles",
 			OperationID:   "pulls/list-files",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -44814,12 +48129,27 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 			OperationName: "PullsListRequestedReviewers",
 			OperationID:   "pulls/list-requested-reviewers",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -44915,15 +48245,39 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 			OperationName: "PullsListReviewComments",
 			OperationID:   "pulls/list-review-comments",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"sort":        params.Sort,
-				"direction":   params.Direction,
-				"since":       params.Since,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -45019,14 +48373,35 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 			OperationName: "PullsListReviewCommentsForRepo",
 			OperationID:   "pulls/list-review-comments-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"since":     params.Since,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -45121,12 +48496,27 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 			OperationName: "PullsListReviews",
 			OperationID:   "pulls/list-reviews",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -45242,10 +48632,19 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 			OperationName: "PullsMerge",
 			OperationID:   "pulls/merge",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -45355,10 +48754,19 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 			OperationName: "PullsRemoveRequestedReviewers",
 			OperationID:   "pulls/remove-requested-reviewers",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -45468,11 +48876,23 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 			OperationName: "PullsSubmitReview",
 			OperationID:   "pulls/submit-review",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
 			},
 			Raw: r,
 		}
@@ -45589,10 +49009,19 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 			OperationName: "PullsUpdate",
 			OperationID:   "pulls/update",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -45703,10 +49132,19 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 			OperationName: "PullsUpdateBranch",
 			OperationID:   "pulls/update-branch",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
 			},
 			Raw: r,
 		}
@@ -45816,11 +49254,23 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 			OperationName: "PullsUpdateReview",
 			OperationID:   "pulls/update-review",
 			Body:          request,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"pull_number": params.PullNumber,
-				"review_id":   params.ReviewID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "pull_number",
+					In:   "path",
+				}: params.PullNumber,
+				{
+					Name: "review_id",
+					In:   "path",
+				}: params.ReviewID,
 			},
 			Raw: r,
 		}
@@ -45930,10 +49380,19 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 			OperationName: "PullsUpdateReviewComment",
 			OperationID:   "pulls/update-review-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -46017,7 +49476,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 			OperationName: "RateLimitGet",
 			OperationID:   "rate-limit/get",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46128,10 +49587,19 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 			OperationName: "ReactionsCreateForCommitComment",
 			OperationID:   "reactions/create-for-commit-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -46242,10 +49710,19 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 			OperationName: "ReactionsCreateForIssue",
 			OperationID:   "reactions/create-for-issue",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
 			},
 			Raw: r,
 		}
@@ -46357,10 +49834,19 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 			OperationName: "ReactionsCreateForIssueComment",
 			OperationID:   "reactions/create-for-issue-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -46472,10 +49958,19 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 			OperationName: "ReactionsCreateForPullRequestReviewComment",
 			OperationID:   "reactions/create-for-pull-request-review-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -46586,10 +50081,19 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 			OperationName: "ReactionsCreateForRelease",
 			OperationID:   "reactions/create-for-release",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"release_id": params.ReleaseID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
 			},
 			Raw: r,
 		}
@@ -46705,11 +50209,23 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 			OperationName: "ReactionsCreateForTeamDiscussionCommentInOrg",
 			OperationID:   "reactions/create-for-team-discussion-comment-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -46829,10 +50345,19 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 			OperationName: "ReactionsCreateForTeamDiscussionCommentLegacy",
 			OperationID:   "reactions/create-for-team-discussion-comment-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -46949,10 +50474,19 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 			OperationName: "ReactionsCreateForTeamDiscussionInOrg",
 			OperationID:   "reactions/create-for-team-discussion-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -47073,9 +50607,15 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 			OperationName: "ReactionsCreateForTeamDiscussionLegacy",
 			OperationID:   "reactions/create-for-team-discussion-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -47172,11 +50712,23 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 			OperationName: "ReactionsDeleteForCommitComment",
 			OperationID:   "reactions/delete-for-commit-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"comment_id":  params.CommentID,
-				"reaction_id": params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47273,11 +50825,23 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 			OperationName: "ReactionsDeleteForIssue",
 			OperationID:   "reactions/delete-for-issue",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
-				"reaction_id":  params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47374,11 +50938,23 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 			OperationName: "ReactionsDeleteForIssueComment",
 			OperationID:   "reactions/delete-for-issue-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"comment_id":  params.CommentID,
-				"reaction_id": params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47476,11 +51052,23 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			OperationName: "ReactionsDeleteForPullRequestComment",
 			OperationID:   "reactions/delete-for-pull-request-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"comment_id":  params.CommentID,
-				"reaction_id": params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47582,11 +51170,23 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 			OperationName: "ReactionsDeleteForTeamDiscussion",
 			OperationID:   "reactions/delete-for-team-discussion",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"reaction_id":       params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47686,12 +51286,27 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			OperationName: "ReactionsDeleteForTeamDiscussionComment",
 			OperationID:   "reactions/delete-for-team-discussion-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
-				"reaction_id":       params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47795,8 +51410,11 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 			OperationName: "ReactionsDeleteLegacy",
 			OperationID:   "reactions/delete-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"reaction_id": params.ReactionID,
+			Params: middleware.Parameters{
+				{
+					Name: "reaction_id",
+					In:   "path",
+				}: params.ReactionID,
 			},
 			Raw: r,
 		}
@@ -47891,13 +51509,31 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 			OperationName: "ReactionsListForCommitComment",
 			OperationID:   "reactions/list-for-commit-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
-				"content":    params.Content,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -47992,13 +51628,31 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 			OperationName: "ReactionsListForIssue",
 			OperationID:   "reactions/list-for-issue",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"issue_number": params.IssueNumber,
-				"content":      params.Content,
-				"per_page":     params.PerPage,
-				"page":         params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "issue_number",
+					In:   "path",
+				}: params.IssueNumber,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48093,13 +51747,31 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 			OperationName: "ReactionsListForIssueComment",
 			OperationID:   "reactions/list-for-issue-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
-				"content":    params.Content,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48195,13 +51867,31 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 			OperationName: "ReactionsListForPullRequestReviewComment",
 			OperationID:   "reactions/list-for-pull-request-review-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
-				"content":    params.Content,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48300,14 +51990,35 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 			OperationName: "ReactionsListForTeamDiscussionCommentInOrg",
 			OperationID:   "reactions/list-for-team-discussion-comment-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
-				"content":           params.Content,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48410,13 +52121,31 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 			OperationName: "ReactionsListForTeamDiscussionCommentLegacy",
 			OperationID:   "reactions/list-for-team-discussion-comment-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
-				"content":           params.Content,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48515,13 +52244,31 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 			OperationName: "ReactionsListForTeamDiscussionInOrg",
 			OperationID:   "reactions/list-for-team-discussion-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"content":           params.Content,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48624,12 +52371,27 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 			OperationName: "ReactionsListForTeamDiscussionLegacy",
 			OperationID:   "reactions/list-for-team-discussion-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"content":           params.Content,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "content",
+					In:   "query",
+				}: params.Content,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -48724,8 +52486,11 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 			OperationName: "ReposAcceptInvitation",
 			OperationID:   "repos/accept-invitation",
 			Body:          nil,
-			Params: map[string]any{
-				"invitation_id": params.InvitationID,
+			Params: middleware.Parameters{
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
 			},
 			Raw: r,
 		}
@@ -48849,10 +52614,19 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 			OperationName: "ReposAddAppAccessRestrictions",
 			OperationID:   "repos/add-app-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -48981,10 +52755,19 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 			OperationName: "ReposAddCollaborator",
 			OperationID:   "repos/add-collaborator",
 			Body:          request,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -49098,10 +52881,19 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 			OperationName: "ReposAddStatusCheckContexts",
 			OperationID:   "repos/add-status-check-contexts",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -49225,10 +53017,19 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 			OperationName: "ReposAddTeamAccessRestrictions",
 			OperationID:   "repos/add-team-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -49351,10 +53152,19 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 			OperationName: "ReposAddUserAccessRestrictions",
 			OperationID:   "repos/add-user-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -49453,10 +53263,19 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 			OperationName: "ReposCheckCollaborator",
 			OperationID:   "repos/check-collaborator",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -49554,9 +53373,15 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 			OperationName: "ReposCheckVulnerabilityAlerts",
 			OperationID:   "repos/check-vulnerability-alerts",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -49705,12 +53530,27 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 			OperationName: "ReposCompareCommits",
 			OperationID:   "repos/compare-commits",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"page":     params.Page,
-				"per_page": params.PerPage,
-				"basehead": params.Basehead,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "basehead",
+					In:   "path",
+				}: params.Basehead,
 			},
 			Raw: r,
 		}
@@ -49820,9 +53660,15 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 			OperationName: "ReposCreateAutolink",
 			OperationID:   "repos/create-autolink",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -49939,10 +53785,19 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 			OperationName: "ReposCreateCommitComment",
 			OperationID:   "repos/create-commit-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"commit_sha": params.CommitSha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "commit_sha",
+					In:   "path",
+				}: params.CommitSha,
 			},
 			Raw: r,
 		}
@@ -50043,10 +53898,19 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 			OperationName: "ReposCreateCommitSignatureProtection",
 			OperationID:   "repos/create-commit-signature-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -50158,10 +54022,19 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 			OperationName: "ReposCreateCommitStatus",
 			OperationID:   "repos/create-commit-status",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"sha":   params.Sha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sha",
+					In:   "path",
+				}: params.Sha,
 			},
 			Raw: r,
 		}
@@ -50271,9 +54144,15 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 			OperationName: "ReposCreateDeployKey",
 			OperationID:   "repos/create-deploy-key",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -50438,9 +54317,15 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 			OperationName: "ReposCreateDeployment",
 			OperationID:   "repos/create-deployment",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -50552,10 +54437,19 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 			OperationName: "ReposCreateDeploymentStatus",
 			OperationID:   "repos/create-deployment-status",
 			Body:          request,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"deployment_id": params.DeploymentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "deployment_id",
+					In:   "path",
+				}: params.DeploymentID,
 			},
 			Raw: r,
 		}
@@ -50684,9 +54578,15 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 			OperationName: "ReposCreateDispatchEvent",
 			OperationID:   "repos/create-dispatch-event",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -50792,7 +54692,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 			OperationName: "ReposCreateForAuthenticatedUser",
 			OperationID:   "repos/create-for-authenticated-user",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50904,9 +54804,15 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 			OperationName: "ReposCreateFork",
 			OperationID:   "repos/create-fork",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -51023,8 +54929,11 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 			OperationName: "ReposCreateInOrg",
 			OperationID:   "repos/create-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -51134,10 +55043,19 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 			OperationName: "ReposCreateOrUpdateFileContents",
 			OperationID:   "repos/create-or-update-file-contents",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"path":  params.Path,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.Path,
 			},
 			Raw: r,
 		}
@@ -51248,9 +55166,15 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 			OperationName: "ReposCreatePagesSite",
 			OperationID:   "repos/create-pages-site",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -51367,9 +55291,15 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 			OperationName: "ReposCreateRelease",
 			OperationID:   "repos/create-release",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -51490,9 +55420,15 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 			OperationName: "ReposCreateUsingTemplate",
 			OperationID:   "repos/create-using-template",
 			Body:          request,
-			Params: map[string]any{
-				"template_owner": params.TemplateOwner,
-				"template_repo":  params.TemplateRepo,
+			Params: middleware.Parameters{
+				{
+					Name: "template_owner",
+					In:   "path",
+				}: params.TemplateOwner,
+				{
+					Name: "template_repo",
+					In:   "path",
+				}: params.TemplateRepo,
 			},
 			Raw: r,
 		}
@@ -51604,9 +55540,15 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 			OperationName: "ReposCreateWebhook",
 			OperationID:   "repos/create-webhook",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -51701,8 +55643,11 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 			OperationName: "ReposDeclineInvitation",
 			OperationID:   "repos/decline-invitation",
 			Body:          nil,
-			Params: map[string]any{
-				"invitation_id": params.InvitationID,
+			Params: middleware.Parameters{
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
 			},
 			Raw: r,
 		}
@@ -51800,9 +55745,15 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 			OperationName: "ReposDelete",
 			OperationID:   "repos/delete",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -51902,10 +55853,19 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 			OperationName: "ReposDeleteAccessRestrictions",
 			OperationID:   "repos/delete-access-restrictions",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -52006,10 +55966,19 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 			OperationName: "ReposDeleteAdminBranchProtection",
 			OperationID:   "repos/delete-admin-branch-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -52104,10 +56073,19 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 			OperationName: "ReposDeleteAnEnvironment",
 			OperationID:   "repos/delete-an-environment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":            params.Owner,
-				"repo":             params.Repo,
-				"environment_name": params.EnvironmentName,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "environment_name",
+					In:   "path",
+				}: params.EnvironmentName,
 			},
 			Raw: r,
 		}
@@ -52203,10 +56181,19 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 			OperationName: "ReposDeleteAutolink",
 			OperationID:   "repos/delete-autolink",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"autolink_id": params.AutolinkID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "autolink_id",
+					In:   "path",
+				}: params.AutolinkID,
 			},
 			Raw: r,
 		}
@@ -52305,10 +56292,19 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 			OperationName: "ReposDeleteBranchProtection",
 			OperationID:   "repos/delete-branch-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -52403,10 +56399,19 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 			OperationName: "ReposDeleteCommitComment",
 			OperationID:   "repos/delete-commit-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -52508,10 +56513,19 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 			OperationName: "ReposDeleteCommitSignatureProtection",
 			OperationID:   "repos/delete-commit-signature-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -52607,10 +56621,19 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 			OperationName: "ReposDeleteDeployKey",
 			OperationID:   "repos/delete-deploy-key",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"key_id": params.KeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "key_id",
+					In:   "path",
+				}: params.KeyID,
 			},
 			Raw: r,
 		}
@@ -52713,10 +56736,19 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 			OperationName: "ReposDeleteDeployment",
 			OperationID:   "repos/delete-deployment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"deployment_id": params.DeploymentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "deployment_id",
+					In:   "path",
+				}: params.DeploymentID,
 			},
 			Raw: r,
 		}
@@ -52833,10 +56865,19 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 			OperationName: "ReposDeleteFile",
 			OperationID:   "repos/delete-file",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"path":  params.Path,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "path",
+					In:   "path",
+				}: params.Path,
 			},
 			Raw: r,
 		}
@@ -52931,10 +56972,19 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 			OperationName: "ReposDeleteInvitation",
 			OperationID:   "repos/delete-invitation",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"invitation_id": params.InvitationID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
 			},
 			Raw: r,
 		}
@@ -53029,9 +57079,15 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 			OperationName: "ReposDeletePagesSite",
 			OperationID:   "repos/delete-pages-site",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -53130,10 +57186,19 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 			OperationName: "ReposDeletePullRequestReviewProtection",
 			OperationID:   "repos/delete-pull-request-review-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -53228,10 +57293,19 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 			OperationName: "ReposDeleteRelease",
 			OperationID:   "repos/delete-release",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"release_id": params.ReleaseID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
 			},
 			Raw: r,
 		}
@@ -53326,10 +57400,19 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 			OperationName: "ReposDeleteReleaseAsset",
 			OperationID:   "repos/delete-release-asset",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"asset_id": params.AssetID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "asset_id",
+					In:   "path",
+				}: params.AssetID,
 			},
 			Raw: r,
 		}
@@ -53424,10 +57507,19 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 			OperationName: "ReposDeleteWebhook",
 			OperationID:   "repos/delete-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -53524,9 +57616,15 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			OperationName: "ReposDisableAutomatedSecurityFixes",
 			OperationID:   "repos/disable-automated-security-fixes",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -53621,9 +57719,15 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 			OperationName: "ReposDisableLfsForRepo",
 			OperationID:   "repos/disable-lfs-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -53721,9 +57825,15 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 			OperationName: "ReposDisableVulnerabilityAlerts",
 			OperationID:   "repos/disable-vulnerability-alerts",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -53823,10 +57933,19 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 			OperationName: "ReposDownloadTarballArchive",
 			OperationID:   "repos/download-tarball-archive",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -53926,10 +58045,19 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 			OperationName: "ReposDownloadZipballArchive",
 			OperationID:   "repos/download-zipball-archive",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -54026,9 +58154,15 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			OperationName: "ReposEnableAutomatedSecurityFixes",
 			OperationID:   "repos/enable-automated-security-fixes",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -54123,9 +58257,15 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 			OperationName: "ReposEnableLfsForRepo",
 			OperationID:   "repos/enable-lfs-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -54223,9 +58363,15 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 			OperationName: "ReposEnableVulnerabilityAlerts",
 			OperationID:   "repos/enable-vulnerability-alerts",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -54321,9 +58467,15 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 			OperationName: "ReposGet",
 			OperationID:   "repos/get",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -54425,10 +58577,19 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 			OperationName: "ReposGetAccessRestrictions",
 			OperationID:   "repos/get-access-restrictions",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -54527,10 +58688,19 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 			OperationName: "ReposGetAdminBranchProtection",
 			OperationID:   "repos/get-admin-branch-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -54629,10 +58799,19 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 			OperationName: "ReposGetAllStatusCheckContexts",
 			OperationID:   "repos/get-all-status-check-contexts",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -54727,11 +58906,23 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 			OperationName: "ReposGetAllTopics",
 			OperationID:   "repos/get-all-topics",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"page":     params.Page,
-				"per_page": params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -54833,10 +59024,19 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 			OperationName: "ReposGetAppsWithAccessToProtectedBranch",
 			OperationID:   "repos/get-apps-with-access-to-protected-branch",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -54932,10 +59132,19 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 			OperationName: "ReposGetAutolink",
 			OperationID:   "repos/get-autolink",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"autolink_id": params.AutolinkID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "autolink_id",
+					In:   "path",
+				}: params.AutolinkID,
 			},
 			Raw: r,
 		}
@@ -55030,10 +59239,19 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 			OperationName: "ReposGetBranch",
 			OperationID:   "repos/get-branch",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -55132,10 +59350,19 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 			OperationName: "ReposGetBranchProtection",
 			OperationID:   "repos/get-branch-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -55231,10 +59458,19 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 			OperationName: "ReposGetClones",
 			OperationID:   "repos/get-clones",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"per":   params.Per,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per",
+					In:   "query",
+				}: params.Per,
 			},
 			Raw: r,
 		}
@@ -55329,9 +59565,15 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 			OperationName: "ReposGetCodeFrequencyStats",
 			OperationID:   "repos/get-code-frequency-stats",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -55427,10 +59669,19 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 			OperationName: "ReposGetCollaboratorPermissionLevel",
 			OperationID:   "repos/get-collaborator-permission-level",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -55533,12 +59784,27 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 			OperationName: "ReposGetCombinedStatusForRef",
 			OperationID:   "repos/get-combined-status-for-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"ref":      params.Ref,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -55679,12 +59945,27 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 			OperationName: "ReposGetCommit",
 			OperationID:   "repos/get-commit",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"page":     params.Page,
-				"per_page": params.PerPage,
-				"ref":      params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -55780,9 +60061,15 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 			OperationName: "ReposGetCommitActivityStats",
 			OperationID:   "repos/get-commit-activity-stats",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -55877,10 +60164,19 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 			OperationName: "ReposGetCommitComment",
 			OperationID:   "repos/get-commit-comment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -55984,10 +60280,19 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 			OperationName: "ReposGetCommitSignatureProtection",
 			OperationID:   "repos/get-commit-signature-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -56091,9 +60396,15 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 			OperationName: "ReposGetCommunityProfileMetrics",
 			OperationID:   "repos/get-community-profile-metrics",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -56193,9 +60504,15 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 			OperationName: "ReposGetContributorsStats",
 			OperationID:   "repos/get-contributors-stats",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -56290,10 +60607,19 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 			OperationName: "ReposGetDeployKey",
 			OperationID:   "repos/get-deploy-key",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"key_id": params.KeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "key_id",
+					In:   "path",
+				}: params.KeyID,
 			},
 			Raw: r,
 		}
@@ -56388,10 +60714,19 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 			OperationName: "ReposGetDeployment",
 			OperationID:   "repos/get-deployment",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"deployment_id": params.DeploymentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "deployment_id",
+					In:   "path",
+				}: params.DeploymentID,
 			},
 			Raw: r,
 		}
@@ -56486,11 +60821,23 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 			OperationName: "ReposGetDeploymentStatus",
 			OperationID:   "repos/get-deployment-status",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"deployment_id": params.DeploymentID,
-				"status_id":     params.StatusID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "deployment_id",
+					In:   "path",
+				}: params.DeploymentID,
+				{
+					Name: "status_id",
+					In:   "path",
+				}: params.StatusID,
 			},
 			Raw: r,
 		}
@@ -56585,9 +60932,15 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 			OperationName: "ReposGetLatestPagesBuild",
 			OperationID:   "repos/get-latest-pages-build",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -56685,9 +61038,15 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 			OperationName: "ReposGetLatestRelease",
 			OperationID:   "repos/get-latest-release",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -56782,9 +61141,15 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 			OperationName: "ReposGetPages",
 			OperationID:   "repos/get-pages",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -56879,10 +61244,19 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 			OperationName: "ReposGetPagesBuild",
 			OperationID:   "repos/get-pages-build",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"build_id": params.BuildID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "build_id",
+					In:   "path",
+				}: params.BuildID,
 			},
 			Raw: r,
 		}
@@ -56983,9 +61357,15 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 			OperationName: "ReposGetPagesHealthCheck",
 			OperationID:   "repos/get-pages-health-check",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -57083,9 +61463,15 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 			OperationName: "ReposGetParticipationStats",
 			OperationID:   "repos/get-participation-stats",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -57184,10 +61570,19 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 			OperationName: "ReposGetPullRequestReviewProtection",
 			OperationID:   "repos/get-pull-request-review-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -57287,9 +61682,15 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 			OperationName: "ReposGetPunchCardStats",
 			OperationID:   "repos/get-punch-card-stats",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -57386,10 +61787,19 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 			OperationName: "ReposGetReadme",
 			OperationID:   "repos/get-readme",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -57486,11 +61896,23 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 			OperationName: "ReposGetReadmeInDirectory",
 			OperationID:   "repos/get-readme-in-directory",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"dir":   params.Dir,
-				"ref":   params.Ref,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "dir",
+					In:   "path",
+				}: params.Dir,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
 			},
 			Raw: r,
 		}
@@ -57587,10 +62009,19 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 			OperationName: "ReposGetRelease",
 			OperationID:   "repos/get-release",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"release_id": params.ReleaseID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
 			},
 			Raw: r,
 		}
@@ -57688,10 +62119,19 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 			OperationName: "ReposGetReleaseAsset",
 			OperationID:   "repos/get-release-asset",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"asset_id": params.AssetID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "asset_id",
+					In:   "path",
+				}: params.AssetID,
 			},
 			Raw: r,
 		}
@@ -57786,10 +62226,19 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 			OperationName: "ReposGetReleaseByTag",
 			OperationID:   "repos/get-release-by-tag",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"tag":   params.Tag,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "tag",
+					In:   "path",
+				}: params.Tag,
 			},
 			Raw: r,
 		}
@@ -57888,10 +62337,19 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 			OperationName: "ReposGetStatusChecksProtection",
 			OperationID:   "repos/get-status-checks-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -57991,10 +62449,19 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 			OperationName: "ReposGetTeamsWithAccessToProtectedBranch",
 			OperationID:   "repos/get-teams-with-access-to-protected-branch",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -58089,9 +62556,15 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 			OperationName: "ReposGetTopPaths",
 			OperationID:   "repos/get-top-paths",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -58186,9 +62659,15 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 			OperationName: "ReposGetTopReferrers",
 			OperationID:   "repos/get-top-referrers",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -58288,10 +62767,19 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 			OperationName: "ReposGetUsersWithAccessToProtectedBranch",
 			OperationID:   "repos/get-users-with-access-to-protected-branch",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -58387,10 +62875,19 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 			OperationName: "ReposGetViews",
 			OperationID:   "repos/get-views",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"per":   params.Per,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per",
+					In:   "query",
+				}: params.Per,
 			},
 			Raw: r,
 		}
@@ -58487,10 +62984,19 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 			OperationName: "ReposGetWebhook",
 			OperationID:   "repos/get-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -58589,10 +63095,19 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 			OperationName: "ReposGetWebhookConfigForRepo",
 			OperationID:   "repos/get-webhook-config-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -58687,11 +63202,23 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 			OperationName: "ReposGetWebhookDelivery",
 			OperationID:   "repos/get-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"hook_id":     params.HookID,
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -58787,10 +63314,19 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 			OperationName: "ReposListAutolinks",
 			OperationID:   "repos/list-autolinks",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
-				"page":  params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -58885,12 +63421,27 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 			OperationName: "ReposListBranches",
 			OperationID:   "repos/list-branches",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":     params.Owner,
-				"repo":      params.Repo,
-				"protected": params.Protected,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "protected",
+					In:   "query",
+				}: params.Protected,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -58990,10 +63541,19 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 			OperationName: "ReposListBranchesForHeadCommit",
 			OperationID:   "repos/list-branches-for-head-commit",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"commit_sha": params.CommitSha,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "commit_sha",
+					In:   "path",
+				}: params.CommitSha,
 			},
 			Raw: r,
 		}
@@ -59092,12 +63652,27 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 			OperationName: "ReposListCollaborators",
 			OperationID:   "repos/list-collaborators",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"affiliation": params.Affiliation,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "affiliation",
+					In:   "query",
+				}: params.Affiliation,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59192,12 +63767,27 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 			OperationName: "ReposListCommentsForCommit",
 			OperationID:   "repos/list-comments-for-commit",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"commit_sha": params.CommitSha,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "commit_sha",
+					In:   "path",
+				}: params.CommitSha,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59295,11 +63885,23 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 			OperationName: "ReposListCommitCommentsForRepo",
 			OperationID:   "repos/list-commit-comments-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59397,12 +63999,27 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 			OperationName: "ReposListCommitStatusesForRef",
 			OperationID:   "repos/list-commit-statuses-for-ref",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"ref":      params.Ref,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "ref",
+					In:   "path",
+				}: params.Ref,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59528,16 +64145,43 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 			OperationName: "ReposListCommits",
 			OperationID:   "repos/list-commits",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"sha":      params.Sha,
-				"path":     params.Path,
-				"author":   params.Author,
-				"since":    params.Since,
-				"until":    params.Until,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sha",
+					In:   "query",
+				}: params.Sha,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.Path,
+				{
+					Name: "author",
+					In:   "query",
+				}: params.Author,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "until",
+					In:   "query",
+				}: params.Until,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59638,12 +64282,27 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 			OperationName: "ReposListContributors",
 			OperationID:   "repos/list-contributors",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"anon":     params.Anon,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "anon",
+					In:   "query",
+				}: params.Anon,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59738,11 +64397,23 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 			OperationName: "ReposListDeployKeys",
 			OperationID:   "repos/list-deploy-keys",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59837,12 +64508,27 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 			OperationName: "ReposListDeploymentStatuses",
 			OperationID:   "repos/list-deployment-statuses",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"deployment_id": params.DeploymentID,
-				"per_page":      params.PerPage,
-				"page":          params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "deployment_id",
+					In:   "path",
+				}: params.DeploymentID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -59937,15 +64623,39 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 			OperationName: "ReposListDeployments",
 			OperationID:   "repos/list-deployments",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"sha":         params.Sha,
-				"ref":         params.Ref,
-				"task":        params.Task,
-				"environment": params.Environment,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sha",
+					In:   "query",
+				}: params.Sha,
+				{
+					Name: "ref",
+					In:   "query",
+				}: params.Ref,
+				{
+					Name: "task",
+					In:   "query",
+				}: params.Task,
+				{
+					Name: "environment",
+					In:   "query",
+				}: params.Environment,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60043,16 +64753,43 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 			OperationName: "ReposListForAuthenticatedUser",
 			OperationID:   "repos/list-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"visibility":  params.Visibility,
-				"affiliation": params.Affiliation,
-				"type":        params.Type,
-				"sort":        params.Sort,
-				"direction":   params.Direction,
-				"per_page":    params.PerPage,
-				"page":        params.Page,
-				"since":       params.Since,
-				"before":      params.Before,
+			Params: middleware.Parameters{
+				{
+					Name: "visibility",
+					In:   "query",
+				}: params.Visibility,
+				{
+					Name: "affiliation",
+					In:   "query",
+				}: params.Affiliation,
+				{
+					Name: "type",
+					In:   "query",
+				}: params.Type,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "before",
+					In:   "query",
+				}: params.Before,
 			},
 			Raw: r,
 		}
@@ -60147,13 +64884,31 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 			OperationName: "ReposListForOrg",
 			OperationID:   "repos/list-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"type":      params.Type,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "type",
+					In:   "query",
+				}: params.Type,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60249,13 +65004,31 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 			OperationName: "ReposListForUser",
 			OperationID:   "repos/list-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username":  params.Username,
-				"type":      params.Type,
-				"sort":      params.Sort,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "type",
+					In:   "query",
+				}: params.Type,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60350,12 +65123,27 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 			OperationName: "ReposListForks",
 			OperationID:   "repos/list-forks",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"sort":     params.Sort,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60451,11 +65239,23 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 			OperationName: "ReposListInvitations",
 			OperationID:   "repos/list-invitations",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60551,9 +65351,15 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 			OperationName: "ReposListInvitationsForAuthenticatedUser",
 			OperationID:   "repos/list-invitations-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60649,9 +65455,15 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 			OperationName: "ReposListLanguages",
 			OperationID:   "repos/list-languages",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -60746,11 +65558,23 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 			OperationName: "ReposListPagesBuilds",
 			OperationID:   "repos/list-pages-builds",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -60851,8 +65675,11 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 			OperationName: "ReposListPublic",
 			OperationID:   "repos/list-public",
 			Body:          nil,
-			Params: map[string]any{
-				"since": params.Since,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
 			},
 			Raw: r,
 		}
@@ -60952,12 +65779,27 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 			OperationName: "ReposListPullRequestsAssociatedWithCommit",
 			OperationID:   "repos/list-pull-requests-associated-with-commit",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"commit_sha": params.CommitSha,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "commit_sha",
+					In:   "path",
+				}: params.CommitSha,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61052,12 +65894,27 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 			OperationName: "ReposListReleaseAssets",
 			OperationID:   "repos/list-release-assets",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"release_id": params.ReleaseID,
-				"per_page":   params.PerPage,
-				"page":       params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61156,11 +66013,23 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 			OperationName: "ReposListReleases",
 			OperationID:   "repos/list-releases",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61255,11 +66124,23 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 			OperationName: "ReposListTags",
 			OperationID:   "repos/list-tags",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61354,11 +66235,23 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 			OperationName: "ReposListTeams",
 			OperationID:   "repos/list-teams",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61453,12 +66346,27 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 			OperationName: "ReposListWebhookDeliveries",
 			OperationID:   "repos/list-webhook-deliveries",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"hook_id":  params.HookID,
-				"per_page": params.PerPage,
-				"cursor":   params.Cursor,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "cursor",
+					In:   "query",
+				}: params.Cursor,
 			},
 			Raw: r,
 		}
@@ -61553,11 +66461,23 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 			OperationName: "ReposListWebhooks",
 			OperationID:   "repos/list-webhooks",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -61667,9 +66587,15 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 			OperationName: "ReposMerge",
 			OperationID:   "repos/merge",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -61780,9 +66706,15 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 			OperationName: "ReposMergeUpstream",
 			OperationID:   "repos/merge-upstream",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -61878,10 +66810,19 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 			OperationName: "ReposPingWebhook",
 			OperationID:   "repos/ping-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -61976,11 +66917,23 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 			OperationName: "ReposRedeliverWebhookDelivery",
 			OperationID:   "repos/redeliver-webhook-delivery",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"hook_id":     params.HookID,
-				"delivery_id": params.DeliveryID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
+				{
+					Name: "delivery_id",
+					In:   "path",
+				}: params.DeliveryID,
 			},
 			Raw: r,
 		}
@@ -62104,10 +67057,19 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 			OperationName: "ReposRemoveAppAccessRestrictions",
 			OperationID:   "repos/remove-app-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62202,10 +67164,19 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 			OperationName: "ReposRemoveCollaborator",
 			OperationID:   "repos/remove-collaborator",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -62319,10 +67290,19 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 			OperationName: "ReposRemoveStatusCheckContexts",
 			OperationID:   "repos/remove-status-check-contexts",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62421,10 +67401,19 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 			OperationName: "ReposRemoveStatusCheckProtection",
 			OperationID:   "repos/remove-status-check-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62548,10 +67537,19 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 			OperationName: "ReposRemoveTeamAccessRestrictions",
 			OperationID:   "repos/remove-team-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62674,10 +67672,19 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 			OperationName: "ReposRemoveUserAccessRestrictions",
 			OperationID:   "repos/remove-user-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62799,10 +67806,19 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 			OperationName: "ReposRenameBranch",
 			OperationID:   "repos/rename-branch",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -62912,9 +67928,15 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 			OperationName: "ReposReplaceAllTopics",
 			OperationID:   "repos/replace-all-topics",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -63014,9 +68036,15 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 			OperationName: "ReposRequestPagesBuild",
 			OperationID:   "repos/request-pages-build",
 			Body:          nil,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -63117,10 +68145,19 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 			OperationName: "ReposSetAdminBranchProtection",
 			OperationID:   "repos/set-admin-branch-protection",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -63246,10 +68283,19 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 			OperationName: "ReposSetAppAccessRestrictions",
 			OperationID:   "repos/set-app-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -63363,10 +68409,19 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 			OperationName: "ReposSetStatusCheckContexts",
 			OperationID:   "repos/set-status-check-contexts",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -63491,10 +68546,19 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 			OperationName: "ReposSetTeamAccessRestrictions",
 			OperationID:   "repos/set-team-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -63618,10 +68682,19 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 			OperationName: "ReposSetUserAccessRestrictions",
 			OperationID:   "repos/set-user-access-restrictions",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -63719,10 +68792,19 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 			OperationName: "ReposTestPushWebhook",
 			OperationID:   "repos/test-push-webhook",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -63836,9 +68918,15 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 			OperationName: "ReposTransfer",
 			OperationID:   "repos/transfer",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -63949,9 +69037,15 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 			OperationName: "ReposUpdate",
 			OperationID:   "repos/update",
 			Body:          request,
-			Params: map[string]any{
-				"owner": params.Owner,
-				"repo":  params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -64068,10 +69162,19 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 			OperationName: "ReposUpdateBranchProtection",
 			OperationID:   "repos/update-branch-protection",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -64181,10 +69284,19 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 			OperationName: "ReposUpdateCommitComment",
 			OperationID:   "repos/update-commit-comment",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"comment_id": params.CommentID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "comment_id",
+					In:   "path",
+				}: params.CommentID,
 			},
 			Raw: r,
 		}
@@ -64294,10 +69406,19 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 			OperationName: "ReposUpdateInvitation",
 			OperationID:   "repos/update-invitation",
 			Body:          request,
-			Params: map[string]any{
-				"owner":         params.Owner,
-				"repo":          params.Repo,
-				"invitation_id": params.InvitationID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "invitation_id",
+					In:   "path",
+				}: params.InvitationID,
 			},
 			Raw: r,
 		}
@@ -64414,10 +69535,19 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 			OperationName: "ReposUpdatePullRequestReviewProtection",
 			OperationID:   "repos/update-pull-request-review-protection",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -64527,10 +69657,19 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 			OperationName: "ReposUpdateRelease",
 			OperationID:   "repos/update-release",
 			Body:          request,
-			Params: map[string]any{
-				"owner":      params.Owner,
-				"repo":       params.Repo,
-				"release_id": params.ReleaseID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
 			},
 			Raw: r,
 		}
@@ -64640,10 +69779,19 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 			OperationName: "ReposUpdateReleaseAsset",
 			OperationID:   "repos/update-release-asset",
 			Body:          request,
-			Params: map[string]any{
-				"owner":    params.Owner,
-				"repo":     params.Repo,
-				"asset_id": params.AssetID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "asset_id",
+					In:   "path",
+				}: params.AssetID,
 			},
 			Raw: r,
 		}
@@ -64759,10 +69907,19 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 			OperationName: "ReposUpdateStatusCheckProtection",
 			OperationID:   "repos/update-status-check-protection",
 			Body:          request,
-			Params: map[string]any{
-				"owner":  params.Owner,
-				"repo":   params.Repo,
-				"branch": params.Branch,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "branch",
+					In:   "path",
+				}: params.Branch,
 			},
 			Raw: r,
 		}
@@ -64875,10 +70032,19 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 			OperationName: "ReposUpdateWebhook",
 			OperationID:   "repos/update-webhook",
 			Body:          request,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -64992,10 +70158,19 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 			OperationName: "ReposUpdateWebhookConfigForRepo",
 			OperationID:   "repos/update-webhook-config-for-repo",
 			Body:          request,
-			Params: map[string]any{
-				"owner":   params.Owner,
-				"repo":    params.Repo,
-				"hook_id": params.HookID,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "hook_id",
+					In:   "path",
+				}: params.HookID,
 			},
 			Raw: r,
 		}
@@ -65090,9 +70265,15 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 			OperationName: "ScimDeleteUserFromOrg",
 			OperationID:   "scim/delete-user-from-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":          params.Org,
-				"scim_user_id": params.ScimUserID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "scim_user_id",
+					In:   "path",
+				}: params.ScimUserID,
 			},
 			Raw: r,
 		}
@@ -65206,12 +70387,27 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "SearchCode",
 			OperationID:   "search/code",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"sort":     params.Sort,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65316,12 +70512,27 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SearchCommits",
 			OperationID:   "search/commits",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"sort":     params.Sort,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65438,12 +70649,27 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 			OperationName: "SearchIssuesAndPullRequests",
 			OperationID:   "search/issues-and-pull-requests",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"sort":     params.Sort,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65547,13 +70773,31 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SearchLabels",
 			OperationID:   "search/labels",
 			Body:          nil,
-			Params: map[string]any{
-				"repository_id": params.RepositoryID,
-				"q":             params.Q,
-				"sort":          params.Sort,
-				"order":         params.Order,
-				"per_page":      params.PerPage,
-				"page":          params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "repository_id",
+					In:   "query",
+				}: params.RepositoryID,
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65663,12 +70907,27 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SearchRepos",
 			OperationID:   "search/repos",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"sort":     params.Sort,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65776,10 +71035,19 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SearchTopics",
 			OperationID:   "search/topics",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65885,12 +71153,27 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SearchUsers",
 			OperationID:   "search/users",
 			Body:          nil,
-			Params: map[string]any{
-				"q":        params.Q,
-				"sort":     params.Sort,
-				"order":    params.Order,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "q",
+					In:   "query",
+				}: params.Q,
+				{
+					Name: "sort",
+					In:   "query",
+				}: params.Sort,
+				{
+					Name: "order",
+					In:   "query",
+				}: params.Order,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -65988,10 +71271,19 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 			OperationName: "SecretScanningGetAlert",
 			OperationID:   "secret-scanning/get-alert",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"alert_number": params.AlertNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "alert_number",
+					In:   "path",
+				}: params.AlertNumber,
 			},
 			Raw: r,
 		}
@@ -66090,12 +71382,27 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 			OperationName: "SecretScanningListAlertsForOrg",
 			OperationID:   "secret-scanning/list-alerts-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":         params.Org,
-				"state":       params.State,
-				"secret_type": params.SecretType,
-				"page":        params.Page,
-				"per_page":    params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "secret_type",
+					In:   "query",
+				}: params.SecretType,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -66193,13 +71500,31 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 			OperationName: "SecretScanningListAlertsForRepo",
 			OperationID:   "secret-scanning/list-alerts-for-repo",
 			Body:          nil,
-			Params: map[string]any{
-				"owner":       params.Owner,
-				"repo":        params.Repo,
-				"state":       params.State,
-				"secret_type": params.SecretType,
-				"page":        params.Page,
-				"per_page":    params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "state",
+					In:   "query",
+				}: params.State,
+				{
+					Name: "secret_type",
+					In:   "query",
+				}: params.SecretType,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -66312,10 +71637,19 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 			OperationName: "SecretScanningUpdateAlert",
 			OperationID:   "secret-scanning/update-alert",
 			Body:          request,
-			Params: map[string]any{
-				"owner":        params.Owner,
-				"repo":         params.Repo,
-				"alert_number": params.AlertNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "alert_number",
+					In:   "path",
+				}: params.AlertNumber,
 			},
 			Raw: r,
 		}
@@ -66431,9 +71765,15 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 			OperationName: "TeamsAddMemberLegacy",
 			OperationID:   "teams/add-member-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -66564,10 +71904,19 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 			OperationName: "TeamsAddOrUpdateMembershipForUserInOrg",
 			OperationID:   "teams/add-or-update-membership-for-user-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"username":  params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -66703,9 +72052,15 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 			OperationName: "TeamsAddOrUpdateMembershipForUserLegacy",
 			OperationID:   "teams/add-or-update-membership-for-user-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -66819,10 +72174,19 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 			OperationName: "TeamsAddOrUpdateProjectPermissionsInOrg",
 			OperationID:   "teams/add-or-update-project-permissions-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":        params.Org,
-				"team_slug":  params.TeamSlug,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -66940,9 +72304,15 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 			OperationName: "TeamsAddOrUpdateProjectPermissionsLegacy",
 			OperationID:   "teams/add-or-update-project-permissions-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":    params.TeamID,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -67063,11 +72433,23 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			OperationName: "TeamsAddOrUpdateRepoPermissionsInOrg",
 			OperationID:   "teams/add-or-update-repo-permissions-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"owner":     params.Owner,
-				"repo":      params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -67190,10 +72572,19 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 			OperationName: "TeamsAddOrUpdateRepoPermissionsLegacy",
 			OperationID:   "teams/add-or-update-repo-permissions-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id": params.TeamID,
-				"owner":   params.Owner,
-				"repo":    params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -67291,10 +72682,19 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 			OperationName: "TeamsCheckPermissionsForProjectInOrg",
 			OperationID:   "teams/check-permissions-for-project-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":        params.Org,
-				"team_slug":  params.TeamSlug,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -67396,9 +72796,15 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 			OperationName: "TeamsCheckPermissionsForProjectLegacy",
 			OperationID:   "teams/check-permissions-for-project-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":    params.TeamID,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -67501,11 +72907,23 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 			OperationName: "TeamsCheckPermissionsForRepoInOrg",
 			OperationID:   "teams/check-permissions-for-repo-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"owner":     params.Owner,
-				"repo":      params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -67609,10 +73027,19 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 			OperationName: "TeamsCheckPermissionsForRepoLegacy",
 			OperationID:   "teams/check-permissions-for-repo-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id": params.TeamID,
-				"owner":   params.Owner,
-				"repo":    params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -67729,8 +73156,11 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "TeamsCreate",
 			OperationID:   "teams/create",
 			Body:          request,
-			Params: map[string]any{
-				"org": params.Org,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
 			},
 			Raw: r,
 		}
@@ -67850,10 +73280,19 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 			OperationName: "TeamsCreateDiscussionCommentInOrg",
 			OperationID:   "teams/create-discussion-comment-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -67976,9 +73415,15 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 			OperationName: "TeamsCreateDiscussionCommentLegacy",
 			OperationID:   "teams/create-discussion-comment-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -68098,9 +73543,15 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 			OperationName: "TeamsCreateDiscussionInOrg",
 			OperationID:   "teams/create-discussion-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -68223,8 +73674,11 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 			OperationName: "TeamsCreateDiscussionLegacy",
 			OperationID:   "teams/create-discussion-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -68341,9 +73795,15 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
 			OperationID:   "teams/create-or-update-idp-group-connections-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -68464,8 +73924,11 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
 			OperationID:   "teams/create-or-update-idp-group-connections-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -68563,11 +74026,23 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			OperationName: "TeamsDeleteDiscussionCommentInOrg",
 			OperationID:   "teams/delete-discussion-comment-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -68668,10 +74143,19 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			OperationName: "TeamsDeleteDiscussionCommentLegacy",
 			OperationID:   "teams/delete-discussion-comment-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -68769,10 +74253,19 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 			OperationName: "TeamsDeleteDiscussionInOrg",
 			OperationID:   "teams/delete-discussion-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -68873,9 +74366,15 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 			OperationName: "TeamsDeleteDiscussionLegacy",
 			OperationID:   "teams/delete-discussion-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -68974,9 +74473,15 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 			OperationName: "TeamsDeleteInOrg",
 			OperationID:   "teams/delete-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -69078,8 +74583,11 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 			OperationName: "TeamsDeleteLegacy",
 			OperationID:   "teams/delete-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -69176,9 +74684,15 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 			OperationName: "TeamsGetByName",
 			OperationID:   "teams/get-by-name",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -69276,11 +74790,23 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 			OperationName: "TeamsGetDiscussionCommentInOrg",
 			OperationID:   "teams/get-discussion-comment-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -69381,10 +74907,19 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 			OperationName: "TeamsGetDiscussionCommentLegacy",
 			OperationID:   "teams/get-discussion-comment-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -69482,10 +75017,19 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 			OperationName: "TeamsGetDiscussionInOrg",
 			OperationID:   "teams/get-discussion-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -69586,9 +75130,15 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 			OperationName: "TeamsGetDiscussionLegacy",
 			OperationID:   "teams/get-discussion-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -69687,8 +75237,11 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 			OperationName: "TeamsGetLegacy",
 			OperationID:   "teams/get-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -69789,9 +75342,15 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 			OperationName: "TeamsGetMemberLegacy",
 			OperationID:   "teams/get-member-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -69893,10 +75452,19 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 			OperationName: "TeamsGetMembershipForUserInOrg",
 			OperationID:   "teams/get-membership-for-user-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"username":  params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -70001,9 +75569,15 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 			OperationName: "TeamsGetMembershipForUserLegacy",
 			OperationID:   "teams/get-membership-for-user-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -70098,10 +75672,19 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "TeamsList",
 			OperationID:   "teams/list",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70198,11 +75781,23 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 			OperationName: "TeamsListChildInOrg",
 			OperationID:   "teams/list-child-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70301,10 +75896,19 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 			OperationName: "TeamsListChildLegacy",
 			OperationID:   "teams/list-child-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70402,13 +76006,31 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 			OperationName: "TeamsListDiscussionCommentsInOrg",
 			OperationID:   "teams/list-discussion-comments-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"direction":         params.Direction,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70509,12 +76131,27 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 			OperationName: "TeamsListDiscussionCommentsLegacy",
 			OperationID:   "teams/list-discussion-comments-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"direction":         params.Direction,
-				"per_page":          params.PerPage,
-				"page":              params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70612,13 +76249,31 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 			OperationName: "TeamsListDiscussionsInOrg",
 			OperationID:   "teams/list-discussions-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
-				"pinned":    params.Pinned,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "pinned",
+					In:   "query",
+				}: params.Pinned,
 			},
 			Raw: r,
 		}
@@ -70719,11 +76374,23 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 			OperationName: "TeamsListDiscussionsLegacy",
 			OperationID:   "teams/list-discussions-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":   params.TeamID,
-				"direction": params.Direction,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "direction",
+					In:   "query",
+				}: params.Direction,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70821,9 +76488,15 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 			OperationName: "TeamsListForAuthenticatedUser",
 			OperationID:   "teams/list-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -70926,8 +76599,11 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 			OperationName: "TeamsListIdpGroupsForLegacy",
 			OperationID:   "teams/list-idp-groups-for-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -71028,10 +76704,19 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 			OperationName: "TeamsListIdpGroupsForOrg",
 			OperationID:   "teams/list-idp-groups-for-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":      params.Org,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71131,9 +76816,15 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 			OperationName: "TeamsListIdpGroupsInOrg",
 			OperationID:   "teams/list-idp-groups-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -71229,12 +76920,27 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 			OperationName: "TeamsListMembersInOrg",
 			OperationID:   "teams/list-members-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"role":      params.Role,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "role",
+					In:   "query",
+				}: params.Role,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71334,11 +77040,23 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 			OperationName: "TeamsListMembersLegacy",
 			OperationID:   "teams/list-members-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"role":     params.Role,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "role",
+					In:   "query",
+				}: params.Role,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71438,11 +77156,23 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 			OperationName: "TeamsListPendingInvitationsInOrg",
 			OperationID:   "teams/list-pending-invitations-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71545,10 +77275,19 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 			OperationName: "TeamsListPendingInvitationsLegacy",
 			OperationID:   "teams/list-pending-invitations-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71645,11 +77384,23 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 			OperationName: "TeamsListProjectsInOrg",
 			OperationID:   "teams/list-projects-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71749,10 +77500,19 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 			OperationName: "TeamsListProjectsLegacy",
 			OperationID:   "teams/list-projects-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71849,11 +77609,23 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 			OperationName: "TeamsListReposInOrg",
 			OperationID:   "teams/list-repos-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"per_page":  params.PerPage,
-				"page":      params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -71952,10 +77724,19 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 			OperationName: "TeamsListReposLegacy",
 			OperationID:   "teams/list-repos-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -72070,9 +77851,15 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 			OperationName: "TeamsRemoveMemberLegacy",
 			OperationID:   "teams/remove-member-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -72181,10 +77968,19 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 			OperationName: "TeamsRemoveMembershipForUserInOrg",
 			OperationID:   "teams/remove-membership-for-user-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"username":  params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -72296,9 +78092,15 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 			OperationName: "TeamsRemoveMembershipForUserLegacy",
 			OperationID:   "teams/remove-membership-for-user-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":  params.TeamID,
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -72398,10 +78200,19 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 			OperationName: "TeamsRemoveProjectInOrg",
 			OperationID:   "teams/remove-project-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":        params.Org,
-				"team_slug":  params.TeamSlug,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -72504,9 +78315,15 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 			OperationName: "TeamsRemoveProjectLegacy",
 			OperationID:   "teams/remove-project-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id":    params.TeamID,
-				"project_id": params.ProjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "project_id",
+					In:   "path",
+				}: params.ProjectID,
 			},
 			Raw: r,
 		}
@@ -72606,11 +78423,23 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 			OperationName: "TeamsRemoveRepoInOrg",
 			OperationID:   "teams/remove-repo-in-org",
 			Body:          nil,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
-				"owner":     params.Owner,
-				"repo":      params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -72713,10 +78542,19 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 			OperationName: "TeamsRemoveRepoLegacy",
 			OperationID:   "teams/remove-repo-legacy",
 			Body:          nil,
-			Params: map[string]any{
-				"team_id": params.TeamID,
-				"owner":   params.Owner,
-				"repo":    params.Repo,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
 			},
 			Raw: r,
 		}
@@ -72829,11 +78667,23 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 			OperationName: "TeamsUpdateDiscussionCommentInOrg",
 			OperationID:   "teams/update-discussion-comment-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -72949,10 +78799,19 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 			OperationName: "TeamsUpdateDiscussionCommentLegacy",
 			OperationID:   "teams/update-discussion-comment-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
-				"comment_number":    params.CommentNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
+				{
+					Name: "comment_number",
+					In:   "path",
+				}: params.CommentNumber,
 			},
 			Raw: r,
 		}
@@ -73066,10 +78925,19 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 			OperationName: "TeamsUpdateDiscussionInOrg",
 			OperationID:   "teams/update-discussion-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":               params.Org,
-				"team_slug":         params.TeamSlug,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -73186,9 +79054,15 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 			OperationName: "TeamsUpdateDiscussionLegacy",
 			OperationID:   "teams/update-discussion-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id":           params.TeamID,
-				"discussion_number": params.DiscussionNumber,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
+				{
+					Name: "discussion_number",
+					In:   "path",
+				}: params.DiscussionNumber,
 			},
 			Raw: r,
 		}
@@ -73300,9 +79174,15 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 			OperationName: "TeamsUpdateInOrg",
 			OperationID:   "teams/update-in-org",
 			Body:          request,
-			Params: map[string]any{
-				"org":       params.Org,
-				"team_slug": params.TeamSlug,
+			Params: middleware.Parameters{
+				{
+					Name: "org",
+					In:   "path",
+				}: params.Org,
+				{
+					Name: "team_slug",
+					In:   "path",
+				}: params.TeamSlug,
 			},
 			Raw: r,
 		}
@@ -73418,8 +79298,11 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 			OperationName: "TeamsUpdateLegacy",
 			OperationID:   "teams/update-legacy",
 			Body:          request,
-			Params: map[string]any{
-				"team_id": params.TeamID,
+			Params: middleware.Parameters{
+				{
+					Name: "team_id",
+					In:   "path",
+				}: params.TeamID,
 			},
 			Raw: r,
 		}
@@ -73519,7 +79402,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 			OperationName: "UsersAddEmailForAuthenticated",
 			OperationID:   "users/add-email-for-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -73613,8 +79496,11 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 			OperationName: "UsersBlock",
 			OperationID:   "users/block",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -73709,8 +79595,11 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 			OperationName: "UsersCheckBlocked",
 			OperationID:   "users/check-blocked",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -73805,9 +79694,15 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 			OperationName: "UsersCheckFollowingForUser",
 			OperationID:   "users/check-following-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username":    params.Username,
-				"target_user": params.TargetUser,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "target_user",
+					In:   "path",
+				}: params.TargetUser,
 			},
 			Raw: r,
 		}
@@ -73902,8 +79797,11 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 			OperationName: "UsersCheckPersonIsFollowedByAuthenticated",
 			OperationID:   "users/check-person-is-followed-by-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -74005,7 +79903,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 			OperationName: "UsersCreateGpgKeyForAuthenticated",
 			OperationID:   "users/create-gpg-key-for-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -74106,7 +80004,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 			OperationName: "UsersCreatePublicSSHKeyForAuthenticated",
 			OperationID:   "users/create-public-ssh-key-for-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -74205,7 +80103,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 			OperationName: "UsersDeleteEmailForAuthenticated",
 			OperationID:   "users/delete-email-for-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -74301,8 +80199,11 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 			OperationName: "UsersDeleteGpgKeyForAuthenticated",
 			OperationID:   "users/delete-gpg-key-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"gpg_key_id": params.GpgKeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "gpg_key_id",
+					In:   "path",
+				}: params.GpgKeyID,
 			},
 			Raw: r,
 		}
@@ -74399,8 +80300,11 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 			OperationName: "UsersDeletePublicSSHKeyForAuthenticated",
 			OperationID:   "users/delete-public-ssh-key-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"key_id": params.KeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "key_id",
+					In:   "path",
+				}: params.KeyID,
 			},
 			Raw: r,
 		}
@@ -74499,8 +80403,11 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "UsersFollow",
 			OperationID:   "users/follow",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -74584,7 +80491,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 			OperationName: "UsersGetAuthenticated",
 			OperationID:   "users/get-authenticated",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -74692,8 +80599,11 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 			OperationName: "UsersGetByUsername",
 			OperationID:   "users/get-by-username",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -74797,10 +80707,19 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 			OperationName: "UsersGetContextForUser",
 			OperationID:   "users/get-context-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username":     params.Username,
-				"subject_type": params.SubjectType,
-				"subject_id":   params.SubjectID,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "subject_type",
+					In:   "query",
+				}: params.SubjectType,
+				{
+					Name: "subject_id",
+					In:   "query",
+				}: params.SubjectID,
 			},
 			Raw: r,
 		}
@@ -74897,8 +80816,11 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 			OperationName: "UsersGetGpgKeyForAuthenticated",
 			OperationID:   "users/get-gpg-key-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"gpg_key_id": params.GpgKeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "gpg_key_id",
+					In:   "path",
+				}: params.GpgKeyID,
 			},
 			Raw: r,
 		}
@@ -74995,8 +80917,11 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 			OperationName: "UsersGetPublicSSHKeyForAuthenticated",
 			OperationID:   "users/get-public-ssh-key-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"key_id": params.KeyID,
+			Params: middleware.Parameters{
+				{
+					Name: "key_id",
+					In:   "path",
+				}: params.KeyID,
 			},
 			Raw: r,
 		}
@@ -75095,9 +81020,15 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "UsersList",
 			OperationID:   "users/list",
 			Body:          nil,
-			Params: map[string]any{
-				"since":    params.Since,
-				"per_page": params.PerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "since",
+					In:   "query",
+				}: params.Since,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
 			},
 			Raw: r,
 		}
@@ -75178,7 +81109,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 			OperationName: "UsersListBlockedByAuthenticated",
 			OperationID:   "users/list-blocked-by-authenticated",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -75273,9 +81204,15 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 			OperationName: "UsersListEmailsForAuthenticated",
 			OperationID:   "users/list-emails-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75370,9 +81307,15 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 			OperationName: "UsersListFollowedByAuthenticated",
 			OperationID:   "users/list-followed-by-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75467,9 +81410,15 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 			OperationName: "UsersListFollowersForAuthenticatedUser",
 			OperationID:   "users/list-followers-for-authenticated-user",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75564,10 +81513,19 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 			OperationName: "UsersListFollowersForUser",
 			OperationID:   "users/list-followers-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75662,10 +81620,19 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 			OperationName: "UsersListFollowingForUser",
 			OperationID:   "users/list-following-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75762,9 +81729,15 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 			OperationName: "UsersListGpgKeysForAuthenticated",
 			OperationID:   "users/list-gpg-keys-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75859,10 +81832,19 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 			OperationName: "UsersListGpgKeysForUser",
 			OperationID:   "users/list-gpg-keys-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -75960,9 +81942,15 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 			OperationName: "UsersListPublicEmailsForAuthenticated",
 			OperationID:   "users/list-public-emails-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -76057,10 +82045,19 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 			OperationName: "UsersListPublicKeysForUser",
 			OperationID:   "users/list-public-keys-for-user",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -76157,9 +82154,15 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 			OperationName: "UsersListPublicSSHKeysForAuthenticated",
 			OperationID:   "users/list-public-ssh-keys-for-authenticated",
 			Body:          nil,
-			Params: map[string]any{
-				"per_page": params.PerPage,
-				"page":     params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "per_page",
+					In:   "query",
+				}: params.PerPage,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -76259,7 +82262,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 			OperationName: "UsersSetPrimaryEmailVisibilityForAuthenticated",
 			OperationID:   "users/set-primary-email-visibility-for-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -76353,8 +82356,11 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 			OperationName: "UsersUnblock",
 			OperationID:   "users/unblock",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -76450,8 +82456,11 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 			OperationName: "UsersUnfollow",
 			OperationID:   "users/unfollow",
 			Body:          nil,
-			Params: map[string]any{
-				"username": params.Username,
+			Params: middleware.Parameters{
+				{
+					Name: "username",
+					In:   "path",
+				}: params.Username,
 			},
 			Raw: r,
 		}
@@ -76553,7 +82562,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 			OperationName: "UsersUpdateAuthenticated",
 			OperationID:   "users/update-authenticated",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

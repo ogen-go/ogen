@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -16,8 +17,14 @@ type CombinedParams struct {
 	Type CombinedType
 }
 
-func unpackCombinedParams(packed map[string]any) (params CombinedParams) {
-	params.Type = packed["type"].(CombinedType)
+func unpackCombinedParams(packed middleware.Parameters) (params CombinedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "type",
+			In:   "query",
+		}
+		params.Type = packed[key].(CombinedType)
+	}
 	return params
 }
 
@@ -68,8 +75,14 @@ type HeadersCombinedParams struct {
 	Type HeadersCombinedType
 }
 
-func unpackHeadersCombinedParams(packed map[string]any) (params HeadersCombinedParams) {
-	params.Type = packed["type"].(HeadersCombinedType)
+func unpackHeadersCombinedParams(packed middleware.Parameters) (params HeadersCombinedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "type",
+			In:   "query",
+		}
+		params.Type = packed[key].(HeadersCombinedType)
+	}
 	return params
 }
 
@@ -120,8 +133,14 @@ type IntersectPatternCodeParams struct {
 	Code int
 }
 
-func unpackIntersectPatternCodeParams(packed map[string]any) (params IntersectPatternCodeParams) {
-	params.Code = packed["code"].(int)
+func unpackIntersectPatternCodeParams(packed middleware.Parameters) (params IntersectPatternCodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "code",
+			In:   "query",
+		}
+		params.Code = packed[key].(int)
+	}
 	return params
 }
 

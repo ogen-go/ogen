@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -71,36 +72,96 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams(packed middleware.Parameters) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -510,36 +571,96 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed middleware.Parameters) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -949,36 +1070,96 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	Pretty OptString
 }
 
-func unpackListApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ListApiextensionsV1CustomResourceDefinitionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListApiextensionsV1CustomResourceDefinitionParams(packed middleware.Parameters) (params ListApiextensionsV1CustomResourceDefinitionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -1388,36 +1569,96 @@ type ListApiregistrationV1APIServiceParams struct {
 	Pretty OptString
 }
 
-func unpackListApiregistrationV1APIServiceParams(packed map[string]any) (params ListApiregistrationV1APIServiceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListApiregistrationV1APIServiceParams(packed middleware.Parameters) (params ListApiregistrationV1APIServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -1827,36 +2068,96 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAppsV1ControllerRevisionForAllNamespacesParams(packed map[string]any) (params ListAppsV1ControllerRevisionForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1ControllerRevisionForAllNamespacesParams(packed middleware.Parameters) (params ListAppsV1ControllerRevisionForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -2266,36 +2567,96 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAppsV1DaemonSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1DaemonSetForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1DaemonSetForAllNamespacesParams(packed middleware.Parameters) (params ListAppsV1DaemonSetForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -2705,36 +3066,96 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAppsV1DeploymentForAllNamespacesParams(packed map[string]any) (params ListAppsV1DeploymentForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1DeploymentForAllNamespacesParams(packed middleware.Parameters) (params ListAppsV1DeploymentForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -3146,37 +3567,103 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 	Pretty OptString
 }
 
-func unpackListAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ListAppsV1NamespacedControllerRevisionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1NamespacedControllerRevisionParams(packed middleware.Parameters) (params ListAppsV1NamespacedControllerRevisionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -3619,37 +4106,103 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 	Pretty OptString
 }
 
-func unpackListAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ListAppsV1NamespacedDaemonSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1NamespacedDaemonSetParams(packed middleware.Parameters) (params ListAppsV1NamespacedDaemonSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -4092,37 +4645,103 @@ type ListAppsV1NamespacedDeploymentParams struct {
 	Pretty OptString
 }
 
-func unpackListAppsV1NamespacedDeploymentParams(packed map[string]any) (params ListAppsV1NamespacedDeploymentParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1NamespacedDeploymentParams(packed middleware.Parameters) (params ListAppsV1NamespacedDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -4565,37 +5184,103 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 	Pretty OptString
 }
 
-func unpackListAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ListAppsV1NamespacedReplicaSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1NamespacedReplicaSetParams(packed middleware.Parameters) (params ListAppsV1NamespacedReplicaSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -5038,37 +5723,103 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 	Pretty OptString
 }
 
-func unpackListAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ListAppsV1NamespacedStatefulSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1NamespacedStatefulSetParams(packed middleware.Parameters) (params ListAppsV1NamespacedStatefulSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -5509,36 +6260,96 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAppsV1ReplicaSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1ReplicaSetForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1ReplicaSetForAllNamespacesParams(packed middleware.Parameters) (params ListAppsV1ReplicaSetForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -5948,36 +6759,96 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAppsV1StatefulSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1StatefulSetForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAppsV1StatefulSetForAllNamespacesParams(packed middleware.Parameters) (params ListAppsV1StatefulSetForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -6387,36 +7258,96 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(packed middleware.Parameters) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -6828,37 +7759,103 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -7299,36 +8296,96 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 	Watch OptBool
 }
 
-func unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(packed middleware.Parameters) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -7740,37 +8797,103 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -8211,36 +9334,96 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 	Watch OptBool
 }
 
-func unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(packed middleware.Parameters) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -8652,37 +9835,103 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -9123,36 +10372,96 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListBatchV1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1CronJobForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1CronJobForAllNamespacesParams(packed middleware.Parameters) (params ListBatchV1CronJobForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -9562,36 +10871,96 @@ type ListBatchV1JobForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListBatchV1JobForAllNamespacesParams(packed map[string]any) (params ListBatchV1JobForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1JobForAllNamespacesParams(packed middleware.Parameters) (params ListBatchV1JobForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -10003,37 +11372,103 @@ type ListBatchV1NamespacedCronJobParams struct {
 	Pretty OptString
 }
 
-func unpackListBatchV1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1NamespacedCronJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1NamespacedCronJobParams(packed middleware.Parameters) (params ListBatchV1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -10476,37 +11911,103 @@ type ListBatchV1NamespacedJobParams struct {
 	Pretty OptString
 }
 
-func unpackListBatchV1NamespacedJobParams(packed map[string]any) (params ListBatchV1NamespacedJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1NamespacedJobParams(packed middleware.Parameters) (params ListBatchV1NamespacedJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -10947,36 +12448,96 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListBatchV1beta1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1beta1CronJobForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1beta1CronJobForAllNamespacesParams(packed middleware.Parameters) (params ListBatchV1beta1CronJobForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -11388,37 +12949,103 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 	Pretty OptString
 }
 
-func unpackListBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1beta1NamespacedCronJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListBatchV1beta1NamespacedCronJobParams(packed middleware.Parameters) (params ListBatchV1beta1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -11859,36 +13486,96 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	Pretty OptString
 }
 
-func unpackListCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ListCertificatesV1CertificateSigningRequestParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCertificatesV1CertificateSigningRequestParams(packed middleware.Parameters) (params ListCertificatesV1CertificateSigningRequestParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -12298,36 +13985,96 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoordinationV1LeaseForAllNamespacesParams(packed map[string]any) (params ListCoordinationV1LeaseForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoordinationV1LeaseForAllNamespacesParams(packed middleware.Parameters) (params ListCoordinationV1LeaseForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -12739,37 +14486,103 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 	Pretty OptString
 }
 
-func unpackListCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ListCoordinationV1NamespacedLeaseParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoordinationV1NamespacedLeaseParams(packed middleware.Parameters) (params ListCoordinationV1NamespacedLeaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -13210,36 +15023,96 @@ type ListCoreV1ComponentStatusParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ComponentStatusParams(packed map[string]any) (params ListCoreV1ComponentStatusParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ComponentStatusParams(packed middleware.Parameters) (params ListCoreV1ComponentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -13649,36 +15522,96 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ConfigMapForAllNamespacesParams(packed map[string]any) (params ListCoreV1ConfigMapForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ConfigMapForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1ConfigMapForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -14088,36 +16021,96 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1EndpointsForAllNamespacesParams(packed map[string]any) (params ListCoreV1EndpointsForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1EndpointsForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1EndpointsForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -14527,36 +16520,96 @@ type ListCoreV1EventForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1EventForAllNamespacesParams(packed map[string]any) (params ListCoreV1EventForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1EventForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1EventForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -14966,36 +17019,96 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1LimitRangeForAllNamespacesParams(packed map[string]any) (params ListCoreV1LimitRangeForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1LimitRangeForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1LimitRangeForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -15405,36 +17518,96 @@ type ListCoreV1NamespaceParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespaceParams(packed map[string]any) (params ListCoreV1NamespaceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespaceParams(packed middleware.Parameters) (params ListCoreV1NamespaceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -15846,37 +18019,103 @@ type ListCoreV1NamespacedConfigMapParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedConfigMapParams(packed map[string]any) (params ListCoreV1NamespacedConfigMapParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedConfigMapParams(packed middleware.Parameters) (params ListCoreV1NamespacedConfigMapParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -16319,37 +18558,103 @@ type ListCoreV1NamespacedEndpointsParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedEndpointsParams(packed map[string]any) (params ListCoreV1NamespacedEndpointsParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedEndpointsParams(packed middleware.Parameters) (params ListCoreV1NamespacedEndpointsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -16792,37 +19097,103 @@ type ListCoreV1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedEventParams(packed map[string]any) (params ListCoreV1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedEventParams(packed middleware.Parameters) (params ListCoreV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -17265,37 +19636,103 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ListCoreV1NamespacedLimitRangeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedLimitRangeParams(packed middleware.Parameters) (params ListCoreV1NamespacedLimitRangeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -17738,37 +20175,103 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ListCoreV1NamespacedPersistentVolumeClaimParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedPersistentVolumeClaimParams(packed middleware.Parameters) (params ListCoreV1NamespacedPersistentVolumeClaimParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -18211,37 +20714,103 @@ type ListCoreV1NamespacedPodParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedPodParams(packed map[string]any) (params ListCoreV1NamespacedPodParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedPodParams(packed middleware.Parameters) (params ListCoreV1NamespacedPodParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -18684,37 +21253,103 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ListCoreV1NamespacedPodTemplateParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedPodTemplateParams(packed middleware.Parameters) (params ListCoreV1NamespacedPodTemplateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -19157,37 +21792,103 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ListCoreV1NamespacedReplicationControllerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedReplicationControllerParams(packed middleware.Parameters) (params ListCoreV1NamespacedReplicationControllerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -19630,37 +22331,103 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ListCoreV1NamespacedResourceQuotaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedResourceQuotaParams(packed middleware.Parameters) (params ListCoreV1NamespacedResourceQuotaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -20103,37 +22870,103 @@ type ListCoreV1NamespacedSecretParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedSecretParams(packed map[string]any) (params ListCoreV1NamespacedSecretParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedSecretParams(packed middleware.Parameters) (params ListCoreV1NamespacedSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -20576,37 +23409,103 @@ type ListCoreV1NamespacedServiceParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedServiceParams(packed map[string]any) (params ListCoreV1NamespacedServiceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedServiceParams(packed middleware.Parameters) (params ListCoreV1NamespacedServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -21049,37 +23948,103 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ListCoreV1NamespacedServiceAccountParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NamespacedServiceAccountParams(packed middleware.Parameters) (params ListCoreV1NamespacedServiceAccountParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -21520,36 +24485,96 @@ type ListCoreV1NodeParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1NodeParams(packed map[string]any) (params ListCoreV1NodeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1NodeParams(packed middleware.Parameters) (params ListCoreV1NodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -21959,36 +24984,96 @@ type ListCoreV1PersistentVolumeParams struct {
 	Pretty OptString
 }
 
-func unpackListCoreV1PersistentVolumeParams(packed map[string]any) (params ListCoreV1PersistentVolumeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1PersistentVolumeParams(packed middleware.Parameters) (params ListCoreV1PersistentVolumeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -22398,36 +25483,96 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams(packed map[string]any) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -22837,36 +25982,96 @@ type ListCoreV1PodForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1PodForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1PodForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1PodForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -23276,36 +26481,96 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1PodTemplateForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodTemplateForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1PodTemplateForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1PodTemplateForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -23715,36 +26980,96 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ReplicationControllerForAllNamespacesParams(packed map[string]any) (params ListCoreV1ReplicationControllerForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ReplicationControllerForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1ReplicationControllerForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -24154,36 +27479,96 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ResourceQuotaForAllNamespacesParams(packed map[string]any) (params ListCoreV1ResourceQuotaForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ResourceQuotaForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1ResourceQuotaForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -24593,36 +27978,96 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1SecretForAllNamespacesParams(packed map[string]any) (params ListCoreV1SecretForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1SecretForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1SecretForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -25032,36 +28477,96 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ServiceAccountForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceAccountForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ServiceAccountForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1ServiceAccountForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -25471,36 +28976,96 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListCoreV1ServiceForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListCoreV1ServiceForAllNamespacesParams(packed middleware.Parameters) (params ListCoreV1ServiceForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -25910,36 +29475,96 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListDiscoveryV1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListDiscoveryV1EndpointSliceForAllNamespacesParams(packed middleware.Parameters) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -26351,37 +29976,103 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	Pretty OptString
 }
 
-func unpackListDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1NamespacedEndpointSliceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListDiscoveryV1NamespacedEndpointSliceParams(packed middleware.Parameters) (params ListDiscoveryV1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -26822,36 +30513,96 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(packed middleware.Parameters) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -27263,37 +31014,103 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	Pretty OptString
 }
 
-func unpackListDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListDiscoveryV1beta1NamespacedEndpointSliceParams(packed middleware.Parameters) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -27734,36 +31551,96 @@ type ListEventsV1EventForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListEventsV1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1EventForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListEventsV1EventForAllNamespacesParams(packed middleware.Parameters) (params ListEventsV1EventForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -28175,37 +32052,103 @@ type ListEventsV1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackListEventsV1NamespacedEventParams(packed map[string]any) (params ListEventsV1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListEventsV1NamespacedEventParams(packed middleware.Parameters) (params ListEventsV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -28646,36 +32589,96 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListEventsV1beta1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1beta1EventForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListEventsV1beta1EventForAllNamespacesParams(packed middleware.Parameters) (params ListEventsV1beta1EventForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -29087,37 +33090,103 @@ type ListEventsV1beta1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackListEventsV1beta1NamespacedEventParams(packed map[string]any) (params ListEventsV1beta1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListEventsV1beta1NamespacedEventParams(packed middleware.Parameters) (params ListEventsV1beta1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -29558,36 +33627,96 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Pretty OptString
 }
 
-func unpackListFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListFlowcontrolApiserverV1beta1FlowSchemaParams(packed middleware.Parameters) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -29997,36 +34126,96 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed middleware.Parameters) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -30436,36 +34625,96 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	Pretty OptString
 }
 
-func unpackListFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListFlowcontrolApiserverV1beta2FlowSchemaParams(packed middleware.Parameters) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -30875,36 +35124,96 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed middleware.Parameters) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -31314,36 +35623,96 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	Pretty OptString
 }
 
-func unpackListInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ListInternalApiserverV1alpha1StorageVersionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListInternalApiserverV1alpha1StorageVersionParams(packed middleware.Parameters) (params ListInternalApiserverV1alpha1StorageVersionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -31753,36 +36122,96 @@ type ListNetworkingV1IngressClassParams struct {
 	Pretty OptString
 }
 
-func unpackListNetworkingV1IngressClassParams(packed map[string]any) (params ListNetworkingV1IngressClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNetworkingV1IngressClassParams(packed middleware.Parameters) (params ListNetworkingV1IngressClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -32192,36 +36621,96 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListNetworkingV1IngressForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1IngressForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNetworkingV1IngressForAllNamespacesParams(packed middleware.Parameters) (params ListNetworkingV1IngressForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -32633,37 +37122,103 @@ type ListNetworkingV1NamespacedIngressParams struct {
 	Pretty OptString
 }
 
-func unpackListNetworkingV1NamespacedIngressParams(packed map[string]any) (params ListNetworkingV1NamespacedIngressParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNetworkingV1NamespacedIngressParams(packed middleware.Parameters) (params ListNetworkingV1NamespacedIngressParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -33106,37 +37661,103 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	Pretty OptString
 }
 
-func unpackListNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ListNetworkingV1NamespacedNetworkPolicyParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNetworkingV1NamespacedNetworkPolicyParams(packed middleware.Parameters) (params ListNetworkingV1NamespacedNetworkPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -33577,36 +38198,96 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListNetworkingV1NetworkPolicyForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNetworkingV1NetworkPolicyForAllNamespacesParams(packed middleware.Parameters) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -34016,36 +38697,96 @@ type ListNodeV1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackListNodeV1RuntimeClassParams(packed map[string]any) (params ListNodeV1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNodeV1RuntimeClassParams(packed middleware.Parameters) (params ListNodeV1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -34455,36 +39196,96 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackListNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ListNodeV1alpha1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNodeV1alpha1RuntimeClassParams(packed middleware.Parameters) (params ListNodeV1alpha1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -34894,36 +39695,96 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackListNodeV1beta1RuntimeClassParams(packed map[string]any) (params ListNodeV1beta1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListNodeV1beta1RuntimeClassParams(packed middleware.Parameters) (params ListNodeV1beta1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -35335,37 +40196,103 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	Pretty OptString
 }
 
-func unpackListPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListPolicyV1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params ListPolicyV1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -35806,36 +40733,96 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams(packed middleware.Parameters) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -36247,37 +41234,103 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	Pretty OptString
 }
 
-func unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -36718,36 +41771,96 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(packed middleware.Parameters) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -37157,36 +42270,96 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	Pretty OptString
 }
 
-func unpackListPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ListPolicyV1beta1PodSecurityPolicyParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListPolicyV1beta1PodSecurityPolicyParams(packed middleware.Parameters) (params ListPolicyV1beta1PodSecurityPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -37596,36 +42769,96 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	Pretty OptString
 }
 
-func unpackListRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1ClusterRoleParams(packed middleware.Parameters) (params ListRbacAuthorizationV1ClusterRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -38035,36 +43268,96 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Pretty OptString
 }
 
-func unpackListRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleBindingParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1ClusterRoleBindingParams(packed middleware.Parameters) (params ListRbacAuthorizationV1ClusterRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -38476,37 +43769,103 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	Pretty OptString
 }
 
-func unpackListRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1NamespacedRoleParams(packed middleware.Parameters) (params ListRbacAuthorizationV1NamespacedRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -38949,37 +44308,103 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Pretty OptString
 }
 
-func unpackListRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleBindingParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1NamespacedRoleBindingParams(packed middleware.Parameters) (params ListRbacAuthorizationV1NamespacedRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -39420,36 +44845,96 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams(packed middleware.Parameters) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -39859,36 +45344,96 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListRbacAuthorizationV1RoleForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListRbacAuthorizationV1RoleForAllNamespacesParams(packed middleware.Parameters) (params ListRbacAuthorizationV1RoleForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -40298,36 +45843,96 @@ type ListSchedulingV1PriorityClassParams struct {
 	Pretty OptString
 }
 
-func unpackListSchedulingV1PriorityClassParams(packed map[string]any) (params ListSchedulingV1PriorityClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListSchedulingV1PriorityClassParams(packed middleware.Parameters) (params ListSchedulingV1PriorityClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -40737,36 +46342,96 @@ type ListStorageV1CSIDriverParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1CSIDriverParams(packed map[string]any) (params ListStorageV1CSIDriverParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1CSIDriverParams(packed middleware.Parameters) (params ListStorageV1CSIDriverParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -41176,36 +46841,96 @@ type ListStorageV1CSINodeParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1CSINodeParams(packed map[string]any) (params ListStorageV1CSINodeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1CSINodeParams(packed middleware.Parameters) (params ListStorageV1CSINodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -41615,36 +47340,96 @@ type ListStorageV1StorageClassParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1StorageClassParams(packed map[string]any) (params ListStorageV1StorageClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1StorageClassParams(packed middleware.Parameters) (params ListStorageV1StorageClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -42054,36 +47839,96 @@ type ListStorageV1VolumeAttachmentParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1VolumeAttachmentParams(packed map[string]any) (params ListStorageV1VolumeAttachmentParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1VolumeAttachmentParams(packed middleware.Parameters) (params ListStorageV1VolumeAttachmentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -42493,36 +48338,96 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(packed middleware.Parameters) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -42934,37 +48839,103 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -43405,36 +49376,96 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(packed middleware.Parameters) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -43846,37 +49877,103 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	Pretty OptString
 }
 
-func unpackListStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackListStorageV1beta1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44263,8 +50360,14 @@ type LogFileHandlerParams struct {
 	Logpath string
 }
 
-func unpackLogFileHandlerParams(packed map[string]any) (params LogFileHandlerParams) {
-	params.Logpath = packed["logpath"].(string)
+func unpackLogFileHandlerParams(packed middleware.Parameters) (params LogFileHandlerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "logpath",
+			In:   "path",
+		}
+		params.Logpath = packed[key].(string)
+	}
 	return params
 }
 
@@ -44311,10 +50414,22 @@ type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams(packed middleware.Parameters) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44397,10 +50512,22 @@ type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed middleware.Parameters) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44483,10 +50610,22 @@ type ReadApiextensionsV1CustomResourceDefinitionParams struct {
 	Pretty OptString
 }
 
-func unpackReadApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadApiextensionsV1CustomResourceDefinitionParams(packed middleware.Parameters) (params ReadApiextensionsV1CustomResourceDefinitionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44569,10 +50708,22 @@ type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadApiextensionsV1CustomResourceDefinitionStatusParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadApiextensionsV1CustomResourceDefinitionStatusParams(packed middleware.Parameters) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44655,10 +50806,22 @@ type ReadApiregistrationV1APIServiceParams struct {
 	Pretty OptString
 }
 
-func unpackReadApiregistrationV1APIServiceParams(packed map[string]any) (params ReadApiregistrationV1APIServiceParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadApiregistrationV1APIServiceParams(packed middleware.Parameters) (params ReadApiregistrationV1APIServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44741,10 +50904,22 @@ type ReadApiregistrationV1APIServiceStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadApiregistrationV1APIServiceStatusParams(packed map[string]any) (params ReadApiregistrationV1APIServiceStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadApiregistrationV1APIServiceStatusParams(packed middleware.Parameters) (params ReadApiregistrationV1APIServiceStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44829,11 +51004,29 @@ type ReadAppsV1NamespacedControllerRevisionParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ReadAppsV1NamespacedControllerRevisionParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedControllerRevisionParams(packed middleware.Parameters) (params ReadAppsV1NamespacedControllerRevisionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -44949,11 +51142,29 @@ type ReadAppsV1NamespacedDaemonSetParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedDaemonSetParams(packed middleware.Parameters) (params ReadAppsV1NamespacedDaemonSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45069,11 +51280,29 @@ type ReadAppsV1NamespacedDaemonSetStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedDaemonSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedDaemonSetStatusParams(packed middleware.Parameters) (params ReadAppsV1NamespacedDaemonSetStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45189,11 +51418,29 @@ type ReadAppsV1NamespacedDeploymentParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedDeploymentParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedDeploymentParams(packed middleware.Parameters) (params ReadAppsV1NamespacedDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45309,11 +51556,29 @@ type ReadAppsV1NamespacedDeploymentScaleParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedDeploymentScaleParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentScaleParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedDeploymentScaleParams(packed middleware.Parameters) (params ReadAppsV1NamespacedDeploymentScaleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45429,11 +51694,29 @@ type ReadAppsV1NamespacedDeploymentStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedDeploymentStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedDeploymentStatusParams(packed middleware.Parameters) (params ReadAppsV1NamespacedDeploymentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45549,11 +51832,29 @@ type ReadAppsV1NamespacedReplicaSetParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedReplicaSetParams(packed middleware.Parameters) (params ReadAppsV1NamespacedReplicaSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45669,11 +51970,29 @@ type ReadAppsV1NamespacedReplicaSetScaleParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedReplicaSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetScaleParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedReplicaSetScaleParams(packed middleware.Parameters) (params ReadAppsV1NamespacedReplicaSetScaleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45789,11 +52108,29 @@ type ReadAppsV1NamespacedReplicaSetStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedReplicaSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedReplicaSetStatusParams(packed middleware.Parameters) (params ReadAppsV1NamespacedReplicaSetStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -45909,11 +52246,29 @@ type ReadAppsV1NamespacedStatefulSetParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedStatefulSetParams(packed middleware.Parameters) (params ReadAppsV1NamespacedStatefulSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46029,11 +52384,29 @@ type ReadAppsV1NamespacedStatefulSetScaleParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedStatefulSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetScaleParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedStatefulSetScaleParams(packed middleware.Parameters) (params ReadAppsV1NamespacedStatefulSetScaleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46149,11 +52522,29 @@ type ReadAppsV1NamespacedStatefulSetStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadAppsV1NamespacedStatefulSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAppsV1NamespacedStatefulSetStatusParams(packed middleware.Parameters) (params ReadAppsV1NamespacedStatefulSetStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46269,11 +52660,29 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46389,11 +52798,29 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(packed middleware.Parameters) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46509,11 +52936,29 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46629,11 +53074,29 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct 
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(packed middleware.Parameters) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46749,11 +53212,29 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46869,11 +53350,29 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct 
 	Pretty OptString
 }
 
-func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(packed middleware.Parameters) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -46989,11 +53488,29 @@ type ReadBatchV1NamespacedCronJobParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1NamespacedCronJobParams(packed middleware.Parameters) (params ReadBatchV1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47109,11 +53626,29 @@ type ReadBatchV1NamespacedCronJobStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1NamespacedCronJobStatusParams(packed middleware.Parameters) (params ReadBatchV1NamespacedCronJobStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47229,11 +53764,29 @@ type ReadBatchV1NamespacedJobParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1NamespacedJobParams(packed map[string]any) (params ReadBatchV1NamespacedJobParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1NamespacedJobParams(packed middleware.Parameters) (params ReadBatchV1NamespacedJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47349,11 +53902,29 @@ type ReadBatchV1NamespacedJobStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1NamespacedJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedJobStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1NamespacedJobStatusParams(packed middleware.Parameters) (params ReadBatchV1NamespacedJobStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47469,11 +54040,29 @@ type ReadBatchV1beta1NamespacedCronJobParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1beta1NamespacedCronJobParams(packed middleware.Parameters) (params ReadBatchV1beta1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47589,11 +54178,29 @@ type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadBatchV1beta1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadBatchV1beta1NamespacedCronJobStatusParams(packed middleware.Parameters) (params ReadBatchV1beta1NamespacedCronJobStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47707,10 +54314,22 @@ type ReadCertificatesV1CertificateSigningRequestParams struct {
 	Pretty OptString
 }
 
-func unpackReadCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCertificatesV1CertificateSigningRequestParams(packed middleware.Parameters) (params ReadCertificatesV1CertificateSigningRequestParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47793,10 +54412,22 @@ type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
 	Pretty OptString
 }
 
-func unpackReadCertificatesV1CertificateSigningRequestApprovalParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestApprovalParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCertificatesV1CertificateSigningRequestApprovalParams(packed middleware.Parameters) (params ReadCertificatesV1CertificateSigningRequestApprovalParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47879,10 +54510,22 @@ type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCertificatesV1CertificateSigningRequestStatusParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCertificatesV1CertificateSigningRequestStatusParams(packed middleware.Parameters) (params ReadCertificatesV1CertificateSigningRequestStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -47967,11 +54610,29 @@ type ReadCoordinationV1NamespacedLeaseParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ReadCoordinationV1NamespacedLeaseParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoordinationV1NamespacedLeaseParams(packed middleware.Parameters) (params ReadCoordinationV1NamespacedLeaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48085,10 +54746,22 @@ type ReadCoreV1ComponentStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1ComponentStatusParams(packed map[string]any) (params ReadCoreV1ComponentStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1ComponentStatusParams(packed middleware.Parameters) (params ReadCoreV1ComponentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48171,10 +54844,22 @@ type ReadCoreV1NamespaceParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespaceParams(packed map[string]any) (params ReadCoreV1NamespaceParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespaceParams(packed middleware.Parameters) (params ReadCoreV1NamespaceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48257,10 +54942,22 @@ type ReadCoreV1NamespaceStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespaceStatusParams(packed map[string]any) (params ReadCoreV1NamespaceStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespaceStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespaceStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48345,11 +55042,29 @@ type ReadCoreV1NamespacedConfigMapParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedConfigMapParams(packed map[string]any) (params ReadCoreV1NamespacedConfigMapParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedConfigMapParams(packed middleware.Parameters) (params ReadCoreV1NamespacedConfigMapParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48465,11 +55180,29 @@ type ReadCoreV1NamespacedEndpointsParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedEndpointsParams(packed map[string]any) (params ReadCoreV1NamespacedEndpointsParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedEndpointsParams(packed middleware.Parameters) (params ReadCoreV1NamespacedEndpointsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48585,11 +55318,29 @@ type ReadCoreV1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedEventParams(packed map[string]any) (params ReadCoreV1NamespacedEventParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedEventParams(packed middleware.Parameters) (params ReadCoreV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48705,11 +55456,29 @@ type ReadCoreV1NamespacedLimitRangeParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ReadCoreV1NamespacedLimitRangeParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedLimitRangeParams(packed middleware.Parameters) (params ReadCoreV1NamespacedLimitRangeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48825,11 +55594,29 @@ type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPersistentVolumeClaimParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPersistentVolumeClaimParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -48945,11 +55732,29 @@ type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -49065,11 +55870,29 @@ type ReadCoreV1NamespacedPodParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPodParams(packed map[string]any) (params ReadCoreV1NamespacedPodParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPodParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPodParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -49185,11 +56008,29 @@ type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPodEphemeralcontainersParams(packed map[string]any) (params ReadCoreV1NamespacedPodEphemeralcontainersParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPodEphemeralcontainersParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPodEphemeralcontainersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -49334,35 +56175,101 @@ type ReadCoreV1NamespacedPodLogParams struct {
 	Timestamps OptBool
 }
 
-func unpackReadCoreV1NamespacedPodLogParams(packed map[string]any) (params ReadCoreV1NamespacedPodLogParams) {
-	if v, ok := packed["container"]; ok {
-		params.Container = v.(OptString)
+func unpackReadCoreV1NamespacedPodLogParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPodLogParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "container",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Container = v.(OptString)
+		}
 	}
-	if v, ok := packed["follow"]; ok {
-		params.Follow = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "follow",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Follow = v.(OptBool)
+		}
 	}
-	if v, ok := packed["insecureSkipTLSVerifyBackend"]; ok {
-		params.InsecureSkipTLSVerifyBackend = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "insecureSkipTLSVerifyBackend",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.InsecureSkipTLSVerifyBackend = v.(OptBool)
+		}
 	}
-	if v, ok := packed["limitBytes"]; ok {
-		params.LimitBytes = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limitBytes",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LimitBytes = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["previous"]; ok {
-		params.Previous = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["sinceSeconds"]; ok {
-		params.SinceSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["tailLines"]; ok {
-		params.TailLines = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "previous",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Previous = v.(OptBool)
+		}
 	}
-	if v, ok := packed["timestamps"]; ok {
-		params.Timestamps = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "sinceSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SinceSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tailLines",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TailLines = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timestamps",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Timestamps = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -49750,11 +56657,29 @@ type ReadCoreV1NamespacedPodStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPodStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPodStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPodStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPodStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -49870,11 +56795,29 @@ type ReadCoreV1NamespacedPodTemplateParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ReadCoreV1NamespacedPodTemplateParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedPodTemplateParams(packed middleware.Parameters) (params ReadCoreV1NamespacedPodTemplateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -49990,11 +56933,29 @@ type ReadCoreV1NamespacedReplicationControllerParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedReplicationControllerParams(packed middleware.Parameters) (params ReadCoreV1NamespacedReplicationControllerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50110,11 +57071,29 @@ type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedReplicationControllerScaleParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerScaleParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedReplicationControllerScaleParams(packed middleware.Parameters) (params ReadCoreV1NamespacedReplicationControllerScaleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50230,11 +57209,29 @@ type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedReplicationControllerStatusParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedReplicationControllerStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespacedReplicationControllerStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50350,11 +57347,29 @@ type ReadCoreV1NamespacedResourceQuotaParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedResourceQuotaParams(packed middleware.Parameters) (params ReadCoreV1NamespacedResourceQuotaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50470,11 +57485,29 @@ type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedResourceQuotaStatusParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedResourceQuotaStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespacedResourceQuotaStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50590,11 +57623,29 @@ type ReadCoreV1NamespacedSecretParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedSecretParams(packed map[string]any) (params ReadCoreV1NamespacedSecretParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedSecretParams(packed middleware.Parameters) (params ReadCoreV1NamespacedSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50710,11 +57761,29 @@ type ReadCoreV1NamespacedServiceParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedServiceParams(packed map[string]any) (params ReadCoreV1NamespacedServiceParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedServiceParams(packed middleware.Parameters) (params ReadCoreV1NamespacedServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50830,11 +57899,29 @@ type ReadCoreV1NamespacedServiceAccountParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ReadCoreV1NamespacedServiceAccountParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedServiceAccountParams(packed middleware.Parameters) (params ReadCoreV1NamespacedServiceAccountParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -50950,11 +58037,29 @@ type ReadCoreV1NamespacedServiceStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NamespacedServiceStatusParams(packed map[string]any) (params ReadCoreV1NamespacedServiceStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NamespacedServiceStatusParams(packed middleware.Parameters) (params ReadCoreV1NamespacedServiceStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51068,10 +58173,22 @@ type ReadCoreV1NodeParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NodeParams(packed map[string]any) (params ReadCoreV1NodeParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NodeParams(packed middleware.Parameters) (params ReadCoreV1NodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51154,10 +58271,22 @@ type ReadCoreV1NodeStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1NodeStatusParams(packed map[string]any) (params ReadCoreV1NodeStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1NodeStatusParams(packed middleware.Parameters) (params ReadCoreV1NodeStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51240,10 +58369,22 @@ type ReadCoreV1PersistentVolumeParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1PersistentVolumeParams(packed map[string]any) (params ReadCoreV1PersistentVolumeParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1PersistentVolumeParams(packed middleware.Parameters) (params ReadCoreV1PersistentVolumeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51326,10 +58467,22 @@ type ReadCoreV1PersistentVolumeStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadCoreV1PersistentVolumeStatusParams(packed map[string]any) (params ReadCoreV1PersistentVolumeStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadCoreV1PersistentVolumeStatusParams(packed middleware.Parameters) (params ReadCoreV1PersistentVolumeStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51414,11 +58567,29 @@ type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
 	Pretty OptString
 }
 
-func unpackReadDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1NamespacedEndpointSliceParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadDiscoveryV1NamespacedEndpointSliceParams(packed middleware.Parameters) (params ReadDiscoveryV1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51534,11 +58705,29 @@ type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	Pretty OptString
 }
 
-func unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams(packed middleware.Parameters) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51654,11 +58843,29 @@ type ReadEventsV1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackReadEventsV1NamespacedEventParams(packed map[string]any) (params ReadEventsV1NamespacedEventParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadEventsV1NamespacedEventParams(packed middleware.Parameters) (params ReadEventsV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51774,11 +58981,29 @@ type ReadEventsV1beta1NamespacedEventParams struct {
 	Pretty OptString
 }
 
-func unpackReadEventsV1beta1NamespacedEventParams(packed map[string]any) (params ReadEventsV1beta1NamespacedEventParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadEventsV1beta1NamespacedEventParams(packed middleware.Parameters) (params ReadEventsV1beta1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51892,10 +59117,22 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -51978,10 +59215,22 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52064,10 +59313,22 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52150,10 +59411,22 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struc
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52236,10 +59509,22 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52322,10 +59607,22 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52408,10 +59705,22 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52494,10 +59803,22 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struc
 	Pretty OptString
 }
 
-func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(packed middleware.Parameters) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52580,10 +59901,22 @@ type ReadInternalApiserverV1alpha1StorageVersionParams struct {
 	Pretty OptString
 }
 
-func unpackReadInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadInternalApiserverV1alpha1StorageVersionParams(packed middleware.Parameters) (params ReadInternalApiserverV1alpha1StorageVersionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52666,10 +59999,22 @@ type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadInternalApiserverV1alpha1StorageVersionStatusParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadInternalApiserverV1alpha1StorageVersionStatusParams(packed middleware.Parameters) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52752,10 +60097,22 @@ type ReadNetworkingV1IngressClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadNetworkingV1IngressClassParams(packed map[string]any) (params ReadNetworkingV1IngressClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNetworkingV1IngressClassParams(packed middleware.Parameters) (params ReadNetworkingV1IngressClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52840,11 +60197,29 @@ type ReadNetworkingV1NamespacedIngressParams struct {
 	Pretty OptString
 }
 
-func unpackReadNetworkingV1NamespacedIngressParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNetworkingV1NamespacedIngressParams(packed middleware.Parameters) (params ReadNetworkingV1NamespacedIngressParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -52960,11 +60335,29 @@ type ReadNetworkingV1NamespacedIngressStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadNetworkingV1NamespacedIngressStatusParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNetworkingV1NamespacedIngressStatusParams(packed middleware.Parameters) (params ReadNetworkingV1NamespacedIngressStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53080,11 +60473,29 @@ type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
 	Pretty OptString
 }
 
-func unpackReadNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ReadNetworkingV1NamespacedNetworkPolicyParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNetworkingV1NamespacedNetworkPolicyParams(packed middleware.Parameters) (params ReadNetworkingV1NamespacedNetworkPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53198,10 +60609,22 @@ type ReadNodeV1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadNodeV1RuntimeClassParams(packed map[string]any) (params ReadNodeV1RuntimeClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNodeV1RuntimeClassParams(packed middleware.Parameters) (params ReadNodeV1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53284,10 +60707,22 @@ type ReadNodeV1alpha1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ReadNodeV1alpha1RuntimeClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNodeV1alpha1RuntimeClassParams(packed middleware.Parameters) (params ReadNodeV1alpha1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53370,10 +60805,22 @@ type ReadNodeV1beta1RuntimeClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadNodeV1beta1RuntimeClassParams(packed map[string]any) (params ReadNodeV1beta1RuntimeClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadNodeV1beta1RuntimeClassParams(packed middleware.Parameters) (params ReadNodeV1beta1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53458,11 +60905,29 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	Pretty OptString
 }
 
-func unpackReadPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadPolicyV1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53578,11 +61043,29 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(packed middleware.Parameters) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53698,11 +61181,29 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	Pretty OptString
 }
 
-func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53818,11 +61319,29 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(packed middleware.Parameters) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -53936,10 +61455,22 @@ type ReadPolicyV1beta1PodSecurityPolicyParams struct {
 	Pretty OptString
 }
 
-func unpackReadPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ReadPolicyV1beta1PodSecurityPolicyParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadPolicyV1beta1PodSecurityPolicyParams(packed middleware.Parameters) (params ReadPolicyV1beta1PodSecurityPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54022,10 +61553,22 @@ type ReadRbacAuthorizationV1ClusterRoleParams struct {
 	Pretty OptString
 }
 
-func unpackReadRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadRbacAuthorizationV1ClusterRoleParams(packed middleware.Parameters) (params ReadRbacAuthorizationV1ClusterRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54108,10 +61651,22 @@ type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Pretty OptString
 }
 
-func unpackReadRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleBindingParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadRbacAuthorizationV1ClusterRoleBindingParams(packed middleware.Parameters) (params ReadRbacAuthorizationV1ClusterRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54196,11 +61751,29 @@ type ReadRbacAuthorizationV1NamespacedRoleParams struct {
 	Pretty OptString
 }
 
-func unpackReadRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadRbacAuthorizationV1NamespacedRoleParams(packed middleware.Parameters) (params ReadRbacAuthorizationV1NamespacedRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54316,11 +61889,29 @@ type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Pretty OptString
 }
 
-func unpackReadRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadRbacAuthorizationV1NamespacedRoleBindingParams(packed middleware.Parameters) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54434,10 +62025,22 @@ type ReadSchedulingV1PriorityClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadSchedulingV1PriorityClassParams(packed map[string]any) (params ReadSchedulingV1PriorityClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadSchedulingV1PriorityClassParams(packed middleware.Parameters) (params ReadSchedulingV1PriorityClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54520,10 +62123,22 @@ type ReadStorageV1CSIDriverParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1CSIDriverParams(packed map[string]any) (params ReadStorageV1CSIDriverParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1CSIDriverParams(packed middleware.Parameters) (params ReadStorageV1CSIDriverParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54606,10 +62221,22 @@ type ReadStorageV1CSINodeParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1CSINodeParams(packed map[string]any) (params ReadStorageV1CSINodeParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1CSINodeParams(packed middleware.Parameters) (params ReadStorageV1CSINodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54692,10 +62319,22 @@ type ReadStorageV1StorageClassParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1StorageClassParams(packed map[string]any) (params ReadStorageV1StorageClassParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1StorageClassParams(packed middleware.Parameters) (params ReadStorageV1StorageClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54778,10 +62417,22 @@ type ReadStorageV1VolumeAttachmentParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1VolumeAttachmentParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1VolumeAttachmentParams(packed middleware.Parameters) (params ReadStorageV1VolumeAttachmentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54864,10 +62515,22 @@ type ReadStorageV1VolumeAttachmentStatusParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1VolumeAttachmentStatusParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentStatusParams) {
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1VolumeAttachmentStatusParams(packed middleware.Parameters) (params ReadStorageV1VolumeAttachmentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -54952,11 +62615,29 @@ type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -55072,11 +62753,29 @@ type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	Pretty OptString
 }
 
-func unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) {
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+func unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
 	return params
 }
@@ -55244,37 +62943,103 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(packed middleware.Parameters) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -55715,36 +63480,96 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(packed middleware.Parameters) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -56156,37 +63981,103 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed middleware.Parameters) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -56627,36 +64518,96 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 	Watch OptBool
 }
 
-func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(packed middleware.Parameters) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -57068,37 +65019,103 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	Watch OptBool
 }
 
-func unpackWatchApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchApiextensionsV1CustomResourceDefinitionParams(packed middleware.Parameters) (params WatchApiextensionsV1CustomResourceDefinitionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -57539,36 +65556,96 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchApiextensionsV1CustomResourceDefinitionListParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchApiextensionsV1CustomResourceDefinitionListParams(packed middleware.Parameters) (params WatchApiextensionsV1CustomResourceDefinitionListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -57980,37 +66057,103 @@ type WatchApiregistrationV1APIServiceParams struct {
 	Watch OptBool
 }
 
-func unpackWatchApiregistrationV1APIServiceParams(packed map[string]any) (params WatchApiregistrationV1APIServiceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchApiregistrationV1APIServiceParams(packed middleware.Parameters) (params WatchApiregistrationV1APIServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -58451,36 +66594,96 @@ type WatchApiregistrationV1APIServiceListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchApiregistrationV1APIServiceListParams(packed map[string]any) (params WatchApiregistrationV1APIServiceListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchApiregistrationV1APIServiceListParams(packed middleware.Parameters) (params WatchApiregistrationV1APIServiceListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -58890,36 +67093,96 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams(packed middleware.Parameters) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -59329,36 +67592,96 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1DaemonSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DaemonSetListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1DaemonSetListForAllNamespacesParams(packed middleware.Parameters) (params WatchAppsV1DaemonSetListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -59768,36 +68091,96 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1DeploymentListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DeploymentListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1DeploymentListForAllNamespacesParams(packed middleware.Parameters) (params WatchAppsV1DeploymentListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -60211,38 +68594,110 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedControllerRevisionParams(packed middleware.Parameters) (params WatchAppsV1NamespacedControllerRevisionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -60716,37 +69171,103 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedControllerRevisionListParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedControllerRevisionListParams(packed middleware.Parameters) (params WatchAppsV1NamespacedControllerRevisionListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -61191,38 +69712,110 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedDaemonSetParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedDaemonSetParams(packed middleware.Parameters) (params WatchAppsV1NamespacedDaemonSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -61696,37 +70289,103 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedDaemonSetListParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedDaemonSetListParams(packed middleware.Parameters) (params WatchAppsV1NamespacedDaemonSetListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -62171,38 +70830,110 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedDeploymentParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedDeploymentParams(packed middleware.Parameters) (params WatchAppsV1NamespacedDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -62676,37 +71407,103 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedDeploymentListParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedDeploymentListParams(packed middleware.Parameters) (params WatchAppsV1NamespacedDeploymentListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -63151,38 +71948,110 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedReplicaSetParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedReplicaSetParams(packed middleware.Parameters) (params WatchAppsV1NamespacedReplicaSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -63656,37 +72525,103 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedReplicaSetListParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedReplicaSetListParams(packed middleware.Parameters) (params WatchAppsV1NamespacedReplicaSetListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -64131,38 +73066,110 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedStatefulSetParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedStatefulSetParams(packed middleware.Parameters) (params WatchAppsV1NamespacedStatefulSetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -64636,37 +73643,103 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1NamespacedStatefulSetListParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1NamespacedStatefulSetListParams(packed middleware.Parameters) (params WatchAppsV1NamespacedStatefulSetListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -65107,36 +74180,96 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1ReplicaSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ReplicaSetListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1ReplicaSetListForAllNamespacesParams(packed middleware.Parameters) (params WatchAppsV1ReplicaSetListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -65546,36 +74679,96 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAppsV1StatefulSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1StatefulSetListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAppsV1StatefulSetListForAllNamespacesParams(packed middleware.Parameters) (params WatchAppsV1StatefulSetListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -65985,36 +75178,96 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(packed middleware.Parameters) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -66428,38 +75681,110 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -66933,37 +76258,103 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(packed middleware.Parameters) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -67404,36 +76795,96 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(packed middleware.Parameters) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -67847,38 +77298,110 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -68352,37 +77875,103 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(packed middleware.Parameters) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -68823,36 +78412,96 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(packed middleware.Parameters) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -69266,38 +78915,110 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed middleware.Parameters) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -69771,37 +79492,103 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(packed middleware.Parameters) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -70242,36 +80029,96 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1CronJobListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1CronJobListForAllNamespacesParams(packed middleware.Parameters) (params WatchBatchV1CronJobListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -70681,36 +80528,96 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1JobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1JobListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1JobListForAllNamespacesParams(packed middleware.Parameters) (params WatchBatchV1JobListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -71124,38 +81031,110 @@ type WatchBatchV1NamespacedCronJobParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1NamespacedCronJobParams(packed middleware.Parameters) (params WatchBatchV1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -71629,37 +81608,103 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1NamespacedCronJobListParams(packed middleware.Parameters) (params WatchBatchV1NamespacedCronJobListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -72104,38 +82149,110 @@ type WatchBatchV1NamespacedJobParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1NamespacedJobParams(packed map[string]any) (params WatchBatchV1NamespacedJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1NamespacedJobParams(packed middleware.Parameters) (params WatchBatchV1NamespacedJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -72609,37 +82726,103 @@ type WatchBatchV1NamespacedJobListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1NamespacedJobListParams(packed map[string]any) (params WatchBatchV1NamespacedJobListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1NamespacedJobListParams(packed middleware.Parameters) (params WatchBatchV1NamespacedJobListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -73080,36 +83263,96 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1beta1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1beta1CronJobListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1beta1CronJobListForAllNamespacesParams(packed middleware.Parameters) (params WatchBatchV1beta1CronJobListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -73523,38 +83766,110 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1beta1NamespacedCronJobParams(packed middleware.Parameters) (params WatchBatchV1beta1NamespacedCronJobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -74028,37 +84343,103 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchBatchV1beta1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchBatchV1beta1NamespacedCronJobListParams(packed middleware.Parameters) (params WatchBatchV1beta1NamespacedCronJobListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -74501,37 +84882,103 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCertificatesV1CertificateSigningRequestParams(packed middleware.Parameters) (params WatchCertificatesV1CertificateSigningRequestParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -74972,36 +85419,96 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCertificatesV1CertificateSigningRequestListParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCertificatesV1CertificateSigningRequestListParams(packed middleware.Parameters) (params WatchCertificatesV1CertificateSigningRequestListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -75411,36 +85918,96 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoordinationV1LeaseListForAllNamespacesParams(packed map[string]any) (params WatchCoordinationV1LeaseListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoordinationV1LeaseListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoordinationV1LeaseListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -75854,38 +86421,110 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoordinationV1NamespacedLeaseParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoordinationV1NamespacedLeaseParams(packed middleware.Parameters) (params WatchCoordinationV1NamespacedLeaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -76359,37 +86998,103 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoordinationV1NamespacedLeaseListParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoordinationV1NamespacedLeaseListParams(packed middleware.Parameters) (params WatchCoordinationV1NamespacedLeaseListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -76830,36 +87535,96 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1ConfigMapListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ConfigMapListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1ConfigMapListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1ConfigMapListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -77269,36 +88034,96 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1EndpointsListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EndpointsListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1EndpointsListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1EndpointsListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -77708,36 +88533,96 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1EventListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EventListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1EventListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1EventListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -78147,36 +89032,96 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1LimitRangeListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1LimitRangeListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1LimitRangeListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1LimitRangeListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -78588,37 +89533,103 @@ type WatchCoreV1NamespaceParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespaceParams(packed map[string]any) (params WatchCoreV1NamespaceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespaceParams(packed middleware.Parameters) (params WatchCoreV1NamespaceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -79059,36 +90070,96 @@ type WatchCoreV1NamespaceListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespaceListParams(packed map[string]any) (params WatchCoreV1NamespaceListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespaceListParams(packed middleware.Parameters) (params WatchCoreV1NamespaceListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -79502,38 +90573,110 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedConfigMapParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedConfigMapParams(packed middleware.Parameters) (params WatchCoreV1NamespacedConfigMapParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -80007,37 +91150,103 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedConfigMapListParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedConfigMapListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedConfigMapListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -80482,38 +91691,110 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedEndpointsParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedEndpointsParams(packed middleware.Parameters) (params WatchCoreV1NamespacedEndpointsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -80987,37 +92268,103 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedEndpointsListParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedEndpointsListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedEndpointsListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -81462,38 +92809,110 @@ type WatchCoreV1NamespacedEventParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedEventParams(packed map[string]any) (params WatchCoreV1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedEventParams(packed middleware.Parameters) (params WatchCoreV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -81967,37 +93386,103 @@ type WatchCoreV1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedEventListParams(packed map[string]any) (params WatchCoreV1NamespacedEventListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedEventListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedEventListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -82442,38 +93927,110 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedLimitRangeParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedLimitRangeParams(packed middleware.Parameters) (params WatchCoreV1NamespacedLimitRangeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -82947,37 +94504,103 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedLimitRangeListParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedLimitRangeListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedLimitRangeListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -83422,38 +95045,110 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPersistentVolumeClaimParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPersistentVolumeClaimParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -83927,37 +95622,103 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -84402,38 +96163,110 @@ type WatchCoreV1NamespacedPodParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPodParams(packed map[string]any) (params WatchCoreV1NamespacedPodParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPodParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPodParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -84907,37 +96740,103 @@ type WatchCoreV1NamespacedPodListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPodListParams(packed map[string]any) (params WatchCoreV1NamespacedPodListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPodListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPodListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -85382,38 +97281,110 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPodTemplateParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPodTemplateParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPodTemplateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -85887,37 +97858,103 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedPodTemplateListParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedPodTemplateListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedPodTemplateListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -86362,38 +98399,110 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedReplicationControllerParams(packed middleware.Parameters) (params WatchCoreV1NamespacedReplicationControllerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -86867,37 +98976,103 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedReplicationControllerListParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedReplicationControllerListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedReplicationControllerListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -87342,38 +99517,110 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedResourceQuotaParams(packed middleware.Parameters) (params WatchCoreV1NamespacedResourceQuotaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -87847,37 +100094,103 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedResourceQuotaListParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedResourceQuotaListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedResourceQuotaListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -88322,38 +100635,110 @@ type WatchCoreV1NamespacedSecretParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedSecretParams(packed map[string]any) (params WatchCoreV1NamespacedSecretParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedSecretParams(packed middleware.Parameters) (params WatchCoreV1NamespacedSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -88827,37 +101212,103 @@ type WatchCoreV1NamespacedSecretListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedSecretListParams(packed map[string]any) (params WatchCoreV1NamespacedSecretListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedSecretListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedSecretListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -89302,38 +101753,110 @@ type WatchCoreV1NamespacedServiceParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedServiceParams(packed map[string]any) (params WatchCoreV1NamespacedServiceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedServiceParams(packed middleware.Parameters) (params WatchCoreV1NamespacedServiceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -89809,38 +102332,110 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedServiceAccountParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedServiceAccountParams(packed middleware.Parameters) (params WatchCoreV1NamespacedServiceAccountParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -90314,37 +102909,103 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedServiceAccountListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedServiceAccountListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedServiceAccountListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -90787,37 +103448,103 @@ type WatchCoreV1NamespacedServiceListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NamespacedServiceListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NamespacedServiceListParams(packed middleware.Parameters) (params WatchCoreV1NamespacedServiceListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -91260,37 +103987,103 @@ type WatchCoreV1NodeParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NodeParams(packed map[string]any) (params WatchCoreV1NodeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NodeParams(packed middleware.Parameters) (params WatchCoreV1NodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -91731,36 +104524,96 @@ type WatchCoreV1NodeListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1NodeListParams(packed map[string]any) (params WatchCoreV1NodeListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1NodeListParams(packed middleware.Parameters) (params WatchCoreV1NodeListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -92172,37 +105025,103 @@ type WatchCoreV1PersistentVolumeParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1PersistentVolumeParams(packed map[string]any) (params WatchCoreV1PersistentVolumeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1PersistentVolumeParams(packed middleware.Parameters) (params WatchCoreV1PersistentVolumeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -92643,36 +105562,96 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -93082,36 +106061,96 @@ type WatchCoreV1PersistentVolumeListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1PersistentVolumeListParams(packed map[string]any) (params WatchCoreV1PersistentVolumeListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1PersistentVolumeListParams(packed middleware.Parameters) (params WatchCoreV1PersistentVolumeListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -93521,36 +106560,96 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1PodListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1PodListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1PodListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -93960,36 +107059,96 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1PodTemplateListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodTemplateListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1PodTemplateListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1PodTemplateListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -94399,36 +107558,96 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -94838,36 +108057,96 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -95277,36 +108556,96 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1SecretListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1SecretListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1SecretListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1SecretListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -95716,36 +109055,96 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1ServiceAccountListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceAccountListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1ServiceAccountListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1ServiceAccountListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -96155,36 +109554,96 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchCoreV1ServiceListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchCoreV1ServiceListForAllNamespacesParams(packed middleware.Parameters) (params WatchCoreV1ServiceListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -96594,36 +110053,96 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(packed middleware.Parameters) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -97037,38 +110556,110 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1NamespacedEndpointSliceParams(packed middleware.Parameters) (params WatchDiscoveryV1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -97542,37 +111133,103 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1NamespacedEndpointSliceListParams(packed middleware.Parameters) (params WatchDiscoveryV1NamespacedEndpointSliceListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -98013,36 +111670,96 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(packed middleware.Parameters) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -98456,38 +112173,110 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams(packed middleware.Parameters) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -98961,37 +112750,103 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(packed middleware.Parameters) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -99432,36 +113287,96 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1EventListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1EventListForAllNamespacesParams(packed middleware.Parameters) (params WatchEventsV1EventListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -99875,38 +113790,110 @@ type WatchEventsV1NamespacedEventParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1NamespacedEventParams(packed map[string]any) (params WatchEventsV1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1NamespacedEventParams(packed middleware.Parameters) (params WatchEventsV1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -100380,37 +114367,103 @@ type WatchEventsV1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1NamespacedEventListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1NamespacedEventListParams(packed middleware.Parameters) (params WatchEventsV1NamespacedEventListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -100851,36 +114904,96 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1beta1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1beta1EventListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1beta1EventListForAllNamespacesParams(packed middleware.Parameters) (params WatchEventsV1beta1EventListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -101294,38 +115407,110 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1beta1NamespacedEventParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1beta1NamespacedEventParams(packed middleware.Parameters) (params WatchEventsV1beta1NamespacedEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -101799,37 +115984,103 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchEventsV1beta1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchEventsV1beta1NamespacedEventListParams(packed middleware.Parameters) (params WatchEventsV1beta1NamespacedEventListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -102272,37 +116523,103 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -102743,36 +117060,96 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -103184,37 +117561,103 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -103655,36 +118098,96 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -104096,37 +118599,103 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -104567,36 +119136,96 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -105008,37 +119637,103 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -105479,36 +120174,96 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 	Watch OptBool
 }
 
-func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(packed middleware.Parameters) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -105920,37 +120675,103 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	Watch OptBool
 }
 
-func unpackWatchInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchInternalApiserverV1alpha1StorageVersionParams(packed middleware.Parameters) (params WatchInternalApiserverV1alpha1StorageVersionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -106391,36 +121212,96 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchInternalApiserverV1alpha1StorageVersionListParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchInternalApiserverV1alpha1StorageVersionListParams(packed middleware.Parameters) (params WatchInternalApiserverV1alpha1StorageVersionListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -106832,37 +121713,103 @@ type WatchNetworkingV1IngressClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1IngressClassParams(packed map[string]any) (params WatchNetworkingV1IngressClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1IngressClassParams(packed middleware.Parameters) (params WatchNetworkingV1IngressClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -107303,36 +122250,96 @@ type WatchNetworkingV1IngressClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1IngressClassListParams(packed map[string]any) (params WatchNetworkingV1IngressClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1IngressClassListParams(packed middleware.Parameters) (params WatchNetworkingV1IngressClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -107742,36 +122749,96 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1IngressListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1IngressListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1IngressListForAllNamespacesParams(packed middleware.Parameters) (params WatchNetworkingV1IngressListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -108185,38 +123252,110 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1NamespacedIngressParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1NamespacedIngressParams(packed middleware.Parameters) (params WatchNetworkingV1NamespacedIngressParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -108690,37 +123829,103 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1NamespacedIngressListParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1NamespacedIngressListParams(packed middleware.Parameters) (params WatchNetworkingV1NamespacedIngressListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -109165,38 +124370,110 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1NamespacedNetworkPolicyParams(packed middleware.Parameters) (params WatchNetworkingV1NamespacedNetworkPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -109670,37 +124947,103 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1NamespacedNetworkPolicyListParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1NamespacedNetworkPolicyListParams(packed middleware.Parameters) (params WatchNetworkingV1NamespacedNetworkPolicyListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -110141,36 +125484,96 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(packed middleware.Parameters) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -110582,37 +125985,103 @@ type WatchNodeV1RuntimeClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1RuntimeClassParams(packed map[string]any) (params WatchNodeV1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1RuntimeClassParams(packed middleware.Parameters) (params WatchNodeV1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -111053,36 +126522,96 @@ type WatchNodeV1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1RuntimeClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1RuntimeClassListParams(packed middleware.Parameters) (params WatchNodeV1RuntimeClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -111494,37 +127023,103 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1alpha1RuntimeClassParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1alpha1RuntimeClassParams(packed middleware.Parameters) (params WatchNodeV1alpha1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -111965,36 +127560,96 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1alpha1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1alpha1RuntimeClassListParams(packed middleware.Parameters) (params WatchNodeV1alpha1RuntimeClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -112406,37 +128061,103 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1beta1RuntimeClassParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1beta1RuntimeClassParams(packed middleware.Parameters) (params WatchNodeV1beta1RuntimeClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -112877,36 +128598,96 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchNodeV1beta1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchNodeV1beta1RuntimeClassListParams(packed middleware.Parameters) (params WatchNodeV1beta1RuntimeClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -113320,38 +129101,110 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -113825,37 +129678,103 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams(packed middleware.Parameters) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -114296,36 +130215,96 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(packed middleware.Parameters) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -114739,38 +130718,110 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed middleware.Parameters) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -115244,37 +131295,103 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(packed middleware.Parameters) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -115715,36 +131832,96 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(packed middleware.Parameters) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -116156,37 +132333,103 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1beta1PodSecurityPolicyParams(packed middleware.Parameters) (params WatchPolicyV1beta1PodSecurityPolicyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -116627,36 +132870,96 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchPolicyV1beta1PodSecurityPolicyListParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchPolicyV1beta1PodSecurityPolicyListParams(packed middleware.Parameters) (params WatchPolicyV1beta1PodSecurityPolicyListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -117068,37 +133371,103 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1ClusterRoleParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1ClusterRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -117541,37 +133910,103 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1ClusterRoleBindingParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1ClusterRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -118012,36 +134447,96 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -118451,36 +134946,96 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1ClusterRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1ClusterRoleListParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1ClusterRoleListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -118894,38 +135449,110 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1NamespacedRoleParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1NamespacedRoleParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -119401,38 +136028,110 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -119906,37 +136605,103 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -120379,37 +137144,103 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1NamespacedRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1NamespacedRoleListParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1NamespacedRoleListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -120850,36 +137681,96 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -121289,36 +138180,96 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams(packed middleware.Parameters) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -121730,37 +138681,103 @@ type WatchSchedulingV1PriorityClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchSchedulingV1PriorityClassParams(packed map[string]any) (params WatchSchedulingV1PriorityClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchSchedulingV1PriorityClassParams(packed middleware.Parameters) (params WatchSchedulingV1PriorityClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -122201,36 +139218,96 @@ type WatchSchedulingV1PriorityClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchSchedulingV1PriorityClassListParams(packed map[string]any) (params WatchSchedulingV1PriorityClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchSchedulingV1PriorityClassListParams(packed middleware.Parameters) (params WatchSchedulingV1PriorityClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -122642,37 +139719,103 @@ type WatchStorageV1CSIDriverParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1CSIDriverParams(packed map[string]any) (params WatchStorageV1CSIDriverParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1CSIDriverParams(packed middleware.Parameters) (params WatchStorageV1CSIDriverParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -123113,36 +140256,96 @@ type WatchStorageV1CSIDriverListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1CSIDriverListParams(packed map[string]any) (params WatchStorageV1CSIDriverListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1CSIDriverListParams(packed middleware.Parameters) (params WatchStorageV1CSIDriverListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -123554,37 +140757,103 @@ type WatchStorageV1CSINodeParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1CSINodeParams(packed map[string]any) (params WatchStorageV1CSINodeParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1CSINodeParams(packed middleware.Parameters) (params WatchStorageV1CSINodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -124025,36 +141294,96 @@ type WatchStorageV1CSINodeListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1CSINodeListParams(packed map[string]any) (params WatchStorageV1CSINodeListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1CSINodeListParams(packed middleware.Parameters) (params WatchStorageV1CSINodeListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -124466,37 +141795,103 @@ type WatchStorageV1StorageClassParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1StorageClassParams(packed map[string]any) (params WatchStorageV1StorageClassParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1StorageClassParams(packed middleware.Parameters) (params WatchStorageV1StorageClassParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -124937,36 +142332,96 @@ type WatchStorageV1StorageClassListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1StorageClassListParams(packed map[string]any) (params WatchStorageV1StorageClassListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1StorageClassListParams(packed middleware.Parameters) (params WatchStorageV1StorageClassListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -125378,37 +142833,103 @@ type WatchStorageV1VolumeAttachmentParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1VolumeAttachmentParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1VolumeAttachmentParams(packed middleware.Parameters) (params WatchStorageV1VolumeAttachmentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -125849,36 +143370,96 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1VolumeAttachmentListParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1VolumeAttachmentListParams(packed middleware.Parameters) (params WatchStorageV1VolumeAttachmentListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -126288,36 +143869,96 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(packed middleware.Parameters) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -126731,38 +144372,110 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -127236,37 +144949,103 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(packed middleware.Parameters) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -127707,36 +145486,96 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(packed middleware.Parameters) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -128150,38 +145989,110 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams(packed middleware.Parameters) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Name = packed["name"].(string)
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }
@@ -128655,37 +146566,103 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	Watch OptBool
 }
 
-func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) {
-	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks = v.(OptBool)
+func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(packed middleware.Parameters) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "allowWatchBookmarks",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AllowWatchBookmarks = v.(OptBool)
+		}
 	}
-	if v, ok := packed["continue"]; ok {
-		params.Continue = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "continue",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Continue = v.(OptString)
+		}
 	}
-	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "fieldSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.FieldSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labelSelector",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.LabelSelector = v.(OptString)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt)
+		}
 	}
-	params.Namespace = packed["namespace"].(string)
-	if v, ok := packed["pretty"]; ok {
-		params.Pretty = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
 	}
-	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "pretty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pretty = v.(OptString)
+		}
 	}
-	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersion",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersion = v.(OptString)
+		}
 	}
-	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "resourceVersionMatch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ResourceVersionMatch = v.(OptString)
+		}
 	}
-	if v, ok := packed["watch"]; ok {
-		params.Watch = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "timeoutSeconds",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.TimeoutSeconds = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "watch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Watch = v.(OptBool)
+		}
 	}
 	return params
 }

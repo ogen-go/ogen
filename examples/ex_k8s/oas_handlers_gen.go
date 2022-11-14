@@ -75,7 +75,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 			OperationName: "GetAPIVersions",
 			OperationID:   "getAPIVersions",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -171,7 +171,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 			OperationName: "GetAdmissionregistrationAPIGroup",
 			OperationID:   "getAdmissionregistrationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -267,7 +267,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			OperationName: "GetAdmissionregistrationV1APIResources",
 			OperationID:   "getAdmissionregistrationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -363,7 +363,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 			OperationName: "GetApiextensionsAPIGroup",
 			OperationID:   "getApiextensionsAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -459,7 +459,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 			OperationName: "GetApiextensionsV1APIResources",
 			OperationID:   "getApiextensionsV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -555,7 +555,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 			OperationName: "GetApiregistrationAPIGroup",
 			OperationID:   "getApiregistrationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -651,7 +651,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 			OperationName: "GetApiregistrationV1APIResources",
 			OperationID:   "getApiregistrationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -747,7 +747,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 			OperationName: "GetAppsAPIGroup",
 			OperationID:   "getAppsAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -843,7 +843,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 			OperationName: "GetAppsV1APIResources",
 			OperationID:   "getAppsV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -939,7 +939,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 			OperationName: "GetAuthenticationAPIGroup",
 			OperationID:   "getAuthenticationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1035,7 +1035,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 			OperationName: "GetAuthenticationV1APIResources",
 			OperationID:   "getAuthenticationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1131,7 +1131,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 			OperationName: "GetAuthorizationAPIGroup",
 			OperationID:   "getAuthorizationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1227,7 +1227,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 			OperationName: "GetAuthorizationV1APIResources",
 			OperationID:   "getAuthorizationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1323,7 +1323,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 			OperationName: "GetAutoscalingAPIGroup",
 			OperationID:   "getAutoscalingAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1419,7 +1419,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 			OperationName: "GetAutoscalingV1APIResources",
 			OperationID:   "getAutoscalingV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1515,7 +1515,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			OperationName: "GetAutoscalingV2beta1APIResources",
 			OperationID:   "getAutoscalingV2beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1611,7 +1611,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			OperationName: "GetAutoscalingV2beta2APIResources",
 			OperationID:   "getAutoscalingV2beta2APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1707,7 +1707,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 			OperationName: "GetBatchAPIGroup",
 			OperationID:   "getBatchAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1803,7 +1803,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 			OperationName: "GetBatchV1APIResources",
 			OperationID:   "getBatchV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1899,7 +1899,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 			OperationName: "GetBatchV1beta1APIResources",
 			OperationID:   "getBatchV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1995,7 +1995,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 			OperationName: "GetCertificatesAPIGroup",
 			OperationID:   "getCertificatesAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2091,7 +2091,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 			OperationName: "GetCertificatesV1APIResources",
 			OperationID:   "getCertificatesV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2187,7 +2187,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 			OperationName: "GetCodeVersion",
 			OperationID:   "getCodeVersion",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2283,7 +2283,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 			OperationName: "GetCoordinationAPIGroup",
 			OperationID:   "getCoordinationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2379,7 +2379,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 			OperationName: "GetCoordinationV1APIResources",
 			OperationID:   "getCoordinationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2475,7 +2475,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 			OperationName: "GetCoreAPIVersions",
 			OperationID:   "getCoreAPIVersions",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2571,7 +2571,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 			OperationName: "GetCoreV1APIResources",
 			OperationID:   "getCoreV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2667,7 +2667,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 			OperationName: "GetDiscoveryAPIGroup",
 			OperationID:   "getDiscoveryAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2763,7 +2763,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 			OperationName: "GetDiscoveryV1APIResources",
 			OperationID:   "getDiscoveryV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2859,7 +2859,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 			OperationName: "GetDiscoveryV1beta1APIResources",
 			OperationID:   "getDiscoveryV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2955,7 +2955,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 			OperationName: "GetEventsAPIGroup",
 			OperationID:   "getEventsAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3051,7 +3051,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 			OperationName: "GetEventsV1APIResources",
 			OperationID:   "getEventsV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3147,7 +3147,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 			OperationName: "GetEventsV1beta1APIResources",
 			OperationID:   "getEventsV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3243,7 +3243,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 			OperationName: "GetFlowcontrolApiserverAPIGroup",
 			OperationID:   "getFlowcontrolApiserverAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3339,7 +3339,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			OperationName: "GetFlowcontrolApiserverV1beta1APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3435,7 +3435,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			OperationName: "GetFlowcontrolApiserverV1beta2APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta2APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3531,7 +3531,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 			OperationName: "GetInternalApiserverAPIGroup",
 			OperationID:   "getInternalApiserverAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3627,7 +3627,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			OperationName: "GetInternalApiserverV1alpha1APIResources",
 			OperationID:   "getInternalApiserverV1alpha1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3723,7 +3723,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 			OperationName: "GetNetworkingAPIGroup",
 			OperationID:   "getNetworkingAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3819,7 +3819,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 			OperationName: "GetNetworkingV1APIResources",
 			OperationID:   "getNetworkingV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3915,7 +3915,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 			OperationName: "GetNodeAPIGroup",
 			OperationID:   "getNodeAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4011,7 +4011,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 			OperationName: "GetNodeV1APIResources",
 			OperationID:   "getNodeV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4107,7 +4107,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 			OperationName: "GetNodeV1alpha1APIResources",
 			OperationID:   "getNodeV1alpha1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4203,7 +4203,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 			OperationName: "GetNodeV1beta1APIResources",
 			OperationID:   "getNodeV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4299,7 +4299,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 			OperationName: "GetPolicyAPIGroup",
 			OperationID:   "getPolicyAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4395,7 +4395,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 			OperationName: "GetPolicyV1APIResources",
 			OperationID:   "getPolicyV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4491,7 +4491,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 			OperationName: "GetPolicyV1beta1APIResources",
 			OperationID:   "getPolicyV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4587,7 +4587,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 			OperationName: "GetRbacAuthorizationAPIGroup",
 			OperationID:   "getRbacAuthorizationAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4683,7 +4683,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			OperationName: "GetRbacAuthorizationV1APIResources",
 			OperationID:   "getRbacAuthorizationV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4779,7 +4779,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 			OperationName: "GetSchedulingAPIGroup",
 			OperationID:   "getSchedulingAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4875,7 +4875,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 			OperationName: "GetSchedulingV1APIResources",
 			OperationID:   "getSchedulingV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4971,7 +4971,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			OperationName: "GetServiceAccountIssuerOpenIDConfiguration",
 			OperationID:   "getServiceAccountIssuerOpenIDConfiguration",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5067,7 +5067,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 			OperationName: "GetStorageAPIGroup",
 			OperationID:   "getStorageAPIGroup",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5163,7 +5163,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 			OperationName: "GetStorageV1APIResources",
 			OperationID:   "getStorageV1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5259,7 +5259,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 			OperationName: "GetStorageV1alpha1APIResources",
 			OperationID:   "getStorageV1alpha1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5355,7 +5355,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 			OperationName: "GetStorageV1beta1APIResources",
 			OperationID:   "getStorageV1beta1APIResources",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5461,17 +5461,47 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationName: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -5578,17 +5608,47 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationName: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -5695,17 +5755,47 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationName: "ListApiextensionsV1CustomResourceDefinition",
 			OperationID:   "listApiextensionsV1CustomResourceDefinition",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -5812,17 +5902,47 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			OperationName: "ListApiregistrationV1APIService",
 			OperationID:   "listApiregistrationV1APIService",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -5929,17 +6049,47 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			OperationName: "ListAppsV1ControllerRevisionForAllNamespaces",
 			OperationID:   "listAppsV1ControllerRevisionForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -6046,17 +6196,47 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			OperationName: "ListAppsV1DaemonSetForAllNamespaces",
 			OperationID:   "listAppsV1DaemonSetForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -6163,17 +6343,47 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			OperationName: "ListAppsV1DeploymentForAllNamespaces",
 			OperationID:   "listAppsV1DeploymentForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -6280,18 +6490,51 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			OperationName: "ListAppsV1NamespacedControllerRevision",
 			OperationID:   "listAppsV1NamespacedControllerRevision",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -6398,18 +6641,51 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			OperationName: "ListAppsV1NamespacedDaemonSet",
 			OperationID:   "listAppsV1NamespacedDaemonSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -6516,18 +6792,51 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			OperationName: "ListAppsV1NamespacedDeployment",
 			OperationID:   "listAppsV1NamespacedDeployment",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -6634,18 +6943,51 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			OperationName: "ListAppsV1NamespacedReplicaSet",
 			OperationID:   "listAppsV1NamespacedReplicaSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -6752,18 +7094,51 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			OperationName: "ListAppsV1NamespacedStatefulSet",
 			OperationID:   "listAppsV1NamespacedStatefulSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -6870,17 +7245,47 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			OperationName: "ListAppsV1ReplicaSetForAllNamespaces",
 			OperationID:   "listAppsV1ReplicaSetForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -6987,17 +7392,47 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			OperationName: "ListAppsV1StatefulSetForAllNamespaces",
 			OperationID:   "listAppsV1StatefulSetForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -7104,17 +7539,47 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			OperationName: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -7221,18 +7686,51 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationName: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -7339,17 +7837,47 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			OperationName: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -7456,18 +7984,51 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationName: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -7574,17 +8135,47 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			OperationName: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -7691,18 +8282,51 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationName: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -7809,17 +8433,47 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			OperationName: "ListBatchV1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1CronJobForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -7926,17 +8580,47 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			OperationName: "ListBatchV1JobForAllNamespaces",
 			OperationID:   "listBatchV1JobForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -8043,18 +8727,51 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			OperationName: "ListBatchV1NamespacedCronJob",
 			OperationID:   "listBatchV1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -8161,18 +8878,51 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			OperationName: "ListBatchV1NamespacedJob",
 			OperationID:   "listBatchV1NamespacedJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -8279,17 +9029,47 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			OperationName: "ListBatchV1beta1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1beta1CronJobForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -8396,18 +9176,51 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			OperationName: "ListBatchV1beta1NamespacedCronJob",
 			OperationID:   "listBatchV1beta1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -8514,17 +9327,47 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			OperationName: "ListCertificatesV1CertificateSigningRequest",
 			OperationID:   "listCertificatesV1CertificateSigningRequest",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -8631,17 +9474,47 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			OperationName: "ListCoordinationV1LeaseForAllNamespaces",
 			OperationID:   "listCoordinationV1LeaseForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -8748,18 +9621,51 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			OperationName: "ListCoordinationV1NamespacedLease",
 			OperationID:   "listCoordinationV1NamespacedLease",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -8866,17 +9772,47 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			OperationName: "ListCoreV1ComponentStatus",
 			OperationID:   "listCoreV1ComponentStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -8983,17 +9919,47 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			OperationName: "ListCoreV1ConfigMapForAllNamespaces",
 			OperationID:   "listCoreV1ConfigMapForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -9100,17 +10066,47 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			OperationName: "ListCoreV1EndpointsForAllNamespaces",
 			OperationID:   "listCoreV1EndpointsForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -9217,17 +10213,47 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			OperationName: "ListCoreV1EventForAllNamespaces",
 			OperationID:   "listCoreV1EventForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -9334,17 +10360,47 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			OperationName: "ListCoreV1LimitRangeForAllNamespaces",
 			OperationID:   "listCoreV1LimitRangeForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -9451,17 +10507,47 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			OperationName: "ListCoreV1Namespace",
 			OperationID:   "listCoreV1Namespace",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -9568,18 +10654,51 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			OperationName: "ListCoreV1NamespacedConfigMap",
 			OperationID:   "listCoreV1NamespacedConfigMap",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -9686,18 +10805,51 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			OperationName: "ListCoreV1NamespacedEndpoints",
 			OperationID:   "listCoreV1NamespacedEndpoints",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -9804,18 +10956,51 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			OperationName: "ListCoreV1NamespacedEvent",
 			OperationID:   "listCoreV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -9922,18 +11107,51 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			OperationName: "ListCoreV1NamespacedLimitRange",
 			OperationID:   "listCoreV1NamespacedLimitRange",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10040,18 +11258,51 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			OperationName: "ListCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "listCoreV1NamespacedPersistentVolumeClaim",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10158,18 +11409,51 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			OperationName: "ListCoreV1NamespacedPod",
 			OperationID:   "listCoreV1NamespacedPod",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10276,18 +11560,51 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			OperationName: "ListCoreV1NamespacedPodTemplate",
 			OperationID:   "listCoreV1NamespacedPodTemplate",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10394,18 +11711,51 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			OperationName: "ListCoreV1NamespacedReplicationController",
 			OperationID:   "listCoreV1NamespacedReplicationController",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10512,18 +11862,51 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			OperationName: "ListCoreV1NamespacedResourceQuota",
 			OperationID:   "listCoreV1NamespacedResourceQuota",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10630,18 +12013,51 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			OperationName: "ListCoreV1NamespacedSecret",
 			OperationID:   "listCoreV1NamespacedSecret",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10748,18 +12164,51 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			OperationName: "ListCoreV1NamespacedService",
 			OperationID:   "listCoreV1NamespacedService",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10866,18 +12315,51 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			OperationName: "ListCoreV1NamespacedServiceAccount",
 			OperationID:   "listCoreV1NamespacedServiceAccount",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -10984,17 +12466,47 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			OperationName: "ListCoreV1Node",
 			OperationID:   "listCoreV1Node",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -11101,17 +12613,47 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			OperationName: "ListCoreV1PersistentVolume",
 			OperationID:   "listCoreV1PersistentVolume",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -11218,17 +12760,47 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			OperationName: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
 			OperationID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11335,17 +12907,47 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			OperationName: "ListCoreV1PodForAllNamespaces",
 			OperationID:   "listCoreV1PodForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11452,17 +13054,47 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			OperationName: "ListCoreV1PodTemplateForAllNamespaces",
 			OperationID:   "listCoreV1PodTemplateForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11569,17 +13201,47 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			OperationName: "ListCoreV1ReplicationControllerForAllNamespaces",
 			OperationID:   "listCoreV1ReplicationControllerForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11686,17 +13348,47 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			OperationName: "ListCoreV1ResourceQuotaForAllNamespaces",
 			OperationID:   "listCoreV1ResourceQuotaForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11803,17 +13495,47 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			OperationName: "ListCoreV1SecretForAllNamespaces",
 			OperationID:   "listCoreV1SecretForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -11920,17 +13642,47 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			OperationName: "ListCoreV1ServiceAccountForAllNamespaces",
 			OperationID:   "listCoreV1ServiceAccountForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12037,17 +13789,47 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			OperationName: "ListCoreV1ServiceForAllNamespaces",
 			OperationID:   "listCoreV1ServiceForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12154,17 +13936,47 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			OperationName: "ListDiscoveryV1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12271,18 +14083,51 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			OperationName: "ListDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -12389,17 +14234,47 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			OperationName: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12506,18 +14381,51 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationName: "ListDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -12624,17 +14532,47 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			OperationName: "ListEventsV1EventForAllNamespaces",
 			OperationID:   "listEventsV1EventForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12741,18 +14679,51 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			OperationName: "ListEventsV1NamespacedEvent",
 			OperationID:   "listEventsV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -12859,17 +14830,47 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			OperationName: "ListEventsV1beta1EventForAllNamespaces",
 			OperationID:   "listEventsV1beta1EventForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -12976,18 +14977,51 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			OperationName: "ListEventsV1beta1NamespacedEvent",
 			OperationID:   "listEventsV1beta1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13094,17 +15128,47 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			OperationName: "ListFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta1FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13211,17 +15275,47 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13328,17 +15422,47 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			OperationName: "ListFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta2FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13445,17 +15569,47 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13562,17 +15716,47 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationName: "ListInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "listInternalApiserverV1alpha1StorageVersion",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13679,17 +15863,47 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			OperationName: "ListNetworkingV1IngressClass",
 			OperationID:   "listNetworkingV1IngressClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -13796,17 +16010,47 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			OperationName: "ListNetworkingV1IngressForAllNamespaces",
 			OperationID:   "listNetworkingV1IngressForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -13913,18 +16157,51 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			OperationName: "ListNetworkingV1NamespacedIngress",
 			OperationID:   "listNetworkingV1NamespacedIngress",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14031,18 +16308,51 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			OperationName: "ListNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "listNetworkingV1NamespacedNetworkPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14149,17 +16459,47 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			OperationName: "ListNetworkingV1NetworkPolicyForAllNamespaces",
 			OperationID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -14266,17 +16606,47 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			OperationName: "ListNodeV1RuntimeClass",
 			OperationID:   "listNodeV1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14383,17 +16753,47 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			OperationName: "ListNodeV1alpha1RuntimeClass",
 			OperationID:   "listNodeV1alpha1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14500,17 +16900,47 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			OperationName: "ListNodeV1beta1RuntimeClass",
 			OperationID:   "listNodeV1beta1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14617,18 +17047,51 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			OperationName: "ListPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14735,17 +17198,47 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			OperationName: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -14852,18 +17345,51 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationName: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -14970,17 +17496,47 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			OperationName: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -15087,17 +17643,47 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			OperationName: "ListPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "listPolicyV1beta1PodSecurityPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -15204,17 +17790,47 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			OperationName: "ListRbacAuthorizationV1ClusterRole",
 			OperationID:   "listRbacAuthorizationV1ClusterRole",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -15321,17 +17937,47 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			OperationName: "ListRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "listRbacAuthorizationV1ClusterRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -15438,18 +18084,51 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			OperationName: "ListRbacAuthorizationV1NamespacedRole",
 			OperationID:   "listRbacAuthorizationV1NamespacedRole",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -15556,18 +18235,51 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationName: "ListRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "listRbacAuthorizationV1NamespacedRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -15674,17 +18386,47 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			OperationName: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -15791,17 +18533,47 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			OperationName: "ListRbacAuthorizationV1RoleForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -15908,17 +18680,47 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			OperationName: "ListSchedulingV1PriorityClass",
 			OperationID:   "listSchedulingV1PriorityClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16025,17 +18827,47 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			OperationName: "ListStorageV1CSIDriver",
 			OperationID:   "listStorageV1CSIDriver",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16142,17 +18974,47 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			OperationName: "ListStorageV1CSINode",
 			OperationID:   "listStorageV1CSINode",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16259,17 +19121,47 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			OperationName: "ListStorageV1StorageClass",
 			OperationID:   "listStorageV1StorageClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16376,17 +19268,47 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			OperationName: "ListStorageV1VolumeAttachment",
 			OperationID:   "listStorageV1VolumeAttachment",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16493,17 +19415,47 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			OperationName: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -16610,18 +19562,51 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationName: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16728,17 +19713,47 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			OperationName: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -16845,18 +19860,51 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationName: "ListStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -16961,8 +20009,11 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			OperationName: "LogFileHandler",
 			OperationID:   "logFileHandler",
 			Body:          nil,
-			Params: map[string]any{
-				"logpath": params.Logpath,
+			Params: middleware.Parameters{
+				{
+					Name: "logpath",
+					In:   "path",
+				}: params.Logpath,
 			},
 			Raw: r,
 		}
@@ -17057,7 +20108,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			OperationName: "LogFileListHandler",
 			OperationID:   "logFileListHandler",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17163,9 +20214,15 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationName: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17272,9 +20329,15 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationName: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17381,9 +20444,15 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationName: "ReadApiextensionsV1CustomResourceDefinition",
 			OperationID:   "readApiextensionsV1CustomResourceDefinition",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17490,9 +20559,15 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			OperationName: "ReadApiextensionsV1CustomResourceDefinitionStatus",
 			OperationID:   "readApiextensionsV1CustomResourceDefinitionStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17599,9 +20674,15 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			OperationName: "ReadApiregistrationV1APIService",
 			OperationID:   "readApiregistrationV1APIService",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17708,9 +20789,15 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			OperationName: "ReadApiregistrationV1APIServiceStatus",
 			OperationID:   "readApiregistrationV1APIServiceStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17817,10 +20904,19 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			OperationName: "ReadAppsV1NamespacedControllerRevision",
 			OperationID:   "readAppsV1NamespacedControllerRevision",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -17927,10 +21023,19 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			OperationName: "ReadAppsV1NamespacedDaemonSet",
 			OperationID:   "readAppsV1NamespacedDaemonSet",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18037,10 +21142,19 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			OperationName: "ReadAppsV1NamespacedDaemonSetStatus",
 			OperationID:   "readAppsV1NamespacedDaemonSetStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18147,10 +21261,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			OperationName: "ReadAppsV1NamespacedDeployment",
 			OperationID:   "readAppsV1NamespacedDeployment",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18257,10 +21380,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			OperationName: "ReadAppsV1NamespacedDeploymentScale",
 			OperationID:   "readAppsV1NamespacedDeploymentScale",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18367,10 +21499,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			OperationName: "ReadAppsV1NamespacedDeploymentStatus",
 			OperationID:   "readAppsV1NamespacedDeploymentStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18477,10 +21618,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			OperationName: "ReadAppsV1NamespacedReplicaSet",
 			OperationID:   "readAppsV1NamespacedReplicaSet",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18587,10 +21737,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			OperationName: "ReadAppsV1NamespacedReplicaSetScale",
 			OperationID:   "readAppsV1NamespacedReplicaSetScale",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18697,10 +21856,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			OperationName: "ReadAppsV1NamespacedReplicaSetStatus",
 			OperationID:   "readAppsV1NamespacedReplicaSetStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18807,10 +21975,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			OperationName: "ReadAppsV1NamespacedStatefulSet",
 			OperationID:   "readAppsV1NamespacedStatefulSet",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -18917,10 +22094,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			OperationName: "ReadAppsV1NamespacedStatefulSetScale",
 			OperationID:   "readAppsV1NamespacedStatefulSetScale",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19027,10 +22213,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			OperationName: "ReadAppsV1NamespacedStatefulSetStatus",
 			OperationID:   "readAppsV1NamespacedStatefulSetStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19137,10 +22332,19 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19247,10 +22451,19 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19357,10 +22570,19 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19467,10 +22689,19 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19577,10 +22808,19 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19687,10 +22927,19 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19797,10 +23046,19 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			OperationName: "ReadBatchV1NamespacedCronJob",
 			OperationID:   "readBatchV1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -19907,10 +23165,19 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			OperationName: "ReadBatchV1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1NamespacedCronJobStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20017,10 +23284,19 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			OperationName: "ReadBatchV1NamespacedJob",
 			OperationID:   "readBatchV1NamespacedJob",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20127,10 +23403,19 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			OperationName: "ReadBatchV1NamespacedJobStatus",
 			OperationID:   "readBatchV1NamespacedJobStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20237,10 +23522,19 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			OperationName: "ReadBatchV1beta1NamespacedCronJob",
 			OperationID:   "readBatchV1beta1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20347,10 +23641,19 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			OperationName: "ReadBatchV1beta1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1beta1NamespacedCronJobStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20457,9 +23760,15 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			OperationName: "ReadCertificatesV1CertificateSigningRequest",
 			OperationID:   "readCertificatesV1CertificateSigningRequest",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20566,9 +23875,15 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			OperationName: "ReadCertificatesV1CertificateSigningRequestApproval",
 			OperationID:   "readCertificatesV1CertificateSigningRequestApproval",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20675,9 +23990,15 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			OperationName: "ReadCertificatesV1CertificateSigningRequestStatus",
 			OperationID:   "readCertificatesV1CertificateSigningRequestStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20784,10 +24105,19 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			OperationName: "ReadCoordinationV1NamespacedLease",
 			OperationID:   "readCoordinationV1NamespacedLease",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -20894,9 +24224,15 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			OperationName: "ReadCoreV1ComponentStatus",
 			OperationID:   "readCoreV1ComponentStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21003,9 +24339,15 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			OperationName: "ReadCoreV1Namespace",
 			OperationID:   "readCoreV1Namespace",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21112,9 +24454,15 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			OperationName: "ReadCoreV1NamespaceStatus",
 			OperationID:   "readCoreV1NamespaceStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21221,10 +24569,19 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			OperationName: "ReadCoreV1NamespacedConfigMap",
 			OperationID:   "readCoreV1NamespacedConfigMap",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21331,10 +24688,19 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			OperationName: "ReadCoreV1NamespacedEndpoints",
 			OperationID:   "readCoreV1NamespacedEndpoints",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21441,10 +24807,19 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			OperationName: "ReadCoreV1NamespacedEvent",
 			OperationID:   "readCoreV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21551,10 +24926,19 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			OperationName: "ReadCoreV1NamespacedLimitRange",
 			OperationID:   "readCoreV1NamespacedLimitRange",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21661,10 +25045,19 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaim",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21771,10 +25164,19 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21881,10 +25283,19 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			OperationName: "ReadCoreV1NamespacedPod",
 			OperationID:   "readCoreV1NamespacedPod",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -21991,10 +25402,19 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			OperationName: "ReadCoreV1NamespacedPodEphemeralcontainers",
 			OperationID:   "readCoreV1NamespacedPodEphemeralcontainers",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22101,18 +25521,51 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			OperationName: "ReadCoreV1NamespacedPodLog",
 			OperationID:   "readCoreV1NamespacedPodLog",
 			Body:          nil,
-			Params: map[string]any{
-				"container":                    params.Container,
-				"follow":                       params.Follow,
-				"insecureSkipTLSVerifyBackend": params.InsecureSkipTLSVerifyBackend,
-				"limitBytes":                   params.LimitBytes,
-				"name":                         params.Name,
-				"namespace":                    params.Namespace,
-				"pretty":                       params.Pretty,
-				"previous":                     params.Previous,
-				"sinceSeconds":                 params.SinceSeconds,
-				"tailLines":                    params.TailLines,
-				"timestamps":                   params.Timestamps,
+			Params: middleware.Parameters{
+				{
+					Name: "container",
+					In:   "query",
+				}: params.Container,
+				{
+					Name: "follow",
+					In:   "query",
+				}: params.Follow,
+				{
+					Name: "insecureSkipTLSVerifyBackend",
+					In:   "query",
+				}: params.InsecureSkipTLSVerifyBackend,
+				{
+					Name: "limitBytes",
+					In:   "query",
+				}: params.LimitBytes,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "previous",
+					In:   "query",
+				}: params.Previous,
+				{
+					Name: "sinceSeconds",
+					In:   "query",
+				}: params.SinceSeconds,
+				{
+					Name: "tailLines",
+					In:   "query",
+				}: params.TailLines,
+				{
+					Name: "timestamps",
+					In:   "query",
+				}: params.Timestamps,
 			},
 			Raw: r,
 		}
@@ -22219,10 +25672,19 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			OperationName: "ReadCoreV1NamespacedPodStatus",
 			OperationID:   "readCoreV1NamespacedPodStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22329,10 +25791,19 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			OperationName: "ReadCoreV1NamespacedPodTemplate",
 			OperationID:   "readCoreV1NamespacedPodTemplate",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22439,10 +25910,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			OperationName: "ReadCoreV1NamespacedReplicationController",
 			OperationID:   "readCoreV1NamespacedReplicationController",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22549,10 +26029,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			OperationName: "ReadCoreV1NamespacedReplicationControllerScale",
 			OperationID:   "readCoreV1NamespacedReplicationControllerScale",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22659,10 +26148,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			OperationName: "ReadCoreV1NamespacedReplicationControllerStatus",
 			OperationID:   "readCoreV1NamespacedReplicationControllerStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22769,10 +26267,19 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			OperationName: "ReadCoreV1NamespacedResourceQuota",
 			OperationID:   "readCoreV1NamespacedResourceQuota",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22879,10 +26386,19 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			OperationName: "ReadCoreV1NamespacedResourceQuotaStatus",
 			OperationID:   "readCoreV1NamespacedResourceQuotaStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -22989,10 +26505,19 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			OperationName: "ReadCoreV1NamespacedSecret",
 			OperationID:   "readCoreV1NamespacedSecret",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23099,10 +26624,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			OperationName: "ReadCoreV1NamespacedService",
 			OperationID:   "readCoreV1NamespacedService",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23209,10 +26743,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			OperationName: "ReadCoreV1NamespacedServiceAccount",
 			OperationID:   "readCoreV1NamespacedServiceAccount",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23319,10 +26862,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			OperationName: "ReadCoreV1NamespacedServiceStatus",
 			OperationID:   "readCoreV1NamespacedServiceStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23429,9 +26981,15 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			OperationName: "ReadCoreV1Node",
 			OperationID:   "readCoreV1Node",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23538,9 +27096,15 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			OperationName: "ReadCoreV1NodeStatus",
 			OperationID:   "readCoreV1NodeStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23647,9 +27211,15 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			OperationName: "ReadCoreV1PersistentVolume",
 			OperationID:   "readCoreV1PersistentVolume",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23756,9 +27326,15 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			OperationName: "ReadCoreV1PersistentVolumeStatus",
 			OperationID:   "readCoreV1PersistentVolumeStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23865,10 +27441,19 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			OperationName: "ReadDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -23975,10 +27560,19 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationName: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24085,10 +27679,19 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			OperationName: "ReadEventsV1NamespacedEvent",
 			OperationID:   "readEventsV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24195,10 +27798,19 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			OperationName: "ReadEventsV1beta1NamespacedEvent",
 			OperationID:   "readEventsV1beta1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24305,9 +27917,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24414,9 +28032,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24523,9 +28147,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24632,9 +28262,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24741,9 +28377,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24850,9 +28492,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -24959,9 +28607,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25068,9 +28722,15 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25177,9 +28837,15 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersion",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25286,9 +28952,15 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersionStatus",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersionStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25395,9 +29067,15 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			OperationName: "ReadNetworkingV1IngressClass",
 			OperationID:   "readNetworkingV1IngressClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25504,10 +29182,19 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			OperationName: "ReadNetworkingV1NamespacedIngress",
 			OperationID:   "readNetworkingV1NamespacedIngress",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25614,10 +29301,19 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			OperationName: "ReadNetworkingV1NamespacedIngressStatus",
 			OperationID:   "readNetworkingV1NamespacedIngressStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25724,10 +29420,19 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			OperationName: "ReadNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "readNetworkingV1NamespacedNetworkPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25834,9 +29539,15 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			OperationName: "ReadNodeV1RuntimeClass",
 			OperationID:   "readNodeV1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -25943,9 +29654,15 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			OperationName: "ReadNodeV1alpha1RuntimeClass",
 			OperationID:   "readNodeV1alpha1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26052,9 +29769,15 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			OperationName: "ReadNodeV1beta1RuntimeClass",
 			OperationID:   "readNodeV1beta1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26161,10 +29884,19 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26271,10 +30003,19 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26381,10 +30122,19 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26491,10 +30241,19 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26601,9 +30360,15 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			OperationName: "ReadPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "readPolicyV1beta1PodSecurityPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26710,9 +30475,15 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			OperationName: "ReadRbacAuthorizationV1ClusterRole",
 			OperationID:   "readRbacAuthorizationV1ClusterRole",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26819,9 +30590,15 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			OperationName: "ReadRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "readRbacAuthorizationV1ClusterRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -26928,10 +30705,19 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			OperationName: "ReadRbacAuthorizationV1NamespacedRole",
 			OperationID:   "readRbacAuthorizationV1NamespacedRole",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27038,10 +30824,19 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationName: "ReadRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "readRbacAuthorizationV1NamespacedRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27148,9 +30943,15 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			OperationName: "ReadSchedulingV1PriorityClass",
 			OperationID:   "readSchedulingV1PriorityClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27257,9 +31058,15 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			OperationName: "ReadStorageV1CSIDriver",
 			OperationID:   "readStorageV1CSIDriver",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27366,9 +31173,15 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			OperationName: "ReadStorageV1CSINode",
 			OperationID:   "readStorageV1CSINode",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27475,9 +31288,15 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			OperationName: "ReadStorageV1StorageClass",
 			OperationID:   "readStorageV1StorageClass",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27584,9 +31403,15 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			OperationName: "ReadStorageV1VolumeAttachment",
 			OperationID:   "readStorageV1VolumeAttachment",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27693,9 +31518,15 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			OperationName: "ReadStorageV1VolumeAttachmentStatus",
 			OperationID:   "readStorageV1VolumeAttachmentStatus",
 			Body:          nil,
-			Params: map[string]any{
-				"name":   params.Name,
-				"pretty": params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27802,10 +31633,19 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationName: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -27912,10 +31752,19 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationName: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"name":      params.Name,
-				"namespace": params.Namespace,
-				"pretty":    params.Pretty,
+			Params: middleware.Parameters{
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
 			},
 			Raw: r,
 		}
@@ -28024,18 +31873,51 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28143,17 +32025,47 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28262,18 +32174,51 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28381,17 +32326,47 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28499,18 +32474,51 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			OperationName: "WatchApiextensionsV1CustomResourceDefinition",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinition",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28618,17 +32626,47 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			OperationName: "WatchApiextensionsV1CustomResourceDefinitionList",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinitionList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28736,18 +32774,51 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			OperationName: "WatchApiregistrationV1APIService",
 			OperationID:   "watchApiregistrationV1APIService",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28855,17 +32926,47 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			OperationName: "WatchApiregistrationV1APIServiceList",
 			OperationID:   "watchApiregistrationV1APIServiceList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -28973,17 +33074,47 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			OperationName: "WatchAppsV1ControllerRevisionListForAllNamespaces",
 			OperationID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29091,17 +33222,47 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			OperationName: "WatchAppsV1DaemonSetListForAllNamespaces",
 			OperationID:   "watchAppsV1DaemonSetListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29209,17 +33370,47 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			OperationName: "WatchAppsV1DeploymentListForAllNamespaces",
 			OperationID:   "watchAppsV1DeploymentListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29327,19 +33518,55 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			OperationName: "WatchAppsV1NamespacedControllerRevision",
 			OperationID:   "watchAppsV1NamespacedControllerRevision",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29447,18 +33674,51 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			OperationName: "WatchAppsV1NamespacedControllerRevisionList",
 			OperationID:   "watchAppsV1NamespacedControllerRevisionList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29566,19 +33826,55 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			OperationName: "WatchAppsV1NamespacedDaemonSet",
 			OperationID:   "watchAppsV1NamespacedDaemonSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29686,18 +33982,51 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			OperationName: "WatchAppsV1NamespacedDaemonSetList",
 			OperationID:   "watchAppsV1NamespacedDaemonSetList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29805,19 +34134,55 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			OperationName: "WatchAppsV1NamespacedDeployment",
 			OperationID:   "watchAppsV1NamespacedDeployment",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -29925,18 +34290,51 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			OperationName: "WatchAppsV1NamespacedDeploymentList",
 			OperationID:   "watchAppsV1NamespacedDeploymentList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30044,19 +34442,55 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			OperationName: "WatchAppsV1NamespacedReplicaSet",
 			OperationID:   "watchAppsV1NamespacedReplicaSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30164,18 +34598,51 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			OperationName: "WatchAppsV1NamespacedReplicaSetList",
 			OperationID:   "watchAppsV1NamespacedReplicaSetList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30283,19 +34750,55 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			OperationName: "WatchAppsV1NamespacedStatefulSet",
 			OperationID:   "watchAppsV1NamespacedStatefulSet",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30403,18 +34906,51 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			OperationName: "WatchAppsV1NamespacedStatefulSetList",
 			OperationID:   "watchAppsV1NamespacedStatefulSetList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30522,17 +35058,47 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			OperationName: "WatchAppsV1ReplicaSetListForAllNamespaces",
 			OperationID:   "watchAppsV1ReplicaSetListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30640,17 +35206,47 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			OperationName: "WatchAppsV1StatefulSetListForAllNamespaces",
 			OperationID:   "watchAppsV1StatefulSetListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30758,17 +35354,47 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			OperationName: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30876,19 +35502,55 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -30996,18 +35658,51 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31115,17 +35810,47 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			OperationName: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31233,19 +35958,55 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31353,18 +36114,51 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31472,17 +36266,47 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			OperationName: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31590,19 +36414,55 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31710,18 +36570,51 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31829,17 +36722,47 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			OperationName: "WatchBatchV1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1CronJobListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -31947,17 +36870,47 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			OperationName: "WatchBatchV1JobListForAllNamespaces",
 			OperationID:   "watchBatchV1JobListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32065,19 +37018,55 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			OperationName: "WatchBatchV1NamespacedCronJob",
 			OperationID:   "watchBatchV1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32185,18 +37174,51 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			OperationName: "WatchBatchV1NamespacedCronJobList",
 			OperationID:   "watchBatchV1NamespacedCronJobList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32304,19 +37326,55 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			OperationName: "WatchBatchV1NamespacedJob",
 			OperationID:   "watchBatchV1NamespacedJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32424,18 +37482,51 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			OperationName: "WatchBatchV1NamespacedJobList",
 			OperationID:   "watchBatchV1NamespacedJobList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32543,17 +37634,47 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			OperationName: "WatchBatchV1beta1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1beta1CronJobListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32661,19 +37782,55 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			OperationName: "WatchBatchV1beta1NamespacedCronJob",
 			OperationID:   "watchBatchV1beta1NamespacedCronJob",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32781,18 +37938,51 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			OperationName: "WatchBatchV1beta1NamespacedCronJobList",
 			OperationID:   "watchBatchV1beta1NamespacedCronJobList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -32901,18 +38091,51 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			OperationName: "WatchCertificatesV1CertificateSigningRequest",
 			OperationID:   "watchCertificatesV1CertificateSigningRequest",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33020,17 +38243,47 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			OperationName: "WatchCertificatesV1CertificateSigningRequestList",
 			OperationID:   "watchCertificatesV1CertificateSigningRequestList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33138,17 +38391,47 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			OperationName: "WatchCoordinationV1LeaseListForAllNamespaces",
 			OperationID:   "watchCoordinationV1LeaseListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33256,19 +38539,55 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			OperationName: "WatchCoordinationV1NamespacedLease",
 			OperationID:   "watchCoordinationV1NamespacedLease",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33376,18 +38695,51 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			OperationName: "WatchCoordinationV1NamespacedLeaseList",
 			OperationID:   "watchCoordinationV1NamespacedLeaseList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33495,17 +38847,47 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			OperationName: "WatchCoreV1ConfigMapListForAllNamespaces",
 			OperationID:   "watchCoreV1ConfigMapListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33613,17 +38995,47 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			OperationName: "WatchCoreV1EndpointsListForAllNamespaces",
 			OperationID:   "watchCoreV1EndpointsListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33731,17 +39143,47 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			OperationName: "WatchCoreV1EventListForAllNamespaces",
 			OperationID:   "watchCoreV1EventListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33849,17 +39291,47 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			OperationName: "WatchCoreV1LimitRangeListForAllNamespaces",
 			OperationID:   "watchCoreV1LimitRangeListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -33967,18 +39439,51 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			OperationName: "WatchCoreV1Namespace",
 			OperationID:   "watchCoreV1Namespace",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34086,17 +39591,47 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			OperationName: "WatchCoreV1NamespaceList",
 			OperationID:   "watchCoreV1NamespaceList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34204,19 +39739,55 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			OperationName: "WatchCoreV1NamespacedConfigMap",
 			OperationID:   "watchCoreV1NamespacedConfigMap",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34324,18 +39895,51 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			OperationName: "WatchCoreV1NamespacedConfigMapList",
 			OperationID:   "watchCoreV1NamespacedConfigMapList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34443,19 +40047,55 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			OperationName: "WatchCoreV1NamespacedEndpoints",
 			OperationID:   "watchCoreV1NamespacedEndpoints",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34563,18 +40203,51 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			OperationName: "WatchCoreV1NamespacedEndpointsList",
 			OperationID:   "watchCoreV1NamespacedEndpointsList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34682,19 +40355,55 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			OperationName: "WatchCoreV1NamespacedEvent",
 			OperationID:   "watchCoreV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34802,18 +40511,51 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			OperationName: "WatchCoreV1NamespacedEventList",
 			OperationID:   "watchCoreV1NamespacedEventList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -34921,19 +40663,55 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			OperationName: "WatchCoreV1NamespacedLimitRange",
 			OperationID:   "watchCoreV1NamespacedLimitRange",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35041,18 +40819,51 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			OperationName: "WatchCoreV1NamespacedLimitRangeList",
 			OperationID:   "watchCoreV1NamespacedLimitRangeList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35160,19 +40971,55 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaim",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35280,18 +41127,51 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaimList",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35399,19 +41279,55 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			OperationName: "WatchCoreV1NamespacedPod",
 			OperationID:   "watchCoreV1NamespacedPod",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35519,18 +41435,51 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			OperationName: "WatchCoreV1NamespacedPodList",
 			OperationID:   "watchCoreV1NamespacedPodList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35638,19 +41587,55 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			OperationName: "WatchCoreV1NamespacedPodTemplate",
 			OperationID:   "watchCoreV1NamespacedPodTemplate",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35758,18 +41743,51 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			OperationName: "WatchCoreV1NamespacedPodTemplateList",
 			OperationID:   "watchCoreV1NamespacedPodTemplateList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35877,19 +41895,55 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			OperationName: "WatchCoreV1NamespacedReplicationController",
 			OperationID:   "watchCoreV1NamespacedReplicationController",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -35997,18 +42051,51 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			OperationName: "WatchCoreV1NamespacedReplicationControllerList",
 			OperationID:   "watchCoreV1NamespacedReplicationControllerList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36116,19 +42203,55 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			OperationName: "WatchCoreV1NamespacedResourceQuota",
 			OperationID:   "watchCoreV1NamespacedResourceQuota",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36236,18 +42359,51 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			OperationName: "WatchCoreV1NamespacedResourceQuotaList",
 			OperationID:   "watchCoreV1NamespacedResourceQuotaList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36355,19 +42511,55 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			OperationName: "WatchCoreV1NamespacedSecret",
 			OperationID:   "watchCoreV1NamespacedSecret",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36475,18 +42667,51 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			OperationName: "WatchCoreV1NamespacedSecretList",
 			OperationID:   "watchCoreV1NamespacedSecretList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36594,19 +42819,55 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			OperationName: "WatchCoreV1NamespacedService",
 			OperationID:   "watchCoreV1NamespacedService",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36714,19 +42975,55 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			OperationName: "WatchCoreV1NamespacedServiceAccount",
 			OperationID:   "watchCoreV1NamespacedServiceAccount",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36834,18 +43131,51 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			OperationName: "WatchCoreV1NamespacedServiceAccountList",
 			OperationID:   "watchCoreV1NamespacedServiceAccountList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -36953,18 +43283,51 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			OperationName: "WatchCoreV1NamespacedServiceList",
 			OperationID:   "watchCoreV1NamespacedServiceList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37072,18 +43435,51 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			OperationName: "WatchCoreV1Node",
 			OperationID:   "watchCoreV1Node",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37191,17 +43587,47 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			OperationName: "WatchCoreV1NodeList",
 			OperationID:   "watchCoreV1NodeList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37309,18 +43735,51 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			OperationName: "WatchCoreV1PersistentVolume",
 			OperationID:   "watchCoreV1PersistentVolume",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37428,17 +43887,47 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			OperationName: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			OperationID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37546,17 +44035,47 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			OperationName: "WatchCoreV1PersistentVolumeList",
 			OperationID:   "watchCoreV1PersistentVolumeList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37664,17 +44183,47 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			OperationName: "WatchCoreV1PodListForAllNamespaces",
 			OperationID:   "watchCoreV1PodListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37782,17 +44331,47 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			OperationName: "WatchCoreV1PodTemplateListForAllNamespaces",
 			OperationID:   "watchCoreV1PodTemplateListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -37900,17 +44479,47 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			OperationName: "WatchCoreV1ReplicationControllerListForAllNamespaces",
 			OperationID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38018,17 +44627,47 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			OperationName: "WatchCoreV1ResourceQuotaListForAllNamespaces",
 			OperationID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38136,17 +44775,47 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			OperationName: "WatchCoreV1SecretListForAllNamespaces",
 			OperationID:   "watchCoreV1SecretListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38254,17 +44923,47 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			OperationName: "WatchCoreV1ServiceAccountListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceAccountListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38372,17 +45071,47 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			OperationName: "WatchCoreV1ServiceListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38490,17 +45219,47 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			OperationName: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38608,19 +45367,55 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38728,18 +45523,51 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSliceList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38847,17 +45675,47 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			OperationName: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -38965,19 +45823,55 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39085,18 +45979,51 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39204,17 +46131,47 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			OperationName: "WatchEventsV1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1EventListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39322,19 +46279,55 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			OperationName: "WatchEventsV1NamespacedEvent",
 			OperationID:   "watchEventsV1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39442,18 +46435,51 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			OperationName: "WatchEventsV1NamespacedEventList",
 			OperationID:   "watchEventsV1NamespacedEventList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39561,17 +46587,47 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			OperationName: "WatchEventsV1beta1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1beta1EventListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39679,19 +46735,55 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			OperationName: "WatchEventsV1beta1NamespacedEvent",
 			OperationID:   "watchEventsV1beta1NamespacedEvent",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39799,18 +46891,51 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			OperationName: "WatchEventsV1beta1NamespacedEventList",
 			OperationID:   "watchEventsV1beta1NamespacedEventList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -39918,18 +47043,51 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40037,17 +47195,47 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40156,18 +47344,51 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40275,17 +47496,47 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40393,18 +47644,51 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40512,17 +47796,47 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40631,18 +47945,51 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40750,17 +48097,47 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40868,18 +48245,51 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersion",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -40987,17 +48397,47 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersionList",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersionList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41105,18 +48545,51 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			OperationName: "WatchNetworkingV1IngressClass",
 			OperationID:   "watchNetworkingV1IngressClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41224,17 +48697,47 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			OperationName: "WatchNetworkingV1IngressClassList",
 			OperationID:   "watchNetworkingV1IngressClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41342,17 +48845,47 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			OperationName: "WatchNetworkingV1IngressListForAllNamespaces",
 			OperationID:   "watchNetworkingV1IngressListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41460,19 +48993,55 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			OperationName: "WatchNetworkingV1NamespacedIngress",
 			OperationID:   "watchNetworkingV1NamespacedIngress",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41580,18 +49149,51 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			OperationName: "WatchNetworkingV1NamespacedIngressList",
 			OperationID:   "watchNetworkingV1NamespacedIngressList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41699,19 +49301,55 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41819,18 +49457,51 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicyList",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicyList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -41938,17 +49609,47 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			OperationName: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
 			OperationID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42056,18 +49757,51 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			OperationName: "WatchNodeV1RuntimeClass",
 			OperationID:   "watchNodeV1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42175,17 +49909,47 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			OperationName: "WatchNodeV1RuntimeClassList",
 			OperationID:   "watchNodeV1RuntimeClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42293,18 +50057,51 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			OperationName: "WatchNodeV1alpha1RuntimeClass",
 			OperationID:   "watchNodeV1alpha1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42412,17 +50209,47 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			OperationName: "WatchNodeV1alpha1RuntimeClassList",
 			OperationID:   "watchNodeV1alpha1RuntimeClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42530,18 +50357,51 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			OperationName: "WatchNodeV1beta1RuntimeClass",
 			OperationID:   "watchNodeV1beta1RuntimeClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42649,17 +50509,47 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			OperationName: "WatchNodeV1beta1RuntimeClassList",
 			OperationID:   "watchNodeV1beta1RuntimeClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42767,19 +50657,55 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -42887,18 +50813,51 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43006,17 +50965,47 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			OperationName: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43124,19 +51113,55 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43244,18 +51269,51 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43363,17 +51421,47 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			OperationName: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43481,18 +51569,51 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicy",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43600,17 +51721,47 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicyList",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicyList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43718,18 +51869,51 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			OperationName: "WatchRbacAuthorizationV1ClusterRole",
 			OperationID:   "watchRbacAuthorizationV1ClusterRole",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43837,18 +52021,51 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -43956,17 +52173,47 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44074,17 +52321,47 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44192,19 +52469,55 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			OperationName: "WatchRbacAuthorizationV1NamespacedRole",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRole",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44312,19 +52625,55 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44432,18 +52781,51 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44551,18 +52933,51 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44670,17 +53085,47 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			OperationName: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44788,17 +53233,47 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			OperationName: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -44906,18 +53381,51 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			OperationName: "WatchSchedulingV1PriorityClass",
 			OperationID:   "watchSchedulingV1PriorityClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45025,17 +53533,47 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			OperationName: "WatchSchedulingV1PriorityClassList",
 			OperationID:   "watchSchedulingV1PriorityClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45143,18 +53681,51 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			OperationName: "WatchStorageV1CSIDriver",
 			OperationID:   "watchStorageV1CSIDriver",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45262,17 +53833,47 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			OperationName: "WatchStorageV1CSIDriverList",
 			OperationID:   "watchStorageV1CSIDriverList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45380,18 +53981,51 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			OperationName: "WatchStorageV1CSINode",
 			OperationID:   "watchStorageV1CSINode",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45499,17 +54133,47 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			OperationName: "WatchStorageV1CSINodeList",
 			OperationID:   "watchStorageV1CSINodeList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45617,18 +54281,51 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			OperationName: "WatchStorageV1StorageClass",
 			OperationID:   "watchStorageV1StorageClass",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45736,17 +54433,47 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			OperationName: "WatchStorageV1StorageClassList",
 			OperationID:   "watchStorageV1StorageClassList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45854,18 +54581,51 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			OperationName: "WatchStorageV1VolumeAttachment",
 			OperationID:   "watchStorageV1VolumeAttachment",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -45973,17 +54733,47 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			OperationName: "WatchStorageV1VolumeAttachmentList",
 			OperationID:   "watchStorageV1VolumeAttachmentList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46091,17 +54881,47 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			OperationName: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46209,19 +55029,55 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46329,18 +55185,51 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46448,17 +55337,47 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			OperationName: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46566,19 +55485,55 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"name":                 params.Name,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}
@@ -46686,18 +55641,51 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
 			Body:          nil,
-			Params: map[string]any{
-				"allowWatchBookmarks":  params.AllowWatchBookmarks,
-				"continue":             params.Continue,
-				"fieldSelector":        params.FieldSelector,
-				"labelSelector":        params.LabelSelector,
-				"limit":                params.Limit,
-				"namespace":            params.Namespace,
-				"pretty":               params.Pretty,
-				"resourceVersion":      params.ResourceVersion,
-				"resourceVersionMatch": params.ResourceVersionMatch,
-				"timeoutSeconds":       params.TimeoutSeconds,
-				"watch":                params.Watch,
+			Params: middleware.Parameters{
+				{
+					Name: "allowWatchBookmarks",
+					In:   "query",
+				}: params.AllowWatchBookmarks,
+				{
+					Name: "continue",
+					In:   "query",
+				}: params.Continue,
+				{
+					Name: "fieldSelector",
+					In:   "query",
+				}: params.FieldSelector,
+				{
+					Name: "labelSelector",
+					In:   "query",
+				}: params.LabelSelector,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+				{
+					Name: "resourceVersion",
+					In:   "query",
+				}: params.ResourceVersion,
+				{
+					Name: "resourceVersionMatch",
+					In:   "query",
+				}: params.ResourceVersionMatch,
+				{
+					Name: "timeoutSeconds",
+					In:   "query",
+				}: params.TimeoutSeconds,
+				{
+					Name: "watch",
+					In:   "query",
+				}: params.Watch,
 			},
 			Raw: r,
 		}

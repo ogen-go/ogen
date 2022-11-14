@@ -57,7 +57,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 			OperationName: "AnyContentTypeBinaryStringSchema",
 			OperationID:   "anyContentTypeBinaryStringSchema",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -135,7 +135,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			OperationName: "AnyContentTypeBinaryStringSchemaDefault",
 			OperationID:   "anyContentTypeBinaryStringSchemaDefault",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -227,8 +227,11 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "Combined",
 			OperationID:   "combined",
 			Body:          nil,
-			Params: map[string]any{
-				"type": params.Type,
+			Params: middleware.Parameters{
+				{
+					Name: "type",
+					In:   "query",
+				}: params.Type,
 			},
 			Raw: r,
 		}
@@ -307,7 +310,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 			OperationName: "Headers200",
 			OperationID:   "headers200",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -399,8 +402,11 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			OperationName: "HeadersCombined",
 			OperationID:   "headersCombined",
 			Body:          nil,
-			Params: map[string]any{
-				"type": params.Type,
+			Params: middleware.Parameters{
+				{
+					Name: "type",
+					In:   "query",
+				}: params.Type,
 			},
 			Raw: r,
 		}
@@ -479,7 +485,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 			OperationName: "HeadersDefault",
 			OperationID:   "headersDefault",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -557,7 +563,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 			OperationName: "HeadersPattern",
 			OperationID:   "headersPattern",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -652,8 +658,11 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			OperationName: "IntersectPatternCode",
 			OperationID:   "intersectPatternCode",
 			Body:          nil,
-			Params: map[string]any{
-				"code": params.Code,
+			Params: middleware.Parameters{
+				{
+					Name: "code",
+					In:   "query",
+				}: params.Code,
 			},
 			Raw: r,
 		}
@@ -732,7 +741,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 			OperationName: "MultipleGenericResponses",
 			OperationID:   "multipleGenericResponses",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -810,7 +819,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 			OperationName: "OctetStreamBinaryStringSchema",
 			OperationID:   "octetStreamBinaryStringSchema",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -888,7 +897,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 			OperationName: "OctetStreamEmptySchema",
 			OperationID:   "octetStreamEmptySchema",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -966,7 +975,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 			OperationName: "TextPlainBinaryStringSchema",
 			OperationID:   "textPlainBinaryStringSchema",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

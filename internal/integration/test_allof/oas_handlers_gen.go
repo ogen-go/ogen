@@ -78,7 +78,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			OperationName: "NullableStrings",
 			OperationID:   "nullableStrings",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -177,7 +177,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			OperationName: "ObjectsWithConflictingArrayProperty",
 			OperationID:   "objectsWithConflictingArrayProperty",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -276,7 +276,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			OperationName: "ObjectsWithConflictingProperties",
 			OperationID:   "objectsWithConflictingProperties",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -375,7 +375,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			OperationName: "ReferencedAllof",
 			OperationID:   "referencedAllof",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -474,7 +474,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			OperationName: "ReferencedAllofOptional",
 			OperationID:   "referencedAllofOptional",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -573,7 +573,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SimpleInteger",
 			OperationID:   "simpleInteger",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -672,7 +672,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SimpleObjects",
 			OperationID:   "simpleObjects",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

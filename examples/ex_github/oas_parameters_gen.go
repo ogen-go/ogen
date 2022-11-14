@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -22,10 +23,28 @@ type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	RepositoryID  int
 }
 
-func unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -134,10 +153,28 @@ type ActionsAddSelectedRepoToOrgSecretParams struct {
 	RepositoryID int
 }
 
-func unpackActionsAddSelectedRepoToOrgSecretParams(packed map[string]any) (params ActionsAddSelectedRepoToOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsAddSelectedRepoToOrgSecretParams(packed middleware.Parameters) (params ActionsAddSelectedRepoToOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -247,10 +284,28 @@ type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
 	RunnerID int
 }
 
-func unpackActionsAddSelfHostedRunnerToGroupForOrgParams(packed map[string]any) (params ActionsAddSelfHostedRunnerToGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsAddSelfHostedRunnerToGroupForOrgParams(packed middleware.Parameters) (params ActionsAddSelfHostedRunnerToGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -359,10 +414,28 @@ type ActionsApproveWorkflowRunParams struct {
 	RunID int
 }
 
-func unpackActionsApproveWorkflowRunParams(packed map[string]any) (params ActionsApproveWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsApproveWorkflowRunParams(packed middleware.Parameters) (params ActionsApproveWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -471,10 +544,28 @@ type ActionsCancelWorkflowRunParams struct {
 	RunID int
 }
 
-func unpackActionsCancelWorkflowRunParams(packed map[string]any) (params ActionsCancelWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsCancelWorkflowRunParams(packed middleware.Parameters) (params ActionsCancelWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -584,10 +675,28 @@ type ActionsCreateOrUpdateEnvironmentSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsCreateOrUpdateEnvironmentSecretParams(packed map[string]any) (params ActionsCreateOrUpdateEnvironmentSecretParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.EnvironmentName = packed["environment_name"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsCreateOrUpdateEnvironmentSecretParams(packed middleware.Parameters) (params ActionsCreateOrUpdateEnvironmentSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -695,9 +804,21 @@ type ActionsCreateOrUpdateOrgSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsCreateOrUpdateOrgSecretParams(packed map[string]any) (params ActionsCreateOrUpdateOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsCreateOrUpdateOrgSecretParams(packed middleware.Parameters) (params ActionsCreateOrUpdateOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -775,10 +896,28 @@ type ActionsCreateOrUpdateRepoSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsCreateOrUpdateRepoSecretParams(packed map[string]any) (params ActionsCreateOrUpdateRepoSecretParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsCreateOrUpdateRepoSecretParams(packed middleware.Parameters) (params ActionsCreateOrUpdateRepoSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -884,8 +1023,14 @@ type ActionsCreateRegistrationTokenForOrgParams struct {
 	Org string
 }
 
-func unpackActionsCreateRegistrationTokenForOrgParams(packed map[string]any) (params ActionsCreateRegistrationTokenForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsCreateRegistrationTokenForOrgParams(packed middleware.Parameters) (params ActionsCreateRegistrationTokenForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -930,9 +1075,21 @@ type ActionsCreateRegistrationTokenForRepoParams struct {
 	Repo  string
 }
 
-func unpackActionsCreateRegistrationTokenForRepoParams(packed map[string]any) (params ActionsCreateRegistrationTokenForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsCreateRegistrationTokenForRepoParams(packed middleware.Parameters) (params ActionsCreateRegistrationTokenForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -1007,8 +1164,14 @@ type ActionsCreateRemoveTokenForOrgParams struct {
 	Org string
 }
 
-func unpackActionsCreateRemoveTokenForOrgParams(packed map[string]any) (params ActionsCreateRemoveTokenForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsCreateRemoveTokenForOrgParams(packed middleware.Parameters) (params ActionsCreateRemoveTokenForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -1053,9 +1216,21 @@ type ActionsCreateRemoveTokenForRepoParams struct {
 	Repo  string
 }
 
-func unpackActionsCreateRemoveTokenForRepoParams(packed map[string]any) (params ActionsCreateRemoveTokenForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsCreateRemoveTokenForRepoParams(packed middleware.Parameters) (params ActionsCreateRemoveTokenForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -1130,8 +1305,14 @@ type ActionsCreateSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 }
 
-func unpackActionsCreateSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsCreateSelfHostedRunnerGroupForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsCreateSelfHostedRunnerGroupForOrgParams(packed middleware.Parameters) (params ActionsCreateSelfHostedRunnerGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -1178,10 +1359,28 @@ type ActionsDeleteArtifactParams struct {
 	ArtifactID int
 }
 
-func unpackActionsDeleteArtifactParams(packed map[string]any) (params ActionsDeleteArtifactParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ArtifactID = packed["artifact_id"].(int)
+func unpackActionsDeleteArtifactParams(packed middleware.Parameters) (params ActionsDeleteArtifactParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "artifact_id",
+			In:   "path",
+		}
+		params.ArtifactID = packed[key].(int)
+	}
 	return params
 }
 
@@ -1291,10 +1490,28 @@ type ActionsDeleteEnvironmentSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsDeleteEnvironmentSecretParams(packed map[string]any) (params ActionsDeleteEnvironmentSecretParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.EnvironmentName = packed["environment_name"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsDeleteEnvironmentSecretParams(packed middleware.Parameters) (params ActionsDeleteEnvironmentSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -1402,9 +1619,21 @@ type ActionsDeleteOrgSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsDeleteOrgSecretParams(packed map[string]any) (params ActionsDeleteOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsDeleteOrgSecretParams(packed middleware.Parameters) (params ActionsDeleteOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -1482,10 +1711,28 @@ type ActionsDeleteRepoSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsDeleteRepoSecretParams(packed map[string]any) (params ActionsDeleteRepoSecretParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsDeleteRepoSecretParams(packed middleware.Parameters) (params ActionsDeleteRepoSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -1593,9 +1840,21 @@ type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
 	RunnerID int
 }
 
-func unpackActionsDeleteSelfHostedRunnerFromOrgParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerFromOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsDeleteSelfHostedRunnerFromOrgParams(packed middleware.Parameters) (params ActionsDeleteSelfHostedRunnerFromOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -1673,10 +1932,28 @@ type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
 	RunnerID int
 }
 
-func unpackActionsDeleteSelfHostedRunnerFromRepoParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerFromRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsDeleteSelfHostedRunnerFromRepoParams(packed middleware.Parameters) (params ActionsDeleteSelfHostedRunnerFromRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -1784,9 +2061,21 @@ type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
 	RunnerGroupID int
 }
 
-func unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams(packed middleware.Parameters) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -1864,10 +2153,28 @@ type ActionsDeleteWorkflowRunParams struct {
 	RunID int
 }
 
-func unpackActionsDeleteWorkflowRunParams(packed map[string]any) (params ActionsDeleteWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsDeleteWorkflowRunParams(packed middleware.Parameters) (params ActionsDeleteWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -1976,10 +2283,28 @@ type ActionsDeleteWorkflowRunLogsParams struct {
 	RunID int
 }
 
-func unpackActionsDeleteWorkflowRunLogsParams(packed map[string]any) (params ActionsDeleteWorkflowRunLogsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsDeleteWorkflowRunLogsParams(packed middleware.Parameters) (params ActionsDeleteWorkflowRunLogsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2086,9 +2411,21 @@ type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
 	RepositoryID int
 }
 
-func unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams(packed map[string]any) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams(packed middleware.Parameters) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2167,11 +2504,35 @@ type ActionsDownloadArtifactParams struct {
 	ArchiveFormat string
 }
 
-func unpackActionsDownloadArtifactParams(packed map[string]any) (params ActionsDownloadArtifactParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ArtifactID = packed["artifact_id"].(int)
-	params.ArchiveFormat = packed["archive_format"].(string)
+func unpackActionsDownloadArtifactParams(packed middleware.Parameters) (params ActionsDownloadArtifactParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "artifact_id",
+			In:   "path",
+		}
+		params.ArtifactID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "archive_format",
+			In:   "path",
+		}
+		params.ArchiveFormat = packed[key].(string)
+	}
 	return params
 }
 
@@ -2311,10 +2672,28 @@ type ActionsDownloadJobLogsForWorkflowRunParams struct {
 	JobID int
 }
 
-func unpackActionsDownloadJobLogsForWorkflowRunParams(packed map[string]any) (params ActionsDownloadJobLogsForWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.JobID = packed["job_id"].(int)
+func unpackActionsDownloadJobLogsForWorkflowRunParams(packed middleware.Parameters) (params ActionsDownloadJobLogsForWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "job_id",
+			In:   "path",
+		}
+		params.JobID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2423,10 +2802,28 @@ type ActionsDownloadWorkflowRunLogsParams struct {
 	RunID int
 }
 
-func unpackActionsDownloadWorkflowRunLogsParams(packed map[string]any) (params ActionsDownloadWorkflowRunLogsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsDownloadWorkflowRunLogsParams(packed middleware.Parameters) (params ActionsDownloadWorkflowRunLogsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2533,9 +2930,21 @@ type ActionsEnableSelectedRepositoryGithubActionsOrganizationParams struct {
 	RepositoryID int
 }
 
-func unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams(packed map[string]any) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams(packed middleware.Parameters) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2610,8 +3019,14 @@ type ActionsGetAllowedActionsOrganizationParams struct {
 	Org string
 }
 
-func unpackActionsGetAllowedActionsOrganizationParams(packed map[string]any) (params ActionsGetAllowedActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsGetAllowedActionsOrganizationParams(packed middleware.Parameters) (params ActionsGetAllowedActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -2656,9 +3071,21 @@ type ActionsGetAllowedActionsRepositoryParams struct {
 	Repo  string
 }
 
-func unpackActionsGetAllowedActionsRepositoryParams(packed map[string]any) (params ActionsGetAllowedActionsRepositoryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsGetAllowedActionsRepositoryParams(packed middleware.Parameters) (params ActionsGetAllowedActionsRepositoryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -2736,10 +3163,28 @@ type ActionsGetArtifactParams struct {
 	ArtifactID int
 }
 
-func unpackActionsGetArtifactParams(packed map[string]any) (params ActionsGetArtifactParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ArtifactID = packed["artifact_id"].(int)
+func unpackActionsGetArtifactParams(packed middleware.Parameters) (params ActionsGetArtifactParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "artifact_id",
+			In:   "path",
+		}
+		params.ArtifactID = packed[key].(int)
+	}
 	return params
 }
 
@@ -2847,9 +3292,21 @@ type ActionsGetEnvironmentPublicKeyParams struct {
 	EnvironmentName string
 }
 
-func unpackActionsGetEnvironmentPublicKeyParams(packed map[string]any) (params ActionsGetEnvironmentPublicKeyParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.EnvironmentName = packed["environment_name"].(string)
+func unpackActionsGetEnvironmentPublicKeyParams(packed middleware.Parameters) (params ActionsGetEnvironmentPublicKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
 	return params
 }
 
@@ -2928,10 +3385,28 @@ type ActionsGetEnvironmentSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsGetEnvironmentSecretParams(packed map[string]any) (params ActionsGetEnvironmentSecretParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.EnvironmentName = packed["environment_name"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsGetEnvironmentSecretParams(packed middleware.Parameters) (params ActionsGetEnvironmentSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -3037,8 +3512,14 @@ type ActionsGetGithubActionsPermissionsOrganizationParams struct {
 	Org string
 }
 
-func unpackActionsGetGithubActionsPermissionsOrganizationParams(packed map[string]any) (params ActionsGetGithubActionsPermissionsOrganizationParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsGetGithubActionsPermissionsOrganizationParams(packed middleware.Parameters) (params ActionsGetGithubActionsPermissionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -3083,9 +3564,21 @@ type ActionsGetGithubActionsPermissionsRepositoryParams struct {
 	Repo  string
 }
 
-func unpackActionsGetGithubActionsPermissionsRepositoryParams(packed map[string]any) (params ActionsGetGithubActionsPermissionsRepositoryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsGetGithubActionsPermissionsRepositoryParams(packed middleware.Parameters) (params ActionsGetGithubActionsPermissionsRepositoryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -3163,10 +3656,28 @@ type ActionsGetJobForWorkflowRunParams struct {
 	JobID int
 }
 
-func unpackActionsGetJobForWorkflowRunParams(packed map[string]any) (params ActionsGetJobForWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.JobID = packed["job_id"].(int)
+func unpackActionsGetJobForWorkflowRunParams(packed middleware.Parameters) (params ActionsGetJobForWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "job_id",
+			In:   "path",
+		}
+		params.JobID = packed[key].(int)
+	}
 	return params
 }
 
@@ -3272,8 +3783,14 @@ type ActionsGetOrgPublicKeyParams struct {
 	Org string
 }
 
-func unpackActionsGetOrgPublicKeyParams(packed map[string]any) (params ActionsGetOrgPublicKeyParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsGetOrgPublicKeyParams(packed middleware.Parameters) (params ActionsGetOrgPublicKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -3319,9 +3836,21 @@ type ActionsGetOrgSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsGetOrgSecretParams(packed map[string]any) (params ActionsGetOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsGetOrgSecretParams(packed middleware.Parameters) (params ActionsGetOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -3397,9 +3926,21 @@ type ActionsGetRepoPublicKeyParams struct {
 	Repo  string
 }
 
-func unpackActionsGetRepoPublicKeyParams(packed map[string]any) (params ActionsGetRepoPublicKeyParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsGetRepoPublicKeyParams(packed middleware.Parameters) (params ActionsGetRepoPublicKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -3477,10 +4018,28 @@ type ActionsGetRepoSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsGetRepoSecretParams(packed map[string]any) (params ActionsGetRepoSecretParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsGetRepoSecretParams(packed middleware.Parameters) (params ActionsGetRepoSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -3589,10 +4148,28 @@ type ActionsGetReviewsForRunParams struct {
 	RunID int
 }
 
-func unpackActionsGetReviewsForRunParams(packed map[string]any) (params ActionsGetReviewsForRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsGetReviewsForRunParams(packed middleware.Parameters) (params ActionsGetReviewsForRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -3700,9 +4277,21 @@ type ActionsGetSelfHostedRunnerForOrgParams struct {
 	RunnerID int
 }
 
-func unpackActionsGetSelfHostedRunnerForOrgParams(packed map[string]any) (params ActionsGetSelfHostedRunnerForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsGetSelfHostedRunnerForOrgParams(packed middleware.Parameters) (params ActionsGetSelfHostedRunnerForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -3780,10 +4369,28 @@ type ActionsGetSelfHostedRunnerForRepoParams struct {
 	RunnerID int
 }
 
-func unpackActionsGetSelfHostedRunnerForRepoParams(packed map[string]any) (params ActionsGetSelfHostedRunnerForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsGetSelfHostedRunnerForRepoParams(packed middleware.Parameters) (params ActionsGetSelfHostedRunnerForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -3891,9 +4498,21 @@ type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
 	RunnerGroupID int
 }
 
-func unpackActionsGetSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsGetSelfHostedRunnerGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackActionsGetSelfHostedRunnerGroupForOrgParams(packed middleware.Parameters) (params ActionsGetSelfHostedRunnerGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -3971,10 +4590,28 @@ type ActionsGetWorkflowRunParams struct {
 	RunID int
 }
 
-func unpackActionsGetWorkflowRunParams(packed map[string]any) (params ActionsGetWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsGetWorkflowRunParams(packed middleware.Parameters) (params ActionsGetWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -4083,10 +4720,28 @@ type ActionsGetWorkflowRunUsageParams struct {
 	RunID int
 }
 
-func unpackActionsGetWorkflowRunUsageParams(packed map[string]any) (params ActionsGetWorkflowRunUsageParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsGetWorkflowRunUsageParams(packed middleware.Parameters) (params ActionsGetWorkflowRunUsageParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -4197,14 +4852,38 @@ type ActionsListArtifactsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackActionsListArtifactsForRepoParams(packed map[string]any) (params ActionsListArtifactsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListArtifactsForRepoParams(packed middleware.Parameters) (params ActionsListArtifactsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -4365,14 +5044,38 @@ type ActionsListEnvironmentSecretsParams struct {
 	Page OptInt
 }
 
-func unpackActionsListEnvironmentSecretsParams(packed map[string]any) (params ActionsListEnvironmentSecretsParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.EnvironmentName = packed["environment_name"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListEnvironmentSecretsParams(packed middleware.Parameters) (params ActionsListEnvironmentSecretsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -4538,18 +5241,54 @@ type ActionsListJobsForWorkflowRunParams struct {
 	Page OptInt
 }
 
-func unpackActionsListJobsForWorkflowRunParams(packed map[string]any) (params ActionsListJobsForWorkflowRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptActionsListJobsForWorkflowRunFilter)
+func unpackActionsListJobsForWorkflowRunParams(packed middleware.Parameters) (params ActionsListJobsForWorkflowRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptActionsListJobsForWorkflowRunFilter)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -4793,13 +5532,31 @@ type ActionsListOrgSecretsParams struct {
 	Page OptInt
 }
 
-func unpackActionsListOrgSecretsParams(packed map[string]any) (params ActionsListOrgSecretsParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListOrgSecretsParams(packed middleware.Parameters) (params ActionsListOrgSecretsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -4929,14 +5686,38 @@ type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	PerPage OptInt
 }
 
-func unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5096,14 +5877,38 @@ type ActionsListRepoSecretsParams struct {
 	Page OptInt
 }
 
-func unpackActionsListRepoSecretsParams(packed map[string]any) (params ActionsListRepoSecretsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListRepoSecretsParams(packed middleware.Parameters) (params ActionsListRepoSecretsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5263,14 +6068,38 @@ type ActionsListRepoWorkflowsParams struct {
 	Page OptInt
 }
 
-func unpackActionsListRepoWorkflowsParams(packed map[string]any) (params ActionsListRepoWorkflowsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListRepoWorkflowsParams(packed middleware.Parameters) (params ActionsListRepoWorkflowsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5425,8 +6254,14 @@ type ActionsListRunnerApplicationsForOrgParams struct {
 	Org string
 }
 
-func unpackActionsListRunnerApplicationsForOrgParams(packed map[string]any) (params ActionsListRunnerApplicationsForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsListRunnerApplicationsForOrgParams(packed middleware.Parameters) (params ActionsListRunnerApplicationsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -5471,9 +6306,21 @@ type ActionsListRunnerApplicationsForRepoParams struct {
 	Repo  string
 }
 
-func unpackActionsListRunnerApplicationsForRepoParams(packed map[string]any) (params ActionsListRunnerApplicationsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsListRunnerApplicationsForRepoParams(packed middleware.Parameters) (params ActionsListRunnerApplicationsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -5554,14 +6401,38 @@ type ActionsListSelectedReposForOrgSecretParams struct {
 	PerPage OptInt
 }
 
-func unpackActionsListSelectedReposForOrgSecretParams(packed map[string]any) (params ActionsListSelectedReposForOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackActionsListSelectedReposForOrgSecretParams(packed middleware.Parameters) (params ActionsListSelectedReposForOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5720,13 +6591,31 @@ type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struc
 	Page OptInt
 }
 
-func unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed map[string]any) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed middleware.Parameters) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5854,13 +6743,31 @@ type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
 	Page OptInt
 }
 
-func unpackActionsListSelfHostedRunnerGroupsForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnerGroupsForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListSelfHostedRunnerGroupsForOrgParams(packed middleware.Parameters) (params ActionsListSelfHostedRunnerGroupsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -5988,13 +6895,31 @@ type ActionsListSelfHostedRunnersForOrgParams struct {
 	Page OptInt
 }
 
-func unpackActionsListSelfHostedRunnersForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListSelfHostedRunnersForOrgParams(packed middleware.Parameters) (params ActionsListSelfHostedRunnersForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -6123,14 +7048,38 @@ type ActionsListSelfHostedRunnersForRepoParams struct {
 	Page OptInt
 }
 
-func unpackActionsListSelfHostedRunnersForRepoParams(packed map[string]any) (params ActionsListSelfHostedRunnersForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListSelfHostedRunnersForRepoParams(packed middleware.Parameters) (params ActionsListSelfHostedRunnersForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -6291,14 +7240,38 @@ type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 	Page OptInt
 }
 
-func unpackActionsListSelfHostedRunnersInGroupForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersInGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListSelfHostedRunnersInGroupForOrgParams(packed middleware.Parameters) (params ActionsListSelfHostedRunnersInGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -6460,15 +7433,45 @@ type ActionsListWorkflowRunArtifactsParams struct {
 	Page OptInt
 }
 
-func unpackActionsListWorkflowRunArtifactsParams(packed map[string]any) (params ActionsListWorkflowRunArtifactsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActionsListWorkflowRunArtifactsParams(packed middleware.Parameters) (params ActionsListWorkflowRunArtifactsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -6674,29 +7677,83 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	Created OptDateTime
 }
 
-func unpackActionsListWorkflowRunsForRepoParams(packed map[string]any) (params ActionsListWorkflowRunsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["actor"]; ok {
-		params.Actor = v.(OptString)
+func unpackActionsListWorkflowRunsForRepoParams(packed middleware.Parameters) (params ActionsListWorkflowRunsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["event"]; ok {
-		params.Event = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "actor",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Actor = v.(OptString)
+		}
 	}
-	if v, ok := packed["status"]; ok {
-		params.Status = v.(OptActionsListWorkflowRunsForRepoStatus)
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Branch = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "event",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Event = v.(OptString)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "status",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Status = v.(OptActionsListWorkflowRunsForRepoStatus)
+		}
 	}
-	if v, ok := packed["created"]; ok {
-		params.Created = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "created",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Created = v.(OptDateTime)
+		}
 	}
 	return params
 }
@@ -7039,10 +8096,28 @@ type ActionsReRunWorkflowParams struct {
 	RunID int
 }
 
-func unpackActionsReRunWorkflowParams(packed map[string]any) (params ActionsReRunWorkflowParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsReRunWorkflowParams(packed middleware.Parameters) (params ActionsReRunWorkflowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7151,10 +8226,28 @@ type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	RepositoryID  int
 }
 
-func unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7263,10 +8356,28 @@ type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
 	RepositoryID int
 }
 
-func unpackActionsRemoveSelectedRepoFromOrgSecretParams(packed map[string]any) (params ActionsRemoveSelectedRepoFromOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackActionsRemoveSelectedRepoFromOrgSecretParams(packed middleware.Parameters) (params ActionsRemoveSelectedRepoFromOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7376,10 +8487,28 @@ type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
 	RunnerID int
 }
 
-func unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams(packed map[string]any) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams(packed middleware.Parameters) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7488,10 +8617,28 @@ type ActionsRetryWorkflowParams struct {
 	RunID int
 }
 
-func unpackActionsRetryWorkflowParams(packed map[string]any) (params ActionsRetryWorkflowParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsRetryWorkflowParams(packed middleware.Parameters) (params ActionsRetryWorkflowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7600,10 +8747,28 @@ type ActionsReviewPendingDeploymentsForRunParams struct {
 	RunID int
 }
 
-func unpackActionsReviewPendingDeploymentsForRunParams(packed map[string]any) (params ActionsReviewPendingDeploymentsForRunParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.RunID = packed["run_id"].(int)
+func unpackActionsReviewPendingDeploymentsForRunParams(packed middleware.Parameters) (params ActionsReviewPendingDeploymentsForRunParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "run_id",
+			In:   "path",
+		}
+		params.RunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -7709,8 +8874,14 @@ type ActionsSetAllowedActionsOrganizationParams struct {
 	Org string
 }
 
-func unpackActionsSetAllowedActionsOrganizationParams(packed map[string]any) (params ActionsSetAllowedActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsSetAllowedActionsOrganizationParams(packed middleware.Parameters) (params ActionsSetAllowedActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -7755,9 +8926,21 @@ type ActionsSetAllowedActionsRepositoryParams struct {
 	Repo  string
 }
 
-func unpackActionsSetAllowedActionsRepositoryParams(packed map[string]any) (params ActionsSetAllowedActionsRepositoryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsSetAllowedActionsRepositoryParams(packed middleware.Parameters) (params ActionsSetAllowedActionsRepositoryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -7832,8 +9015,14 @@ type ActionsSetGithubActionsPermissionsOrganizationParams struct {
 	Org string
 }
 
-func unpackActionsSetGithubActionsPermissionsOrganizationParams(packed map[string]any) (params ActionsSetGithubActionsPermissionsOrganizationParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsSetGithubActionsPermissionsOrganizationParams(packed middleware.Parameters) (params ActionsSetGithubActionsPermissionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -7878,9 +9067,21 @@ type ActionsSetGithubActionsPermissionsRepositoryParams struct {
 	Repo  string
 }
 
-func unpackActionsSetGithubActionsPermissionsRepositoryParams(packed map[string]any) (params ActionsSetGithubActionsPermissionsRepositoryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActionsSetGithubActionsPermissionsRepositoryParams(packed middleware.Parameters) (params ActionsSetGithubActionsPermissionsRepositoryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -7957,9 +9158,21 @@ type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	RunnerGroupID int
 }
 
-func unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8036,9 +9249,21 @@ type ActionsSetSelectedReposForOrgSecretParams struct {
 	SecretName string
 }
 
-func unpackActionsSetSelectedReposForOrgSecretParams(packed map[string]any) (params ActionsSetSelectedReposForOrgSecretParams) {
-	params.Org = packed["org"].(string)
-	params.SecretName = packed["secret_name"].(string)
+func unpackActionsSetSelectedReposForOrgSecretParams(packed middleware.Parameters) (params ActionsSetSelectedReposForOrgSecretParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_name",
+			In:   "path",
+		}
+		params.SecretName = packed[key].(string)
+	}
 	return params
 }
 
@@ -8113,8 +9338,14 @@ type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams struct
 	Org string
 }
 
-func unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed map[string]any) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
-	params.Org = packed["org"].(string)
+func unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed middleware.Parameters) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -8160,9 +9391,21 @@ type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
 	RunnerGroupID int
 }
 
-func unpackActionsSetSelfHostedRunnersInGroupForOrgParams(packed map[string]any) (params ActionsSetSelfHostedRunnersInGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackActionsSetSelfHostedRunnersInGroupForOrgParams(packed middleware.Parameters) (params ActionsSetSelfHostedRunnersInGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8239,9 +9482,21 @@ type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
 	RunnerGroupID int
 }
 
-func unpackActionsUpdateSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackActionsUpdateSelfHostedRunnerGroupForOrgParams(packed middleware.Parameters) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8317,9 +9572,21 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserParams struct {
 	Repo  string
 }
 
-func unpackActivityCheckRepoIsStarredByAuthenticatedUserParams(packed map[string]any) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityCheckRepoIsStarredByAuthenticatedUserParams(packed middleware.Parameters) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -8395,9 +9662,21 @@ type ActivityDeleteRepoSubscriptionParams struct {
 	Repo  string
 }
 
-func unpackActivityDeleteRepoSubscriptionParams(packed map[string]any) (params ActivityDeleteRepoSubscriptionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityDeleteRepoSubscriptionParams(packed middleware.Parameters) (params ActivityDeleteRepoSubscriptionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -8473,8 +9752,14 @@ type ActivityDeleteThreadSubscriptionParams struct {
 	ThreadID int
 }
 
-func unpackActivityDeleteThreadSubscriptionParams(packed map[string]any) (params ActivityDeleteThreadSubscriptionParams) {
-	params.ThreadID = packed["thread_id"].(int)
+func unpackActivityDeleteThreadSubscriptionParams(packed middleware.Parameters) (params ActivityDeleteThreadSubscriptionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "thread_id",
+			In:   "path",
+		}
+		params.ThreadID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8519,9 +9804,21 @@ type ActivityGetRepoSubscriptionParams struct {
 	Repo  string
 }
 
-func unpackActivityGetRepoSubscriptionParams(packed map[string]any) (params ActivityGetRepoSubscriptionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityGetRepoSubscriptionParams(packed middleware.Parameters) (params ActivityGetRepoSubscriptionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -8597,8 +9894,14 @@ type ActivityGetThreadParams struct {
 	ThreadID int
 }
 
-func unpackActivityGetThreadParams(packed map[string]any) (params ActivityGetThreadParams) {
-	params.ThreadID = packed["thread_id"].(int)
+func unpackActivityGetThreadParams(packed middleware.Parameters) (params ActivityGetThreadParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "thread_id",
+			In:   "path",
+		}
+		params.ThreadID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8643,8 +9946,14 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
 	ThreadID int
 }
 
-func unpackActivityGetThreadSubscriptionForAuthenticatedUserParams(packed map[string]any) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams) {
-	params.ThreadID = packed["thread_id"].(int)
+func unpackActivityGetThreadSubscriptionForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "thread_id",
+			In:   "path",
+		}
+		params.ThreadID = packed[key].(int)
+	}
 	return params
 }
 
@@ -8692,13 +10001,31 @@ type ActivityListEventsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListEventsForAuthenticatedUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListEventsForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListEventsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -8835,24 +10162,60 @@ type ActivityListNotificationsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListNotificationsForAuthenticatedUserParams) {
-	if v, ok := packed["all"]; ok {
-		params.All = v.(OptBool)
+func unpackActivityListNotificationsForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListNotificationsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "all",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.All = v.(OptBool)
+		}
 	}
-	if v, ok := packed["participating"]; ok {
-		params.Participating = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "participating",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Participating = v.(OptBool)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["before"]; ok {
-		params.Before = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "before",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Before = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9096,14 +10459,38 @@ type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListOrgEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListOrgEventsForAuthenticatedUserParams) {
-	params.Username = packed["username"].(string)
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListOrgEventsForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListOrgEventsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9261,12 +10648,24 @@ type ActivityListPublicEventsParams struct {
 	Page OptInt
 }
 
-func unpackActivityListPublicEventsParams(packed map[string]any) (params ActivityListPublicEventsParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListPublicEventsParams(packed middleware.Parameters) (params ActivityListPublicEventsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9364,14 +10763,38 @@ type ActivityListPublicEventsForRepoNetworkParams struct {
 	Page OptInt
 }
 
-func unpackActivityListPublicEventsForRepoNetworkParams(packed map[string]any) (params ActivityListPublicEventsForRepoNetworkParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListPublicEventsForRepoNetworkParams(packed middleware.Parameters) (params ActivityListPublicEventsForRepoNetworkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9530,13 +10953,31 @@ type ActivityListPublicEventsForUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListPublicEventsForUserParams(packed map[string]any) (params ActivityListPublicEventsForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListPublicEventsForUserParams(packed middleware.Parameters) (params ActivityListPublicEventsForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9664,13 +11105,31 @@ type ActivityListPublicOrgEventsParams struct {
 	Page OptInt
 }
 
-func unpackActivityListPublicOrgEventsParams(packed map[string]any) (params ActivityListPublicOrgEventsParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListPublicOrgEventsParams(packed middleware.Parameters) (params ActivityListPublicOrgEventsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9798,13 +11257,31 @@ type ActivityListReceivedEventsForUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListReceivedEventsForUserParams(packed map[string]any) (params ActivityListReceivedEventsForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListReceivedEventsForUserParams(packed middleware.Parameters) (params ActivityListReceivedEventsForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -9932,13 +11409,31 @@ type ActivityListReceivedPublicEventsForUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListReceivedPublicEventsForUserParams(packed map[string]any) (params ActivityListReceivedPublicEventsForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListReceivedPublicEventsForUserParams(packed middleware.Parameters) (params ActivityListReceivedPublicEventsForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -10067,14 +11562,38 @@ type ActivityListRepoEventsParams struct {
 	Page OptInt
 }
 
-func unpackActivityListRepoEventsParams(packed map[string]any) (params ActivityListRepoEventsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListRepoEventsParams(packed middleware.Parameters) (params ActivityListRepoEventsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -10244,26 +11763,74 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListRepoNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListRepoNotificationsForAuthenticatedUserParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["all"]; ok {
-		params.All = v.(OptBool)
+func unpackActivityListRepoNotificationsForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListRepoNotificationsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["participating"]; ok {
-		params.Participating = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "all",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.All = v.(OptBool)
+		}
 	}
-	if v, ok := packed["before"]; ok {
-		params.Before = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "participating",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Participating = v.(OptBool)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "before",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Before = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -10571,18 +12138,42 @@ type ActivityListReposStarredByAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListReposStarredByAuthenticatedUserParams(packed map[string]any) (params ActivityListReposStarredByAuthenticatedUserParams) {
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptActivityListReposStarredByAuthenticatedUserSort)
+func unpackActivityListReposStarredByAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListReposStarredByAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptActivityListReposStarredByAuthenticatedUserSort)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptActivityListReposStarredByAuthenticatedUserDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptActivityListReposStarredByAuthenticatedUserDirection)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -10787,13 +12378,31 @@ type ActivityListReposWatchedByUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListReposWatchedByUserParams(packed map[string]any) (params ActivityListReposWatchedByUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListReposWatchedByUserParams(packed middleware.Parameters) (params ActivityListReposWatchedByUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -10920,12 +12529,24 @@ type ActivityListWatchedReposForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackActivityListWatchedReposForAuthenticatedUserParams(packed map[string]any) (params ActivityListWatchedReposForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListWatchedReposForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityListWatchedReposForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -11023,14 +12644,38 @@ type ActivityListWatchersForRepoParams struct {
 	Page OptInt
 }
 
-func unpackActivityListWatchersForRepoParams(packed map[string]any) (params ActivityListWatchersForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackActivityListWatchersForRepoParams(packed middleware.Parameters) (params ActivityListWatchersForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -11186,9 +12831,21 @@ type ActivityMarkRepoNotificationsAsReadParams struct {
 	Repo  string
 }
 
-func unpackActivityMarkRepoNotificationsAsReadParams(packed map[string]any) (params ActivityMarkRepoNotificationsAsReadParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityMarkRepoNotificationsAsReadParams(packed middleware.Parameters) (params ActivityMarkRepoNotificationsAsReadParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -11264,8 +12921,14 @@ type ActivityMarkThreadAsReadParams struct {
 	ThreadID int
 }
 
-func unpackActivityMarkThreadAsReadParams(packed map[string]any) (params ActivityMarkThreadAsReadParams) {
-	params.ThreadID = packed["thread_id"].(int)
+func unpackActivityMarkThreadAsReadParams(packed middleware.Parameters) (params ActivityMarkThreadAsReadParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "thread_id",
+			In:   "path",
+		}
+		params.ThreadID = packed[key].(int)
+	}
 	return params
 }
 
@@ -11310,9 +12973,21 @@ type ActivitySetRepoSubscriptionParams struct {
 	Repo  string
 }
 
-func unpackActivitySetRepoSubscriptionParams(packed map[string]any) (params ActivitySetRepoSubscriptionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivitySetRepoSubscriptionParams(packed middleware.Parameters) (params ActivitySetRepoSubscriptionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -11388,8 +13063,14 @@ type ActivitySetThreadSubscriptionParams struct {
 	ThreadID int
 }
 
-func unpackActivitySetThreadSubscriptionParams(packed map[string]any) (params ActivitySetThreadSubscriptionParams) {
-	params.ThreadID = packed["thread_id"].(int)
+func unpackActivitySetThreadSubscriptionParams(packed middleware.Parameters) (params ActivitySetThreadSubscriptionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "thread_id",
+			In:   "path",
+		}
+		params.ThreadID = packed[key].(int)
+	}
 	return params
 }
 
@@ -11434,9 +13115,21 @@ type ActivityStarRepoForAuthenticatedUserParams struct {
 	Repo  string
 }
 
-func unpackActivityStarRepoForAuthenticatedUserParams(packed map[string]any) (params ActivityStarRepoForAuthenticatedUserParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityStarRepoForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityStarRepoForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -11512,9 +13205,21 @@ type ActivityUnstarRepoForAuthenticatedUserParams struct {
 	Repo  string
 }
 
-func unpackActivityUnstarRepoForAuthenticatedUserParams(packed map[string]any) (params ActivityUnstarRepoForAuthenticatedUserParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackActivityUnstarRepoForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityUnstarRepoForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -11591,9 +13296,21 @@ type AppsAddRepoToInstallationParams struct {
 	RepositoryID   int
 }
 
-func unpackAppsAddRepoToInstallationParams(packed map[string]any) (params AppsAddRepoToInstallationParams) {
-	params.InstallationID = packed["installation_id"].(int)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackAppsAddRepoToInstallationParams(packed middleware.Parameters) (params AppsAddRepoToInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -11669,8 +13386,14 @@ type AppsCheckTokenParams struct {
 	ClientID string
 }
 
-func unpackAppsCheckTokenParams(packed map[string]any) (params AppsCheckTokenParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackAppsCheckTokenParams(packed middleware.Parameters) (params AppsCheckTokenParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -11721,10 +13444,28 @@ type AppsCreateContentAttachmentParams struct {
 	ContentReferenceID int
 }
 
-func unpackAppsCreateContentAttachmentParams(packed map[string]any) (params AppsCreateContentAttachmentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ContentReferenceID = packed["content_reference_id"].(int)
+func unpackAppsCreateContentAttachmentParams(packed middleware.Parameters) (params AppsCreateContentAttachmentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content_reference_id",
+			In:   "path",
+		}
+		params.ContentReferenceID = packed[key].(int)
+	}
 	return params
 }
 
@@ -11830,8 +13571,14 @@ type AppsCreateFromManifestParams struct {
 	Code string
 }
 
-func unpackAppsCreateFromManifestParams(packed map[string]any) (params AppsCreateFromManifestParams) {
-	params.Code = packed["code"].(string)
+func unpackAppsCreateFromManifestParams(packed middleware.Parameters) (params AppsCreateFromManifestParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "code",
+			In:   "path",
+		}
+		params.Code = packed[key].(string)
+	}
 	return params
 }
 
@@ -11876,8 +13623,14 @@ type AppsCreateInstallationAccessTokenParams struct {
 	InstallationID int
 }
 
-func unpackAppsCreateInstallationAccessTokenParams(packed map[string]any) (params AppsCreateInstallationAccessTokenParams) {
-	params.InstallationID = packed["installation_id"].(int)
+func unpackAppsCreateInstallationAccessTokenParams(packed middleware.Parameters) (params AppsCreateInstallationAccessTokenParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -11922,8 +13675,14 @@ type AppsDeleteAuthorizationParams struct {
 	ClientID string
 }
 
-func unpackAppsDeleteAuthorizationParams(packed map[string]any) (params AppsDeleteAuthorizationParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackAppsDeleteAuthorizationParams(packed middleware.Parameters) (params AppsDeleteAuthorizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -11968,8 +13727,14 @@ type AppsDeleteInstallationParams struct {
 	InstallationID int
 }
 
-func unpackAppsDeleteInstallationParams(packed map[string]any) (params AppsDeleteInstallationParams) {
-	params.InstallationID = packed["installation_id"].(int)
+func unpackAppsDeleteInstallationParams(packed middleware.Parameters) (params AppsDeleteInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -12014,8 +13779,14 @@ type AppsDeleteTokenParams struct {
 	ClientID string
 }
 
-func unpackAppsDeleteTokenParams(packed map[string]any) (params AppsDeleteTokenParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackAppsDeleteTokenParams(packed middleware.Parameters) (params AppsDeleteTokenParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -12059,8 +13830,14 @@ type AppsGetBySlugParams struct {
 	AppSlug string
 }
 
-func unpackAppsGetBySlugParams(packed map[string]any) (params AppsGetBySlugParams) {
-	params.AppSlug = packed["app_slug"].(string)
+func unpackAppsGetBySlugParams(packed middleware.Parameters) (params AppsGetBySlugParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "app_slug",
+			In:   "path",
+		}
+		params.AppSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -12105,8 +13882,14 @@ type AppsGetSubscriptionPlanForAccountParams struct {
 	AccountID int
 }
 
-func unpackAppsGetSubscriptionPlanForAccountParams(packed map[string]any) (params AppsGetSubscriptionPlanForAccountParams) {
-	params.AccountID = packed["account_id"].(int)
+func unpackAppsGetSubscriptionPlanForAccountParams(packed middleware.Parameters) (params AppsGetSubscriptionPlanForAccountParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "account_id",
+			In:   "path",
+		}
+		params.AccountID = packed[key].(int)
+	}
 	return params
 }
 
@@ -12151,8 +13934,14 @@ type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 	AccountID int
 }
 
-func unpackAppsGetSubscriptionPlanForAccountStubbedParams(packed map[string]any) (params AppsGetSubscriptionPlanForAccountStubbedParams) {
-	params.AccountID = packed["account_id"].(int)
+func unpackAppsGetSubscriptionPlanForAccountStubbedParams(packed middleware.Parameters) (params AppsGetSubscriptionPlanForAccountStubbedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "account_id",
+			In:   "path",
+		}
+		params.AccountID = packed[key].(int)
+	}
 	return params
 }
 
@@ -12196,8 +13985,14 @@ type AppsGetWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackAppsGetWebhookDeliveryParams(packed map[string]any) (params AppsGetWebhookDeliveryParams) {
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackAppsGetWebhookDeliveryParams(packed middleware.Parameters) (params AppsGetWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -12251,19 +14046,49 @@ type AppsListAccountsForPlanParams struct {
 	Page OptInt
 }
 
-func unpackAppsListAccountsForPlanParams(packed map[string]any) (params AppsListAccountsForPlanParams) {
-	params.PlanID = packed["plan_id"].(int)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptAppsListAccountsForPlanSort)
+func unpackAppsListAccountsForPlanParams(packed middleware.Parameters) (params AppsListAccountsForPlanParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "plan_id",
+			In:   "path",
+		}
+		params.PlanID = packed[key].(int)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptAppsListAccountsForPlanDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptAppsListAccountsForPlanSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptAppsListAccountsForPlanDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -12500,19 +14325,49 @@ type AppsListAccountsForPlanStubbedParams struct {
 	Page OptInt
 }
 
-func unpackAppsListAccountsForPlanStubbedParams(packed map[string]any) (params AppsListAccountsForPlanStubbedParams) {
-	params.PlanID = packed["plan_id"].(int)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptAppsListAccountsForPlanStubbedSort)
+func unpackAppsListAccountsForPlanStubbedParams(packed middleware.Parameters) (params AppsListAccountsForPlanStubbedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "plan_id",
+			In:   "path",
+		}
+		params.PlanID = packed[key].(int)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptAppsListAccountsForPlanStubbedDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptAppsListAccountsForPlanStubbedSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptAppsListAccountsForPlanStubbedDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -12744,13 +14599,31 @@ type AppsListInstallationReposForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackAppsListInstallationReposForAuthenticatedUserParams(packed map[string]any) (params AppsListInstallationReposForAuthenticatedUserParams) {
-	params.InstallationID = packed["installation_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListInstallationReposForAuthenticatedUserParams(packed middleware.Parameters) (params AppsListInstallationReposForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -12877,12 +14750,24 @@ type AppsListPlansParams struct {
 	Page OptInt
 }
 
-func unpackAppsListPlansParams(packed map[string]any) (params AppsListPlansParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListPlansParams(packed middleware.Parameters) (params AppsListPlansParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -12978,12 +14863,24 @@ type AppsListPlansStubbedParams struct {
 	Page OptInt
 }
 
-func unpackAppsListPlansStubbedParams(packed map[string]any) (params AppsListPlansStubbedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListPlansStubbedParams(packed middleware.Parameters) (params AppsListPlansStubbedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -13079,12 +14976,24 @@ type AppsListReposAccessibleToInstallationParams struct {
 	Page OptInt
 }
 
-func unpackAppsListReposAccessibleToInstallationParams(packed map[string]any) (params AppsListReposAccessibleToInstallationParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListReposAccessibleToInstallationParams(packed middleware.Parameters) (params AppsListReposAccessibleToInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -13180,12 +15089,24 @@ type AppsListSubscriptionsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackAppsListSubscriptionsForAuthenticatedUserParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListSubscriptionsForAuthenticatedUserParams(packed middleware.Parameters) (params AppsListSubscriptionsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -13281,12 +15202,24 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
 	Page OptInt
 }
 
-func unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams(packed middleware.Parameters) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -13383,12 +15316,24 @@ type AppsListWebhookDeliveriesParams struct {
 	Cursor OptString
 }
 
-func unpackAppsListWebhookDeliveriesParams(packed map[string]any) (params AppsListWebhookDeliveriesParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackAppsListWebhookDeliveriesParams(packed middleware.Parameters) (params AppsListWebhookDeliveriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["cursor"]; ok {
-		params.Cursor = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "cursor",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Cursor = v.(OptString)
+		}
 	}
 	return params
 }
@@ -13476,8 +15421,14 @@ type AppsRedeliverWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackAppsRedeliverWebhookDeliveryParams(packed map[string]any) (params AppsRedeliverWebhookDeliveryParams) {
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackAppsRedeliverWebhookDeliveryParams(packed middleware.Parameters) (params AppsRedeliverWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -13523,9 +15474,21 @@ type AppsRemoveRepoFromInstallationParams struct {
 	RepositoryID   int
 }
 
-func unpackAppsRemoveRepoFromInstallationParams(packed map[string]any) (params AppsRemoveRepoFromInstallationParams) {
-	params.InstallationID = packed["installation_id"].(int)
-	params.RepositoryID = packed["repository_id"].(int)
+func unpackAppsRemoveRepoFromInstallationParams(packed middleware.Parameters) (params AppsRemoveRepoFromInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "path",
+		}
+		params.RepositoryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -13601,8 +15564,14 @@ type AppsResetTokenParams struct {
 	ClientID string
 }
 
-func unpackAppsResetTokenParams(packed map[string]any) (params AppsResetTokenParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackAppsResetTokenParams(packed middleware.Parameters) (params AppsResetTokenParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -13647,8 +15616,14 @@ type AppsScopeTokenParams struct {
 	ClientID string
 }
 
-func unpackAppsScopeTokenParams(packed map[string]any) (params AppsScopeTokenParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackAppsScopeTokenParams(packed middleware.Parameters) (params AppsScopeTokenParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -13693,8 +15668,14 @@ type AppsSuspendInstallationParams struct {
 	InstallationID int
 }
 
-func unpackAppsSuspendInstallationParams(packed map[string]any) (params AppsSuspendInstallationParams) {
-	params.InstallationID = packed["installation_id"].(int)
+func unpackAppsSuspendInstallationParams(packed middleware.Parameters) (params AppsSuspendInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -13739,8 +15720,14 @@ type AppsUnsuspendInstallationParams struct {
 	InstallationID int
 }
 
-func unpackAppsUnsuspendInstallationParams(packed map[string]any) (params AppsUnsuspendInstallationParams) {
-	params.InstallationID = packed["installation_id"].(int)
+func unpackAppsUnsuspendInstallationParams(packed middleware.Parameters) (params AppsUnsuspendInstallationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "installation_id",
+			In:   "path",
+		}
+		params.InstallationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -13785,8 +15772,14 @@ type BillingGetGithubActionsBillingGheParams struct {
 	Enterprise string
 }
 
-func unpackBillingGetGithubActionsBillingGheParams(packed map[string]any) (params BillingGetGithubActionsBillingGheParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackBillingGetGithubActionsBillingGheParams(packed middleware.Parameters) (params BillingGetGithubActionsBillingGheParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -13830,8 +15823,14 @@ type BillingGetGithubActionsBillingOrgParams struct {
 	Org string
 }
 
-func unpackBillingGetGithubActionsBillingOrgParams(packed map[string]any) (params BillingGetGithubActionsBillingOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackBillingGetGithubActionsBillingOrgParams(packed middleware.Parameters) (params BillingGetGithubActionsBillingOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -13875,8 +15874,14 @@ type BillingGetGithubActionsBillingUserParams struct {
 	Username string
 }
 
-func unpackBillingGetGithubActionsBillingUserParams(packed map[string]any) (params BillingGetGithubActionsBillingUserParams) {
-	params.Username = packed["username"].(string)
+func unpackBillingGetGithubActionsBillingUserParams(packed middleware.Parameters) (params BillingGetGithubActionsBillingUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -13921,8 +15926,14 @@ type BillingGetGithubPackagesBillingGheParams struct {
 	Enterprise string
 }
 
-func unpackBillingGetGithubPackagesBillingGheParams(packed map[string]any) (params BillingGetGithubPackagesBillingGheParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackBillingGetGithubPackagesBillingGheParams(packed middleware.Parameters) (params BillingGetGithubPackagesBillingGheParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -13966,8 +15977,14 @@ type BillingGetGithubPackagesBillingOrgParams struct {
 	Org string
 }
 
-func unpackBillingGetGithubPackagesBillingOrgParams(packed map[string]any) (params BillingGetGithubPackagesBillingOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackBillingGetGithubPackagesBillingOrgParams(packed middleware.Parameters) (params BillingGetGithubPackagesBillingOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -14011,8 +16028,14 @@ type BillingGetGithubPackagesBillingUserParams struct {
 	Username string
 }
 
-func unpackBillingGetGithubPackagesBillingUserParams(packed map[string]any) (params BillingGetGithubPackagesBillingUserParams) {
-	params.Username = packed["username"].(string)
+func unpackBillingGetGithubPackagesBillingUserParams(packed middleware.Parameters) (params BillingGetGithubPackagesBillingUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -14057,8 +16080,14 @@ type BillingGetSharedStorageBillingGheParams struct {
 	Enterprise string
 }
 
-func unpackBillingGetSharedStorageBillingGheParams(packed map[string]any) (params BillingGetSharedStorageBillingGheParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackBillingGetSharedStorageBillingGheParams(packed middleware.Parameters) (params BillingGetSharedStorageBillingGheParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -14102,8 +16131,14 @@ type BillingGetSharedStorageBillingOrgParams struct {
 	Org string
 }
 
-func unpackBillingGetSharedStorageBillingOrgParams(packed map[string]any) (params BillingGetSharedStorageBillingOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackBillingGetSharedStorageBillingOrgParams(packed middleware.Parameters) (params BillingGetSharedStorageBillingOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -14147,8 +16182,14 @@ type BillingGetSharedStorageBillingUserParams struct {
 	Username string
 }
 
-func unpackBillingGetSharedStorageBillingUserParams(packed map[string]any) (params BillingGetSharedStorageBillingUserParams) {
-	params.Username = packed["username"].(string)
+func unpackBillingGetSharedStorageBillingUserParams(packed middleware.Parameters) (params BillingGetSharedStorageBillingUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -14193,9 +16234,21 @@ type ChecksCreateSuiteParams struct {
 	Repo  string
 }
 
-func unpackChecksCreateSuiteParams(packed map[string]any) (params ChecksCreateSuiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackChecksCreateSuiteParams(packed middleware.Parameters) (params ChecksCreateSuiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -14273,10 +16326,28 @@ type ChecksGetParams struct {
 	CheckRunID int
 }
 
-func unpackChecksGetParams(packed map[string]any) (params ChecksGetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CheckRunID = packed["check_run_id"].(int)
+func unpackChecksGetParams(packed middleware.Parameters) (params ChecksGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "check_run_id",
+			In:   "path",
+		}
+		params.CheckRunID = packed[key].(int)
+	}
 	return params
 }
 
@@ -14385,10 +16456,28 @@ type ChecksGetSuiteParams struct {
 	CheckSuiteID int
 }
 
-func unpackChecksGetSuiteParams(packed map[string]any) (params ChecksGetSuiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CheckSuiteID = packed["check_suite_id"].(int)
+func unpackChecksGetSuiteParams(packed middleware.Parameters) (params ChecksGetSuiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "check_suite_id",
+			In:   "path",
+		}
+		params.CheckSuiteID = packed[key].(int)
+	}
 	return params
 }
 
@@ -14501,15 +16590,45 @@ type ChecksListAnnotationsParams struct {
 	Page OptInt
 }
 
-func unpackChecksListAnnotationsParams(packed map[string]any) (params ChecksListAnnotationsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CheckRunID = packed["check_run_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackChecksListAnnotationsParams(packed middleware.Parameters) (params ChecksListAnnotationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "check_run_id",
+			In:   "path",
+		}
+		params.CheckRunID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -14711,27 +16830,81 @@ type ChecksListForRefParams struct {
 	AppID OptInt
 }
 
-func unpackChecksListForRefParams(packed map[string]any) (params ChecksListForRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
-	if v, ok := packed["check_name"]; ok {
-		params.CheckName = v.(OptString)
+func unpackChecksListForRefParams(packed middleware.Parameters) (params ChecksListForRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["status"]; ok {
-		params.Status = v.(OptChecksListForRefStatus)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptChecksListForRefFilter)
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "check_name",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.CheckName = v.(OptString)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "status",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Status = v.(OptChecksListForRefStatus)
+		}
 	}
-	if v, ok := packed["app_id"]; ok {
-		params.AppID = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptChecksListForRefFilter)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "app_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AppID = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -15103,24 +17276,72 @@ type ChecksListForSuiteParams struct {
 	Page OptInt
 }
 
-func unpackChecksListForSuiteParams(packed map[string]any) (params ChecksListForSuiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CheckSuiteID = packed["check_suite_id"].(int)
-	if v, ok := packed["check_name"]; ok {
-		params.CheckName = v.(OptString)
+func unpackChecksListForSuiteParams(packed middleware.Parameters) (params ChecksListForSuiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["status"]; ok {
-		params.Status = v.(OptChecksListForSuiteStatus)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptChecksListForSuiteFilter)
+	{
+		key := middleware.ParameterKey{
+			Name: "check_suite_id",
+			In:   "path",
+		}
+		params.CheckSuiteID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "check_name",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.CheckName = v.(OptString)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "status",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Status = v.(OptChecksListForSuiteStatus)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptChecksListForSuiteFilter)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -15454,21 +17675,63 @@ type ChecksListSuitesForRefParams struct {
 	Page OptInt
 }
 
-func unpackChecksListSuitesForRefParams(packed map[string]any) (params ChecksListSuitesForRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
-	if v, ok := packed["app_id"]; ok {
-		params.AppID = v.(OptInt)
+func unpackChecksListSuitesForRefParams(packed middleware.Parameters) (params ChecksListSuitesForRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["check_name"]; ok {
-		params.CheckName = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "app_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.AppID = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "check_name",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.CheckName = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -15725,10 +17988,28 @@ type ChecksRerequestSuiteParams struct {
 	CheckSuiteID int
 }
 
-func unpackChecksRerequestSuiteParams(packed map[string]any) (params ChecksRerequestSuiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CheckSuiteID = packed["check_suite_id"].(int)
+func unpackChecksRerequestSuiteParams(packed middleware.Parameters) (params ChecksRerequestSuiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "check_suite_id",
+			In:   "path",
+		}
+		params.CheckSuiteID = packed[key].(int)
+	}
 	return params
 }
 
@@ -15835,9 +18116,21 @@ type ChecksSetSuitesPreferencesParams struct {
 	Repo  string
 }
 
-func unpackChecksSetSuitesPreferencesParams(packed map[string]any) (params ChecksSetSuitesPreferencesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackChecksSetSuitesPreferencesParams(packed middleware.Parameters) (params ChecksSetSuitesPreferencesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -15921,12 +18214,36 @@ type CodeScanningDeleteAnalysisParams struct {
 	ConfirmDelete OptNilString
 }
 
-func unpackCodeScanningDeleteAnalysisParams(packed map[string]any) (params CodeScanningDeleteAnalysisParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AnalysisID = packed["analysis_id"].(int)
-	if v, ok := packed["confirm_delete"]; ok {
-		params.ConfirmDelete = v.(OptNilString)
+func unpackCodeScanningDeleteAnalysisParams(packed middleware.Parameters) (params CodeScanningDeleteAnalysisParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "analysis_id",
+			In:   "path",
+		}
+		params.AnalysisID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "confirm_delete",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ConfirmDelete = v.(OptNilString)
+		}
 	}
 	return params
 }
@@ -16073,10 +18390,28 @@ type CodeScanningGetAlertParams struct {
 	AlertNumber AlertNumber
 }
 
-func unpackCodeScanningGetAlertParams(packed map[string]any) (params CodeScanningGetAlertParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AlertNumber = packed["alert_number"].(AlertNumber)
+func unpackCodeScanningGetAlertParams(packed middleware.Parameters) (params CodeScanningGetAlertParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alert_number",
+			In:   "path",
+		}
+		params.AlertNumber = packed[key].(AlertNumber)
+	}
 	return params
 }
 
@@ -16193,10 +18528,28 @@ type CodeScanningGetAnalysisParams struct {
 	AnalysisID int
 }
 
-func unpackCodeScanningGetAnalysisParams(packed map[string]any) (params CodeScanningGetAnalysisParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AnalysisID = packed["analysis_id"].(int)
+func unpackCodeScanningGetAnalysisParams(packed middleware.Parameters) (params CodeScanningGetAnalysisParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "analysis_id",
+			In:   "path",
+		}
+		params.AnalysisID = packed[key].(int)
+	}
 	return params
 }
 
@@ -16305,10 +18658,28 @@ type CodeScanningGetSarifParams struct {
 	SarifID string
 }
 
-func unpackCodeScanningGetSarifParams(packed map[string]any) (params CodeScanningGetSarifParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.SarifID = packed["sarif_id"].(string)
+func unpackCodeScanningGetSarifParams(packed middleware.Parameters) (params CodeScanningGetSarifParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "sarif_id",
+			In:   "path",
+		}
+		params.SarifID = packed[key].(string)
+	}
 	return params
 }
 
@@ -16427,18 +18798,54 @@ type CodeScanningListAlertInstancesParams struct {
 	Ref OptCodeScanningRef
 }
 
-func unpackCodeScanningListAlertInstancesParams(packed map[string]any) (params CodeScanningListAlertInstancesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AlertNumber = packed["alert_number"].(AlertNumber)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackCodeScanningListAlertInstancesParams(packed middleware.Parameters) (params CodeScanningListAlertInstancesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptCodeScanningRef)
+	{
+		key := middleware.ParameterKey{
+			Name: "alert_number",
+			In:   "path",
+		}
+		params.AlertNumber = packed[key].(AlertNumber)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptCodeScanningRef)
+		}
 	}
 	return params
 }
@@ -16690,26 +19097,74 @@ type CodeScanningListAlertsForRepoParams struct {
 	State OptCodeScanningAlertState
 }
 
-func unpackCodeScanningListAlertsForRepoParams(packed map[string]any) (params CodeScanningListAlertsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["tool_name"]; ok {
-		params.ToolName = v.(OptCodeScanningAnalysisToolName)
+func unpackCodeScanningListAlertsForRepoParams(packed middleware.Parameters) (params CodeScanningListAlertsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["tool_guid"]; ok {
-		params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "tool_name",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ToolName = v.(OptCodeScanningAnalysisToolName)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "tool_guid",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
+		}
 	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptCodeScanningRef)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptCodeScanningAlertState)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptCodeScanningRef)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptCodeScanningAlertState)
+		}
 	}
 	return params
 }
@@ -17054,26 +19509,74 @@ type CodeScanningListRecentAnalysesParams struct {
 	SarifID OptCodeScanningAnalysisSarifID
 }
 
-func unpackCodeScanningListRecentAnalysesParams(packed map[string]any) (params CodeScanningListRecentAnalysesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["tool_name"]; ok {
-		params.ToolName = v.(OptCodeScanningAnalysisToolName)
+func unpackCodeScanningListRecentAnalysesParams(packed middleware.Parameters) (params CodeScanningListRecentAnalysesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["tool_guid"]; ok {
-		params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "tool_name",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ToolName = v.(OptCodeScanningAnalysisToolName)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "tool_guid",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
+		}
 	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptCodeScanningRef)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
-	if v, ok := packed["sarif_id"]; ok {
-		params.SarifID = v.(OptCodeScanningAnalysisSarifID)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptCodeScanningRef)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "sarif_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SarifID = v.(OptCodeScanningAnalysisSarifID)
+		}
 	}
 	return params
 }
@@ -17397,10 +19900,28 @@ type CodeScanningUpdateAlertParams struct {
 	AlertNumber AlertNumber
 }
 
-func unpackCodeScanningUpdateAlertParams(packed map[string]any) (params CodeScanningUpdateAlertParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AlertNumber = packed["alert_number"].(AlertNumber)
+func unpackCodeScanningUpdateAlertParams(packed middleware.Parameters) (params CodeScanningUpdateAlertParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alert_number",
+			In:   "path",
+		}
+		params.AlertNumber = packed[key].(AlertNumber)
+	}
 	return params
 }
 
@@ -17514,9 +20035,21 @@ type CodeScanningUploadSarifParams struct {
 	Repo  string
 }
 
-func unpackCodeScanningUploadSarifParams(packed map[string]any) (params CodeScanningUploadSarifParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackCodeScanningUploadSarifParams(packed middleware.Parameters) (params CodeScanningUploadSarifParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -17591,8 +20124,14 @@ type CodesOfConductGetConductCodeParams struct {
 	Key string
 }
 
-func unpackCodesOfConductGetConductCodeParams(packed map[string]any) (params CodesOfConductGetConductCodeParams) {
-	params.Key = packed["key"].(string)
+func unpackCodesOfConductGetConductCodeParams(packed middleware.Parameters) (params CodesOfConductGetConductCodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "key",
+			In:   "path",
+		}
+		params.Key = packed[key].(string)
+	}
 	return params
 }
 
@@ -17641,10 +20180,28 @@ type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct
 	OrgID int
 }
 
-func unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.OrgID = packed["org_id"].(int)
+func unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org_id",
+			In:   "path",
+		}
+		params.OrgID = packed[key].(int)
+	}
 	return params
 }
 
@@ -17755,10 +20312,28 @@ type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
 	RunnerID int
 }
 
-func unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -17865,8 +20440,14 @@ type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -17911,8 +20492,14 @@ type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminCreateRemoveTokenForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminCreateRemoveTokenForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -17957,8 +20544,14 @@ type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -18005,9 +20598,21 @@ type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
 	ScimGroupID string
 }
 
-func unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimGroupID = packed["scim_group_id"].(string)
+func unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_group_id",
+			In:   "path",
+		}
+		params.ScimGroupID = packed[key].(string)
+	}
 	return params
 }
 
@@ -18085,9 +20690,21 @@ type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
 	RunnerID int
 }
 
-func unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -18165,9 +20782,21 @@ type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
 	RunnerGroupID int
 }
 
-func unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -18245,9 +20874,21 @@ type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
 	ScimUserID string
 }
 
-func unpackEnterpriseAdminDeleteUserFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteUserFromEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimUserID = packed["scim_user_id"].(string)
+func unpackEnterpriseAdminDeleteUserFromEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminDeleteUserFromEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
 	return params
 }
 
@@ -18325,9 +20966,21 @@ type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams str
 	OrgID int
 }
 
-func unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.OrgID = packed["org_id"].(int)
+func unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org_id",
+			In:   "path",
+		}
+		params.OrgID = packed[key].(int)
+	}
 	return params
 }
 
@@ -18405,9 +21058,21 @@ type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams stru
 	OrgID int
 }
 
-func unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.OrgID = packed["org_id"].(int)
+func unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org_id",
+			In:   "path",
+		}
+		params.OrgID = packed[key].(int)
+	}
 	return params
 }
 
@@ -18483,8 +21148,14 @@ type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminGetAllowedActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetAllowedActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminGetAllowedActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminGetAllowedActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -18554,28 +21225,76 @@ type EnterpriseAdminGetAuditLogParams struct {
 	PerPage OptInt
 }
 
-func unpackEnterpriseAdminGetAuditLogParams(packed map[string]any) (params EnterpriseAdminGetAuditLogParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["phrase"]; ok {
-		params.Phrase = v.(OptString)
+func unpackEnterpriseAdminGetAuditLogParams(packed middleware.Parameters) (params EnterpriseAdminGetAuditLogParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["include"]; ok {
-		params.Include = v.(OptEnterpriseAdminGetAuditLogInclude)
+	{
+		key := middleware.ParameterKey{
+			Name: "phrase",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Phrase = v.(OptString)
+		}
 	}
-	if v, ok := packed["after"]; ok {
-		params.After = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "include",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Include = v.(OptEnterpriseAdminGetAuditLogInclude)
+		}
 	}
-	if v, ok := packed["before"]; ok {
-		params.Before = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "after",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.After = v.(OptString)
+		}
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptEnterpriseAdminGetAuditLogOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "before",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Before = v.(OptString)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptEnterpriseAdminGetAuditLogOrder)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -18900,8 +21619,14 @@ type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -18950,11 +21675,29 @@ type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
 	ExcludedAttributes OptString
 }
 
-func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimGroupID = packed["scim_group_id"].(string)
-	if v, ok := packed["excludedAttributes"]; ok {
-		params.ExcludedAttributes = v.(OptString)
+func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(packed middleware.Parameters) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_group_id",
+			In:   "path",
+		}
+		params.ScimGroupID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "excludedAttributes",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ExcludedAttributes = v.(OptString)
+		}
 	}
 	return params
 }
@@ -19068,9 +21811,21 @@ type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
 	ScimUserID string
 }
 
-func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimUserID = packed["scim_user_id"].(string)
+func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(packed middleware.Parameters) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
 	return params
 }
 
@@ -19148,9 +21903,21 @@ type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
 	RunnerID int
 }
 
-func unpackEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -19228,9 +21995,21 @@ type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
 	RunnerGroupID int
 }
 
-func unpackEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -19312,14 +22091,38 @@ type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struc
 	Page OptInt
 }
 
-func unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -19483,19 +22286,49 @@ type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
 	ExcludedAttributes OptString
 }
 
-func unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["startIndex"]; ok {
-		params.StartIndex = v.(OptInt)
+func unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["count"]; ok {
-		params.Count = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "startIndex",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.StartIndex = v.(OptInt)
+		}
 	}
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "count",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Count = v.(OptInt)
+		}
 	}
-	if v, ok := packed["excludedAttributes"]; ok {
-		params.ExcludedAttributes = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "excludedAttributes",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ExcludedAttributes = v.(OptString)
+		}
 	}
 	return params
 }
@@ -19684,16 +22517,40 @@ type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 	Filter OptString
 }
 
-func unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["startIndex"]; ok {
-		params.StartIndex = v.(OptInt)
+func unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["count"]; ok {
-		params.Count = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "startIndex",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.StartIndex = v.(OptInt)
+		}
 	}
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "count",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Count = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptString)
+		}
 	}
 	return params
 }
@@ -19842,8 +22699,14 @@ type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminListRunnerApplicationsForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminListRunnerApplicationsForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -19892,13 +22755,31 @@ type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParam
 	Page OptInt
 }
 
-func unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -20027,13 +22908,31 @@ type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 	Page OptInt
 }
 
-func unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -20162,13 +23061,31 @@ type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 	Page OptInt
 }
 
-func unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -20299,14 +23216,38 @@ type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 	Page OptInt
 }
 
-func unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -20462,8 +23403,14 @@ type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(packed middleware.Parameters) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -20508,8 +23455,14 @@ type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminProvisionAndInviteEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminProvisionAndInviteEnterpriseUserParams(packed middleware.Parameters) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -20558,10 +23511,28 @@ type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams str
 	OrgID int
 }
 
-func unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.OrgID = packed["org_id"].(int)
+func unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org_id",
+			In:   "path",
+		}
+		params.OrgID = packed[key].(int)
+	}
 	return params
 }
 
@@ -20672,10 +23643,28 @@ type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
 	RunnerID int
 }
 
-func unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
-	params.RunnerID = packed["runner_id"].(int)
+func unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_id",
+			In:   "path",
+		}
+		params.RunnerID = packed[key].(int)
+	}
 	return params
 }
 
@@ -20782,8 +23771,14 @@ type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminSetAllowedActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetAllowedActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminSetAllowedActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminSetAllowedActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -20828,8 +23823,14 @@ type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
 	Enterprise string
 }
 
-func unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -20876,9 +23877,21 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
 	ScimGroupID string
 }
 
-func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimGroupID = packed["scim_group_id"].(string)
+func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(packed middleware.Parameters) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_group_id",
+			In:   "path",
+		}
+		params.ScimGroupID = packed[key].(string)
+	}
 	return params
 }
 
@@ -20956,9 +23969,21 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
 	ScimUserID string
 }
 
-func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimUserID = packed["scim_user_id"].(string)
+func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(packed middleware.Parameters) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21036,9 +24061,21 @@ type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct
 	RunnerGroupID int
 }
 
-func unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -21114,8 +24151,14 @@ type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
 	Enterprise string
 }
 
-func unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
+func unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
 	return params
 }
 
@@ -21162,9 +24205,21 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
 	RunnerGroupID int
 }
 
-func unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -21242,9 +24297,21 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
 	ScimGroupID string
 }
 
-func unpackEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimGroupID = packed["scim_group_id"].(string)
+func unpackEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(packed middleware.Parameters) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_group_id",
+			In:   "path",
+		}
+		params.ScimGroupID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21322,9 +24389,21 @@ type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
 	ScimUserID string
 }
 
-func unpackEnterpriseAdminUpdateAttributeForEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.ScimUserID = packed["scim_user_id"].(string)
+func unpackEnterpriseAdminUpdateAttributeForEnterpriseUserParams(packed middleware.Parameters) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21402,9 +24481,21 @@ type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
 	RunnerGroupID int
 }
 
-func unpackEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) {
-	params.Enterprise = packed["enterprise"].(string)
-	params.RunnerGroupID = packed["runner_group_id"].(int)
+func unpackEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(packed middleware.Parameters) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "enterprise",
+			In:   "path",
+		}
+		params.Enterprise = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "runner_group_id",
+			In:   "path",
+		}
+		params.RunnerGroupID = packed[key].(int)
+	}
 	return params
 }
 
@@ -21480,8 +24571,14 @@ type GistsCheckIsStarredParams struct {
 	GistID string
 }
 
-func unpackGistsCheckIsStarredParams(packed map[string]any) (params GistsCheckIsStarredParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsCheckIsStarredParams(packed middleware.Parameters) (params GistsCheckIsStarredParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21526,8 +24623,14 @@ type GistsCreateCommentParams struct {
 	GistID string
 }
 
-func unpackGistsCreateCommentParams(packed map[string]any) (params GistsCreateCommentParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsCreateCommentParams(packed middleware.Parameters) (params GistsCreateCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21572,8 +24675,14 @@ type GistsDeleteParams struct {
 	GistID string
 }
 
-func unpackGistsDeleteParams(packed map[string]any) (params GistsDeleteParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsDeleteParams(packed middleware.Parameters) (params GistsDeleteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21620,9 +24729,21 @@ type GistsDeleteCommentParams struct {
 	CommentID int
 }
 
-func unpackGistsDeleteCommentParams(packed map[string]any) (params GistsDeleteCommentParams) {
-	params.GistID = packed["gist_id"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackGistsDeleteCommentParams(packed middleware.Parameters) (params GistsDeleteCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -21698,8 +24819,14 @@ type GistsForkParams struct {
 	GistID string
 }
 
-func unpackGistsForkParams(packed map[string]any) (params GistsForkParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsForkParams(packed middleware.Parameters) (params GistsForkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21744,8 +24871,14 @@ type GistsGetParams struct {
 	GistID string
 }
 
-func unpackGistsGetParams(packed map[string]any) (params GistsGetParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsGetParams(packed middleware.Parameters) (params GistsGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -21792,9 +24925,21 @@ type GistsGetCommentParams struct {
 	CommentID int
 }
 
-func unpackGistsGetCommentParams(packed map[string]any) (params GistsGetCommentParams) {
-	params.GistID = packed["gist_id"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackGistsGetCommentParams(packed middleware.Parameters) (params GistsGetCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -21871,9 +25016,21 @@ type GistsGetRevisionParams struct {
 	Sha    string
 }
 
-func unpackGistsGetRevisionParams(packed map[string]any) (params GistsGetRevisionParams) {
-	params.GistID = packed["gist_id"].(string)
-	params.Sha = packed["sha"].(string)
+func unpackGistsGetRevisionParams(packed middleware.Parameters) (params GistsGetRevisionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "sha",
+			In:   "path",
+		}
+		params.Sha = packed[key].(string)
+	}
 	return params
 }
 
@@ -21954,15 +25111,33 @@ type GistsListParams struct {
 	Page OptInt
 }
 
-func unpackGistsListParams(packed map[string]any) (params GistsListParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+func unpackGistsListParams(packed middleware.Parameters) (params GistsListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22094,13 +25269,31 @@ type GistsListCommentsParams struct {
 	Page OptInt
 }
 
-func unpackGistsListCommentsParams(packed map[string]any) (params GistsListCommentsParams) {
-	params.GistID = packed["gist_id"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackGistsListCommentsParams(packed middleware.Parameters) (params GistsListCommentsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22229,13 +25422,31 @@ type GistsListCommitsParams struct {
 	Page OptInt
 }
 
-func unpackGistsListCommitsParams(packed map[string]any) (params GistsListCommitsParams) {
-	params.GistID = packed["gist_id"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackGistsListCommitsParams(packed middleware.Parameters) (params GistsListCommitsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22366,16 +25577,40 @@ type GistsListForUserParams struct {
 	Page OptInt
 }
 
-func unpackGistsListForUserParams(packed map[string]any) (params GistsListForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+func unpackGistsListForUserParams(packed middleware.Parameters) (params GistsListForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22538,13 +25773,31 @@ type GistsListForksParams struct {
 	Page OptInt
 }
 
-func unpackGistsListForksParams(packed map[string]any) (params GistsListForksParams) {
-	params.GistID = packed["gist_id"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackGistsListForksParams(packed middleware.Parameters) (params GistsListForksParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22674,15 +25927,33 @@ type GistsListPublicParams struct {
 	Page OptInt
 }
 
-func unpackGistsListPublicParams(packed map[string]any) (params GistsListPublicParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+func unpackGistsListPublicParams(packed middleware.Parameters) (params GistsListPublicParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22815,15 +26086,33 @@ type GistsListStarredParams struct {
 	Page OptInt
 }
 
-func unpackGistsListStarredParams(packed map[string]any) (params GistsListStarredParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+func unpackGistsListStarredParams(packed middleware.Parameters) (params GistsListStarredParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -22951,8 +26240,14 @@ type GistsStarParams struct {
 	GistID string
 }
 
-func unpackGistsStarParams(packed map[string]any) (params GistsStarParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsStarParams(packed middleware.Parameters) (params GistsStarParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -22997,8 +26292,14 @@ type GistsUnstarParams struct {
 	GistID string
 }
 
-func unpackGistsUnstarParams(packed map[string]any) (params GistsUnstarParams) {
-	params.GistID = packed["gist_id"].(string)
+func unpackGistsUnstarParams(packed middleware.Parameters) (params GistsUnstarParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
 	return params
 }
 
@@ -23045,9 +26346,21 @@ type GistsUpdateCommentParams struct {
 	CommentID int
 }
 
-func unpackGistsUpdateCommentParams(packed map[string]any) (params GistsUpdateCommentParams) {
-	params.GistID = packed["gist_id"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackGistsUpdateCommentParams(packed middleware.Parameters) (params GistsUpdateCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gist_id",
+			In:   "path",
+		}
+		params.GistID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -23123,9 +26436,21 @@ type GitCreateBlobParams struct {
 	Repo  string
 }
 
-func unpackGitCreateBlobParams(packed map[string]any) (params GitCreateBlobParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackGitCreateBlobParams(packed middleware.Parameters) (params GitCreateBlobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -23201,9 +26526,21 @@ type GitCreateCommitParams struct {
 	Repo  string
 }
 
-func unpackGitCreateCommitParams(packed map[string]any) (params GitCreateCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackGitCreateCommitParams(packed middleware.Parameters) (params GitCreateCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -23279,9 +26616,21 @@ type GitCreateRefParams struct {
 	Repo  string
 }
 
-func unpackGitCreateRefParams(packed map[string]any) (params GitCreateRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackGitCreateRefParams(packed middleware.Parameters) (params GitCreateRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -23357,9 +26706,21 @@ type GitCreateTagParams struct {
 	Repo  string
 }
 
-func unpackGitCreateTagParams(packed map[string]any) (params GitCreateTagParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackGitCreateTagParams(packed middleware.Parameters) (params GitCreateTagParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -23435,9 +26796,21 @@ type GitCreateTreeParams struct {
 	Repo  string
 }
 
-func unpackGitCreateTreeParams(packed map[string]any) (params GitCreateTreeParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackGitCreateTreeParams(packed middleware.Parameters) (params GitCreateTreeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -23515,10 +26888,28 @@ type GitDeleteRefParams struct {
 	Ref string
 }
 
-func unpackGitDeleteRefParams(packed map[string]any) (params GitDeleteRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
+func unpackGitDeleteRefParams(packed middleware.Parameters) (params GitDeleteRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -23626,10 +27017,28 @@ type GitGetBlobParams struct {
 	FileSha string
 }
 
-func unpackGitGetBlobParams(packed map[string]any) (params GitGetBlobParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.FileSha = packed["file_sha"].(string)
+func unpackGitGetBlobParams(packed middleware.Parameters) (params GitGetBlobParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "file_sha",
+			In:   "path",
+		}
+		params.FileSha = packed[key].(string)
+	}
 	return params
 }
 
@@ -23738,10 +27147,28 @@ type GitGetCommitParams struct {
 	CommitSha string
 }
 
-func unpackGitGetCommitParams(packed map[string]any) (params GitGetCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommitSha = packed["commit_sha"].(string)
+func unpackGitGetCommitParams(packed middleware.Parameters) (params GitGetCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "commit_sha",
+			In:   "path",
+		}
+		params.CommitSha = packed[key].(string)
+	}
 	return params
 }
 
@@ -23850,10 +27277,28 @@ type GitGetRefParams struct {
 	Ref string
 }
 
-func unpackGitGetRefParams(packed map[string]any) (params GitGetRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
+func unpackGitGetRefParams(packed middleware.Parameters) (params GitGetRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -23961,10 +27406,28 @@ type GitGetTagParams struct {
 	TagSha string
 }
 
-func unpackGitGetTagParams(packed map[string]any) (params GitGetTagParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.TagSha = packed["tag_sha"].(string)
+func unpackGitGetTagParams(packed middleware.Parameters) (params GitGetTagParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tag_sha",
+			In:   "path",
+		}
+		params.TagSha = packed[key].(string)
+	}
 	return params
 }
 
@@ -24077,12 +27540,36 @@ type GitGetTreeParams struct {
 	Recursive OptString
 }
 
-func unpackGitGetTreeParams(packed map[string]any) (params GitGetTreeParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.TreeSha = packed["tree_sha"].(string)
-	if v, ok := packed["recursive"]; ok {
-		params.Recursive = v.(OptString)
+func unpackGitGetTreeParams(packed middleware.Parameters) (params GitGetTreeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tree_sha",
+			In:   "path",
+		}
+		params.TreeSha = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "recursive",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Recursive = v.(OptString)
+		}
 	}
 	return params
 }
@@ -24231,15 +27718,45 @@ type GitListMatchingRefsParams struct {
 	Page OptInt
 }
 
-func unpackGitListMatchingRefsParams(packed map[string]any) (params GitListMatchingRefsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackGitListMatchingRefsParams(packed middleware.Parameters) (params GitListMatchingRefsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -24428,10 +27945,28 @@ type GitUpdateRefParams struct {
 	Ref string
 }
 
-func unpackGitUpdateRefParams(packed map[string]any) (params GitUpdateRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
+func unpackGitUpdateRefParams(packed middleware.Parameters) (params GitUpdateRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -24537,8 +28072,14 @@ type GitignoreGetTemplateParams struct {
 	Name string
 }
 
-func unpackGitignoreGetTemplateParams(packed map[string]any) (params GitignoreGetTemplateParams) {
-	params.Name = packed["name"].(string)
+func unpackGitignoreGetTemplateParams(packed middleware.Parameters) (params GitignoreGetTemplateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -24582,8 +28123,14 @@ type InteractionsRemoveRestrictionsForOrgParams struct {
 	Org string
 }
 
-func unpackInteractionsRemoveRestrictionsForOrgParams(packed map[string]any) (params InteractionsRemoveRestrictionsForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackInteractionsRemoveRestrictionsForOrgParams(packed middleware.Parameters) (params InteractionsRemoveRestrictionsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -24628,9 +28175,21 @@ type InteractionsRemoveRestrictionsForRepoParams struct {
 	Repo  string
 }
 
-func unpackInteractionsRemoveRestrictionsForRepoParams(packed map[string]any) (params InteractionsRemoveRestrictionsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackInteractionsRemoveRestrictionsForRepoParams(packed middleware.Parameters) (params InteractionsRemoveRestrictionsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -24705,8 +28264,14 @@ type InteractionsSetRestrictionsForOrgParams struct {
 	Org string
 }
 
-func unpackInteractionsSetRestrictionsForOrgParams(packed map[string]any) (params InteractionsSetRestrictionsForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackInteractionsSetRestrictionsForOrgParams(packed middleware.Parameters) (params InteractionsSetRestrictionsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -24751,9 +28316,21 @@ type InteractionsSetRestrictionsForRepoParams struct {
 	Repo  string
 }
 
-func unpackInteractionsSetRestrictionsForRepoParams(packed map[string]any) (params InteractionsSetRestrictionsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackInteractionsSetRestrictionsForRepoParams(packed middleware.Parameters) (params InteractionsSetRestrictionsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -24831,10 +28408,28 @@ type IssuesAddAssigneesParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesAddAssigneesParams(packed map[string]any) (params IssuesAddAssigneesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesAddAssigneesParams(packed middleware.Parameters) (params IssuesAddAssigneesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -24942,10 +28537,28 @@ type IssuesCheckUserCanBeAssignedParams struct {
 	Assignee string
 }
 
-func unpackIssuesCheckUserCanBeAssignedParams(packed map[string]any) (params IssuesCheckUserCanBeAssignedParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Assignee = packed["assignee"].(string)
+func unpackIssuesCheckUserCanBeAssignedParams(packed middleware.Parameters) (params IssuesCheckUserCanBeAssignedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "assignee",
+			In:   "path",
+		}
+		params.Assignee = packed[key].(string)
+	}
 	return params
 }
 
@@ -25052,9 +28665,21 @@ type IssuesCreateParams struct {
 	Repo  string
 }
 
-func unpackIssuesCreateParams(packed map[string]any) (params IssuesCreateParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackIssuesCreateParams(packed middleware.Parameters) (params IssuesCreateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -25132,10 +28757,28 @@ type IssuesCreateCommentParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesCreateCommentParams(packed map[string]any) (params IssuesCreateCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesCreateCommentParams(packed middleware.Parameters) (params IssuesCreateCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -25242,9 +28885,21 @@ type IssuesCreateLabelParams struct {
 	Repo  string
 }
 
-func unpackIssuesCreateLabelParams(packed map[string]any) (params IssuesCreateLabelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackIssuesCreateLabelParams(packed middleware.Parameters) (params IssuesCreateLabelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -25320,9 +28975,21 @@ type IssuesCreateMilestoneParams struct {
 	Repo  string
 }
 
-func unpackIssuesCreateMilestoneParams(packed map[string]any) (params IssuesCreateMilestoneParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackIssuesCreateMilestoneParams(packed middleware.Parameters) (params IssuesCreateMilestoneParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -25400,10 +29067,28 @@ type IssuesDeleteCommentParams struct {
 	CommentID int
 }
 
-func unpackIssuesDeleteCommentParams(packed map[string]any) (params IssuesDeleteCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackIssuesDeleteCommentParams(packed middleware.Parameters) (params IssuesDeleteCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -25511,10 +29196,28 @@ type IssuesDeleteLabelParams struct {
 	Name  string
 }
 
-func unpackIssuesDeleteLabelParams(packed map[string]any) (params IssuesDeleteLabelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Name = packed["name"].(string)
+func unpackIssuesDeleteLabelParams(packed middleware.Parameters) (params IssuesDeleteLabelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -25623,10 +29326,28 @@ type IssuesDeleteMilestoneParams struct {
 	MilestoneNumber int
 }
 
-func unpackIssuesDeleteMilestoneParams(packed map[string]any) (params IssuesDeleteMilestoneParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.MilestoneNumber = packed["milestone_number"].(int)
+func unpackIssuesDeleteMilestoneParams(packed middleware.Parameters) (params IssuesDeleteMilestoneParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "milestone_number",
+			In:   "path",
+		}
+		params.MilestoneNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -25735,10 +29456,28 @@ type IssuesGetParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesGetParams(packed map[string]any) (params IssuesGetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesGetParams(packed middleware.Parameters) (params IssuesGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -25847,10 +29586,28 @@ type IssuesGetCommentParams struct {
 	CommentID int
 }
 
-func unpackIssuesGetCommentParams(packed map[string]any) (params IssuesGetCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackIssuesGetCommentParams(packed middleware.Parameters) (params IssuesGetCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -25958,10 +29715,28 @@ type IssuesGetEventParams struct {
 	EventID int
 }
 
-func unpackIssuesGetEventParams(packed map[string]any) (params IssuesGetEventParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.EventID = packed["event_id"].(int)
+func unpackIssuesGetEventParams(packed middleware.Parameters) (params IssuesGetEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "event_id",
+			In:   "path",
+		}
+		params.EventID = packed[key].(int)
+	}
 	return params
 }
 
@@ -26069,10 +29844,28 @@ type IssuesGetLabelParams struct {
 	Name  string
 }
 
-func unpackIssuesGetLabelParams(packed map[string]any) (params IssuesGetLabelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Name = packed["name"].(string)
+func unpackIssuesGetLabelParams(packed middleware.Parameters) (params IssuesGetLabelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -26181,10 +29974,28 @@ type IssuesGetMilestoneParams struct {
 	MilestoneNumber int
 }
 
-func unpackIssuesGetMilestoneParams(packed map[string]any) (params IssuesGetMilestoneParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.MilestoneNumber = packed["milestone_number"].(int)
+func unpackIssuesGetMilestoneParams(packed middleware.Parameters) (params IssuesGetMilestoneParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "milestone_number",
+			In:   "path",
+		}
+		params.MilestoneNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -26316,42 +30127,114 @@ type IssuesListParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListParams(packed map[string]any) (params IssuesListParams) {
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptIssuesListFilter)
+func unpackIssuesListParams(packed middleware.Parameters) (params IssuesListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptIssuesListFilter)
+		}
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptIssuesListState)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptIssuesListState)
+		}
 	}
-	if v, ok := packed["labels"]; ok {
-		params.Labels = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labels",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Labels = v.(OptString)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListSort)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListDirection)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["collab"]; ok {
-		params.Collab = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "collab",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Collab = v.(OptBool)
+		}
 	}
-	if v, ok := packed["orgs"]; ok {
-		params.Orgs = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "orgs",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Orgs = v.(OptBool)
+		}
 	}
-	if v, ok := packed["owned"]; ok {
-		params.Owned = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "owned",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Owned = v.(OptBool)
+		}
 	}
-	if v, ok := packed["pulls"]; ok {
-		params.Pulls = v.(OptBool)
+	{
+		key := middleware.ParameterKey{
+			Name: "pulls",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pulls = v.(OptBool)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -26869,14 +30752,38 @@ type IssuesListAssigneesParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListAssigneesParams(packed map[string]any) (params IssuesListAssigneesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackIssuesListAssigneesParams(packed middleware.Parameters) (params IssuesListAssigneesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -27041,18 +30948,54 @@ type IssuesListCommentsParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListCommentsParams(packed map[string]any) (params IssuesListCommentsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+func unpackIssuesListCommentsParams(packed middleware.Parameters) (params IssuesListCommentsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -27284,23 +31227,65 @@ type IssuesListCommentsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListCommentsForRepoParams(packed map[string]any) (params IssuesListCommentsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListCommentsForRepoSort)
+func unpackIssuesListCommentsForRepoParams(packed middleware.Parameters) (params IssuesListCommentsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListCommentsForRepoDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListCommentsForRepoSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListCommentsForRepoDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -27597,14 +31582,38 @@ type IssuesListEventsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListEventsForRepoParams(packed map[string]any) (params IssuesListEventsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackIssuesListEventsForRepoParams(packed middleware.Parameters) (params IssuesListEventsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -27781,30 +31790,78 @@ type IssuesListForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListForAuthenticatedUserParams(packed map[string]any) (params IssuesListForAuthenticatedUserParams) {
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptIssuesListForAuthenticatedUserFilter)
+func unpackIssuesListForAuthenticatedUserParams(packed middleware.Parameters) (params IssuesListForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptIssuesListForAuthenticatedUserFilter)
+		}
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptIssuesListForAuthenticatedUserState)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptIssuesListForAuthenticatedUserState)
+		}
 	}
-	if v, ok := packed["labels"]; ok {
-		params.Labels = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "labels",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Labels = v.(OptString)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListForAuthenticatedUserSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListForAuthenticatedUserSort)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListForAuthenticatedUserDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListForAuthenticatedUserDirection)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -28204,31 +32261,85 @@ type IssuesListForOrgParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListForOrgParams(packed map[string]any) (params IssuesListForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptIssuesListForOrgFilter)
+func unpackIssuesListForOrgParams(packed middleware.Parameters) (params IssuesListForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptIssuesListForOrgState)
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptIssuesListForOrgFilter)
+		}
 	}
-	if v, ok := packed["labels"]; ok {
-		params.Labels = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptIssuesListForOrgState)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListForOrgSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "labels",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Labels = v.(OptString)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListForOrgDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListForOrgSort)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListForOrgDirection)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -28663,41 +32774,119 @@ type IssuesListForRepoParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListForRepoParams(packed map[string]any) (params IssuesListForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["milestone"]; ok {
-		params.Milestone = v.(OptString)
+func unpackIssuesListForRepoParams(packed middleware.Parameters) (params IssuesListForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptIssuesListForRepoState)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["assignee"]; ok {
-		params.Assignee = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "milestone",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Milestone = v.(OptString)
+		}
 	}
-	if v, ok := packed["creator"]; ok {
-		params.Creator = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptIssuesListForRepoState)
+		}
 	}
-	if v, ok := packed["mentioned"]; ok {
-		params.Mentioned = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "assignee",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Assignee = v.(OptString)
+		}
 	}
-	if v, ok := packed["labels"]; ok {
-		params.Labels = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "creator",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Creator = v.(OptString)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListForRepoSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "mentioned",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Mentioned = v.(OptString)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListForRepoDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "labels",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Labels = v.(OptString)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListForRepoSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListForRepoDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -29225,15 +33414,45 @@ type IssuesListLabelsForMilestoneParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListLabelsForMilestoneParams(packed map[string]any) (params IssuesListLabelsForMilestoneParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.MilestoneNumber = packed["milestone_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackIssuesListLabelsForMilestoneParams(packed middleware.Parameters) (params IssuesListLabelsForMilestoneParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "milestone_number",
+			In:   "path",
+		}
+		params.MilestoneNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -29424,14 +33643,38 @@ type IssuesListLabelsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListLabelsForRepoParams(packed map[string]any) (params IssuesListLabelsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackIssuesListLabelsForRepoParams(packed middleware.Parameters) (params IssuesListLabelsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -29593,15 +33836,45 @@ type IssuesListLabelsOnIssueParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListLabelsOnIssueParams(packed map[string]any) (params IssuesListLabelsOnIssueParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackIssuesListLabelsOnIssueParams(packed middleware.Parameters) (params IssuesListLabelsOnIssueParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -29798,23 +34071,65 @@ type IssuesListMilestonesParams struct {
 	Page OptInt
 }
 
-func unpackIssuesListMilestonesParams(packed map[string]any) (params IssuesListMilestonesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptIssuesListMilestonesState)
+func unpackIssuesListMilestonesParams(packed middleware.Parameters) (params IssuesListMilestonesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptIssuesListMilestonesSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptIssuesListMilestonesDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptIssuesListMilestonesState)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptIssuesListMilestonesSort)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptIssuesListMilestonesDirection)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -30134,10 +34449,28 @@ type IssuesLockParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesLockParams(packed map[string]any) (params IssuesLockParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesLockParams(packed middleware.Parameters) (params IssuesLockParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -30246,10 +34579,28 @@ type IssuesRemoveAllLabelsParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesRemoveAllLabelsParams(packed map[string]any) (params IssuesRemoveAllLabelsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesRemoveAllLabelsParams(packed middleware.Parameters) (params IssuesRemoveAllLabelsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -30358,10 +34709,28 @@ type IssuesRemoveAssigneesParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesRemoveAssigneesParams(packed map[string]any) (params IssuesRemoveAssigneesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesRemoveAssigneesParams(packed middleware.Parameters) (params IssuesRemoveAssigneesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -30471,11 +34840,35 @@ type IssuesRemoveLabelParams struct {
 	Name        string
 }
 
-func unpackIssuesRemoveLabelParams(packed map[string]any) (params IssuesRemoveLabelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
-	params.Name = packed["name"].(string)
+func unpackIssuesRemoveLabelParams(packed middleware.Parameters) (params IssuesRemoveLabelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -30615,10 +35008,28 @@ type IssuesUnlockParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesUnlockParams(packed map[string]any) (params IssuesUnlockParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesUnlockParams(packed middleware.Parameters) (params IssuesUnlockParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -30727,10 +35138,28 @@ type IssuesUpdateParams struct {
 	IssueNumber int
 }
 
-func unpackIssuesUpdateParams(packed map[string]any) (params IssuesUpdateParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackIssuesUpdateParams(packed middleware.Parameters) (params IssuesUpdateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -30839,10 +35268,28 @@ type IssuesUpdateCommentParams struct {
 	CommentID int
 }
 
-func unpackIssuesUpdateCommentParams(packed map[string]any) (params IssuesUpdateCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackIssuesUpdateCommentParams(packed middleware.Parameters) (params IssuesUpdateCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -30950,10 +35397,28 @@ type IssuesUpdateLabelParams struct {
 	Name  string
 }
 
-func unpackIssuesUpdateLabelParams(packed map[string]any) (params IssuesUpdateLabelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Name = packed["name"].(string)
+func unpackIssuesUpdateLabelParams(packed middleware.Parameters) (params IssuesUpdateLabelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
 	return params
 }
 
@@ -31062,10 +35527,28 @@ type IssuesUpdateMilestoneParams struct {
 	MilestoneNumber int
 }
 
-func unpackIssuesUpdateMilestoneParams(packed map[string]any) (params IssuesUpdateMilestoneParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.MilestoneNumber = packed["milestone_number"].(int)
+func unpackIssuesUpdateMilestoneParams(packed middleware.Parameters) (params IssuesUpdateMilestoneParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "milestone_number",
+			In:   "path",
+		}
+		params.MilestoneNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -31171,8 +35654,14 @@ type LicensesGetParams struct {
 	License string
 }
 
-func unpackLicensesGetParams(packed map[string]any) (params LicensesGetParams) {
-	params.License = packed["license"].(string)
+func unpackLicensesGetParams(packed middleware.Parameters) (params LicensesGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "license",
+			In:   "path",
+		}
+		params.License = packed[key].(string)
+	}
 	return params
 }
 
@@ -31220,15 +35709,33 @@ type LicensesGetAllCommonlyUsedParams struct {
 	Page OptInt
 }
 
-func unpackLicensesGetAllCommonlyUsedParams(packed map[string]any) (params LicensesGetAllCommonlyUsedParams) {
-	if v, ok := packed["featured"]; ok {
-		params.Featured = v.(OptBool)
+func unpackLicensesGetAllCommonlyUsedParams(packed middleware.Parameters) (params LicensesGetAllCommonlyUsedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "featured",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Featured = v.(OptBool)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -31356,9 +35863,21 @@ type LicensesGetForRepoParams struct {
 	Repo  string
 }
 
-func unpackLicensesGetForRepoParams(packed map[string]any) (params LicensesGetForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackLicensesGetForRepoParams(packed middleware.Parameters) (params LicensesGetForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -31434,9 +35953,21 @@ type MigrationsCancelImportParams struct {
 	Repo  string
 }
 
-func unpackMigrationsCancelImportParams(packed map[string]any) (params MigrationsCancelImportParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsCancelImportParams(packed middleware.Parameters) (params MigrationsCancelImportParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -31512,8 +36043,14 @@ type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
 	MigrationID int
 }
 
-func unpackMigrationsDeleteArchiveForAuthenticatedUserParams(packed map[string]any) (params MigrationsDeleteArchiveForAuthenticatedUserParams) {
-	params.MigrationID = packed["migration_id"].(int)
+func unpackMigrationsDeleteArchiveForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsDeleteArchiveForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -31559,9 +36096,21 @@ type MigrationsDeleteArchiveForOrgParams struct {
 	MigrationID int
 }
 
-func unpackMigrationsDeleteArchiveForOrgParams(packed map[string]any) (params MigrationsDeleteArchiveForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.MigrationID = packed["migration_id"].(int)
+func unpackMigrationsDeleteArchiveForOrgParams(packed middleware.Parameters) (params MigrationsDeleteArchiveForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -31638,9 +36187,21 @@ type MigrationsDownloadArchiveForOrgParams struct {
 	MigrationID int
 }
 
-func unpackMigrationsDownloadArchiveForOrgParams(packed map[string]any) (params MigrationsDownloadArchiveForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.MigrationID = packed["migration_id"].(int)
+func unpackMigrationsDownloadArchiveForOrgParams(packed middleware.Parameters) (params MigrationsDownloadArchiveForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -31716,8 +36277,14 @@ type MigrationsGetArchiveForAuthenticatedUserParams struct {
 	MigrationID int
 }
 
-func unpackMigrationsGetArchiveForAuthenticatedUserParams(packed map[string]any) (params MigrationsGetArchiveForAuthenticatedUserParams) {
-	params.MigrationID = packed["migration_id"].(int)
+func unpackMigrationsGetArchiveForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsGetArchiveForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -31764,11 +36331,29 @@ type MigrationsGetCommitAuthorsParams struct {
 	Since OptInt
 }
 
-func unpackMigrationsGetCommitAuthorsParams(packed map[string]any) (params MigrationsGetCommitAuthorsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptInt)
+func unpackMigrationsGetCommitAuthorsParams(packed middleware.Parameters) (params MigrationsGetCommitAuthorsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -31880,9 +36465,21 @@ type MigrationsGetImportStatusParams struct {
 	Repo  string
 }
 
-func unpackMigrationsGetImportStatusParams(packed map[string]any) (params MigrationsGetImportStatusParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsGetImportStatusParams(packed middleware.Parameters) (params MigrationsGetImportStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -31958,9 +36555,21 @@ type MigrationsGetLargeFilesParams struct {
 	Repo  string
 }
 
-func unpackMigrationsGetLargeFilesParams(packed map[string]any) (params MigrationsGetLargeFilesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsGetLargeFilesParams(packed middleware.Parameters) (params MigrationsGetLargeFilesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -32037,10 +36646,22 @@ type MigrationsGetStatusForAuthenticatedUserParams struct {
 	Exclude     []string
 }
 
-func unpackMigrationsGetStatusForAuthenticatedUserParams(packed map[string]any) (params MigrationsGetStatusForAuthenticatedUserParams) {
-	params.MigrationID = packed["migration_id"].(int)
-	if v, ok := packed["exclude"]; ok {
-		params.Exclude = v.([]string)
+func unpackMigrationsGetStatusForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsGetStatusForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "exclude",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Exclude = v.([]string)
+		}
 	}
 	return params
 }
@@ -32126,11 +36747,29 @@ type MigrationsGetStatusForOrgParams struct {
 	Exclude []MigrationsGetStatusForOrgExcludeItem
 }
 
-func unpackMigrationsGetStatusForOrgParams(packed map[string]any) (params MigrationsGetStatusForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.MigrationID = packed["migration_id"].(int)
-	if v, ok := packed["exclude"]; ok {
-		params.Exclude = v.([]MigrationsGetStatusForOrgExcludeItem)
+func unpackMigrationsGetStatusForOrgParams(packed middleware.Parameters) (params MigrationsGetStatusForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "exclude",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Exclude = v.([]MigrationsGetStatusForOrgExcludeItem)
+		}
 	}
 	return params
 }
@@ -32268,12 +36907,24 @@ type MigrationsListForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackMigrationsListForAuthenticatedUserParams(packed map[string]any) (params MigrationsListForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackMigrationsListForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsListForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -32372,16 +37023,40 @@ type MigrationsListForOrgParams struct {
 	Exclude []MigrationsListForOrgExcludeItem
 }
 
-func unpackMigrationsListForOrgParams(packed map[string]any) (params MigrationsListForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackMigrationsListForOrgParams(packed middleware.Parameters) (params MigrationsListForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["exclude"]; ok {
-		params.Exclude = v.([]MigrationsListForOrgExcludeItem)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "exclude",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Exclude = v.([]MigrationsListForOrgExcludeItem)
+		}
 	}
 	return params
 }
@@ -32569,14 +37244,38 @@ type MigrationsListReposForOrgParams struct {
 	Page OptInt
 }
 
-func unpackMigrationsListReposForOrgParams(packed map[string]any) (params MigrationsListReposForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.MigrationID = packed["migration_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackMigrationsListReposForOrgParams(packed middleware.Parameters) (params MigrationsListReposForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -32736,13 +37435,31 @@ type MigrationsListReposForUserParams struct {
 	Page OptInt
 }
 
-func unpackMigrationsListReposForUserParams(packed map[string]any) (params MigrationsListReposForUserParams) {
-	params.MigrationID = packed["migration_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackMigrationsListReposForUserParams(packed middleware.Parameters) (params MigrationsListReposForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -32868,10 +37585,28 @@ type MigrationsMapCommitAuthorParams struct {
 	AuthorID int
 }
 
-func unpackMigrationsMapCommitAuthorParams(packed map[string]any) (params MigrationsMapCommitAuthorParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AuthorID = packed["author_id"].(int)
+func unpackMigrationsMapCommitAuthorParams(packed middleware.Parameters) (params MigrationsMapCommitAuthorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "author_id",
+			In:   "path",
+		}
+		params.AuthorID = packed[key].(int)
+	}
 	return params
 }
 
@@ -32978,9 +37713,21 @@ type MigrationsSetLfsPreferenceParams struct {
 	Repo  string
 }
 
-func unpackMigrationsSetLfsPreferenceParams(packed map[string]any) (params MigrationsSetLfsPreferenceParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsSetLfsPreferenceParams(packed middleware.Parameters) (params MigrationsSetLfsPreferenceParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -33055,8 +37802,14 @@ type MigrationsStartForOrgParams struct {
 	Org string
 }
 
-func unpackMigrationsStartForOrgParams(packed map[string]any) (params MigrationsStartForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackMigrationsStartForOrgParams(packed middleware.Parameters) (params MigrationsStartForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -33101,9 +37854,21 @@ type MigrationsStartImportParams struct {
 	Repo  string
 }
 
-func unpackMigrationsStartImportParams(packed map[string]any) (params MigrationsStartImportParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsStartImportParams(packed middleware.Parameters) (params MigrationsStartImportParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -33181,9 +37946,21 @@ type MigrationsUnlockRepoForAuthenticatedUserParams struct {
 	RepoName string
 }
 
-func unpackMigrationsUnlockRepoForAuthenticatedUserParams(packed map[string]any) (params MigrationsUnlockRepoForAuthenticatedUserParams) {
-	params.MigrationID = packed["migration_id"].(int)
-	params.RepoName = packed["repo_name"].(string)
+func unpackMigrationsUnlockRepoForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsUnlockRepoForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo_name",
+			In:   "path",
+		}
+		params.RepoName = packed[key].(string)
+	}
 	return params
 }
 
@@ -33262,10 +38039,28 @@ type MigrationsUnlockRepoForOrgParams struct {
 	RepoName string
 }
 
-func unpackMigrationsUnlockRepoForOrgParams(packed map[string]any) (params MigrationsUnlockRepoForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.MigrationID = packed["migration_id"].(int)
-	params.RepoName = packed["repo_name"].(string)
+func unpackMigrationsUnlockRepoForOrgParams(packed middleware.Parameters) (params MigrationsUnlockRepoForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "migration_id",
+			In:   "path",
+		}
+		params.MigrationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo_name",
+			In:   "path",
+		}
+		params.RepoName = packed[key].(string)
+	}
 	return params
 }
 
@@ -33372,9 +38167,21 @@ type MigrationsUpdateImportParams struct {
 	Repo  string
 }
 
-func unpackMigrationsUpdateImportParams(packed map[string]any) (params MigrationsUpdateImportParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackMigrationsUpdateImportParams(packed middleware.Parameters) (params MigrationsUpdateImportParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -33450,8 +38257,14 @@ type OAuthAuthorizationsDeleteAuthorizationParams struct {
 	AuthorizationID int
 }
 
-func unpackOAuthAuthorizationsDeleteAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsDeleteAuthorizationParams) {
-	params.AuthorizationID = packed["authorization_id"].(int)
+func unpackOAuthAuthorizationsDeleteAuthorizationParams(packed middleware.Parameters) (params OAuthAuthorizationsDeleteAuthorizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "authorization_id",
+			In:   "path",
+		}
+		params.AuthorizationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -33496,8 +38309,14 @@ type OAuthAuthorizationsDeleteGrantParams struct {
 	GrantID int
 }
 
-func unpackOAuthAuthorizationsDeleteGrantParams(packed map[string]any) (params OAuthAuthorizationsDeleteGrantParams) {
-	params.GrantID = packed["grant_id"].(int)
+func unpackOAuthAuthorizationsDeleteGrantParams(packed middleware.Parameters) (params OAuthAuthorizationsDeleteGrantParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "grant_id",
+			In:   "path",
+		}
+		params.GrantID = packed[key].(int)
+	}
 	return params
 }
 
@@ -33542,8 +38361,14 @@ type OAuthAuthorizationsGetAuthorizationParams struct {
 	AuthorizationID int
 }
 
-func unpackOAuthAuthorizationsGetAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsGetAuthorizationParams) {
-	params.AuthorizationID = packed["authorization_id"].(int)
+func unpackOAuthAuthorizationsGetAuthorizationParams(packed middleware.Parameters) (params OAuthAuthorizationsGetAuthorizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "authorization_id",
+			In:   "path",
+		}
+		params.AuthorizationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -33588,8 +38413,14 @@ type OAuthAuthorizationsGetGrantParams struct {
 	GrantID int
 }
 
-func unpackOAuthAuthorizationsGetGrantParams(packed map[string]any) (params OAuthAuthorizationsGetGrantParams) {
-	params.GrantID = packed["grant_id"].(int)
+func unpackOAuthAuthorizationsGetGrantParams(packed middleware.Parameters) (params OAuthAuthorizationsGetGrantParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "grant_id",
+			In:   "path",
+		}
+		params.GrantID = packed[key].(int)
+	}
 	return params
 }
 
@@ -33634,8 +38465,14 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
 	ClientID string
 }
 
-func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(packed map[string]any) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) {
-	params.ClientID = packed["client_id"].(string)
+func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(packed middleware.Parameters) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
 	return params
 }
 
@@ -33681,9 +38518,21 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struc
 	Fingerprint string
 }
 
-func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(packed map[string]any) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) {
-	params.ClientID = packed["client_id"].(string)
-	params.Fingerprint = packed["fingerprint"].(string)
+func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(packed middleware.Parameters) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "path",
+		}
+		params.ClientID = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "fingerprint",
+			In:   "path",
+		}
+		params.Fingerprint = packed[key].(string)
+	}
 	return params
 }
 
@@ -33763,15 +38612,33 @@ type OAuthAuthorizationsListAuthorizationsParams struct {
 	ClientID OptString
 }
 
-func unpackOAuthAuthorizationsListAuthorizationsParams(packed map[string]any) (params OAuthAuthorizationsListAuthorizationsParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOAuthAuthorizationsListAuthorizationsParams(packed middleware.Parameters) (params OAuthAuthorizationsListAuthorizationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ClientID = v.(OptString)
+		}
 	}
 	return params
 }
@@ -33903,15 +38770,33 @@ type OAuthAuthorizationsListGrantsParams struct {
 	ClientID OptString
 }
 
-func unpackOAuthAuthorizationsListGrantsParams(packed map[string]any) (params OAuthAuthorizationsListGrantsParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOAuthAuthorizationsListGrantsParams(packed middleware.Parameters) (params OAuthAuthorizationsListGrantsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "client_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ClientID = v.(OptString)
+		}
 	}
 	return params
 }
@@ -34039,8 +38924,14 @@ type OAuthAuthorizationsUpdateAuthorizationParams struct {
 	AuthorizationID int
 }
 
-func unpackOAuthAuthorizationsUpdateAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsUpdateAuthorizationParams) {
-	params.AuthorizationID = packed["authorization_id"].(int)
+func unpackOAuthAuthorizationsUpdateAuthorizationParams(packed middleware.Parameters) (params OAuthAuthorizationsUpdateAuthorizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "authorization_id",
+			In:   "path",
+		}
+		params.AuthorizationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -34085,9 +38976,21 @@ type OrgsBlockUserParams struct {
 	Username string
 }
 
-func unpackOrgsBlockUserParams(packed map[string]any) (params OrgsBlockUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsBlockUserParams(packed middleware.Parameters) (params OrgsBlockUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -34164,9 +39067,21 @@ type OrgsCancelInvitationParams struct {
 	InvitationID int
 }
 
-func unpackOrgsCancelInvitationParams(packed map[string]any) (params OrgsCancelInvitationParams) {
-	params.Org = packed["org"].(string)
-	params.InvitationID = packed["invitation_id"].(int)
+func unpackOrgsCancelInvitationParams(packed middleware.Parameters) (params OrgsCancelInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -34242,9 +39157,21 @@ type OrgsCheckBlockedUserParams struct {
 	Username string
 }
 
-func unpackOrgsCheckBlockedUserParams(packed map[string]any) (params OrgsCheckBlockedUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsCheckBlockedUserParams(packed middleware.Parameters) (params OrgsCheckBlockedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -34320,9 +39247,21 @@ type OrgsCheckMembershipForUserParams struct {
 	Username string
 }
 
-func unpackOrgsCheckMembershipForUserParams(packed map[string]any) (params OrgsCheckMembershipForUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsCheckMembershipForUserParams(packed middleware.Parameters) (params OrgsCheckMembershipForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -34398,9 +39337,21 @@ type OrgsCheckPublicMembershipForUserParams struct {
 	Username string
 }
 
-func unpackOrgsCheckPublicMembershipForUserParams(packed map[string]any) (params OrgsCheckPublicMembershipForUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsCheckPublicMembershipForUserParams(packed middleware.Parameters) (params OrgsCheckPublicMembershipForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -34476,9 +39427,21 @@ type OrgsConvertMemberToOutsideCollaboratorParams struct {
 	Username string
 }
 
-func unpackOrgsConvertMemberToOutsideCollaboratorParams(packed map[string]any) (params OrgsConvertMemberToOutsideCollaboratorParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsConvertMemberToOutsideCollaboratorParams(packed middleware.Parameters) (params OrgsConvertMemberToOutsideCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -34553,8 +39516,14 @@ type OrgsCreateInvitationParams struct {
 	Org string
 }
 
-func unpackOrgsCreateInvitationParams(packed map[string]any) (params OrgsCreateInvitationParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsCreateInvitationParams(packed middleware.Parameters) (params OrgsCreateInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -34598,8 +39567,14 @@ type OrgsCreateWebhookParams struct {
 	Org string
 }
 
-func unpackOrgsCreateWebhookParams(packed map[string]any) (params OrgsCreateWebhookParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsCreateWebhookParams(packed middleware.Parameters) (params OrgsCreateWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -34644,9 +39619,21 @@ type OrgsDeleteWebhookParams struct {
 	HookID int
 }
 
-func unpackOrgsDeleteWebhookParams(packed map[string]any) (params OrgsDeleteWebhookParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsDeleteWebhookParams(packed middleware.Parameters) (params OrgsDeleteWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -34721,8 +39708,14 @@ type OrgsGetParams struct {
 	Org string
 }
 
-func unpackOrgsGetParams(packed map[string]any) (params OrgsGetParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsGetParams(packed middleware.Parameters) (params OrgsGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -34791,28 +39784,76 @@ type OrgsGetAuditLogParams struct {
 	Page OptInt
 }
 
-func unpackOrgsGetAuditLogParams(packed map[string]any) (params OrgsGetAuditLogParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["phrase"]; ok {
-		params.Phrase = v.(OptString)
+func unpackOrgsGetAuditLogParams(packed middleware.Parameters) (params OrgsGetAuditLogParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["include"]; ok {
-		params.Include = v.(OptOrgsGetAuditLogInclude)
+	{
+		key := middleware.ParameterKey{
+			Name: "phrase",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Phrase = v.(OptString)
+		}
 	}
-	if v, ok := packed["after"]; ok {
-		params.After = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "include",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Include = v.(OptOrgsGetAuditLogInclude)
+		}
 	}
-	if v, ok := packed["before"]; ok {
-		params.Before = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "after",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.After = v.(OptString)
+		}
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptOrgsGetAuditLogOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "before",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Before = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptOrgsGetAuditLogOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -35136,8 +40177,14 @@ type OrgsGetMembershipForAuthenticatedUserParams struct {
 	Org string
 }
 
-func unpackOrgsGetMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsGetMembershipForAuthenticatedUserParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsGetMembershipForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsGetMembershipForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -35182,9 +40229,21 @@ type OrgsGetMembershipForUserParams struct {
 	Username string
 }
 
-func unpackOrgsGetMembershipForUserParams(packed map[string]any) (params OrgsGetMembershipForUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsGetMembershipForUserParams(packed middleware.Parameters) (params OrgsGetMembershipForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -35260,9 +40319,21 @@ type OrgsGetWebhookParams struct {
 	HookID int
 }
 
-func unpackOrgsGetWebhookParams(packed map[string]any) (params OrgsGetWebhookParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsGetWebhookParams(packed middleware.Parameters) (params OrgsGetWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -35338,9 +40409,21 @@ type OrgsGetWebhookConfigForOrgParams struct {
 	HookID int
 }
 
-func unpackOrgsGetWebhookConfigForOrgParams(packed map[string]any) (params OrgsGetWebhookConfigForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsGetWebhookConfigForOrgParams(packed middleware.Parameters) (params OrgsGetWebhookConfigForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -35417,10 +40500,28 @@ type OrgsGetWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackOrgsGetWebhookDeliveryParams(packed map[string]any) (params OrgsGetWebhookDeliveryParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackOrgsGetWebhookDeliveryParams(packed middleware.Parameters) (params OrgsGetWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -35529,12 +40630,24 @@ type OrgsListParams struct {
 	PerPage OptInt
 }
 
-func unpackOrgsListParams(packed map[string]any) (params OrgsListParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptInt)
+func unpackOrgsListParams(packed middleware.Parameters) (params OrgsListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptInt)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -35622,8 +40735,14 @@ type OrgsListBlockedUsersParams struct {
 	Org string
 }
 
-func unpackOrgsListBlockedUsersParams(packed map[string]any) (params OrgsListBlockedUsersParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsListBlockedUsersParams(packed middleware.Parameters) (params OrgsListBlockedUsersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -35671,13 +40790,31 @@ type OrgsListFailedInvitationsParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListFailedInvitationsParams(packed map[string]any) (params OrgsListFailedInvitationsParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListFailedInvitationsParams(packed middleware.Parameters) (params OrgsListFailedInvitationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -35804,12 +40941,24 @@ type OrgsListForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListForAuthenticatedUserParams(packed map[string]any) (params OrgsListForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsListForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -35906,13 +41055,31 @@ type OrgsListForUserParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListForUserParams(packed map[string]any) (params OrgsListForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListForUserParams(packed middleware.Parameters) (params OrgsListForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36042,14 +41209,38 @@ type OrgsListInvitationTeamsParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListInvitationTeamsParams(packed map[string]any) (params OrgsListInvitationTeamsParams) {
-	params.Org = packed["org"].(string)
-	params.InvitationID = packed["invitation_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListInvitationTeamsParams(packed middleware.Parameters) (params OrgsListInvitationTeamsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36218,19 +41409,49 @@ type OrgsListMembersParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListMembersParams(packed map[string]any) (params OrgsListMembersParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptOrgsListMembersFilter)
+func unpackOrgsListMembersParams(packed middleware.Parameters) (params OrgsListMembersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["role"]; ok {
-		params.Role = v.(OptOrgsListMembersRole)
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptOrgsListMembersFilter)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "role",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Role = v.(OptOrgsListMembersRole)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36468,15 +41689,33 @@ type OrgsListMembershipsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListMembershipsForAuthenticatedUserParams(packed map[string]any) (params OrgsListMembershipsForAuthenticatedUserParams) {
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptOrgsListMembershipsForAuthenticatedUserState)
+func unpackOrgsListMembershipsForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsListMembershipsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptOrgsListMembershipsForAuthenticatedUserState)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36627,16 +41866,40 @@ type OrgsListOutsideCollaboratorsParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListOutsideCollaboratorsParams(packed map[string]any) (params OrgsListOutsideCollaboratorsParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["filter"]; ok {
-		params.Filter = v.(OptOrgsListOutsideCollaboratorsFilter)
+func unpackOrgsListOutsideCollaboratorsParams(packed middleware.Parameters) (params OrgsListOutsideCollaboratorsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "filter",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Filter = v.(OptOrgsListOutsideCollaboratorsFilter)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36818,13 +42081,31 @@ type OrgsListPendingInvitationsParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListPendingInvitationsParams(packed map[string]any) (params OrgsListPendingInvitationsParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListPendingInvitationsParams(packed middleware.Parameters) (params OrgsListPendingInvitationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -36952,13 +42233,31 @@ type OrgsListPublicMembersParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListPublicMembersParams(packed map[string]any) (params OrgsListPublicMembersParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListPublicMembersParams(packed middleware.Parameters) (params OrgsListPublicMembersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -37082,8 +42381,14 @@ type OrgsListSamlSSOAuthorizationsParams struct {
 	Org string
 }
 
-func unpackOrgsListSamlSSOAuthorizationsParams(packed map[string]any) (params OrgsListSamlSSOAuthorizationsParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsListSamlSSOAuthorizationsParams(packed middleware.Parameters) (params OrgsListSamlSSOAuthorizationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -37133,14 +42438,38 @@ type OrgsListWebhookDeliveriesParams struct {
 	Cursor OptString
 }
 
-func unpackOrgsListWebhookDeliveriesParams(packed map[string]any) (params OrgsListWebhookDeliveriesParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListWebhookDeliveriesParams(packed middleware.Parameters) (params OrgsListWebhookDeliveriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["cursor"]; ok {
-		params.Cursor = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "cursor",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Cursor = v.(OptString)
+		}
 	}
 	return params
 }
@@ -37294,13 +42623,31 @@ type OrgsListWebhooksParams struct {
 	Page OptInt
 }
 
-func unpackOrgsListWebhooksParams(packed map[string]any) (params OrgsListWebhooksParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackOrgsListWebhooksParams(packed middleware.Parameters) (params OrgsListWebhooksParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -37425,9 +42772,21 @@ type OrgsPingWebhookParams struct {
 	HookID int
 }
 
-func unpackOrgsPingWebhookParams(packed map[string]any) (params OrgsPingWebhookParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsPingWebhookParams(packed middleware.Parameters) (params OrgsPingWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -37504,10 +42863,28 @@ type OrgsRedeliverWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackOrgsRedeliverWebhookDeliveryParams(packed map[string]any) (params OrgsRedeliverWebhookDeliveryParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackOrgsRedeliverWebhookDeliveryParams(packed middleware.Parameters) (params OrgsRedeliverWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -37614,9 +42991,21 @@ type OrgsRemoveMemberParams struct {
 	Username string
 }
 
-func unpackOrgsRemoveMemberParams(packed map[string]any) (params OrgsRemoveMemberParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsRemoveMemberParams(packed middleware.Parameters) (params OrgsRemoveMemberParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -37692,9 +43081,21 @@ type OrgsRemoveMembershipForUserParams struct {
 	Username string
 }
 
-func unpackOrgsRemoveMembershipForUserParams(packed map[string]any) (params OrgsRemoveMembershipForUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsRemoveMembershipForUserParams(packed middleware.Parameters) (params OrgsRemoveMembershipForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -37770,9 +43171,21 @@ type OrgsRemoveOutsideCollaboratorParams struct {
 	Username string
 }
 
-func unpackOrgsRemoveOutsideCollaboratorParams(packed map[string]any) (params OrgsRemoveOutsideCollaboratorParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsRemoveOutsideCollaboratorParams(packed middleware.Parameters) (params OrgsRemoveOutsideCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -37848,9 +43261,21 @@ type OrgsRemovePublicMembershipForAuthenticatedUserParams struct {
 	Username string
 }
 
-func unpackOrgsRemovePublicMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsRemovePublicMembershipForAuthenticatedUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsRemovePublicMembershipForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsRemovePublicMembershipForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -37926,9 +43351,21 @@ type OrgsRemoveSamlSSOAuthorizationParams struct {
 	CredentialID int
 }
 
-func unpackOrgsRemoveSamlSSOAuthorizationParams(packed map[string]any) (params OrgsRemoveSamlSSOAuthorizationParams) {
-	params.Org = packed["org"].(string)
-	params.CredentialID = packed["credential_id"].(int)
+func unpackOrgsRemoveSamlSSOAuthorizationParams(packed middleware.Parameters) (params OrgsRemoveSamlSSOAuthorizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "credential_id",
+			In:   "path",
+		}
+		params.CredentialID = packed[key].(int)
+	}
 	return params
 }
 
@@ -38004,9 +43441,21 @@ type OrgsSetMembershipForUserParams struct {
 	Username string
 }
 
-func unpackOrgsSetMembershipForUserParams(packed map[string]any) (params OrgsSetMembershipForUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsSetMembershipForUserParams(packed middleware.Parameters) (params OrgsSetMembershipForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -38082,9 +43531,21 @@ type OrgsSetPublicMembershipForAuthenticatedUserParams struct {
 	Username string
 }
 
-func unpackOrgsSetPublicMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsSetPublicMembershipForAuthenticatedUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsSetPublicMembershipForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsSetPublicMembershipForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -38160,9 +43621,21 @@ type OrgsUnblockUserParams struct {
 	Username string
 }
 
-func unpackOrgsUnblockUserParams(packed map[string]any) (params OrgsUnblockUserParams) {
-	params.Org = packed["org"].(string)
-	params.Username = packed["username"].(string)
+func unpackOrgsUnblockUserParams(packed middleware.Parameters) (params OrgsUnblockUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -38237,8 +43710,14 @@ type OrgsUpdateMembershipForAuthenticatedUserParams struct {
 	Org string
 }
 
-func unpackOrgsUpdateMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsUpdateMembershipForAuthenticatedUserParams) {
-	params.Org = packed["org"].(string)
+func unpackOrgsUpdateMembershipForAuthenticatedUserParams(packed middleware.Parameters) (params OrgsUpdateMembershipForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -38283,9 +43762,21 @@ type OrgsUpdateWebhookParams struct {
 	HookID int
 }
 
-func unpackOrgsUpdateWebhookParams(packed map[string]any) (params OrgsUpdateWebhookParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsUpdateWebhookParams(packed middleware.Parameters) (params OrgsUpdateWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -38361,9 +43852,21 @@ type OrgsUpdateWebhookConfigForOrgParams struct {
 	HookID int
 }
 
-func unpackOrgsUpdateWebhookConfigForOrgParams(packed map[string]any) (params OrgsUpdateWebhookConfigForOrgParams) {
-	params.Org = packed["org"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackOrgsUpdateWebhookConfigForOrgParams(packed middleware.Parameters) (params OrgsUpdateWebhookConfigForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -38445,9 +43948,21 @@ type PackagesDeletePackageForAuthenticatedUserParams struct {
 	PackageName string
 }
 
-func unpackPackagesDeletePackageForAuthenticatedUserParams(packed map[string]any) (params PackagesDeletePackageForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
+func unpackPackagesDeletePackageForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesDeletePackageForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
 	return params
 }
 
@@ -38538,10 +44053,28 @@ type PackagesDeletePackageForOrgParams struct {
 	Org         string
 }
 
-func unpackPackagesDeletePackageForOrgParams(packed map[string]any) (params PackagesDeletePackageForOrgParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageForOrgPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
+func unpackPackagesDeletePackageForOrgParams(packed middleware.Parameters) (params PackagesDeletePackageForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageForOrgPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -38663,10 +44196,28 @@ type PackagesDeletePackageForUserParams struct {
 	Username    string
 }
 
-func unpackPackagesDeletePackageForUserParams(packed map[string]any) (params PackagesDeletePackageForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
+func unpackPackagesDeletePackageForUserParams(packed middleware.Parameters) (params PackagesDeletePackageForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -38789,10 +44340,28 @@ type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesDeletePackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesDeletePackageVersionForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesDeletePackageVersionForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesDeletePackageVersionForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageVersionForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -38916,11 +44485,35 @@ type PackagesDeletePackageVersionForOrgParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesDeletePackageVersionForOrgParams(packed map[string]any) (params PackagesDeletePackageVersionForOrgParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForOrgPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesDeletePackageVersionForOrgParams(packed middleware.Parameters) (params PackagesDeletePackageVersionForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageVersionForOrgPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -39075,11 +44668,35 @@ type PackagesDeletePackageVersionForUserParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesDeletePackageVersionForUserParams(packed map[string]any) (params PackagesDeletePackageVersionForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesDeletePackageVersionForUserParams(packed middleware.Parameters) (params PackagesDeletePackageVersionForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesDeletePackageVersionForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -39237,17 +44854,47 @@ type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struc
 	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
-func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(packed middleware.Parameters) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
+		}
 	}
 	return params
 }
@@ -39478,18 +45125,54 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
-func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) {
-	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed middleware.Parameters) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
 	}
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState)
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState)
+		}
 	}
 	return params
 }
@@ -39745,10 +45428,28 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 	Username    string
 }
 
-func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
+func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed middleware.Parameters) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -39869,9 +45570,21 @@ type PackagesGetPackageForAuthenticatedUserParams struct {
 	PackageName string
 }
 
-func unpackPackagesGetPackageForAuthenticatedUserParams(packed map[string]any) (params PackagesGetPackageForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
+func unpackPackagesGetPackageForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesGetPackageForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
 	return params
 }
 
@@ -39962,10 +45675,28 @@ type PackagesGetPackageForOrganizationParams struct {
 	Org         string
 }
 
-func unpackPackagesGetPackageForOrganizationParams(packed map[string]any) (params PackagesGetPackageForOrganizationParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageForOrganizationPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
+func unpackPackagesGetPackageForOrganizationParams(packed middleware.Parameters) (params PackagesGetPackageForOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageForOrganizationPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -40087,10 +45818,28 @@ type PackagesGetPackageForUserParams struct {
 	Username    string
 }
 
-func unpackPackagesGetPackageForUserParams(packed map[string]any) (params PackagesGetPackageForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
+func unpackPackagesGetPackageForUserParams(packed middleware.Parameters) (params PackagesGetPackageForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -40213,10 +45962,28 @@ type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesGetPackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesGetPackageVersionForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesGetPackageVersionForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesGetPackageVersionForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageVersionForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -40340,11 +46107,35 @@ type PackagesGetPackageVersionForOrganizationParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesGetPackageVersionForOrganizationParams(packed map[string]any) (params PackagesGetPackageVersionForOrganizationParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForOrganizationPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesGetPackageVersionForOrganizationParams(packed middleware.Parameters) (params PackagesGetPackageVersionForOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageVersionForOrganizationPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -40499,11 +46290,35 @@ type PackagesGetPackageVersionForUserParams struct {
 	Username         string
 }
 
-func unpackPackagesGetPackageVersionForUserParams(packed map[string]any) (params PackagesGetPackageVersionForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackPackagesGetPackageVersionForUserParams(packed middleware.Parameters) (params PackagesGetPackageVersionForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesGetPackageVersionForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -40658,10 +46473,22 @@ type PackagesListPackagesForAuthenticatedUserParams struct {
 	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility
 }
 
-func unpackPackagesListPackagesForAuthenticatedUserParams(packed map[string]any) (params PackagesListPackagesForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesListPackagesForAuthenticatedUserPackageType)
-	if v, ok := packed["visibility"]; ok {
-		params.Visibility = v.(OptPackagesListPackagesForAuthenticatedUserVisibility)
+func unpackPackagesListPackagesForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesListPackagesForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "query",
+		}
+		params.PackageType = packed[key].(PackagesListPackagesForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "visibility",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Visibility = v.(OptPackagesListPackagesForAuthenticatedUserVisibility)
+		}
 	}
 	return params
 }
@@ -40773,11 +46600,29 @@ type PackagesListPackagesForOrganizationParams struct {
 	Visibility OptPackagesListPackagesForOrganizationVisibility
 }
 
-func unpackPackagesListPackagesForOrganizationParams(packed map[string]any) (params PackagesListPackagesForOrganizationParams) {
-	params.PackageType = packed["package_type"].(PackagesListPackagesForOrganizationPackageType)
-	params.Org = packed["org"].(string)
-	if v, ok := packed["visibility"]; ok {
-		params.Visibility = v.(OptPackagesListPackagesForOrganizationVisibility)
+func unpackPackagesListPackagesForOrganizationParams(packed middleware.Parameters) (params PackagesListPackagesForOrganizationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "query",
+		}
+		params.PackageType = packed[key].(PackagesListPackagesForOrganizationPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "visibility",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Visibility = v.(OptPackagesListPackagesForOrganizationVisibility)
+		}
 	}
 	return params
 }
@@ -40920,12 +46765,30 @@ type PackagesListPackagesForUserParams struct {
 	Username   string
 }
 
-func unpackPackagesListPackagesForUserParams(packed map[string]any) (params PackagesListPackagesForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesListPackagesForUserPackageType)
-	if v, ok := packed["visibility"]; ok {
-		params.Visibility = v.(OptPackagesListPackagesForUserVisibility)
+func unpackPackagesListPackagesForUserParams(packed middleware.Parameters) (params PackagesListPackagesForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "query",
+		}
+		params.PackageType = packed[key].(PackagesListPackagesForUserPackageType)
 	}
-	params.Username = packed["username"].(string)
+	{
+		key := middleware.ParameterKey{
+			Name: "visibility",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Visibility = v.(OptPackagesListPackagesForUserVisibility)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -41065,11 +46928,29 @@ type PackagesRestorePackageForAuthenticatedUserParams struct {
 	Token OptString
 }
 
-func unpackPackagesRestorePackageForAuthenticatedUserParams(packed map[string]any) (params PackagesRestorePackageForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	if v, ok := packed["token"]; ok {
-		params.Token = v.(OptString)
+func unpackPackagesRestorePackageForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesRestorePackageForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "token",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Token = v.(OptString)
+		}
 	}
 	return params
 }
@@ -41198,12 +47079,36 @@ type PackagesRestorePackageForOrgParams struct {
 	Token OptString
 }
 
-func unpackPackagesRestorePackageForOrgParams(packed map[string]any) (params PackagesRestorePackageForOrgParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageForOrgPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
-	if v, ok := packed["token"]; ok {
-		params.Token = v.(OptString)
+func unpackPackagesRestorePackageForOrgParams(packed middleware.Parameters) (params PackagesRestorePackageForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageForOrgPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "token",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Token = v.(OptString)
+		}
 	}
 	return params
 }
@@ -41363,12 +47268,36 @@ type PackagesRestorePackageForUserParams struct {
 	Token OptString
 }
 
-func unpackPackagesRestorePackageForUserParams(packed map[string]any) (params PackagesRestorePackageForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
-	if v, ok := packed["token"]; ok {
-		params.Token = v.(OptString)
+func unpackPackagesRestorePackageForUserParams(packed middleware.Parameters) (params PackagesRestorePackageForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "token",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Token = v.(OptString)
+		}
 	}
 	return params
 }
@@ -41527,10 +47456,28 @@ type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesRestorePackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesRestorePackageVersionForAuthenticatedUserParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForAuthenticatedUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesRestorePackageVersionForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesRestorePackageVersionForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageVersionForAuthenticatedUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -41654,11 +47601,35 @@ type PackagesRestorePackageVersionForOrgParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesRestorePackageVersionForOrgParams(packed map[string]any) (params PackagesRestorePackageVersionForOrgParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForOrgPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Org = packed["org"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesRestorePackageVersionForOrgParams(packed middleware.Parameters) (params PackagesRestorePackageVersionForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageVersionForOrgPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -41813,11 +47784,35 @@ type PackagesRestorePackageVersionForUserParams struct {
 	PackageVersionID int
 }
 
-func unpackPackagesRestorePackageVersionForUserParams(packed map[string]any) (params PackagesRestorePackageVersionForUserParams) {
-	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForUserPackageType)
-	params.PackageName = packed["package_name"].(string)
-	params.Username = packed["username"].(string)
-	params.PackageVersionID = packed["package_version_id"].(int)
+func unpackPackagesRestorePackageVersionForUserParams(packed middleware.Parameters) (params PackagesRestorePackageVersionForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "package_type",
+			In:   "path",
+		}
+		params.PackageType = packed[key].(PackagesRestorePackageVersionForUserPackageType)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_name",
+			In:   "path",
+		}
+		params.PackageName = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "package_version_id",
+			In:   "path",
+		}
+		params.PackageVersionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -41963,9 +47958,21 @@ type ProjectsAddCollaboratorParams struct {
 	Username  string
 }
 
-func unpackProjectsAddCollaboratorParams(packed map[string]any) (params ProjectsAddCollaboratorParams) {
-	params.ProjectID = packed["project_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackProjectsAddCollaboratorParams(packed middleware.Parameters) (params ProjectsAddCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -42040,8 +48047,14 @@ type ProjectsCreateColumnParams struct {
 	ProjectID int
 }
 
-func unpackProjectsCreateColumnParams(packed map[string]any) (params ProjectsCreateColumnParams) {
-	params.ProjectID = packed["project_id"].(int)
+func unpackProjectsCreateColumnParams(packed middleware.Parameters) (params ProjectsCreateColumnParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42085,8 +48098,14 @@ type ProjectsCreateForOrgParams struct {
 	Org string
 }
 
-func unpackProjectsCreateForOrgParams(packed map[string]any) (params ProjectsCreateForOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackProjectsCreateForOrgParams(packed middleware.Parameters) (params ProjectsCreateForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -42131,9 +48150,21 @@ type ProjectsCreateForRepoParams struct {
 	Repo  string
 }
 
-func unpackProjectsCreateForRepoParams(packed map[string]any) (params ProjectsCreateForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackProjectsCreateForRepoParams(packed middleware.Parameters) (params ProjectsCreateForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -42208,8 +48239,14 @@ type ProjectsDeleteParams struct {
 	ProjectID int
 }
 
-func unpackProjectsDeleteParams(packed map[string]any) (params ProjectsDeleteParams) {
-	params.ProjectID = packed["project_id"].(int)
+func unpackProjectsDeleteParams(packed middleware.Parameters) (params ProjectsDeleteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42254,8 +48291,14 @@ type ProjectsDeleteCardParams struct {
 	CardID int
 }
 
-func unpackProjectsDeleteCardParams(packed map[string]any) (params ProjectsDeleteCardParams) {
-	params.CardID = packed["card_id"].(int)
+func unpackProjectsDeleteCardParams(packed middleware.Parameters) (params ProjectsDeleteCardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "card_id",
+			In:   "path",
+		}
+		params.CardID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42300,8 +48343,14 @@ type ProjectsDeleteColumnParams struct {
 	ColumnID int
 }
 
-func unpackProjectsDeleteColumnParams(packed map[string]any) (params ProjectsDeleteColumnParams) {
-	params.ColumnID = packed["column_id"].(int)
+func unpackProjectsDeleteColumnParams(packed middleware.Parameters) (params ProjectsDeleteColumnParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "column_id",
+			In:   "path",
+		}
+		params.ColumnID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42345,8 +48394,14 @@ type ProjectsGetParams struct {
 	ProjectID int
 }
 
-func unpackProjectsGetParams(packed map[string]any) (params ProjectsGetParams) {
-	params.ProjectID = packed["project_id"].(int)
+func unpackProjectsGetParams(packed middleware.Parameters) (params ProjectsGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42391,8 +48446,14 @@ type ProjectsGetCardParams struct {
 	CardID int
 }
 
-func unpackProjectsGetCardParams(packed map[string]any) (params ProjectsGetCardParams) {
-	params.CardID = packed["card_id"].(int)
+func unpackProjectsGetCardParams(packed middleware.Parameters) (params ProjectsGetCardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "card_id",
+			In:   "path",
+		}
+		params.CardID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42437,8 +48498,14 @@ type ProjectsGetColumnParams struct {
 	ColumnID int
 }
 
-func unpackProjectsGetColumnParams(packed map[string]any) (params ProjectsGetColumnParams) {
-	params.ColumnID = packed["column_id"].(int)
+func unpackProjectsGetColumnParams(packed middleware.Parameters) (params ProjectsGetColumnParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "column_id",
+			In:   "path",
+		}
+		params.ColumnID = packed[key].(int)
+	}
 	return params
 }
 
@@ -42483,9 +48550,21 @@ type ProjectsGetPermissionForUserParams struct {
 	Username  string
 }
 
-func unpackProjectsGetPermissionForUserParams(packed map[string]any) (params ProjectsGetPermissionForUserParams) {
-	params.ProjectID = packed["project_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackProjectsGetPermissionForUserParams(packed middleware.Parameters) (params ProjectsGetPermissionForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -42568,16 +48647,40 @@ type ProjectsListCardsParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListCardsParams(packed map[string]any) (params ProjectsListCardsParams) {
-	params.ColumnID = packed["column_id"].(int)
-	if v, ok := packed["archived_state"]; ok {
-		params.ArchivedState = v.(OptProjectsListCardsArchivedState)
+func unpackProjectsListCardsParams(packed middleware.Parameters) (params ProjectsListCardsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "column_id",
+			In:   "path",
+		}
+		params.ColumnID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "archived_state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ArchivedState = v.(OptProjectsListCardsArchivedState)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -42766,16 +48869,40 @@ type ProjectsListCollaboratorsParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListCollaboratorsParams(packed map[string]any) (params ProjectsListCollaboratorsParams) {
-	params.ProjectID = packed["project_id"].(int)
-	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation = v.(OptProjectsListCollaboratorsAffiliation)
+func unpackProjectsListCollaboratorsParams(packed middleware.Parameters) (params ProjectsListCollaboratorsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "affiliation",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Affiliation = v.(OptProjectsListCollaboratorsAffiliation)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -42957,13 +49084,31 @@ type ProjectsListColumnsParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListColumnsParams(packed map[string]any) (params ProjectsListColumnsParams) {
-	params.ProjectID = packed["project_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackProjectsListColumnsParams(packed middleware.Parameters) (params ProjectsListColumnsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -43093,16 +49238,40 @@ type ProjectsListForOrgParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListForOrgParams(packed map[string]any) (params ProjectsListForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptProjectsListForOrgState)
+func unpackProjectsListForOrgParams(packed middleware.Parameters) (params ProjectsListForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptProjectsListForOrgState)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -43287,17 +49456,47 @@ type ProjectsListForRepoParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListForRepoParams(packed map[string]any) (params ProjectsListForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptProjectsListForRepoState)
+func unpackProjectsListForRepoParams(packed middleware.Parameters) (params ProjectsListForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptProjectsListForRepoState)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -43512,16 +49711,40 @@ type ProjectsListForUserParams struct {
 	Page OptInt
 }
 
-func unpackProjectsListForUserParams(packed map[string]any) (params ProjectsListForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptProjectsListForUserState)
+func unpackProjectsListForUserParams(packed middleware.Parameters) (params ProjectsListForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptProjectsListForUserState)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -43700,8 +49923,14 @@ type ProjectsMoveCardParams struct {
 	CardID int
 }
 
-func unpackProjectsMoveCardParams(packed map[string]any) (params ProjectsMoveCardParams) {
-	params.CardID = packed["card_id"].(int)
+func unpackProjectsMoveCardParams(packed middleware.Parameters) (params ProjectsMoveCardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "card_id",
+			In:   "path",
+		}
+		params.CardID = packed[key].(int)
+	}
 	return params
 }
 
@@ -43746,8 +49975,14 @@ type ProjectsMoveColumnParams struct {
 	ColumnID int
 }
 
-func unpackProjectsMoveColumnParams(packed map[string]any) (params ProjectsMoveColumnParams) {
-	params.ColumnID = packed["column_id"].(int)
+func unpackProjectsMoveColumnParams(packed middleware.Parameters) (params ProjectsMoveColumnParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "column_id",
+			In:   "path",
+		}
+		params.ColumnID = packed[key].(int)
+	}
 	return params
 }
 
@@ -43792,9 +50027,21 @@ type ProjectsRemoveCollaboratorParams struct {
 	Username  string
 }
 
-func unpackProjectsRemoveCollaboratorParams(packed map[string]any) (params ProjectsRemoveCollaboratorParams) {
-	params.ProjectID = packed["project_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackProjectsRemoveCollaboratorParams(packed middleware.Parameters) (params ProjectsRemoveCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -43869,8 +50116,14 @@ type ProjectsUpdateParams struct {
 	ProjectID int
 }
 
-func unpackProjectsUpdateParams(packed map[string]any) (params ProjectsUpdateParams) {
-	params.ProjectID = packed["project_id"].(int)
+func unpackProjectsUpdateParams(packed middleware.Parameters) (params ProjectsUpdateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -43915,8 +50168,14 @@ type ProjectsUpdateCardParams struct {
 	CardID int
 }
 
-func unpackProjectsUpdateCardParams(packed map[string]any) (params ProjectsUpdateCardParams) {
-	params.CardID = packed["card_id"].(int)
+func unpackProjectsUpdateCardParams(packed middleware.Parameters) (params ProjectsUpdateCardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "card_id",
+			In:   "path",
+		}
+		params.CardID = packed[key].(int)
+	}
 	return params
 }
 
@@ -43961,8 +50220,14 @@ type ProjectsUpdateColumnParams struct {
 	ColumnID int
 }
 
-func unpackProjectsUpdateColumnParams(packed map[string]any) (params ProjectsUpdateColumnParams) {
-	params.ColumnID = packed["column_id"].(int)
+func unpackProjectsUpdateColumnParams(packed middleware.Parameters) (params ProjectsUpdateColumnParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "column_id",
+			In:   "path",
+		}
+		params.ColumnID = packed[key].(int)
+	}
 	return params
 }
 
@@ -44008,10 +50273,28 @@ type PullsCheckIfMergedParams struct {
 	PullNumber int
 }
 
-func unpackPullsCheckIfMergedParams(packed map[string]any) (params PullsCheckIfMergedParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsCheckIfMergedParams(packed middleware.Parameters) (params PullsCheckIfMergedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -44118,9 +50401,21 @@ type PullsCreateParams struct {
 	Repo  string
 }
 
-func unpackPullsCreateParams(packed map[string]any) (params PullsCreateParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackPullsCreateParams(packed middleware.Parameters) (params PullsCreateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -44199,11 +50494,35 @@ type PullsCreateReplyForReviewCommentParams struct {
 	CommentID int
 }
 
-func unpackPullsCreateReplyForReviewCommentParams(packed map[string]any) (params PullsCreateReplyForReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.CommentID = packed["comment_id"].(int)
+func unpackPullsCreateReplyForReviewCommentParams(packed middleware.Parameters) (params PullsCreateReplyForReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -44342,10 +50661,28 @@ type PullsCreateReviewParams struct {
 	PullNumber int
 }
 
-func unpackPullsCreateReviewParams(packed map[string]any) (params PullsCreateReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsCreateReviewParams(packed middleware.Parameters) (params PullsCreateReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -44453,10 +50790,28 @@ type PullsCreateReviewCommentParams struct {
 	PullNumber int
 }
 
-func unpackPullsCreateReviewCommentParams(packed map[string]any) (params PullsCreateReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsCreateReviewCommentParams(packed middleware.Parameters) (params PullsCreateReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -44566,11 +50921,35 @@ type PullsDeletePendingReviewParams struct {
 	ReviewID int
 }
 
-func unpackPullsDeletePendingReviewParams(packed map[string]any) (params PullsDeletePendingReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
+func unpackPullsDeletePendingReviewParams(packed middleware.Parameters) (params PullsDeletePendingReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
 	return params
 }
 
@@ -44710,10 +51089,28 @@ type PullsDeleteReviewCommentParams struct {
 	CommentID int
 }
 
-func unpackPullsDeleteReviewCommentParams(packed map[string]any) (params PullsDeleteReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackPullsDeleteReviewCommentParams(packed middleware.Parameters) (params PullsDeleteReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -44823,11 +51220,35 @@ type PullsDismissReviewParams struct {
 	ReviewID int
 }
 
-func unpackPullsDismissReviewParams(packed map[string]any) (params PullsDismissReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
+func unpackPullsDismissReviewParams(packed middleware.Parameters) (params PullsDismissReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
 	return params
 }
 
@@ -44966,10 +51387,28 @@ type PullsGetParams struct {
 	PullNumber int
 }
 
-func unpackPullsGetParams(packed map[string]any) (params PullsGetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsGetParams(packed middleware.Parameters) (params PullsGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -45079,11 +51518,35 @@ type PullsGetReviewParams struct {
 	ReviewID int
 }
 
-func unpackPullsGetReviewParams(packed map[string]any) (params PullsGetReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
+func unpackPullsGetReviewParams(packed middleware.Parameters) (params PullsGetReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
 	return params
 }
 
@@ -45223,10 +51686,28 @@ type PullsGetReviewCommentParams struct {
 	CommentID int
 }
 
-func unpackPullsGetReviewCommentParams(packed map[string]any) (params PullsGetReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackPullsGetReviewCommentParams(packed middleware.Parameters) (params PullsGetReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -45350,29 +51831,83 @@ type PullsListParams struct {
 	Page OptInt
 }
 
-func unpackPullsListParams(packed map[string]any) (params PullsListParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptPullsListState)
+func unpackPullsListParams(packed middleware.Parameters) (params PullsListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["head"]; ok {
-		params.Head = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["base"]; ok {
-		params.Base = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptPullsListState)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptPullsListSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "head",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Head = v.(OptString)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptPullsListDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "base",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Base = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptPullsListSort)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptPullsListDirection)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -45760,16 +52295,52 @@ type PullsListCommentsForReviewParams struct {
 	Page OptInt
 }
 
-func unpackPullsListCommentsForReviewParams(packed map[string]any) (params PullsListCommentsForReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackPullsListCommentsForReviewParams(packed middleware.Parameters) (params PullsListCommentsForReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -45992,15 +52563,45 @@ type PullsListCommitsParams struct {
 	Page OptInt
 }
 
-func unpackPullsListCommitsParams(packed map[string]any) (params PullsListCommitsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackPullsListCommitsParams(packed middleware.Parameters) (params PullsListCommitsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -46192,15 +52793,45 @@ type PullsListFilesParams struct {
 	Page OptInt
 }
 
-func unpackPullsListFilesParams(packed map[string]any) (params PullsListFilesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackPullsListFilesParams(packed middleware.Parameters) (params PullsListFilesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -46392,15 +53023,45 @@ type PullsListRequestedReviewersParams struct {
 	Page OptInt
 }
 
-func unpackPullsListRequestedReviewersParams(packed map[string]any) (params PullsListRequestedReviewersParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackPullsListRequestedReviewersParams(packed middleware.Parameters) (params PullsListRequestedReviewersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -46599,24 +53260,72 @@ type PullsListReviewCommentsParams struct {
 	Page OptInt
 }
 
-func unpackPullsListReviewCommentsParams(packed map[string]any) (params PullsListReviewCommentsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptPullsListReviewCommentsSort)
+func unpackPullsListReviewCommentsParams(packed middleware.Parameters) (params PullsListReviewCommentsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptPullsListReviewCommentsDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptPullsListReviewCommentsSort)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptPullsListReviewCommentsDirection)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -46950,23 +53659,65 @@ type PullsListReviewCommentsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackPullsListReviewCommentsForRepoParams(packed map[string]any) (params PullsListReviewCommentsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptPullsListReviewCommentsForRepoSort)
+func unpackPullsListReviewCommentsForRepoParams(packed middleware.Parameters) (params PullsListReviewCommentsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptPullsListReviewCommentsForRepoDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptPullsListReviewCommentsForRepoSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptPullsListReviewCommentsForRepoDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -47259,15 +54010,45 @@ type PullsListReviewsParams struct {
 	Page OptInt
 }
 
-func unpackPullsListReviewsParams(packed map[string]any) (params PullsListReviewsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackPullsListReviewsParams(packed middleware.Parameters) (params PullsListReviewsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -47455,10 +54236,28 @@ type PullsMergeParams struct {
 	PullNumber int
 }
 
-func unpackPullsMergeParams(packed map[string]any) (params PullsMergeParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsMergeParams(packed middleware.Parameters) (params PullsMergeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -47566,10 +54365,28 @@ type PullsRemoveRequestedReviewersParams struct {
 	PullNumber int
 }
 
-func unpackPullsRemoveRequestedReviewersParams(packed map[string]any) (params PullsRemoveRequestedReviewersParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsRemoveRequestedReviewersParams(packed middleware.Parameters) (params PullsRemoveRequestedReviewersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -47679,11 +54496,35 @@ type PullsSubmitReviewParams struct {
 	ReviewID int
 }
 
-func unpackPullsSubmitReviewParams(packed map[string]any) (params PullsSubmitReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
+func unpackPullsSubmitReviewParams(packed middleware.Parameters) (params PullsSubmitReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
 	return params
 }
 
@@ -47822,10 +54663,28 @@ type PullsUpdateParams struct {
 	PullNumber int
 }
 
-func unpackPullsUpdateParams(packed map[string]any) (params PullsUpdateParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsUpdateParams(packed middleware.Parameters) (params PullsUpdateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -47933,10 +54792,28 @@ type PullsUpdateBranchParams struct {
 	PullNumber int
 }
 
-func unpackPullsUpdateBranchParams(packed map[string]any) (params PullsUpdateBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
+func unpackPullsUpdateBranchParams(packed middleware.Parameters) (params PullsUpdateBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -48046,11 +54923,35 @@ type PullsUpdateReviewParams struct {
 	ReviewID int
 }
 
-func unpackPullsUpdateReviewParams(packed map[string]any) (params PullsUpdateReviewParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.PullNumber = packed["pull_number"].(int)
-	params.ReviewID = packed["review_id"].(int)
+func unpackPullsUpdateReviewParams(packed middleware.Parameters) (params PullsUpdateReviewParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pull_number",
+			In:   "path",
+		}
+		params.PullNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "review_id",
+			In:   "path",
+		}
+		params.ReviewID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48190,10 +55091,28 @@ type PullsUpdateReviewCommentParams struct {
 	CommentID int
 }
 
-func unpackPullsUpdateReviewCommentParams(packed map[string]any) (params PullsUpdateReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackPullsUpdateReviewCommentParams(packed middleware.Parameters) (params PullsUpdateReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48302,10 +55221,28 @@ type ReactionsCreateForCommitCommentParams struct {
 	CommentID int
 }
 
-func unpackReactionsCreateForCommitCommentParams(packed map[string]any) (params ReactionsCreateForCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReactionsCreateForCommitCommentParams(packed middleware.Parameters) (params ReactionsCreateForCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48414,10 +55351,28 @@ type ReactionsCreateForIssueParams struct {
 	IssueNumber int
 }
 
-func unpackReactionsCreateForIssueParams(packed map[string]any) (params ReactionsCreateForIssueParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
+func unpackReactionsCreateForIssueParams(packed middleware.Parameters) (params ReactionsCreateForIssueParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -48526,10 +55481,28 @@ type ReactionsCreateForIssueCommentParams struct {
 	CommentID int
 }
 
-func unpackReactionsCreateForIssueCommentParams(packed map[string]any) (params ReactionsCreateForIssueCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReactionsCreateForIssueCommentParams(packed middleware.Parameters) (params ReactionsCreateForIssueCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48638,10 +55611,28 @@ type ReactionsCreateForPullRequestReviewCommentParams struct {
 	CommentID int
 }
 
-func unpackReactionsCreateForPullRequestReviewCommentParams(packed map[string]any) (params ReactionsCreateForPullRequestReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReactionsCreateForPullRequestReviewCommentParams(packed middleware.Parameters) (params ReactionsCreateForPullRequestReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48750,10 +55741,28 @@ type ReactionsCreateForReleaseParams struct {
 	ReleaseID int
 }
 
-func unpackReactionsCreateForReleaseParams(packed map[string]any) (params ReactionsCreateForReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ReleaseID = packed["release_id"].(int)
+func unpackReactionsCreateForReleaseParams(packed middleware.Parameters) (params ReactionsCreateForReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
 	return params
 }
 
@@ -48863,11 +55872,35 @@ type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
 	CommentNumber    int
 }
 
-func unpackReactionsCreateForTeamDiscussionCommentInOrgParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackReactionsCreateForTeamDiscussionCommentInOrgParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -49006,10 +56039,28 @@ type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
 	CommentNumber    int
 }
 
-func unpackReactionsCreateForTeamDiscussionCommentLegacyParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackReactionsCreateForTeamDiscussionCommentLegacyParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -49118,10 +56169,28 @@ type ReactionsCreateForTeamDiscussionInOrgParams struct {
 	DiscussionNumber int
 }
 
-func unpackReactionsCreateForTeamDiscussionInOrgParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackReactionsCreateForTeamDiscussionInOrgParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -49228,9 +56297,21 @@ type ReactionsCreateForTeamDiscussionLegacyParams struct {
 	DiscussionNumber int
 }
 
-func unpackReactionsCreateForTeamDiscussionLegacyParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackReactionsCreateForTeamDiscussionLegacyParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -49309,11 +56390,35 @@ type ReactionsDeleteForCommitCommentParams struct {
 	ReactionID int
 }
 
-func unpackReactionsDeleteForCommitCommentParams(packed map[string]any) (params ReactionsDeleteForCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForCommitCommentParams(packed middleware.Parameters) (params ReactionsDeleteForCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -49454,11 +56559,35 @@ type ReactionsDeleteForIssueParams struct {
 	ReactionID  int
 }
 
-func unpackReactionsDeleteForIssueParams(packed map[string]any) (params ReactionsDeleteForIssueParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForIssueParams(packed middleware.Parameters) (params ReactionsDeleteForIssueParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -49599,11 +56728,35 @@ type ReactionsDeleteForIssueCommentParams struct {
 	ReactionID int
 }
 
-func unpackReactionsDeleteForIssueCommentParams(packed map[string]any) (params ReactionsDeleteForIssueCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForIssueCommentParams(packed middleware.Parameters) (params ReactionsDeleteForIssueCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -49744,11 +56897,35 @@ type ReactionsDeleteForPullRequestCommentParams struct {
 	ReactionID int
 }
 
-func unpackReactionsDeleteForPullRequestCommentParams(packed map[string]any) (params ReactionsDeleteForPullRequestCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForPullRequestCommentParams(packed middleware.Parameters) (params ReactionsDeleteForPullRequestCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -49889,11 +57066,35 @@ type ReactionsDeleteForTeamDiscussionParams struct {
 	ReactionID       int
 }
 
-func unpackReactionsDeleteForTeamDiscussionParams(packed map[string]any) (params ReactionsDeleteForTeamDiscussionParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForTeamDiscussionParams(packed middleware.Parameters) (params ReactionsDeleteForTeamDiscussionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -50035,12 +57236,42 @@ type ReactionsDeleteForTeamDiscussionCommentParams struct {
 	ReactionID       int
 }
 
-func unpackReactionsDeleteForTeamDiscussionCommentParams(packed map[string]any) (params ReactionsDeleteForTeamDiscussionCommentParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteForTeamDiscussionCommentParams(packed middleware.Parameters) (params ReactionsDeleteForTeamDiscussionCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -50208,8 +57439,14 @@ type ReactionsDeleteLegacyParams struct {
 	ReactionID int
 }
 
-func unpackReactionsDeleteLegacyParams(packed map[string]any) (params ReactionsDeleteLegacyParams) {
-	params.ReactionID = packed["reaction_id"].(int)
+func unpackReactionsDeleteLegacyParams(packed middleware.Parameters) (params ReactionsDeleteLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "reaction_id",
+			In:   "path",
+		}
+		params.ReactionID = packed[key].(int)
+	}
 	return params
 }
 
@@ -50263,18 +57500,54 @@ type ReactionsListForCommitCommentParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForCommitCommentParams(packed map[string]any) (params ReactionsListForCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForCommitCommentContent)
+func unpackReactionsListForCommitCommentParams(packed middleware.Parameters) (params ReactionsListForCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForCommitCommentContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -50519,18 +57792,54 @@ type ReactionsListForIssueParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForIssueParams(packed map[string]any) (params ReactionsListForIssueParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.IssueNumber = packed["issue_number"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForIssueContent)
+func unpackReactionsListForIssueParams(packed middleware.Parameters) (params ReactionsListForIssueParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "issue_number",
+			In:   "path",
+		}
+		params.IssueNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForIssueContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -50775,18 +58084,54 @@ type ReactionsListForIssueCommentParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForIssueCommentParams(packed map[string]any) (params ReactionsListForIssueCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForIssueCommentContent)
+func unpackReactionsListForIssueCommentParams(packed middleware.Parameters) (params ReactionsListForIssueCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForIssueCommentContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -51031,18 +58376,54 @@ type ReactionsListForPullRequestReviewCommentParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForPullRequestReviewCommentParams(packed map[string]any) (params ReactionsListForPullRequestReviewCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForPullRequestReviewCommentContent)
+func unpackReactionsListForPullRequestReviewCommentParams(packed middleware.Parameters) (params ReactionsListForPullRequestReviewCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForPullRequestReviewCommentContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -51288,19 +58669,61 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForTeamDiscussionCommentInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForTeamDiscussionCommentInOrgContent)
+func unpackReactionsListForTeamDiscussionCommentInOrgParams(packed middleware.Parameters) (params ReactionsListForTeamDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForTeamDiscussionCommentInOrgContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -51575,18 +58998,54 @@ type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForTeamDiscussionCommentLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForTeamDiscussionCommentLegacyContent)
+func unpackReactionsListForTeamDiscussionCommentLegacyParams(packed middleware.Parameters) (params ReactionsListForTeamDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForTeamDiscussionCommentLegacyContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -51831,18 +59290,54 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForTeamDiscussionInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForTeamDiscussionInOrgContent)
+func unpackReactionsListForTeamDiscussionInOrgParams(packed middleware.Parameters) (params ReactionsListForTeamDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForTeamDiscussionInOrgContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -52085,17 +59580,47 @@ type ReactionsListForTeamDiscussionLegacyParams struct {
 	Page OptInt
 }
 
-func unpackReactionsListForTeamDiscussionLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	if v, ok := packed["content"]; ok {
-		params.Content = v.(OptReactionsListForTeamDiscussionLegacyContent)
+func unpackReactionsListForTeamDiscussionLegacyParams(packed middleware.Parameters) (params ReactionsListForTeamDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "content",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Content = v.(OptReactionsListForTeamDiscussionLegacyContent)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -52300,8 +59825,14 @@ type ReposAcceptInvitationParams struct {
 	InvitationID int
 }
 
-func unpackReposAcceptInvitationParams(packed map[string]any) (params ReposAcceptInvitationParams) {
-	params.InvitationID = packed["invitation_id"].(int)
+func unpackReposAcceptInvitationParams(packed middleware.Parameters) (params ReposAcceptInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -52348,10 +59879,28 @@ type ReposAddAppAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposAddAppAccessRestrictionsParams(packed map[string]any) (params ReposAddAppAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposAddAppAccessRestrictionsParams(packed middleware.Parameters) (params ReposAddAppAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -52459,10 +60008,28 @@ type ReposAddCollaboratorParams struct {
 	Username string
 }
 
-func unpackReposAddCollaboratorParams(packed map[string]any) (params ReposAddCollaboratorParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Username = packed["username"].(string)
+func unpackReposAddCollaboratorParams(packed middleware.Parameters) (params ReposAddCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -52571,10 +60138,28 @@ type ReposAddStatusCheckContextsParams struct {
 	Branch string
 }
 
-func unpackReposAddStatusCheckContextsParams(packed map[string]any) (params ReposAddStatusCheckContextsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposAddStatusCheckContextsParams(packed middleware.Parameters) (params ReposAddStatusCheckContextsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -52683,10 +60268,28 @@ type ReposAddTeamAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposAddTeamAccessRestrictionsParams(packed map[string]any) (params ReposAddTeamAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposAddTeamAccessRestrictionsParams(packed middleware.Parameters) (params ReposAddTeamAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -52795,10 +60398,28 @@ type ReposAddUserAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposAddUserAccessRestrictionsParams(packed map[string]any) (params ReposAddUserAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposAddUserAccessRestrictionsParams(packed middleware.Parameters) (params ReposAddUserAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -52906,10 +60527,28 @@ type ReposCheckCollaboratorParams struct {
 	Username string
 }
 
-func unpackReposCheckCollaboratorParams(packed map[string]any) (params ReposCheckCollaboratorParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Username = packed["username"].(string)
+func unpackReposCheckCollaboratorParams(packed middleware.Parameters) (params ReposCheckCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -53016,9 +60655,21 @@ type ReposCheckVulnerabilityAlertsParams struct {
 	Repo  string
 }
 
-func unpackReposCheckVulnerabilityAlertsParams(packed map[string]any) (params ReposCheckVulnerabilityAlertsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCheckVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposCheckVulnerabilityAlertsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -53100,16 +60751,46 @@ type ReposCompareCommitsParams struct {
 	Basehead string
 }
 
-func unpackReposCompareCommitsParams(packed map[string]any) (params ReposCompareCommitsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackReposCompareCommitsParams(packed middleware.Parameters) (params ReposCompareCommitsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	params.Basehead = packed["basehead"].(string)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "basehead",
+			In:   "path",
+		}
+		params.Basehead = packed[key].(string)
+	}
 	return params
 }
 
@@ -53295,9 +60976,21 @@ type ReposCreateAutolinkParams struct {
 	Repo  string
 }
 
-func unpackReposCreateAutolinkParams(packed map[string]any) (params ReposCreateAutolinkParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateAutolinkParams(packed middleware.Parameters) (params ReposCreateAutolinkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -53375,10 +61068,28 @@ type ReposCreateCommitCommentParams struct {
 	CommitSha string
 }
 
-func unpackReposCreateCommitCommentParams(packed map[string]any) (params ReposCreateCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommitSha = packed["commit_sha"].(string)
+func unpackReposCreateCommitCommentParams(packed middleware.Parameters) (params ReposCreateCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "commit_sha",
+			In:   "path",
+		}
+		params.CommitSha = packed[key].(string)
+	}
 	return params
 }
 
@@ -53487,10 +61198,28 @@ type ReposCreateCommitSignatureProtectionParams struct {
 	Branch string
 }
 
-func unpackReposCreateCommitSignatureProtectionParams(packed map[string]any) (params ReposCreateCommitSignatureProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposCreateCommitSignatureProtectionParams(packed middleware.Parameters) (params ReposCreateCommitSignatureProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -53598,10 +61327,28 @@ type ReposCreateCommitStatusParams struct {
 	Sha   string
 }
 
-func unpackReposCreateCommitStatusParams(packed map[string]any) (params ReposCreateCommitStatusParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Sha = packed["sha"].(string)
+func unpackReposCreateCommitStatusParams(packed middleware.Parameters) (params ReposCreateCommitStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "sha",
+			In:   "path",
+		}
+		params.Sha = packed[key].(string)
+	}
 	return params
 }
 
@@ -53708,9 +61455,21 @@ type ReposCreateDeployKeyParams struct {
 	Repo  string
 }
 
-func unpackReposCreateDeployKeyParams(packed map[string]any) (params ReposCreateDeployKeyParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateDeployKeyParams(packed middleware.Parameters) (params ReposCreateDeployKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -53786,9 +61545,21 @@ type ReposCreateDeploymentParams struct {
 	Repo  string
 }
 
-func unpackReposCreateDeploymentParams(packed map[string]any) (params ReposCreateDeploymentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateDeploymentParams(packed middleware.Parameters) (params ReposCreateDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -53866,10 +61637,28 @@ type ReposCreateDeploymentStatusParams struct {
 	DeploymentID int
 }
 
-func unpackReposCreateDeploymentStatusParams(packed map[string]any) (params ReposCreateDeploymentStatusParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.DeploymentID = packed["deployment_id"].(int)
+func unpackReposCreateDeploymentStatusParams(packed middleware.Parameters) (params ReposCreateDeploymentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "deployment_id",
+			In:   "path",
+		}
+		params.DeploymentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -53976,9 +61765,21 @@ type ReposCreateDispatchEventParams struct {
 	Repo  string
 }
 
-func unpackReposCreateDispatchEventParams(packed map[string]any) (params ReposCreateDispatchEventParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateDispatchEventParams(packed middleware.Parameters) (params ReposCreateDispatchEventParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54054,9 +61855,21 @@ type ReposCreateForkParams struct {
 	Repo  string
 }
 
-func unpackReposCreateForkParams(packed map[string]any) (params ReposCreateForkParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateForkParams(packed middleware.Parameters) (params ReposCreateForkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54131,8 +61944,14 @@ type ReposCreateInOrgParams struct {
 	Org string
 }
 
-func unpackReposCreateInOrgParams(packed map[string]any) (params ReposCreateInOrgParams) {
-	params.Org = packed["org"].(string)
+func unpackReposCreateInOrgParams(packed middleware.Parameters) (params ReposCreateInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -54179,10 +61998,28 @@ type ReposCreateOrUpdateFileContentsParams struct {
 	Path string
 }
 
-func unpackReposCreateOrUpdateFileContentsParams(packed map[string]any) (params ReposCreateOrUpdateFileContentsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Path = packed["path"].(string)
+func unpackReposCreateOrUpdateFileContentsParams(packed middleware.Parameters) (params ReposCreateOrUpdateFileContentsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.Path = packed[key].(string)
+	}
 	return params
 }
 
@@ -54289,9 +62126,21 @@ type ReposCreatePagesSiteParams struct {
 	Repo  string
 }
 
-func unpackReposCreatePagesSiteParams(packed map[string]any) (params ReposCreatePagesSiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreatePagesSiteParams(packed middleware.Parameters) (params ReposCreatePagesSiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54367,9 +62216,21 @@ type ReposCreateReleaseParams struct {
 	Repo  string
 }
 
-func unpackReposCreateReleaseParams(packed map[string]any) (params ReposCreateReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateReleaseParams(packed middleware.Parameters) (params ReposCreateReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54445,9 +62306,21 @@ type ReposCreateUsingTemplateParams struct {
 	TemplateRepo  string
 }
 
-func unpackReposCreateUsingTemplateParams(packed map[string]any) (params ReposCreateUsingTemplateParams) {
-	params.TemplateOwner = packed["template_owner"].(string)
-	params.TemplateRepo = packed["template_repo"].(string)
+func unpackReposCreateUsingTemplateParams(packed middleware.Parameters) (params ReposCreateUsingTemplateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "template_owner",
+			In:   "path",
+		}
+		params.TemplateOwner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "template_repo",
+			In:   "path",
+		}
+		params.TemplateRepo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54523,9 +62396,21 @@ type ReposCreateWebhookParams struct {
 	Repo  string
 }
 
-func unpackReposCreateWebhookParams(packed map[string]any) (params ReposCreateWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposCreateWebhookParams(packed middleware.Parameters) (params ReposCreateWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54601,8 +62486,14 @@ type ReposDeclineInvitationParams struct {
 	InvitationID int
 }
 
-func unpackReposDeclineInvitationParams(packed map[string]any) (params ReposDeclineInvitationParams) {
-	params.InvitationID = packed["invitation_id"].(int)
+func unpackReposDeclineInvitationParams(packed middleware.Parameters) (params ReposDeclineInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -54647,9 +62538,21 @@ type ReposDeleteParams struct {
 	Repo  string
 }
 
-func unpackReposDeleteParams(packed map[string]any) (params ReposDeleteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposDeleteParams(packed middleware.Parameters) (params ReposDeleteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -54727,10 +62630,28 @@ type ReposDeleteAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposDeleteAccessRestrictionsParams(packed map[string]any) (params ReposDeleteAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposDeleteAccessRestrictionsParams(packed middleware.Parameters) (params ReposDeleteAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -54839,10 +62760,28 @@ type ReposDeleteAdminBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposDeleteAdminBranchProtectionParams(packed map[string]any) (params ReposDeleteAdminBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposDeleteAdminBranchProtectionParams(packed middleware.Parameters) (params ReposDeleteAdminBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -54951,10 +62890,28 @@ type ReposDeleteAnEnvironmentParams struct {
 	EnvironmentName string
 }
 
-func unpackReposDeleteAnEnvironmentParams(packed map[string]any) (params ReposDeleteAnEnvironmentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.EnvironmentName = packed["environment_name"].(string)
+func unpackReposDeleteAnEnvironmentParams(packed middleware.Parameters) (params ReposDeleteAnEnvironmentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "environment_name",
+			In:   "path",
+		}
+		params.EnvironmentName = packed[key].(string)
+	}
 	return params
 }
 
@@ -55063,10 +63020,28 @@ type ReposDeleteAutolinkParams struct {
 	AutolinkID int
 }
 
-func unpackReposDeleteAutolinkParams(packed map[string]any) (params ReposDeleteAutolinkParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AutolinkID = packed["autolink_id"].(int)
+func unpackReposDeleteAutolinkParams(packed middleware.Parameters) (params ReposDeleteAutolinkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "autolink_id",
+			In:   "path",
+		}
+		params.AutolinkID = packed[key].(int)
+	}
 	return params
 }
 
@@ -55175,10 +63150,28 @@ type ReposDeleteBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposDeleteBranchProtectionParams(packed map[string]any) (params ReposDeleteBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposDeleteBranchProtectionParams(packed middleware.Parameters) (params ReposDeleteBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -55287,10 +63280,28 @@ type ReposDeleteCommitCommentParams struct {
 	CommentID int
 }
 
-func unpackReposDeleteCommitCommentParams(packed map[string]any) (params ReposDeleteCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReposDeleteCommitCommentParams(packed middleware.Parameters) (params ReposDeleteCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -55399,10 +63410,28 @@ type ReposDeleteCommitSignatureProtectionParams struct {
 	Branch string
 }
 
-func unpackReposDeleteCommitSignatureProtectionParams(packed map[string]any) (params ReposDeleteCommitSignatureProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposDeleteCommitSignatureProtectionParams(packed middleware.Parameters) (params ReposDeleteCommitSignatureProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -55511,10 +63540,28 @@ type ReposDeleteDeployKeyParams struct {
 	KeyID int
 }
 
-func unpackReposDeleteDeployKeyParams(packed map[string]any) (params ReposDeleteDeployKeyParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.KeyID = packed["key_id"].(int)
+func unpackReposDeleteDeployKeyParams(packed middleware.Parameters) (params ReposDeleteDeployKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "key_id",
+			In:   "path",
+		}
+		params.KeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -55623,10 +63670,28 @@ type ReposDeleteDeploymentParams struct {
 	DeploymentID int
 }
 
-func unpackReposDeleteDeploymentParams(packed map[string]any) (params ReposDeleteDeploymentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.DeploymentID = packed["deployment_id"].(int)
+func unpackReposDeleteDeploymentParams(packed middleware.Parameters) (params ReposDeleteDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "deployment_id",
+			In:   "path",
+		}
+		params.DeploymentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -55735,10 +63800,28 @@ type ReposDeleteFileParams struct {
 	Path string
 }
 
-func unpackReposDeleteFileParams(packed map[string]any) (params ReposDeleteFileParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Path = packed["path"].(string)
+func unpackReposDeleteFileParams(packed middleware.Parameters) (params ReposDeleteFileParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.Path = packed[key].(string)
+	}
 	return params
 }
 
@@ -55847,10 +63930,28 @@ type ReposDeleteInvitationParams struct {
 	InvitationID int
 }
 
-func unpackReposDeleteInvitationParams(packed map[string]any) (params ReposDeleteInvitationParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.InvitationID = packed["invitation_id"].(int)
+func unpackReposDeleteInvitationParams(packed middleware.Parameters) (params ReposDeleteInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -55957,9 +64058,21 @@ type ReposDeletePagesSiteParams struct {
 	Repo  string
 }
 
-func unpackReposDeletePagesSiteParams(packed map[string]any) (params ReposDeletePagesSiteParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposDeletePagesSiteParams(packed middleware.Parameters) (params ReposDeletePagesSiteParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -56037,10 +64150,28 @@ type ReposDeletePullRequestReviewProtectionParams struct {
 	Branch string
 }
 
-func unpackReposDeletePullRequestReviewProtectionParams(packed map[string]any) (params ReposDeletePullRequestReviewProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposDeletePullRequestReviewProtectionParams(packed middleware.Parameters) (params ReposDeletePullRequestReviewProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -56149,10 +64280,28 @@ type ReposDeleteReleaseParams struct {
 	ReleaseID int
 }
 
-func unpackReposDeleteReleaseParams(packed map[string]any) (params ReposDeleteReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ReleaseID = packed["release_id"].(int)
+func unpackReposDeleteReleaseParams(packed middleware.Parameters) (params ReposDeleteReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
 	return params
 }
 
@@ -56261,10 +64410,28 @@ type ReposDeleteReleaseAssetParams struct {
 	AssetID int
 }
 
-func unpackReposDeleteReleaseAssetParams(packed map[string]any) (params ReposDeleteReleaseAssetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AssetID = packed["asset_id"].(int)
+func unpackReposDeleteReleaseAssetParams(packed middleware.Parameters) (params ReposDeleteReleaseAssetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "asset_id",
+			In:   "path",
+		}
+		params.AssetID = packed[key].(int)
+	}
 	return params
 }
 
@@ -56372,10 +64539,28 @@ type ReposDeleteWebhookParams struct {
 	HookID int
 }
 
-func unpackReposDeleteWebhookParams(packed map[string]any) (params ReposDeleteWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposDeleteWebhookParams(packed middleware.Parameters) (params ReposDeleteWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -56482,9 +64667,21 @@ type ReposDisableAutomatedSecurityFixesParams struct {
 	Repo  string
 }
 
-func unpackReposDisableAutomatedSecurityFixesParams(packed map[string]any) (params ReposDisableAutomatedSecurityFixesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposDisableAutomatedSecurityFixesParams(packed middleware.Parameters) (params ReposDisableAutomatedSecurityFixesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -56560,9 +64757,21 @@ type ReposDisableLfsForRepoParams struct {
 	Repo  string
 }
 
-func unpackReposDisableLfsForRepoParams(packed map[string]any) (params ReposDisableLfsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposDisableLfsForRepoParams(packed middleware.Parameters) (params ReposDisableLfsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -56638,9 +64847,21 @@ type ReposDisableVulnerabilityAlertsParams struct {
 	Repo  string
 }
 
-func unpackReposDisableVulnerabilityAlertsParams(packed map[string]any) (params ReposDisableVulnerabilityAlertsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposDisableVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposDisableVulnerabilityAlertsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -56717,10 +64938,28 @@ type ReposDownloadTarballArchiveParams struct {
 	Ref   string
 }
 
-func unpackReposDownloadTarballArchiveParams(packed map[string]any) (params ReposDownloadTarballArchiveParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
+func unpackReposDownloadTarballArchiveParams(packed middleware.Parameters) (params ReposDownloadTarballArchiveParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -56828,10 +65067,28 @@ type ReposDownloadZipballArchiveParams struct {
 	Ref   string
 }
 
-func unpackReposDownloadZipballArchiveParams(packed map[string]any) (params ReposDownloadZipballArchiveParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
+func unpackReposDownloadZipballArchiveParams(packed middleware.Parameters) (params ReposDownloadZipballArchiveParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -56938,9 +65195,21 @@ type ReposEnableAutomatedSecurityFixesParams struct {
 	Repo  string
 }
 
-func unpackReposEnableAutomatedSecurityFixesParams(packed map[string]any) (params ReposEnableAutomatedSecurityFixesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposEnableAutomatedSecurityFixesParams(packed middleware.Parameters) (params ReposEnableAutomatedSecurityFixesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -57016,9 +65285,21 @@ type ReposEnableLfsForRepoParams struct {
 	Repo  string
 }
 
-func unpackReposEnableLfsForRepoParams(packed map[string]any) (params ReposEnableLfsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposEnableLfsForRepoParams(packed middleware.Parameters) (params ReposEnableLfsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -57094,9 +65375,21 @@ type ReposEnableVulnerabilityAlertsParams struct {
 	Repo  string
 }
 
-func unpackReposEnableVulnerabilityAlertsParams(packed map[string]any) (params ReposEnableVulnerabilityAlertsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposEnableVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposEnableVulnerabilityAlertsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -57172,9 +65465,21 @@ type ReposGetParams struct {
 	Repo  string
 }
 
-func unpackReposGetParams(packed map[string]any) (params ReposGetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetParams(packed middleware.Parameters) (params ReposGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -57252,10 +65557,28 @@ type ReposGetAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposGetAccessRestrictionsParams(packed map[string]any) (params ReposGetAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetAccessRestrictionsParams(packed middleware.Parameters) (params ReposGetAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -57364,10 +65687,28 @@ type ReposGetAdminBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposGetAdminBranchProtectionParams(packed map[string]any) (params ReposGetAdminBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetAdminBranchProtectionParams(packed middleware.Parameters) (params ReposGetAdminBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -57476,10 +65817,28 @@ type ReposGetAllStatusCheckContextsParams struct {
 	Branch string
 }
 
-func unpackReposGetAllStatusCheckContextsParams(packed map[string]any) (params ReposGetAllStatusCheckContextsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetAllStatusCheckContextsParams(packed middleware.Parameters) (params ReposGetAllStatusCheckContextsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -57590,14 +65949,38 @@ type ReposGetAllTopicsParams struct {
 	PerPage OptInt
 }
 
-func unpackReposGetAllTopicsParams(packed map[string]any) (params ReposGetAllTopicsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackReposGetAllTopicsParams(packed middleware.Parameters) (params ReposGetAllTopicsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -57755,10 +66138,28 @@ type ReposGetAppsWithAccessToProtectedBranchParams struct {
 	Branch string
 }
 
-func unpackReposGetAppsWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetAppsWithAccessToProtectedBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetAppsWithAccessToProtectedBranchParams(packed middleware.Parameters) (params ReposGetAppsWithAccessToProtectedBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -57867,10 +66268,28 @@ type ReposGetAutolinkParams struct {
 	AutolinkID int
 }
 
-func unpackReposGetAutolinkParams(packed map[string]any) (params ReposGetAutolinkParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AutolinkID = packed["autolink_id"].(int)
+func unpackReposGetAutolinkParams(packed middleware.Parameters) (params ReposGetAutolinkParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "autolink_id",
+			In:   "path",
+		}
+		params.AutolinkID = packed[key].(int)
+	}
 	return params
 }
 
@@ -57979,10 +66398,28 @@ type ReposGetBranchParams struct {
 	Branch string
 }
 
-func unpackReposGetBranchParams(packed map[string]any) (params ReposGetBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetBranchParams(packed middleware.Parameters) (params ReposGetBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -58091,10 +66528,28 @@ type ReposGetBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposGetBranchProtectionParams(packed map[string]any) (params ReposGetBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetBranchProtectionParams(packed middleware.Parameters) (params ReposGetBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -58203,11 +66658,29 @@ type ReposGetClonesParams struct {
 	Per OptReposGetClonesPer
 }
 
-func unpackReposGetClonesParams(packed map[string]any) (params ReposGetClonesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per"]; ok {
-		params.Per = v.(OptReposGetClonesPer)
+func unpackReposGetClonesParams(packed middleware.Parameters) (params ReposGetClonesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Per = v.(OptReposGetClonesPer)
+		}
 	}
 	return params
 }
@@ -58339,9 +66812,21 @@ type ReposGetCodeFrequencyStatsParams struct {
 	Repo  string
 }
 
-func unpackReposGetCodeFrequencyStatsParams(packed map[string]any) (params ReposGetCodeFrequencyStatsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetCodeFrequencyStatsParams(packed middleware.Parameters) (params ReposGetCodeFrequencyStatsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -58418,10 +66903,28 @@ type ReposGetCollaboratorPermissionLevelParams struct {
 	Username string
 }
 
-func unpackReposGetCollaboratorPermissionLevelParams(packed map[string]any) (params ReposGetCollaboratorPermissionLevelParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Username = packed["username"].(string)
+func unpackReposGetCollaboratorPermissionLevelParams(packed middleware.Parameters) (params ReposGetCollaboratorPermissionLevelParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -58534,15 +67037,45 @@ type ReposGetCombinedStatusForRefParams struct {
 	Page OptInt
 }
 
-func unpackReposGetCombinedStatusForRefParams(packed map[string]any) (params ReposGetCombinedStatusForRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposGetCombinedStatusForRefParams(packed middleware.Parameters) (params ReposGetCombinedStatusForRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -58735,16 +67268,46 @@ type ReposGetCommitParams struct {
 	Ref string
 }
 
-func unpackReposGetCommitParams(packed map[string]any) (params ReposGetCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackReposGetCommitParams(packed middleware.Parameters) (params ReposGetCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	params.Ref = packed["ref"].(string)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
 	return params
 }
 
@@ -58930,9 +67493,21 @@ type ReposGetCommitActivityStatsParams struct {
 	Repo  string
 }
 
-func unpackReposGetCommitActivityStatsParams(packed map[string]any) (params ReposGetCommitActivityStatsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetCommitActivityStatsParams(packed middleware.Parameters) (params ReposGetCommitActivityStatsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59010,10 +67585,28 @@ type ReposGetCommitCommentParams struct {
 	CommentID int
 }
 
-func unpackReposGetCommitCommentParams(packed map[string]any) (params ReposGetCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReposGetCommitCommentParams(packed middleware.Parameters) (params ReposGetCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -59122,10 +67715,28 @@ type ReposGetCommitSignatureProtectionParams struct {
 	Branch string
 }
 
-func unpackReposGetCommitSignatureProtectionParams(packed map[string]any) (params ReposGetCommitSignatureProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetCommitSignatureProtectionParams(packed middleware.Parameters) (params ReposGetCommitSignatureProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -59232,9 +67843,21 @@ type ReposGetCommunityProfileMetricsParams struct {
 	Repo  string
 }
 
-func unpackReposGetCommunityProfileMetricsParams(packed map[string]any) (params ReposGetCommunityProfileMetricsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetCommunityProfileMetricsParams(packed middleware.Parameters) (params ReposGetCommunityProfileMetricsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59310,9 +67933,21 @@ type ReposGetContributorsStatsParams struct {
 	Repo  string
 }
 
-func unpackReposGetContributorsStatsParams(packed map[string]any) (params ReposGetContributorsStatsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetContributorsStatsParams(packed middleware.Parameters) (params ReposGetContributorsStatsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59390,10 +68025,28 @@ type ReposGetDeployKeyParams struct {
 	KeyID int
 }
 
-func unpackReposGetDeployKeyParams(packed map[string]any) (params ReposGetDeployKeyParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.KeyID = packed["key_id"].(int)
+func unpackReposGetDeployKeyParams(packed middleware.Parameters) (params ReposGetDeployKeyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "key_id",
+			In:   "path",
+		}
+		params.KeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -59502,10 +68155,28 @@ type ReposGetDeploymentParams struct {
 	DeploymentID int
 }
 
-func unpackReposGetDeploymentParams(packed map[string]any) (params ReposGetDeploymentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.DeploymentID = packed["deployment_id"].(int)
+func unpackReposGetDeploymentParams(packed middleware.Parameters) (params ReposGetDeploymentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "deployment_id",
+			In:   "path",
+		}
+		params.DeploymentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -59615,11 +68286,35 @@ type ReposGetDeploymentStatusParams struct {
 	StatusID     int
 }
 
-func unpackReposGetDeploymentStatusParams(packed map[string]any) (params ReposGetDeploymentStatusParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.DeploymentID = packed["deployment_id"].(int)
-	params.StatusID = packed["status_id"].(int)
+func unpackReposGetDeploymentStatusParams(packed middleware.Parameters) (params ReposGetDeploymentStatusParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "deployment_id",
+			In:   "path",
+		}
+		params.DeploymentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "status_id",
+			In:   "path",
+		}
+		params.StatusID = packed[key].(int)
+	}
 	return params
 }
 
@@ -59757,9 +68452,21 @@ type ReposGetLatestPagesBuildParams struct {
 	Repo  string
 }
 
-func unpackReposGetLatestPagesBuildParams(packed map[string]any) (params ReposGetLatestPagesBuildParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetLatestPagesBuildParams(packed middleware.Parameters) (params ReposGetLatestPagesBuildParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59835,9 +68542,21 @@ type ReposGetLatestReleaseParams struct {
 	Repo  string
 }
 
-func unpackReposGetLatestReleaseParams(packed map[string]any) (params ReposGetLatestReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetLatestReleaseParams(packed middleware.Parameters) (params ReposGetLatestReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59913,9 +68632,21 @@ type ReposGetPagesParams struct {
 	Repo  string
 }
 
-func unpackReposGetPagesParams(packed map[string]any) (params ReposGetPagesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetPagesParams(packed middleware.Parameters) (params ReposGetPagesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -59992,10 +68723,28 @@ type ReposGetPagesBuildParams struct {
 	BuildID int
 }
 
-func unpackReposGetPagesBuildParams(packed map[string]any) (params ReposGetPagesBuildParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.BuildID = packed["build_id"].(int)
+func unpackReposGetPagesBuildParams(packed middleware.Parameters) (params ReposGetPagesBuildParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "build_id",
+			In:   "path",
+		}
+		params.BuildID = packed[key].(int)
+	}
 	return params
 }
 
@@ -60102,9 +68851,21 @@ type ReposGetPagesHealthCheckParams struct {
 	Repo  string
 }
 
-func unpackReposGetPagesHealthCheckParams(packed map[string]any) (params ReposGetPagesHealthCheckParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetPagesHealthCheckParams(packed middleware.Parameters) (params ReposGetPagesHealthCheckParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -60180,9 +68941,21 @@ type ReposGetParticipationStatsParams struct {
 	Repo  string
 }
 
-func unpackReposGetParticipationStatsParams(packed map[string]any) (params ReposGetParticipationStatsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetParticipationStatsParams(packed middleware.Parameters) (params ReposGetParticipationStatsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -60260,10 +69033,28 @@ type ReposGetPullRequestReviewProtectionParams struct {
 	Branch string
 }
 
-func unpackReposGetPullRequestReviewProtectionParams(packed map[string]any) (params ReposGetPullRequestReviewProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetPullRequestReviewProtectionParams(packed middleware.Parameters) (params ReposGetPullRequestReviewProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -60370,9 +69161,21 @@ type ReposGetPunchCardStatsParams struct {
 	Repo  string
 }
 
-func unpackReposGetPunchCardStatsParams(packed map[string]any) (params ReposGetPunchCardStatsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetPunchCardStatsParams(packed middleware.Parameters) (params ReposGetPunchCardStatsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -60450,11 +69253,29 @@ type ReposGetReadmeParams struct {
 	Ref OptString
 }
 
-func unpackReposGetReadmeParams(packed map[string]any) (params ReposGetReadmeParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptString)
+func unpackReposGetReadmeParams(packed middleware.Parameters) (params ReposGetReadmeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptString)
+		}
 	}
 	return params
 }
@@ -60570,12 +69391,36 @@ type ReposGetReadmeInDirectoryParams struct {
 	Ref OptString
 }
 
-func unpackReposGetReadmeInDirectoryParams(packed map[string]any) (params ReposGetReadmeInDirectoryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Dir = packed["dir"].(string)
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptString)
+func unpackReposGetReadmeInDirectoryParams(packed middleware.Parameters) (params ReposGetReadmeInDirectoryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "dir",
+			In:   "path",
+		}
+		params.Dir = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptString)
+		}
 	}
 	return params
 }
@@ -60720,10 +69565,28 @@ type ReposGetReleaseParams struct {
 	ReleaseID int
 }
 
-func unpackReposGetReleaseParams(packed map[string]any) (params ReposGetReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ReleaseID = packed["release_id"].(int)
+func unpackReposGetReleaseParams(packed middleware.Parameters) (params ReposGetReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
 	return params
 }
 
@@ -60832,10 +69695,28 @@ type ReposGetReleaseAssetParams struct {
 	AssetID int
 }
 
-func unpackReposGetReleaseAssetParams(packed map[string]any) (params ReposGetReleaseAssetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AssetID = packed["asset_id"].(int)
+func unpackReposGetReleaseAssetParams(packed middleware.Parameters) (params ReposGetReleaseAssetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "asset_id",
+			In:   "path",
+		}
+		params.AssetID = packed[key].(int)
+	}
 	return params
 }
 
@@ -60944,10 +69825,28 @@ type ReposGetReleaseByTagParams struct {
 	Tag string
 }
 
-func unpackReposGetReleaseByTagParams(packed map[string]any) (params ReposGetReleaseByTagParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Tag = packed["tag"].(string)
+func unpackReposGetReleaseByTagParams(packed middleware.Parameters) (params ReposGetReleaseByTagParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tag",
+			In:   "path",
+		}
+		params.Tag = packed[key].(string)
+	}
 	return params
 }
 
@@ -61056,10 +69955,28 @@ type ReposGetStatusChecksProtectionParams struct {
 	Branch string
 }
 
-func unpackReposGetStatusChecksProtectionParams(packed map[string]any) (params ReposGetStatusChecksProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetStatusChecksProtectionParams(packed middleware.Parameters) (params ReposGetStatusChecksProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -61168,10 +70085,28 @@ type ReposGetTeamsWithAccessToProtectedBranchParams struct {
 	Branch string
 }
 
-func unpackReposGetTeamsWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetTeamsWithAccessToProtectedBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetTeamsWithAccessToProtectedBranchParams(packed middleware.Parameters) (params ReposGetTeamsWithAccessToProtectedBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -61278,9 +70213,21 @@ type ReposGetTopPathsParams struct {
 	Repo  string
 }
 
-func unpackReposGetTopPathsParams(packed map[string]any) (params ReposGetTopPathsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetTopPathsParams(packed middleware.Parameters) (params ReposGetTopPathsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -61356,9 +70303,21 @@ type ReposGetTopReferrersParams struct {
 	Repo  string
 }
 
-func unpackReposGetTopReferrersParams(packed map[string]any) (params ReposGetTopReferrersParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposGetTopReferrersParams(packed middleware.Parameters) (params ReposGetTopReferrersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -61436,10 +70395,28 @@ type ReposGetUsersWithAccessToProtectedBranchParams struct {
 	Branch string
 }
 
-func unpackReposGetUsersWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetUsersWithAccessToProtectedBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposGetUsersWithAccessToProtectedBranchParams(packed middleware.Parameters) (params ReposGetUsersWithAccessToProtectedBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -61548,11 +70525,29 @@ type ReposGetViewsParams struct {
 	Per OptReposGetViewsPer
 }
 
-func unpackReposGetViewsParams(packed map[string]any) (params ReposGetViewsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per"]; ok {
-		params.Per = v.(OptReposGetViewsPer)
+func unpackReposGetViewsParams(packed middleware.Parameters) (params ReposGetViewsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Per = v.(OptReposGetViewsPer)
+		}
 	}
 	return params
 }
@@ -61685,10 +70680,28 @@ type ReposGetWebhookParams struct {
 	HookID int
 }
 
-func unpackReposGetWebhookParams(packed map[string]any) (params ReposGetWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposGetWebhookParams(packed middleware.Parameters) (params ReposGetWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -61796,10 +70809,28 @@ type ReposGetWebhookConfigForRepoParams struct {
 	HookID int
 }
 
-func unpackReposGetWebhookConfigForRepoParams(packed map[string]any) (params ReposGetWebhookConfigForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposGetWebhookConfigForRepoParams(packed middleware.Parameters) (params ReposGetWebhookConfigForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -61908,11 +70939,35 @@ type ReposGetWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackReposGetWebhookDeliveryParams(packed map[string]any) (params ReposGetWebhookDeliveryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackReposGetWebhookDeliveryParams(packed middleware.Parameters) (params ReposGetWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -62052,11 +71107,29 @@ type ReposListAutolinksParams struct {
 	Page OptInt
 }
 
-func unpackReposListAutolinksParams(packed map[string]any) (params ReposListAutolinksParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackReposListAutolinksParams(packed middleware.Parameters) (params ReposListAutolinksParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -62180,17 +71253,47 @@ type ReposListBranchesParams struct {
 	Page OptInt
 }
 
-func unpackReposListBranchesParams(packed map[string]any) (params ReposListBranchesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["protected"]; ok {
-		params.Protected = v.(OptBool)
+func unpackReposListBranchesParams(packed middleware.Parameters) (params ReposListBranchesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "protected",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Protected = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -62382,10 +71485,28 @@ type ReposListBranchesForHeadCommitParams struct {
 	CommitSha string
 }
 
-func unpackReposListBranchesForHeadCommitParams(packed map[string]any) (params ReposListBranchesForHeadCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommitSha = packed["commit_sha"].(string)
+func unpackReposListBranchesForHeadCommitParams(packed middleware.Parameters) (params ReposListBranchesForHeadCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "commit_sha",
+			In:   "path",
+		}
+		params.CommitSha = packed[key].(string)
+	}
 	return params
 }
 
@@ -62502,17 +71623,47 @@ type ReposListCollaboratorsParams struct {
 	Page OptInt
 }
 
-func unpackReposListCollaboratorsParams(packed map[string]any) (params ReposListCollaboratorsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation = v.(OptReposListCollaboratorsAffiliation)
+func unpackReposListCollaboratorsParams(packed middleware.Parameters) (params ReposListCollaboratorsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "affiliation",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Affiliation = v.(OptReposListCollaboratorsAffiliation)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -62728,15 +71879,45 @@ type ReposListCommentsForCommitParams struct {
 	Page OptInt
 }
 
-func unpackReposListCommentsForCommitParams(packed map[string]any) (params ReposListCommentsForCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommitSha = packed["commit_sha"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListCommentsForCommitParams(packed middleware.Parameters) (params ReposListCommentsForCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "commit_sha",
+			In:   "path",
+		}
+		params.CommitSha = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -62927,14 +72108,38 @@ type ReposListCommitCommentsForRepoParams struct {
 	Page OptInt
 }
 
-func unpackReposListCommitCommentsForRepoParams(packed map[string]any) (params ReposListCommitCommentsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListCommitCommentsForRepoParams(packed middleware.Parameters) (params ReposListCommitCommentsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -63096,15 +72301,45 @@ type ReposListCommitStatusesForRefParams struct {
 	Page OptInt
 }
 
-func unpackReposListCommitStatusesForRefParams(packed map[string]any) (params ReposListCommitStatusesForRefParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Ref = packed["ref"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListCommitStatusesForRefParams(packed middleware.Parameters) (params ReposListCommitStatusesForRefParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "path",
+		}
+		params.Ref = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -63308,29 +72543,83 @@ type ReposListCommitsParams struct {
 	Page OptInt
 }
 
-func unpackReposListCommitsParams(packed map[string]any) (params ReposListCommitsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["sha"]; ok {
-		params.Sha = v.(OptString)
+func unpackReposListCommitsParams(packed middleware.Parameters) (params ReposListCommitsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["path"]; ok {
-		params.Path = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["author"]; ok {
-		params.Author = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "sha",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sha = v.(OptString)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
 	}
-	if v, ok := packed["until"]; ok {
-		params.Until = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "author",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Author = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "until",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Until = v.(OptDateTime)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -63662,17 +72951,47 @@ type ReposListContributorsParams struct {
 	Page OptInt
 }
 
-func unpackReposListContributorsParams(packed map[string]any) (params ReposListContributorsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["anon"]; ok {
-		params.Anon = v.(OptString)
+func unpackReposListContributorsParams(packed middleware.Parameters) (params ReposListContributorsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "anon",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Anon = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -63866,14 +73185,38 @@ type ReposListDeployKeysParams struct {
 	Page OptInt
 }
 
-func unpackReposListDeployKeysParams(packed map[string]any) (params ReposListDeployKeysParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListDeployKeysParams(packed middleware.Parameters) (params ReposListDeployKeysParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -64035,15 +73378,45 @@ type ReposListDeploymentStatusesParams struct {
 	Page OptInt
 }
 
-func unpackReposListDeploymentStatusesParams(packed map[string]any) (params ReposListDeploymentStatusesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.DeploymentID = packed["deployment_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListDeploymentStatusesParams(packed middleware.Parameters) (params ReposListDeploymentStatusesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "deployment_id",
+			In:   "path",
+		}
+		params.DeploymentID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -64242,26 +73615,74 @@ type ReposListDeploymentsParams struct {
 	Page OptInt
 }
 
-func unpackReposListDeploymentsParams(packed map[string]any) (params ReposListDeploymentsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["sha"]; ok {
-		params.Sha = v.(OptString)
+func unpackReposListDeploymentsParams(packed middleware.Parameters) (params ReposListDeploymentsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["task"]; ok {
-		params.Task = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "sha",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sha = v.(OptString)
+		}
 	}
-	if v, ok := packed["environment"]; ok {
-		params.Environment = v.(OptNilString)
+	{
+		key := middleware.ParameterKey{
+			Name: "ref",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ref = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "task",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Task = v.(OptString)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "environment",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Environment = v.(OptNilString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -64599,33 +74020,87 @@ type ReposListForAuthenticatedUserParams struct {
 	Before OptDateTime
 }
 
-func unpackReposListForAuthenticatedUserParams(packed map[string]any) (params ReposListForAuthenticatedUserParams) {
-	if v, ok := packed["visibility"]; ok {
-		params.Visibility = v.(OptReposListForAuthenticatedUserVisibility)
+func unpackReposListForAuthenticatedUserParams(packed middleware.Parameters) (params ReposListForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "visibility",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Visibility = v.(OptReposListForAuthenticatedUserVisibility)
+		}
 	}
-	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "affiliation",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Affiliation = v.(OptString)
+		}
 	}
-	if v, ok := packed["type"]; ok {
-		params.Type = v.(OptReposListForAuthenticatedUserType)
+	{
+		key := middleware.ParameterKey{
+			Name: "type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Type = v.(OptReposListForAuthenticatedUserType)
+		}
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptReposListForAuthenticatedUserSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptReposListForAuthenticatedUserSort)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptReposListForAuthenticatedUserDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptReposListForAuthenticatedUserDirection)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptDateTime)
+		}
 	}
-	if v, ok := packed["before"]; ok {
-		params.Before = v.(OptDateTime)
+	{
+		key := middleware.ParameterKey{
+			Name: "before",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Before = v.(OptDateTime)
+		}
 	}
 	return params
 }
@@ -65051,22 +74526,58 @@ type ReposListForOrgParams struct {
 	Page OptInt
 }
 
-func unpackReposListForOrgParams(packed map[string]any) (params ReposListForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["type"]; ok {
-		params.Type = v.(OptReposListForOrgType)
+func unpackReposListForOrgParams(packed middleware.Parameters) (params ReposListForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptReposListForOrgSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Type = v.(OptReposListForOrgType)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptReposListForOrgDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptReposListForOrgSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptReposListForOrgDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -65352,22 +74863,58 @@ type ReposListForUserParams struct {
 	Page OptInt
 }
 
-func unpackReposListForUserParams(packed map[string]any) (params ReposListForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["type"]; ok {
-		params.Type = v.(OptReposListForUserType)
+func unpackReposListForUserParams(packed middleware.Parameters) (params ReposListForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptReposListForUserSort)
+	{
+		key := middleware.ParameterKey{
+			Name: "type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Type = v.(OptReposListForUserType)
+		}
 	}
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptReposListForUserDirection)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptReposListForUserSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptReposListForUserDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -65655,17 +75202,47 @@ type ReposListForksParams struct {
 	Page OptInt
 }
 
-func unpackReposListForksParams(packed map[string]any) (params ReposListForksParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptReposListForksSort)
+func unpackReposListForksParams(packed middleware.Parameters) (params ReposListForksParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptReposListForksSort)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -65879,14 +75456,38 @@ type ReposListInvitationsParams struct {
 	Page OptInt
 }
 
-func unpackReposListInvitationsParams(packed map[string]any) (params ReposListInvitationsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListInvitationsParams(packed middleware.Parameters) (params ReposListInvitationsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66044,12 +75645,24 @@ type ReposListInvitationsForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackReposListInvitationsForAuthenticatedUserParams(packed map[string]any) (params ReposListInvitationsForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListInvitationsForAuthenticatedUserParams(packed middleware.Parameters) (params ReposListInvitationsForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66143,9 +75756,21 @@ type ReposListLanguagesParams struct {
 	Repo  string
 }
 
-func unpackReposListLanguagesParams(packed map[string]any) (params ReposListLanguagesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposListLanguagesParams(packed middleware.Parameters) (params ReposListLanguagesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -66225,14 +75850,38 @@ type ReposListPagesBuildsParams struct {
 	Page OptInt
 }
 
-func unpackReposListPagesBuildsParams(packed map[string]any) (params ReposListPagesBuildsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListPagesBuildsParams(packed middleware.Parameters) (params ReposListPagesBuildsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66388,9 +76037,15 @@ type ReposListPublicParams struct {
 	Since OptInt
 }
 
-func unpackReposListPublicParams(packed map[string]any) (params ReposListPublicParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptInt)
+func unpackReposListPublicParams(packed middleware.Parameters) (params ReposListPublicParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66446,15 +76101,45 @@ type ReposListPullRequestsAssociatedWithCommitParams struct {
 	Page OptInt
 }
 
-func unpackReposListPullRequestsAssociatedWithCommitParams(packed map[string]any) (params ReposListPullRequestsAssociatedWithCommitParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommitSha = packed["commit_sha"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListPullRequestsAssociatedWithCommitParams(packed middleware.Parameters) (params ReposListPullRequestsAssociatedWithCommitParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "commit_sha",
+			In:   "path",
+		}
+		params.CommitSha = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66647,15 +76332,45 @@ type ReposListReleaseAssetsParams struct {
 	Page OptInt
 }
 
-func unpackReposListReleaseAssetsParams(packed map[string]any) (params ReposListReleaseAssetsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ReleaseID = packed["release_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListReleaseAssetsParams(packed middleware.Parameters) (params ReposListReleaseAssetsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -66846,14 +76561,38 @@ type ReposListReleasesParams struct {
 	Page OptInt
 }
 
-func unpackReposListReleasesParams(packed map[string]any) (params ReposListReleasesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListReleasesParams(packed middleware.Parameters) (params ReposListReleasesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -67013,14 +76752,38 @@ type ReposListTagsParams struct {
 	Page OptInt
 }
 
-func unpackReposListTagsParams(packed map[string]any) (params ReposListTagsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListTagsParams(packed middleware.Parameters) (params ReposListTagsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -67180,14 +76943,38 @@ type ReposListTeamsParams struct {
 	Page OptInt
 }
 
-func unpackReposListTeamsParams(packed map[string]any) (params ReposListTeamsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListTeamsParams(packed middleware.Parameters) (params ReposListTeamsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -67349,15 +77136,45 @@ type ReposListWebhookDeliveriesParams struct {
 	Cursor OptString
 }
 
-func unpackReposListWebhookDeliveriesParams(packed map[string]any) (params ReposListWebhookDeliveriesParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListWebhookDeliveriesParams(packed middleware.Parameters) (params ReposListWebhookDeliveriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["cursor"]; ok {
-		params.Cursor = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "cursor",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Cursor = v.(OptString)
+		}
 	}
 	return params
 }
@@ -67543,14 +77360,38 @@ type ReposListWebhooksParams struct {
 	Page OptInt
 }
 
-func unpackReposListWebhooksParams(packed map[string]any) (params ReposListWebhooksParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackReposListWebhooksParams(packed middleware.Parameters) (params ReposListWebhooksParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -67706,9 +77547,21 @@ type ReposMergeParams struct {
 	Repo  string
 }
 
-func unpackReposMergeParams(packed map[string]any) (params ReposMergeParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposMergeParams(packed middleware.Parameters) (params ReposMergeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -67784,9 +77637,21 @@ type ReposMergeUpstreamParams struct {
 	Repo  string
 }
 
-func unpackReposMergeUpstreamParams(packed map[string]any) (params ReposMergeUpstreamParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposMergeUpstreamParams(packed middleware.Parameters) (params ReposMergeUpstreamParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -67863,10 +77728,28 @@ type ReposPingWebhookParams struct {
 	HookID int
 }
 
-func unpackReposPingWebhookParams(packed map[string]any) (params ReposPingWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposPingWebhookParams(packed middleware.Parameters) (params ReposPingWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -67975,11 +77858,35 @@ type ReposRedeliverWebhookDeliveryParams struct {
 	DeliveryID int
 }
 
-func unpackReposRedeliverWebhookDeliveryParams(packed map[string]any) (params ReposRedeliverWebhookDeliveryParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
-	params.DeliveryID = packed["delivery_id"].(int)
+func unpackReposRedeliverWebhookDeliveryParams(packed middleware.Parameters) (params ReposRedeliverWebhookDeliveryParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "delivery_id",
+			In:   "path",
+		}
+		params.DeliveryID = packed[key].(int)
+	}
 	return params
 }
 
@@ -68119,10 +78026,28 @@ type ReposRemoveAppAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposRemoveAppAccessRestrictionsParams(packed map[string]any) (params ReposRemoveAppAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRemoveAppAccessRestrictionsParams(packed middleware.Parameters) (params ReposRemoveAppAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68230,10 +78155,28 @@ type ReposRemoveCollaboratorParams struct {
 	Username string
 }
 
-func unpackReposRemoveCollaboratorParams(packed map[string]any) (params ReposRemoveCollaboratorParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Username = packed["username"].(string)
+func unpackReposRemoveCollaboratorParams(packed middleware.Parameters) (params ReposRemoveCollaboratorParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -68342,10 +78285,28 @@ type ReposRemoveStatusCheckContextsParams struct {
 	Branch string
 }
 
-func unpackReposRemoveStatusCheckContextsParams(packed map[string]any) (params ReposRemoveStatusCheckContextsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRemoveStatusCheckContextsParams(packed middleware.Parameters) (params ReposRemoveStatusCheckContextsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68454,10 +78415,28 @@ type ReposRemoveStatusCheckProtectionParams struct {
 	Branch string
 }
 
-func unpackReposRemoveStatusCheckProtectionParams(packed map[string]any) (params ReposRemoveStatusCheckProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRemoveStatusCheckProtectionParams(packed middleware.Parameters) (params ReposRemoveStatusCheckProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68566,10 +78545,28 @@ type ReposRemoveTeamAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposRemoveTeamAccessRestrictionsParams(packed map[string]any) (params ReposRemoveTeamAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRemoveTeamAccessRestrictionsParams(packed middleware.Parameters) (params ReposRemoveTeamAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68678,10 +78675,28 @@ type ReposRemoveUserAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposRemoveUserAccessRestrictionsParams(packed map[string]any) (params ReposRemoveUserAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRemoveUserAccessRestrictionsParams(packed middleware.Parameters) (params ReposRemoveUserAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68790,10 +78805,28 @@ type ReposRenameBranchParams struct {
 	Branch string
 }
 
-func unpackReposRenameBranchParams(packed map[string]any) (params ReposRenameBranchParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposRenameBranchParams(packed middleware.Parameters) (params ReposRenameBranchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -68900,9 +78933,21 @@ type ReposReplaceAllTopicsParams struct {
 	Repo  string
 }
 
-func unpackReposReplaceAllTopicsParams(packed map[string]any) (params ReposReplaceAllTopicsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposReplaceAllTopicsParams(packed middleware.Parameters) (params ReposReplaceAllTopicsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -68978,9 +79023,21 @@ type ReposRequestPagesBuildParams struct {
 	Repo  string
 }
 
-func unpackReposRequestPagesBuildParams(packed map[string]any) (params ReposRequestPagesBuildParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposRequestPagesBuildParams(packed middleware.Parameters) (params ReposRequestPagesBuildParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -69058,10 +79115,28 @@ type ReposSetAdminBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposSetAdminBranchProtectionParams(packed map[string]any) (params ReposSetAdminBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposSetAdminBranchProtectionParams(packed middleware.Parameters) (params ReposSetAdminBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69170,10 +79245,28 @@ type ReposSetAppAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposSetAppAccessRestrictionsParams(packed map[string]any) (params ReposSetAppAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposSetAppAccessRestrictionsParams(packed middleware.Parameters) (params ReposSetAppAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69282,10 +79375,28 @@ type ReposSetStatusCheckContextsParams struct {
 	Branch string
 }
 
-func unpackReposSetStatusCheckContextsParams(packed map[string]any) (params ReposSetStatusCheckContextsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposSetStatusCheckContextsParams(packed middleware.Parameters) (params ReposSetStatusCheckContextsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69394,10 +79505,28 @@ type ReposSetTeamAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposSetTeamAccessRestrictionsParams(packed map[string]any) (params ReposSetTeamAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposSetTeamAccessRestrictionsParams(packed middleware.Parameters) (params ReposSetTeamAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69506,10 +79635,28 @@ type ReposSetUserAccessRestrictionsParams struct {
 	Branch string
 }
 
-func unpackReposSetUserAccessRestrictionsParams(packed map[string]any) (params ReposSetUserAccessRestrictionsParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposSetUserAccessRestrictionsParams(packed middleware.Parameters) (params ReposSetUserAccessRestrictionsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69617,10 +79764,28 @@ type ReposTestPushWebhookParams struct {
 	HookID int
 }
 
-func unpackReposTestPushWebhookParams(packed map[string]any) (params ReposTestPushWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposTestPushWebhookParams(packed middleware.Parameters) (params ReposTestPushWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -69727,9 +79892,21 @@ type ReposTransferParams struct {
 	Repo  string
 }
 
-func unpackReposTransferParams(packed map[string]any) (params ReposTransferParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposTransferParams(packed middleware.Parameters) (params ReposTransferParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -69805,9 +79982,21 @@ type ReposUpdateParams struct {
 	Repo  string
 }
 
-func unpackReposUpdateParams(packed map[string]any) (params ReposUpdateParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackReposUpdateParams(packed middleware.Parameters) (params ReposUpdateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -69885,10 +80074,28 @@ type ReposUpdateBranchProtectionParams struct {
 	Branch string
 }
 
-func unpackReposUpdateBranchProtectionParams(packed map[string]any) (params ReposUpdateBranchProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposUpdateBranchProtectionParams(packed middleware.Parameters) (params ReposUpdateBranchProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -69997,10 +80204,28 @@ type ReposUpdateCommitCommentParams struct {
 	CommentID int
 }
 
-func unpackReposUpdateCommitCommentParams(packed map[string]any) (params ReposUpdateCommitCommentParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.CommentID = packed["comment_id"].(int)
+func unpackReposUpdateCommitCommentParams(packed middleware.Parameters) (params ReposUpdateCommitCommentParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_id",
+			In:   "path",
+		}
+		params.CommentID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70109,10 +80334,28 @@ type ReposUpdateInvitationParams struct {
 	InvitationID int
 }
 
-func unpackReposUpdateInvitationParams(packed map[string]any) (params ReposUpdateInvitationParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.InvitationID = packed["invitation_id"].(int)
+func unpackReposUpdateInvitationParams(packed middleware.Parameters) (params ReposUpdateInvitationParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "invitation_id",
+			In:   "path",
+		}
+		params.InvitationID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70221,10 +80464,28 @@ type ReposUpdatePullRequestReviewProtectionParams struct {
 	Branch string
 }
 
-func unpackReposUpdatePullRequestReviewProtectionParams(packed map[string]any) (params ReposUpdatePullRequestReviewProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposUpdatePullRequestReviewProtectionParams(packed middleware.Parameters) (params ReposUpdatePullRequestReviewProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -70333,10 +80594,28 @@ type ReposUpdateReleaseParams struct {
 	ReleaseID int
 }
 
-func unpackReposUpdateReleaseParams(packed map[string]any) (params ReposUpdateReleaseParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.ReleaseID = packed["release_id"].(int)
+func unpackReposUpdateReleaseParams(packed middleware.Parameters) (params ReposUpdateReleaseParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "release_id",
+			In:   "path",
+		}
+		params.ReleaseID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70445,10 +80724,28 @@ type ReposUpdateReleaseAssetParams struct {
 	AssetID int
 }
 
-func unpackReposUpdateReleaseAssetParams(packed map[string]any) (params ReposUpdateReleaseAssetParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AssetID = packed["asset_id"].(int)
+func unpackReposUpdateReleaseAssetParams(packed middleware.Parameters) (params ReposUpdateReleaseAssetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "asset_id",
+			In:   "path",
+		}
+		params.AssetID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70557,10 +80854,28 @@ type ReposUpdateStatusCheckProtectionParams struct {
 	Branch string
 }
 
-func unpackReposUpdateStatusCheckProtectionParams(packed map[string]any) (params ReposUpdateStatusCheckProtectionParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.Branch = packed["branch"].(string)
+func unpackReposUpdateStatusCheckProtectionParams(packed middleware.Parameters) (params ReposUpdateStatusCheckProtectionParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "branch",
+			In:   "path",
+		}
+		params.Branch = packed[key].(string)
+	}
 	return params
 }
 
@@ -70668,10 +80983,28 @@ type ReposUpdateWebhookParams struct {
 	HookID int
 }
 
-func unpackReposUpdateWebhookParams(packed map[string]any) (params ReposUpdateWebhookParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposUpdateWebhookParams(packed middleware.Parameters) (params ReposUpdateWebhookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70779,10 +81112,28 @@ type ReposUpdateWebhookConfigForRepoParams struct {
 	HookID int
 }
 
-func unpackReposUpdateWebhookConfigForRepoParams(packed map[string]any) (params ReposUpdateWebhookConfigForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.HookID = packed["hook_id"].(int)
+func unpackReposUpdateWebhookConfigForRepoParams(packed middleware.Parameters) (params ReposUpdateWebhookConfigForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "hook_id",
+			In:   "path",
+		}
+		params.HookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -70890,9 +81241,21 @@ type ScimDeleteUserFromOrgParams struct {
 	ScimUserID string
 }
 
-func unpackScimDeleteUserFromOrgParams(packed map[string]any) (params ScimDeleteUserFromOrgParams) {
-	params.Org = packed["org"].(string)
-	params.ScimUserID = packed["scim_user_id"].(string)
+func unpackScimDeleteUserFromOrgParams(packed middleware.Parameters) (params ScimDeleteUserFromOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "scim_user_id",
+			In:   "path",
+		}
+		params.ScimUserID = packed[key].(string)
+	}
 	return params
 }
 
@@ -70983,19 +81346,49 @@ type SearchCodeParams struct {
 	Page OptInt
 }
 
-func unpackSearchCodeParams(packed map[string]any) (params SearchCodeParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchCodeSort)
+func unpackSearchCodeParams(packed middleware.Parameters) (params SearchCodeParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchCodeOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchCodeSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchCodeOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -71235,19 +81628,49 @@ type SearchCommitsParams struct {
 	Page OptInt
 }
 
-func unpackSearchCommitsParams(packed map[string]any) (params SearchCommitsParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchCommitsSort)
+func unpackSearchCommitsParams(packed middleware.Parameters) (params SearchCommitsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchCommitsOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchCommitsSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchCommitsOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -71490,19 +81913,49 @@ type SearchIssuesAndPullRequestsParams struct {
 	Page OptInt
 }
 
-func unpackSearchIssuesAndPullRequestsParams(packed map[string]any) (params SearchIssuesAndPullRequestsParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchIssuesAndPullRequestsSort)
+func unpackSearchIssuesAndPullRequestsParams(packed middleware.Parameters) (params SearchIssuesAndPullRequestsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchIssuesAndPullRequestsOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchIssuesAndPullRequestsSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchIssuesAndPullRequestsOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -71742,20 +82195,56 @@ type SearchLabelsParams struct {
 	Page OptInt
 }
 
-func unpackSearchLabelsParams(packed map[string]any) (params SearchLabelsParams) {
-	params.RepositoryID = packed["repository_id"].(int)
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchLabelsSort)
+func unpackSearchLabelsParams(packed middleware.Parameters) (params SearchLabelsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "repository_id",
+			In:   "query",
+		}
+		params.RepositoryID = packed[key].(int)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchLabelsOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchLabelsSort)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchLabelsOrder)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -72026,19 +82515,49 @@ type SearchReposParams struct {
 	Page OptInt
 }
 
-func unpackSearchReposParams(packed map[string]any) (params SearchReposParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchReposSort)
+func unpackSearchReposParams(packed middleware.Parameters) (params SearchReposParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchReposOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchReposSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchReposOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -72271,13 +82790,31 @@ type SearchTopicsParams struct {
 	Page OptInt
 }
 
-func unpackSearchTopicsParams(packed map[string]any) (params SearchTopicsParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackSearchTopicsParams(packed middleware.Parameters) (params SearchTopicsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -72415,19 +82952,49 @@ type SearchUsersParams struct {
 	Page OptInt
 }
 
-func unpackSearchUsersParams(packed map[string]any) (params SearchUsersParams) {
-	params.Q = packed["q"].(string)
-	if v, ok := packed["sort"]; ok {
-		params.Sort = v.(OptSearchUsersSort)
+func unpackSearchUsersParams(packed middleware.Parameters) (params SearchUsersParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "q",
+			In:   "query",
+		}
+		params.Q = packed[key].(string)
 	}
-	if v, ok := packed["order"]; ok {
-		params.Order = v.(OptSearchUsersOrder)
+	{
+		key := middleware.ParameterKey{
+			Name: "sort",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Sort = v.(OptSearchUsersSort)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "order",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Order = v.(OptSearchUsersOrder)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -72657,10 +83224,28 @@ type SecretScanningGetAlertParams struct {
 	AlertNumber AlertNumber
 }
 
-func unpackSecretScanningGetAlertParams(packed map[string]any) (params SecretScanningGetAlertParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AlertNumber = packed["alert_number"].(AlertNumber)
+func unpackSecretScanningGetAlertParams(packed middleware.Parameters) (params SecretScanningGetAlertParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alert_number",
+			In:   "path",
+		}
+		params.AlertNumber = packed[key].(AlertNumber)
+	}
 	return params
 }
 
@@ -72781,19 +83366,49 @@ type SecretScanningListAlertsForOrgParams struct {
 	PerPage OptInt
 }
 
-func unpackSecretScanningListAlertsForOrgParams(packed map[string]any) (params SecretScanningListAlertsForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptSecretScanningListAlertsForOrgState)
+func unpackSecretScanningListAlertsForOrgParams(packed middleware.Parameters) (params SecretScanningListAlertsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["secret_type"]; ok {
-		params.SecretType = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptSecretScanningListAlertsForOrgState)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SecretType = v.(OptString)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -73011,20 +83626,56 @@ type SecretScanningListAlertsForRepoParams struct {
 	PerPage OptInt
 }
 
-func unpackSecretScanningListAlertsForRepoParams(packed map[string]any) (params SecretScanningListAlertsForRepoParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	if v, ok := packed["state"]; ok {
-		params.State = v.(OptSecretScanningListAlertsForRepoState)
+func unpackSecretScanningListAlertsForRepoParams(packed middleware.Parameters) (params SecretScanningListAlertsForRepoParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
 	}
-	if v, ok := packed["secret_type"]; ok {
-		params.SecretType = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "state",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.State = v.(OptSecretScanningListAlertsForRepoState)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "secret_type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SecretType = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -73267,10 +83918,28 @@ type SecretScanningUpdateAlertParams struct {
 	AlertNumber AlertNumber
 }
 
-func unpackSecretScanningUpdateAlertParams(packed map[string]any) (params SecretScanningUpdateAlertParams) {
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
-	params.AlertNumber = packed["alert_number"].(AlertNumber)
+func unpackSecretScanningUpdateAlertParams(packed middleware.Parameters) (params SecretScanningUpdateAlertParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alert_number",
+			In:   "path",
+		}
+		params.AlertNumber = packed[key].(AlertNumber)
+	}
 	return params
 }
 
@@ -73384,9 +84053,21 @@ type TeamsAddMemberLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsAddMemberLegacyParams(packed map[string]any) (params TeamsAddMemberLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsAddMemberLegacyParams(packed middleware.Parameters) (params TeamsAddMemberLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -73464,10 +84145,28 @@ type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
 	Username string
 }
 
-func unpackTeamsAddOrUpdateMembershipForUserInOrgParams(packed map[string]any) (params TeamsAddOrUpdateMembershipForUserInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Username = packed["username"].(string)
+func unpackTeamsAddOrUpdateMembershipForUserInOrgParams(packed middleware.Parameters) (params TeamsAddOrUpdateMembershipForUserInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -73574,9 +84273,21 @@ type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsAddOrUpdateMembershipForUserLegacyParams(packed map[string]any) (params TeamsAddOrUpdateMembershipForUserLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsAddOrUpdateMembershipForUserLegacyParams(packed middleware.Parameters) (params TeamsAddOrUpdateMembershipForUserLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -73654,10 +84365,28 @@ type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
 	ProjectID int
 }
 
-func unpackTeamsAddOrUpdateProjectPermissionsInOrgParams(packed map[string]any) (params TeamsAddOrUpdateProjectPermissionsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsAddOrUpdateProjectPermissionsInOrgParams(packed middleware.Parameters) (params TeamsAddOrUpdateProjectPermissionsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -73764,9 +84493,21 @@ type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
 	ProjectID int
 }
 
-func unpackTeamsAddOrUpdateProjectPermissionsLegacyParams(packed map[string]any) (params TeamsAddOrUpdateProjectPermissionsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsAddOrUpdateProjectPermissionsLegacyParams(packed middleware.Parameters) (params TeamsAddOrUpdateProjectPermissionsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -73845,11 +84586,35 @@ type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
 	Repo     string
 }
 
-func unpackTeamsAddOrUpdateRepoPermissionsInOrgParams(packed map[string]any) (params TeamsAddOrUpdateRepoPermissionsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsAddOrUpdateRepoPermissionsInOrgParams(packed middleware.Parameters) (params TeamsAddOrUpdateRepoPermissionsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -73988,10 +84753,28 @@ type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
 	Repo   string
 }
 
-func unpackTeamsAddOrUpdateRepoPermissionsLegacyParams(packed map[string]any) (params TeamsAddOrUpdateRepoPermissionsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsAddOrUpdateRepoPermissionsLegacyParams(packed middleware.Parameters) (params TeamsAddOrUpdateRepoPermissionsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -74100,10 +84883,28 @@ type TeamsCheckPermissionsForProjectInOrgParams struct {
 	ProjectID int
 }
 
-func unpackTeamsCheckPermissionsForProjectInOrgParams(packed map[string]any) (params TeamsCheckPermissionsForProjectInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsCheckPermissionsForProjectInOrgParams(packed middleware.Parameters) (params TeamsCheckPermissionsForProjectInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -74210,9 +85011,21 @@ type TeamsCheckPermissionsForProjectLegacyParams struct {
 	ProjectID int
 }
 
-func unpackTeamsCheckPermissionsForProjectLegacyParams(packed map[string]any) (params TeamsCheckPermissionsForProjectLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsCheckPermissionsForProjectLegacyParams(packed middleware.Parameters) (params TeamsCheckPermissionsForProjectLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -74291,11 +85104,35 @@ type TeamsCheckPermissionsForRepoInOrgParams struct {
 	Repo     string
 }
 
-func unpackTeamsCheckPermissionsForRepoInOrgParams(packed map[string]any) (params TeamsCheckPermissionsForRepoInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsCheckPermissionsForRepoInOrgParams(packed middleware.Parameters) (params TeamsCheckPermissionsForRepoInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -74434,10 +85271,28 @@ type TeamsCheckPermissionsForRepoLegacyParams struct {
 	Repo   string
 }
 
-func unpackTeamsCheckPermissionsForRepoLegacyParams(packed map[string]any) (params TeamsCheckPermissionsForRepoLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsCheckPermissionsForRepoLegacyParams(packed middleware.Parameters) (params TeamsCheckPermissionsForRepoLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -74543,8 +85398,14 @@ type TeamsCreateParams struct {
 	Org string
 }
 
-func unpackTeamsCreateParams(packed map[string]any) (params TeamsCreateParams) {
-	params.Org = packed["org"].(string)
+func unpackTeamsCreateParams(packed middleware.Parameters) (params TeamsCreateParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
 	return params
 }
 
@@ -74591,10 +85452,28 @@ type TeamsCreateDiscussionCommentInOrgParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsCreateDiscussionCommentInOrgParams(packed map[string]any) (params TeamsCreateDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsCreateDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsCreateDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -74701,9 +85580,21 @@ type TeamsCreateDiscussionCommentLegacyParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsCreateDiscussionCommentLegacyParams(packed map[string]any) (params TeamsCreateDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsCreateDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsCreateDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -74780,9 +85671,21 @@ type TeamsCreateDiscussionInOrgParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsCreateDiscussionInOrgParams(packed map[string]any) (params TeamsCreateDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsCreateDiscussionInOrgParams(packed middleware.Parameters) (params TeamsCreateDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -74857,8 +85760,14 @@ type TeamsCreateDiscussionLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsCreateDiscussionLegacyParams(packed map[string]any) (params TeamsCreateDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsCreateDiscussionLegacyParams(packed middleware.Parameters) (params TeamsCreateDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -74904,9 +85813,21 @@ type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(packed map[string]any) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(packed middleware.Parameters) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -74981,8 +85902,14 @@ type TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(packed map[string]any) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(packed middleware.Parameters) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -75030,11 +85957,35 @@ type TeamsDeleteDiscussionCommentInOrgParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsDeleteDiscussionCommentInOrgParams(packed map[string]any) (params TeamsDeleteDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsDeleteDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsDeleteDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75173,10 +86124,28 @@ type TeamsDeleteDiscussionCommentLegacyParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsDeleteDiscussionCommentLegacyParams(packed map[string]any) (params TeamsDeleteDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsDeleteDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsDeleteDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75285,10 +86254,28 @@ type TeamsDeleteDiscussionInOrgParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsDeleteDiscussionInOrgParams(packed map[string]any) (params TeamsDeleteDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsDeleteDiscussionInOrgParams(packed middleware.Parameters) (params TeamsDeleteDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75395,9 +86382,21 @@ type TeamsDeleteDiscussionLegacyParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsDeleteDiscussionLegacyParams(packed map[string]any) (params TeamsDeleteDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsDeleteDiscussionLegacyParams(packed middleware.Parameters) (params TeamsDeleteDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75474,9 +86473,21 @@ type TeamsDeleteInOrgParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsDeleteInOrgParams(packed map[string]any) (params TeamsDeleteInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsDeleteInOrgParams(packed middleware.Parameters) (params TeamsDeleteInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -75551,8 +86562,14 @@ type TeamsDeleteLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsDeleteLegacyParams(packed map[string]any) (params TeamsDeleteLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsDeleteLegacyParams(packed middleware.Parameters) (params TeamsDeleteLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -75598,9 +86615,21 @@ type TeamsGetByNameParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsGetByNameParams(packed map[string]any) (params TeamsGetByNameParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsGetByNameParams(packed middleware.Parameters) (params TeamsGetByNameParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -75679,11 +86708,35 @@ type TeamsGetDiscussionCommentInOrgParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsGetDiscussionCommentInOrgParams(packed map[string]any) (params TeamsGetDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsGetDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsGetDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75822,10 +86875,28 @@ type TeamsGetDiscussionCommentLegacyParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsGetDiscussionCommentLegacyParams(packed map[string]any) (params TeamsGetDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsGetDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsGetDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -75934,10 +87005,28 @@ type TeamsGetDiscussionInOrgParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsGetDiscussionInOrgParams(packed map[string]any) (params TeamsGetDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsGetDiscussionInOrgParams(packed middleware.Parameters) (params TeamsGetDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -76044,9 +87133,21 @@ type TeamsGetDiscussionLegacyParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsGetDiscussionLegacyParams(packed map[string]any) (params TeamsGetDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsGetDiscussionLegacyParams(packed middleware.Parameters) (params TeamsGetDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -76121,8 +87222,14 @@ type TeamsGetLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsGetLegacyParams(packed map[string]any) (params TeamsGetLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsGetLegacyParams(packed middleware.Parameters) (params TeamsGetLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -76167,9 +87274,21 @@ type TeamsGetMemberLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsGetMemberLegacyParams(packed map[string]any) (params TeamsGetMemberLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsGetMemberLegacyParams(packed middleware.Parameters) (params TeamsGetMemberLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -76247,10 +87366,28 @@ type TeamsGetMembershipForUserInOrgParams struct {
 	Username string
 }
 
-func unpackTeamsGetMembershipForUserInOrgParams(packed map[string]any) (params TeamsGetMembershipForUserInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Username = packed["username"].(string)
+func unpackTeamsGetMembershipForUserInOrgParams(packed middleware.Parameters) (params TeamsGetMembershipForUserInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -76357,9 +87494,21 @@ type TeamsGetMembershipForUserLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsGetMembershipForUserLegacyParams(packed map[string]any) (params TeamsGetMembershipForUserLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsGetMembershipForUserLegacyParams(packed middleware.Parameters) (params TeamsGetMembershipForUserLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -76438,13 +87587,31 @@ type TeamsListParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListParams(packed map[string]any) (params TeamsListParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListParams(packed middleware.Parameters) (params TeamsListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -76574,14 +87741,38 @@ type TeamsListChildInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListChildInOrgParams(packed map[string]any) (params TeamsListChildInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListChildInOrgParams(packed middleware.Parameters) (params TeamsListChildInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -76740,13 +87931,31 @@ type TeamsListChildLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListChildLegacyParams(packed map[string]any) (params TeamsListChildLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListChildLegacyParams(packed middleware.Parameters) (params TeamsListChildLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -76879,18 +88088,54 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListDiscussionCommentsInOrgParams(packed map[string]any) (params TeamsListDiscussionCommentsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptTeamsListDiscussionCommentsInOrgDirection)
+func unpackTeamsListDiscussionCommentsInOrgParams(packed middleware.Parameters) (params TeamsListDiscussionCommentsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptTeamsListDiscussionCommentsInOrgDirection)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -77137,17 +88382,47 @@ type TeamsListDiscussionCommentsLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListDiscussionCommentsLegacyParams(packed map[string]any) (params TeamsListDiscussionCommentsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptTeamsListDiscussionCommentsLegacyDirection)
+func unpackTeamsListDiscussionCommentsLegacyParams(packed middleware.Parameters) (params TeamsListDiscussionCommentsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptTeamsListDiscussionCommentsLegacyDirection)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -77366,20 +88641,56 @@ type TeamsListDiscussionsInOrgParams struct {
 	Pinned OptString
 }
 
-func unpackTeamsListDiscussionsInOrgParams(packed map[string]any) (params TeamsListDiscussionsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptTeamsListDiscussionsInOrgDirection)
+func unpackTeamsListDiscussionsInOrgParams(packed middleware.Parameters) (params TeamsListDiscussionsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptTeamsListDiscussionsInOrgDirection)
+		}
 	}
-	if v, ok := packed["pinned"]; ok {
-		params.Pinned = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "pinned",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Pinned = v.(OptString)
+		}
 	}
 	return params
 }
@@ -77628,16 +88939,40 @@ type TeamsListDiscussionsLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListDiscussionsLegacyParams(packed map[string]any) (params TeamsListDiscussionsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["direction"]; ok {
-		params.Direction = v.(OptTeamsListDiscussionsLegacyDirection)
+func unpackTeamsListDiscussionsLegacyParams(packed middleware.Parameters) (params TeamsListDiscussionsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "direction",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Direction = v.(OptTeamsListDiscussionsLegacyDirection)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -77818,12 +89153,24 @@ type TeamsListForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListForAuthenticatedUserParams(packed map[string]any) (params TeamsListForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListForAuthenticatedUserParams(packed middleware.Parameters) (params TeamsListForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -77916,8 +89263,14 @@ type TeamsListIdpGroupsForLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsListIdpGroupsForLegacyParams(packed map[string]any) (params TeamsListIdpGroupsForLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsListIdpGroupsForLegacyParams(packed middleware.Parameters) (params TeamsListIdpGroupsForLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -77965,13 +89318,31 @@ type TeamsListIdpGroupsForOrgParams struct {
 	Page OptString
 }
 
-func unpackTeamsListIdpGroupsForOrgParams(packed map[string]any) (params TeamsListIdpGroupsForOrgParams) {
-	params.Org = packed["org"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListIdpGroupsForOrgParams(packed middleware.Parameters) (params TeamsListIdpGroupsForOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptString)
+		}
 	}
 	return params
 }
@@ -78092,9 +89463,21 @@ type TeamsListIdpGroupsInOrgParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsListIdpGroupsInOrgParams(packed map[string]any) (params TeamsListIdpGroupsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsListIdpGroupsInOrgParams(packed middleware.Parameters) (params TeamsListIdpGroupsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -78180,17 +89563,47 @@ type TeamsListMembersInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListMembersInOrgParams(packed map[string]any) (params TeamsListMembersInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["role"]; ok {
-		params.Role = v.(OptTeamsListMembersInOrgRole)
+func unpackTeamsListMembersInOrgParams(packed middleware.Parameters) (params TeamsListMembersInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "role",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Role = v.(OptTeamsListMembersInOrgRole)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -78408,16 +89821,40 @@ type TeamsListMembersLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListMembersLegacyParams(packed map[string]any) (params TeamsListMembersLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["role"]; ok {
-		params.Role = v.(OptTeamsListMembersLegacyRole)
+func unpackTeamsListMembersLegacyParams(packed middleware.Parameters) (params TeamsListMembersLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "role",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Role = v.(OptTeamsListMembersLegacyRole)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -78601,14 +90038,38 @@ type TeamsListPendingInvitationsInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListPendingInvitationsInOrgParams(packed map[string]any) (params TeamsListPendingInvitationsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListPendingInvitationsInOrgParams(packed middleware.Parameters) (params TeamsListPendingInvitationsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -78767,13 +90228,31 @@ type TeamsListPendingInvitationsLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListPendingInvitationsLegacyParams(packed map[string]any) (params TeamsListPendingInvitationsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListPendingInvitationsLegacyParams(packed middleware.Parameters) (params TeamsListPendingInvitationsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -78903,14 +90382,38 @@ type TeamsListProjectsInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListProjectsInOrgParams(packed map[string]any) (params TeamsListProjectsInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListProjectsInOrgParams(packed middleware.Parameters) (params TeamsListProjectsInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -79069,13 +90572,31 @@ type TeamsListProjectsLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListProjectsLegacyParams(packed map[string]any) (params TeamsListProjectsLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListProjectsLegacyParams(packed middleware.Parameters) (params TeamsListProjectsLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -79205,14 +90726,38 @@ type TeamsListReposInOrgParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListReposInOrgParams(packed map[string]any) (params TeamsListReposInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListReposInOrgParams(packed middleware.Parameters) (params TeamsListReposInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -79371,13 +90916,31 @@ type TeamsListReposLegacyParams struct {
 	Page OptInt
 }
 
-func unpackTeamsListReposLegacyParams(packed map[string]any) (params TeamsListReposLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackTeamsListReposLegacyParams(packed middleware.Parameters) (params TeamsListReposLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -79502,9 +91065,21 @@ type TeamsRemoveMemberLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsRemoveMemberLegacyParams(packed map[string]any) (params TeamsRemoveMemberLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsRemoveMemberLegacyParams(packed middleware.Parameters) (params TeamsRemoveMemberLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -79582,10 +91157,28 @@ type TeamsRemoveMembershipForUserInOrgParams struct {
 	Username string
 }
 
-func unpackTeamsRemoveMembershipForUserInOrgParams(packed map[string]any) (params TeamsRemoveMembershipForUserInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Username = packed["username"].(string)
+func unpackTeamsRemoveMembershipForUserInOrgParams(packed middleware.Parameters) (params TeamsRemoveMembershipForUserInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -79692,9 +91285,21 @@ type TeamsRemoveMembershipForUserLegacyParams struct {
 	Username string
 }
 
-func unpackTeamsRemoveMembershipForUserLegacyParams(packed map[string]any) (params TeamsRemoveMembershipForUserLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Username = packed["username"].(string)
+func unpackTeamsRemoveMembershipForUserLegacyParams(packed middleware.Parameters) (params TeamsRemoveMembershipForUserLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -79772,10 +91377,28 @@ type TeamsRemoveProjectInOrgParams struct {
 	ProjectID int
 }
 
-func unpackTeamsRemoveProjectInOrgParams(packed map[string]any) (params TeamsRemoveProjectInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsRemoveProjectInOrgParams(packed middleware.Parameters) (params TeamsRemoveProjectInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -79882,9 +91505,21 @@ type TeamsRemoveProjectLegacyParams struct {
 	ProjectID int
 }
 
-func unpackTeamsRemoveProjectLegacyParams(packed map[string]any) (params TeamsRemoveProjectLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.ProjectID = packed["project_id"].(int)
+func unpackTeamsRemoveProjectLegacyParams(packed middleware.Parameters) (params TeamsRemoveProjectLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "project_id",
+			In:   "path",
+		}
+		params.ProjectID = packed[key].(int)
+	}
 	return params
 }
 
@@ -79963,11 +91598,35 @@ type TeamsRemoveRepoInOrgParams struct {
 	Repo     string
 }
 
-func unpackTeamsRemoveRepoInOrgParams(packed map[string]any) (params TeamsRemoveRepoInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsRemoveRepoInOrgParams(packed middleware.Parameters) (params TeamsRemoveRepoInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -80106,10 +91765,28 @@ type TeamsRemoveRepoLegacyParams struct {
 	Repo   string
 }
 
-func unpackTeamsRemoveRepoLegacyParams(packed map[string]any) (params TeamsRemoveRepoLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.Owner = packed["owner"].(string)
-	params.Repo = packed["repo"].(string)
+func unpackTeamsRemoveRepoLegacyParams(packed middleware.Parameters) (params TeamsRemoveRepoLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "owner",
+			In:   "path",
+		}
+		params.Owner = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "repo",
+			In:   "path",
+		}
+		params.Repo = packed[key].(string)
+	}
 	return params
 }
 
@@ -80219,11 +91896,35 @@ type TeamsUpdateDiscussionCommentInOrgParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsUpdateDiscussionCommentInOrgParams(packed map[string]any) (params TeamsUpdateDiscussionCommentInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsUpdateDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsUpdateDiscussionCommentInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -80362,10 +92063,28 @@ type TeamsUpdateDiscussionCommentLegacyParams struct {
 	CommentNumber    int
 }
 
-func unpackTeamsUpdateDiscussionCommentLegacyParams(packed map[string]any) (params TeamsUpdateDiscussionCommentLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
-	params.CommentNumber = packed["comment_number"].(int)
+func unpackTeamsUpdateDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsUpdateDiscussionCommentLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "comment_number",
+			In:   "path",
+		}
+		params.CommentNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -80474,10 +92193,28 @@ type TeamsUpdateDiscussionInOrgParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsUpdateDiscussionInOrgParams(packed map[string]any) (params TeamsUpdateDiscussionInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsUpdateDiscussionInOrgParams(packed middleware.Parameters) (params TeamsUpdateDiscussionInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -80584,9 +92321,21 @@ type TeamsUpdateDiscussionLegacyParams struct {
 	DiscussionNumber int
 }
 
-func unpackTeamsUpdateDiscussionLegacyParams(packed map[string]any) (params TeamsUpdateDiscussionLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
-	params.DiscussionNumber = packed["discussion_number"].(int)
+func unpackTeamsUpdateDiscussionLegacyParams(packed middleware.Parameters) (params TeamsUpdateDiscussionLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "discussion_number",
+			In:   "path",
+		}
+		params.DiscussionNumber = packed[key].(int)
+	}
 	return params
 }
 
@@ -80663,9 +92412,21 @@ type TeamsUpdateInOrgParams struct {
 	TeamSlug string
 }
 
-func unpackTeamsUpdateInOrgParams(packed map[string]any) (params TeamsUpdateInOrgParams) {
-	params.Org = packed["org"].(string)
-	params.TeamSlug = packed["team_slug"].(string)
+func unpackTeamsUpdateInOrgParams(packed middleware.Parameters) (params TeamsUpdateInOrgParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "org",
+			In:   "path",
+		}
+		params.Org = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "team_slug",
+			In:   "path",
+		}
+		params.TeamSlug = packed[key].(string)
+	}
 	return params
 }
 
@@ -80740,8 +92501,14 @@ type TeamsUpdateLegacyParams struct {
 	TeamID int
 }
 
-func unpackTeamsUpdateLegacyParams(packed map[string]any) (params TeamsUpdateLegacyParams) {
-	params.TeamID = packed["team_id"].(int)
+func unpackTeamsUpdateLegacyParams(packed middleware.Parameters) (params TeamsUpdateLegacyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "team_id",
+			In:   "path",
+		}
+		params.TeamID = packed[key].(int)
+	}
 	return params
 }
 
@@ -80785,8 +92552,14 @@ type UsersBlockParams struct {
 	Username string
 }
 
-func unpackUsersBlockParams(packed map[string]any) (params UsersBlockParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersBlockParams(packed middleware.Parameters) (params UsersBlockParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -80830,8 +92603,14 @@ type UsersCheckBlockedParams struct {
 	Username string
 }
 
-func unpackUsersCheckBlockedParams(packed map[string]any) (params UsersCheckBlockedParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersCheckBlockedParams(packed middleware.Parameters) (params UsersCheckBlockedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -80876,9 +92655,21 @@ type UsersCheckFollowingForUserParams struct {
 	TargetUser string
 }
 
-func unpackUsersCheckFollowingForUserParams(packed map[string]any) (params UsersCheckFollowingForUserParams) {
-	params.Username = packed["username"].(string)
-	params.TargetUser = packed["target_user"].(string)
+func unpackUsersCheckFollowingForUserParams(packed middleware.Parameters) (params UsersCheckFollowingForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "target_user",
+			In:   "path",
+		}
+		params.TargetUser = packed[key].(string)
+	}
 	return params
 }
 
@@ -80953,8 +92744,14 @@ type UsersCheckPersonIsFollowedByAuthenticatedParams struct {
 	Username string
 }
 
-func unpackUsersCheckPersonIsFollowedByAuthenticatedParams(packed map[string]any) (params UsersCheckPersonIsFollowedByAuthenticatedParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersCheckPersonIsFollowedByAuthenticatedParams(packed middleware.Parameters) (params UsersCheckPersonIsFollowedByAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -80999,8 +92796,14 @@ type UsersDeleteGpgKeyForAuthenticatedParams struct {
 	GpgKeyID int
 }
 
-func unpackUsersDeleteGpgKeyForAuthenticatedParams(packed map[string]any) (params UsersDeleteGpgKeyForAuthenticatedParams) {
-	params.GpgKeyID = packed["gpg_key_id"].(int)
+func unpackUsersDeleteGpgKeyForAuthenticatedParams(packed middleware.Parameters) (params UsersDeleteGpgKeyForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gpg_key_id",
+			In:   "path",
+		}
+		params.GpgKeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -81045,8 +92848,14 @@ type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
 	KeyID int
 }
 
-func unpackUsersDeletePublicSSHKeyForAuthenticatedParams(packed map[string]any) (params UsersDeletePublicSSHKeyForAuthenticatedParams) {
-	params.KeyID = packed["key_id"].(int)
+func unpackUsersDeletePublicSSHKeyForAuthenticatedParams(packed middleware.Parameters) (params UsersDeletePublicSSHKeyForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "key_id",
+			In:   "path",
+		}
+		params.KeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -81090,8 +92899,14 @@ type UsersFollowParams struct {
 	Username string
 }
 
-func unpackUsersFollowParams(packed map[string]any) (params UsersFollowParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersFollowParams(packed middleware.Parameters) (params UsersFollowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -81135,8 +92950,14 @@ type UsersGetByUsernameParams struct {
 	Username string
 }
 
-func unpackUsersGetByUsernameParams(packed map[string]any) (params UsersGetByUsernameParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersGetByUsernameParams(packed middleware.Parameters) (params UsersGetByUsernameParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -81185,13 +93006,31 @@ type UsersGetContextForUserParams struct {
 	SubjectID OptString
 }
 
-func unpackUsersGetContextForUserParams(packed map[string]any) (params UsersGetContextForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["subject_type"]; ok {
-		params.SubjectType = v.(OptUsersGetContextForUserSubjectType)
+func unpackUsersGetContextForUserParams(packed middleware.Parameters) (params UsersGetContextForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["subject_id"]; ok {
-		params.SubjectID = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "subject_type",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SubjectType = v.(OptUsersGetContextForUserSubjectType)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "subject_id",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.SubjectID = v.(OptString)
+		}
 	}
 	return params
 }
@@ -81321,8 +93160,14 @@ type UsersGetGpgKeyForAuthenticatedParams struct {
 	GpgKeyID int
 }
 
-func unpackUsersGetGpgKeyForAuthenticatedParams(packed map[string]any) (params UsersGetGpgKeyForAuthenticatedParams) {
-	params.GpgKeyID = packed["gpg_key_id"].(int)
+func unpackUsersGetGpgKeyForAuthenticatedParams(packed middleware.Parameters) (params UsersGetGpgKeyForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "gpg_key_id",
+			In:   "path",
+		}
+		params.GpgKeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -81367,8 +93212,14 @@ type UsersGetPublicSSHKeyForAuthenticatedParams struct {
 	KeyID int
 }
 
-func unpackUsersGetPublicSSHKeyForAuthenticatedParams(packed map[string]any) (params UsersGetPublicSSHKeyForAuthenticatedParams) {
-	params.KeyID = packed["key_id"].(int)
+func unpackUsersGetPublicSSHKeyForAuthenticatedParams(packed middleware.Parameters) (params UsersGetPublicSSHKeyForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "key_id",
+			In:   "path",
+		}
+		params.KeyID = packed[key].(int)
+	}
 	return params
 }
 
@@ -81415,12 +93266,24 @@ type UsersListParams struct {
 	PerPage OptInt
 }
 
-func unpackUsersListParams(packed map[string]any) (params UsersListParams) {
-	if v, ok := packed["since"]; ok {
-		params.Since = v.(OptInt)
+func unpackUsersListParams(packed middleware.Parameters) (params UsersListParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "since",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Since = v.(OptInt)
+		}
 	}
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -81511,12 +93374,24 @@ type UsersListEmailsForAuthenticatedParams struct {
 	Page OptInt
 }
 
-func unpackUsersListEmailsForAuthenticatedParams(packed map[string]any) (params UsersListEmailsForAuthenticatedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListEmailsForAuthenticatedParams(packed middleware.Parameters) (params UsersListEmailsForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -81612,12 +93487,24 @@ type UsersListFollowedByAuthenticatedParams struct {
 	Page OptInt
 }
 
-func unpackUsersListFollowedByAuthenticatedParams(packed map[string]any) (params UsersListFollowedByAuthenticatedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListFollowedByAuthenticatedParams(packed middleware.Parameters) (params UsersListFollowedByAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -81713,12 +93600,24 @@ type UsersListFollowersForAuthenticatedUserParams struct {
 	Page OptInt
 }
 
-func unpackUsersListFollowersForAuthenticatedUserParams(packed map[string]any) (params UsersListFollowersForAuthenticatedUserParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListFollowersForAuthenticatedUserParams(packed middleware.Parameters) (params UsersListFollowersForAuthenticatedUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -81815,13 +93714,31 @@ type UsersListFollowersForUserParams struct {
 	Page OptInt
 }
 
-func unpackUsersListFollowersForUserParams(packed map[string]any) (params UsersListFollowersForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListFollowersForUserParams(packed middleware.Parameters) (params UsersListFollowersForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -81949,13 +93866,31 @@ type UsersListFollowingForUserParams struct {
 	Page OptInt
 }
 
-func unpackUsersListFollowingForUserParams(packed map[string]any) (params UsersListFollowingForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListFollowingForUserParams(packed middleware.Parameters) (params UsersListFollowingForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82082,12 +94017,24 @@ type UsersListGpgKeysForAuthenticatedParams struct {
 	Page OptInt
 }
 
-func unpackUsersListGpgKeysForAuthenticatedParams(packed map[string]any) (params UsersListGpgKeysForAuthenticatedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListGpgKeysForAuthenticatedParams(packed middleware.Parameters) (params UsersListGpgKeysForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82184,13 +94131,31 @@ type UsersListGpgKeysForUserParams struct {
 	Page OptInt
 }
 
-func unpackUsersListGpgKeysForUserParams(packed map[string]any) (params UsersListGpgKeysForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListGpgKeysForUserParams(packed middleware.Parameters) (params UsersListGpgKeysForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82317,12 +94282,24 @@ type UsersListPublicEmailsForAuthenticatedParams struct {
 	Page OptInt
 }
 
-func unpackUsersListPublicEmailsForAuthenticatedParams(packed map[string]any) (params UsersListPublicEmailsForAuthenticatedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListPublicEmailsForAuthenticatedParams(packed middleware.Parameters) (params UsersListPublicEmailsForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82419,13 +94396,31 @@ type UsersListPublicKeysForUserParams struct {
 	Page OptInt
 }
 
-func unpackUsersListPublicKeysForUserParams(packed map[string]any) (params UsersListPublicKeysForUserParams) {
-	params.Username = packed["username"].(string)
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListPublicKeysForUserParams(packed middleware.Parameters) (params UsersListPublicKeysForUserParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82552,12 +94547,24 @@ type UsersListPublicSSHKeysForAuthenticatedParams struct {
 	Page OptInt
 }
 
-func unpackUsersListPublicSSHKeysForAuthenticatedParams(packed map[string]any) (params UsersListPublicSSHKeysForAuthenticatedParams) {
-	if v, ok := packed["per_page"]; ok {
-		params.PerPage = v.(OptInt)
+func unpackUsersListPublicSSHKeysForAuthenticatedParams(packed middleware.Parameters) (params UsersListPublicSSHKeysForAuthenticatedParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "per_page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.PerPage = v.(OptInt)
+		}
 	}
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -82650,8 +94657,14 @@ type UsersUnblockParams struct {
 	Username string
 }
 
-func unpackUsersUnblockParams(packed map[string]any) (params UsersUnblockParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersUnblockParams(packed middleware.Parameters) (params UsersUnblockParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 
@@ -82695,8 +94708,14 @@ type UsersUnfollowParams struct {
 	Username string
 }
 
-func unpackUsersUnfollowParams(packed map[string]any) (params UsersUnfollowParams) {
-	params.Username = packed["username"].(string)
+func unpackUsersUnfollowParams(packed middleware.Parameters) (params UsersUnfollowParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "username",
+			In:   "path",
+		}
+		params.Username = packed[key].(string)
+	}
 	return params
 }
 

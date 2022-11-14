@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -20,12 +21,24 @@ type APICaptcha2chcaptchaIDGetParams struct {
 	Thread OptInt
 }
 
-func unpackAPICaptcha2chcaptchaIDGetParams(packed map[string]any) (params APICaptcha2chcaptchaIDGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board = v.(OptString)
+func unpackAPICaptcha2chcaptchaIDGetParams(packed middleware.Parameters) (params APICaptcha2chcaptchaIDGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Board = v.(OptString)
+		}
 	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Thread = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -133,8 +146,14 @@ type APICaptcha2chcaptchaShowGetParams struct {
 	ID string
 }
 
-func unpackAPICaptcha2chcaptchaShowGetParams(packed map[string]any) (params APICaptcha2chcaptchaShowGetParams) {
-	params.ID = packed["id"].(string)
+func unpackAPICaptcha2chcaptchaShowGetParams(packed middleware.Parameters) (params APICaptcha2chcaptchaShowGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "query",
+		}
+		params.ID = packed[key].(string)
+	}
 	return params
 }
 
@@ -184,13 +203,31 @@ type APICaptchaAppIDPublicKeyGetParams struct {
 	Thread OptInt
 }
 
-func unpackAPICaptchaAppIDPublicKeyGetParams(packed map[string]any) (params APICaptchaAppIDPublicKeyGetParams) {
-	params.PublicKey = packed["public_key"].(string)
-	if v, ok := packed["board"]; ok {
-		params.Board = v.(OptString)
+func unpackAPICaptchaAppIDPublicKeyGetParams(packed middleware.Parameters) (params APICaptchaAppIDPublicKeyGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "public_key",
+			In:   "path",
+		}
+		params.PublicKey = packed[key].(string)
 	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Board = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Thread = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -331,12 +368,24 @@ type APICaptchaInvisibleRecaptchaIDGetParams struct {
 	Thread OptInt
 }
 
-func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed map[string]any) (params APICaptchaInvisibleRecaptchaIDGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board = v.(OptString)
+func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed middleware.Parameters) (params APICaptchaInvisibleRecaptchaIDGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Board = v.(OptString)
+		}
 	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Thread = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -446,12 +495,24 @@ type APICaptchaRecaptchaIDGetParams struct {
 	Thread OptInt
 }
 
-func unpackAPICaptchaRecaptchaIDGetParams(packed map[string]any) (params APICaptchaRecaptchaIDGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board = v.(OptString)
+func unpackAPICaptchaRecaptchaIDGetParams(packed middleware.Parameters) (params APICaptchaRecaptchaIDGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Board = v.(OptString)
+		}
 	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread = v.(OptInt)
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Thread = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -561,9 +622,21 @@ type APIDislikeGetParams struct {
 	Num int
 }
 
-func unpackAPIDislikeGetParams(packed map[string]any) (params APIDislikeGetParams) {
-	params.Board = packed["board"].(string)
-	params.Num = packed["num"].(int)
+func unpackAPIDislikeGetParams(packed middleware.Parameters) (params APIDislikeGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		params.Board = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "num",
+			In:   "query",
+		}
+		params.Num = packed[key].(int)
+	}
 	return params
 }
 
@@ -655,9 +728,21 @@ type APILikeGetParams struct {
 	Num int
 }
 
-func unpackAPILikeGetParams(packed map[string]any) (params APILikeGetParams) {
-	params.Board = packed["board"].(string)
-	params.Num = packed["num"].(int)
+func unpackAPILikeGetParams(packed middleware.Parameters) (params APILikeGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "query",
+		}
+		params.Board = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "num",
+			In:   "query",
+		}
+		params.Num = packed[key].(int)
+	}
 	return params
 }
 
@@ -751,10 +836,28 @@ type APIMobileV2AfterBoardThreadNumGetParams struct {
 	Num int
 }
 
-func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed map[string]any) (params APIMobileV2AfterBoardThreadNumGetParams) {
-	params.Board = packed["board"].(string)
-	params.Thread = packed["thread"].(int)
-	params.Num = packed["num"].(int)
+func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed middleware.Parameters) (params APIMobileV2AfterBoardThreadNumGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "path",
+		}
+		params.Board = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "path",
+		}
+		params.Thread = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "num",
+			In:   "path",
+		}
+		params.Num = packed[key].(int)
+	}
 	return params
 }
 
@@ -897,9 +1000,21 @@ type APIMobileV2InfoBoardThreadGetParams struct {
 	Thread int
 }
 
-func unpackAPIMobileV2InfoBoardThreadGetParams(packed map[string]any) (params APIMobileV2InfoBoardThreadGetParams) {
-	params.Board = packed["board"].(string)
-	params.Thread = packed["thread"].(int)
+func unpackAPIMobileV2InfoBoardThreadGetParams(packed middleware.Parameters) (params APIMobileV2InfoBoardThreadGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "path",
+		}
+		params.Board = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "thread",
+			In:   "path",
+		}
+		params.Thread = packed[key].(int)
+	}
 	return params
 }
 
@@ -994,9 +1109,21 @@ type APIMobileV2PostBoardNumGetParams struct {
 	Num int
 }
 
-func unpackAPIMobileV2PostBoardNumGetParams(packed map[string]any) (params APIMobileV2PostBoardNumGetParams) {
-	params.Board = packed["board"].(string)
-	params.Num = packed["num"].(int)
+func unpackAPIMobileV2PostBoardNumGetParams(packed middleware.Parameters) (params APIMobileV2PostBoardNumGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "board",
+			In:   "path",
+		}
+		params.Board = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "num",
+			In:   "path",
+		}
+		params.Num = packed[key].(int)
+	}
 	return params
 }
 
@@ -1090,8 +1217,14 @@ type UserPassloginPostParams struct {
 	JSON int
 }
 
-func unpackUserPassloginPostParams(packed map[string]any) (params UserPassloginPostParams) {
-	params.JSON = packed["json"].(int)
+func unpackUserPassloginPostParams(packed middleware.Parameters) (params UserPassloginPostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "json",
+			In:   "query",
+		}
+		params.JSON = packed[key].(int)
+	}
 	return params
 }
 

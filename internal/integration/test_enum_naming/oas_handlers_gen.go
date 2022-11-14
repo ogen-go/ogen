@@ -58,7 +58,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 			OperationName: "ProbeLiveness",
 			OperationID:   "probeLiveness",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

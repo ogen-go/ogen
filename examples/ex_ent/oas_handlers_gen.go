@@ -78,7 +78,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "CreatePet",
 			OperationID:   "createPet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -187,8 +187,11 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			OperationName: "CreatePetCategories",
 			OperationID:   "createPetCategories",
 			Body:          request,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -298,8 +301,11 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			OperationName: "CreatePetFriends",
 			OperationID:   "createPetFriends",
 			Body:          request,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -409,8 +415,11 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			OperationName: "CreatePetOwner",
 			OperationID:   "createPetOwner",
 			Body:          request,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -505,8 +514,11 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "DeletePet",
 			OperationID:   "deletePet",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -601,8 +613,11 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			OperationName: "DeletePetOwner",
 			OperationID:   "deletePetOwner",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -697,9 +712,15 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "ListPet",
 			OperationID:   "listPet",
 			Body:          nil,
-			Params: map[string]any{
-				"page":         params.Page,
-				"itemsPerPage": params.ItemsPerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "itemsPerPage",
+					In:   "query",
+				}: params.ItemsPerPage,
 			},
 			Raw: r,
 		}
@@ -794,10 +815,19 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			OperationName: "ListPetCategories",
 			OperationID:   "listPetCategories",
 			Body:          nil,
-			Params: map[string]any{
-				"id":           params.ID,
-				"page":         params.Page,
-				"itemsPerPage": params.ItemsPerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "itemsPerPage",
+					In:   "query",
+				}: params.ItemsPerPage,
 			},
 			Raw: r,
 		}
@@ -892,10 +922,19 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			OperationName: "ListPetFriends",
 			OperationID:   "listPetFriends",
 			Body:          nil,
-			Params: map[string]any{
-				"id":           params.ID,
-				"page":         params.Page,
-				"itemsPerPage": params.ItemsPerPage,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
+				{
+					Name: "itemsPerPage",
+					In:   "query",
+				}: params.ItemsPerPage,
 			},
 			Raw: r,
 		}
@@ -990,8 +1029,11 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			OperationName: "ReadPet",
 			OperationID:   "readPet",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -1086,8 +1128,11 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			OperationName: "ReadPetOwner",
 			OperationID:   "readPetOwner",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -1197,8 +1242,11 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "UpdatePet",
 			OperationID:   "updatePet",
 			Body:          request,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}

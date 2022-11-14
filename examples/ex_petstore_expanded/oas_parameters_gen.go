@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -17,8 +18,14 @@ type DeletePetParams struct {
 	ID int64
 }
 
-func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
-	params.ID = packed["id"].(int64)
+func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int64)
+	}
 	return params
 }
 
@@ -63,8 +70,14 @@ type FindPetByIDParams struct {
 	ID int64
 }
 
-func unpackFindPetByIDParams(packed map[string]any) (params FindPetByIDParams) {
-	params.ID = packed["id"].(int64)
+func unpackFindPetByIDParams(packed middleware.Parameters) (params FindPetByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int64)
+	}
 	return params
 }
 
@@ -111,12 +124,24 @@ type FindPetsParams struct {
 	Limit OptInt32
 }
 
-func unpackFindPetsParams(packed map[string]any) (params FindPetsParams) {
-	if v, ok := packed["tags"]; ok {
-		params.Tags = v.([]string)
+func unpackFindPetsParams(packed middleware.Parameters) (params FindPetsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "tags",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Tags = v.([]string)
+		}
 	}
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt32)
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt32)
+		}
 	}
 	return params
 }

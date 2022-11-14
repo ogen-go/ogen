@@ -78,7 +78,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 			OperationName: "AddPet",
 			OperationID:   "addPet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -172,8 +172,11 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationName: "DeletePet",
 			OperationID:   "deletePet",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -268,8 +271,11 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "FindPetByID",
 			OperationID:   "find pet by id",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "path",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -382,9 +388,15 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "FindPets",
 			OperationID:   "findPets",
 			Body:          nil,
-			Params: map[string]any{
-				"tags":  params.Tags,
-				"limit": params.Limit,
+			Params: middleware.Parameters{
+				{
+					Name: "tags",
+					In:   "query",
+				}: params.Tags,
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
 			},
 			Raw: r,
 		}
