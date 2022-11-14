@@ -119,9 +119,12 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			OperationName: {{ quote $op.Name }},
 			OperationID: {{ quote $op.Spec.OperationID }},
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
-			Params: map[string]any{
+			Params: middleware.Parameters{
 				{{- range $param := $op.Params }}
-				{{ quote $param.Spec.Name }}: params.{{ $param.Name }},
+				{
+					Name: {{ quote $param.Spec.Name }},
+					In: {{ quote $param.Spec.In }},
+				}: params.{{ $param.Name }},
 				{{- end }}
 			},
 			Raw: r,

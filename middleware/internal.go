@@ -8,7 +8,7 @@ import "context"
 func HookMiddleware[RequestType, ParamsType, ResponseType any](
 	m Middleware,
 	req Request,
-	unpack func(map[string]any) ParamsType,
+	unpack func(Parameters) ParamsType,
 	cb func(context.Context, RequestType, ParamsType) (ResponseType, error),
 ) (r ResponseType, err error) {
 	next := func(req Request) (Response, error) {
