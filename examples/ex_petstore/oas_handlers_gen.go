@@ -59,7 +59,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "CreatePets",
 			OperationID:   "createPets",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -153,8 +153,11 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "ListPets",
 			OperationID:   "listPets",
 			Body:          nil,
-			Params: map[string]any{
-				"limit": params.Limit,
+			Params: middleware.Parameters{
+				{
+					Name: "limit",
+					In:   "query",
+				}: params.Limit,
 			},
 			Raw: r,
 		}
@@ -249,8 +252,11 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 			OperationName: "ShowPetById",
 			OperationID:   "showPetById",
 			Body:          nil,
-			Params: map[string]any{
-				"petId": params.PetId,
+			Params: middleware.Parameters{
+				{
+					Name: "petId",
+					In:   "path",
+				}: params.PetId,
 			},
 			Raw: r,
 		}

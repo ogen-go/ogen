@@ -7,29 +7,137 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
-	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// handleDataCreateRequest handles dataCreate operation.
+// handleHealthzGetRequest handles GET /healthz operation.
 //
-// Creates data.
+// GET /healthz
+func (s *Server) handleHealthzGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	var otelAttrs []attribute.KeyValue
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "HealthzGet",
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "HealthzGet",
+			ID:   "",
+		}
+	)
+	params, err := decodeHealthzGetParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response HealthzGetOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "HealthzGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "=",
+					In:   "query",
+				}: params.Eq,
+				{
+					Name: "+",
+					In:   "query",
+				}: params.Plus,
+				{
+					Name: "question?",
+					In:   "query",
+				}: params.Question,
+				{
+					Name: "and&",
+					In:   "query",
+				}: params.And,
+				{
+					Name: "percent%",
+					In:   "query",
+				}: params.Percent,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = HealthzGetParams
+			Response = HealthzGetOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackHealthzGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.HealthzGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.HealthzGet(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeHealthzGetResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleSameNameRequest handles sameName operation.
 //
-// POST /data
-func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+// Parameter with different location, but the same name.
+//
+// GET /same_name/{path}
+func (s *Server) handleSameNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("dataCreate"),
+		otelogen.OperationID("sameName"),
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SameName",
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53,129 +161,45 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataCreate",
-			ID:   "dataCreate",
+			Name: "SameName",
+			ID:   "sameName",
 		}
 	)
-	request, close, err := s.decodeDataCreateRequest(r)
+	params, err := decodeSameNameParams(args, r)
 	if err != nil {
-		err = &ogenerrors.DecodeRequestError{
+		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer func() {
-		if err := close(); err != nil {
-			recordError("CloseRequest", err)
-		}
-	}()
 
-	var response Data
+	var response SameNameOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
-			OperationName: "DataCreate",
-			OperationID:   "dataCreate",
-			Body:          request,
-			Params:        middleware.Parameters{},
-			Raw:           r,
-		}
-
-		type (
-			Request  = OptData
-			Params   = struct{}
-			Response = Data
-		)
-		response, err = middleware.HookMiddleware[
-			Request,
-			Params,
-			Response,
-		](
-			m,
-			mreq,
-			nil,
-			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataCreate(ctx, request)
-			},
-		)
-	} else {
-		response, err = s.h.DataCreate(ctx, request)
-	}
-	if err != nil {
-		recordError("Internal", err)
-		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
-			return
-		}
-		if errors.Is(err, ht.ErrNotImplemented) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-			return
-		}
-		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
-		return
-	}
-
-	if err := encodeDataCreateResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
-		s.cfg.ErrorHandler(ctx, w, r, err)
-		return
-	}
-}
-
-// handleDataGetRequest handles dataGet operation.
-//
-// Retrieve data.
-//
-// GET /data
-func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("dataGet"),
-	}
-
-	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
-		trace.WithAttributes(otelAttrs...),
-		serverSpanKind,
-	)
-	defer span.End()
-
-	// Run stopwatch.
-	startTime := time.Now()
-	defer func() {
-		elapsedDuration := time.Since(startTime)
-		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-	}()
-
-	// Increment request counter.
-	s.requests.Add(ctx, 1, otelAttrs...)
-
-	var (
-		recordError = func(stage string, err error) {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, otelAttrs...)
-		}
-		err error
-	)
-
-	var response Data
-	if m := s.cfg.Middleware; m != nil {
-		mreq := middleware.Request{
-			Context:       ctx,
-			OperationName: "DataGet",
-			OperationID:   "dataGet",
+			OperationName: "SameName",
+			OperationID:   "sameName",
 			Body:          nil,
-			Params:        middleware.Parameters{},
-			Raw:           r,
+			Params: middleware.Parameters{
+				{
+					Name: "path",
+					In:   "path",
+				}: params.pathPath,
+				{
+					Name: "path",
+					In:   "query",
+				}: params.queryPath,
+			},
+			Raw: r,
 		}
 
 		type (
 			Request  = struct{}
-			Params   = struct{}
-			Response = Data
+			Params   = SameNameParams
+			Response = SameNameOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -184,29 +208,21 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 		](
 			m,
 			mreq,
-			nil,
+			unpackSameNameParams,
 			func(ctx context.Context, request Request, params Params) (Response, error) {
-				return s.h.DataGet(ctx)
+				return s.h.SameName(ctx, params)
 			},
 		)
 	} else {
-		response, err = s.h.DataGet(ctx)
+		response, err = s.h.SameName(ctx, params)
 	}
 	if err != nil {
 		recordError("Internal", err)
-		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
-			return
-		}
-		if errors.Is(err, ht.ErrNotImplemented) {
-			s.cfg.ErrorHandler(ctx, w, r, err)
-			return
-		}
-		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
-	if err := encodeDataGetResponse(response, w, span); err != nil {
+	if err := encodeSameNameResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

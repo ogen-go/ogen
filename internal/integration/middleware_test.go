@@ -55,12 +55,16 @@ func ModifyRequest(logger *zap.Logger) middleware.Middleware {
 	) (middleware.Response, error) {
 		switch body := req.Body.(type) {
 		case api.PetUploadAvatarByIDReq:
-			if v, ok := req.Params["petID"].(int64); ok {
+			key := middleware.ParameterKey{
+				Name: "petID",
+				In:   "query",
+			}
+			if v, ok := req.Params[key].(int64); ok {
 				logger.Info("Modifying request", zap.Int64("petID", v))
 				req.Body = api.PetUploadAvatarByIDReq{
 					Data: io.MultiReader(strings.NewReader("prefix"), body.Data),
 				}
-				req.Params["petID"] = v + 1
+				req.Params[key] = v + 1
 			}
 		default:
 			logger.Info("Skipping request modification")

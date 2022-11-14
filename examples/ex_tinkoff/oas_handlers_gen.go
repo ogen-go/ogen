@@ -70,7 +70,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			OperationName: "MarketBondsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -173,11 +173,23 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			OperationName: "MarketCandlesGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"figi":     params.Figi,
-				"from":     params.From,
-				"to":       params.To,
-				"interval": params.Interval,
+			Params: middleware.Parameters{
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
+				{
+					Name: "from",
+					In:   "query",
+				}: params.From,
+				{
+					Name: "to",
+					In:   "query",
+				}: params.To,
+				{
+					Name: "interval",
+					In:   "query",
+				}: params.Interval,
 			},
 			Raw: r,
 		}
@@ -271,7 +283,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			OperationName: "MarketCurrenciesGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -364,7 +376,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			OperationName: "MarketEtfsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -467,9 +479,15 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			OperationName: "MarketOrderbookGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"figi":  params.Figi,
-				"depth": params.Depth,
+			Params: middleware.Parameters{
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
+				{
+					Name: "depth",
+					In:   "query",
+				}: params.Depth,
 			},
 			Raw: r,
 		}
@@ -573,8 +591,11 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			OperationName: "MarketSearchByFigiGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"figi": params.Figi,
+			Params: middleware.Parameters{
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
 			},
 			Raw: r,
 		}
@@ -678,8 +699,11 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			OperationName: "MarketSearchByTickerGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"ticker": params.Ticker,
+			Params: middleware.Parameters{
+				{
+					Name: "ticker",
+					In:   "query",
+				}: params.Ticker,
 			},
 			Raw: r,
 		}
@@ -773,7 +797,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			OperationName: "MarketStocksGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -876,11 +900,23 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			OperationName: "OperationsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"from":            params.From,
-				"to":              params.To,
-				"figi":            params.Figi,
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "from",
+					In:   "query",
+				}: params.From,
+				{
+					Name: "to",
+					In:   "query",
+				}: params.To,
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -984,9 +1020,15 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			OperationName: "OrdersCancelPost",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"orderId":         params.OrderId,
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "orderId",
+					In:   "query",
+				}: params.OrderId,
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1090,8 +1132,11 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "OrdersGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1210,9 +1255,15 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			OperationName: "OrdersLimitOrderPost",
 			OperationID:   "",
 			Body:          request,
-			Params: map[string]any{
-				"figi":            params.Figi,
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1331,9 +1382,15 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			OperationName: "OrdersMarketOrderPost",
 			OperationID:   "",
 			Body:          request,
-			Params: map[string]any{
-				"figi":            params.Figi,
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "figi",
+					In:   "query",
+				}: params.Figi,
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1437,8 +1494,11 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			OperationName: "PortfolioCurrenciesGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1542,8 +1602,11 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			OperationName: "PortfolioGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1647,8 +1710,11 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			OperationName: "SandboxClearPost",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1767,8 +1833,11 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			OperationName: "SandboxCurrenciesBalancePost",
 			OperationID:   "",
 			Body:          request,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1887,8 +1956,11 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			OperationName: "SandboxPositionsBalancePost",
 			OperationID:   "",
 			Body:          request,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -1997,7 +2069,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			OperationName: "SandboxRegisterPost",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2100,8 +2172,11 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			OperationName: "SandboxRemovePost",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"brokerAccountId": params.BrokerAccountId,
+			Params: middleware.Parameters{
+				{
+					Name: "brokerAccountId",
+					In:   "query",
+				}: params.BrokerAccountId,
 			},
 			Raw: r,
 		}
@@ -2195,7 +2270,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			OperationName: "UserAccountsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

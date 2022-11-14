@@ -51,7 +51,7 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 			OperationName: "FooGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

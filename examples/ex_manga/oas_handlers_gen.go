@@ -73,8 +73,11 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 			OperationName: "GetBook",
 			OperationID:   "getBook",
 			Body:          nil,
-			Params: map[string]any{
-				"book_id": params.BookID,
+			Params: middleware.Parameters{
+				{
+					Name: "book_id",
+					In:   "path",
+				}: params.BookID,
 			},
 			Raw: r,
 		}
@@ -169,9 +172,15 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 			OperationName: "GetPageCoverImage",
 			OperationID:   "getPageCoverImage",
 			Body:          nil,
-			Params: map[string]any{
-				"media_id": params.MediaID,
-				"format":   params.Format,
+			Params: middleware.Parameters{
+				{
+					Name: "media_id",
+					In:   "path",
+				}: params.MediaID,
+				{
+					Name: "format",
+					In:   "path",
+				}: params.Format,
 			},
 			Raw: r,
 		}
@@ -266,10 +275,19 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 			OperationName: "GetPageImage",
 			OperationID:   "getPageImage",
 			Body:          nil,
-			Params: map[string]any{
-				"media_id": params.MediaID,
-				"page":     params.Page,
-				"format":   params.Format,
+			Params: middleware.Parameters{
+				{
+					Name: "media_id",
+					In:   "path",
+				}: params.MediaID,
+				{
+					Name: "page",
+					In:   "path",
+				}: params.Page,
+				{
+					Name: "format",
+					In:   "path",
+				}: params.Format,
 			},
 			Raw: r,
 		}
@@ -364,10 +382,19 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 			OperationName: "GetPageThumbnailImage",
 			OperationID:   "getPageThumbnailImage",
 			Body:          nil,
-			Params: map[string]any{
-				"media_id": params.MediaID,
-				"page":     params.Page,
-				"format":   params.Format,
+			Params: middleware.Parameters{
+				{
+					Name: "media_id",
+					In:   "path",
+				}: params.MediaID,
+				{
+					Name: "page",
+					In:   "path",
+				}: params.Page,
+				{
+					Name: "format",
+					In:   "path",
+				}: params.Format,
 			},
 			Raw: r,
 		}
@@ -462,9 +489,15 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 			OperationName: "Search",
 			OperationID:   "search",
 			Body:          nil,
-			Params: map[string]any{
-				"query": params.Query,
-				"page":  params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "query",
+					In:   "query",
+				}: params.Query,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}
@@ -559,9 +592,15 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SearchByTagID",
 			OperationID:   "searchByTagID",
 			Body:          nil,
-			Params: map[string]any{
-				"tag_id": params.TagID,
-				"page":   params.Page,
+			Params: middleware.Parameters{
+				{
+					Name: "tag_id",
+					In:   "query",
+				}: params.TagID,
+				{
+					Name: "page",
+					In:   "query",
+				}: params.Page,
 			},
 			Raw: r,
 		}

@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -17,8 +18,14 @@ type CreatePetCategoriesParams struct {
 	ID int
 }
 
-func unpackCreatePetCategoriesParams(packed map[string]any) (params CreatePetCategoriesParams) {
-	params.ID = packed["id"].(int)
+func unpackCreatePetCategoriesParams(packed middleware.Parameters) (params CreatePetCategoriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -63,8 +70,14 @@ type CreatePetFriendsParams struct {
 	ID int
 }
 
-func unpackCreatePetFriendsParams(packed map[string]any) (params CreatePetFriendsParams) {
-	params.ID = packed["id"].(int)
+func unpackCreatePetFriendsParams(packed middleware.Parameters) (params CreatePetFriendsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -109,8 +122,14 @@ type CreatePetOwnerParams struct {
 	ID int
 }
 
-func unpackCreatePetOwnerParams(packed map[string]any) (params CreatePetOwnerParams) {
-	params.ID = packed["id"].(int)
+func unpackCreatePetOwnerParams(packed middleware.Parameters) (params CreatePetOwnerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -155,8 +174,14 @@ type DeletePetParams struct {
 	ID int
 }
 
-func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
-	params.ID = packed["id"].(int)
+func unpackDeletePetParams(packed middleware.Parameters) (params DeletePetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -201,8 +226,14 @@ type DeletePetOwnerParams struct {
 	ID int
 }
 
-func unpackDeletePetOwnerParams(packed map[string]any) (params DeletePetOwnerParams) {
-	params.ID = packed["id"].(int)
+func unpackDeletePetOwnerParams(packed middleware.Parameters) (params DeletePetOwnerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -249,12 +280,24 @@ type ListPetParams struct {
 	ItemsPerPage OptInt32
 }
 
-func unpackListPetParams(packed map[string]any) (params ListPetParams) {
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt32)
+func unpackListPetParams(packed middleware.Parameters) (params ListPetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt32)
+		}
 	}
-	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage = v.(OptInt32)
+	{
+		key := middleware.ParameterKey{
+			Name: "itemsPerPage",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ItemsPerPage = v.(OptInt32)
+		}
 	}
 	return params
 }
@@ -342,13 +385,31 @@ type ListPetCategoriesParams struct {
 	ItemsPerPage OptInt32
 }
 
-func unpackListPetCategoriesParams(packed map[string]any) (params ListPetCategoriesParams) {
-	params.ID = packed["id"].(int)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt32)
+func unpackListPetCategoriesParams(packed middleware.Parameters) (params ListPetCategoriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
 	}
-	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage = v.(OptInt32)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt32)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "itemsPerPage",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ItemsPerPage = v.(OptInt32)
+		}
 	}
 	return params
 }
@@ -467,13 +528,31 @@ type ListPetFriendsParams struct {
 	ItemsPerPage OptInt32
 }
 
-func unpackListPetFriendsParams(packed map[string]any) (params ListPetFriendsParams) {
-	params.ID = packed["id"].(int)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt32)
+func unpackListPetFriendsParams(packed middleware.Parameters) (params ListPetFriendsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
 	}
-	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage = v.(OptInt32)
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt32)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "itemsPerPage",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.ItemsPerPage = v.(OptInt32)
+		}
 	}
 	return params
 }
@@ -588,8 +667,14 @@ type ReadPetParams struct {
 	ID int
 }
 
-func unpackReadPetParams(packed map[string]any) (params ReadPetParams) {
-	params.ID = packed["id"].(int)
+func unpackReadPetParams(packed middleware.Parameters) (params ReadPetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -634,8 +719,14 @@ type ReadPetOwnerParams struct {
 	ID int
 }
 
-func unpackReadPetOwnerParams(packed map[string]any) (params ReadPetOwnerParams) {
-	params.ID = packed["id"].(int)
+func unpackReadPetOwnerParams(packed middleware.Parameters) (params ReadPetOwnerParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 
@@ -680,8 +771,14 @@ type UpdatePetParams struct {
 	ID int
 }
 
-func unpackUpdatePetParams(packed map[string]any) (params UpdatePetParams) {
-	params.ID = packed["id"].(int)
+func unpackUpdatePetParams(packed middleware.Parameters) (params UpdatePetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 

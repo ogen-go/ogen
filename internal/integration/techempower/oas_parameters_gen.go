@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -16,8 +17,14 @@ type CachingParams struct {
 	Count int64
 }
 
-func unpackCachingParams(packed map[string]any) (params CachingParams) {
-	params.Count = packed["count"].(int64)
+func unpackCachingParams(packed middleware.Parameters) (params CachingParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "count",
+			In:   "query",
+		}
+		params.Count = packed[key].(int64)
+	}
 	return params
 }
 
@@ -60,8 +67,14 @@ type QueriesParams struct {
 	Queries int64
 }
 
-func unpackQueriesParams(packed map[string]any) (params QueriesParams) {
-	params.Queries = packed["queries"].(int64)
+func unpackQueriesParams(packed middleware.Parameters) (params QueriesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "queries",
+			In:   "query",
+		}
+		params.Queries = packed[key].(int64)
+	}
 	return params
 }
 
@@ -104,8 +117,14 @@ type UpdatesParams struct {
 	Queries int64
 }
 
-func unpackUpdatesParams(packed map[string]any) (params UpdatesParams) {
-	params.Queries = packed["queries"].(int64)
+func unpackUpdatesParams(packed middleware.Parameters) (params UpdatesParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "queries",
+			In:   "query",
+		}
+		params.Queries = packed[key].(int64)
+	}
 	return params
 }
 

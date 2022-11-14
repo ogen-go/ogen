@@ -78,7 +78,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 			OperationName: "PublishEvent",
 			OperationID:   "publishEvent",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -163,7 +163,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 			OperationName: "StatusWebhook",
 			OperationID:   "statusWebhook",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -239,7 +239,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 			OperationName: "UpdateDelete",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -345,9 +345,15 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.Respon
 			OperationName: "UpdateWebhook",
 			OperationID:   "updateWebhook",
 			Body:          request,
-			Params: map[string]any{
-				"event_type":      params.EventType,
-				"X-Webhook-Token": params.XWebhookToken,
+			Params: middleware.Parameters{
+				{
+					Name: "event_type",
+					In:   "query",
+				}: params.EventType,
+				{
+					Name: "X-Webhook-Token",
+					In:   "header",
+				}: params.XWebhookToken,
 			},
 			Raw: r,
 		}

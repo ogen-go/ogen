@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -18,9 +19,21 @@ type DataGetParams struct {
 	Key string
 }
 
-func unpackDataGetParams(packed map[string]any) (params DataGetParams) {
-	params.ID = packed["id"].(int)
-	params.Key = packed["key"].(string)
+func unpackDataGetParams(packed middleware.Parameters) (params DataGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "key",
+			In:   "path",
+		}
+		params.Key = packed[key].(string)
+	}
 	return params
 }
 
@@ -112,8 +125,14 @@ type DataGetIDParams struct {
 	ID int
 }
 
-func unpackDataGetIDParams(packed map[string]any) (params DataGetIDParams) {
-	params.ID = packed["id"].(int)
+func unpackDataGetIDParams(packed middleware.Parameters) (params DataGetIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "id",
+			In:   "path",
+		}
+		params.ID = packed[key].(int)
+	}
 	return params
 }
 

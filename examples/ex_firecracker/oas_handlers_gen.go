@@ -78,7 +78,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 			OperationName: "CreateSnapshot",
 			OperationID:   "createSnapshot",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -177,7 +177,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 			OperationName: "CreateSyncAction",
 			OperationID:   "createSyncAction",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -257,7 +257,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 			OperationName: "DescribeBalloonConfig",
 			OperationID:   "describeBalloonConfig",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -337,7 +337,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 			OperationName: "DescribeBalloonStats",
 			OperationID:   "describeBalloonStats",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -417,7 +417,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 			OperationName: "DescribeInstance",
 			OperationID:   "describeInstance",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -497,7 +497,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 			OperationName: "GetExportVmConfig",
 			OperationID:   "getExportVmConfig",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -579,7 +579,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 			OperationName: "GetMachineConfiguration",
 			OperationID:   "getMachineConfiguration",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -679,7 +679,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 			OperationName: "LoadSnapshot",
 			OperationID:   "loadSnapshot",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -775,7 +775,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 			OperationName: "MmdsConfigPut",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -852,7 +852,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "MmdsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -948,7 +948,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "MmdsPatch",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1044,7 +1044,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "MmdsPut",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1144,7 +1144,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 			OperationName: "PatchBalloon",
 			OperationID:   "patchBalloon",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1244,7 +1244,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 			OperationName: "PatchBalloonStatsInterval",
 			OperationID:   "patchBalloonStatsInterval",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1354,8 +1354,11 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			OperationName: "PatchGuestDriveByID",
 			OperationID:   "patchGuestDriveByID",
 			Body:          request,
-			Params: map[string]any{
-				"drive_id": params.DriveID,
+			Params: middleware.Parameters{
+				{
+					Name: "drive_id",
+					In:   "path",
+				}: params.DriveID,
 			},
 			Raw: r,
 		}
@@ -1465,8 +1468,11 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			OperationName: "PatchGuestNetworkInterfaceByID",
 			OperationID:   "patchGuestNetworkInterfaceByID",
 			Body:          request,
-			Params: map[string]any{
-				"iface_id": params.IfaceID,
+			Params: middleware.Parameters{
+				{
+					Name: "iface_id",
+					In:   "path",
+				}: params.IfaceID,
 			},
 			Raw: r,
 		}
@@ -1567,7 +1573,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 			OperationName: "PatchMachineConfiguration",
 			OperationID:   "patchMachineConfiguration",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1666,7 +1672,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "PatchVm",
 			OperationID:   "patchVm",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1766,7 +1772,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "PutBalloon",
 			OperationID:   "putBalloon",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1866,7 +1872,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 			OperationName: "PutGuestBootSource",
 			OperationID:   "putGuestBootSource",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1976,8 +1982,11 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			OperationName: "PutGuestDriveByID",
 			OperationID:   "putGuestDriveByID",
 			Body:          request,
-			Params: map[string]any{
-				"drive_id": params.DriveID,
+			Params: middleware.Parameters{
+				{
+					Name: "drive_id",
+					In:   "path",
+				}: params.DriveID,
 			},
 			Raw: r,
 		}
@@ -2087,8 +2096,11 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			OperationName: "PutGuestNetworkInterfaceByID",
 			OperationID:   "putGuestNetworkInterfaceByID",
 			Body:          request,
-			Params: map[string]any{
-				"iface_id": params.IfaceID,
+			Params: middleware.Parameters{
+				{
+					Name: "iface_id",
+					In:   "path",
+				}: params.IfaceID,
 			},
 			Raw: r,
 		}
@@ -2189,7 +2201,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 			OperationName: "PutGuestVsock",
 			OperationID:   "putGuestVsock",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2288,7 +2300,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "PutLogger",
 			OperationID:   "putLogger",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2390,7 +2402,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 			OperationName: "PutMachineConfiguration",
 			OperationID:   "putMachineConfiguration",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2489,7 +2501,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "PutMetrics",
 			OperationID:   "putMetrics",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

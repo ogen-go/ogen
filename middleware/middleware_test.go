@@ -5,6 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/openapi"
 )
 
 func TestChainMiddlewares(t *testing.T) {
@@ -22,7 +24,10 @@ func TestChainMiddlewares(t *testing.T) {
 			s = append(s, "second")
 			req.Body = s
 
-			req.Params["second"] = "bar"
+			req.Params[ParameterKey{
+				Name: "second",
+				In:   openapi.LocationQuery,
+			}] = "bar"
 			return next(req)
 		},
 		func(req Request, next Next) (Response, error) {
@@ -40,15 +45,31 @@ func TestChainMiddlewares(t *testing.T) {
 		req := Request{
 			Context: context.Background(),
 			Body:    []string{},
-			Params: map[string]any{
-				"call": i,
+			Params: Parameters{
+				{"call", openapi.LocationPath}: i,
 			},
 		}
 		resp, err := chain(req, func(req Request) (Response, error) {
 			a.Equal([]string{"first", "second", "third"}, req.Body)
-			a.Equal("bar", req.Params["second"])
+			a.Equal("bar", func() any {
+				v, ok := req.Params.Query("second")
+				a.True(ok)
+				return v
+			}())
 			a.Equal("baz", req.Context.Value(testKey{}))
-			a.Equal(i, req.Params["call"])
+			a.Equal(i, func() any {
+				v, ok := req.Params.Path("call")
+				a.True(ok)
+				return v
+			}())
+
+			{
+				_, ok := req.Params.Header("call")
+				a.False(ok)
+				_, ok = req.Params.Cookie("call")
+				a.False(ok)
+			}
+
 			return Response{Type: "ok"}, nil
 		})
 		a.NoError(err)
@@ -72,7 +93,7 @@ func BenchmarkChainMiddlewares(b *testing.B) {
 		req = Request{
 			Context: context.Background(),
 			Body:    []string{},
-			Params:  map[string]any{},
+			Params:  Parameters{},
 		}
 		resp = Response{Type: "ok"}
 		next = func(req Request) (Response, error) {

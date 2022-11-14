@@ -78,8 +78,11 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "Caching",
 			OperationID:   "Caching",
 			Body:          nil,
-			Params: map[string]any{
-				"count": params.Count,
+			Params: middleware.Parameters{
+				{
+					Name: "count",
+					In:   "query",
+				}: params.Count,
 			},
 			Raw: r,
 		}
@@ -161,7 +164,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 			OperationName: "DB",
 			OperationID:   "DB",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -243,7 +246,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 			OperationName: "JSON",
 			OperationID:   "json",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -340,8 +343,11 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "Queries",
 			OperationID:   "Queries",
 			Body:          nil,
-			Params: map[string]any{
-				"queries": params.Queries,
+			Params: middleware.Parameters{
+				{
+					Name: "queries",
+					In:   "query",
+				}: params.Queries,
 			},
 			Raw: r,
 		}
@@ -438,8 +444,11 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "Updates",
 			OperationID:   "Updates",
 			Body:          nil,
-			Params: map[string]any{
-				"queries": params.Queries,
+			Params: middleware.Parameters{
+				{
+					Name: "queries",
+					In:   "query",
+				}: params.Queries,
 			},
 			Raw: r,
 		}

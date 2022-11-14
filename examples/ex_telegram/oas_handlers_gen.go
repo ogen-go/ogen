@@ -78,7 +78,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			OperationName: "AddStickerToSet",
 			OperationID:   "addStickerToSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -183,7 +183,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			OperationName: "AnswerCallbackQuery",
 			OperationID:   "answerCallbackQuery",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -288,7 +288,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			OperationName: "AnswerInlineQuery",
 			OperationID:   "answerInlineQuery",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -393,7 +393,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			OperationName: "AnswerPreCheckoutQuery",
 			OperationID:   "answerPreCheckoutQuery",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -498,7 +498,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			OperationName: "AnswerShippingQuery",
 			OperationID:   "answerShippingQuery",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -603,7 +603,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			OperationName: "ApproveChatJoinRequest",
 			OperationID:   "approveChatJoinRequest",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -708,7 +708,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			OperationName: "BanChatMember",
 			OperationID:   "banChatMember",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -813,7 +813,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			OperationName: "BanChatSenderChat",
 			OperationID:   "banChatSenderChat",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -899,7 +899,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 			OperationName: "Close",
 			OperationID:   "close",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1004,7 +1004,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "CopyMessage",
 			OperationID:   "copyMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1109,7 +1109,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			OperationName: "CreateChatInviteLink",
 			OperationID:   "createChatInviteLink",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1214,7 +1214,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			OperationName: "CreateNewStickerSet",
 			OperationID:   "createNewStickerSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1319,7 +1319,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			OperationName: "DeclineChatJoinRequest",
 			OperationID:   "declineChatJoinRequest",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1424,7 +1424,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			OperationName: "DeleteChatPhoto",
 			OperationID:   "deleteChatPhoto",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1529,7 +1529,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			OperationName: "DeleteChatStickerSet",
 			OperationID:   "deleteChatStickerSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1634,7 +1634,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			OperationName: "DeleteMessage",
 			OperationID:   "deleteMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1739,7 +1739,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			OperationName: "DeleteMyCommands",
 			OperationID:   "deleteMyCommands",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1844,7 +1844,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			OperationName: "DeleteStickerFromSet",
 			OperationID:   "deleteStickerFromSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1949,7 +1949,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			OperationName: "DeleteWebhook",
 			OperationID:   "deleteWebhook",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2054,7 +2054,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			OperationName: "EditChatInviteLink",
 			OperationID:   "editChatInviteLink",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2159,7 +2159,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			OperationName: "EditMessageCaption",
 			OperationID:   "editMessageCaption",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2264,7 +2264,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			OperationName: "EditMessageLiveLocation",
 			OperationID:   "editMessageLiveLocation",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2369,7 +2369,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			OperationName: "EditMessageMedia",
 			OperationID:   "editMessageMedia",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2474,7 +2474,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			OperationName: "EditMessageReplyMarkup",
 			OperationID:   "editMessageReplyMarkup",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2579,7 +2579,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			OperationName: "EditMessageText",
 			OperationID:   "editMessageText",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2684,7 +2684,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			OperationName: "ExportChatInviteLink",
 			OperationID:   "exportChatInviteLink",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2789,7 +2789,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			OperationName: "ForwardMessage",
 			OperationID:   "forwardMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2894,7 +2894,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "GetChat",
 			OperationID:   "getChat",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2999,7 +2999,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			OperationName: "GetChatAdministrators",
 			OperationID:   "getChatAdministrators",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3104,7 +3104,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			OperationName: "GetChatMember",
 			OperationID:   "getChatMember",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3209,7 +3209,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			OperationName: "GetChatMemberCount",
 			OperationID:   "getChatMemberCount",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3314,7 +3314,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			OperationName: "GetFile",
 			OperationID:   "getFile",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3419,7 +3419,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			OperationName: "GetGameHighScores",
 			OperationID:   "getGameHighScores",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3505,7 +3505,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 			OperationName: "GetMe",
 			OperationID:   "getMe",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3610,7 +3610,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			OperationName: "GetMyCommands",
 			OperationID:   "getMyCommands",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3715,7 +3715,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			OperationName: "GetStickerSet",
 			OperationID:   "getStickerSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3820,7 +3820,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "GetUpdates",
 			OperationID:   "getUpdates",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3925,7 +3925,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			OperationName: "GetUserProfilePhotos",
 			OperationID:   "getUserProfilePhotos",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4011,7 +4011,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 			OperationName: "GetWebhookInfo",
 			OperationID:   "getWebhookInfo",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4116,7 +4116,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "LeaveChat",
 			OperationID:   "leaveChat",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4202,7 +4202,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 			OperationName: "LogOut",
 			OperationID:   "logOut",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4307,7 +4307,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			OperationName: "PinChatMessage",
 			OperationID:   "pinChatMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4412,7 +4412,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			OperationName: "PromoteChatMember",
 			OperationID:   "promoteChatMember",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4517,7 +4517,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			OperationName: "RestrictChatMember",
 			OperationID:   "restrictChatMember",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4622,7 +4622,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			OperationName: "RevokeChatInviteLink",
 			OperationID:   "revokeChatInviteLink",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4727,7 +4727,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SendAnimation",
 			OperationID:   "sendAnimation",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4832,7 +4832,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "SendAudio",
 			OperationID:   "sendAudio",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4937,7 +4937,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			OperationName: "SendChatAction",
 			OperationID:   "sendChatAction",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5042,7 +5042,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SendContact",
 			OperationID:   "sendContact",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5147,7 +5147,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "SendDice",
 			OperationID:   "sendDice",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5252,7 +5252,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SendDocument",
 			OperationID:   "sendDocument",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5357,7 +5357,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "SendGame",
 			OperationID:   "sendGame",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5462,7 +5462,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SendInvoice",
 			OperationID:   "sendInvoice",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5567,7 +5567,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SendLocation",
 			OperationID:   "sendLocation",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5672,7 +5672,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			OperationName: "SendMediaGroup",
 			OperationID:   "sendMediaGroup",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5777,7 +5777,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SendMessage",
 			OperationID:   "sendMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5882,7 +5882,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "SendPhoto",
 			OperationID:   "sendPhoto",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5987,7 +5987,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "SendPoll",
 			OperationID:   "sendPoll",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6092,7 +6092,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			OperationName: "SendSticker",
 			OperationID:   "sendSticker",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6197,7 +6197,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "SendVenue",
 			OperationID:   "sendVenue",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6302,7 +6302,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "SendVideo",
 			OperationID:   "sendVideo",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6407,7 +6407,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SendVideoNote",
 			OperationID:   "sendVideoNote",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6512,7 +6512,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			OperationName: "SendVoice",
 			OperationID:   "sendVoice",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6617,7 +6617,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			OperationName: "SetChatAdministratorCustomTitle",
 			OperationID:   "setChatAdministratorCustomTitle",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6722,7 +6722,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			OperationName: "SetChatDescription",
 			OperationID:   "setChatDescription",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6827,7 +6827,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			OperationName: "SetChatPermissions",
 			OperationID:   "setChatPermissions",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6932,7 +6932,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SetChatPhoto",
 			OperationID:   "setChatPhoto",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7037,7 +7037,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			OperationName: "SetChatStickerSet",
 			OperationID:   "setChatStickerSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7142,7 +7142,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SetChatTitle",
 			OperationID:   "setChatTitle",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7247,7 +7247,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			OperationName: "SetGameScore",
 			OperationID:   "setGameScore",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7352,7 +7352,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			OperationName: "SetMyCommands",
 			OperationID:   "setMyCommands",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7457,7 +7457,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			OperationName: "SetPassportDataErrors",
 			OperationID:   "setPassportDataErrors",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7562,7 +7562,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			OperationName: "SetStickerPositionInSet",
 			OperationID:   "setStickerPositionInSet",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7667,7 +7667,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			OperationName: "SetStickerSetThumb",
 			OperationID:   "setStickerSetThumb",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7772,7 +7772,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "SetWebhook",
 			OperationID:   "setWebhook",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7877,7 +7877,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			OperationName: "StopMessageLiveLocation",
 			OperationID:   "stopMessageLiveLocation",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7982,7 +7982,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			OperationName: "StopPoll",
 			OperationID:   "stopPoll",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8087,7 +8087,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			OperationName: "UnbanChatMember",
 			OperationID:   "unbanChatMember",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8192,7 +8192,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			OperationName: "UnbanChatSenderChat",
 			OperationID:   "unbanChatSenderChat",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8297,7 +8297,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			OperationName: "UnpinAllChatMessages",
 			OperationID:   "unpinAllChatMessages",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8402,7 +8402,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			OperationName: "UnpinChatMessage",
 			OperationID:   "unpinChatMessage",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8507,7 +8507,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			OperationName: "UploadStickerFile",
 			OperationID:   "uploadStickerFile",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

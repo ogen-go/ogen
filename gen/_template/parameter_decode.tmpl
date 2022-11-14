@@ -1,15 +1,21 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
 {{ define "parameter_decoder" }}
 {{ if $.Params }}
-func unpack{{ $.Name }}Params(packed map[string]any) (params {{ $.Name }}Params) {
+func unpack{{ $.Name }}Params(packed middleware.Parameters) (params {{ $.Name }}Params) {
 	{{- range $p := $.Params }}
-	{{- if $p.Spec.Required }}
-	params.{{ $p.Name }} = packed[{{ quote $p.Spec.Name }}].({{ $p.Type.Go }})
-	{{- else }}
-	if v, ok := packed[{{ quote $p.Spec.Name }}]; ok {
-		params.{{ $p.Name }} = v.({{ $p.Type.Go }})
+	{
+		key := middleware.ParameterKey{
+			Name: {{ quote $p.Spec.Name }},
+			In: {{ quote $p.Spec.In }},
+		}
+		{{- if $p.Spec.Required }}
+		params.{{ $p.Name }} = packed[key].({{ $p.Type.Go }})
+		{{- else }}
+		if v, ok := packed[key]; ok {
+			params.{{ $p.Name }} = v.({{ $p.Type.Go }})
+		}
+		{{- end }}
 	}
-	{{- end }}
 	{{- end }}
 	return params
 }

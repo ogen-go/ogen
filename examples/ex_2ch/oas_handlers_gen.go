@@ -68,9 +68,15 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 			OperationName: "APICaptcha2chcaptchaIDGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board":  params.Board,
-				"thread": params.Thread,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "query",
+				}: params.Thread,
 			},
 			Raw: r,
 		}
@@ -162,8 +168,11 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 			OperationName: "APICaptcha2chcaptchaShowGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"id": params.ID,
+			Params: middleware.Parameters{
+				{
+					Name: "id",
+					In:   "query",
+				}: params.ID,
 			},
 			Raw: r,
 		}
@@ -259,10 +268,19 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 			OperationName: "APICaptchaAppIDPublicKeyGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"public_key": params.PublicKey,
-				"board":      params.Board,
-				"thread":     params.Thread,
+			Params: middleware.Parameters{
+				{
+					Name: "public_key",
+					In:   "path",
+				}: params.PublicKey,
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "query",
+				}: params.Thread,
 			},
 			Raw: r,
 		}
@@ -354,9 +372,15 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			OperationName: "APICaptchaInvisibleRecaptchaIDGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board":  params.Board,
-				"thread": params.Thread,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "query",
+				}: params.Thread,
 			},
 			Raw: r,
 		}
@@ -434,7 +458,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			OperationName: "APICaptchaInvisibleRecaptchaMobileGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -525,9 +549,15 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 			OperationName: "APICaptchaRecaptchaIDGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board":  params.Board,
-				"thread": params.Thread,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "query",
+				}: params.Thread,
 			},
 			Raw: r,
 		}
@@ -605,7 +635,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 			OperationName: "APICaptchaRecaptchaMobileGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -696,9 +726,15 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 			OperationName: "APIDislikeGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board": params.Board,
-				"num":   params.Num,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "num",
+					In:   "query",
+				}: params.Num,
 			},
 			Raw: r,
 		}
@@ -790,9 +826,15 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 			OperationName: "APILikeGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board": params.Board,
-				"num":   params.Num,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "query",
+				}: params.Board,
+				{
+					Name: "num",
+					In:   "query",
+				}: params.Num,
 			},
 			Raw: r,
 		}
@@ -886,10 +928,19 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			OperationName: "APIMobileV2AfterBoardThreadNumGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board":  params.Board,
-				"thread": params.Thread,
-				"num":    params.Num,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "path",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "path",
+				}: params.Thread,
+				{
+					Name: "num",
+					In:   "path",
+				}: params.Num,
 			},
 			Raw: r,
 		}
@@ -967,7 +1018,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 			OperationName: "APIMobileV2BoardsGet",
 			OperationID:   "",
 			Body:          nil,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1058,9 +1109,15 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 			OperationName: "APIMobileV2InfoBoardThreadGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board":  params.Board,
-				"thread": params.Thread,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "path",
+				}: params.Board,
+				{
+					Name: "thread",
+					In:   "path",
+				}: params.Thread,
 			},
 			Raw: r,
 		}
@@ -1152,9 +1209,15 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 			OperationName: "APIMobileV2PostBoardNumGet",
 			OperationID:   "",
 			Body:          nil,
-			Params: map[string]any{
-				"board": params.Board,
-				"num":   params.Num,
+			Params: middleware.Parameters{
+				{
+					Name: "board",
+					In:   "path",
+				}: params.Board,
+				{
+					Name: "num",
+					In:   "path",
+				}: params.Num,
 			},
 			Raw: r,
 		}
@@ -1261,8 +1324,11 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 			OperationName: "UserPassloginPost",
 			OperationID:   "",
 			Body:          request,
-			Params: map[string]any{
-				"json": params.JSON,
+			Params: middleware.Parameters{
+				{
+					Name: "json",
+					In:   "query",
+				}: params.JSON,
 			},
 			Raw: r,
 		}
@@ -1359,7 +1425,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 			OperationName: "UserPostingPost",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1455,7 +1521,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 			OperationName: "UserReportPost",
 			OperationID:   "",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

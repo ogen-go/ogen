@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -17,8 +18,14 @@ type PatchGuestDriveByIDParams struct {
 	DriveID string
 }
 
-func unpackPatchGuestDriveByIDParams(packed map[string]any) (params PatchGuestDriveByIDParams) {
-	params.DriveID = packed["drive_id"].(string)
+func unpackPatchGuestDriveByIDParams(packed middleware.Parameters) (params PatchGuestDriveByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "drive_id",
+			In:   "path",
+		}
+		params.DriveID = packed[key].(string)
+	}
 	return params
 }
 
@@ -63,8 +70,14 @@ type PatchGuestNetworkInterfaceByIDParams struct {
 	IfaceID string
 }
 
-func unpackPatchGuestNetworkInterfaceByIDParams(packed map[string]any) (params PatchGuestNetworkInterfaceByIDParams) {
-	params.IfaceID = packed["iface_id"].(string)
+func unpackPatchGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (params PatchGuestNetworkInterfaceByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "iface_id",
+			In:   "path",
+		}
+		params.IfaceID = packed[key].(string)
+	}
 	return params
 }
 
@@ -109,8 +122,14 @@ type PutGuestDriveByIDParams struct {
 	DriveID string
 }
 
-func unpackPutGuestDriveByIDParams(packed map[string]any) (params PutGuestDriveByIDParams) {
-	params.DriveID = packed["drive_id"].(string)
+func unpackPutGuestDriveByIDParams(packed middleware.Parameters) (params PutGuestDriveByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "drive_id",
+			In:   "path",
+		}
+		params.DriveID = packed[key].(string)
+	}
 	return params
 }
 
@@ -155,8 +174,14 @@ type PutGuestNetworkInterfaceByIDParams struct {
 	IfaceID string
 }
 
-func unpackPutGuestNetworkInterfaceByIDParams(packed map[string]any) (params PutGuestNetworkInterfaceByIDParams) {
-	params.IfaceID = packed["iface_id"].(string)
+func unpackPutGuestNetworkInterfaceByIDParams(packed middleware.Parameters) (params PutGuestNetworkInterfaceByIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "iface_id",
+			In:   "path",
+		}
+		params.IfaceID = packed[key].(string)
+	}
 	return params
 }
 

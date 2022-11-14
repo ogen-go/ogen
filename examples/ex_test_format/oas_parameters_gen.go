@@ -13,6 +13,7 @@ import (
 	"github.com/google/uuid"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -101,87 +102,567 @@ type TestQueryParameterParams struct {
 	StringUUIDArray         []uuid.UUID
 }
 
-func unpackTestQueryParameterParams(packed map[string]any) (params TestQueryParameterParams) {
-	params.Boolean = packed["boolean"].(bool)
-	params.BooleanArray = packed["boolean_array"].([]bool)
-	params.Integer = packed["integer"].(int)
-	params.IntegerArray = packed["integer_array"].([]int)
-	params.IntegerInt32 = packed["integer_int32"].(int32)
-	params.IntegerInt32Array = packed["integer_int32_array"].([]int32)
-	params.IntegerInt64 = packed["integer_int64"].(int64)
-	params.IntegerInt64Array = packed["integer_int64_array"].([]int64)
-	params.IntegerUint = packed["integer_uint"].(uint)
-	params.IntegerUint32 = packed["integer_uint32"].(uint32)
-	params.IntegerUint32Array = packed["integer_uint32_array"].([]uint32)
-	params.IntegerUint64 = packed["integer_uint64"].(uint64)
-	params.IntegerUint64Array = packed["integer_uint64_array"].([]uint64)
-	params.IntegerUintArray = packed["integer_uint_array"].([]uint)
-	params.IntegerUnix = packed["integer_unix"].(time.Time)
-	params.IntegerUnixMicro = packed["integer_unix-micro"].(time.Time)
-	params.IntegerUnixMicroArray = packed["integer_unix-micro_array"].([]time.Time)
-	params.IntegerUnixMilli = packed["integer_unix-milli"].(time.Time)
-	params.IntegerUnixMilliArray = packed["integer_unix-milli_array"].([]time.Time)
-	params.IntegerUnixNano = packed["integer_unix-nano"].(time.Time)
-	params.IntegerUnixNanoArray = packed["integer_unix-nano_array"].([]time.Time)
-	params.IntegerUnixSeconds = packed["integer_unix-seconds"].(time.Time)
-	params.IntegerUnixSecondsArray = packed["integer_unix-seconds_array"].([]time.Time)
-	params.IntegerUnixArray = packed["integer_unix_array"].([]time.Time)
-	params.Number = packed["number"].(float64)
-	params.NumberArray = packed["number_array"].([]float64)
-	params.NumberDouble = packed["number_double"].(float64)
-	params.NumberDoubleArray = packed["number_double_array"].([]float64)
-	params.NumberFloat = packed["number_float"].(float32)
-	params.NumberFloatArray = packed["number_float_array"].([]float32)
-	params.NumberInt32 = packed["number_int32"].(int32)
-	params.NumberInt32Array = packed["number_int32_array"].([]int32)
-	params.NumberInt64 = packed["number_int64"].(int64)
-	params.NumberInt64Array = packed["number_int64_array"].([]int64)
-	params.String = packed["string"].(string)
-	params.StringArray = packed["string_array"].([]string)
-	params.StringBase64 = packed["string_base64"].([]byte)
-	params.StringBase64Array = packed["string_base64_array"].([][]byte)
-	params.StringBinary = packed["string_binary"].(string)
-	params.StringBinaryArray = packed["string_binary_array"].([]string)
-	params.StringByte = packed["string_byte"].([]byte)
-	params.StringByteArray = packed["string_byte_array"].([][]byte)
-	params.StringDate = packed["string_date"].(time.Time)
-	params.StringDateTime = packed["string_date-time"].(time.Time)
-	params.StringDateTimeArray = packed["string_date-time_array"].([]time.Time)
-	params.StringDateArray = packed["string_date_array"].([]time.Time)
-	params.StringDuration = packed["string_duration"].(time.Duration)
-	params.StringDurationArray = packed["string_duration_array"].([]time.Duration)
-	params.StringEmail = packed["string_email"].(string)
-	params.StringEmailArray = packed["string_email_array"].([]string)
-	params.StringHostname = packed["string_hostname"].(string)
-	params.StringHostnameArray = packed["string_hostname_array"].([]string)
-	params.StringInt32 = packed["string_int32"].(int32)
-	params.StringInt32Array = packed["string_int32_array"].([]int32)
-	params.StringInt64 = packed["string_int64"].(int64)
-	params.StringInt64Array = packed["string_int64_array"].([]int64)
-	params.StringIP = packed["string_ip"].(netip.Addr)
-	params.StringIPArray = packed["string_ip_array"].([]netip.Addr)
-	params.StringIpv4 = packed["string_ipv4"].(netip.Addr)
-	params.StringIpv4Array = packed["string_ipv4_array"].([]netip.Addr)
-	params.StringIpv6 = packed["string_ipv6"].(netip.Addr)
-	params.StringIpv6Array = packed["string_ipv6_array"].([]netip.Addr)
-	params.StringPassword = packed["string_password"].(string)
-	params.StringPasswordArray = packed["string_password_array"].([]string)
-	params.StringTime = packed["string_time"].(time.Time)
-	params.StringTimeArray = packed["string_time_array"].([]time.Time)
-	params.StringUnix = packed["string_unix"].(time.Time)
-	params.StringUnixMicro = packed["string_unix-micro"].(time.Time)
-	params.StringUnixMicroArray = packed["string_unix-micro_array"].([]time.Time)
-	params.StringUnixMilli = packed["string_unix-milli"].(time.Time)
-	params.StringUnixMilliArray = packed["string_unix-milli_array"].([]time.Time)
-	params.StringUnixNano = packed["string_unix-nano"].(time.Time)
-	params.StringUnixNanoArray = packed["string_unix-nano_array"].([]time.Time)
-	params.StringUnixSeconds = packed["string_unix-seconds"].(time.Time)
-	params.StringUnixSecondsArray = packed["string_unix-seconds_array"].([]time.Time)
-	params.StringUnixArray = packed["string_unix_array"].([]time.Time)
-	params.StringURI = packed["string_uri"].(url.URL)
-	params.StringURIArray = packed["string_uri_array"].([]url.URL)
-	params.StringUUID = packed["string_uuid"].(uuid.UUID)
-	params.StringUUIDArray = packed["string_uuid_array"].([]uuid.UUID)
+func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQueryParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "boolean",
+			In:   "query",
+		}
+		params.Boolean = packed[key].(bool)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "boolean_array",
+			In:   "query",
+		}
+		params.BooleanArray = packed[key].([]bool)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer",
+			In:   "query",
+		}
+		params.Integer = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_array",
+			In:   "query",
+		}
+		params.IntegerArray = packed[key].([]int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int32",
+			In:   "query",
+		}
+		params.IntegerInt32 = packed[key].(int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int32_array",
+			In:   "query",
+		}
+		params.IntegerInt32Array = packed[key].([]int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int64",
+			In:   "query",
+		}
+		params.IntegerInt64 = packed[key].(int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_int64_array",
+			In:   "query",
+		}
+		params.IntegerInt64Array = packed[key].([]int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint",
+			In:   "query",
+		}
+		params.IntegerUint = packed[key].(uint)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint32",
+			In:   "query",
+		}
+		params.IntegerUint32 = packed[key].(uint32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint32_array",
+			In:   "query",
+		}
+		params.IntegerUint32Array = packed[key].([]uint32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint64",
+			In:   "query",
+		}
+		params.IntegerUint64 = packed[key].(uint64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint64_array",
+			In:   "query",
+		}
+		params.IntegerUint64Array = packed[key].([]uint64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_uint_array",
+			In:   "query",
+		}
+		params.IntegerUintArray = packed[key].([]uint)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix",
+			In:   "query",
+		}
+		params.IntegerUnix = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-micro",
+			In:   "query",
+		}
+		params.IntegerUnixMicro = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-micro_array",
+			In:   "query",
+		}
+		params.IntegerUnixMicroArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-milli",
+			In:   "query",
+		}
+		params.IntegerUnixMilli = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-milli_array",
+			In:   "query",
+		}
+		params.IntegerUnixMilliArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-nano",
+			In:   "query",
+		}
+		params.IntegerUnixNano = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-nano_array",
+			In:   "query",
+		}
+		params.IntegerUnixNanoArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-seconds",
+			In:   "query",
+		}
+		params.IntegerUnixSeconds = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix-seconds_array",
+			In:   "query",
+		}
+		params.IntegerUnixSecondsArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unix_array",
+			In:   "query",
+		}
+		params.IntegerUnixArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number",
+			In:   "query",
+		}
+		params.Number = packed[key].(float64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_array",
+			In:   "query",
+		}
+		params.NumberArray = packed[key].([]float64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_double",
+			In:   "query",
+		}
+		params.NumberDouble = packed[key].(float64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_double_array",
+			In:   "query",
+		}
+		params.NumberDoubleArray = packed[key].([]float64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_float",
+			In:   "query",
+		}
+		params.NumberFloat = packed[key].(float32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_float_array",
+			In:   "query",
+		}
+		params.NumberFloatArray = packed[key].([]float32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_int32",
+			In:   "query",
+		}
+		params.NumberInt32 = packed[key].(int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_int32_array",
+			In:   "query",
+		}
+		params.NumberInt32Array = packed[key].([]int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_int64",
+			In:   "query",
+		}
+		params.NumberInt64 = packed[key].(int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "number_int64_array",
+			In:   "query",
+		}
+		params.NumberInt64Array = packed[key].([]int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string",
+			In:   "query",
+		}
+		params.String = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_array",
+			In:   "query",
+		}
+		params.StringArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_base64",
+			In:   "query",
+		}
+		params.StringBase64 = packed[key].([]byte)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_base64_array",
+			In:   "query",
+		}
+		params.StringBase64Array = packed[key].([][]byte)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_binary",
+			In:   "query",
+		}
+		params.StringBinary = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_binary_array",
+			In:   "query",
+		}
+		params.StringBinaryArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_byte",
+			In:   "query",
+		}
+		params.StringByte = packed[key].([]byte)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_byte_array",
+			In:   "query",
+		}
+		params.StringByteArray = packed[key].([][]byte)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_date",
+			In:   "query",
+		}
+		params.StringDate = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_date-time",
+			In:   "query",
+		}
+		params.StringDateTime = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_date-time_array",
+			In:   "query",
+		}
+		params.StringDateTimeArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_date_array",
+			In:   "query",
+		}
+		params.StringDateArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_duration",
+			In:   "query",
+		}
+		params.StringDuration = packed[key].(time.Duration)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_duration_array",
+			In:   "query",
+		}
+		params.StringDurationArray = packed[key].([]time.Duration)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_email",
+			In:   "query",
+		}
+		params.StringEmail = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_email_array",
+			In:   "query",
+		}
+		params.StringEmailArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_hostname",
+			In:   "query",
+		}
+		params.StringHostname = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_hostname_array",
+			In:   "query",
+		}
+		params.StringHostnameArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int32",
+			In:   "query",
+		}
+		params.StringInt32 = packed[key].(int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int32_array",
+			In:   "query",
+		}
+		params.StringInt32Array = packed[key].([]int32)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int64",
+			In:   "query",
+		}
+		params.StringInt64 = packed[key].(int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_int64_array",
+			In:   "query",
+		}
+		params.StringInt64Array = packed[key].([]int64)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ip",
+			In:   "query",
+		}
+		params.StringIP = packed[key].(netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ip_array",
+			In:   "query",
+		}
+		params.StringIPArray = packed[key].([]netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ipv4",
+			In:   "query",
+		}
+		params.StringIpv4 = packed[key].(netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ipv4_array",
+			In:   "query",
+		}
+		params.StringIpv4Array = packed[key].([]netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ipv6",
+			In:   "query",
+		}
+		params.StringIpv6 = packed[key].(netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_ipv6_array",
+			In:   "query",
+		}
+		params.StringIpv6Array = packed[key].([]netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_password",
+			In:   "query",
+		}
+		params.StringPassword = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_password_array",
+			In:   "query",
+		}
+		params.StringPasswordArray = packed[key].([]string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_time",
+			In:   "query",
+		}
+		params.StringTime = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_time_array",
+			In:   "query",
+		}
+		params.StringTimeArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix",
+			In:   "query",
+		}
+		params.StringUnix = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-micro",
+			In:   "query",
+		}
+		params.StringUnixMicro = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-micro_array",
+			In:   "query",
+		}
+		params.StringUnixMicroArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-milli",
+			In:   "query",
+		}
+		params.StringUnixMilli = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-milli_array",
+			In:   "query",
+		}
+		params.StringUnixMilliArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-nano",
+			In:   "query",
+		}
+		params.StringUnixNano = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-nano_array",
+			In:   "query",
+		}
+		params.StringUnixNanoArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-seconds",
+			In:   "query",
+		}
+		params.StringUnixSeconds = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix-seconds_array",
+			In:   "query",
+		}
+		params.StringUnixSecondsArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unix_array",
+			In:   "query",
+		}
+		params.StringUnixArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uri",
+			In:   "query",
+		}
+		params.StringURI = packed[key].(url.URL)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uri_array",
+			In:   "query",
+		}
+		params.StringURIArray = packed[key].([]url.URL)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uuid",
+			In:   "query",
+		}
+		params.StringUUID = packed[key].(uuid.UUID)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_uuid_array",
+			In:   "query",
+		}
+		params.StringUUIDArray = packed[key].([]uuid.UUID)
+	}
 	return params
 }
 

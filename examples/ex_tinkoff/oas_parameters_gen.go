@@ -9,6 +9,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -24,11 +25,35 @@ type MarketCandlesGetParams struct {
 	Interval CandleResolution
 }
 
-func unpackMarketCandlesGetParams(packed map[string]any) (params MarketCandlesGetParams) {
-	params.Figi = packed["figi"].(string)
-	params.From = packed["from"].(time.Time)
-	params.To = packed["to"].(time.Time)
-	params.Interval = packed["interval"].(CandleResolution)
+func unpackMarketCandlesGetParams(packed middleware.Parameters) (params MarketCandlesGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		params.Figi = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "from",
+			In:   "query",
+		}
+		params.From = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "to",
+			In:   "query",
+		}
+		params.To = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "interval",
+			In:   "query",
+		}
+		params.Interval = packed[key].(CandleResolution)
+	}
 	return params
 }
 
@@ -169,9 +194,21 @@ type MarketOrderbookGetParams struct {
 	Depth int32
 }
 
-func unpackMarketOrderbookGetParams(packed map[string]any) (params MarketOrderbookGetParams) {
-	params.Figi = packed["figi"].(string)
-	params.Depth = packed["depth"].(int32)
+func unpackMarketOrderbookGetParams(packed middleware.Parameters) (params MarketOrderbookGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		params.Figi = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "depth",
+			In:   "query",
+		}
+		params.Depth = packed[key].(int32)
+	}
 	return params
 }
 
@@ -244,8 +281,14 @@ type MarketSearchByFigiGetParams struct {
 	Figi string
 }
 
-func unpackMarketSearchByFigiGetParams(packed map[string]any) (params MarketSearchByFigiGetParams) {
-	params.Figi = packed["figi"].(string)
+func unpackMarketSearchByFigiGetParams(packed middleware.Parameters) (params MarketSearchByFigiGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		params.Figi = packed[key].(string)
+	}
 	return params
 }
 
@@ -289,8 +332,14 @@ type MarketSearchByTickerGetParams struct {
 	Ticker string
 }
 
-func unpackMarketSearchByTickerGetParams(packed map[string]any) (params MarketSearchByTickerGetParams) {
-	params.Ticker = packed["ticker"].(string)
+func unpackMarketSearchByTickerGetParams(packed middleware.Parameters) (params MarketSearchByTickerGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "ticker",
+			In:   "query",
+		}
+		params.Ticker = packed[key].(string)
+	}
 	return params
 }
 
@@ -340,14 +389,38 @@ type OperationsGetParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackOperationsGetParams(packed map[string]any) (params OperationsGetParams) {
-	params.From = packed["from"].(time.Time)
-	params.To = packed["to"].(time.Time)
-	if v, ok := packed["figi"]; ok {
-		params.Figi = v.(OptString)
+func unpackOperationsGetParams(packed middleware.Parameters) (params OperationsGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "from",
+			In:   "query",
+		}
+		params.From = packed[key].(time.Time)
 	}
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+	{
+		key := middleware.ParameterKey{
+			Name: "to",
+			In:   "query",
+		}
+		params.To = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Figi = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -491,10 +564,22 @@ type OrdersCancelPostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackOrdersCancelPostParams(packed map[string]any) (params OrdersCancelPostParams) {
-	params.OrderId = packed["orderId"].(string)
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackOrdersCancelPostParams(packed middleware.Parameters) (params OrdersCancelPostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "orderId",
+			In:   "query",
+		}
+		params.OrderId = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -573,9 +658,15 @@ type OrdersGetParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackOrdersGetParams(packed map[string]any) (params OrdersGetParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackOrdersGetParams(packed middleware.Parameters) (params OrdersGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -627,10 +718,22 @@ type OrdersLimitOrderPostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackOrdersLimitOrderPostParams(packed map[string]any) (params OrdersLimitOrderPostParams) {
-	params.Figi = packed["figi"].(string)
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackOrdersLimitOrderPostParams(packed middleware.Parameters) (params OrdersLimitOrderPostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		params.Figi = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -712,10 +815,22 @@ type OrdersMarketOrderPostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackOrdersMarketOrderPostParams(packed map[string]any) (params OrdersMarketOrderPostParams) {
-	params.Figi = packed["figi"].(string)
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackOrdersMarketOrderPostParams(packed middleware.Parameters) (params OrdersMarketOrderPostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "figi",
+			In:   "query",
+		}
+		params.Figi = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -794,9 +909,15 @@ type PortfolioCurrenciesGetParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackPortfolioCurrenciesGetParams(packed map[string]any) (params PortfolioCurrenciesGetParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackPortfolioCurrenciesGetParams(packed middleware.Parameters) (params PortfolioCurrenciesGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -846,9 +967,15 @@ type PortfolioGetParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackPortfolioGetParams(packed map[string]any) (params PortfolioGetParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackPortfolioGetParams(packed middleware.Parameters) (params PortfolioGetParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -898,9 +1025,15 @@ type SandboxClearPostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackSandboxClearPostParams(packed map[string]any) (params SandboxClearPostParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackSandboxClearPostParams(packed middleware.Parameters) (params SandboxClearPostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -950,9 +1083,15 @@ type SandboxCurrenciesBalancePostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackSandboxCurrenciesBalancePostParams(packed map[string]any) (params SandboxCurrenciesBalancePostParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackSandboxCurrenciesBalancePostParams(packed middleware.Parameters) (params SandboxCurrenciesBalancePostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -1002,9 +1141,15 @@ type SandboxPositionsBalancePostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackSandboxPositionsBalancePostParams(packed map[string]any) (params SandboxPositionsBalancePostParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackSandboxPositionsBalancePostParams(packed middleware.Parameters) (params SandboxPositionsBalancePostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }
@@ -1054,9 +1199,15 @@ type SandboxRemovePostParams struct {
 	BrokerAccountId OptString
 }
 
-func unpackSandboxRemovePostParams(packed map[string]any) (params SandboxRemovePostParams) {
-	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId = v.(OptString)
+func unpackSandboxRemovePostParams(packed middleware.Parameters) (params SandboxRemovePostParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "brokerAccountId",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.BrokerAccountId = v.(OptString)
+		}
 	}
 	return params
 }

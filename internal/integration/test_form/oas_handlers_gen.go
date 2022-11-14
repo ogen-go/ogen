@@ -76,7 +76,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			OperationName: "TestFormURLEncoded",
 			OperationID:   "testFormURLEncoded",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -173,7 +173,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			OperationName: "TestMultipart",
 			OperationID:   "testMultipart",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -270,7 +270,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			OperationName: "TestMultipartUpload",
 			OperationID:   "testMultipartUpload",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -367,7 +367,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			OperationName: "TestShareFormSchema",
 			OperationID:   "testShareFormSchema",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -17,9 +18,15 @@ type ListPetsParams struct {
 	Limit OptInt32
 }
 
-func unpackListPetsParams(packed map[string]any) (params ListPetsParams) {
-	if v, ok := packed["limit"]; ok {
-		params.Limit = v.(OptInt32)
+func unpackListPetsParams(packed middleware.Parameters) (params ListPetsParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "limit",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Limit = v.(OptInt32)
+		}
 	}
 	return params
 }
@@ -69,8 +76,14 @@ type ShowPetByIdParams struct {
 	PetId string
 }
 
-func unpackShowPetByIdParams(packed map[string]any) (params ShowPetByIdParams) {
-	params.PetId = packed["petId"].(string)
+func unpackShowPetByIdParams(packed middleware.Parameters) (params ShowPetByIdParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "petId",
+			In:   "path",
+		}
+		params.PetId = packed[key].(string)
+	}
 	return params
 }
 

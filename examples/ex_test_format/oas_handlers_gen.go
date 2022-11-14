@@ -90,87 +90,327 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 			OperationName: "TestQueryParameter",
 			OperationID:   "test_query_parameter",
 			Body:          request,
-			Params: map[string]any{
-				"boolean":                    params.Boolean,
-				"boolean_array":              params.BooleanArray,
-				"integer":                    params.Integer,
-				"integer_array":              params.IntegerArray,
-				"integer_int32":              params.IntegerInt32,
-				"integer_int32_array":        params.IntegerInt32Array,
-				"integer_int64":              params.IntegerInt64,
-				"integer_int64_array":        params.IntegerInt64Array,
-				"integer_uint":               params.IntegerUint,
-				"integer_uint32":             params.IntegerUint32,
-				"integer_uint32_array":       params.IntegerUint32Array,
-				"integer_uint64":             params.IntegerUint64,
-				"integer_uint64_array":       params.IntegerUint64Array,
-				"integer_uint_array":         params.IntegerUintArray,
-				"integer_unix":               params.IntegerUnix,
-				"integer_unix-micro":         params.IntegerUnixMicro,
-				"integer_unix-micro_array":   params.IntegerUnixMicroArray,
-				"integer_unix-milli":         params.IntegerUnixMilli,
-				"integer_unix-milli_array":   params.IntegerUnixMilliArray,
-				"integer_unix-nano":          params.IntegerUnixNano,
-				"integer_unix-nano_array":    params.IntegerUnixNanoArray,
-				"integer_unix-seconds":       params.IntegerUnixSeconds,
-				"integer_unix-seconds_array": params.IntegerUnixSecondsArray,
-				"integer_unix_array":         params.IntegerUnixArray,
-				"number":                     params.Number,
-				"number_array":               params.NumberArray,
-				"number_double":              params.NumberDouble,
-				"number_double_array":        params.NumberDoubleArray,
-				"number_float":               params.NumberFloat,
-				"number_float_array":         params.NumberFloatArray,
-				"number_int32":               params.NumberInt32,
-				"number_int32_array":         params.NumberInt32Array,
-				"number_int64":               params.NumberInt64,
-				"number_int64_array":         params.NumberInt64Array,
-				"string":                     params.String,
-				"string_array":               params.StringArray,
-				"string_base64":              params.StringBase64,
-				"string_base64_array":        params.StringBase64Array,
-				"string_binary":              params.StringBinary,
-				"string_binary_array":        params.StringBinaryArray,
-				"string_byte":                params.StringByte,
-				"string_byte_array":          params.StringByteArray,
-				"string_date":                params.StringDate,
-				"string_date-time":           params.StringDateTime,
-				"string_date-time_array":     params.StringDateTimeArray,
-				"string_date_array":          params.StringDateArray,
-				"string_duration":            params.StringDuration,
-				"string_duration_array":      params.StringDurationArray,
-				"string_email":               params.StringEmail,
-				"string_email_array":         params.StringEmailArray,
-				"string_hostname":            params.StringHostname,
-				"string_hostname_array":      params.StringHostnameArray,
-				"string_int32":               params.StringInt32,
-				"string_int32_array":         params.StringInt32Array,
-				"string_int64":               params.StringInt64,
-				"string_int64_array":         params.StringInt64Array,
-				"string_ip":                  params.StringIP,
-				"string_ip_array":            params.StringIPArray,
-				"string_ipv4":                params.StringIpv4,
-				"string_ipv4_array":          params.StringIpv4Array,
-				"string_ipv6":                params.StringIpv6,
-				"string_ipv6_array":          params.StringIpv6Array,
-				"string_password":            params.StringPassword,
-				"string_password_array":      params.StringPasswordArray,
-				"string_time":                params.StringTime,
-				"string_time_array":          params.StringTimeArray,
-				"string_unix":                params.StringUnix,
-				"string_unix-micro":          params.StringUnixMicro,
-				"string_unix-micro_array":    params.StringUnixMicroArray,
-				"string_unix-milli":          params.StringUnixMilli,
-				"string_unix-milli_array":    params.StringUnixMilliArray,
-				"string_unix-nano":           params.StringUnixNano,
-				"string_unix-nano_array":     params.StringUnixNanoArray,
-				"string_unix-seconds":        params.StringUnixSeconds,
-				"string_unix-seconds_array":  params.StringUnixSecondsArray,
-				"string_unix_array":          params.StringUnixArray,
-				"string_uri":                 params.StringURI,
-				"string_uri_array":           params.StringURIArray,
-				"string_uuid":                params.StringUUID,
-				"string_uuid_array":          params.StringUUIDArray,
+			Params: middleware.Parameters{
+				{
+					Name: "boolean",
+					In:   "query",
+				}: params.Boolean,
+				{
+					Name: "boolean_array",
+					In:   "query",
+				}: params.BooleanArray,
+				{
+					Name: "integer",
+					In:   "query",
+				}: params.Integer,
+				{
+					Name: "integer_array",
+					In:   "query",
+				}: params.IntegerArray,
+				{
+					Name: "integer_int32",
+					In:   "query",
+				}: params.IntegerInt32,
+				{
+					Name: "integer_int32_array",
+					In:   "query",
+				}: params.IntegerInt32Array,
+				{
+					Name: "integer_int64",
+					In:   "query",
+				}: params.IntegerInt64,
+				{
+					Name: "integer_int64_array",
+					In:   "query",
+				}: params.IntegerInt64Array,
+				{
+					Name: "integer_uint",
+					In:   "query",
+				}: params.IntegerUint,
+				{
+					Name: "integer_uint32",
+					In:   "query",
+				}: params.IntegerUint32,
+				{
+					Name: "integer_uint32_array",
+					In:   "query",
+				}: params.IntegerUint32Array,
+				{
+					Name: "integer_uint64",
+					In:   "query",
+				}: params.IntegerUint64,
+				{
+					Name: "integer_uint64_array",
+					In:   "query",
+				}: params.IntegerUint64Array,
+				{
+					Name: "integer_uint_array",
+					In:   "query",
+				}: params.IntegerUintArray,
+				{
+					Name: "integer_unix",
+					In:   "query",
+				}: params.IntegerUnix,
+				{
+					Name: "integer_unix-micro",
+					In:   "query",
+				}: params.IntegerUnixMicro,
+				{
+					Name: "integer_unix-micro_array",
+					In:   "query",
+				}: params.IntegerUnixMicroArray,
+				{
+					Name: "integer_unix-milli",
+					In:   "query",
+				}: params.IntegerUnixMilli,
+				{
+					Name: "integer_unix-milli_array",
+					In:   "query",
+				}: params.IntegerUnixMilliArray,
+				{
+					Name: "integer_unix-nano",
+					In:   "query",
+				}: params.IntegerUnixNano,
+				{
+					Name: "integer_unix-nano_array",
+					In:   "query",
+				}: params.IntegerUnixNanoArray,
+				{
+					Name: "integer_unix-seconds",
+					In:   "query",
+				}: params.IntegerUnixSeconds,
+				{
+					Name: "integer_unix-seconds_array",
+					In:   "query",
+				}: params.IntegerUnixSecondsArray,
+				{
+					Name: "integer_unix_array",
+					In:   "query",
+				}: params.IntegerUnixArray,
+				{
+					Name: "number",
+					In:   "query",
+				}: params.Number,
+				{
+					Name: "number_array",
+					In:   "query",
+				}: params.NumberArray,
+				{
+					Name: "number_double",
+					In:   "query",
+				}: params.NumberDouble,
+				{
+					Name: "number_double_array",
+					In:   "query",
+				}: params.NumberDoubleArray,
+				{
+					Name: "number_float",
+					In:   "query",
+				}: params.NumberFloat,
+				{
+					Name: "number_float_array",
+					In:   "query",
+				}: params.NumberFloatArray,
+				{
+					Name: "number_int32",
+					In:   "query",
+				}: params.NumberInt32,
+				{
+					Name: "number_int32_array",
+					In:   "query",
+				}: params.NumberInt32Array,
+				{
+					Name: "number_int64",
+					In:   "query",
+				}: params.NumberInt64,
+				{
+					Name: "number_int64_array",
+					In:   "query",
+				}: params.NumberInt64Array,
+				{
+					Name: "string",
+					In:   "query",
+				}: params.String,
+				{
+					Name: "string_array",
+					In:   "query",
+				}: params.StringArray,
+				{
+					Name: "string_base64",
+					In:   "query",
+				}: params.StringBase64,
+				{
+					Name: "string_base64_array",
+					In:   "query",
+				}: params.StringBase64Array,
+				{
+					Name: "string_binary",
+					In:   "query",
+				}: params.StringBinary,
+				{
+					Name: "string_binary_array",
+					In:   "query",
+				}: params.StringBinaryArray,
+				{
+					Name: "string_byte",
+					In:   "query",
+				}: params.StringByte,
+				{
+					Name: "string_byte_array",
+					In:   "query",
+				}: params.StringByteArray,
+				{
+					Name: "string_date",
+					In:   "query",
+				}: params.StringDate,
+				{
+					Name: "string_date-time",
+					In:   "query",
+				}: params.StringDateTime,
+				{
+					Name: "string_date-time_array",
+					In:   "query",
+				}: params.StringDateTimeArray,
+				{
+					Name: "string_date_array",
+					In:   "query",
+				}: params.StringDateArray,
+				{
+					Name: "string_duration",
+					In:   "query",
+				}: params.StringDuration,
+				{
+					Name: "string_duration_array",
+					In:   "query",
+				}: params.StringDurationArray,
+				{
+					Name: "string_email",
+					In:   "query",
+				}: params.StringEmail,
+				{
+					Name: "string_email_array",
+					In:   "query",
+				}: params.StringEmailArray,
+				{
+					Name: "string_hostname",
+					In:   "query",
+				}: params.StringHostname,
+				{
+					Name: "string_hostname_array",
+					In:   "query",
+				}: params.StringHostnameArray,
+				{
+					Name: "string_int32",
+					In:   "query",
+				}: params.StringInt32,
+				{
+					Name: "string_int32_array",
+					In:   "query",
+				}: params.StringInt32Array,
+				{
+					Name: "string_int64",
+					In:   "query",
+				}: params.StringInt64,
+				{
+					Name: "string_int64_array",
+					In:   "query",
+				}: params.StringInt64Array,
+				{
+					Name: "string_ip",
+					In:   "query",
+				}: params.StringIP,
+				{
+					Name: "string_ip_array",
+					In:   "query",
+				}: params.StringIPArray,
+				{
+					Name: "string_ipv4",
+					In:   "query",
+				}: params.StringIpv4,
+				{
+					Name: "string_ipv4_array",
+					In:   "query",
+				}: params.StringIpv4Array,
+				{
+					Name: "string_ipv6",
+					In:   "query",
+				}: params.StringIpv6,
+				{
+					Name: "string_ipv6_array",
+					In:   "query",
+				}: params.StringIpv6Array,
+				{
+					Name: "string_password",
+					In:   "query",
+				}: params.StringPassword,
+				{
+					Name: "string_password_array",
+					In:   "query",
+				}: params.StringPasswordArray,
+				{
+					Name: "string_time",
+					In:   "query",
+				}: params.StringTime,
+				{
+					Name: "string_time_array",
+					In:   "query",
+				}: params.StringTimeArray,
+				{
+					Name: "string_unix",
+					In:   "query",
+				}: params.StringUnix,
+				{
+					Name: "string_unix-micro",
+					In:   "query",
+				}: params.StringUnixMicro,
+				{
+					Name: "string_unix-micro_array",
+					In:   "query",
+				}: params.StringUnixMicroArray,
+				{
+					Name: "string_unix-milli",
+					In:   "query",
+				}: params.StringUnixMilli,
+				{
+					Name: "string_unix-milli_array",
+					In:   "query",
+				}: params.StringUnixMilliArray,
+				{
+					Name: "string_unix-nano",
+					In:   "query",
+				}: params.StringUnixNano,
+				{
+					Name: "string_unix-nano_array",
+					In:   "query",
+				}: params.StringUnixNanoArray,
+				{
+					Name: "string_unix-seconds",
+					In:   "query",
+				}: params.StringUnixSeconds,
+				{
+					Name: "string_unix-seconds_array",
+					In:   "query",
+				}: params.StringUnixSecondsArray,
+				{
+					Name: "string_unix_array",
+					In:   "query",
+				}: params.StringUnixArray,
+				{
+					Name: "string_uri",
+					In:   "query",
+				}: params.StringURI,
+				{
+					Name: "string_uri_array",
+					In:   "query",
+				}: params.StringURIArray,
+				{
+					Name: "string_uuid",
+					In:   "query",
+				}: params.StringUUID,
+				{
+					Name: "string_uuid_array",
+					In:   "query",
+				}: params.StringUUIDArray,
 			},
 			Raw: r,
 		}
@@ -268,7 +508,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 			OperationName: "TestRequestAny",
 			OperationID:   "test_request_Any",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -365,7 +605,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 			OperationName: "TestRequestBoolean",
 			OperationID:   "test_request_boolean",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -462,7 +702,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 			OperationName: "TestRequestBooleanArray",
 			OperationID:   "test_request_boolean_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -559,7 +799,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestBooleanArrayArray",
 			OperationID:   "test_request_boolean_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -656,7 +896,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 			OperationName: "TestRequestBooleanNullable",
 			OperationID:   "test_request_boolean_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -753,7 +993,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 			OperationName: "TestRequestBooleanNullableArray",
 			OperationID:   "test_request_boolean_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -850,7 +1090,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestBooleanNullableArrayArray",
 			OperationID:   "test_request_boolean_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -947,7 +1187,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestEmptyStruct",
 			OperationID:   "test_request_EmptyStruct",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1044,7 +1284,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestFormatTest",
 			OperationID:   "test_request_FormatTest",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1141,7 +1381,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 			OperationName: "TestRequestInteger",
 			OperationID:   "test_request_integer",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1238,7 +1478,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 			OperationName: "TestRequestIntegerArray",
 			OperationID:   "test_request_integer_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1335,7 +1575,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestIntegerArrayArray",
 			OperationID:   "test_request_integer_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1432,7 +1672,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 			OperationName: "TestRequestIntegerInt32",
 			OperationID:   "test_request_integer_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1529,7 +1769,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestIntegerInt32Array",
 			OperationID:   "test_request_integer_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1626,7 +1866,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestIntegerInt32ArrayArray",
 			OperationID:   "test_request_integer_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1723,7 +1963,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 			OperationName: "TestRequestIntegerInt32Nullable",
 			OperationID:   "test_request_integer_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1820,7 +2060,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 			OperationName: "TestRequestIntegerInt32NullableArray",
 			OperationID:   "test_request_integer_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -1917,7 +2157,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestIntegerInt32NullableArrayArray",
 			OperationID:   "test_request_integer_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2014,7 +2254,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 			OperationName: "TestRequestIntegerInt64",
 			OperationID:   "test_request_integer_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2111,7 +2351,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestIntegerInt64Array",
 			OperationID:   "test_request_integer_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2208,7 +2448,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestIntegerInt64ArrayArray",
 			OperationID:   "test_request_integer_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2305,7 +2545,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 			OperationName: "TestRequestIntegerInt64Nullable",
 			OperationID:   "test_request_integer_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2402,7 +2642,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 			OperationName: "TestRequestIntegerInt64NullableArray",
 			OperationID:   "test_request_integer_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2499,7 +2739,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestIntegerInt64NullableArrayArray",
 			OperationID:   "test_request_integer_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2596,7 +2836,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 			OperationName: "TestRequestIntegerNullable",
 			OperationID:   "test_request_integer_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2693,7 +2933,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 			OperationName: "TestRequestIntegerNullableArray",
 			OperationID:   "test_request_integer_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2790,7 +3030,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestIntegerNullableArrayArray",
 			OperationID:   "test_request_integer_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2887,7 +3127,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestIntegerUint",
 			OperationID:   "test_request_integer_uint",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -2984,7 +3224,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 			OperationName: "TestRequestIntegerUint32",
 			OperationID:   "test_request_integer_uint32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3081,7 +3321,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 			OperationName: "TestRequestIntegerUint32Array",
 			OperationID:   "test_request_integer_uint32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3178,7 +3418,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 			OperationName: "TestRequestIntegerUint32ArrayArray",
 			OperationID:   "test_request_integer_uint32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3275,7 +3515,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUint32Nullable",
 			OperationID:   "test_request_integer_uint32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3372,7 +3612,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 			OperationName: "TestRequestIntegerUint32NullableArray",
 			OperationID:   "test_request_integer_uint32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3469,7 +3709,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 			OperationName: "TestRequestIntegerUint32NullableArrayArray",
 			OperationID:   "test_request_integer_uint32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3566,7 +3806,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 			OperationName: "TestRequestIntegerUint64",
 			OperationID:   "test_request_integer_uint64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3663,7 +3903,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 			OperationName: "TestRequestIntegerUint64Array",
 			OperationID:   "test_request_integer_uint64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3760,7 +4000,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 			OperationName: "TestRequestIntegerUint64ArrayArray",
 			OperationID:   "test_request_integer_uint64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3857,7 +4097,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUint64Nullable",
 			OperationID:   "test_request_integer_uint64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -3954,7 +4194,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 			OperationName: "TestRequestIntegerUint64NullableArray",
 			OperationID:   "test_request_integer_uint64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4051,7 +4291,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 			OperationName: "TestRequestIntegerUint64NullableArrayArray",
 			OperationID:   "test_request_integer_uint64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4148,7 +4388,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 			OperationName: "TestRequestIntegerUintArray",
 			OperationID:   "test_request_integer_uint_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4245,7 +4485,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUintArrayArray",
 			OperationID:   "test_request_integer_uint_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4342,7 +4582,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 			OperationName: "TestRequestIntegerUintNullable",
 			OperationID:   "test_request_integer_uint_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4439,7 +4679,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 			OperationName: "TestRequestIntegerUintNullableArray",
 			OperationID:   "test_request_integer_uint_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4536,7 +4776,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestIntegerUintNullableArrayArray",
 			OperationID:   "test_request_integer_uint_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4633,7 +4873,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestIntegerUnix",
 			OperationID:   "test_request_integer_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4730,7 +4970,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 			OperationName: "TestRequestIntegerUnixArray",
 			OperationID:   "test_request_integer_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4827,7 +5067,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUnixArrayArray",
 			OperationID:   "test_request_integer_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -4924,7 +5164,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 			OperationName: "TestRequestIntegerUnixMicro",
 			OperationID:   "test_request_integer_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5021,7 +5261,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUnixMicroArray",
 			OperationID:   "test_request_integer_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5118,7 +5358,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 			OperationName: "TestRequestIntegerUnixMicroArrayArray",
 			OperationID:   "test_request_integer_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5215,7 +5455,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 			OperationName: "TestRequestIntegerUnixMicroNullable",
 			OperationID:   "test_request_integer_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5312,7 +5552,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 			OperationName: "TestRequestIntegerUnixMicroNullableArray",
 			OperationID:   "test_request_integer_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5409,7 +5649,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 			OperationName: "TestRequestIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_request_integer_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5506,7 +5746,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 			OperationName: "TestRequestIntegerUnixMilli",
 			OperationID:   "test_request_integer_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5603,7 +5843,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 			OperationName: "TestRequestIntegerUnixMilliArray",
 			OperationID:   "test_request_integer_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5700,7 +5940,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 			OperationName: "TestRequestIntegerUnixMilliArrayArray",
 			OperationID:   "test_request_integer_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5797,7 +6037,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 			OperationName: "TestRequestIntegerUnixMilliNullable",
 			OperationID:   "test_request_integer_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5894,7 +6134,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 			OperationName: "TestRequestIntegerUnixMilliNullableArray",
 			OperationID:   "test_request_integer_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -5991,7 +6231,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 			OperationName: "TestRequestIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_request_integer_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6088,7 +6328,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 			OperationName: "TestRequestIntegerUnixNano",
 			OperationID:   "test_request_integer_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6185,7 +6425,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 			OperationName: "TestRequestIntegerUnixNanoArray",
 			OperationID:   "test_request_integer_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6282,7 +6522,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestIntegerUnixNanoArrayArray",
 			OperationID:   "test_request_integer_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6379,7 +6619,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 			OperationName: "TestRequestIntegerUnixNanoNullable",
 			OperationID:   "test_request_integer_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6476,7 +6716,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 			OperationName: "TestRequestIntegerUnixNanoNullableArray",
 			OperationID:   "test_request_integer_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6573,7 +6813,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 			OperationName: "TestRequestIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_request_integer_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6670,7 +6910,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 			OperationName: "TestRequestIntegerUnixNullable",
 			OperationID:   "test_request_integer_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6767,7 +7007,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 			OperationName: "TestRequestIntegerUnixNullableArray",
 			OperationID:   "test_request_integer_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6864,7 +7104,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestIntegerUnixNullableArrayArray",
 			OperationID:   "test_request_integer_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -6961,7 +7201,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 			OperationName: "TestRequestIntegerUnixSeconds",
 			OperationID:   "test_request_integer_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7058,7 +7298,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 			OperationName: "TestRequestIntegerUnixSecondsArray",
 			OperationID:   "test_request_integer_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7155,7 +7395,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 			OperationName: "TestRequestIntegerUnixSecondsArrayArray",
 			OperationID:   "test_request_integer_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7252,7 +7492,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 			OperationName: "TestRequestIntegerUnixSecondsNullable",
 			OperationID:   "test_request_integer_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7349,7 +7589,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 			OperationName: "TestRequestIntegerUnixSecondsNullableArray",
 			OperationID:   "test_request_integer_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7446,7 +7686,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 			OperationName: "TestRequestIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_integer_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7543,7 +7783,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 			OperationName: "TestRequestNull",
 			OperationID:   "test_request_null",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7640,7 +7880,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 			OperationName: "TestRequestNullArray",
 			OperationID:   "test_request_null_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7737,7 +7977,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 			OperationName: "TestRequestNullArrayArray",
 			OperationID:   "test_request_null_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7834,7 +8074,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 			OperationName: "TestRequestNullNullable",
 			OperationID:   "test_request_null_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -7931,7 +8171,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestNullNullableArray",
 			OperationID:   "test_request_null_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8028,7 +8268,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestNullNullableArrayArray",
 			OperationID:   "test_request_null_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8125,7 +8365,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 			OperationName: "TestRequestNumber",
 			OperationID:   "test_request_number",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8222,7 +8462,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestNumberArray",
 			OperationID:   "test_request_number_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8319,7 +8559,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 			OperationName: "TestRequestNumberArrayArray",
 			OperationID:   "test_request_number_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8416,7 +8656,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 			OperationName: "TestRequestNumberDouble",
 			OperationID:   "test_request_number_double",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8513,7 +8753,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestNumberDoubleArray",
 			OperationID:   "test_request_number_double_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8610,7 +8850,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestNumberDoubleArrayArray",
 			OperationID:   "test_request_number_double_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8707,7 +8947,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 			OperationName: "TestRequestNumberDoubleNullable",
 			OperationID:   "test_request_number_double_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8804,7 +9044,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 			OperationName: "TestRequestNumberDoubleNullableArray",
 			OperationID:   "test_request_number_double_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8901,7 +9141,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestNumberDoubleNullableArrayArray",
 			OperationID:   "test_request_number_double_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -8998,7 +9238,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestNumberFloat",
 			OperationID:   "test_request_number_float",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9095,7 +9335,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 			OperationName: "TestRequestNumberFloatArray",
 			OperationID:   "test_request_number_float_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9192,7 +9432,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestNumberFloatArrayArray",
 			OperationID:   "test_request_number_float_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9289,7 +9529,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 			OperationName: "TestRequestNumberFloatNullable",
 			OperationID:   "test_request_number_float_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9386,7 +9626,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 			OperationName: "TestRequestNumberFloatNullableArray",
 			OperationID:   "test_request_number_float_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9483,7 +9723,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestNumberFloatNullableArrayArray",
 			OperationID:   "test_request_number_float_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9580,7 +9820,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 			OperationName: "TestRequestNumberInt32",
 			OperationID:   "test_request_number_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9677,7 +9917,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 			OperationName: "TestRequestNumberInt32Array",
 			OperationID:   "test_request_number_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9774,7 +10014,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestNumberInt32ArrayArray",
 			OperationID:   "test_request_number_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9871,7 +10111,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 			OperationName: "TestRequestNumberInt32Nullable",
 			OperationID:   "test_request_number_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -9968,7 +10208,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 			OperationName: "TestRequestNumberInt32NullableArray",
 			OperationID:   "test_request_number_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10065,7 +10305,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestNumberInt32NullableArrayArray",
 			OperationID:   "test_request_number_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10162,7 +10402,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 			OperationName: "TestRequestNumberInt64",
 			OperationID:   "test_request_number_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10259,7 +10499,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 			OperationName: "TestRequestNumberInt64Array",
 			OperationID:   "test_request_number_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10356,7 +10596,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestNumberInt64ArrayArray",
 			OperationID:   "test_request_number_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10453,7 +10693,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 			OperationName: "TestRequestNumberInt64Nullable",
 			OperationID:   "test_request_number_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10550,7 +10790,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 			OperationName: "TestRequestNumberInt64NullableArray",
 			OperationID:   "test_request_number_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10647,7 +10887,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestNumberInt64NullableArrayArray",
 			OperationID:   "test_request_number_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10744,7 +10984,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 			OperationName: "TestRequestNumberNullable",
 			OperationID:   "test_request_number_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10841,7 +11081,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 			OperationName: "TestRequestNumberNullableArray",
 			OperationID:   "test_request_number_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -10938,7 +11178,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 			OperationName: "TestRequestNumberNullableArrayArray",
 			OperationID:   "test_request_number_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11035,7 +11275,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestRequiredAny",
 			OperationID:   "test_request_required_Any",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11132,7 +11372,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 			OperationName: "TestRequestRequiredBoolean",
 			OperationID:   "test_request_required_boolean",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11229,7 +11469,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 			OperationName: "TestRequestRequiredBooleanArray",
 			OperationID:   "test_request_required_boolean_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11326,7 +11566,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredBooleanArrayArray",
 			OperationID:   "test_request_required_boolean_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11423,7 +11663,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 			OperationName: "TestRequestRequiredBooleanNullable",
 			OperationID:   "test_request_required_boolean_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11520,7 +11760,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredBooleanNullableArray",
 			OperationID:   "test_request_required_boolean_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11617,7 +11857,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 			OperationName: "TestRequestRequiredBooleanNullableArrayArray",
 			OperationID:   "test_request_required_boolean_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11714,7 +11954,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredEmptyStruct",
 			OperationID:   "test_request_required_EmptyStruct",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11811,7 +12051,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredFormatTest",
 			OperationID:   "test_request_required_FormatTest",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -11908,7 +12148,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 			OperationName: "TestRequestRequiredInteger",
 			OperationID:   "test_request_required_integer",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12005,7 +12245,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 			OperationName: "TestRequestRequiredIntegerArray",
 			OperationID:   "test_request_required_integer_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12102,7 +12342,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredIntegerArrayArray",
 			OperationID:   "test_request_required_integer_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12199,7 +12439,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 			OperationName: "TestRequestRequiredIntegerInt32",
 			OperationID:   "test_request_required_integer_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12296,7 +12536,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredIntegerInt32Array",
 			OperationID:   "test_request_required_integer_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12393,7 +12633,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredIntegerInt32ArrayArray",
 			OperationID:   "test_request_required_integer_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12490,7 +12730,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 			OperationName: "TestRequestRequiredIntegerInt32Nullable",
 			OperationID:   "test_request_required_integer_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12587,7 +12827,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 			OperationName: "TestRequestRequiredIntegerInt32NullableArray",
 			OperationID:   "test_request_required_integer_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12684,7 +12924,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			OperationName: "TestRequestRequiredIntegerInt32NullableArrayArray",
 			OperationID:   "test_request_required_integer_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12781,7 +13021,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 			OperationName: "TestRequestRequiredIntegerInt64",
 			OperationID:   "test_request_required_integer_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12878,7 +13118,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredIntegerInt64Array",
 			OperationID:   "test_request_required_integer_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -12975,7 +13215,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredIntegerInt64ArrayArray",
 			OperationID:   "test_request_required_integer_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13072,7 +13312,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 			OperationName: "TestRequestRequiredIntegerInt64Nullable",
 			OperationID:   "test_request_required_integer_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13169,7 +13409,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 			OperationName: "TestRequestRequiredIntegerInt64NullableArray",
 			OperationID:   "test_request_required_integer_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13266,7 +13506,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			OperationName: "TestRequestRequiredIntegerInt64NullableArrayArray",
 			OperationID:   "test_request_required_integer_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13363,7 +13603,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 			OperationName: "TestRequestRequiredIntegerNullable",
 			OperationID:   "test_request_required_integer_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13460,7 +13700,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredIntegerNullableArray",
 			OperationID:   "test_request_required_integer_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13557,7 +13797,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 			OperationName: "TestRequestRequiredIntegerNullableArrayArray",
 			OperationID:   "test_request_required_integer_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13654,7 +13894,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredIntegerUint",
 			OperationID:   "test_request_required_integer_uint",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13751,7 +13991,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 			OperationName: "TestRequestRequiredIntegerUint32",
 			OperationID:   "test_request_required_integer_uint32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13848,7 +14088,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 			OperationName: "TestRequestRequiredIntegerUint32Array",
 			OperationID:   "test_request_required_integer_uint32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -13945,7 +14185,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 			OperationName: "TestRequestRequiredIntegerUint32ArrayArray",
 			OperationID:   "test_request_required_integer_uint32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14042,7 +14282,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUint32Nullable",
 			OperationID:   "test_request_required_integer_uint32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14139,7 +14379,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 			OperationName: "TestRequestRequiredIntegerUint32NullableArray",
 			OperationID:   "test_request_required_integer_uint32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14236,7 +14476,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 			OperationName: "TestRequestRequiredIntegerUint32NullableArrayArray",
 			OperationID:   "test_request_required_integer_uint32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14333,7 +14573,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 			OperationName: "TestRequestRequiredIntegerUint64",
 			OperationID:   "test_request_required_integer_uint64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14430,7 +14670,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 			OperationName: "TestRequestRequiredIntegerUint64Array",
 			OperationID:   "test_request_required_integer_uint64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14527,7 +14767,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 			OperationName: "TestRequestRequiredIntegerUint64ArrayArray",
 			OperationID:   "test_request_required_integer_uint64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14624,7 +14864,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUint64Nullable",
 			OperationID:   "test_request_required_integer_uint64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14721,7 +14961,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 			OperationName: "TestRequestRequiredIntegerUint64NullableArray",
 			OperationID:   "test_request_required_integer_uint64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14818,7 +15058,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 			OperationName: "TestRequestRequiredIntegerUint64NullableArrayArray",
 			OperationID:   "test_request_required_integer_uint64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -14915,7 +15155,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredIntegerUintArray",
 			OperationID:   "test_request_required_integer_uint_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15012,7 +15252,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUintArrayArray",
 			OperationID:   "test_request_required_integer_uint_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15109,7 +15349,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 			OperationName: "TestRequestRequiredIntegerUintNullable",
 			OperationID:   "test_request_required_integer_uint_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15206,7 +15446,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 			OperationName: "TestRequestRequiredIntegerUintNullableArray",
 			OperationID:   "test_request_required_integer_uint_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15303,7 +15543,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredIntegerUintNullableArrayArray",
 			OperationID:   "test_request_required_integer_uint_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15400,7 +15640,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredIntegerUnix",
 			OperationID:   "test_request_required_integer_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15497,7 +15737,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredIntegerUnixArray",
 			OperationID:   "test_request_required_integer_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15594,7 +15834,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUnixArrayArray",
 			OperationID:   "test_request_required_integer_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15691,7 +15931,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 			OperationName: "TestRequestRequiredIntegerUnixMicro",
 			OperationID:   "test_request_required_integer_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15788,7 +16028,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUnixMicroArray",
 			OperationID:   "test_request_required_integer_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15885,7 +16125,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 			OperationName: "TestRequestRequiredIntegerUnixMicroArrayArray",
 			OperationID:   "test_request_required_integer_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -15982,7 +16222,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullable",
 			OperationID:   "test_request_required_integer_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16079,7 +16319,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArray",
 			OperationID:   "test_request_required_integer_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16176,7 +16416,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			OperationName: "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16273,7 +16513,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 			OperationName: "TestRequestRequiredIntegerUnixMilli",
 			OperationID:   "test_request_required_integer_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16370,7 +16610,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredIntegerUnixMilliArray",
 			OperationID:   "test_request_required_integer_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16467,7 +16707,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 			OperationName: "TestRequestRequiredIntegerUnixMilliArrayArray",
 			OperationID:   "test_request_required_integer_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16564,7 +16804,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullable",
 			OperationID:   "test_request_required_integer_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16661,7 +16901,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArray",
 			OperationID:   "test_request_required_integer_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16758,7 +16998,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			OperationName: "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16855,7 +17095,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 			OperationName: "TestRequestRequiredIntegerUnixNano",
 			OperationID:   "test_request_required_integer_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -16952,7 +17192,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredIntegerUnixNanoArray",
 			OperationID:   "test_request_required_integer_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17049,7 +17289,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 			OperationName: "TestRequestRequiredIntegerUnixNanoArrayArray",
 			OperationID:   "test_request_required_integer_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17146,7 +17386,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullable",
 			OperationID:   "test_request_required_integer_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17243,7 +17483,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArray",
 			OperationID:   "test_request_required_integer_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17340,7 +17580,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			OperationName: "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17437,7 +17677,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 			OperationName: "TestRequestRequiredIntegerUnixNullable",
 			OperationID:   "test_request_required_integer_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17534,7 +17774,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 			OperationName: "TestRequestRequiredIntegerUnixNullableArray",
 			OperationID:   "test_request_required_integer_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17631,7 +17871,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredIntegerUnixNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17728,7 +17968,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 			OperationName: "TestRequestRequiredIntegerUnixSeconds",
 			OperationID:   "test_request_required_integer_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17825,7 +18065,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 			OperationName: "TestRequestRequiredIntegerUnixSecondsArray",
 			OperationID:   "test_request_required_integer_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -17922,7 +18162,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredIntegerUnixSecondsArrayArray",
 			OperationID:   "test_request_required_integer_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18019,7 +18259,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullable",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18116,7 +18356,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArray",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18213,7 +18453,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			OperationName: "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_required_integer_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18310,7 +18550,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 			OperationName: "TestRequestRequiredNull",
 			OperationID:   "test_request_required_null",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18407,7 +18647,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestRequiredNullArray",
 			OperationID:   "test_request_required_null_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18504,7 +18744,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestRequiredNullArrayArray",
 			OperationID:   "test_request_required_null_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18601,7 +18841,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 			OperationName: "TestRequestRequiredNullNullable",
 			OperationID:   "test_request_required_null_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18698,7 +18938,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredNullNullableArray",
 			OperationID:   "test_request_required_null_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18795,7 +19035,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredNullNullableArrayArray",
 			OperationID:   "test_request_required_null_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18892,7 +19132,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 			OperationName: "TestRequestRequiredNumber",
 			OperationID:   "test_request_required_number",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -18989,7 +19229,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredNumberArray",
 			OperationID:   "test_request_required_number_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19086,7 +19326,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredNumberArrayArray",
 			OperationID:   "test_request_required_number_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19183,7 +19423,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 			OperationName: "TestRequestRequiredNumberDouble",
 			OperationID:   "test_request_required_number_double",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19280,7 +19520,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredNumberDoubleArray",
 			OperationID:   "test_request_required_number_double_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19377,7 +19617,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredNumberDoubleArrayArray",
 			OperationID:   "test_request_required_number_double_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19474,7 +19714,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 			OperationName: "TestRequestRequiredNumberDoubleNullable",
 			OperationID:   "test_request_required_number_double_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19571,7 +19811,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 			OperationName: "TestRequestRequiredNumberDoubleNullableArray",
 			OperationID:   "test_request_required_number_double_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19668,7 +19908,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			OperationName: "TestRequestRequiredNumberDoubleNullableArrayArray",
 			OperationID:   "test_request_required_number_double_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19765,7 +20005,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredNumberFloat",
 			OperationID:   "test_request_required_number_float",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19862,7 +20102,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredNumberFloatArray",
 			OperationID:   "test_request_required_number_float_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -19959,7 +20199,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredNumberFloatArrayArray",
 			OperationID:   "test_request_required_number_float_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20056,7 +20296,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 			OperationName: "TestRequestRequiredNumberFloatNullable",
 			OperationID:   "test_request_required_number_float_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20153,7 +20393,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 			OperationName: "TestRequestRequiredNumberFloatNullableArray",
 			OperationID:   "test_request_required_number_float_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20250,7 +20490,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredNumberFloatNullableArrayArray",
 			OperationID:   "test_request_required_number_float_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20347,7 +20587,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 			OperationName: "TestRequestRequiredNumberInt32",
 			OperationID:   "test_request_required_number_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20444,7 +20684,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredNumberInt32Array",
 			OperationID:   "test_request_required_number_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20541,7 +20781,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredNumberInt32ArrayArray",
 			OperationID:   "test_request_required_number_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20638,7 +20878,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 			OperationName: "TestRequestRequiredNumberInt32Nullable",
 			OperationID:   "test_request_required_number_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20735,7 +20975,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 			OperationName: "TestRequestRequiredNumberInt32NullableArray",
 			OperationID:   "test_request_required_number_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20832,7 +21072,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredNumberInt32NullableArrayArray",
 			OperationID:   "test_request_required_number_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -20929,7 +21169,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 			OperationName: "TestRequestRequiredNumberInt64",
 			OperationID:   "test_request_required_number_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21026,7 +21266,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredNumberInt64Array",
 			OperationID:   "test_request_required_number_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21123,7 +21363,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredNumberInt64ArrayArray",
 			OperationID:   "test_request_required_number_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21220,7 +21460,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 			OperationName: "TestRequestRequiredNumberInt64Nullable",
 			OperationID:   "test_request_required_number_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21317,7 +21557,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 			OperationName: "TestRequestRequiredNumberInt64NullableArray",
 			OperationID:   "test_request_required_number_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21414,7 +21654,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredNumberInt64NullableArrayArray",
 			OperationID:   "test_request_required_number_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21511,7 +21751,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 			OperationName: "TestRequestRequiredNumberNullable",
 			OperationID:   "test_request_required_number_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21608,7 +21848,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredNumberNullableArray",
 			OperationID:   "test_request_required_number_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21705,7 +21945,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredNumberNullableArrayArray",
 			OperationID:   "test_request_required_number_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21802,7 +22042,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 			OperationName: "TestRequestRequiredString",
 			OperationID:   "test_request_required_string",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21899,7 +22139,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredStringArray",
 			OperationID:   "test_request_required_string_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -21996,7 +22236,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredStringArrayArray",
 			OperationID:   "test_request_required_string_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22093,7 +22333,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, w 
 			OperationName: "TestRequestRequiredStringBase64",
 			OperationID:   "test_request_required_string_base64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22190,7 +22430,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredStringBase64Array",
 			OperationID:   "test_request_required_string_base64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22287,7 +22527,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredStringBase64ArrayArray",
 			OperationID:   "test_request_required_string_base64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22384,7 +22624,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 			OperationName: "TestRequestRequiredStringBase64Nullable",
 			OperationID:   "test_request_required_string_base64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22481,7 +22721,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 			OperationName: "TestRequestRequiredStringBase64NullableArray",
 			OperationID:   "test_request_required_string_base64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22578,7 +22818,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 			OperationName: "TestRequestRequiredStringBase64NullableArrayArray",
 			OperationID:   "test_request_required_string_base64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22675,7 +22915,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 			OperationName: "TestRequestRequiredStringBinary",
 			OperationID:   "test_request_required_string_binary",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22772,7 +23012,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 			OperationName: "TestRequestRequiredStringBinaryArray",
 			OperationID:   "test_request_required_string_binary_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22869,7 +23109,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 			OperationName: "TestRequestRequiredStringBinaryArrayArray",
 			OperationID:   "test_request_required_string_binary_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -22966,7 +23206,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 			OperationName: "TestRequestRequiredStringBinaryNullable",
 			OperationID:   "test_request_required_string_binary_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23063,7 +23303,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 			OperationName: "TestRequestRequiredStringBinaryNullableArray",
 			OperationID:   "test_request_required_string_binary_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23160,7 +23400,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			OperationName: "TestRequestRequiredStringBinaryNullableArrayArray",
 			OperationID:   "test_request_required_string_binary_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23257,7 +23497,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringByte",
 			OperationID:   "test_request_required_string_byte",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23354,7 +23594,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringByteArray",
 			OperationID:   "test_request_required_string_byte_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23451,7 +23691,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringByteArrayArray",
 			OperationID:   "test_request_required_string_byte_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23548,7 +23788,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringByteNullable",
 			OperationID:   "test_request_required_string_byte_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23645,7 +23885,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringByteNullableArray",
 			OperationID:   "test_request_required_string_byte_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23742,7 +23982,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringByteNullableArrayArray",
 			OperationID:   "test_request_required_string_byte_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23839,7 +24079,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringDate",
 			OperationID:   "test_request_required_string_date",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -23936,7 +24176,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringDateArray",
 			OperationID:   "test_request_required_string_date_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24033,7 +24273,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringDateArrayArray",
 			OperationID:   "test_request_required_string_date_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24130,7 +24370,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringDateNullable",
 			OperationID:   "test_request_required_string_date_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24227,7 +24467,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringDateNullableArray",
 			OperationID:   "test_request_required_string_date_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24324,7 +24564,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringDateNullableArrayArray",
 			OperationID:   "test_request_required_string_date_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24421,7 +24661,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringDateTime",
 			OperationID:   "test_request_required_string_date-time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24518,7 +24758,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringDateTimeArray",
 			OperationID:   "test_request_required_string_date-time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24615,7 +24855,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringDateTimeArrayArray",
 			OperationID:   "test_request_required_string_date-time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24712,7 +24952,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 			OperationName: "TestRequestRequiredStringDateTimeNullable",
 			OperationID:   "test_request_required_string_date-time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24809,7 +25049,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 			OperationName: "TestRequestRequiredStringDateTimeNullableArray",
 			OperationID:   "test_request_required_string_date-time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -24906,7 +25146,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			OperationName: "TestRequestRequiredStringDateTimeNullableArrayArray",
 			OperationID:   "test_request_required_string_date-time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25003,7 +25243,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringDuration",
 			OperationID:   "test_request_required_string_duration",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25100,7 +25340,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringDurationArray",
 			OperationID:   "test_request_required_string_duration_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25197,7 +25437,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringDurationArrayArray",
 			OperationID:   "test_request_required_string_duration_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25294,7 +25534,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 			OperationName: "TestRequestRequiredStringDurationNullable",
 			OperationID:   "test_request_required_string_duration_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25391,7 +25631,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 			OperationName: "TestRequestRequiredStringDurationNullableArray",
 			OperationID:   "test_request_required_string_duration_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25488,7 +25728,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 			OperationName: "TestRequestRequiredStringDurationNullableArrayArray",
 			OperationID:   "test_request_required_string_duration_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25585,7 +25825,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 			OperationName: "TestRequestRequiredStringEmail",
 			OperationID:   "test_request_required_string_email",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25682,7 +25922,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredStringEmailArray",
 			OperationID:   "test_request_required_string_email_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25779,7 +26019,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredStringEmailArrayArray",
 			OperationID:   "test_request_required_string_email_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25876,7 +26116,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 			OperationName: "TestRequestRequiredStringEmailNullable",
 			OperationID:   "test_request_required_string_email_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -25973,7 +26213,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 			OperationName: "TestRequestRequiredStringEmailNullableArray",
 			OperationID:   "test_request_required_string_email_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26070,7 +26310,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredStringEmailNullableArrayArray",
 			OperationID:   "test_request_required_string_email_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26167,7 +26407,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringHostname",
 			OperationID:   "test_request_required_string_hostname",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26264,7 +26504,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringHostnameArray",
 			OperationID:   "test_request_required_string_hostname_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26361,7 +26601,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringHostnameArrayArray",
 			OperationID:   "test_request_required_string_hostname_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26458,7 +26698,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 			OperationName: "TestRequestRequiredStringHostnameNullable",
 			OperationID:   "test_request_required_string_hostname_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26555,7 +26795,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 			OperationName: "TestRequestRequiredStringHostnameNullableArray",
 			OperationID:   "test_request_required_string_hostname_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26652,7 +26892,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 			OperationName: "TestRequestRequiredStringHostnameNullableArrayArray",
 			OperationID:   "test_request_required_string_hostname_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26749,7 +26989,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 			OperationName: "TestRequestRequiredStringIP",
 			OperationID:   "test_request_required_string_ip",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26846,7 +27086,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 			OperationName: "TestRequestRequiredStringIPArray",
 			OperationID:   "test_request_required_string_ip_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -26943,7 +27183,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringIPArrayArray",
 			OperationID:   "test_request_required_string_ip_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27040,7 +27280,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 			OperationName: "TestRequestRequiredStringIPNullable",
 			OperationID:   "test_request_required_string_ip_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27137,7 +27377,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredStringIPNullableArray",
 			OperationID:   "test_request_required_string_ip_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27234,7 +27474,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 			OperationName: "TestRequestRequiredStringIPNullableArrayArray",
 			OperationID:   "test_request_required_string_ip_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27331,7 +27571,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 			OperationName: "TestRequestRequiredStringInt32",
 			OperationID:   "test_request_required_string_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27428,7 +27668,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredStringInt32Array",
 			OperationID:   "test_request_required_string_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27525,7 +27765,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredStringInt32ArrayArray",
 			OperationID:   "test_request_required_string_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27622,7 +27862,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 			OperationName: "TestRequestRequiredStringInt32Nullable",
 			OperationID:   "test_request_required_string_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27719,7 +27959,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 			OperationName: "TestRequestRequiredStringInt32NullableArray",
 			OperationID:   "test_request_required_string_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27816,7 +28056,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredStringInt32NullableArrayArray",
 			OperationID:   "test_request_required_string_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -27913,7 +28153,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 			OperationName: "TestRequestRequiredStringInt64",
 			OperationID:   "test_request_required_string_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28010,7 +28250,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 			OperationName: "TestRequestRequiredStringInt64Array",
 			OperationID:   "test_request_required_string_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28107,7 +28347,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 			OperationName: "TestRequestRequiredStringInt64ArrayArray",
 			OperationID:   "test_request_required_string_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28204,7 +28444,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 			OperationName: "TestRequestRequiredStringInt64Nullable",
 			OperationID:   "test_request_required_string_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28301,7 +28541,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 			OperationName: "TestRequestRequiredStringInt64NullableArray",
 			OperationID:   "test_request_required_string_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28398,7 +28638,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 			OperationName: "TestRequestRequiredStringInt64NullableArrayArray",
 			OperationID:   "test_request_required_string_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28495,7 +28735,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringIpv4",
 			OperationID:   "test_request_required_string_ipv4",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28592,7 +28832,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringIpv4Array",
 			OperationID:   "test_request_required_string_ipv4_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28689,7 +28929,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringIpv4ArrayArray",
 			OperationID:   "test_request_required_string_ipv4_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28786,7 +29026,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringIpv4Nullable",
 			OperationID:   "test_request_required_string_ipv4_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28883,7 +29123,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringIpv4NullableArray",
 			OperationID:   "test_request_required_string_ipv4_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -28980,7 +29220,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringIpv4NullableArrayArray",
 			OperationID:   "test_request_required_string_ipv4_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29077,7 +29317,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringIpv6",
 			OperationID:   "test_request_required_string_ipv6",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29174,7 +29414,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringIpv6Array",
 			OperationID:   "test_request_required_string_ipv6_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29271,7 +29511,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringIpv6ArrayArray",
 			OperationID:   "test_request_required_string_ipv6_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29368,7 +29608,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringIpv6Nullable",
 			OperationID:   "test_request_required_string_ipv6_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29465,7 +29705,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringIpv6NullableArray",
 			OperationID:   "test_request_required_string_ipv6_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29562,7 +29802,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringIpv6NullableArrayArray",
 			OperationID:   "test_request_required_string_ipv6_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29659,7 +29899,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringNullable",
 			OperationID:   "test_request_required_string_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29756,7 +29996,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringNullableArray",
 			OperationID:   "test_request_required_string_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29853,7 +30093,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringNullableArrayArray",
 			OperationID:   "test_request_required_string_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -29950,7 +30190,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringPassword",
 			OperationID:   "test_request_required_string_password",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30047,7 +30287,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringPasswordArray",
 			OperationID:   "test_request_required_string_password_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30144,7 +30384,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringPasswordArrayArray",
 			OperationID:   "test_request_required_string_password_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30241,7 +30481,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 			OperationName: "TestRequestRequiredStringPasswordNullable",
 			OperationID:   "test_request_required_string_password_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30338,7 +30578,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 			OperationName: "TestRequestRequiredStringPasswordNullableArray",
 			OperationID:   "test_request_required_string_password_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30435,7 +30675,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 			OperationName: "TestRequestRequiredStringPasswordNullableArrayArray",
 			OperationID:   "test_request_required_string_password_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30532,7 +30772,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringTime",
 			OperationID:   "test_request_required_string_time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30629,7 +30869,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringTimeArray",
 			OperationID:   "test_request_required_string_time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30726,7 +30966,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringTimeArrayArray",
 			OperationID:   "test_request_required_string_time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30823,7 +31063,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringTimeNullable",
 			OperationID:   "test_request_required_string_time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -30920,7 +31160,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringTimeNullableArray",
 			OperationID:   "test_request_required_string_time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31017,7 +31257,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringTimeNullableArrayArray",
 			OperationID:   "test_request_required_string_time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31114,7 +31354,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 			OperationName: "TestRequestRequiredStringURI",
 			OperationID:   "test_request_required_string_uri",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31211,7 +31451,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringURIArray",
 			OperationID:   "test_request_required_string_uri_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31308,7 +31548,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringURIArrayArray",
 			OperationID:   "test_request_required_string_uri_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31405,7 +31645,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 			OperationName: "TestRequestRequiredStringURINullable",
 			OperationID:   "test_request_required_string_uri_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31502,7 +31742,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 			OperationName: "TestRequestRequiredStringURINullableArray",
 			OperationID:   "test_request_required_string_uri_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31599,7 +31839,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 			OperationName: "TestRequestRequiredStringURINullableArrayArray",
 			OperationID:   "test_request_required_string_uri_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31696,7 +31936,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringUUID",
 			OperationID:   "test_request_required_string_uuid",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31793,7 +32033,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringUUIDArray",
 			OperationID:   "test_request_required_string_uuid_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31890,7 +32130,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringUUIDArrayArray",
 			OperationID:   "test_request_required_string_uuid_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -31987,7 +32227,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringUUIDNullable",
 			OperationID:   "test_request_required_string_uuid_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32084,7 +32324,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringUUIDNullableArray",
 			OperationID:   "test_request_required_string_uuid_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32181,7 +32421,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringUUIDNullableArrayArray",
 			OperationID:   "test_request_required_string_uuid_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32278,7 +32518,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 			OperationName: "TestRequestRequiredStringUnix",
 			OperationID:   "test_request_required_string_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32375,7 +32615,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringUnixArray",
 			OperationID:   "test_request_required_string_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32472,7 +32712,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringUnixArrayArray",
 			OperationID:   "test_request_required_string_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32569,7 +32809,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringUnixMicro",
 			OperationID:   "test_request_required_string_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32666,7 +32906,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringUnixMicroArray",
 			OperationID:   "test_request_required_string_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32763,7 +33003,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 			OperationName: "TestRequestRequiredStringUnixMicroArrayArray",
 			OperationID:   "test_request_required_string_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32860,7 +33100,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 			OperationName: "TestRequestRequiredStringUnixMicroNullable",
 			OperationID:   "test_request_required_string_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -32957,7 +33197,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 			OperationName: "TestRequestRequiredStringUnixMicroNullableArray",
 			OperationID:   "test_request_required_string_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33054,7 +33294,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			OperationName: "TestRequestRequiredStringUnixMicroNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33151,7 +33391,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 			OperationName: "TestRequestRequiredStringUnixMilli",
 			OperationID:   "test_request_required_string_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33248,7 +33488,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 			OperationName: "TestRequestRequiredStringUnixMilliArray",
 			OperationID:   "test_request_required_string_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33345,7 +33585,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 			OperationName: "TestRequestRequiredStringUnixMilliArrayArray",
 			OperationID:   "test_request_required_string_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33442,7 +33682,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 			OperationName: "TestRequestRequiredStringUnixMilliNullable",
 			OperationID:   "test_request_required_string_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33539,7 +33779,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 			OperationName: "TestRequestRequiredStringUnixMilliNullableArray",
 			OperationID:   "test_request_required_string_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33636,7 +33876,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			OperationName: "TestRequestRequiredStringUnixMilliNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33733,7 +33973,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 			OperationName: "TestRequestRequiredStringUnixNano",
 			OperationID:   "test_request_required_string_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33830,7 +34070,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 			OperationName: "TestRequestRequiredStringUnixNanoArray",
 			OperationID:   "test_request_required_string_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -33927,7 +34167,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 			OperationName: "TestRequestRequiredStringUnixNanoArrayArray",
 			OperationID:   "test_request_required_string_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34024,7 +34264,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 			OperationName: "TestRequestRequiredStringUnixNanoNullable",
 			OperationID:   "test_request_required_string_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34121,7 +34361,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 			OperationName: "TestRequestRequiredStringUnixNanoNullableArray",
 			OperationID:   "test_request_required_string_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34218,7 +34458,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			OperationName: "TestRequestRequiredStringUnixNanoNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34315,7 +34555,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 			OperationName: "TestRequestRequiredStringUnixNullable",
 			OperationID:   "test_request_required_string_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34412,7 +34652,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 			OperationName: "TestRequestRequiredStringUnixNullableArray",
 			OperationID:   "test_request_required_string_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34509,7 +34749,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 			OperationName: "TestRequestRequiredStringUnixNullableArrayArray",
 			OperationID:   "test_request_required_string_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34606,7 +34846,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 			OperationName: "TestRequestRequiredStringUnixSeconds",
 			OperationID:   "test_request_required_string_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34703,7 +34943,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 			OperationName: "TestRequestRequiredStringUnixSecondsArray",
 			OperationID:   "test_request_required_string_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34800,7 +35040,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 			OperationName: "TestRequestRequiredStringUnixSecondsArrayArray",
 			OperationID:   "test_request_required_string_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34897,7 +35137,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 			OperationName: "TestRequestRequiredStringUnixSecondsNullable",
 			OperationID:   "test_request_required_string_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -34994,7 +35234,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			OperationName: "TestRequestRequiredStringUnixSecondsNullableArray",
 			OperationID:   "test_request_required_string_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35091,7 +35331,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			OperationName: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_required_string_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35188,7 +35428,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 			OperationName: "TestRequestString",
 			OperationID:   "test_request_string",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35285,7 +35525,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestStringArray",
 			OperationID:   "test_request_string_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35382,7 +35622,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 			OperationName: "TestRequestStringArrayArray",
 			OperationID:   "test_request_string_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35479,7 +35719,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, w http.Res
 			OperationName: "TestRequestStringBase64",
 			OperationID:   "test_request_string_base64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35576,7 +35816,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestStringBase64Array",
 			OperationID:   "test_request_string_base64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35673,7 +35913,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestStringBase64ArrayArray",
 			OperationID:   "test_request_string_base64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35770,7 +36010,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, w 
 			OperationName: "TestRequestStringBase64Nullable",
 			OperationID:   "test_request_string_base64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35867,7 +36107,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 			OperationName: "TestRequestStringBase64NullableArray",
 			OperationID:   "test_request_string_base64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -35964,7 +36204,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestStringBase64NullableArrayArray",
 			OperationID:   "test_request_string_base64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36061,7 +36301,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 			OperationName: "TestRequestStringBinary",
 			OperationID:   "test_request_string_binary",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36158,7 +36398,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 			OperationName: "TestRequestStringBinaryArray",
 			OperationID:   "test_request_string_binary_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36255,7 +36495,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 			OperationName: "TestRequestStringBinaryArrayArray",
 			OperationID:   "test_request_string_binary_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36352,7 +36592,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 			OperationName: "TestRequestStringBinaryNullable",
 			OperationID:   "test_request_string_binary_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36449,7 +36689,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 			OperationName: "TestRequestStringBinaryNullableArray",
 			OperationID:   "test_request_string_binary_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36546,7 +36786,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 			OperationName: "TestRequestStringBinaryNullableArrayArray",
 			OperationID:   "test_request_string_binary_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36643,7 +36883,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestStringByte",
 			OperationID:   "test_request_string_byte",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36740,7 +36980,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringByteArray",
 			OperationID:   "test_request_string_byte_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36837,7 +37077,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringByteArrayArray",
 			OperationID:   "test_request_string_byte_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -36934,7 +37174,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringByteNullable",
 			OperationID:   "test_request_string_byte_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37031,7 +37271,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringByteNullableArray",
 			OperationID:   "test_request_string_byte_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37128,7 +37368,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringByteNullableArrayArray",
 			OperationID:   "test_request_string_byte_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37225,7 +37465,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestStringDate",
 			OperationID:   "test_request_string_date",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37322,7 +37562,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringDateArray",
 			OperationID:   "test_request_string_date_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37419,7 +37659,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringDateArrayArray",
 			OperationID:   "test_request_string_date_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37516,7 +37756,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringDateNullable",
 			OperationID:   "test_request_string_date_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37613,7 +37853,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringDateNullableArray",
 			OperationID:   "test_request_string_date_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37710,7 +37950,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringDateNullableArrayArray",
 			OperationID:   "test_request_string_date_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37807,7 +38047,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringDateTime",
 			OperationID:   "test_request_string_date-time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -37904,7 +38144,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringDateTimeArray",
 			OperationID:   "test_request_string_date-time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38001,7 +38241,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringDateTimeArrayArray",
 			OperationID:   "test_request_string_date-time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38098,7 +38338,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 			OperationName: "TestRequestStringDateTimeNullable",
 			OperationID:   "test_request_string_date-time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38195,7 +38435,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 			OperationName: "TestRequestStringDateTimeNullableArray",
 			OperationID:   "test_request_string_date-time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38292,7 +38532,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 			OperationName: "TestRequestStringDateTimeNullableArrayArray",
 			OperationID:   "test_request_string_date-time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38389,7 +38629,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringDuration",
 			OperationID:   "test_request_string_duration",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38486,7 +38726,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringDurationArray",
 			OperationID:   "test_request_string_duration_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38583,7 +38823,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringDurationArrayArray",
 			OperationID:   "test_request_string_duration_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38680,7 +38920,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 			OperationName: "TestRequestStringDurationNullable",
 			OperationID:   "test_request_string_duration_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38777,7 +39017,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 			OperationName: "TestRequestStringDurationNullableArray",
 			OperationID:   "test_request_string_duration_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38874,7 +39114,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 			OperationName: "TestRequestStringDurationNullableArrayArray",
 			OperationID:   "test_request_string_duration_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -38971,7 +39211,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 			OperationName: "TestRequestStringEmail",
 			OperationID:   "test_request_string_email",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39068,7 +39308,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 			OperationName: "TestRequestStringEmailArray",
 			OperationID:   "test_request_string_email_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39165,7 +39405,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestStringEmailArrayArray",
 			OperationID:   "test_request_string_email_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39262,7 +39502,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 			OperationName: "TestRequestStringEmailNullable",
 			OperationID:   "test_request_string_email_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39359,7 +39599,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 			OperationName: "TestRequestStringEmailNullableArray",
 			OperationID:   "test_request_string_email_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39456,7 +39696,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestStringEmailNullableArrayArray",
 			OperationID:   "test_request_string_email_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39553,7 +39793,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringHostname",
 			OperationID:   "test_request_string_hostname",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39650,7 +39890,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringHostnameArray",
 			OperationID:   "test_request_string_hostname_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39747,7 +39987,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringHostnameArrayArray",
 			OperationID:   "test_request_string_hostname_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39844,7 +40084,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 			OperationName: "TestRequestStringHostnameNullable",
 			OperationID:   "test_request_string_hostname_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -39941,7 +40181,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 			OperationName: "TestRequestStringHostnameNullableArray",
 			OperationID:   "test_request_string_hostname_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40038,7 +40278,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 			OperationName: "TestRequestStringHostnameNullableArrayArray",
 			OperationID:   "test_request_string_hostname_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40135,7 +40375,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 			OperationName: "TestRequestStringIP",
 			OperationID:   "test_request_string_ip",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40232,7 +40472,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 			OperationName: "TestRequestStringIPArray",
 			OperationID:   "test_request_string_ip_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40329,7 +40569,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 			OperationName: "TestRequestStringIPArrayArray",
 			OperationID:   "test_request_string_ip_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40426,7 +40666,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 			OperationName: "TestRequestStringIPNullable",
 			OperationID:   "test_request_string_ip_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40523,7 +40763,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 			OperationName: "TestRequestStringIPNullableArray",
 			OperationID:   "test_request_string_ip_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40620,7 +40860,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 			OperationName: "TestRequestStringIPNullableArrayArray",
 			OperationID:   "test_request_string_ip_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40717,7 +40957,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 			OperationName: "TestRequestStringInt32",
 			OperationID:   "test_request_string_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40814,7 +41054,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 			OperationName: "TestRequestStringInt32Array",
 			OperationID:   "test_request_string_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -40911,7 +41151,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestStringInt32ArrayArray",
 			OperationID:   "test_request_string_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41008,7 +41248,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 			OperationName: "TestRequestStringInt32Nullable",
 			OperationID:   "test_request_string_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41105,7 +41345,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 			OperationName: "TestRequestStringInt32NullableArray",
 			OperationID:   "test_request_string_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41202,7 +41442,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestStringInt32NullableArrayArray",
 			OperationID:   "test_request_string_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41299,7 +41539,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 			OperationName: "TestRequestStringInt64",
 			OperationID:   "test_request_string_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41396,7 +41636,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 			OperationName: "TestRequestStringInt64Array",
 			OperationID:   "test_request_string_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41493,7 +41733,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 			OperationName: "TestRequestStringInt64ArrayArray",
 			OperationID:   "test_request_string_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41590,7 +41830,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 			OperationName: "TestRequestStringInt64Nullable",
 			OperationID:   "test_request_string_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41687,7 +41927,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 			OperationName: "TestRequestStringInt64NullableArray",
 			OperationID:   "test_request_string_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41784,7 +42024,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 			OperationName: "TestRequestStringInt64NullableArrayArray",
 			OperationID:   "test_request_string_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41881,7 +42121,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 			OperationName: "TestRequestStringIpv4",
 			OperationID:   "test_request_string_ipv4",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -41978,7 +42218,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringIpv4Array",
 			OperationID:   "test_request_string_ipv4_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42075,7 +42315,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringIpv4ArrayArray",
 			OperationID:   "test_request_string_ipv4_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42172,7 +42412,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringIpv4Nullable",
 			OperationID:   "test_request_string_ipv4_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42269,7 +42509,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringIpv4NullableArray",
 			OperationID:   "test_request_string_ipv4_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42366,7 +42606,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringIpv4NullableArrayArray",
 			OperationID:   "test_request_string_ipv4_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42463,7 +42703,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 			OperationName: "TestRequestStringIpv6",
 			OperationID:   "test_request_string_ipv6",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42560,7 +42800,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringIpv6Array",
 			OperationID:   "test_request_string_ipv6_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42657,7 +42897,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringIpv6ArrayArray",
 			OperationID:   "test_request_string_ipv6_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42754,7 +42994,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringIpv6Nullable",
 			OperationID:   "test_request_string_ipv6_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42851,7 +43091,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringIpv6NullableArray",
 			OperationID:   "test_request_string_ipv6_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -42948,7 +43188,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringIpv6NullableArrayArray",
 			OperationID:   "test_request_string_ipv6_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43045,7 +43285,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringNullable",
 			OperationID:   "test_request_string_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43142,7 +43382,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringNullableArray",
 			OperationID:   "test_request_string_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43239,7 +43479,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringNullableArrayArray",
 			OperationID:   "test_request_string_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43336,7 +43576,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringPassword",
 			OperationID:   "test_request_string_password",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43433,7 +43673,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringPasswordArray",
 			OperationID:   "test_request_string_password_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43530,7 +43770,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringPasswordArrayArray",
 			OperationID:   "test_request_string_password_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43627,7 +43867,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 			OperationName: "TestRequestStringPasswordNullable",
 			OperationID:   "test_request_string_password_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43724,7 +43964,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 			OperationName: "TestRequestStringPasswordNullableArray",
 			OperationID:   "test_request_string_password_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43821,7 +44061,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 			OperationName: "TestRequestStringPasswordNullableArrayArray",
 			OperationID:   "test_request_string_password_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -43918,7 +44158,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestStringTime",
 			OperationID:   "test_request_string_time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44015,7 +44255,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringTimeArray",
 			OperationID:   "test_request_string_time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44112,7 +44352,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringTimeArrayArray",
 			OperationID:   "test_request_string_time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44209,7 +44449,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringTimeNullable",
 			OperationID:   "test_request_string_time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44306,7 +44546,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringTimeNullableArray",
 			OperationID:   "test_request_string_time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44403,7 +44643,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringTimeNullableArrayArray",
 			OperationID:   "test_request_string_time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44500,7 +44740,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 			OperationName: "TestRequestStringURI",
 			OperationID:   "test_request_string_uri",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44597,7 +44837,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringURIArray",
 			OperationID:   "test_request_string_uri_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44694,7 +44934,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringURIArrayArray",
 			OperationID:   "test_request_string_uri_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44791,7 +45031,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 			OperationName: "TestRequestStringURINullable",
 			OperationID:   "test_request_string_uri_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44888,7 +45128,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 			OperationName: "TestRequestStringURINullableArray",
 			OperationID:   "test_request_string_uri_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -44985,7 +45225,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 			OperationName: "TestRequestStringURINullableArrayArray",
 			OperationID:   "test_request_string_uri_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45082,7 +45322,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestStringUUID",
 			OperationID:   "test_request_string_uuid",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45179,7 +45419,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringUUIDArray",
 			OperationID:   "test_request_string_uuid_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45276,7 +45516,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringUUIDArrayArray",
 			OperationID:   "test_request_string_uuid_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45373,7 +45613,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringUUIDNullable",
 			OperationID:   "test_request_string_uuid_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45470,7 +45710,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringUUIDNullableArray",
 			OperationID:   "test_request_string_uuid_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45567,7 +45807,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringUUIDNullableArrayArray",
 			OperationID:   "test_request_string_uuid_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45664,7 +45904,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 			OperationName: "TestRequestStringUnix",
 			OperationID:   "test_request_string_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45761,7 +46001,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 			OperationName: "TestRequestStringUnixArray",
 			OperationID:   "test_request_string_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45858,7 +46098,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringUnixArrayArray",
 			OperationID:   "test_request_string_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -45955,7 +46195,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 			OperationName: "TestRequestStringUnixMicro",
 			OperationID:   "test_request_string_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46052,7 +46292,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringUnixMicroArray",
 			OperationID:   "test_request_string_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46149,7 +46389,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestStringUnixMicroArrayArray",
 			OperationID:   "test_request_string_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46246,7 +46486,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 			OperationName: "TestRequestStringUnixMicroNullable",
 			OperationID:   "test_request_string_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46343,7 +46583,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 			OperationName: "TestRequestStringUnixMicroNullableArray",
 			OperationID:   "test_request_string_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46440,7 +46680,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 			OperationName: "TestRequestStringUnixMicroNullableArrayArray",
 			OperationID:   "test_request_string_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46537,7 +46777,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 			OperationName: "TestRequestStringUnixMilli",
 			OperationID:   "test_request_string_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46634,7 +46874,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 			OperationName: "TestRequestStringUnixMilliArray",
 			OperationID:   "test_request_string_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46731,7 +46971,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 			OperationName: "TestRequestStringUnixMilliArrayArray",
 			OperationID:   "test_request_string_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46828,7 +47068,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 			OperationName: "TestRequestStringUnixMilliNullable",
 			OperationID:   "test_request_string_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -46925,7 +47165,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 			OperationName: "TestRequestStringUnixMilliNullableArray",
 			OperationID:   "test_request_string_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47022,7 +47262,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 			OperationName: "TestRequestStringUnixMilliNullableArrayArray",
 			OperationID:   "test_request_string_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47119,7 +47359,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 			OperationName: "TestRequestStringUnixNano",
 			OperationID:   "test_request_string_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47216,7 +47456,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 			OperationName: "TestRequestStringUnixNanoArray",
 			OperationID:   "test_request_string_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47313,7 +47553,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 			OperationName: "TestRequestStringUnixNanoArrayArray",
 			OperationID:   "test_request_string_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47410,7 +47650,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 			OperationName: "TestRequestStringUnixNanoNullable",
 			OperationID:   "test_request_string_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47507,7 +47747,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 			OperationName: "TestRequestStringUnixNanoNullableArray",
 			OperationID:   "test_request_string_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47604,7 +47844,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 			OperationName: "TestRequestStringUnixNanoNullableArrayArray",
 			OperationID:   "test_request_string_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47701,7 +47941,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 			OperationName: "TestRequestStringUnixNullable",
 			OperationID:   "test_request_string_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47798,7 +48038,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 			OperationName: "TestRequestStringUnixNullableArray",
 			OperationID:   "test_request_string_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47895,7 +48135,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 			OperationName: "TestRequestStringUnixNullableArrayArray",
 			OperationID:   "test_request_string_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -47992,7 +48232,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 			OperationName: "TestRequestStringUnixSeconds",
 			OperationID:   "test_request_string_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48089,7 +48329,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 			OperationName: "TestRequestStringUnixSecondsArray",
 			OperationID:   "test_request_string_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48186,7 +48426,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 			OperationName: "TestRequestStringUnixSecondsArrayArray",
 			OperationID:   "test_request_string_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48283,7 +48523,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 			OperationName: "TestRequestStringUnixSecondsNullable",
 			OperationID:   "test_request_string_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48380,7 +48620,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 			OperationName: "TestRequestStringUnixSecondsNullableArray",
 			OperationID:   "test_request_string_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48477,7 +48717,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 			OperationName: "TestRequestStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_request_string_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48574,7 +48814,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 			OperationName: "TestResponseAny",
 			OperationID:   "test_response_Any",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48671,7 +48911,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 			OperationName: "TestResponseBoolean",
 			OperationID:   "test_response_boolean",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48768,7 +49008,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 			OperationName: "TestResponseBooleanArray",
 			OperationID:   "test_response_boolean_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48865,7 +49105,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseBooleanArrayArray",
 			OperationID:   "test_response_boolean_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -48962,7 +49202,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 			OperationName: "TestResponseBooleanNullable",
 			OperationID:   "test_response_boolean_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49059,7 +49299,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 			OperationName: "TestResponseBooleanNullableArray",
 			OperationID:   "test_response_boolean_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49156,7 +49396,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 			OperationName: "TestResponseBooleanNullableArrayArray",
 			OperationID:   "test_response_boolean_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49253,7 +49493,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 			OperationName: "TestResponseEmptyStruct",
 			OperationID:   "test_response_EmptyStruct",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49350,7 +49590,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseFormatTest",
 			OperationID:   "test_response_FormatTest",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49447,7 +49687,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 			OperationName: "TestResponseInteger",
 			OperationID:   "test_response_integer",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49544,7 +49784,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 			OperationName: "TestResponseIntegerArray",
 			OperationID:   "test_response_integer_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49641,7 +49881,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseIntegerArrayArray",
 			OperationID:   "test_response_integer_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49738,7 +49978,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 			OperationName: "TestResponseIntegerInt32",
 			OperationID:   "test_response_integer_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49835,7 +50075,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseIntegerInt32Array",
 			OperationID:   "test_response_integer_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -49932,7 +50172,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseIntegerInt32ArrayArray",
 			OperationID:   "test_response_integer_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50029,7 +50269,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 			OperationName: "TestResponseIntegerInt32Nullable",
 			OperationID:   "test_response_integer_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50126,7 +50366,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 			OperationName: "TestResponseIntegerInt32NullableArray",
 			OperationID:   "test_response_integer_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50223,7 +50463,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 			OperationName: "TestResponseIntegerInt32NullableArrayArray",
 			OperationID:   "test_response_integer_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50320,7 +50560,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 			OperationName: "TestResponseIntegerInt64",
 			OperationID:   "test_response_integer_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50417,7 +50657,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseIntegerInt64Array",
 			OperationID:   "test_response_integer_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50514,7 +50754,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseIntegerInt64ArrayArray",
 			OperationID:   "test_response_integer_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50611,7 +50851,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 			OperationName: "TestResponseIntegerInt64Nullable",
 			OperationID:   "test_response_integer_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50708,7 +50948,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 			OperationName: "TestResponseIntegerInt64NullableArray",
 			OperationID:   "test_response_integer_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50805,7 +51045,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 			OperationName: "TestResponseIntegerInt64NullableArrayArray",
 			OperationID:   "test_response_integer_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50902,7 +51142,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 			OperationName: "TestResponseIntegerNullable",
 			OperationID:   "test_response_integer_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -50999,7 +51239,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 			OperationName: "TestResponseIntegerNullableArray",
 			OperationID:   "test_response_integer_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51096,7 +51336,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 			OperationName: "TestResponseIntegerNullableArrayArray",
 			OperationID:   "test_response_integer_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51193,7 +51433,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 			OperationName: "TestResponseIntegerUint",
 			OperationID:   "test_response_integer_uint",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51290,7 +51530,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 			OperationName: "TestResponseIntegerUint32",
 			OperationID:   "test_response_integer_uint32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51387,7 +51627,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 			OperationName: "TestResponseIntegerUint32Array",
 			OperationID:   "test_response_integer_uint32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51484,7 +51724,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 			OperationName: "TestResponseIntegerUint32ArrayArray",
 			OperationID:   "test_response_integer_uint32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51581,7 +51821,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUint32Nullable",
 			OperationID:   "test_response_integer_uint32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51678,7 +51918,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 			OperationName: "TestResponseIntegerUint32NullableArray",
 			OperationID:   "test_response_integer_uint32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51775,7 +52015,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 			OperationName: "TestResponseIntegerUint32NullableArrayArray",
 			OperationID:   "test_response_integer_uint32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51872,7 +52112,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 			OperationName: "TestResponseIntegerUint64",
 			OperationID:   "test_response_integer_uint64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -51969,7 +52209,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 			OperationName: "TestResponseIntegerUint64Array",
 			OperationID:   "test_response_integer_uint64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52066,7 +52306,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 			OperationName: "TestResponseIntegerUint64ArrayArray",
 			OperationID:   "test_response_integer_uint64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52163,7 +52403,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUint64Nullable",
 			OperationID:   "test_response_integer_uint64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52260,7 +52500,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 			OperationName: "TestResponseIntegerUint64NullableArray",
 			OperationID:   "test_response_integer_uint64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52357,7 +52597,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 			OperationName: "TestResponseIntegerUint64NullableArrayArray",
 			OperationID:   "test_response_integer_uint64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52454,7 +52694,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseIntegerUintArray",
 			OperationID:   "test_response_integer_uint_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52551,7 +52791,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUintArrayArray",
 			OperationID:   "test_response_integer_uint_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52648,7 +52888,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 			OperationName: "TestResponseIntegerUintNullable",
 			OperationID:   "test_response_integer_uint_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52745,7 +52985,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 			OperationName: "TestResponseIntegerUintNullableArray",
 			OperationID:   "test_response_integer_uint_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52842,7 +53082,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseIntegerUintNullableArrayArray",
 			OperationID:   "test_response_integer_uint_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -52939,7 +53179,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 			OperationName: "TestResponseIntegerUnix",
 			OperationID:   "test_response_integer_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53036,7 +53276,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseIntegerUnixArray",
 			OperationID:   "test_response_integer_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53133,7 +53373,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUnixArrayArray",
 			OperationID:   "test_response_integer_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53230,7 +53470,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 			OperationName: "TestResponseIntegerUnixMicro",
 			OperationID:   "test_response_integer_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53327,7 +53567,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUnixMicroArray",
 			OperationID:   "test_response_integer_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53424,7 +53664,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 			OperationName: "TestResponseIntegerUnixMicroArrayArray",
 			OperationID:   "test_response_integer_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53521,7 +53761,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 			OperationName: "TestResponseIntegerUnixMicroNullable",
 			OperationID:   "test_response_integer_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53618,7 +53858,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 			OperationName: "TestResponseIntegerUnixMicroNullableArray",
 			OperationID:   "test_response_integer_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53715,7 +53955,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 			OperationName: "TestResponseIntegerUnixMicroNullableArrayArray",
 			OperationID:   "test_response_integer_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53812,7 +54052,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 			OperationName: "TestResponseIntegerUnixMilli",
 			OperationID:   "test_response_integer_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -53909,7 +54149,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 			OperationName: "TestResponseIntegerUnixMilliArray",
 			OperationID:   "test_response_integer_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54006,7 +54246,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 			OperationName: "TestResponseIntegerUnixMilliArrayArray",
 			OperationID:   "test_response_integer_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54103,7 +54343,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 			OperationName: "TestResponseIntegerUnixMilliNullable",
 			OperationID:   "test_response_integer_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54200,7 +54440,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 			OperationName: "TestResponseIntegerUnixMilliNullableArray",
 			OperationID:   "test_response_integer_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54297,7 +54537,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 			OperationName: "TestResponseIntegerUnixMilliNullableArrayArray",
 			OperationID:   "test_response_integer_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54394,7 +54634,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 			OperationName: "TestResponseIntegerUnixNano",
 			OperationID:   "test_response_integer_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54491,7 +54731,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 			OperationName: "TestResponseIntegerUnixNanoArray",
 			OperationID:   "test_response_integer_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54588,7 +54828,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 			OperationName: "TestResponseIntegerUnixNanoArrayArray",
 			OperationID:   "test_response_integer_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54685,7 +54925,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 			OperationName: "TestResponseIntegerUnixNanoNullable",
 			OperationID:   "test_response_integer_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54782,7 +55022,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 			OperationName: "TestResponseIntegerUnixNanoNullableArray",
 			OperationID:   "test_response_integer_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54879,7 +55119,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 			OperationName: "TestResponseIntegerUnixNanoNullableArrayArray",
 			OperationID:   "test_response_integer_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -54976,7 +55216,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 			OperationName: "TestResponseIntegerUnixNullable",
 			OperationID:   "test_response_integer_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55073,7 +55313,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 			OperationName: "TestResponseIntegerUnixNullableArray",
 			OperationID:   "test_response_integer_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55170,7 +55410,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseIntegerUnixNullableArrayArray",
 			OperationID:   "test_response_integer_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55267,7 +55507,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 			OperationName: "TestResponseIntegerUnixSeconds",
 			OperationID:   "test_response_integer_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55364,7 +55604,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 			OperationName: "TestResponseIntegerUnixSecondsArray",
 			OperationID:   "test_response_integer_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55461,7 +55701,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 			OperationName: "TestResponseIntegerUnixSecondsArrayArray",
 			OperationID:   "test_response_integer_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55558,7 +55798,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 			OperationName: "TestResponseIntegerUnixSecondsNullable",
 			OperationID:   "test_response_integer_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55655,7 +55895,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 			OperationName: "TestResponseIntegerUnixSecondsNullableArray",
 			OperationID:   "test_response_integer_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55752,7 +55992,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 			OperationName: "TestResponseIntegerUnixSecondsNullableArrayArray",
 			OperationID:   "test_response_integer_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55849,7 +56089,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 			OperationName: "TestResponseNull",
 			OperationID:   "test_response_null",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -55946,7 +56186,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 			OperationName: "TestResponseNullArray",
 			OperationID:   "test_response_null_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56043,7 +56283,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 			OperationName: "TestResponseNullArrayArray",
 			OperationID:   "test_response_null_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56140,7 +56380,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 			OperationName: "TestResponseNullNullable",
 			OperationID:   "test_response_null_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56237,7 +56477,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseNullNullableArray",
 			OperationID:   "test_response_null_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56334,7 +56574,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseNullNullableArrayArray",
 			OperationID:   "test_response_null_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56431,7 +56671,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 			OperationName: "TestResponseNumber",
 			OperationID:   "test_response_number",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56528,7 +56768,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 			OperationName: "TestResponseNumberArray",
 			OperationID:   "test_response_number_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56625,7 +56865,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseNumberArrayArray",
 			OperationID:   "test_response_number_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56722,7 +56962,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 			OperationName: "TestResponseNumberDouble",
 			OperationID:   "test_response_number_double",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56819,7 +57059,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseNumberDoubleArray",
 			OperationID:   "test_response_number_double_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -56916,7 +57156,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseNumberDoubleArrayArray",
 			OperationID:   "test_response_number_double_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57013,7 +57253,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 			OperationName: "TestResponseNumberDoubleNullable",
 			OperationID:   "test_response_number_double_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57110,7 +57350,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 			OperationName: "TestResponseNumberDoubleNullableArray",
 			OperationID:   "test_response_number_double_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57207,7 +57447,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 			OperationName: "TestResponseNumberDoubleNullableArrayArray",
 			OperationID:   "test_response_number_double_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57304,7 +57544,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 			OperationName: "TestResponseNumberFloat",
 			OperationID:   "test_response_number_float",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57401,7 +57641,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseNumberFloatArray",
 			OperationID:   "test_response_number_float_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57498,7 +57738,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseNumberFloatArrayArray",
 			OperationID:   "test_response_number_float_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57595,7 +57835,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 			OperationName: "TestResponseNumberFloatNullable",
 			OperationID:   "test_response_number_float_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57692,7 +57932,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 			OperationName: "TestResponseNumberFloatNullableArray",
 			OperationID:   "test_response_number_float_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57789,7 +58029,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseNumberFloatNullableArrayArray",
 			OperationID:   "test_response_number_float_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57886,7 +58126,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 			OperationName: "TestResponseNumberInt32",
 			OperationID:   "test_response_number_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -57983,7 +58223,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseNumberInt32Array",
 			OperationID:   "test_response_number_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58080,7 +58320,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseNumberInt32ArrayArray",
 			OperationID:   "test_response_number_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58177,7 +58417,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 			OperationName: "TestResponseNumberInt32Nullable",
 			OperationID:   "test_response_number_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58274,7 +58514,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 			OperationName: "TestResponseNumberInt32NullableArray",
 			OperationID:   "test_response_number_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58371,7 +58611,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseNumberInt32NullableArrayArray",
 			OperationID:   "test_response_number_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58468,7 +58708,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 			OperationName: "TestResponseNumberInt64",
 			OperationID:   "test_response_number_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58565,7 +58805,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseNumberInt64Array",
 			OperationID:   "test_response_number_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58662,7 +58902,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseNumberInt64ArrayArray",
 			OperationID:   "test_response_number_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58759,7 +58999,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 			OperationName: "TestResponseNumberInt64Nullable",
 			OperationID:   "test_response_number_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58856,7 +59096,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 			OperationName: "TestResponseNumberInt64NullableArray",
 			OperationID:   "test_response_number_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -58953,7 +59193,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseNumberInt64NullableArrayArray",
 			OperationID:   "test_response_number_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59050,7 +59290,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 			OperationName: "TestResponseNumberNullable",
 			OperationID:   "test_response_number_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59147,7 +59387,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 			OperationName: "TestResponseNumberNullableArray",
 			OperationID:   "test_response_number_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59244,7 +59484,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseNumberNullableArrayArray",
 			OperationID:   "test_response_number_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59341,7 +59581,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 			OperationName: "TestResponseString",
 			OperationID:   "test_response_string",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59438,7 +59678,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 			OperationName: "TestResponseStringArray",
 			OperationID:   "test_response_string_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59535,7 +59775,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseStringArrayArray",
 			OperationID:   "test_response_string_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59632,7 +59872,7 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, w http.Re
 			OperationName: "TestResponseStringBase64",
 			OperationID:   "test_response_string_base64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59729,7 +59969,7 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseStringBase64Array",
 			OperationID:   "test_response_string_base64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59826,7 +60066,7 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseStringBase64ArrayArray",
 			OperationID:   "test_response_string_base64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -59923,7 +60163,7 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, w
 			OperationName: "TestResponseStringBase64Nullable",
 			OperationID:   "test_response_string_base64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60020,7 +60260,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 			OperationName: "TestResponseStringBase64NullableArray",
 			OperationID:   "test_response_string_base64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60117,7 +60357,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 			OperationName: "TestResponseStringBase64NullableArrayArray",
 			OperationID:   "test_response_string_base64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60214,7 +60454,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 			OperationName: "TestResponseStringBinary",
 			OperationID:   "test_response_string_binary",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60311,7 +60551,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 			OperationName: "TestResponseStringBinaryArray",
 			OperationID:   "test_response_string_binary_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60408,7 +60648,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 			OperationName: "TestResponseStringBinaryArrayArray",
 			OperationID:   "test_response_string_binary_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60505,7 +60745,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 			OperationName: "TestResponseStringBinaryNullable",
 			OperationID:   "test_response_string_binary_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60602,7 +60842,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 			OperationName: "TestResponseStringBinaryNullableArray",
 			OperationID:   "test_response_string_binary_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60699,7 +60939,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 			OperationName: "TestResponseStringBinaryNullableArrayArray",
 			OperationID:   "test_response_string_binary_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60796,7 +61036,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseStringByte",
 			OperationID:   "test_response_string_byte",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60893,7 +61133,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringByteArray",
 			OperationID:   "test_response_string_byte_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -60990,7 +61230,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringByteArrayArray",
 			OperationID:   "test_response_string_byte_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61087,7 +61327,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringByteNullable",
 			OperationID:   "test_response_string_byte_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61184,7 +61424,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringByteNullableArray",
 			OperationID:   "test_response_string_byte_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61281,7 +61521,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringByteNullableArrayArray",
 			OperationID:   "test_response_string_byte_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61378,7 +61618,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseStringDate",
 			OperationID:   "test_response_string_date",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61475,7 +61715,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringDateArray",
 			OperationID:   "test_response_string_date_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61572,7 +61812,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringDateArrayArray",
 			OperationID:   "test_response_string_date_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61669,7 +61909,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringDateNullable",
 			OperationID:   "test_response_string_date_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61766,7 +62006,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringDateNullableArray",
 			OperationID:   "test_response_string_date_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61863,7 +62103,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringDateNullableArrayArray",
 			OperationID:   "test_response_string_date_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -61960,7 +62200,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 			OperationName: "TestResponseStringDateTime",
 			OperationID:   "test_response_string_date-time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62057,7 +62297,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringDateTimeArray",
 			OperationID:   "test_response_string_date-time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62154,7 +62394,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringDateTimeArrayArray",
 			OperationID:   "test_response_string_date-time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62251,7 +62491,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 			OperationName: "TestResponseStringDateTimeNullable",
 			OperationID:   "test_response_string_date-time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62348,7 +62588,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 			OperationName: "TestResponseStringDateTimeNullableArray",
 			OperationID:   "test_response_string_date-time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62445,7 +62685,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 			OperationName: "TestResponseStringDateTimeNullableArrayArray",
 			OperationID:   "test_response_string_date-time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62542,7 +62782,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 			OperationName: "TestResponseStringDuration",
 			OperationID:   "test_response_string_duration",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62639,7 +62879,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringDurationArray",
 			OperationID:   "test_response_string_duration_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62736,7 +62976,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringDurationArrayArray",
 			OperationID:   "test_response_string_duration_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62833,7 +63073,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 			OperationName: "TestResponseStringDurationNullable",
 			OperationID:   "test_response_string_duration_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -62930,7 +63170,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 			OperationName: "TestResponseStringDurationNullableArray",
 			OperationID:   "test_response_string_duration_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63027,7 +63267,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 			OperationName: "TestResponseStringDurationNullableArrayArray",
 			OperationID:   "test_response_string_duration_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63124,7 +63364,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 			OperationName: "TestResponseStringEmail",
 			OperationID:   "test_response_string_email",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63221,7 +63461,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseStringEmailArray",
 			OperationID:   "test_response_string_email_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63318,7 +63558,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseStringEmailArrayArray",
 			OperationID:   "test_response_string_email_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63415,7 +63655,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 			OperationName: "TestResponseStringEmailNullable",
 			OperationID:   "test_response_string_email_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63512,7 +63752,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 			OperationName: "TestResponseStringEmailNullableArray",
 			OperationID:   "test_response_string_email_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63609,7 +63849,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseStringEmailNullableArrayArray",
 			OperationID:   "test_response_string_email_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63706,7 +63946,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 			OperationName: "TestResponseStringHostname",
 			OperationID:   "test_response_string_hostname",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63803,7 +64043,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringHostnameArray",
 			OperationID:   "test_response_string_hostname_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63900,7 +64140,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringHostnameArrayArray",
 			OperationID:   "test_response_string_hostname_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -63997,7 +64237,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 			OperationName: "TestResponseStringHostnameNullable",
 			OperationID:   "test_response_string_hostname_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64094,7 +64334,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 			OperationName: "TestResponseStringHostnameNullableArray",
 			OperationID:   "test_response_string_hostname_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64191,7 +64431,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 			OperationName: "TestResponseStringHostnameNullableArrayArray",
 			OperationID:   "test_response_string_hostname_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64288,7 +64528,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 			OperationName: "TestResponseStringIP",
 			OperationID:   "test_response_string_ip",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64385,7 +64625,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 			OperationName: "TestResponseStringIPArray",
 			OperationID:   "test_response_string_ip_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64482,7 +64722,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 			OperationName: "TestResponseStringIPArrayArray",
 			OperationID:   "test_response_string_ip_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64579,7 +64819,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 			OperationName: "TestResponseStringIPNullable",
 			OperationID:   "test_response_string_ip_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64676,7 +64916,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 			OperationName: "TestResponseStringIPNullableArray",
 			OperationID:   "test_response_string_ip_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64773,7 +65013,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 			OperationName: "TestResponseStringIPNullableArrayArray",
 			OperationID:   "test_response_string_ip_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64870,7 +65110,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 			OperationName: "TestResponseStringInt32",
 			OperationID:   "test_response_string_int32",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -64967,7 +65207,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseStringInt32Array",
 			OperationID:   "test_response_string_int32_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65064,7 +65304,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseStringInt32ArrayArray",
 			OperationID:   "test_response_string_int32_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65161,7 +65401,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 			OperationName: "TestResponseStringInt32Nullable",
 			OperationID:   "test_response_string_int32_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65258,7 +65498,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 			OperationName: "TestResponseStringInt32NullableArray",
 			OperationID:   "test_response_string_int32_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65355,7 +65595,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseStringInt32NullableArrayArray",
 			OperationID:   "test_response_string_int32_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65452,7 +65692,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 			OperationName: "TestResponseStringInt64",
 			OperationID:   "test_response_string_int64",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65549,7 +65789,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 			OperationName: "TestResponseStringInt64Array",
 			OperationID:   "test_response_string_int64_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65646,7 +65886,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 			OperationName: "TestResponseStringInt64ArrayArray",
 			OperationID:   "test_response_string_int64_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65743,7 +65983,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 			OperationName: "TestResponseStringInt64Nullable",
 			OperationID:   "test_response_string_int64_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65840,7 +66080,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 			OperationName: "TestResponseStringInt64NullableArray",
 			OperationID:   "test_response_string_int64_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -65937,7 +66177,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 			OperationName: "TestResponseStringInt64NullableArrayArray",
 			OperationID:   "test_response_string_int64_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66034,7 +66274,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 			OperationName: "TestResponseStringIpv4",
 			OperationID:   "test_response_string_ipv4",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66131,7 +66371,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringIpv4Array",
 			OperationID:   "test_response_string_ipv4_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66228,7 +66468,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringIpv4ArrayArray",
 			OperationID:   "test_response_string_ipv4_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66325,7 +66565,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringIpv4Nullable",
 			OperationID:   "test_response_string_ipv4_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66422,7 +66662,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringIpv4NullableArray",
 			OperationID:   "test_response_string_ipv4_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66519,7 +66759,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringIpv4NullableArrayArray",
 			OperationID:   "test_response_string_ipv4_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66616,7 +66856,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 			OperationName: "TestResponseStringIpv6",
 			OperationID:   "test_response_string_ipv6",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66713,7 +66953,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringIpv6Array",
 			OperationID:   "test_response_string_ipv6_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66810,7 +67050,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringIpv6ArrayArray",
 			OperationID:   "test_response_string_ipv6_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -66907,7 +67147,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringIpv6Nullable",
 			OperationID:   "test_response_string_ipv6_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67004,7 +67244,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringIpv6NullableArray",
 			OperationID:   "test_response_string_ipv6_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67101,7 +67341,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringIpv6NullableArrayArray",
 			OperationID:   "test_response_string_ipv6_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67198,7 +67438,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 			OperationName: "TestResponseStringNullable",
 			OperationID:   "test_response_string_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67295,7 +67535,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringNullableArray",
 			OperationID:   "test_response_string_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67392,7 +67632,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringNullableArrayArray",
 			OperationID:   "test_response_string_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67489,7 +67729,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 			OperationName: "TestResponseStringPassword",
 			OperationID:   "test_response_string_password",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67586,7 +67826,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringPasswordArray",
 			OperationID:   "test_response_string_password_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67683,7 +67923,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringPasswordArrayArray",
 			OperationID:   "test_response_string_password_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67780,7 +68020,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 			OperationName: "TestResponseStringPasswordNullable",
 			OperationID:   "test_response_string_password_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67877,7 +68117,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 			OperationName: "TestResponseStringPasswordNullableArray",
 			OperationID:   "test_response_string_password_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -67974,7 +68214,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 			OperationName: "TestResponseStringPasswordNullableArrayArray",
 			OperationID:   "test_response_string_password_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68071,7 +68311,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseStringTime",
 			OperationID:   "test_response_string_time",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68168,7 +68408,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringTimeArray",
 			OperationID:   "test_response_string_time_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68265,7 +68505,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringTimeArrayArray",
 			OperationID:   "test_response_string_time_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68362,7 +68602,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringTimeNullable",
 			OperationID:   "test_response_string_time_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68459,7 +68699,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringTimeNullableArray",
 			OperationID:   "test_response_string_time_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68556,7 +68796,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringTimeNullableArrayArray",
 			OperationID:   "test_response_string_time_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68653,7 +68893,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 			OperationName: "TestResponseStringURI",
 			OperationID:   "test_response_string_uri",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68750,7 +68990,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 			OperationName: "TestResponseStringURIArray",
 			OperationID:   "test_response_string_uri_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68847,7 +69087,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringURIArrayArray",
 			OperationID:   "test_response_string_uri_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -68944,7 +69184,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 			OperationName: "TestResponseStringURINullable",
 			OperationID:   "test_response_string_uri_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69041,7 +69281,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 			OperationName: "TestResponseStringURINullableArray",
 			OperationID:   "test_response_string_uri_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69138,7 +69378,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 			OperationName: "TestResponseStringURINullableArrayArray",
 			OperationID:   "test_response_string_uri_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69235,7 +69475,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseStringUUID",
 			OperationID:   "test_response_string_uuid",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69332,7 +69572,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringUUIDArray",
 			OperationID:   "test_response_string_uuid_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69429,7 +69669,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringUUIDArrayArray",
 			OperationID:   "test_response_string_uuid_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69526,7 +69766,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringUUIDNullable",
 			OperationID:   "test_response_string_uuid_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69623,7 +69863,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringUUIDNullableArray",
 			OperationID:   "test_response_string_uuid_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69720,7 +69960,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringUUIDNullableArrayArray",
 			OperationID:   "test_response_string_uuid_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69817,7 +70057,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 			OperationName: "TestResponseStringUnix",
 			OperationID:   "test_response_string_unix",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -69914,7 +70154,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 			OperationName: "TestResponseStringUnixArray",
 			OperationID:   "test_response_string_unix_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70011,7 +70251,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringUnixArrayArray",
 			OperationID:   "test_response_string_unix_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70108,7 +70348,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 			OperationName: "TestResponseStringUnixMicro",
 			OperationID:   "test_response_string_unix-micro",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70205,7 +70445,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringUnixMicroArray",
 			OperationID:   "test_response_string_unix-micro_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70302,7 +70542,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 			OperationName: "TestResponseStringUnixMicroArrayArray",
 			OperationID:   "test_response_string_unix-micro_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70399,7 +70639,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 			OperationName: "TestResponseStringUnixMicroNullable",
 			OperationID:   "test_response_string_unix-micro_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70496,7 +70736,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 			OperationName: "TestResponseStringUnixMicroNullableArray",
 			OperationID:   "test_response_string_unix-micro_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70593,7 +70833,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 			OperationName: "TestResponseStringUnixMicroNullableArrayArray",
 			OperationID:   "test_response_string_unix-micro_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70690,7 +70930,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 			OperationName: "TestResponseStringUnixMilli",
 			OperationID:   "test_response_string_unix-milli",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70787,7 +71027,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 			OperationName: "TestResponseStringUnixMilliArray",
 			OperationID:   "test_response_string_unix-milli_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70884,7 +71124,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 			OperationName: "TestResponseStringUnixMilliArrayArray",
 			OperationID:   "test_response_string_unix-milli_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -70981,7 +71221,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 			OperationName: "TestResponseStringUnixMilliNullable",
 			OperationID:   "test_response_string_unix-milli_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71078,7 +71318,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 			OperationName: "TestResponseStringUnixMilliNullableArray",
 			OperationID:   "test_response_string_unix-milli_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71175,7 +71415,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 			OperationName: "TestResponseStringUnixMilliNullableArrayArray",
 			OperationID:   "test_response_string_unix-milli_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71272,7 +71512,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 			OperationName: "TestResponseStringUnixNano",
 			OperationID:   "test_response_string_unix-nano",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71369,7 +71609,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 			OperationName: "TestResponseStringUnixNanoArray",
 			OperationID:   "test_response_string_unix-nano_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71466,7 +71706,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 			OperationName: "TestResponseStringUnixNanoArrayArray",
 			OperationID:   "test_response_string_unix-nano_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71563,7 +71803,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 			OperationName: "TestResponseStringUnixNanoNullable",
 			OperationID:   "test_response_string_unix-nano_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71660,7 +71900,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 			OperationName: "TestResponseStringUnixNanoNullableArray",
 			OperationID:   "test_response_string_unix-nano_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71757,7 +71997,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 			OperationName: "TestResponseStringUnixNanoNullableArrayArray",
 			OperationID:   "test_response_string_unix-nano_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71854,7 +72094,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 			OperationName: "TestResponseStringUnixNullable",
 			OperationID:   "test_response_string_unix_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -71951,7 +72191,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 			OperationName: "TestResponseStringUnixNullableArray",
 			OperationID:   "test_response_string_unix_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72048,7 +72288,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 			OperationName: "TestResponseStringUnixNullableArrayArray",
 			OperationID:   "test_response_string_unix_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72145,7 +72385,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 			OperationName: "TestResponseStringUnixSeconds",
 			OperationID:   "test_response_string_unix-seconds",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72242,7 +72482,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 			OperationName: "TestResponseStringUnixSecondsArray",
 			OperationID:   "test_response_string_unix-seconds_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72339,7 +72579,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 			OperationName: "TestResponseStringUnixSecondsArrayArray",
 			OperationID:   "test_response_string_unix-seconds_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72436,7 +72676,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 			OperationName: "TestResponseStringUnixSecondsNullable",
 			OperationID:   "test_response_string_unix-seconds_nullable",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72533,7 +72773,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 			OperationName: "TestResponseStringUnixSecondsNullableArray",
 			OperationID:   "test_response_string_unix-seconds_nullable_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 
@@ -72630,7 +72870,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 			OperationName: "TestResponseStringUnixSecondsNullableArrayArray",
 			OperationID:   "test_response_string_unix-seconds_nullable_array_array",
 			Body:          request,
-			Params:        map[string]any{},
+			Params:        middleware.Parameters{},
 			Raw:           r,
 		}
 

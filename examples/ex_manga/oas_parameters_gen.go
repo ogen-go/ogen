@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -18,8 +19,14 @@ type GetBookParams struct {
 	BookID int
 }
 
-func unpackGetBookParams(packed map[string]any) (params GetBookParams) {
-	params.BookID = packed["book_id"].(int)
+func unpackGetBookParams(packed middleware.Parameters) (params GetBookParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "book_id",
+			In:   "path",
+		}
+		params.BookID = packed[key].(int)
+	}
 	return params
 }
 
@@ -83,9 +90,21 @@ type GetPageCoverImageParams struct {
 	Format string
 }
 
-func unpackGetPageCoverImageParams(packed map[string]any) (params GetPageCoverImageParams) {
-	params.MediaID = packed["media_id"].(int)
-	params.Format = packed["format"].(string)
+func unpackGetPageCoverImageParams(packed middleware.Parameters) (params GetPageCoverImageParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "media_id",
+			In:   "path",
+		}
+		params.MediaID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "format",
+			In:   "path",
+		}
+		params.Format = packed[key].(string)
+	}
 	return params
 }
 
@@ -187,10 +206,28 @@ type GetPageImageParams struct {
 	Format string
 }
 
-func unpackGetPageImageParams(packed map[string]any) (params GetPageImageParams) {
-	params.MediaID = packed["media_id"].(int)
-	params.Page = packed["page"].(int)
-	params.Format = packed["format"].(string)
+func unpackGetPageImageParams(packed middleware.Parameters) (params GetPageImageParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "media_id",
+			In:   "path",
+		}
+		params.MediaID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "path",
+		}
+		params.Page = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "format",
+			In:   "path",
+		}
+		params.Format = packed[key].(string)
+	}
 	return params
 }
 
@@ -340,10 +377,28 @@ type GetPageThumbnailImageParams struct {
 	Format string
 }
 
-func unpackGetPageThumbnailImageParams(packed map[string]any) (params GetPageThumbnailImageParams) {
-	params.MediaID = packed["media_id"].(int)
-	params.Page = packed["page"].(int)
-	params.Format = packed["format"].(string)
+func unpackGetPageThumbnailImageParams(packed middleware.Parameters) (params GetPageThumbnailImageParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "media_id",
+			In:   "path",
+		}
+		params.MediaID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "path",
+		}
+		params.Page = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "format",
+			In:   "path",
+		}
+		params.Format = packed[key].(string)
+	}
 	return params
 }
 
@@ -499,10 +554,22 @@ type SearchParams struct {
 	Page OptInt
 }
 
-func unpackSearchParams(packed map[string]any) (params SearchParams) {
-	params.Query = packed["query"].(string)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackSearchParams(packed middleware.Parameters) (params SearchParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "query",
+			In:   "query",
+		}
+		params.Query = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
@@ -583,10 +650,22 @@ type SearchByTagIDParams struct {
 	Page OptInt
 }
 
-func unpackSearchByTagIDParams(packed map[string]any) (params SearchByTagIDParams) {
-	params.TagID = packed["tag_id"].(int)
-	if v, ok := packed["page"]; ok {
-		params.Page = v.(OptInt)
+func unpackSearchByTagIDParams(packed middleware.Parameters) (params SearchByTagIDParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "tag_id",
+			In:   "query",
+		}
+		params.TagID = packed[key].(int)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "page",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Page = v.(OptInt)
+		}
 	}
 	return params
 }
