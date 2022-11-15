@@ -29,12 +29,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -7763,7 +7763,6 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-organization"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7853,7 +7852,6 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("actions/set-allowed-actions-repository"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11190,7 +11188,6 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-notifications-as-read"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11262,7 +11259,6 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11437,7 +11433,6 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-repo-subscription"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11540,7 +11535,6 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("activity/set-thread-subscription"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11906,7 +11900,6 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/check-token"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12118,7 +12111,6 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/create-from-manifest"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12313,7 +12305,6 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-authorization"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12478,7 +12469,6 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/delete-token"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14258,7 +14248,6 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("apps/reset-token"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15497,7 +15486,6 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/create-suite"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16684,7 +16672,6 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("checks/set-suites-preferences"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21571,7 +21558,6 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24446,7 +24432,6 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-blob"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24575,7 +24560,6 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-commit"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24673,7 +24657,6 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/create-ref"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25909,7 +25892,6 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("git/update-ref"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26670,7 +26652,6 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/add-assignees"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26899,7 +26880,6 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27001,7 +26981,6 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27112,7 +27091,6 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/create-label"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30627,7 +30605,6 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/remove-assignees"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31092,7 +31069,6 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31202,7 +31178,6 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("issues/update-label"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33444,7 +33419,6 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/map-commit-author"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34135,7 +34109,6 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("migrations/update-import"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42787,7 +42760,6 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-column"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42868,7 +42840,6 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-authenticated-user"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42936,7 +42907,6 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43019,7 +42989,6 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/create-for-repo"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44832,7 +44801,6 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-card"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44912,7 +44880,6 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("projects/update-column"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45114,7 +45081,6 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45219,7 +45185,6 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/create-reply-for-review-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45856,7 +45821,6 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/dismiss-review"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48207,7 +48171,6 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-branch"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48318,7 +48281,6 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48443,7 +48405,6 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pulls/update-review-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53071,7 +53032,6 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-autolink"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53174,7 +53134,6 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-commit-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53518,7 +53477,6 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deploy-key"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53669,7 +53627,6 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-deployment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54015,7 +53972,6 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-for-authenticated-user"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54084,7 +54040,6 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-fork"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54276,7 +54231,6 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-or-update-file-contents"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54498,7 +54452,6 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-release"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54605,7 +54558,6 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/create-using-template"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55981,7 +55933,6 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/delete-file"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66359,7 +66310,6 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66456,7 +66406,6 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/merge-upstream"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67560,7 +67509,6 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/rename-branch"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68652,7 +68600,6 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/transfer"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68985,7 +68932,6 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-commit-comment"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69227,7 +69173,6 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-pull-request-review-protection"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69338,7 +69283,6 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69448,7 +69392,6 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-release-asset"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69564,7 +69507,6 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("repos/update-status-check-protection"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73182,7 +73124,6 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-in-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73306,7 +73247,6 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-comment-legacy"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73412,7 +73352,6 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-in-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73521,7 +73460,6 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-discussion-legacy"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73609,7 +73547,6 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78584,7 +78521,6 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-in-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78715,7 +78651,6 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-comment-legacy"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78829,7 +78764,6 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-in-org"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78946,7 +78880,6 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("teams/update-discussion-legacy"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79649,7 +79582,6 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -82006,7 +81938,6 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("users/update-authenticated"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

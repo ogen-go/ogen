@@ -145,8 +145,8 @@ type Server struct {
 }
 
 // NewServer creates new Server.
-func NewServer(h Handler, sec SecurityHandler, opts ...Option) (*Server, error) {
-	s, err := newConfig(opts...).baseServer()
+func NewServer(h Handler, sec SecurityHandler, opts ...ServerOption) (*Server, error) {
+	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}

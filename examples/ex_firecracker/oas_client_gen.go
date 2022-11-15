@@ -29,12 +29,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -529,7 +529,6 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -593,7 +592,6 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 // PUT /mmds/config
 func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res MmdsConfigPutRes, err error) {
 	var otelAttrs []attribute.KeyValue
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -715,7 +713,6 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 // PATCH /mmds
 func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
 	var otelAttrs []attribute.KeyValue
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -778,7 +775,6 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 // PUT /mmds
 func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
 	var otelAttrs []attribute.KeyValue
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -844,7 +840,6 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -911,7 +906,6 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1311,7 +1305,6 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1378,7 +1371,6 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1854,7 +1846,6 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

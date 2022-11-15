@@ -44,38 +44,73 @@ var (
 	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
 )
 
-type config struct {
+type (
+	optionFunc[C any] func(*C)
+	otelOptionFunc    func(*otelConfig)
+)
+
+type otelConfig struct {
 	TracerProvider trace.TracerProvider
 	Tracer         trace.Tracer
 	MeterProvider  metric.MeterProvider
 	Meter          metric.Meter
-	Client         ht.Client
 }
 
-func newConfig(opts ...Option) config {
-	cfg := config{
-		TracerProvider: otel.GetTracerProvider(),
-		MeterProvider:  metric.NewNoopMeterProvider(),
-		Client:         http.DefaultClient,
+func (cfg *otelConfig) initOTEL() {
+	if cfg.TracerProvider == nil {
+		cfg.TracerProvider = otel.GetTracerProvider()
 	}
-	for _, opt := range opts {
-		opt.apply(&cfg)
+	if cfg.MeterProvider == nil {
+		cfg.MeterProvider = metric.NewNoopMeterProvider()
 	}
 	cfg.Tracer = cfg.TracerProvider.Tracer(otelogen.Name,
 		trace.WithInstrumentationVersion(otelogen.SemVersion()),
 	)
 	cfg.Meter = cfg.MeterProvider.Meter(otelogen.Name)
+}
+
+type clientConfig struct {
+	otelConfig
+	Client ht.Client
+}
+
+// ClientOption is client config option.
+type ClientOption interface {
+	applyClient(*clientConfig)
+}
+
+var _ = []ClientOption{
+	(optionFunc[clientConfig])(nil),
+	(otelOptionFunc)(nil),
+}
+
+func (o optionFunc[C]) applyClient(c *C) {
+	o(c)
+}
+
+func (o otelOptionFunc) applyClient(c *clientConfig) {
+	o(&c.otelConfig)
+}
+
+func newClientConfig(opts ...ClientOption) clientConfig {
+	cfg := clientConfig{
+		Client: http.DefaultClient,
+	}
+	for _, opt := range opts {
+		opt.applyClient(&cfg)
+	}
+	cfg.initOTEL()
 	return cfg
 }
 
 type baseClient struct {
-	cfg      config
+	cfg      clientConfig
 	requests syncint64.Counter
 	errors   syncint64.Counter
 	duration syncint64.Histogram
 }
 
-func (cfg config) baseClient() (c baseClient, err error) {
+func (cfg clientConfig) baseClient() (c baseClient, err error) {
 	c = baseClient{cfg: cfg}
 	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
 		return c, err
@@ -91,20 +126,14 @@ func (cfg config) baseClient() (c baseClient, err error) {
 
 // Option is config option.
 type Option interface {
-	apply(*config)
-}
-
-type optionFunc func(*config)
-
-func (o optionFunc) apply(c *config) {
-	o(c)
+	ClientOption
 }
 
 // WithTracerProvider specifies a tracer provider to use for creating a tracer.
 //
 // If none is specified, the global provider is used.
 func WithTracerProvider(provider trace.TracerProvider) Option {
-	return optionFunc(func(cfg *config) {
+	return otelOptionFunc(func(cfg *otelConfig) {
 		if provider != nil {
 			cfg.TracerProvider = provider
 		}
@@ -115,7 +144,7 @@ func WithTracerProvider(provider trace.TracerProvider) Option {
 //
 // If none is specified, the metric.NewNoopMeterProvider is used.
 func WithMeterProvider(provider metric.MeterProvider) Option {
-	return optionFunc(func(cfg *config) {
+	return otelOptionFunc(func(cfg *otelConfig) {
 		if provider != nil {
 			cfg.MeterProvider = provider
 		}
@@ -123,8 +152,8 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 }
 
 // WithClient specifies http client to use.
-func WithClient(client ht.Client) Option {
-	return optionFunc(func(cfg *config) {
+func WithClient(client ht.Client) ClientOption {
+	return optionFunc[clientConfig](func(cfg *clientConfig) {
 		if client != nil {
 			cfg.Client = client
 		}
