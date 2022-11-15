@@ -28,12 +28,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -223,7 +223,6 @@ func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReq
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -287,7 +286,6 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request MaskConten
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

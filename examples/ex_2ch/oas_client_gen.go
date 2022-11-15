@@ -27,12 +27,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -1187,7 +1187,6 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 // POST /user/passlogin
 func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res Passcode, err error) {
 	var otelAttrs []attribute.KeyValue
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1346,7 +1345,6 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 // POST /user/report
 func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostReq) (res Report, err error) {
 	var otelAttrs []attribute.KeyValue
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

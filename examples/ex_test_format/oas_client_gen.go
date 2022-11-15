@@ -34,12 +34,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,6 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_query_parameter"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1619,7 +1618,6 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_Any"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1683,7 +1681,6 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1747,7 +1744,6 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1897,7 +1893,6 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1961,7 +1956,6 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2111,7 +2105,6 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_EmptyStruct"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2254,7 +2247,6 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2318,7 +2310,6 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2468,7 +2459,6 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2532,7 +2522,6 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2682,7 +2671,6 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2746,7 +2734,6 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2896,7 +2883,6 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2960,7 +2946,6 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3110,7 +3095,6 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3174,7 +3158,6 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3324,7 +3307,6 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3388,7 +3370,6 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3538,7 +3519,6 @@ func (c *Client) TestRequestIntegerUint(ctx context.Context, request OptUint) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3602,7 +3582,6 @@ func (c *Client) TestRequestIntegerUint32(ctx context.Context, request OptUint32
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3666,7 +3645,6 @@ func (c *Client) TestRequestIntegerUint32Array(ctx context.Context, request []ui
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3816,7 +3794,6 @@ func (c *Client) TestRequestIntegerUint32Nullable(ctx context.Context, request O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3880,7 +3857,6 @@ func (c *Client) TestRequestIntegerUint32NullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4030,7 +4006,6 @@ func (c *Client) TestRequestIntegerUint64(ctx context.Context, request OptUint64
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4094,7 +4069,6 @@ func (c *Client) TestRequestIntegerUint64Array(ctx context.Context, request []ui
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4244,7 +4218,6 @@ func (c *Client) TestRequestIntegerUint64Nullable(ctx context.Context, request O
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4308,7 +4281,6 @@ func (c *Client) TestRequestIntegerUint64NullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4458,7 +4430,6 @@ func (c *Client) TestRequestIntegerUintArray(ctx context.Context, request []uint
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4608,7 +4579,6 @@ func (c *Client) TestRequestIntegerUintNullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4672,7 +4642,6 @@ func (c *Client) TestRequestIntegerUintNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4822,7 +4791,6 @@ func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeco
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4886,7 +4854,6 @@ func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5036,7 +5003,6 @@ func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUni
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5100,7 +5066,6 @@ func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request [
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5250,7 +5215,6 @@ func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5314,7 +5278,6 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5464,7 +5427,6 @@ func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUni
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5528,7 +5490,6 @@ func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request [
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5678,7 +5639,6 @@ func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5742,7 +5702,6 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5892,7 +5851,6 @@ func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnix
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5956,7 +5914,6 @@ func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6106,7 +6063,6 @@ func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6170,7 +6126,6 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6320,7 +6275,6 @@ func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6384,7 +6338,6 @@ func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6534,7 +6487,6 @@ func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptU
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6598,7 +6550,6 @@ func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6748,7 +6699,6 @@ func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6812,7 +6762,6 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6962,7 +6911,6 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7026,7 +6974,6 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7176,7 +7123,6 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7240,7 +7186,6 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8730,7 +8675,6 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8794,7 +8738,6 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8944,7 +8887,6 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9008,7 +8950,6 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9158,7 +9099,6 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9222,7 +9162,6 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9372,7 +9311,6 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9436,7 +9374,6 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9854,7 +9791,6 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_Any"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9918,7 +9854,6 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10143,7 +10078,6 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10368,7 +10302,6 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_EmptyStruct"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10504,7 +10437,6 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10729,7 +10661,6 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10954,7 +10885,6 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11179,7 +11109,6 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11404,7 +11333,6 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11629,7 +11557,6 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11854,7 +11781,6 @@ func (c *Client) TestRequestRequiredIntegerUint(ctx context.Context, request uin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11918,7 +11844,6 @@ func (c *Client) TestRequestRequiredIntegerUint32(ctx context.Context, request u
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12143,7 +12068,6 @@ func (c *Client) TestRequestRequiredIntegerUint32Nullable(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12368,7 +12292,6 @@ func (c *Client) TestRequestRequiredIntegerUint64(ctx context.Context, request u
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12593,7 +12516,6 @@ func (c *Client) TestRequestRequiredIntegerUint64Nullable(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12979,7 +12901,6 @@ func (c *Client) TestRequestRequiredIntegerUintNullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13204,7 +13125,6 @@ func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request tim
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13429,7 +13349,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13654,7 +13573,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13879,7 +13797,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14104,7 +14021,6 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14329,7 +14245,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14554,7 +14469,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14779,7 +14693,6 @@ func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15004,7 +14917,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15229,7 +15141,6 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15454,7 +15365,6 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15679,7 +15589,6 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17239,7 +17148,6 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17464,7 +17372,6 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17689,7 +17596,6 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17914,7 +17820,6 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18406,7 +18311,6 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18631,7 +18535,6 @@ func (c *Client) TestRequestRequiredStringBase64(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18856,7 +18759,6 @@ func (c *Client) TestRequestRequiredStringBase64Nullable(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19081,7 +18983,6 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19306,7 +19207,6 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19531,7 +19431,6 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19756,7 +19655,6 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19981,7 +19879,6 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20206,7 +20103,6 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20431,7 +20327,6 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20656,7 +20551,6 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20881,7 +20775,6 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21106,7 +20999,6 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22495,7 +22387,6 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22720,7 +22611,6 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22945,7 +22835,6 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23170,7 +23059,6 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23395,7 +23283,6 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23620,7 +23507,6 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23845,7 +23731,6 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24070,7 +23955,6 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24295,7 +24179,6 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24520,7 +24403,6 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24745,7 +24627,6 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24970,7 +24851,6 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25195,7 +25075,6 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25420,7 +25299,6 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25645,7 +25523,6 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25870,7 +25747,6 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26095,7 +25971,6 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26320,7 +26195,6 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26545,7 +26419,6 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26770,7 +26643,6 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26995,7 +26867,6 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27220,7 +27091,6 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27445,7 +27315,6 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27670,7 +27539,6 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27895,7 +27763,6 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28120,7 +27987,6 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28345,7 +28211,6 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28570,7 +28435,6 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28795,7 +28659,6 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29020,7 +28883,6 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29084,7 +28946,6 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29234,7 +29095,6 @@ func (c *Client) TestRequestStringBase64(ctx context.Context, request []byte) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29298,7 +29158,6 @@ func (c *Client) TestRequestStringBase64Array(ctx context.Context, request [][]b
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29448,7 +29307,6 @@ func (c *Client) TestRequestStringBase64Nullable(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29512,7 +29370,6 @@ func (c *Client) TestRequestStringBase64NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29662,7 +29519,6 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29726,7 +29582,6 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29876,7 +29731,6 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29940,7 +29794,6 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30090,7 +29943,6 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30154,7 +30006,6 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30304,7 +30155,6 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30368,7 +30218,6 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30518,7 +30367,6 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30582,7 +30430,6 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30732,7 +30579,6 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30796,7 +30642,6 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30946,7 +30791,6 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31010,7 +30854,6 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31160,7 +31003,6 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31224,7 +31066,6 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31374,7 +31215,6 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31438,7 +31278,6 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31588,7 +31427,6 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31652,7 +31490,6 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32970,7 +32807,6 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33034,7 +32870,6 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33184,7 +33019,6 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33248,7 +33082,6 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33398,7 +33231,6 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33462,7 +33294,6 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33612,7 +33443,6 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33676,7 +33506,6 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33826,7 +33655,6 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33890,7 +33718,6 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34040,7 +33867,6 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34104,7 +33930,6 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34254,7 +34079,6 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34318,7 +34142,6 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34468,7 +34291,6 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34532,7 +34354,6 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34682,7 +34503,6 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34746,7 +34566,6 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34896,7 +34715,6 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34960,7 +34778,6 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35110,7 +34927,6 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35174,7 +34990,6 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35324,7 +35139,6 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35388,7 +35202,6 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35538,7 +35351,6 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35602,7 +35414,6 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35752,7 +35563,6 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35816,7 +35626,6 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35966,7 +35775,6 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36030,7 +35838,6 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36180,7 +35987,6 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36244,7 +36050,6 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36394,7 +36199,6 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36458,7 +36262,6 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36608,7 +36411,6 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36672,7 +36474,6 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36822,7 +36623,6 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36886,7 +36686,6 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37036,7 +36835,6 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUni
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37100,7 +36898,6 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37250,7 +37047,6 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37314,7 +37110,6 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37464,7 +37259,6 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37528,7 +37322,6 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37678,7 +37471,6 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37742,7 +37534,6 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37892,7 +37683,6 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37956,7 +37746,6 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38106,7 +37895,6 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStrin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38170,7 +37958,6 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38320,7 +38107,6 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38384,7 +38170,6 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38534,7 +38319,6 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38598,7 +38382,6 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38748,7 +38531,6 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptSt
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38812,7 +38594,6 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38962,7 +38743,6 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39026,7 +38806,6 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39176,7 +38955,6 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_Any"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39240,7 +39018,6 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39304,7 +39081,6 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39368,7 +39144,6 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39432,7 +39207,6 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39496,7 +39270,6 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39560,7 +39333,6 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39624,7 +39396,6 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_EmptyStruct"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39688,7 +39459,6 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_FormatTest"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39752,7 +39522,6 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39816,7 +39585,6 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39880,7 +39648,6 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39944,7 +39711,6 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40008,7 +39774,6 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40072,7 +39837,6 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40136,7 +39900,6 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40200,7 +39963,6 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40264,7 +40026,6 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40328,7 +40089,6 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40392,7 +40152,6 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40456,7 +40215,6 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40520,7 +40278,6 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40584,7 +40341,6 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40648,7 +40404,6 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40712,7 +40467,6 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40776,7 +40530,6 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40840,7 +40593,6 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40904,7 +40656,6 @@ func (c *Client) TestResponseIntegerUint(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40968,7 +40719,6 @@ func (c *Client) TestResponseIntegerUint32(ctx context.Context, request string) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41032,7 +40782,6 @@ func (c *Client) TestResponseIntegerUint32Array(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41096,7 +40845,6 @@ func (c *Client) TestResponseIntegerUint32ArrayArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41160,7 +40908,6 @@ func (c *Client) TestResponseIntegerUint32Nullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41224,7 +40971,6 @@ func (c *Client) TestResponseIntegerUint32NullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41288,7 +41034,6 @@ func (c *Client) TestResponseIntegerUint32NullableArrayArray(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41352,7 +41097,6 @@ func (c *Client) TestResponseIntegerUint64(ctx context.Context, request string) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41416,7 +41160,6 @@ func (c *Client) TestResponseIntegerUint64Array(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41480,7 +41223,6 @@ func (c *Client) TestResponseIntegerUint64ArrayArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41544,7 +41286,6 @@ func (c *Client) TestResponseIntegerUint64Nullable(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41608,7 +41349,6 @@ func (c *Client) TestResponseIntegerUint64NullableArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41672,7 +41412,6 @@ func (c *Client) TestResponseIntegerUint64NullableArrayArray(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41736,7 +41475,6 @@ func (c *Client) TestResponseIntegerUintArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41800,7 +41538,6 @@ func (c *Client) TestResponseIntegerUintArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41864,7 +41601,6 @@ func (c *Client) TestResponseIntegerUintNullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41928,7 +41664,6 @@ func (c *Client) TestResponseIntegerUintNullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41992,7 +41727,6 @@ func (c *Client) TestResponseIntegerUintNullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42056,7 +41790,6 @@ func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42120,7 +41853,6 @@ func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42184,7 +41916,6 @@ func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42248,7 +41979,6 @@ func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42312,7 +42042,6 @@ func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42376,7 +42105,6 @@ func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42440,7 +42168,6 @@ func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42504,7 +42231,6 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42568,7 +42294,6 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42632,7 +42357,6 @@ func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42696,7 +42420,6 @@ func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42760,7 +42483,6 @@ func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42824,7 +42546,6 @@ func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42888,7 +42609,6 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42952,7 +42672,6 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Cont
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43016,7 +42735,6 @@ func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43080,7 +42798,6 @@ func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43144,7 +42861,6 @@ func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43208,7 +42924,6 @@ func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43272,7 +42987,6 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43336,7 +43050,6 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43400,7 +43113,6 @@ func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43464,7 +43176,6 @@ func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43528,7 +43239,6 @@ func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43592,7 +43302,6 @@ func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43656,7 +43365,6 @@ func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43720,7 +43428,6 @@ func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43784,7 +43491,6 @@ func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43848,7 +43554,6 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43912,7 +43617,6 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Co
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43976,7 +43680,6 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44040,7 +43743,6 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44104,7 +43806,6 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44168,7 +43869,6 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44232,7 +43932,6 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44296,7 +43995,6 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44360,7 +44058,6 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44424,7 +44121,6 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44488,7 +44184,6 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44552,7 +44247,6 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44616,7 +44310,6 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44680,7 +44373,6 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44744,7 +44436,6 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44808,7 +44499,6 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44872,7 +44562,6 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44936,7 +44625,6 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45000,7 +44688,6 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45064,7 +44751,6 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45128,7 +44814,6 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45192,7 +44877,6 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45256,7 +44940,6 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45320,7 +45003,6 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45384,7 +45066,6 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45448,7 +45129,6 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45512,7 +45192,6 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45576,7 +45255,6 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45640,7 +45318,6 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45704,7 +45381,6 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45768,7 +45444,6 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45832,7 +45507,6 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45896,7 +45570,6 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45960,7 +45633,6 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46024,7 +45696,6 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46088,7 +45759,6 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46152,7 +45822,6 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46216,7 +45885,6 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46280,7 +45948,6 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46344,7 +46011,6 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46408,7 +46074,6 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46472,7 +46137,6 @@ func (c *Client) TestResponseStringBase64(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46536,7 +46200,6 @@ func (c *Client) TestResponseStringBase64Array(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46600,7 +46263,6 @@ func (c *Client) TestResponseStringBase64ArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46664,7 +46326,6 @@ func (c *Client) TestResponseStringBase64Nullable(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46728,7 +46389,6 @@ func (c *Client) TestResponseStringBase64NullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46792,7 +46452,6 @@ func (c *Client) TestResponseStringBase64NullableArrayArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46856,7 +46515,6 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46920,7 +46578,6 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46984,7 +46641,6 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47048,7 +46704,6 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47112,7 +46767,6 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47176,7 +46830,6 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47240,7 +46893,6 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47304,7 +46956,6 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47368,7 +47019,6 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47432,7 +47082,6 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47496,7 +47145,6 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47560,7 +47208,6 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47624,7 +47271,6 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47688,7 +47334,6 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47752,7 +47397,6 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47816,7 +47460,6 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47880,7 +47523,6 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47944,7 +47586,6 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48008,7 +47649,6 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48072,7 +47712,6 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48136,7 +47775,6 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48200,7 +47838,6 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48264,7 +47901,6 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48328,7 +47964,6 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48392,7 +48027,6 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48456,7 +48090,6 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48520,7 +48153,6 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48584,7 +48216,6 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48648,7 +48279,6 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48712,7 +48342,6 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48776,7 +48405,6 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48840,7 +48468,6 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48904,7 +48531,6 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48968,7 +48594,6 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49032,7 +48657,6 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49096,7 +48720,6 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49160,7 +48783,6 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49224,7 +48846,6 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49288,7 +48909,6 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49352,7 +48972,6 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49416,7 +49035,6 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49480,7 +49098,6 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49544,7 +49161,6 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49608,7 +49224,6 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49672,7 +49287,6 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49736,7 +49350,6 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49800,7 +49413,6 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49864,7 +49476,6 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49928,7 +49539,6 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49992,7 +49602,6 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50056,7 +49665,6 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50120,7 +49728,6 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50184,7 +49791,6 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50248,7 +49854,6 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50312,7 +49917,6 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50376,7 +49980,6 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50440,7 +50043,6 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50504,7 +50106,6 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50568,7 +50169,6 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50632,7 +50232,6 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50696,7 +50295,6 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50760,7 +50358,6 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50824,7 +50421,6 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50888,7 +50484,6 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50952,7 +50547,6 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51016,7 +50610,6 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51080,7 +50673,6 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51144,7 +50736,6 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51208,7 +50799,6 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51272,7 +50862,6 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51336,7 +50925,6 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51400,7 +50988,6 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51464,7 +51051,6 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51528,7 +51114,6 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51592,7 +51177,6 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51656,7 +51240,6 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51720,7 +51303,6 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51784,7 +51366,6 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51848,7 +51429,6 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51912,7 +51492,6 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51976,7 +51555,6 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52040,7 +51618,6 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52104,7 +51681,6 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52168,7 +51744,6 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52232,7 +51807,6 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52296,7 +51870,6 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52360,7 +51933,6 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52424,7 +51996,6 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52488,7 +52059,6 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52552,7 +52122,6 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52616,7 +52185,6 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52680,7 +52248,6 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52744,7 +52311,6 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52808,7 +52374,6 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52872,7 +52437,6 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52936,7 +52500,6 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53000,7 +52563,6 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53064,7 +52626,6 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53128,7 +52689,6 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53192,7 +52752,6 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53256,7 +52815,6 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53320,7 +52878,6 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53384,7 +52941,6 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53448,7 +53004,6 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53512,7 +53067,6 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53576,7 +53130,6 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53640,7 +53193,6 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53704,7 +53256,6 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53768,7 +53319,6 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53832,7 +53382,6 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53896,7 +53445,6 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53960,7 +53508,6 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54024,7 +53571,6 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54088,7 +53634,6 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54152,7 +53697,6 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54216,7 +53760,6 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54280,7 +53823,6 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54344,7 +53886,6 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54408,7 +53949,6 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54472,7 +54012,6 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54536,7 +54075,6 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54600,7 +54138,6 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54664,7 +54201,6 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54728,7 +54264,6 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54792,7 +54327,6 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54856,7 +54390,6 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54920,7 +54453,6 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54984,7 +54516,6 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55048,7 +54579,6 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

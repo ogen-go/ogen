@@ -26,8 +26,8 @@ type Server struct {
 }
 
 // NewServer creates new Server.
-func NewServer(h Handler, opts ...Option) (*Server, error) {
-	s, err := newConfig(opts...).baseServer()
+func NewServer(h Handler, opts ...ServerOption) (*Server, error) {
+	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}
@@ -58,8 +58,8 @@ type WebhookServer struct {
 }
 
 // NewWebhookServer creates new WebhookServer.
-func NewWebhookServer(h WebhookHandler, opts ...Option) (*WebhookServer, error) {
-	s, err := newConfig(opts...).baseServer()
+func NewWebhookServer(h WebhookHandler, opts ...ServerOption) (*WebhookServer, error) {
+	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}

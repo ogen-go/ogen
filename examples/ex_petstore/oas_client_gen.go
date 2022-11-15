@@ -29,12 +29,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}

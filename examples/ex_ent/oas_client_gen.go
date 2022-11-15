@@ -29,12 +29,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,6 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -134,7 +133,6 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -215,7 +213,6 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -296,7 +293,6 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1013,7 +1009,6 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

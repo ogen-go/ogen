@@ -34,12 +34,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,6 @@ func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (res Event,
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -134,8 +133,8 @@ type WebhookClient struct {
 }
 
 // NewWebhookClient initializes new WebhookClient.
-func NewWebhookClient(opts ...Option) (*WebhookClient, error) {
-	c, err := newConfig(opts...).baseClient()
+func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -271,7 +270,6 @@ func (c *WebhookClient) UpdateWebhook(ctx context.Context, targetURL string, req
 		otelogen.OperationID("updateWebhook"),
 		otelogen.WebhookName("update"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

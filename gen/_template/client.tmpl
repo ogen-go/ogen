@@ -26,12 +26,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...Option) (*Client, error) {
+func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -72,8 +72,8 @@ type WebhookClient struct {
 }
 
 // NewWebhookClient initializes new WebhookClient.
-func NewWebhookClient(opts ...Option) (*WebhookClient, error) {
-	c, err := newConfig(opts...).baseClient()
+func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -112,8 +112,8 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 	{{- end }}
 
 	{{- if $op.Request }}{{/* Request validation */}}
-		// Validate request before sending.
 		{{- if $op.Request.Type.IsInterface }}
+			// Validate request before sending.
 			switch request := request.(type) {
 			{{- if $op.Request.EmptyBody }}
 			case *{{ $op.Request.EmptyBody.Go }}:
@@ -135,14 +135,13 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 			default:
 				return res, errors.Errorf("unexpected request type: %T", request)
 			}
-		{{- else }}
-			{{- if $op.Request.Type.NeedValidation }}
-				if err := func() error {
-					{{- template "validate" elem $op.Request.Type "request" }}
-				}(); err != nil {
-					return res, errors.Wrap(err, "validate")
-				}
-			{{- end }}
+		{{- else if $op.Request.Type.NeedValidation }}
+			// Validate request before sending.
+			if err := func() error {
+				{{- template "validate" elem $op.Request.Type "request" }}
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
 

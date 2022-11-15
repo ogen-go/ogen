@@ -33,12 +33,12 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
-	c, err := newConfig(opts...).baseClient()
+	c, err := newClientConfig(opts...).baseClient()
 	if err != nil {
 		return nil, err
 	}
@@ -286,7 +286,6 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerPreCheckoutQuery"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -422,7 +421,6 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("approveChatJoinRequest"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -486,7 +484,6 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatMember"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -550,7 +547,6 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatSenderChat"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -890,7 +886,6 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("declineChatJoinRequest"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -954,7 +949,6 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatPhoto"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1018,7 +1012,6 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatStickerSet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1082,7 +1075,6 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMessage"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1146,7 +1138,6 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMyCommands"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1210,7 +1201,6 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteStickerFromSet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1274,7 +1264,6 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteWebhook"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1770,7 +1759,6 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("exportChatInviteLink"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1834,7 +1822,6 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("forwardMessage"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1898,7 +1885,6 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChat"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1962,7 +1948,6 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatAdministrators"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2026,7 +2011,6 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMember"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2090,7 +2074,6 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMemberCount"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2154,7 +2137,6 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFile"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2218,7 +2200,6 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getGameHighScores"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2342,7 +2323,6 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMyCommands"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2406,7 +2386,6 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStickerSet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2681,7 +2660,6 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("leaveChat"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2805,7 +2783,6 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pinChatMessage"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2869,7 +2846,6 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("promoteChatMember"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2933,7 +2909,6 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("restrictChatMember"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -2997,7 +2972,6 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("revokeChatInviteLink"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -3205,7 +3179,6 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendChatAction"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4493,7 +4466,6 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPermissions"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4557,7 +4529,6 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPhoto"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4621,7 +4592,6 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatStickerSet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4757,7 +4727,6 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setGameScore"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -4965,7 +4934,6 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerPositionInSet"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5029,7 +4997,6 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerSetThumb"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5093,7 +5060,6 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setWebhook"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5301,7 +5267,6 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatMember"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5365,7 +5330,6 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatSenderChat"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5429,7 +5393,6 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinAllChatMessages"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5493,7 +5456,6 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinChatMessage"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -5557,7 +5519,6 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("uploadStickerFile"),
 	}
-	// Validate request before sending.
 
 	// Run stopwatch.
 	startTime := time.Now()

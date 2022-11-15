@@ -20,6 +20,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
@@ -281,13 +283,20 @@ func TestIntegration(t *testing.T) {
 		})
 
 		handler := &sampleAPIServer{}
-		h, err := api.NewServer(handler, handler)
+		h, err := api.NewServer(handler, handler,
+			api.WithTracerProvider(trace.NewNoopTracerProvider()),
+			api.WithMeterProvider(metric.NewNoopMeterProvider()),
+		)
 		require.NoError(t, err)
 		s := httptest.NewServer(h)
 		defer s.Close()
 
 		httpClient := s.Client()
-		client, err := api.NewClient(s.URL, handler, api.WithClient(httpClient))
+		client, err := api.NewClient(s.URL, handler,
+			api.WithClient(httpClient),
+			api.WithTracerProvider(trace.NewNoopTracerProvider()),
+			api.WithMeterProvider(metric.NewNoopMeterProvider()),
+		)
 		require.NoError(t, err)
 		ctx := context.Background()
 
