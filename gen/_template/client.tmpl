@@ -112,8 +112,8 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 	{{- end }}
 
 	{{- if $op.Request }}{{/* Request validation */}}
-		// Validate request before sending.
 		{{- if $op.Request.Type.IsInterface }}
+			// Validate request before sending.
 			switch request := request.(type) {
 			{{- if $op.Request.EmptyBody }}
 			case *{{ $op.Request.EmptyBody.Go }}:
@@ -135,14 +135,13 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 			default:
 				return res, errors.Errorf("unexpected request type: %T", request)
 			}
-		{{- else }}
-			{{- if $op.Request.Type.NeedValidation }}
-				if err := func() error {
-					{{- template "validate" elem $op.Request.Type "request" }}
-				}(); err != nil {
-					return res, errors.Wrap(err, "validate")
-				}
-			{{- end }}
+		{{- else if $op.Request.Type.NeedValidation }}
+			// Validate request before sending.
+			if err := func() error {
+				{{- template "validate" elem $op.Request.Type "request" }}
+			}(); err != nil {
+				return res, errors.Wrap(err, "validate")
+			}
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
 
