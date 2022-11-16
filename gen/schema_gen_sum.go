@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"path"
 	"reflect"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -134,6 +135,14 @@ func (g *schemaGen) collectSumVariants(
 	return sum, nil
 }
 
+func schemaName(ref string) (string, bool) {
+	_, after, ok := strings.Cut(ref, "#/")
+	if !ok || after == "" {
+		return "", false
+	}
+	return path.Base(after), true
+}
+
 func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
@@ -244,6 +253,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
 			// Implicit mapping, defaults to type name.
+			keys := map[string]struct{}{}
 			for i, s := range sum.SumOf {
 				var ref string
 				if s.Schema != nil {
@@ -252,8 +262,39 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 					ref = schema.OneOf[i].Ref
 				}
 
+				key, err := func() (string, error) {
+					// Spec says (https://spec.openapis.org/oas/v3.1.0#discriminator-object):
+					//
+					// 	The expectation now is that a property with name petType MUST be present in the response payload,
+					// 	and the value will correspond to the name of a schema defined in the OAS document
+					//
+					// What is name of a schema? Is it the last part of the pointer?
+					// What if pointer part of reference is empty, like `User.json#`?
+					//
+					// As always, OpenAPI is not clear enough.
+					key, ok := schemaName(ref)
+					if !ok {
+						return "", errors.Wrap(
+							&ErrNotImplemented{"complicated reference"},
+							"unable to extract schema name",
+						)
+					}
+
+					if _, ok := keys[key]; ok {
+						return "", errors.Wrapf(
+							&ErrNotImplemented{"duplicate mapping key"},
+							"key %q", key,
+						)
+					}
+					keys[key] = struct{}{}
+					return key, nil
+				}()
+				if err != nil {
+					return nil, errors.Wrapf(err, "mapping %q", ref)
+				}
+
 				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-					Key:  path.Base(ref),
+					Key:  key,
 					Type: s,
 				})
 			}
