@@ -4,6 +4,7 @@ package jsonschema
 import (
 	"encoding/json"
 	"math/big"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/slices"
@@ -502,7 +503,26 @@ func (p *Parser) parseDiscriminator(d *RawDiscriminator, ctx *jsonpointer.Resolv
 	mapping := make(map[string]*Schema, len(d.Mapping))
 	for value, ref := range d.Mapping {
 		locator := locator.Field("mapping").Field(value)
-		s, err := p.resolve(ref, ctx)
+
+		// See https://github.com/OAI/OpenAPI-Specification/issues/2520#issuecomment-1139961158.
+		var (
+			s   *Schema
+			err error
+		)
+		switch {
+		case !strings.ContainsRune(ref, '#') && ctx.IsRoot():
+			// JSON Reference usually contains a fragment, e.g. "#/components/schemas/Foo" or
+			// "foo.json#/definitions/Bar", but this looks like a schema name.
+			//
+			// Try to find it in the components, if it is root spec.
+			if s, err = p.resolve("#/components/schemas/"+ref, ctx); err == nil {
+				break
+			}
+			// It seems there is no schema with such name, try to resolve as a plain JSON Reference.
+			fallthrough
+		default:
+			s, err = p.resolve(ref, ctx)
+		}
 		if err != nil {
 			err = errors.Wrap(err, "resolve mapping")
 			return nil, p.wrapLocation(ctx.File(), locator, err)
