@@ -220,14 +220,12 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				if !s.Is(ir.KindStruct, ir.KindMap) {
 					return nil, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%q", s.Kind)
 				}
-				var ref string
-				if s.Schema != nil {
-					ref = s.Schema.Ref
-				} else {
-					ref = schema.OneOf[i].Ref
+				vschema := s.Schema
+				if vschema == nil {
+					vschema = schema.OneOf[i]
 				}
 
-				if ref == v || path.Base(ref) == v {
+				if vschema == v {
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
@@ -241,7 +239,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				}
 			}
 			if !found {
-				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v)
+				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v.Ref)
 			}
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
