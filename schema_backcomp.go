@@ -103,15 +103,16 @@ func (p PatternProperties) ToJSONSchema() (result jsonschema.RawPatternPropertie
 	return result
 }
 
-// ToJSONSchema converts Discriminator to jsonschema.Discriminator.
-func (d *Discriminator) ToJSONSchema() *jsonschema.Discriminator {
+// ToJSONSchema converts Discriminator to jsonschema.RawDiscriminator.
+func (d *Discriminator) ToJSONSchema() *jsonschema.RawDiscriminator {
 	if d == nil {
 		return nil
 	}
 
-	return &jsonschema.Discriminator{
+	return &jsonschema.RawDiscriminator{
 		PropertyName: d.PropertyName,
 		Mapping:      d.Mapping,
+		Common:       d.Common,
 	}
 }
 

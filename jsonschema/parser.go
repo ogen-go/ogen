@@ -74,54 +74,64 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 		return nil, errors.Wrap(err, "parse schema")
 	}
 
-	if schema != nil && s != nil {
-		if enum := schema.Enum; len(enum) > 0 {
-			loc := schema.Common.Locator.Field("enum")
-			for i := range enum {
-				for j := range enum {
-					if i == j {
-						continue
-					}
-					a, b := enum[i], enum[j]
-					if ok, _ := ogenjson.Equal(a, b); ok {
-						loc := loc.Index(i)
-						err := errors.Errorf("duplicate enum value: %q", a)
-						return nil, p.wrapLocation(p.file(ctx), loc, err)
-					}
+	if schema == nil || s == nil {
+		return s, nil
+	}
+
+	if rd := schema.Discriminator; rd != nil {
+		d, err := p.parseDiscriminator(rd, ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "parse discriminator")
+		}
+		s.Discriminator = d
+	}
+
+	if enum := schema.Enum; len(enum) > 0 {
+		loc := schema.Common.Locator.Field("enum")
+		for i := range enum {
+			for j := range enum {
+				if i == j {
+					continue
+				}
+				a, b := enum[i], enum[j]
+				if ok, _ := ogenjson.Equal(a, b); ok {
+					loc := loc.Index(i)
+					err := errors.Errorf("duplicate enum value: %q", a)
+					return nil, p.wrapLocation(p.file(ctx), loc, err)
 				}
 			}
+		}
 
-			values, err := parseEnumValues(s, enum)
+		values, err := parseEnumValues(s, enum)
+		if err != nil {
+			err := errors.Wrap(err, "parse enum values")
+			return nil, p.wrapLocation(p.file(ctx), loc, err)
+		}
+		s.Enum = values
+		handleNullableEnum(s)
+	}
+	if d := schema.Default; len(d) > 0 {
+		if err := func() error {
+			v, err := parseJSONValue(s, json.RawMessage(d))
 			if err != nil {
-				err := errors.Wrap(err, "parse enum values")
-				return nil, p.wrapLocation(p.file(ctx), loc, err)
+				return err
 			}
-			s.Enum = values
-			handleNullableEnum(s)
-		}
-		if d := schema.Default; len(d) > 0 {
-			if err := func() error {
-				v, err := parseJSONValue(s, json.RawMessage(d))
-				if err != nil {
-					return err
-				}
 
-				if v == nil && !s.Nullable {
-					return errors.New("unexpected default \"null\" value")
-				}
+			if v == nil && !s.Nullable {
+				return errors.New("unexpected default \"null\" value")
+			}
 
-				s.Default = v
-				s.DefaultSet = true
-				return nil
-			}(); err != nil {
-				err := errors.Wrap(err, "parse default")
-				return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
-			}
+			s.Default = v
+			s.DefaultSet = true
+			return nil
+		}(); err != nil {
+			err := errors.Wrap(err, "parse default")
+			return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 		}
-		if a, ok := schema.Common.Extensions["x-ogen-name"]; ok {
-			if err := a.Decode(&s.XOgenName); err != nil {
-				return nil, errors.Wrap(err, "parse x-ogen-name")
-			}
+	}
+	if a, ok := schema.Common.Extensions["x-ogen-name"]; ok {
+		if err := a.Decode(&s.XOgenName); err != nil {
+			return nil, errors.Wrap(err, "parse x-ogen-name")
 		}
 	}
 
@@ -469,12 +479,6 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *S
 	if len(s.Enum) < 1 {
 		s.Nullable = schema.Nullable
 	}
-	if d := schema.Discriminator; d != nil {
-		s.Discriminator = &Discriminator{
-			PropertyName: d.PropertyName,
-			Mapping:      d.Mapping,
-		}
-	}
 	if x := schema.XML; x != nil {
 		s.XML = &XML{
 			Name:      x.Name,
@@ -487,4 +491,28 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *S
 
 	s.Pointer = schema.Common.Locator.Pointer(file)
 	return s
+}
+
+func (p *Parser) parseDiscriminator(d *RawDiscriminator, ctx *jsonpointer.ResolveCtx) (_ *Discriminator, rerr error) {
+	locator := d.Common.Locator
+	defer func() {
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+	}()
+
+	mapping := make(map[string]*Schema, len(d.Mapping))
+	for value, ref := range d.Mapping {
+		locator := locator.Field("mapping").Field(value)
+		s, err := p.resolve(ref, ctx)
+		if err != nil {
+			err = errors.Wrap(err, "resolve mapping")
+			return nil, p.wrapLocation(ctx.File(), locator, err)
+		}
+		mapping[value] = s
+	}
+
+	return &Discriminator{
+		PropertyName: d.PropertyName,
+		Mapping:      mapping,
+		Pointer:      locator.Pointer(ctx.File()),
+	}, nil
 }
