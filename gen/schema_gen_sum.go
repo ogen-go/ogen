@@ -525,7 +525,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Format:      s1.Format,
 		Enum:        enum,
 		Nullable:    s1.Nullable || s2.Nullable,
-		Description: "Merged schema",
+		Description: "Merged schema", // TODO(tdakkota): handle in a better way.
 	}
 
 	switch {
@@ -544,6 +544,15 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		r.Default = s1.Default
 		r.DefaultSet = true
+	}
+
+	switch d1, d2 := s1.Discriminator, s2.Discriminator; {
+	case d1 != nil && d2 != nil:
+		return nil, &ErrNotImplemented{"merge discriminator"} // TODO(tdakkota): implement
+	case d1 != nil:
+		r.Discriminator = d1
+	case d2 != nil:
+		r.Discriminator = d2
 	}
 
 	// Helper functions for comparing validation fields.
@@ -751,7 +760,7 @@ func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error
 
 			propmap[p.Name] = jsonschema.Property{
 				Name:        p.Name,
-				Description: "Merged property",
+				Description: "Merged property", // TODO(tdakkota): handle in a better way.
 				Schema:      s,
 				Required:    p.Required || confP.Required,
 			}
