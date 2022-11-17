@@ -122,7 +122,7 @@ func TestSchemaRecursive(t *testing.T) {
 	}
 
 	expectRefcache := map[jsonpointer.RefKey]*Schema{
-		{Ref: "#/components/schemas/Pet"}: {
+		{Ptr: "#/components/schemas/Pet"}: {
 			Type: Object,
 			Ref:  Ref{Ptr: "#/components/schemas/Pet"},
 			Properties: []Property{
@@ -312,7 +312,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 	}
 
 	expectRefcache := map[jsonpointer.RefKey]*Schema{
-		{Ref: "#/components/schemas/Pets"}: pets,
+		{Ptr: "#/components/schemas/Pets"}: pets,
 	}
 
 	expect := &Schema{

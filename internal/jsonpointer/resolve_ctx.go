@@ -9,22 +9,24 @@ import (
 	"github.com/ogen-go/ogen/internal/location"
 )
 
-// RefKey is JSON reference key.
+// RefKey is JSON Reference key.
 type RefKey struct {
+	// Loc is an URL of JSON document.
 	Loc string
-	Ref string
+	// Ptr is JSON Pointer.
+	Ptr string
 }
 
 // String returns string representation of reference.
 func (r RefKey) String() string {
-	return r.Loc + r.Ref
+	return r.Loc + r.Ptr
 }
 
 // IsZero returns true if RefKey is zero.
 func (r RefKey) IsZero() bool {
 	var r0 struct {
 		Loc string
-		Ref string
+		Ptr string
 	}
 	return r == r0
 }
@@ -37,7 +39,7 @@ func (r *RefKey) FromURL(u *url.URL) {
 		u2.Fragment = ""
 		r.Loc = u2.String()
 	}
-	r.Ref = "#" + u.Fragment
+	r.Ptr = "#" + u.Fragment
 }
 
 type locstackItem struct {
@@ -45,7 +47,7 @@ type locstackItem struct {
 	file location.File
 }
 
-// ResolveCtx is JSON pointer resolve context.
+// ResolveCtx is JSON Reference resolve context.
 type ResolveCtx struct {
 	// Location stack. Used for context-depending resolving.
 	//
@@ -102,7 +104,7 @@ func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 		}
 	} else if strings.HasPrefix(ref, "#") {
 		return RefKey{
-			Ref: ref,
+			Ptr: ref,
 		}, nil
 	}
 

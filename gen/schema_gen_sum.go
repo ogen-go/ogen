@@ -136,7 +136,7 @@ func (g *schemaGen) collectSumVariants(
 }
 
 func schemaName(k jsonschema.Ref) (string, bool) {
-	_, after, ok := strings.Cut(k.Ref, "#/")
+	_, after, ok := strings.Cut(k.Ptr, "#/")
 	if !ok || after == "" {
 		return "", false
 	}

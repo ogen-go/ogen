@@ -109,7 +109,7 @@ func resolveComponent[Raw, Target any](
 			return key, zero, false, err
 		}
 		file = r.file
-		if err := resolvePointer(r.node, key.Ref, &raw); err != nil {
+		if err := resolvePointer(r.node, key.Ptr, &raw); err != nil {
 			return key, zero, false, err
 		}
 	}

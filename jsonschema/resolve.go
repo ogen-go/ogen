@@ -84,7 +84,7 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, re
 		ctx.Delete(key)
 	}()
 
-	raw, err := r.ResolveReference(key.Ref)
+	raw, err := r.ResolveReference(key.Ptr)
 	if err != nil {
 		return nil, err
 	}

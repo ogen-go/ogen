@@ -211,16 +211,16 @@ func TestExternalReference(t *testing.T) {
 
 	var (
 		schema = &jsonschema.Schema{
-			Ref:      refKey{Loc: "/root.json", Ref: "#"},
+			Ref:      refKey{Loc: "/root.json", Ptr: "#"},
 			Type:     "string",
 			Examples: []jsonschema.Example{exampleValue},
 		}
 		localExample = &openapi.Example{
-			Ref:   refKey{Loc: "/foo.json", Ref: "#/components/examples/RemoteExample"},
+			Ref:   refKey{Loc: "/foo.json", Ptr: "#/components/examples/RemoteExample"},
 			Value: exampleValue,
 		}
 		param = &openapi.Parameter{
-			Ref:     refKey{Ref: "#/components/parameters/LocalParameter"},
+			Ref:     refKey{Ptr: "#/components/parameters/LocalParameter"},
 			Name:    "parameter",
 			Schema:  schema,
 			In:      "query",
@@ -228,14 +228,14 @@ func TestExternalReference(t *testing.T) {
 			Explode: true,
 		}
 		requestBody = &openapi.RequestBody{
-			Ref:         refKey{Ref: "#/components/requestBodies/LocalRequestBody"},
+			Ref:         refKey{Ptr: "#/components/requestBodies/LocalRequestBody"},
 			Description: "request description",
 			Content: map[string]*openapi.MediaType{
 				"application/json": {
 					Schema: schema,
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   refKey{Loc: "/foo.json", Ref: "#/components/examples/RemoteExample"},
+							Ref:   refKey{Loc: "/foo.json", Ptr: "#/components/examples/RemoteExample"},
 							Value: exampleValue,
 						},
 					},
@@ -244,11 +244,11 @@ func TestExternalReference(t *testing.T) {
 			},
 		}
 		response = &openapi.Response{
-			Ref:         refKey{Ref: "#/components/responses/LocalResponse"},
+			Ref:         refKey{Ptr: "#/components/responses/LocalResponse"},
 			Description: "response description",
 			Headers: map[string]*openapi.Header{
 				"ResponseHeader": {
-					Ref:    refKey{Loc: "/foo.json", Ref: "#/components/headers/RemoteHeader"},
+					Ref:    refKey{Loc: "/foo.json", Ptr: "#/components/headers/RemoteHeader"},
 					Name:   "ResponseHeader",
 					In:     openapi.LocationHeader,
 					Style:  openapi.HeaderStyleSimple,
@@ -313,7 +313,7 @@ func TestExternalReference(t *testing.T) {
 			},
 			Examples: map[string]*openapi.Example{
 				"LocalExample": {
-					Ref:   refKey{Ref: "#/components/examples/LocalExample"},
+					Ref:   refKey{Ptr: "#/components/examples/LocalExample"},
 					Value: exampleValue,
 				},
 			},

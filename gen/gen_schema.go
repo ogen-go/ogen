@@ -108,7 +108,7 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 		prev := gen.nameRef
 		gen.nameRef = func(ref jsonschema.Ref) (string, error) {
 			for _, trim := range opts.TrimPrefix {
-				ref.Ref = strings.TrimPrefix(ref.Ref, trim)
+				ref.Ptr = strings.TrimPrefix(ref.Ptr, trim)
 			}
 
 			result, err := prev(ref)
