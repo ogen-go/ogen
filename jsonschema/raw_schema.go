@@ -35,17 +35,17 @@ type RawSchema struct {
 	ContentEncoding      string                `json:"contentEncoding,omitempty" yaml:"contentEncoding,omitempty"`
 	ContentMediaType     string                `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`
 
-	Discriminator *Discriminator `json:"discriminator,omitempty" yaml:"discriminator,omitempty"`
-	XML           *XML           `json:"xml,omitempty" yaml:"xml,omitempty"`
-	Example       Example        `json:"example,omitempty" yaml:"example,omitempty"`
+	Discriminator *RawDiscriminator `json:"discriminator,omitempty" yaml:"discriminator,omitempty"`
+	XML           *XML              `json:"xml,omitempty" yaml:"xml,omitempty"`
+	Example       Example           `json:"example,omitempty" yaml:"example,omitempty"`
 
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
-// Discriminator discriminates types for OneOf, AllOf, AnyOf.
+// RawDiscriminator discriminates types for OneOf, AllOf, AnyOf.
 //
 // See https://spec.openapis.org/oas/v3.1.0#discriminator-object.
-type Discriminator struct {
+type RawDiscriminator struct {
 	// REQUIRED. The name of the property in the payload that will hold the discriminator value.
 	PropertyName string `json:"propertyName" yaml:"propertyName"`
 	// An object to hold mappings between payload values and schema names or references.

@@ -106,3 +106,11 @@ type PatternProperty struct {
 	Pattern ogenregex.Regexp
 	Schema  *Schema
 }
+
+// Discriminator discriminates types for OneOf, AllOf, AnyOf.
+type Discriminator struct {
+	PropertyName string
+	Mapping      map[string]*Schema
+
+	location.Pointer `json:"-" yaml:"-"`
+}

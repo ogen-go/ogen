@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"path"
 	"reflect"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -134,6 +135,14 @@ func (g *schemaGen) collectSumVariants(
 	return sum, nil
 }
 
+func schemaName(ref string) (string, bool) {
+	_, after, ok := strings.Cut(ref, "#/")
+	if !ok || after == "" {
+		return "", false
+	}
+	return path.Base(after), true
+}
+
 func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
@@ -220,14 +229,12 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				if !s.Is(ir.KindStruct, ir.KindMap) {
 					return nil, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%q", s.Kind)
 				}
-				var ref string
-				if s.Schema != nil {
-					ref = s.Schema.Ref
-				} else {
-					ref = schema.OneOf[i].Ref
+				vschema := s.Schema
+				if vschema == nil {
+					vschema = schema.OneOf[i]
 				}
 
-				if ref == v || path.Base(ref) == v {
+				if vschema == v {
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
@@ -241,11 +248,12 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				}
 			}
 			if !found {
-				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v)
+				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v.Ref)
 			}
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
 			// Implicit mapping, defaults to type name.
+			keys := map[string]struct{}{}
 			for i, s := range sum.SumOf {
 				var ref string
 				if s.Schema != nil {
@@ -254,8 +262,39 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 					ref = schema.OneOf[i].Ref
 				}
 
+				key, err := func() (string, error) {
+					// Spec says (https://spec.openapis.org/oas/v3.1.0#discriminator-object):
+					//
+					// 	The expectation now is that a property with name petType MUST be present in the response payload,
+					// 	and the value will correspond to the name of a schema defined in the OAS document
+					//
+					// What is name of a schema? Is it the last part of the pointer?
+					// What if pointer part of reference is empty, like `User.json#`?
+					//
+					// As always, OpenAPI is not clear enough.
+					key, ok := schemaName(ref)
+					if !ok {
+						return "", errors.Wrap(
+							&ErrNotImplemented{"complicated reference"},
+							"unable to extract schema name",
+						)
+					}
+
+					if _, ok := keys[key]; ok {
+						return "", errors.Wrapf(
+							&ErrNotImplemented{"duplicate mapping key"},
+							"key %q", key,
+						)
+					}
+					keys[key] = struct{}{}
+					return key, nil
+				}()
+				if err != nil {
+					return nil, errors.Wrapf(err, "mapping %q", ref)
+				}
+
 				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-					Key:  path.Base(ref),
+					Key:  key,
 					Type: s,
 				})
 			}
@@ -486,7 +525,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		Format:      s1.Format,
 		Enum:        enum,
 		Nullable:    s1.Nullable || s2.Nullable,
-		Description: "Merged schema",
+		Description: "Merged schema", // TODO(tdakkota): handle in a better way.
 	}
 
 	switch {
@@ -505,6 +544,15 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 
 		r.Default = s1.Default
 		r.DefaultSet = true
+	}
+
+	switch d1, d2 := s1.Discriminator, s2.Discriminator; {
+	case d1 != nil && d2 != nil:
+		return nil, &ErrNotImplemented{"merge discriminator"} // TODO(tdakkota): implement
+	case d1 != nil:
+		r.Discriminator = d1
+	case d2 != nil:
+		r.Discriminator = d2
 	}
 
 	// Helper functions for comparing validation fields.
@@ -712,7 +760,7 @@ func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error
 
 			propmap[p.Name] = jsonschema.Property{
 				Name:        p.Name,
-				Description: "Merged property",
+				Description: "Merged property", // TODO(tdakkota): handle in a better way.
 				Schema:      s,
 				Required:    p.Required || confP.Required,
 			}
