@@ -72,7 +72,7 @@ func (p *Parser) parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (_ *Schem
 func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	s, err := p.parseSchema(schema, ctx, hook)
 	if err != nil {
-		return nil, errors.Wrap(err, "parse schema")
+		return nil, err
 	}
 
 	if schema == nil || s == nil {
@@ -144,6 +144,9 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return nil, nil
 	}
 	wrapField := func(field string, err error) error {
+		if err != nil {
+			err = errors.Wrap(err, field)
+		}
 		return p.wrapField(field, p.file(ctx), schema.Common.Locator, err)
 	}
 

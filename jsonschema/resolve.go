@@ -55,7 +55,13 @@ func (p *Parser) getResolver(loc string) (r resolver, rerr error) {
 	return r, nil
 }
 
-func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, rerr error) {
+	defer func() {
+		if rerr != nil {
+			rerr = errors.Wrapf(rerr, "resolve %q", ref)
+		}
+	}()
+
 	key, err := ctx.Key(ref)
 	if err != nil {
 		return nil, err
