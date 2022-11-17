@@ -15,6 +15,20 @@ type RefKey struct {
 	Ref string
 }
 
+// String returns string representation of reference.
+func (r RefKey) String() string {
+	return r.Loc + r.Ref
+}
+
+// IsZero returns true if RefKey is zero.
+func (r RefKey) IsZero() bool {
+	var r0 struct {
+		Loc string
+		Ref string
+	}
+	return r == r0
+}
+
 // FromURL sets RefKey from URL.
 func (r *RefKey) FromURL(u *url.URL) {
 	{

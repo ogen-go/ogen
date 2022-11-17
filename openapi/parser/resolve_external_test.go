@@ -211,16 +211,16 @@ func TestExternalReference(t *testing.T) {
 
 	var (
 		schema = &jsonschema.Schema{
-			Ref:      "root.json#",
+			Ref:      refKey{Loc: "/root.json", Ref: "#"},
 			Type:     "string",
 			Examples: []jsonschema.Example{exampleValue},
 		}
 		localExample = &openapi.Example{
-			Ref:   "foo.json#/components/examples/RemoteExample",
+			Ref:   refKey{Loc: "/foo.json", Ref: "#/components/examples/RemoteExample"},
 			Value: exampleValue,
 		}
 		param = &openapi.Parameter{
-			Ref:     "#/components/parameters/LocalParameter",
+			Ref:     refKey{Ref: "#/components/parameters/LocalParameter"},
 			Name:    "parameter",
 			Schema:  schema,
 			In:      "query",
@@ -228,14 +228,14 @@ func TestExternalReference(t *testing.T) {
 			Explode: true,
 		}
 		requestBody = &openapi.RequestBody{
-			Ref:         "#/components/requestBodies/LocalRequestBody",
+			Ref:         refKey{Ref: "#/components/requestBodies/LocalRequestBody"},
 			Description: "request description",
 			Content: map[string]*openapi.MediaType{
 				"application/json": {
 					Schema: schema,
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   "foo.json#/components/examples/RemoteExample",
+							Ref:   refKey{Loc: "/foo.json", Ref: "#/components/examples/RemoteExample"},
 							Value: exampleValue,
 						},
 					},
@@ -244,11 +244,11 @@ func TestExternalReference(t *testing.T) {
 			},
 		}
 		response = &openapi.Response{
-			Ref:         "#/components/responses/LocalResponse",
+			Ref:         refKey{Ref: "#/components/responses/LocalResponse"},
 			Description: "response description",
 			Headers: map[string]*openapi.Header{
 				"ResponseHeader": {
-					Ref:    "foo.json#/components/headers/RemoteHeader",
+					Ref:    refKey{Loc: "/foo.json", Ref: "#/components/headers/RemoteHeader"},
 					Name:   "ResponseHeader",
 					In:     openapi.LocationHeader,
 					Style:  openapi.HeaderStyleSimple,
@@ -313,7 +313,7 @@ func TestExternalReference(t *testing.T) {
 			},
 			Examples: map[string]*openapi.Example{
 				"LocalExample": {
-					Ref:   "#/components/examples/LocalExample",
+					Ref:   refKey{Ref: "#/components/examples/LocalExample"},
 					Value: exampleValue,
 				},
 			},

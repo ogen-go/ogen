@@ -15,7 +15,7 @@ func TestSchemaGenAnyWarn(t *testing.T) {
 	a := require.New(t)
 
 	core, ob := observer.New(zap.InfoLevel)
-	s := newSchemaGen(func(ref string) (*ir.Type, bool) {
+	s := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
 		return nil, false
 	})
 	s.log = zap.New(core)

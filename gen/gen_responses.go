@@ -153,7 +153,7 @@ func (g *Generator) responseToIR(
 	resp *openapi.Response,
 	withStatusCode bool,
 ) (ret *ir.Response, rerr error) {
-	if ref := resp.Ref; ref != "" {
+	if ref := resp.Ref; !ref.IsZero() {
 		if r, ok := ctx.lookupResponse(ref); ok {
 			return r, nil
 		}
@@ -259,7 +259,7 @@ func wrapResponseType(
 		return t, nil
 	}
 
-	if schema := t.Schema; schema != nil && schema.Ref != "" {
+	if schema := t.Schema; schema != nil && !schema.Ref.IsZero() {
 		if t, ok := ctx.lookupWType(schema.Ref); ok {
 			return t, nil
 		}

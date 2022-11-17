@@ -7,7 +7,7 @@ import (
 
 // Example is an OpenAPI Example.
 type Example struct {
-	Ref string
+	Ref Ref
 
 	Summary       string
 	Description   string

@@ -14,20 +14,20 @@ import (
 
 type schemaGen struct {
 	side      []*ir.Type
-	localRefs map[string]*ir.Type
-	lookupRef func(ref string) (*ir.Type, bool)
-	nameRef   func(ref string) (string, error)
+	localRefs map[jsonschema.Ref]*ir.Type
+	lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)
+	nameRef   func(ref jsonschema.Ref) (string, error)
 	fail      func(err error) error
 
 	log *zap.Logger
 }
 
-func newSchemaGen(lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
+func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGen {
 	return &schemaGen{
 		side:      nil,
-		localRefs: map[string]*ir.Type{},
+		localRefs: map[jsonschema.Ref]*ir.Type{},
 		lookupRef: lookupRef,
-		nameRef: func(ref string) (string, error) {
+		nameRef: func(ref jsonschema.Ref) (string, error) {
 			name, err := pascal(cleanRef(ref))
 			if err != nil {
 				return "", err
@@ -73,7 +73,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		return nil, &ErrNotImplemented{Name: "empty schema"}
 	}
 
-	if ref := schema.Ref; ref != "" {
+	if ref := schema.Ref; !ref.IsZero() {
 		if t, ok := g.lookupRef(ref); ok {
 			return t, nil
 		}
@@ -304,7 +304,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 func (g *schemaGen) regtype(name string, t *ir.Type) *ir.Type {
 	if t.Schema != nil {
-		if ref := t.Schema.Ref; ref != "" {
+		if ref := t.Schema.Ref; !ref.IsZero() {
 			if t.Is(ir.KindPrimitive, ir.KindArray, ir.KindAny) {
 				t = ir.Alias(name, t)
 			}

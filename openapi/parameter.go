@@ -33,7 +33,7 @@ func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
-	Ref string
+	Ref Ref
 
 	Name          string
 	Description   string

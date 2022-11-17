@@ -2,9 +2,12 @@ package gen
 
 import (
 	"fmt"
+	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func TestNames(t *testing.T) {
@@ -49,7 +52,13 @@ func Test_cleanRef(t *testing.T) {
 	for i, tt := range tests {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i), func(t *testing.T) {
-			require.Equal(t, tt.want, cleanRef(tt.ref))
+			u, err := url.Parse(tt.ref)
+			require.NoError(t, err)
+
+			var ref jsonschema.Ref
+			ref.FromURL(u)
+
+			require.Equal(t, tt.want, cleanRef(ref))
 		})
 	}
 }

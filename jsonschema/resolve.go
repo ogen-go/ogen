@@ -90,7 +90,7 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, re
 	}
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
-		s.Ref = ref
+		s.Ref = key
 		p.refcache[key] = s
 		return p.extendInfo(raw, s, p.file(ctx))
 	})

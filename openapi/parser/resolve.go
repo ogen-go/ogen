@@ -81,14 +81,14 @@ func resolveComponent[Raw, Target any](
 	cr componentResolve[Raw, Target],
 	ref string,
 	ctx *jsonpointer.ResolveCtx,
-) (zero Target, cached bool, _ error) {
+) (key refKey, zero Target, cached bool, _ error) {
 	key, err := ctx.Key(ref)
 	if err != nil {
-		return zero, false, err
+		return key, zero, false, err
 	}
 
 	if r, ok := cr.cache[key]; ok {
-		return r, true, nil
+		return key, r, true, nil
 	}
 
 	file := p.rootFile
@@ -100,22 +100,22 @@ func resolveComponent[Raw, Target any](
 			raw = c
 		} else {
 			if err := resolvePointer(p.spec.Raw, ref, &raw); err != nil {
-				return zero, false, err
+				return key, zero, false, err
 			}
 		}
 	} else {
 		r, err := p.getResolver(key.Loc)
 		if err != nil {
-			return zero, false, err
+			return key, zero, false, err
 		}
 		file = r.file
 		if err := resolvePointer(r.node, key.Ref, &raw); err != nil {
-			return zero, false, err
+			return key, zero, false, err
 		}
 	}
 
 	if err := ctx.AddKey(key, file); err != nil {
-		return zero, false, err
+		return key, zero, false, err
 	}
 	defer func() {
 		ctx.Delete(key)
@@ -123,11 +123,11 @@ func resolveComponent[Raw, Target any](
 
 	r, err := cr.parse(raw, ctx)
 	if err != nil {
-		return zero, false, err
+		return key, zero, false, err
 	}
 	cr.cache[key] = r
 
-	return r, false, nil
+	return key, r, false, nil
 }
 
 func (p *parser) resolveCtx() *jsonpointer.ResolveCtx {
@@ -136,7 +136,7 @@ func (p *parser) resolveCtx() *jsonpointer.ResolveCtx {
 
 func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"
-	c, cached, err := resolveComponent(p, componentResolve[*ogen.RequestBody, *openapi.RequestBody]{
+	key, c, cached, err := resolveComponent(p, componentResolve[*ogen.RequestBody, *openapi.RequestBody]{
 		prefix:     prefix,
 		components: p.spec.Components.RequestBodies,
 		cache:      p.refs.requestBodies,
@@ -146,14 +146,14 @@ func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*o
 		return nil, err
 	}
 	if !cached {
-		c.Ref = ref
+		c.Ref = key
 	}
 	return c, nil
 }
 
 func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Response, error) {
 	const prefix = "#/components/responses/"
-	c, cached, err := resolveComponent(p, componentResolve[*ogen.Response, *openapi.Response]{
+	key, c, cached, err := resolveComponent(p, componentResolve[*ogen.Response, *openapi.Response]{
 		prefix:     prefix,
 		components: p.spec.Components.Responses,
 		cache:      p.refs.responses,
@@ -163,14 +163,14 @@ func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*open
 		return nil, err
 	}
 	if !cached {
-		c.Ref = ref
+		c.Ref = key
 	}
 	return c, nil
 }
 
 func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Parameter, error) {
 	const prefix = "#/components/parameters/"
-	c, cached, err := resolveComponent(p, componentResolve[*ogen.Parameter, *openapi.Parameter]{
+	key, c, cached, err := resolveComponent(p, componentResolve[*ogen.Parameter, *openapi.Parameter]{
 		prefix:     prefix,
 		components: p.spec.Components.Parameters,
 		cache:      p.refs.parameters,
@@ -180,14 +180,14 @@ func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*ope
 		return nil, err
 	}
 	if !cached {
-		c.Ref = ref
+		c.Ref = key
 	}
 	return c, nil
 }
 
 func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Header, error) {
 	const prefix = "#/components/headers/"
-	c, cached, err := resolveComponent(p, componentResolve[*ogen.Header, *openapi.Header]{
+	key, c, cached, err := resolveComponent(p, componentResolve[*ogen.Header, *openapi.Header]{
 		prefix:     prefix,
 		components: p.spec.Components.Headers,
 		cache:      p.refs.headers,
@@ -199,14 +199,14 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveC
 		return nil, err
 	}
 	if !cached {
-		c.Ref = ref
+		c.Ref = key
 	}
 	return c, nil
 }
 
 func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Example, error) {
 	const prefix = "#/components/examples/"
-	c, cached, err := resolveComponent(p, componentResolve[*ogen.Example, *openapi.Example]{
+	key, c, cached, err := resolveComponent(p, componentResolve[*ogen.Example, *openapi.Example]{
 		prefix:     prefix,
 		components: p.spec.Components.Examples,
 		cache:      p.refs.examples,
@@ -216,14 +216,14 @@ func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*opena
 		return nil, err
 	}
 	if !cached && c != nil {
-		c.Ref = ref
+		c.Ref = key
 	}
 	return c, nil
 }
 
 func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) (*ogen.SecurityScheme, error) {
 	const prefix = "#/components/securitySchemes/"
-	c, _, err := resolveComponent(p, componentResolve[*ogen.SecurityScheme, *ogen.SecurityScheme]{
+	_, c, _, err := resolveComponent(p, componentResolve[*ogen.SecurityScheme, *ogen.SecurityScheme]{
 		prefix:     prefix,
 		components: p.spec.Components.SecuritySchemes,
 		cache:      p.refs.securitySchemes,
@@ -240,7 +240,7 @@ func (p *parser) resolvePathItem(
 	ctx *jsonpointer.ResolveCtx,
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"
-	c, _, err := resolveComponent(p, componentResolve[*ogen.PathItem, pathItem]{
+	_, c, _, err := resolveComponent(p, componentResolve[*ogen.PathItem, pathItem]{
 		prefix:     prefix,
 		components: p.spec.Components.PathItems,
 		cache:      p.refs.pathItems,

@@ -104,20 +104,20 @@ func TestExternalReference(t *testing.T) {
 	expect := &Schema{
 		Type: Array,
 		Item: &Schema{
-			Ref:  "foo.json#/components/schemas/RemoteSchema",
+			Ref:  Ref{Loc: "foo.json", Ptr: "#/components/schemas/RemoteSchema"},
 			Type: Object,
 			Properties: []Property{
 				{
 					Name:   "relative",
-					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: Ref{Loc: "/foo.json", Ptr: "#/components/schemas/Property"}, Type: Number},
 				},
 				{
 					Name:   "absolute",
-					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: Ref{Loc: "/foo.json", Ptr: "#/components/schemas/Property"}, Type: Number},
 				},
 				{
 					Name:   "remote_absolute",
-					Schema: &Schema{Ref: "https://example.com/bar.json#/components/schemas/Property", Type: Boolean},
+					Schema: &Schema{Ref: Ref{Loc: "https://example.com/bar.json", Ptr: "#/components/schemas/Property"}, Type: Boolean},
 				},
 			},
 		},

@@ -129,7 +129,7 @@ func TestComplicatedReference(t *testing.T) {
 			},
 			Parameters: []*openapi.Parameter{
 				{
-					Ref:  "#/paths/~1post/post/parameters/0",
+					Ref:  refKey{Ref: "#/paths/~1post/post/parameters/0"},
 					Name: "param",
 					Schema: &jsonschema.Schema{
 						Type: "string",
@@ -140,7 +140,7 @@ func TestComplicatedReference(t *testing.T) {
 				},
 			},
 			RequestBody: &openapi.RequestBody{
-				Ref: "#/paths/~1post/post/requestBody",
+				Ref: refKey{Ref: "#/paths/~1post/post/requestBody"},
 				Content: map[string]*openapi.MediaType{
 					"application/json": {
 						Schema: &jsonschema.Schema{
@@ -154,14 +154,14 @@ func TestComplicatedReference(t *testing.T) {
 			Security: []openapi.SecurityRequirement{},
 			Responses: map[string]*openapi.Response{
 				"200": {
-					Ref: "#/paths/~1post/post/responses/200",
+					Ref: refKey{Ref: "#/paths/~1post/post/responses/200"},
 					Headers: map[string]*openapi.Header{
 						"ResponseHeader": responseHeader,
 					},
 					Content: map[string]*openapi.MediaType{
 						"application/json": {
 							Schema: &jsonschema.Schema{
-								Ref:  "#/paths/~1post/post/requestBody/content/application~1json/schema",
+								Ref:  refKey{Ref: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
 								Type: "string",
 							},
 							Examples: map[string]*openapi.Example{},
@@ -221,7 +221,7 @@ func TestComplicatedReference(t *testing.T) {
 					Content: map[string]*openapi.MediaType{
 						"application/json": {
 							Schema: &jsonschema.Schema{
-								Ref:  "#/paths/~1post/post/requestBody/content/application~1json/schema",
+								Ref:  refKey{Ref: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
 								Type: "string",
 							},
 							Examples: map[string]*openapi.Example{},

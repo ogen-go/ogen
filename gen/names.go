@@ -10,9 +10,12 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/naming"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func cleanRef(ref string) string {
+func cleanRef(r jsonschema.Ref) string {
+	ref := r.String()
+
 	before, result, _ := strings.Cut(ref, "#")
 	if result == "" {
 		result = ref
