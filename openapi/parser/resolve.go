@@ -93,7 +93,7 @@ func resolveComponent[Raw, Target any](
 
 	file := p.rootFile
 	var raw Raw
-	if key.Loc == "" && ctx.IsRoot() {
+	if ctx.IsRoot(key) {
 		name := strings.TrimPrefix(ref, cr.prefix)
 		c, found := cr.components[name]
 		if found {

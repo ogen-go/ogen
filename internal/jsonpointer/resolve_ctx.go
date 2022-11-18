@@ -43,7 +43,7 @@ func (r *RefKey) FromURL(u *url.URL) {
 }
 
 type locstackItem struct {
-	loc  string
+	loc  *url.URL
 	file location.File
 }
 
@@ -84,28 +84,28 @@ func NewResolveCtx(root *url.URL, depthLimit int) *ResolveCtx {
 	}
 }
 
+func (r ResolveCtx) last() (last locstackItem, ok bool) {
+	s := r.locstack
+	if len(s) == 0 {
+		return last, ok
+	}
+	return s[len(s)-1], true
+}
+
 // Key creates new reference key.
 func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 	parser := url.Parse
 	if r.root != nil {
 		parser = r.root.Parse
 	}
-	if s := r.locstack; len(s) > 0 {
-		base, err := url.Parse(s[len(s)-1].loc)
-		if err != nil {
-			return key, err
-		}
-		parser = func(rawURL string) (*url.URL, error) {
-			u, err := base.Parse(rawURL)
-			if err != nil {
-				return nil, err
-			}
-			return u, nil
-		}
+	if last, ok := r.last(); ok {
+		parser = last.loc.Parse
 	} else if strings.HasPrefix(ref, "#") {
-		return RefKey{
-			Ptr: ref,
-		}, nil
+		key.Ptr = ref
+		if r.root != nil {
+			key.Loc = r.root.String()
+		}
+		return key, nil
 	}
 
 	u, err := parser(ref)
@@ -127,12 +127,14 @@ func (r *ResolveCtx) AddKey(key RefKey, file location.File) error {
 	r.refs[key] = struct{}{}
 	r.depthLimit--
 
-	if loc := key.Loc; loc != "" {
-		r.locstack = append(r.locstack, locstackItem{
-			loc:  loc,
-			file: file,
-		})
+	loc, err := url.Parse(key.Loc)
+	if err != nil {
+		return errors.Wrap(err, "invalid location")
 	}
+	r.locstack = append(r.locstack, locstackItem{
+		loc:  loc,
+		file: file,
+	})
 	return nil
 }
 
@@ -140,14 +142,18 @@ func (r *ResolveCtx) AddKey(key RefKey, file location.File) error {
 func (r *ResolveCtx) Delete(key RefKey) {
 	r.depthLimit++
 	delete(r.refs, key)
-	if key.Loc != "" && len(r.locstack) > 0 {
+	if len(r.locstack) > 0 {
 		r.locstack = r.locstack[:len(r.locstack)-1]
 	}
 }
 
 // IsRoot returns true if location stack is empty.
-func (r *ResolveCtx) IsRoot() bool {
-	return len(r.locstack) == 0
+func (r *ResolveCtx) IsRoot(key RefKey) bool {
+	if r.root == nil || key.Loc == "" {
+		return true
+	}
+	resolved := errors.Must(r.root.Parse(key.Loc))
+	return resolved.String() == r.root.String()
 }
 
 // File returns last file from stack.

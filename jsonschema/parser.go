@@ -513,7 +513,7 @@ func (p *Parser) parseDiscriminator(d *RawDiscriminator, ctx *jsonpointer.Resolv
 			err error
 		)
 		switch {
-		case !strings.ContainsRune(ref, '#') && ctx.IsRoot():
+		case !strings.ContainsRune(ref, '#'):
 			// JSON Reference usually contains a fragment, e.g. "#/components/schemas/Foo" or
 			// "foo.json#/definitions/Bar", but this looks like a schema name.
 			//

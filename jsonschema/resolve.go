@@ -71,9 +71,12 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, re
 		return s, nil
 	}
 
-	r, err := p.getResolver(key.Loc)
-	if err != nil {
-		return nil, err
+	r := p.schemas[""]
+	if !ctx.IsRoot(key) {
+		r, err = p.getResolver(key.Loc)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	if err := ctx.AddKey(key, r.file); err != nil {
