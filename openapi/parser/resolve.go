@@ -145,7 +145,7 @@ func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*o
 	if err != nil {
 		return nil, err
 	}
-	if !cached {
+	if !cached && c.Ref.IsZero() {
 		c.Ref = key
 	}
 	return c, nil
@@ -162,7 +162,7 @@ func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*open
 	if err != nil {
 		return nil, err
 	}
-	if !cached {
+	if !cached && c.Ref.IsZero() {
 		c.Ref = key
 	}
 	return c, nil
@@ -179,7 +179,7 @@ func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*ope
 	if err != nil {
 		return nil, err
 	}
-	if !cached {
+	if !cached && c.Ref.IsZero() {
 		c.Ref = key
 	}
 	return c, nil
@@ -198,7 +198,7 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveC
 	if err != nil {
 		return nil, err
 	}
-	if !cached {
+	if !cached && c.Ref.IsZero() {
 		c.Ref = key
 	}
 	return c, nil
@@ -215,7 +215,7 @@ func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*opena
 	if err != nil {
 		return nil, err
 	}
-	if !cached && c != nil {
+	if !cached && c != nil && c.Ref.IsZero() {
 		c.Ref = key
 	}
 	return c, nil
