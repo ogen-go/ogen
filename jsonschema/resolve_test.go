@@ -3,6 +3,7 @@ package jsonschema
 import (
 	"context"
 	"encoding/json"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -38,6 +39,10 @@ func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 	})
 
 	return enc.Bytes(), nil
+}
+
+func testCtx() *jsonpointer.ResolveCtx {
+	return jsonpointer.NewResolveCtx(&url.URL{Path: "/root.json"}, jsonpointer.DefaultDepthLimit)
 }
 
 func TestExternalReference(t *testing.T) {
@@ -93,18 +98,18 @@ func TestExternalReference(t *testing.T) {
 		Resolver: root,
 	})
 
-	out, err := parser.Parse(&RawSchema{
+	out, err := parser.ParseWithContext(&RawSchema{
 		Type: "array",
 		Items: &RawSchema{
 			Ref: "#/components/schemas/LocalSchema",
 		},
-	})
+	}, testCtx())
 	require.NoError(t, err)
 
 	expect := &Schema{
 		Type: Array,
 		Item: &Schema{
-			Ref:  Ref{Loc: "foo.json", Ptr: "#/components/schemas/RemoteSchema"},
+			Ref:  Ref{Loc: "/foo.json", Ptr: "#/components/schemas/RemoteSchema"},
 			Type: Object,
 			Properties: []Property{
 				{
