@@ -23,14 +23,18 @@ func NewRequest(ctx context.Context, method string, u *url.URL, body io.Reader) 
 	return http.NewRequestWithContext(ctx, method, u.String(), body)
 }
 
-// SetBody sets request body.
-func SetBody(req *http.Request, body io.Reader, contentType string) {
+func initRequest(req *http.Request, contentType string) {
 	if req.Header == nil {
 		req.Header = make(http.Header)
 	}
 	if contentType != "" {
 		req.Header.Set("Content-Type", contentType)
 	}
+}
+
+// SetBody sets request body.
+func SetBody(req *http.Request, body io.Reader, contentType string) {
+	initRequest(req, contentType)
 	req.Body = io.NopCloser(body)
 
 	switch v := body.(type) {
@@ -55,8 +59,13 @@ func SetBody(req *http.Request, body io.Reader, contentType string) {
 			r := snapshot
 			return io.NopCloser(&r), nil
 		}
-	default:
 	}
+}
+
+// SetCloserBody sets request body which should be closed after request.
+func SetCloserBody(req *http.Request, body io.ReadCloser, contentType string) {
+	initRequest(req, contentType)
+	req.Body = body
 }
 
 // CreateBodyWriter is a helper to create a reader from a writer body.
