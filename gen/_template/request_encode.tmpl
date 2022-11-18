@@ -92,10 +92,11 @@ func encode{{ $op.Name }}Request(
 		_, err := io.Copy(writer, req)
 		return err
 	})
+	ht.SetCloserBody(r, body, contentType)
 	{{- else }}
 	body := req
-	{{- end }}
 	ht.SetBody(r, body, contentType)
+	{{- end }}
 	return nil
 {{- else if $encoding.JSON }}
 	e := jx.GetEncoder()
@@ -145,7 +146,7 @@ func encode{{ $op.Name }}Request(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	{{- else }}
 		{{- errorf "%s: %s encoder not implemented" $type $encoding }}
