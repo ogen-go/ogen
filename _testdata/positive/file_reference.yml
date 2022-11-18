@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: test
+  version: 0.0.1
+paths:
+  /internal:
+    get:
+      operationId: internal
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestSchema'
+  /external:
+    $ref: './file_reference_external/external.yml'
+components:
+  schemas:
+    TestSchema:
+      type: string
