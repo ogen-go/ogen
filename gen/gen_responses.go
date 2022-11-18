@@ -163,7 +163,7 @@ func (g *Generator) responseToIR(
 			return nil, errors.Wrapf(err, "response name: %q", ref)
 		}
 		name = n
-		doc = fmt.Sprintf("Ref: %s", ref)
+		doc = fmt.Sprintf("Ref: %s", ref.Ptr)
 		defer func() {
 			if rerr != nil {
 				return

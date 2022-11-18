@@ -6,8 +6,8 @@
 {{- end }}
 {{- template "godoc" $.GoDoc }}
 {{- if $.Schema }}
-	{{- with $ref := $.Schema.Ref.String }}
-	// Ref: {{ $ref }}
+	{{- with $ptr := $.Schema.Ref.Ptr }}
+	// Ref: {{ $ptr }}
 	{{- end }}
 {{- end }}
 
