@@ -105,6 +105,14 @@ func (s *IssuesUpdateMilestoneReq) setDefaults() {
 }
 
 // setDefaults set default value of fields.
+func (s *MarkdownRenderReq) setDefaults() {
+	{
+		val := MarkdownRenderReqMode("markdown")
+		s.Mode.SetTo(val)
+	}
+}
+
+// setDefaults set default value of fields.
 func (s *MigrationsStartForOrgReq) setDefaults() {
 	{
 		val := bool(false)

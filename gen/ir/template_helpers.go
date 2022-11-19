@@ -26,6 +26,22 @@ func (t *Type) EncodeFn() string {
 	}
 }
 
+func (t *Type) IsBase64Stream() bool {
+	if t == nil || !t.IsStream() {
+		return false
+	}
+	s := t.Schema
+	if s == nil || s.Type != jsonschema.String {
+		return false
+	}
+	switch s.Format {
+	case "base64", "byte":
+		return true
+	default:
+		return false
+	}
+}
+
 func (t Type) uriFormat() string {
 	if s := t.Schema; s != nil {
 		switch f := s.Format; f {

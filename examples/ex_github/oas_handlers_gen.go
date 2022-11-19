@@ -32262,6 +32262,207 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	}
 }
 
+// handleMarkdownRenderRequest handles markdown/render operation.
+//
+// Render a Markdown document.
+//
+// POST /markdown
+func (s *Server) handleMarkdownRenderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarkdownRender",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MarkdownRender",
+			ID:   "markdown/render",
+		}
+	)
+	request, close, err := s.decodeMarkdownRenderRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response MarkdownRenderRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "MarkdownRender",
+			OperationID:   "markdown/render",
+			Body:          request,
+			Params:        middleware.Parameters{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MarkdownRenderReq
+			Params   = struct{}
+			Response = MarkdownRenderRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.MarkdownRender(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MarkdownRender(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeMarkdownRenderResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleMarkdownRenderRawRequest handles markdown/render-raw operation.
+//
+// You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or
+// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored
+// Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain
+// format like a README.md file. Markdown content must be 400 KB or less.
+//
+// POST /markdown/raw
+func (s *Server) handleMarkdownRenderRawRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render-raw"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarkdownRenderRaw",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MarkdownRenderRaw",
+			ID:   "markdown/render-raw",
+		}
+	)
+	request, close, err := s.decodeMarkdownRenderRawRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response MarkdownRenderRawRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "MarkdownRenderRaw",
+			OperationID:   "markdown/render-raw",
+			Body:          request,
+			Params:        middleware.Parameters{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MarkdownRenderRawReq
+			Params   = struct{}
+			Response = MarkdownRenderRawRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.MarkdownRenderRaw(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MarkdownRenderRaw(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeMarkdownRenderRawResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
 // handleMetaGetRequest handles meta/get operation.
 //
 // Returns meta information about GitHub, including a list of GitHub's IP addresses. For more
@@ -32340,6 +32541,105 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	}
 
 	if err := encodeMetaGetResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleMetaGetOctocatRequest handles meta/get-octocat operation.
+//
+// Get the octocat as ASCII art.
+//
+// GET /octocat
+func (s *Server) handleMetaGetOctocatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/get-octocat"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaGetOctocat",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MetaGetOctocat",
+			ID:   "meta/get-octocat",
+		}
+	)
+	params, err := decodeMetaGetOctocatParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var response MetaGetOctocatOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "MetaGetOctocat",
+			OperationID:   "meta/get-octocat",
+			Body:          nil,
+			Params: middleware.Parameters{
+				{
+					Name: "s",
+					In:   "query",
+				}: params.S,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MetaGetOctocatParams
+			Response = MetaGetOctocatOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackMetaGetOctocatParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.MetaGetOctocat(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MetaGetOctocat(ctx, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeMetaGetOctocatResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -70202,6 +70502,161 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	}
 
 	if err := encodeReposUpdateWebhookConfigForRepoResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// handleReposUploadReleaseAssetRequest handles repos/upload-release-asset operation.
+//
+// This endpoint makes use of [a Hypermedia relation](https://docs.github.
+// com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The
+// endpoint you call to upload release assets is specific to your release. Use the `upload_url`
+// returned in
+// the response of the [Create a release endpoint](https://docs.github.
+// com/rest/reference/repos#create-a-release) to upload a release asset.
+// You need to use an HTTP client which supports [SNI](http://en.wikipedia.
+// org/wiki/Server_Name_Indication) to make calls to this endpoint.
+// Most libraries will set the required `Content-Length` header automatically. Use the required
+// `Content-Type` header to provide the media type of the asset. For a list of media types, see
+// [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+// `application/zip`
+// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw
+// binary content of the asset as the request body. Everything else about the endpoint is the same as
+// the rest of the API. For example,
+// you'll still need to pass your authentication to be able to upload an asset.
+// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an
+// empty asset with a state of `starter`. It can be safely deleted.
+// **Notes:**
+// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
+// leading or trailing periods. The "[List assets for a release](https://docs.github.
+// com/rest/reference/repos#list-assets-for-a-release)"
+// endpoint lists the renamed filenames. For more information and help, contact [GitHub
+// Support](https://support.github.com/contact?tags=dotcom-rest-api).
+// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an
+// error and must delete the old file before you can re-upload the new asset.
+//
+// POST /repos/{owner}/{repo}/releases/{release_id}/assets
+func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/upload-release-asset"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUploadReleaseAsset",
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUploadReleaseAsset",
+			ID:   "repos/upload-release-asset",
+		}
+	)
+	params, err := decodeReposUploadReleaseAssetParams(args, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	request, close, err := s.decodeReposUploadReleaseAssetRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response ReleaseAsset
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReposUploadReleaseAsset",
+			OperationID:   "repos/upload-release-asset",
+			Body:          request,
+			Params: middleware.Parameters{
+				{
+					Name: "owner",
+					In:   "path",
+				}: params.Owner,
+				{
+					Name: "repo",
+					In:   "path",
+				}: params.Repo,
+				{
+					Name: "release_id",
+					In:   "path",
+				}: params.ReleaseID,
+				{
+					Name: "name",
+					In:   "query",
+				}: params.Name,
+				{
+					Name: "label",
+					In:   "query",
+				}: params.Label,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposUploadReleaseAssetReqWithContentType
+			Params   = ReposUploadReleaseAssetParams
+			Response = ReleaseAsset
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReposUploadReleaseAssetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReposUploadReleaseAsset(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUploadReleaseAsset(ctx, request, params)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeReposUploadReleaseAssetResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

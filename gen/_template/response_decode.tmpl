@@ -110,7 +110,12 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Typ
 				return res, errors.New("unexpected trailing data")
 			}
 		{{- else if $type.IsStream }}
-			b, err := io.ReadAll(resp.Body)
+			{{- if $type.IsBase64Stream }}
+			reader := base64.NewDecoder(base64.StdEncoding, resp.Body)
+			{{- else }}
+			reader := resp.Body
+			{{- end }}
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}

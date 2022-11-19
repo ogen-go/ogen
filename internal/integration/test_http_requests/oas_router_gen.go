@@ -81,6 +81,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'b': // Prefix: "base64Request"
+				if l := len("base64Request"); len(elem) >= l && elem[0:l] == "base64Request" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "POST":
+						s.handleBase64RequestRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
+
+					return
+				}
 			case 'm': // Prefix: "maskContentType"
 				if l := len("maskContentType"); len(elem) >= l && elem[0:l] == "maskContentType" {
 					elem = elem[l:]
@@ -217,6 +235,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						default:
 							return
 						}
+					}
+				}
+			case 'b': // Prefix: "base64Request"
+				if l := len("base64Request"); len(elem) >= l && elem[0:l] == "base64Request" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "POST":
+						// Leaf: Base64Request
+						r.name = "Base64Request"
+						r.operationID = "base64Request"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
 					}
 				}
 			case 'm': // Prefix: "maskContentType"

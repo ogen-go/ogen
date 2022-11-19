@@ -12,6 +12,7756 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// ConnectCoreV1DeleteNamespacedPodProxyParams is parameters of connectCoreV1DeleteNamespacedPodProxy operation.
+type ConnectCoreV1DeleteNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1DeleteNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1DeleteNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1DeleteNamespacedPodProxyWithPathParams is parameters of connectCoreV1DeleteNamespacedPodProxyWithPath operation.
+type ConnectCoreV1DeleteNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1DeleteNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1DeleteNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1DeleteNamespacedServiceProxyParams is parameters of connectCoreV1DeleteNamespacedServiceProxy operation.
+type ConnectCoreV1DeleteNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1DeleteNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1DeleteNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams is parameters of connectCoreV1DeleteNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1DeleteNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1DeleteNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1DeleteNodeProxyParams is parameters of connectCoreV1DeleteNodeProxy operation.
+type ConnectCoreV1DeleteNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1DeleteNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1DeleteNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1DeleteNodeProxyWithPathParams is parameters of connectCoreV1DeleteNodeProxyWithPath operation.
+type ConnectCoreV1DeleteNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1DeleteNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1DeleteNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1DeleteNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1DeleteNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedPodAttachParams is parameters of connectCoreV1GetNamespacedPodAttach operation.
+type ConnectCoreV1GetNamespacedPodAttachParams struct {
+	// The container in which to execute the command. Defaults to only container if there is only one
+	// container in the pod.
+	Container OptString
+	// Name of the PodAttachOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Stderr if true indicates that stderr is to be redirected for the attach call. Defaults to true.
+	Stderr OptBool
+	// Stdin if true, redirects the standard input stream of the pod for this call. Defaults to false.
+	Stdin OptBool
+	// Stdout if true indicates that stdout is to be redirected for the attach call. Defaults to true.
+	Stdout OptBool
+	// TTY if true indicates that a tty will be allocated for the attach call. This is passed through the
+	// container runtime so the tty is allocated on the worker node by the container runtime. Defaults to
+	// false.
+	Tty OptBool
+}
+
+func unpackConnectCoreV1GetNamespacedPodAttachParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedPodAttachParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "container",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Container = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stderr",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stderr = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdin",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdin = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdout",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdout = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Tty = v.(OptBool)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedPodAttachParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNamespacedPodAttachParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: container.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "container",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotContainerVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotContainerVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Container.SetTo(paramsDotContainerVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: container: parse")
+			}
+		}
+	}
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: stderr.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stderr",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStderrVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStderrVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stderr.SetTo(paramsDotStderrVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stderr: parse")
+			}
+		}
+	}
+	// Decode query: stdin.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdin",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdinVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdin.SetTo(paramsDotStdinVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdin: parse")
+			}
+		}
+	}
+	// Decode query: stdout.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdout",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdoutVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdoutVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdout.SetTo(paramsDotStdoutVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdout: parse")
+			}
+		}
+	}
+	// Decode query: tty.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tty",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotTtyVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotTtyVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Tty.SetTo(paramsDotTtyVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: tty: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedPodExecParams is parameters of connectCoreV1GetNamespacedPodExec operation.
+type ConnectCoreV1GetNamespacedPodExecParams struct {
+	// Command is the remote command to execute. argv array. Not executed within a shell.
+	Command OptString
+	// Container in which to execute the command. Defaults to only container if there is only one
+	// container in the pod.
+	Container OptString
+	// Name of the PodExecOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Redirect the standard error stream of the pod for this call. Defaults to true.
+	Stderr OptBool
+	// Redirect the standard input stream of the pod for this call. Defaults to false.
+	Stdin OptBool
+	// Redirect the standard output stream of the pod for this call. Defaults to true.
+	Stdout OptBool
+	// TTY if true indicates that a tty will be allocated for the exec call. Defaults to false.
+	Tty OptBool
+}
+
+func unpackConnectCoreV1GetNamespacedPodExecParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedPodExecParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "command",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Command = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "container",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Container = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stderr",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stderr = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdin",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdin = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdout",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdout = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Tty = v.(OptBool)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedPodExecParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNamespacedPodExecParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: command.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "command",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotCommandVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotCommandVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Command.SetTo(paramsDotCommandVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: command: parse")
+			}
+		}
+	}
+	// Decode query: container.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "container",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotContainerVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotContainerVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Container.SetTo(paramsDotContainerVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: container: parse")
+			}
+		}
+	}
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: stderr.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stderr",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStderrVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStderrVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stderr.SetTo(paramsDotStderrVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stderr: parse")
+			}
+		}
+	}
+	// Decode query: stdin.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdin",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdinVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdin.SetTo(paramsDotStdinVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdin: parse")
+			}
+		}
+	}
+	// Decode query: stdout.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdout",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdoutVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdoutVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdout.SetTo(paramsDotStdoutVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdout: parse")
+			}
+		}
+	}
+	// Decode query: tty.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tty",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotTtyVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotTtyVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Tty.SetTo(paramsDotTtyVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: tty: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedPodPortforwardParams is parameters of connectCoreV1GetNamespacedPodPortforward operation.
+type ConnectCoreV1GetNamespacedPodPortforwardParams struct {
+	// Name of the PodPortForwardOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// List of ports to forward Required when using WebSockets.
+	Ports OptInt
+}
+
+func unpackConnectCoreV1GetNamespacedPodPortforwardParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedPodPortforwardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ports",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ports = v.(OptInt)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedPodPortforwardParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNamespacedPodPortforwardParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: ports.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ports",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPortsVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPortsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ports.SetTo(paramsDotPortsVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: ports: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedPodProxyParams is parameters of connectCoreV1GetNamespacedPodProxy operation.
+type ConnectCoreV1GetNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1GetNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedPodProxyWithPathParams is parameters of connectCoreV1GetNamespacedPodProxyWithPath operation.
+type ConnectCoreV1GetNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1GetNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1GetNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedServiceProxyParams is parameters of connectCoreV1GetNamespacedServiceProxy operation.
+type ConnectCoreV1GetNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1GetNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNamespacedServiceProxyWithPathParams is parameters of connectCoreV1GetNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1GetNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1GetNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1GetNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1GetNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNodeProxyParams is parameters of connectCoreV1GetNodeProxy operation.
+type ConnectCoreV1GetNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1GetNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1GetNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1GetNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1GetNodeProxyWithPathParams is parameters of connectCoreV1GetNodeProxyWithPath operation.
+type ConnectCoreV1GetNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1GetNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1GetNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1GetNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1GetNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNamespacedPodProxyParams is parameters of connectCoreV1HeadNamespacedPodProxy operation.
+type ConnectCoreV1HeadNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1HeadNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1HeadNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1HeadNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNamespacedPodProxyWithPathParams is parameters of connectCoreV1HeadNamespacedPodProxyWithPath operation.
+type ConnectCoreV1HeadNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1HeadNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1HeadNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1HeadNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNamespacedServiceProxyParams is parameters of connectCoreV1HeadNamespacedServiceProxy operation.
+type ConnectCoreV1HeadNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1HeadNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1HeadNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1HeadNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNamespacedServiceProxyWithPathParams is parameters of connectCoreV1HeadNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1HeadNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1HeadNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1HeadNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNodeProxyParams is parameters of connectCoreV1HeadNodeProxy operation.
+type ConnectCoreV1HeadNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1HeadNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1HeadNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1HeadNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1HeadNodeProxyWithPathParams is parameters of connectCoreV1HeadNodeProxyWithPath operation.
+type ConnectCoreV1HeadNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1HeadNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1HeadNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1HeadNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1HeadNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNamespacedPodProxyParams is parameters of connectCoreV1OptionsNamespacedPodProxy operation.
+type ConnectCoreV1OptionsNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1OptionsNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1OptionsNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNamespacedPodProxyWithPathParams is parameters of connectCoreV1OptionsNamespacedPodProxyWithPath operation.
+type ConnectCoreV1OptionsNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1OptionsNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1OptionsNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxyParams is parameters of connectCoreV1OptionsNamespacedServiceProxy operation.
+type ConnectCoreV1OptionsNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1OptionsNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1OptionsNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams is parameters of connectCoreV1OptionsNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1OptionsNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1OptionsNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNodeProxyParams is parameters of connectCoreV1OptionsNodeProxy operation.
+type ConnectCoreV1OptionsNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1OptionsNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1OptionsNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1OptionsNodeProxyWithPathParams is parameters of connectCoreV1OptionsNodeProxyWithPath operation.
+type ConnectCoreV1OptionsNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1OptionsNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1OptionsNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1OptionsNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1OptionsNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNamespacedPodProxyParams is parameters of connectCoreV1PatchNamespacedPodProxy operation.
+type ConnectCoreV1PatchNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1PatchNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1PatchNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PatchNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNamespacedPodProxyWithPathParams is parameters of connectCoreV1PatchNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PatchNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PatchNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PatchNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PatchNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNamespacedServiceProxyParams is parameters of connectCoreV1PatchNamespacedServiceProxy operation.
+type ConnectCoreV1PatchNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1PatchNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1PatchNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PatchNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNamespacedServiceProxyWithPathParams is parameters of connectCoreV1PatchNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PatchNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PatchNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PatchNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNodeProxyParams is parameters of connectCoreV1PatchNodeProxy operation.
+type ConnectCoreV1PatchNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1PatchNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1PatchNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1PatchNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PatchNodeProxyWithPathParams is parameters of connectCoreV1PatchNodeProxyWithPath operation.
+type ConnectCoreV1PatchNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PatchNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PatchNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PatchNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1PatchNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedPodAttachParams is parameters of connectCoreV1PostNamespacedPodAttach operation.
+type ConnectCoreV1PostNamespacedPodAttachParams struct {
+	// The container in which to execute the command. Defaults to only container if there is only one
+	// container in the pod.
+	Container OptString
+	// Name of the PodAttachOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Stderr if true indicates that stderr is to be redirected for the attach call. Defaults to true.
+	Stderr OptBool
+	// Stdin if true, redirects the standard input stream of the pod for this call. Defaults to false.
+	Stdin OptBool
+	// Stdout if true indicates that stdout is to be redirected for the attach call. Defaults to true.
+	Stdout OptBool
+	// TTY if true indicates that a tty will be allocated for the attach call. This is passed through the
+	// container runtime so the tty is allocated on the worker node by the container runtime. Defaults to
+	// false.
+	Tty OptBool
+}
+
+func unpackConnectCoreV1PostNamespacedPodAttachParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedPodAttachParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "container",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Container = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stderr",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stderr = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdin",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdin = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdout",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdout = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Tty = v.(OptBool)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedPodAttachParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNamespacedPodAttachParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: container.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "container",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotContainerVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotContainerVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Container.SetTo(paramsDotContainerVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: container: parse")
+			}
+		}
+	}
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: stderr.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stderr",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStderrVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStderrVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stderr.SetTo(paramsDotStderrVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stderr: parse")
+			}
+		}
+	}
+	// Decode query: stdin.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdin",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdinVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdin.SetTo(paramsDotStdinVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdin: parse")
+			}
+		}
+	}
+	// Decode query: stdout.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdout",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdoutVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdoutVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdout.SetTo(paramsDotStdoutVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdout: parse")
+			}
+		}
+	}
+	// Decode query: tty.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tty",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotTtyVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotTtyVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Tty.SetTo(paramsDotTtyVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: tty: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedPodExecParams is parameters of connectCoreV1PostNamespacedPodExec operation.
+type ConnectCoreV1PostNamespacedPodExecParams struct {
+	// Command is the remote command to execute. argv array. Not executed within a shell.
+	Command OptString
+	// Container in which to execute the command. Defaults to only container if there is only one
+	// container in the pod.
+	Container OptString
+	// Name of the PodExecOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Redirect the standard error stream of the pod for this call. Defaults to true.
+	Stderr OptBool
+	// Redirect the standard input stream of the pod for this call. Defaults to false.
+	Stdin OptBool
+	// Redirect the standard output stream of the pod for this call. Defaults to true.
+	Stdout OptBool
+	// TTY if true indicates that a tty will be allocated for the exec call. Defaults to false.
+	Tty OptBool
+}
+
+func unpackConnectCoreV1PostNamespacedPodExecParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedPodExecParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "command",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Command = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "container",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Container = v.(OptString)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stderr",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stderr = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdin",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdin = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "stdout",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Stdout = v.(OptBool)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "tty",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Tty = v.(OptBool)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedPodExecParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNamespacedPodExecParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode query: command.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "command",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotCommandVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotCommandVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Command.SetTo(paramsDotCommandVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: command: parse")
+			}
+		}
+	}
+	// Decode query: container.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "container",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotContainerVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotContainerVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Container.SetTo(paramsDotContainerVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: container: parse")
+			}
+		}
+	}
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: stderr.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stderr",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStderrVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStderrVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stderr.SetTo(paramsDotStderrVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stderr: parse")
+			}
+		}
+	}
+	// Decode query: stdin.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdin",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdinVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdin.SetTo(paramsDotStdinVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdin: parse")
+			}
+		}
+	}
+	// Decode query: stdout.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "stdout",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotStdoutVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotStdoutVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Stdout.SetTo(paramsDotStdoutVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: stdout: parse")
+			}
+		}
+	}
+	// Decode query: tty.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tty",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotTtyVal bool
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToBool(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotTtyVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Tty.SetTo(paramsDotTtyVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: tty: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedPodPortforwardParams is parameters of connectCoreV1PostNamespacedPodPortforward operation.
+type ConnectCoreV1PostNamespacedPodPortforwardParams struct {
+	// Name of the PodPortForwardOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// List of ports to forward Required when using WebSockets.
+	Ports OptInt
+}
+
+func unpackConnectCoreV1PostNamespacedPodPortforwardParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedPodPortforwardParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "ports",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Ports = v.(OptInt)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedPodPortforwardParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNamespacedPodPortforwardParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: ports.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ports",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPortsVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPortsVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Ports.SetTo(paramsDotPortsVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: ports: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedPodProxyParams is parameters of connectCoreV1PostNamespacedPodProxy operation.
+type ConnectCoreV1PostNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1PostNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedPodProxyWithPathParams is parameters of connectCoreV1PostNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PostNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PostNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PostNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedServiceProxyParams is parameters of connectCoreV1PostNamespacedServiceProxy operation.
+type ConnectCoreV1PostNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1PostNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNamespacedServiceProxyWithPathParams is parameters of connectCoreV1PostNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PostNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PostNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PostNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PostNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNodeProxyParams is parameters of connectCoreV1PostNodeProxy operation.
+type ConnectCoreV1PostNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1PostNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1PostNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1PostNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PostNodeProxyWithPathParams is parameters of connectCoreV1PostNodeProxyWithPath operation.
+type ConnectCoreV1PostNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PostNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PostNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PostNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1PostNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNamespacedPodProxyParams is parameters of connectCoreV1PutNamespacedPodProxy operation.
+type ConnectCoreV1PutNamespacedPodProxyParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the URL path to use for the current proxy request to pod.
+	Path OptString
+}
+
+func unpackConnectCoreV1PutNamespacedPodProxyParams(packed middleware.Parameters) (params ConnectCoreV1PutNamespacedPodProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNamespacedPodProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PutNamespacedPodProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNamespacedPodProxyWithPathParams is parameters of connectCoreV1PutNamespacedPodProxyWithPath operation.
+type ConnectCoreV1PutNamespacedPodProxyWithPathParams struct {
+	// Name of the PodProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to pod.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PutNamespacedPodProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PutNamespacedPodProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNamespacedPodProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PutNamespacedPodProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNamespacedServiceProxyParams is parameters of connectCoreV1PutNamespacedServiceProxy operation.
+type ConnectCoreV1PutNamespacedServiceProxyParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	Path OptString
+}
+
+func unpackConnectCoreV1PutNamespacedServiceProxyParams(packed middleware.Parameters) (params ConnectCoreV1PutNamespacedServiceProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNamespacedServiceProxyParams(args [2]string, r *http.Request) (params ConnectCoreV1PutNamespacedServiceProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNamespacedServiceProxyWithPathParams is parameters of connectCoreV1PutNamespacedServiceProxyWithPath operation.
+type ConnectCoreV1PutNamespacedServiceProxyWithPathParams struct {
+	// Name of the ServiceProxyOptions.
+	Name string
+	// Object name and auth scope, such as for teams and projects.
+	Namespace string
+	// Path to the resource.
+	pathPath string
+	// Path is the part of URLs that include service endpoints, suffixes, and parameters to use for the
+	// current proxy request to service. For example, the whole request URL is
+	// http://localhost/api/v1/namespaces/kube-system/services/elasticsearch-logging/_search?q=user:kimchy. Path is _search?q=user:kimchy.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PutNamespacedServiceProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PutNamespacedServiceProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "namespace",
+			In:   "path",
+		}
+		params.Namespace = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNamespacedServiceProxyWithPathParams(args [3]string, r *http.Request) (params ConnectCoreV1PutNamespacedServiceProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: namespace.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "namespace",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Namespace = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: namespace: parse")
+			}
+		} else {
+			return params, errors.New("path: namespace: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNodeProxyParams is parameters of connectCoreV1PutNodeProxy operation.
+type ConnectCoreV1PutNodeProxyParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path is the URL path to use for the current proxy request to node.
+	Path OptString
+}
+
+func unpackConnectCoreV1PutNodeProxyParams(packed middleware.Parameters) (params ConnectCoreV1PutNodeProxyParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Path = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNodeProxyParams(args [1]string, r *http.Request) (params ConnectCoreV1PutNodeProxyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Path.SetTo(paramsDotPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+// ConnectCoreV1PutNodeProxyWithPathParams is parameters of connectCoreV1PutNodeProxyWithPath operation.
+type ConnectCoreV1PutNodeProxyWithPathParams struct {
+	// Name of the NodeProxyOptions.
+	Name string
+	// Path to the resource.
+	pathPath string
+	// Path is the URL path to use for the current proxy request to node.
+	queryPath OptString
+}
+
+func unpackConnectCoreV1PutNodeProxyWithPathParams(packed middleware.Parameters) (params ConnectCoreV1PutNodeProxyWithPathParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "name",
+			In:   "path",
+		}
+		params.Name = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "path",
+		}
+		params.pathPath = packed[key].(string)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "path",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.queryPath = v.(OptString)
+		}
+	}
+	return params
+}
+
+func decodeConnectCoreV1PutNodeProxyWithPathParams(args [2]string, r *http.Request) (params ConnectCoreV1PutNodeProxyWithPathParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: name.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "name",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Name = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: name: parse")
+			}
+		} else {
+			return params, errors.New("path: name: not specified")
+		}
+	}
+	// Decode path: path.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "path",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.pathPath = c
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: path: parse")
+			}
+		} else {
+			return params, errors.New("path: path: not specified")
+		}
+	}
+	// Decode query: path.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotQueryPathVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotQueryPathVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.queryPath.SetTo(paramsDotQueryPathVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: path: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
 // ListAdmissionregistrationV1MutatingWebhookConfigurationParams is parameters of listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement

@@ -27,6 +27,13 @@ func (UnimplementedHandler) AllRequestBodiesOptional(ctx context.Context, req Al
 	return r, ht.ErrNotImplemented
 }
 
+// Base64Request implements base64Request operation.
+//
+// POST /base64Request
+func (UnimplementedHandler) Base64Request(ctx context.Context, req Base64RequestReq) (r Base64RequestOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // MaskContentType implements maskContentType operation.
 //
 // POST /maskContentType

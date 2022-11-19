@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"net/http"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -1039,6 +1040,43 @@ func encodeIssuesUpdateMilestoneRequest(
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
+}
+
+func encodeMarkdownRenderRequest(
+	req MarkdownRenderReq,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeMarkdownRenderRawRequest(
+	req MarkdownRenderRawReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *MarkdownRenderRawReqEmptyBody:
+		// Empty body case.
+		return nil
+	case *MarkdownRenderRawReqTextPlain:
+		const contentType = "text/plain"
+		body := req
+		ht.SetBody(r, body, contentType)
+		return nil
+	case *MarkdownRenderRawReqTextXMarkdown:
+		const contentType = "text/x-markdown"
+		body := req
+		ht.SetBody(r, body, contentType)
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
 }
 
 func encodeMigrationsMapCommitAuthorRequest(
@@ -2547,6 +2585,22 @@ func encodeReposUpdateWebhookConfigForRepoRequest(
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
+}
+
+func encodeReposUploadReleaseAssetRequest(
+	req ReposUploadReleaseAssetReqWithContentType,
+	r *http.Request,
+) error {
+	contentType := req.ContentType
+	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	}
+	{
+		req := req.Content
+		body := req
+		ht.SetBody(r, body, contentType)
+		return nil
+	}
 }
 
 func encodeSecretScanningUpdateAlertRequest(

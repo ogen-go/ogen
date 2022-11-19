@@ -27,7 +27,8 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res An
 		}
 		switch {
 		case ht.MatchContentType("*/*", ct):
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -49,7 +50,8 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) 
 	}
 	switch {
 	case ht.MatchContentType("*/*", ct):
-		b, err := io.ReadAll(resp.Body)
+		reader := resp.Body
+		b, err := io.ReadAll(reader)
 		if err != nil {
 			return res, err
 		}
@@ -554,7 +556,8 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res Octet
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -578,7 +581,8 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 		}
 		switch {
 		case ct == "application/octet-stream":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -602,7 +606,8 @@ func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPla
 		}
 		switch {
 		case ct == "text/plain":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}

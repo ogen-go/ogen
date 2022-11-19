@@ -28,6 +28,33 @@ func isBinary(s *jsonschema.Schema) bool {
 	}
 }
 
+func isStream(s *jsonschema.Schema) bool {
+	// https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#considerations-for-file-uploads
+	//
+	// The Spec says:
+	//
+	//  Content transferred in binary (octet-stream) MAY omit schema.
+	//
+	if s == nil {
+		return true
+	}
+
+	switch s.Type {
+	case jsonschema.Empty, jsonschema.String:
+	default:
+		return false
+	}
+
+	// Allow format to be empty, stream body often defined as just string.
+	switch s.Format {
+	case "", "binary", "byte", "base64":
+	default:
+		return false
+	}
+	// TODO(tdakkota): check ContentEncoding field
+	return true
+}
+
 // isMultipartFile tries to map field to multipart file.
 //
 // Returns nil type if field is not a file parameter.

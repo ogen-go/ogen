@@ -16,28 +16,26 @@ func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span tr
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
@@ -54,14 +52,13 @@ func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, spa
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -70,8 +67,8 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -81,6 +78,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 	case *NotFound:
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
+
 		return nil
 
 	default:
@@ -94,8 +92,8 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -105,6 +103,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *NotFound:
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
+
 		return nil
 
 	case *ErrorStatusCode:
@@ -121,8 +120,8 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -147,36 +146,34 @@ func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span 
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	return nil
 
+	return nil
 }
 
 func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
@@ -193,57 +190,54 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	return nil
 
+	return nil
 }
 
 func encodePatternRecursiveMapGetResponse(response PatternRecursiveMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.ArrStart()
 	for _, elem := range response {
 		e.Str(elem)
@@ -253,7 +247,6 @@ func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter,
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -262,8 +255,8 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -284,8 +277,8 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -303,7 +296,9 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		if _, err := io.Copy(w, response); err != nil {
+
+		writer := w
+		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
@@ -311,6 +306,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 	case *NotFound:
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
+
 		return nil
 
 	case *ErrorStatusCode:
@@ -327,8 +323,8 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -346,7 +342,9 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		if _, err := io.Copy(w, response); err != nil {
+
+		writer := w
+		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
@@ -354,6 +352,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 	case *NotFound:
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
+
 		return nil
 
 	case *ErrorStatusCode:
@@ -370,8 +369,8 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -387,28 +386,26 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w http.ResponseWriter, span trace.Span) error {
@@ -424,8 +421,8 @@ func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w 
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	return nil
 
+	return nil
 }
 
 func encodePetUpdateNamePostResponse(response PetUpdateNamePostDef, w http.ResponseWriter, span trace.Span) error {
@@ -441,8 +438,8 @@ func encodePetUpdateNamePostResponse(response PetUpdateNamePostDef, w http.Respo
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	return nil
 
+	return nil
 }
 
 func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -450,11 +447,13 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 	case *PetUploadAvatarByIDOK:
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
+
 		return nil
 
 	case *NotFound:
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
+
 		return nil
 
 	case *ErrorStatusCode:
@@ -471,8 +470,8 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -488,77 +487,72 @@ func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWri
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeSecurityTestResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeStringIntMapGetResponse(response StringIntMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeTestContentParameterResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeTestFloatValidationResponse(response TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	return nil
 
+	return nil
 }
 
 func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.ResponseWriter, span trace.Span) error {
@@ -567,8 +561,8 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -579,8 +573,8 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -591,8 +585,8 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
 		span.SetStatus(codes.Ok, http.StatusText(202))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -608,12 +602,11 @@ func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK,
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	e := jx.GetEncoder()
 
+	e := jx.GetEncoder()
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }

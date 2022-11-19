@@ -17,8 +17,8 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -29,8 +29,8 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -41,8 +41,8 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -53,8 +53,8 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -72,8 +72,8 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -84,8 +84,8 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -96,8 +96,8 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -108,8 +108,8 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -127,8 +127,8 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -139,8 +139,8 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -151,8 +151,8 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -163,8 +163,8 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -182,8 +182,8 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -194,8 +194,8 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -206,8 +206,8 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
 		span.SetStatus(codes.Error, http.StatusText(409))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -218,8 +218,8 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -236,14 +236,15 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 	case *DeletePetNoContent:
 		w.WriteHeader(204)
 		span.SetStatus(codes.Ok, http.StatusText(204))
+
 		return nil
 
 	case *R400:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -254,8 +255,8 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -266,8 +267,8 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -284,14 +285,15 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 	case *DeletePetOwnerNoContent:
 		w.WriteHeader(204)
 		span.SetStatus(codes.Ok, http.StatusText(204))
+
 		return nil
 
 	case *R400:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -302,8 +304,8 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -314,8 +316,8 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -333,8 +335,8 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -345,8 +347,8 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -357,8 +359,8 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -369,8 +371,8 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -388,8 +390,8 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -400,8 +402,8 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -412,8 +414,8 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -424,8 +426,8 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -443,8 +445,8 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -455,8 +457,8 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -467,8 +469,8 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -479,8 +481,8 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -498,8 +500,8 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -510,8 +512,8 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -522,8 +524,8 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -534,8 +536,8 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -553,8 +555,8 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -565,8 +567,8 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -577,8 +579,8 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -589,8 +591,8 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -608,8 +610,8 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -620,8 +622,8 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
 		span.SetStatus(codes.Error, http.StatusText(400))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -632,8 +634,8 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
 		span.SetStatus(codes.Error, http.StatusText(404))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -644,8 +646,8 @@ func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
 		span.SetStatus(codes.Error, http.StatusText(500))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")

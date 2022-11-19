@@ -18,11 +18,12 @@ import (
 func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	if _, err := io.Copy(w, response); err != nil {
+
+	writer := w
+	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
@@ -38,11 +39,12 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	if _, err := io.Copy(w, response.Response); err != nil {
+
+	writer := w
+	if _, err := io.Copy(writer, response.Response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span trace.Span) error {
@@ -51,8 +53,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -73,8 +75,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		e.Int(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -95,8 +97,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		e.Bool(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -117,8 +119,8 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		e.ArrStart()
 		for _, elem := range response.Response {
 			e.Str(elem)
@@ -153,8 +155,8 @@ func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span
 	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	return nil
 
+	return nil
 }
 
 func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseWriter, span trace.Span) error {
@@ -178,6 +180,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
+
 		return nil
 
 	case *HeadersCombined4XX:
@@ -209,6 +212,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
+
 		return nil
 
 	case *HeadersCombinedDef:
@@ -240,6 +244,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
+
 		return nil
 
 	default:
@@ -276,8 +281,8 @@ func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWri
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	return nil
 
+	return nil
 }
 
 func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
@@ -309,8 +314,8 @@ func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWri
 	} else {
 		span.SetStatus(codes.Ok, st)
 	}
-	return nil
 
+	return nil
 }
 
 func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -319,8 +324,8 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -341,8 +346,8 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		} else {
 			span.SetStatus(codes.Ok, st)
 		}
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		e.Int(response.Response)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -360,8 +365,8 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -372,8 +377,8 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
-		e := jx.GetEncoder()
 
+		e := jx.GetEncoder()
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
@@ -389,31 +394,34 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	if _, err := io.Copy(w, response); err != nil {
+
+	writer := w
+	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	if _, err := io.Copy(w, response); err != nil {
+
+	writer := w
+	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }
 
 func encodeTextPlainBinaryStringSchemaResponse(response TextPlainBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
-	if _, err := io.Copy(w, response); err != nil {
+
+	writer := w
+	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
-
 }

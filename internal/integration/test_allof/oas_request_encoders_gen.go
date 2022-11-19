@@ -122,7 +122,7 @@ func encodeReferencedAllofRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -196,7 +196,7 @@ func encodeReferencedAllofOptionalRequest(
 			}
 			return nil
 		})
-		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	default:
 		return errors.Errorf("unexpected request type: %T", req)

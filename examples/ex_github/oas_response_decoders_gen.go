@@ -8808,6 +8808,15 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
+		case ct == "application/json+sarif":
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
+
+			response := CodeScanningGetAnalysisOKApplicationJSONSarif{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -18141,6 +18150,158 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
+func decodeMarkdownRenderResponse(resp *http.Response) (res MarkdownRenderRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "text/html":
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
+
+			response := MarkdownRenderOK{Data: bytes.NewReader(b)}
+			var wrapper MarkdownRenderOKHeaders
+			wrapper.Response = response
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse 'Content-Length' header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "Content-Length",
+					Explode: false,
+				}
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotContentLengthVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotContentLengthVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					wrapper.ContentLength.SetTo(wrapperDotContentLengthVal)
+					return nil
+				}); err != nil {
+					return res, errors.Wrap(err, "parse Content-Length header")
+				}
+			}
+			// Parse 'X-CommonMarker-Version' header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "X-CommonMarker-Version",
+					Explode: false,
+				}
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotXCommonMarkerVersionVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotXCommonMarkerVersionVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
+					return nil
+				}); err != nil {
+					return res, errors.Wrap(err, "parse X-CommonMarker-Version header")
+				}
+			}
+			return &wrapper, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 304:
+		// Code 304.
+		return &NotModified{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeMarkdownRenderRawResponse(resp *http.Response) (res MarkdownRenderRawRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "text/html":
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
+
+			response := MarkdownRenderRawOK{Data: bytes.NewReader(b)}
+			var wrapper MarkdownRenderRawOKHeaders
+			wrapper.Response = response
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse 'X-CommonMarker-Version' header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "X-CommonMarker-Version",
+					Explode: false,
+				}
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotXCommonMarkerVersionVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotXCommonMarkerVersionVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					wrapper.XCommonMarkerVersion.SetTo(wrapperDotXCommonMarkerVersionVal)
+					return nil
+				}); err != nil {
+					return res, errors.Wrap(err, "parse X-CommonMarker-Version header")
+				}
+			}
+			return &wrapper, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 304:
+		// Code 304.
+		return &NotModified{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -18180,6 +18341,31 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
+func decodeMetaGetOctocatResponse(resp *http.Response) (res MetaGetOctocatOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/octocat-stream":
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
+			if err != nil {
+				return res, err
+			}
+
+			response := MetaGetOctocatOK{Data: bytes.NewReader(b)}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -18190,7 +18376,8 @@ func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, err error)
 		}
 		switch {
 		case ct == "text/plain":
-			b, err := io.ReadAll(resp.Body)
+			reader := resp.Body
+			b, err := io.ReadAll(reader)
 			if err != nil {
 				return res, err
 			}
@@ -45577,6 +45764,42 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res Web
 
 			d := jx.DecodeBytes(b)
 			var response WebhookConfig
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
+			}
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
+func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res ReleaseAsset, err error) {
+	switch resp.StatusCode {
+	case 201:
+		// Code 201.
+		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
+		if err != nil {
+			return res, errors.Wrap(err, "parse media type")
+		}
+		switch {
+		case ct == "application/json":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			d := jx.DecodeBytes(b)
+			var response ReleaseAsset
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

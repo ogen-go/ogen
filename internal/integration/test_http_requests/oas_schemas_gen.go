@@ -108,6 +108,28 @@ func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 
 func (*AllRequestBodiesReqTextPlain) allRequestBodiesReq() {}
 
+type Base64RequestOK struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s Base64RequestOK) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+type Base64RequestReq struct {
+	Data io.Reader
+}
+
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
+func (s Base64RequestReq) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
 type MaskContentTypeOptionalReq struct {
 	Data io.Reader
 }

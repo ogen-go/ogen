@@ -25,7 +25,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
-	args := [2]string{}
+	args := [3]string{}
 
 	// Static code generated router with unwrapped path search.
 	switch {
@@ -675,8 +675,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																break
 															}
 															switch elem[0] {
-															case 'e': // Prefix: "ephemeralcontainers"
-																if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
+															case 'a': // Prefix: "attach"
+																if l := len("attach"); len(elem) >= l && elem[0:l] == "attach" {
 																	elem = elem[l:]
 																} else {
 																	break
@@ -686,15 +686,79 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Leaf node.
 																	switch r.Method {
 																	case "GET":
-																		s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
+																		s.handleConnectCoreV1GetNamespacedPodAttachRequest([2]string{
+																			args[0],
+																			args[1],
+																		}, w, r)
+																	case "POST":
+																		s.handleConnectCoreV1PostNamespacedPodAttachRequest([2]string{
 																			args[0],
 																			args[1],
 																		}, w, r)
 																	default:
-																		s.notAllowed(w, r, "GET")
+																		s.notAllowed(w, r, "GET,POST")
 																	}
 
 																	return
+																}
+															case 'e': // Prefix: "e"
+																if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "phemeralcontainers"
+																	if l := len("phemeralcontainers"); len(elem) >= l && elem[0:l] == "phemeralcontainers" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "GET":
+																			s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "GET")
+																		}
+
+																		return
+																	}
+																case 'x': // Prefix: "xec"
+																	if l := len("xec"); len(elem) >= l && elem[0:l] == "xec" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "GET":
+																			s.handleConnectCoreV1GetNamespacedPodExecRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "POST":
+																			s.handleConnectCoreV1PostNamespacedPodExecRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "GET,POST")
+																		}
+
+																		return
+																	}
 																}
 															case 'l': // Prefix: "log"
 																if l := len("log"); len(elem) >= l && elem[0:l] == "log" {
@@ -716,6 +780,159 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 
 																	return
+																}
+															case 'p': // Prefix: "p"
+																if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'o': // Prefix: "ortforward"
+																	if l := len("ortforward"); len(elem) >= l && elem[0:l] == "ortforward" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "GET":
+																			s.handleConnectCoreV1GetNamespacedPodPortforwardRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "POST":
+																			s.handleConnectCoreV1PostNamespacedPodPortforwardRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "GET,POST")
+																		}
+
+																		return
+																	}
+																case 'r': // Prefix: "roxy"
+																	if l := len("roxy"); len(elem) >= l && elem[0:l] == "roxy" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch r.Method {
+																		case "DELETE":
+																			s.handleConnectCoreV1DeleteNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "GET":
+																			s.handleConnectCoreV1GetNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "HEAD":
+																			s.handleConnectCoreV1HeadNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "OPTIONS":
+																			s.handleConnectCoreV1OptionsNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "PATCH":
+																			s.handleConnectCoreV1PatchNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "POST":
+																			s.handleConnectCoreV1PostNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "PUT":
+																			s.handleConnectCoreV1PutNamespacedPodProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+																		}
+
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "path"
+																		// Leaf parameter
+																		args[2] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			// Leaf node.
+																			switch r.Method {
+																			case "DELETE":
+																				s.handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "GET":
+																				s.handleConnectCoreV1GetNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "HEAD":
+																				s.handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "OPTIONS":
+																				s.handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "PATCH":
+																				s.handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "POST":
+																				s.handleConnectCoreV1PostNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "PUT":
+																				s.handleConnectCoreV1PutNamespacedPodProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			default:
+																				s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+																			}
+
+																			return
+																		}
+																	}
 																}
 															case 's': // Prefix: "status"
 																if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
@@ -1158,26 +1375,153 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	// Leaf node.
-																	switch r.Method {
-																	case "GET":
-																		s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
-																			args[0],
-																			args[1],
-																		}, w, r)
-																	default:
-																		s.notAllowed(w, r, "GET")
+																	break
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "proxy"
+																	if l := len("proxy"); len(elem) >= l && elem[0:l] == "proxy" {
+																		elem = elem[l:]
+																	} else {
+																		break
 																	}
 
-																	return
+																	if len(elem) == 0 {
+																		switch r.Method {
+																		case "DELETE":
+																			s.handleConnectCoreV1DeleteNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "GET":
+																			s.handleConnectCoreV1GetNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "HEAD":
+																			s.handleConnectCoreV1HeadNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "OPTIONS":
+																			s.handleConnectCoreV1OptionsNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "PATCH":
+																			s.handleConnectCoreV1PatchNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "POST":
+																			s.handleConnectCoreV1PostNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		case "PUT":
+																			s.handleConnectCoreV1PutNamespacedServiceProxyRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+																		}
+
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "path"
+																		// Leaf parameter
+																		args[2] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			// Leaf node.
+																			switch r.Method {
+																			case "DELETE":
+																				s.handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "GET":
+																				s.handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "HEAD":
+																				s.handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "OPTIONS":
+																				s.handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "PATCH":
+																				s.handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "POST":
+																				s.handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			case "PUT":
+																				s.handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest([3]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																				}, w, r)
+																			default:
+																				s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+																			}
+
+																			return
+																		}
+																	}
+																case 's': // Prefix: "status"
+																	if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "GET":
+																			s.handleReadCoreV1NamespacedServiceStatusRequest([2]string{
+																				args[0],
+																				args[1],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "GET")
+																		}
+
+																		return
+																	}
 																}
 															}
 														}
@@ -1254,25 +1598,138 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case '/': // Prefix: "/status"
-										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											// Leaf node.
-											switch r.Method {
-											case "GET":
-												s.handleReadCoreV1NodeStatusRequest([1]string{
-													args[0],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "GET")
+											break
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "proxy"
+											if l := len("proxy"); len(elem) >= l && elem[0:l] == "proxy" {
+												elem = elem[l:]
+											} else {
+												break
 											}
 
-											return
+											if len(elem) == 0 {
+												switch r.Method {
+												case "DELETE":
+													s.handleConnectCoreV1DeleteNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "GET":
+													s.handleConnectCoreV1GetNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "HEAD":
+													s.handleConnectCoreV1HeadNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "OPTIONS":
+													s.handleConnectCoreV1OptionsNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "PATCH":
+													s.handleConnectCoreV1PatchNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "POST":
+													s.handleConnectCoreV1PostNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												case "PUT":
+													s.handleConnectCoreV1PutNodeProxyRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "path"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "DELETE":
+														s.handleConnectCoreV1DeleteNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "GET":
+														s.handleConnectCoreV1GetNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "HEAD":
+														s.handleConnectCoreV1HeadNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "OPTIONS":
+														s.handleConnectCoreV1OptionsNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "PATCH":
+														s.handleConnectCoreV1PatchNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "POST":
+														s.handleConnectCoreV1PostNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "PUT":
+														s.handleConnectCoreV1PutNodeProxyWithPathRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT")
+													}
+
+													return
+												}
+											}
+										case 's': // Prefix: "status"
+											if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf node.
+												switch r.Method {
+												case "GET":
+													s.handleReadCoreV1NodeStatusRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
+
+												return
+											}
 										}
 									}
 								}
@@ -10893,6 +11350,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					return
 				}
+			case 'o': // Prefix: "openid/v1/jwks/"
+				if l := len("openid/v1/jwks/"); len(elem) >= l && elem[0:l] == "openid/v1/jwks/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf node.
+					switch r.Method {
+					case "GET":
+						s.handleGetServiceAccountIssuerOpenIDKeysetRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
+
+					return
+				}
 			case 'v': // Prefix: "version/"
 				if l := len("version/"); len(elem) >= l && elem[0:l] == "version/" {
 					elem = elem[l:]
@@ -10922,7 +11397,7 @@ type Route struct {
 	name        string
 	operationID string
 	count       int
-	args        [2]string
+	args        [3]string
 }
 
 // Name returns ogen operation name.
@@ -10945,7 +11420,7 @@ func (r Route) Args() []string {
 // FindRoute finds Route for given method and path.
 func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	var (
-		args = [2]string{}
+		args = [3]string{}
 		elem = path
 	)
 	r.args = args
@@ -11612,8 +12087,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																break
 															}
 															switch elem[0] {
-															case 'e': // Prefix: "ephemeralcontainers"
-																if l := len("ephemeralcontainers"); len(elem) >= l && elem[0:l] == "ephemeralcontainers" {
+															case 'a': // Prefix: "attach"
+																if l := len("attach"); len(elem) >= l && elem[0:l] == "attach" {
 																	elem = elem[l:]
 																} else {
 																	break
@@ -11622,14 +12097,80 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																if len(elem) == 0 {
 																	switch method {
 																	case "GET":
-																		// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
-																		r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
-																		r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
+																		// Leaf: ConnectCoreV1GetNamespacedPodAttach
+																		r.name = "ConnectCoreV1GetNamespacedPodAttach"
+																		r.operationID = "connectCoreV1GetNamespacedPodAttach"
+																		r.args = args
+																		r.count = 2
+																		return r, true
+																	case "POST":
+																		// Leaf: ConnectCoreV1PostNamespacedPodAttach
+																		r.name = "ConnectCoreV1PostNamespacedPodAttach"
+																		r.operationID = "connectCoreV1PostNamespacedPodAttach"
 																		r.args = args
 																		r.count = 2
 																		return r, true
 																	default:
 																		return
+																	}
+																}
+															case 'e': // Prefix: "e"
+																if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "phemeralcontainers"
+																	if l := len("phemeralcontainers"); len(elem) >= l && elem[0:l] == "phemeralcontainers" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "GET":
+																			// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
+																			r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
+																			r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																case 'x': // Prefix: "xec"
+																	if l := len("xec"); len(elem) >= l && elem[0:l] == "xec" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "GET":
+																			// Leaf: ConnectCoreV1GetNamespacedPodExec
+																			r.name = "ConnectCoreV1GetNamespacedPodExec"
+																			r.operationID = "connectCoreV1GetNamespacedPodExec"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "POST":
+																			// Leaf: ConnectCoreV1PostNamespacedPodExec
+																			r.name = "ConnectCoreV1PostNamespacedPodExec"
+																			r.operationID = "connectCoreV1PostNamespacedPodExec"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
 																	}
 																}
 															case 'l': // Prefix: "log"
@@ -11650,6 +12191,169 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		return r, true
 																	default:
 																		return
+																	}
+																}
+															case 'p': // Prefix: "p"
+																if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'o': // Prefix: "ortforward"
+																	if l := len("ortforward"); len(elem) >= l && elem[0:l] == "ortforward" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "GET":
+																			// Leaf: ConnectCoreV1GetNamespacedPodPortforward
+																			r.name = "ConnectCoreV1GetNamespacedPodPortforward"
+																			r.operationID = "connectCoreV1GetNamespacedPodPortforward"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "POST":
+																			// Leaf: ConnectCoreV1PostNamespacedPodPortforward
+																			r.name = "ConnectCoreV1PostNamespacedPodPortforward"
+																			r.operationID = "connectCoreV1PostNamespacedPodPortforward"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																case 'r': // Prefix: "roxy"
+																	if l := len("roxy"); len(elem) >= l && elem[0:l] == "roxy" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "DELETE":
+																			r.name = "ConnectCoreV1DeleteNamespacedPodProxy"
+																			r.operationID = "connectCoreV1DeleteNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "GET":
+																			r.name = "ConnectCoreV1GetNamespacedPodProxy"
+																			r.operationID = "connectCoreV1GetNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "HEAD":
+																			r.name = "ConnectCoreV1HeadNamespacedPodProxy"
+																			r.operationID = "connectCoreV1HeadNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "OPTIONS":
+																			r.name = "ConnectCoreV1OptionsNamespacedPodProxy"
+																			r.operationID = "connectCoreV1OptionsNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "PATCH":
+																			r.name = "ConnectCoreV1PatchNamespacedPodProxy"
+																			r.operationID = "connectCoreV1PatchNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "POST":
+																			r.name = "ConnectCoreV1PostNamespacedPodProxy"
+																			r.operationID = "connectCoreV1PostNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "PUT":
+																			r.name = "ConnectCoreV1PutNamespacedPodProxy"
+																			r.operationID = "connectCoreV1PutNamespacedPodProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "path"
+																		// Leaf parameter
+																		args[2] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			switch method {
+																			case "DELETE":
+																				// Leaf: ConnectCoreV1DeleteNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1DeleteNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1DeleteNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "GET":
+																				// Leaf: ConnectCoreV1GetNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1GetNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1GetNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "HEAD":
+																				// Leaf: ConnectCoreV1HeadNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1HeadNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1HeadNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "OPTIONS":
+																				// Leaf: ConnectCoreV1OptionsNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1OptionsNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1OptionsNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "PATCH":
+																				// Leaf: ConnectCoreV1PatchNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1PatchNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1PatchNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "POST":
+																				// Leaf: ConnectCoreV1PostNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1PostNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1PostNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "PUT":
+																				// Leaf: ConnectCoreV1PutNamespacedPodProxyWithPath
+																				r.name = "ConnectCoreV1PutNamespacedPodProxyWithPath"
+																				r.operationID = "connectCoreV1PutNamespacedPodProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			default:
+																				return
+																			}
+																		}
 																	}
 																}
 															case 's': // Prefix: "status"
@@ -12083,24 +12787,160 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 															}
 															switch elem[0] {
-															case '/': // Prefix: "/status"
-																if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																if len(elem) == 0 {
-																	switch method {
-																	case "GET":
-																		// Leaf: ReadCoreV1NamespacedServiceStatus
-																		r.name = "ReadCoreV1NamespacedServiceStatus"
-																		r.operationID = "readCoreV1NamespacedServiceStatus"
-																		r.args = args
-																		r.count = 2
-																		return r, true
-																	default:
-																		return
+																	break
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "proxy"
+																	if l := len("proxy"); len(elem) >= l && elem[0:l] == "proxy" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "DELETE":
+																			r.name = "ConnectCoreV1DeleteNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1DeleteNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "GET":
+																			r.name = "ConnectCoreV1GetNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1GetNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "HEAD":
+																			r.name = "ConnectCoreV1HeadNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1HeadNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "OPTIONS":
+																			r.name = "ConnectCoreV1OptionsNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1OptionsNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "PATCH":
+																			r.name = "ConnectCoreV1PatchNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1PatchNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "POST":
+																			r.name = "ConnectCoreV1PostNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1PostNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		case "PUT":
+																			r.name = "ConnectCoreV1PutNamespacedServiceProxy"
+																			r.operationID = "connectCoreV1PutNamespacedServiceProxy"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "path"
+																		// Leaf parameter
+																		args[2] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			switch method {
+																			case "DELETE":
+																				// Leaf: ConnectCoreV1DeleteNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1DeleteNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1DeleteNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "GET":
+																				// Leaf: ConnectCoreV1GetNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1GetNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1GetNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "HEAD":
+																				// Leaf: ConnectCoreV1HeadNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1HeadNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1HeadNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "OPTIONS":
+																				// Leaf: ConnectCoreV1OptionsNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1OptionsNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1OptionsNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "PATCH":
+																				// Leaf: ConnectCoreV1PatchNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1PatchNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1PatchNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "POST":
+																				// Leaf: ConnectCoreV1PostNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1PostNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1PostNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			case "PUT":
+																				// Leaf: ConnectCoreV1PutNamespacedServiceProxyWithPath
+																				r.name = "ConnectCoreV1PutNamespacedServiceProxyWithPath"
+																				r.operationID = "connectCoreV1PutNamespacedServiceProxyWithPath"
+																				r.args = args
+																				r.count = 3
+																				return r, true
+																			default:
+																				return
+																			}
+																		}
+																	}
+																case 's': // Prefix: "status"
+																	if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "GET":
+																			// Leaf: ReadCoreV1NamespacedServiceStatus
+																			r.name = "ReadCoreV1NamespacedServiceStatus"
+																			r.operationID = "readCoreV1NamespacedServiceStatus"
+																			r.args = args
+																			r.count = 2
+																			return r, true
+																		default:
+																			return
+																		}
 																	}
 																}
 															}
@@ -12180,24 +13020,160 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 									}
 									switch elem[0] {
-									case '/': // Prefix: "/status"
-										if l := len("/status"); len(elem) >= l && elem[0:l] == "/status" {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "GET":
-												// Leaf: ReadCoreV1NodeStatus
-												r.name = "ReadCoreV1NodeStatus"
-												r.operationID = "readCoreV1NodeStatus"
-												r.args = args
-												r.count = 1
-												return r, true
-											default:
-												return
+											break
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "proxy"
+											if l := len("proxy"); len(elem) >= l && elem[0:l] == "proxy" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "DELETE":
+													r.name = "ConnectCoreV1DeleteNodeProxy"
+													r.operationID = "connectCoreV1DeleteNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "GET":
+													r.name = "ConnectCoreV1GetNodeProxy"
+													r.operationID = "connectCoreV1GetNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "HEAD":
+													r.name = "ConnectCoreV1HeadNodeProxy"
+													r.operationID = "connectCoreV1HeadNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "OPTIONS":
+													r.name = "ConnectCoreV1OptionsNodeProxy"
+													r.operationID = "connectCoreV1OptionsNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PATCH":
+													r.name = "ConnectCoreV1PatchNodeProxy"
+													r.operationID = "connectCoreV1PatchNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "POST":
+													r.name = "ConnectCoreV1PostNodeProxy"
+													r.operationID = "connectCoreV1PostNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "PUT":
+													r.name = "ConnectCoreV1PutNodeProxy"
+													r.operationID = "connectCoreV1PutNodeProxy"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "path"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													switch method {
+													case "DELETE":
+														// Leaf: ConnectCoreV1DeleteNodeProxyWithPath
+														r.name = "ConnectCoreV1DeleteNodeProxyWithPath"
+														r.operationID = "connectCoreV1DeleteNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "GET":
+														// Leaf: ConnectCoreV1GetNodeProxyWithPath
+														r.name = "ConnectCoreV1GetNodeProxyWithPath"
+														r.operationID = "connectCoreV1GetNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "HEAD":
+														// Leaf: ConnectCoreV1HeadNodeProxyWithPath
+														r.name = "ConnectCoreV1HeadNodeProxyWithPath"
+														r.operationID = "connectCoreV1HeadNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "OPTIONS":
+														// Leaf: ConnectCoreV1OptionsNodeProxyWithPath
+														r.name = "ConnectCoreV1OptionsNodeProxyWithPath"
+														r.operationID = "connectCoreV1OptionsNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														// Leaf: ConnectCoreV1PatchNodeProxyWithPath
+														r.name = "ConnectCoreV1PatchNodeProxyWithPath"
+														r.operationID = "connectCoreV1PatchNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "POST":
+														// Leaf: ConnectCoreV1PostNodeProxyWithPath
+														r.name = "ConnectCoreV1PostNodeProxyWithPath"
+														r.operationID = "connectCoreV1PostNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PUT":
+														// Leaf: ConnectCoreV1PutNodeProxyWithPath
+														r.name = "ConnectCoreV1PutNodeProxyWithPath"
+														r.operationID = "connectCoreV1PutNodeProxyWithPath"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 's': // Prefix: "status"
+											if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "GET":
+													// Leaf: ReadCoreV1NodeStatus
+													r.name = "ReadCoreV1NodeStatus"
+													r.operationID = "readCoreV1NodeStatus"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
 											}
 										}
 									}
@@ -22074,6 +23050,26 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						r.operationID = "logFileHandler"
 						r.args = args
 						r.count = 1
+						return r, true
+					default:
+						return
+					}
+				}
+			case 'o': // Prefix: "openid/v1/jwks/"
+				if l := len("openid/v1/jwks/"); len(elem) >= l && elem[0:l] == "openid/v1/jwks/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "GET":
+						// Leaf: GetServiceAccountIssuerOpenIDKeyset
+						r.name = "GetServiceAccountIssuerOpenIDKeyset"
+						r.operationID = "getServiceAccountIssuerOpenIDKeyset"
+						r.args = args
+						r.count = 0
 						return r, true
 					default:
 						return

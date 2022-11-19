@@ -31692,6 +31692,159 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	return result, nil
 }
 
+// MarkdownRender invokes markdown/render operation.
+//
+// Render a Markdown document.
+//
+// POST /markdown
+func (c *Client) MarkdownRender(ctx context.Context, request MarkdownRenderReq) (res MarkdownRenderRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarkdownRender",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/markdown"
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeMarkdownRenderRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeMarkdownRenderResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MarkdownRenderRaw invokes markdown/render-raw operation.
+//
+// You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or
+// `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored
+// Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain
+// format like a README.md file. Markdown content must be 400 KB or less.
+//
+// POST /markdown/raw
+func (c *Client) MarkdownRenderRaw(ctx context.Context, request MarkdownRenderRawReq) (res MarkdownRenderRawRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("markdown/render-raw"),
+	}
+	// Validate request before sending.
+	switch request := request.(type) {
+	case *MarkdownRenderRawReqEmptyBody:
+		// Validation is not needed for the empty body type.
+	case *MarkdownRenderRawReqTextPlain:
+		// Validation is not required for this type.
+	case *MarkdownRenderRawReqTextXMarkdown:
+		// Validation is not required for this type.
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "MarkdownRenderRaw",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/markdown/raw"
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeMarkdownRenderRawRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeMarkdownRenderRawResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // MetaGet invokes meta/get operation.
 //
 // Returns meta information about GitHub, including a list of GitHub's IP addresses. For more
@@ -31751,6 +31904,89 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 
 	stage = "DecodeResponse"
 	result, err := decodeMetaGetResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// MetaGetOctocat invokes meta/get-octocat operation.
+//
+// Get the octocat as ASCII art.
+//
+// GET /octocat
+func (c *Client) MetaGetOctocat(ctx context.Context, params MetaGetOctocatParams) (res MetaGetOctocatOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/get-octocat"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGetOctocat",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/octocat"
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "s" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "s",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.S.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeMetaGetOctocatResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69859,6 +70095,176 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 
 	stage = "DecodeResponse"
 	result, err := decodeReposUpdateWebhookConfigForRepoResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReposUploadReleaseAsset invokes repos/upload-release-asset operation.
+//
+// This endpoint makes use of [a Hypermedia relation](https://docs.github.
+// com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The
+// endpoint you call to upload release assets is specific to your release. Use the `upload_url`
+// returned in
+// the response of the [Create a release endpoint](https://docs.github.
+// com/rest/reference/repos#create-a-release) to upload a release asset.
+// You need to use an HTTP client which supports [SNI](http://en.wikipedia.
+// org/wiki/Server_Name_Indication) to make calls to this endpoint.
+// Most libraries will set the required `Content-Length` header automatically. Use the required
+// `Content-Type` header to provide the media type of the asset. For a list of media types, see
+// [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+// `application/zip`
+// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw
+// binary content of the asset as the request body. Everything else about the endpoint is the same as
+// the rest of the API. For example,
+// you'll still need to pass your authentication to be able to upload an asset.
+// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an
+// empty asset with a state of `starter`. It can be safely deleted.
+// **Notes:**
+// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and
+// leading or trailing periods. The "[List assets for a release](https://docs.github.
+// com/rest/reference/repos#list-assets-for-a-release)"
+// endpoint lists the renamed filenames. For more information and help, contact [GitHub
+// Support](https://support.github.com/contact?tags=dotcom-rest-api).
+// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an
+// error and must delete the old file before you can re-upload the new asset.
+//
+// POST /repos/{owner}/{repo}/releases/{release_id}/assets
+func (c *Client) ReposUploadReleaseAsset(ctx context.Context, request ReposUploadReleaseAssetReqWithContentType, params ReposUploadReleaseAssetParams) (res ReleaseAsset, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/upload-release-asset"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUploadReleaseAsset",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/repos/"
+	{
+		// Encode "owner" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "owner",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Owner))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/"
+	{
+		// Encode "repo" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "repo",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.StringToString(params.Repo))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/releases/"
+	{
+		// Encode "release_id" parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param:   "release_id",
+			Style:   uri.PathStyleSimple,
+			Explode: false,
+		})
+		if err := func() error {
+			return e.EncodeValue(conv.IntToString(params.ReleaseID))
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	u.Path += "/assets"
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "name" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(params.Name))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "label" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "label",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Label.Get(); ok {
+				return e.EncodeValue(conv.StringToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeReposUploadReleaseAssetRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeReposUploadReleaseAssetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

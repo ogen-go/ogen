@@ -1794,8 +1794,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'a': // Prefix: "arketplace_listing/"
-					if l := len("arketplace_listing/"); len(elem) >= l && elem[0:l] == "arketplace_listing/" {
+				case 'a': // Prefix: "ark"
+					if l := len("ark"); len(elem) >= l && elem[0:l] == "ark" {
 						elem = elem[l:]
 					} else {
 						break
@@ -1805,33 +1805,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 					switch elem[0] {
-					case 'a': // Prefix: "accounts/"
-						if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						// Param: "account_id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
-
-						if len(elem) == 0 {
-							// Leaf node.
-							switch r.Method {
-							case "GET":
-								s.handleAppsGetSubscriptionPlanForAccountRequest([1]string{
-									args[0],
-								}, w, r)
-							default:
-								s.notAllowed(w, r, "GET")
-							}
-
-							return
-						}
-					case 'p': // Prefix: "plans"
-						if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+					case 'd': // Prefix: "down"
+						if l := len("down"); len(elem) >= l && elem[0:l] == "down" {
 							elem = elem[l:]
 						} else {
 							break
@@ -1839,59 +1814,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						if len(elem) == 0 {
 							switch r.Method {
-							case "GET":
-								s.handleAppsListPlansRequest([0]string{}, w, r)
+							case "POST":
+								s.handleMarkdownRenderRequest([0]string{}, w, r)
 							default:
-								s.notAllowed(w, r, "GET")
+								s.notAllowed(w, r, "POST")
 							}
 
 							return
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/"
-							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						case '/': // Prefix: "/raw"
+							if l := len("/raw"); len(elem) >= l && elem[0:l] == "/raw" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "plan_id"
-							// Match until "/"
-							idx := strings.IndexByte(elem, '/')
-							if idx < 0 {
-								idx = len(elem)
-							}
-							args[0] = elem[:idx]
-							elem = elem[idx:]
-
 							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/accounts"
-								if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
-									elem = elem[l:]
-								} else {
-									break
+								// Leaf node.
+								switch r.Method {
+								case "POST":
+									s.handleMarkdownRenderRawRequest([0]string{}, w, r)
+								default:
+									s.notAllowed(w, r, "POST")
 								}
 
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "GET":
-										s.handleAppsListAccountsForPlanRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET")
-									}
-
-									return
-								}
+								return
 							}
 						}
-					case 's': // Prefix: "stubbed/"
-						if l := len("stubbed/"); len(elem) >= l && elem[0:l] == "stubbed/" {
+					case 'e': // Prefix: "etplace_listing/"
+						if l := len("etplace_listing/"); len(elem) >= l && elem[0:l] == "etplace_listing/" {
 							elem = elem[l:]
 						} else {
 							break
@@ -1917,7 +1869,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Leaf node.
 								switch r.Method {
 								case "GET":
-									s.handleAppsGetSubscriptionPlanForAccountStubbedRequest([1]string{
+									s.handleAppsGetSubscriptionPlanForAccountRequest([1]string{
 										args[0],
 									}, w, r)
 								default:
@@ -1936,7 +1888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							if len(elem) == 0 {
 								switch r.Method {
 								case "GET":
-									s.handleAppsListPlansStubbedRequest([0]string{}, w, r)
+									s.handleAppsListPlansRequest([0]string{}, w, r)
 								default:
 									s.notAllowed(w, r, "GET")
 								}
@@ -1975,7 +1927,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "GET":
-											s.handleAppsListAccountsForPlanStubbedRequest([1]string{
+											s.handleAppsListAccountsForPlanRequest([1]string{
 												args[0],
 											}, w, r)
 										default:
@@ -1983,6 +1935,103 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										return
+									}
+								}
+							}
+						case 's': // Prefix: "stubbed/"
+							if l := len("stubbed/"); len(elem) >= l && elem[0:l] == "stubbed/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "accounts/"
+								if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								// Param: "account_id"
+								// Leaf parameter
+								args[0] = elem
+								elem = ""
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleAppsGetSubscriptionPlanForAccountStubbedRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
+							case 'p': // Prefix: "plans"
+								if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch r.Method {
+									case "GET":
+										s.handleAppsListPlansStubbedRequest([0]string{}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "plan_id"
+									// Match until "/"
+									idx := strings.IndexByte(elem, '/')
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/accounts"
+										if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleAppsListAccountsForPlanStubbedRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
 									}
 								}
 							}
@@ -2165,8 +2214,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 'o': // Prefix: "org"
-				if l := len("org"); len(elem) >= l && elem[0:l] == "org" {
+			case 'o': // Prefix: "o"
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -2176,8 +2225,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'a': // Prefix: "anizations"
-					if l := len("anizations"); len(elem) >= l && elem[0:l] == "anizations" {
+				case 'c': // Prefix: "ctocat"
+					if l := len("ctocat"); len(elem) >= l && elem[0:l] == "ctocat" {
 						elem = elem[l:]
 					} else {
 						break
@@ -2187,55 +2236,73 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleOrgsListRequest([0]string{}, w, r)
+							s.handleMetaGetOctocatRequest([0]string{}, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
 
 						return
 					}
-				case 's': // Prefix: "s/"
-					if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+				case 'r': // Prefix: "rg"
+					if l := len("rg"); len(elem) >= l && elem[0:l] == "rg" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "org"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
 					if len(elem) == 0 {
-						switch r.Method {
-						case "GET":
-							s.handleOrgsGetRequest([1]string{
-								args[0],
-							}, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
-						}
-
-						return
+						break
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/"
-						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					case 'a': // Prefix: "anizations"
+						if l := len("anizations"); len(elem) >= l && elem[0:l] == "anizations" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleOrgsListRequest([0]string{}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+					case 's': // Prefix: "s/"
+						if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+							elem = elem[l:]
+						} else {
 							break
 						}
+
+						// Param: "org"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							switch r.Method {
+							case "GET":
+								s.handleOrgsGetRequest([1]string{
+									args[0],
+								}, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
 						switch elem[0] {
-						case 'a': // Prefix: "a"
-							if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 								elem = elem[l:]
 							} else {
 								break
@@ -2245,8 +2312,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 							switch elem[0] {
-							case 'c': // Prefix: "ctions/"
-								if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
@@ -2256,125 +2323,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch r.Method {
-										case "GET":
-											s.handleActionsGetGithubActionsPermissionsOrganizationRequest([1]string{
-												args[0],
-											}, w, r)
-										case "PUT":
-											s.handleActionsSetGithubActionsPermissionsOrganizationRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET,PUT")
-										}
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'r': // Prefix: "repositories"
-											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
-														args[0],
-													}, w, r)
-												case "PUT":
-													s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
-														args[0],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET,PUT")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "repository_id"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "DELETE":
-														s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-													case "PUT":
-														s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "DELETE,PUT")
-													}
-
-													return
-												}
-											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "GET":
-													s.handleActionsGetAllowedActionsOrganizationRequest([1]string{
-														args[0],
-													}, w, r)
-												case "PUT":
-													s.handleActionsSetAllowedActionsOrganizationRequest([1]string{
-														args[0],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET,PUT")
-												}
-
-												return
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
@@ -2384,8 +2334,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
@@ -2394,1443 +2344,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "GET":
-												s.handleActionsListSelfHostedRunnerGroupsForOrgRequest([1]string{
+												s.handleActionsGetGithubActionsPermissionsOrganizationRequest([1]string{
 													args[0],
-												}, w, r)
-											case "POST":
-												s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest([1]string{
-													args[0],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "GET,POST")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											// Param: "runner_group_id"
-											// Match until "/"
-											idx := strings.IndexByte(elem, '/')
-											if idx < 0 {
-												idx = len(elem)
-											}
-											args[1] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "DELETE":
-													s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "GET":
-													s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "PATCH":
-													s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "DELETE,GET,PATCH")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/r"
-												if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'e': // Prefix: "epositories"
-													if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "GET":
-															s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-														case "PUT":
-															s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-														default:
-															s.notAllowed(w, r, "GET,PUT")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "repository_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "DELETE":
-																s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															case "PUT":
-																s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															default:
-																s.notAllowed(w, r, "DELETE,PUT")
-															}
-
-															return
-														}
-													}
-												case 'u': // Prefix: "unners"
-													if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "GET":
-															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-														case "PUT":
-															s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-														default:
-															s.notAllowed(w, r, "GET,PUT")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "runner_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "DELETE":
-																s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															case "PUT":
-																s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															default:
-																s.notAllowed(w, r, "DELETE,PUT")
-															}
-
-															return
-														}
-													}
-												}
-											}
-										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "GET":
-												s.handleActionsListSelfHostedRunnersForOrgRequest([1]string{
-													args[0],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "GET")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "GET":
-														s.handleActionsListRunnerApplicationsForOrgRequest([1]string{
-															args[0],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "GET")
-													}
-
-													return
-												}
-											case 'r': // Prefix: "re"
-												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'g': // Prefix: "gistration-token"
-													if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf node.
-														switch r.Method {
-														case "POST":
-															s.handleActionsCreateRegistrationTokenForOrgRequest([1]string{
-																args[0],
-															}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-												case 'm': // Prefix: "move-token"
-													if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf node.
-														switch r.Method {
-														case "POST":
-															s.handleActionsCreateRemoveTokenForOrgRequest([1]string{
-																args[0],
-															}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-												}
-											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "DELETE":
-													s.handleActionsDeleteSelfHostedRunnerFromOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "GET":
-													s.handleActionsGetSelfHostedRunnerForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "DELETE,GET")
-												}
-
-												return
-											}
-										}
-									}
-								case 's': // Prefix: "secrets"
-									if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch r.Method {
-										case "GET":
-											s.handleActionsListOrgSecretsRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET")
-										}
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "public-key"
-											if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "GET":
-													s.handleActionsGetOrgPublicKeyRequest([1]string{
-														args[0],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET")
-												}
-
-												return
-											}
-										}
-										// Param: "secret_name"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx < 0 {
-											idx = len(elem)
-										}
-										args[1] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "DELETE":
-												s.handleActionsDeleteOrgSecretRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											case "GET":
-												s.handleActionsGetOrgSecretRequest([2]string{
-													args[0],
-													args[1],
 												}, w, r)
 											case "PUT":
-												s.handleActionsCreateOrUpdateOrgSecretRequest([2]string{
+												s.handleActionsSetGithubActionsPermissionsOrganizationRequest([1]string{
 													args[0],
-													args[1],
 												}, w, r)
 											default:
-												s.notAllowed(w, r, "DELETE,GET,PUT")
+												s.notAllowed(w, r, "GET,PUT")
 											}
 
 											return
 										}
 										switch elem[0] {
-										case '/': // Prefix: "/repositories"
-											if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleActionsListSelectedReposForOrgSecretRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "PUT":
-													s.handleActionsSetSelectedReposForOrgSecretRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET,PUT")
-												}
-
-												return
+												break
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 'r': // Prefix: "repositories"
+												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Param: "repository_id"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
 												if len(elem) == 0 {
-													// Leaf node.
 													switch r.Method {
-													case "DELETE":
-														s.handleActionsRemoveSelectedRepoFromOrgSecretRequest([3]string{
+													case "GET":
+														s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
 															args[0],
-															args[1],
-															args[2],
 														}, w, r)
 													case "PUT":
-														s.handleActionsAddSelectedRepoToOrgSecretRequest([3]string{
+														s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
 															args[0],
-															args[1],
-															args[2],
 														}, w, r)
 													default:
-														s.notAllowed(w, r, "DELETE,PUT")
-													}
-
-													return
-												}
-											}
-										}
-									}
-								}
-							case 'u': // Prefix: "udit-log"
-								if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "GET":
-										s.handleOrgsGetAuditLogRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET")
-									}
-
-									return
-								}
-							}
-						case 'b': // Prefix: "blocks"
-							if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch r.Method {
-								case "GET":
-									s.handleOrgsListBlockedUsersRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET")
-								}
-
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "DELETE":
-										s.handleOrgsUnblockUserRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									case "GET":
-										s.handleOrgsCheckBlockedUserRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									case "PUT":
-										s.handleOrgsBlockUserRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "DELETE,GET,PUT")
-									}
-
-									return
-								}
-							}
-						case 'c': // Prefix: "credential-authorizations"
-							if l := len("credential-authorizations"); len(elem) >= l && elem[0:l] == "credential-authorizations" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch r.Method {
-								case "GET":
-									s.handleOrgsListSamlSSOAuthorizationsRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET")
-								}
-
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "credential_id"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "DELETE":
-										s.handleOrgsRemoveSamlSSOAuthorizationRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "DELETE")
-									}
-
-									return
-								}
-							}
-						case 'e': // Prefix: "events"
-							if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								// Leaf node.
-								switch r.Method {
-								case "GET":
-									s.handleActivityListPublicOrgEventsRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET")
-								}
-
-								return
-							}
-						case 'f': // Prefix: "failed_invitations"
-							if l := len("failed_invitations"); len(elem) >= l && elem[0:l] == "failed_invitations" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								// Leaf node.
-								switch r.Method {
-								case "GET":
-									s.handleOrgsListFailedInvitationsRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET")
-								}
-
-								return
-							}
-						case 'h': // Prefix: "hooks"
-							if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch r.Method {
-								case "GET":
-									s.handleOrgsListWebhooksRequest([1]string{
-										args[0],
-									}, w, r)
-								case "POST":
-									s.handleOrgsCreateWebhookRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET,POST")
-								}
-
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "hook_id"
-								// Match until "/"
-								idx := strings.IndexByte(elem, '/')
-								if idx < 0 {
-									idx = len(elem)
-								}
-								args[1] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									switch r.Method {
-									case "DELETE":
-										s.handleOrgsDeleteWebhookRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									case "GET":
-										s.handleOrgsGetWebhookRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									case "PATCH":
-										s.handleOrgsUpdateWebhookRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "DELETE,GET,PATCH")
-									}
-
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "config"
-										if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf node.
-											switch r.Method {
-											case "GET":
-												s.handleOrgsGetWebhookConfigForOrgRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											case "PATCH":
-												s.handleOrgsUpdateWebhookConfigForOrgRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "GET,PATCH")
-											}
-
-											return
-										}
-									case 'd': // Prefix: "deliveries"
-										if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "GET":
-												s.handleOrgsListWebhookDeliveriesRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "GET")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											// Param: "delivery_id"
-											// Match until "/"
-											idx := strings.IndexByte(elem, '/')
-											if idx < 0 {
-												idx = len(elem)
-											}
-											args[2] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleOrgsGetWebhookDeliveryRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/attempts"
-												if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handleOrgsRedeliverWebhookDeliveryRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-											}
-										}
-									case 'p': // Prefix: "pings"
-										if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf node.
-											switch r.Method {
-											case "POST":
-												s.handleOrgsPingWebhookRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "i"
-							if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'n': // Prefix: "n"
-								if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 't': // Prefix: "teraction-limits"
-									if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										// Leaf node.
-										switch r.Method {
-										case "DELETE":
-											s.handleInteractionsRemoveRestrictionsForOrgRequest([1]string{
-												args[0],
-											}, w, r)
-										case "PUT":
-											s.handleInteractionsSetRestrictionsForOrgRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "DELETE,PUT")
-										}
-
-										return
-									}
-								case 'v': // Prefix: "vitations"
-									if l := len("vitations"); len(elem) >= l && elem[0:l] == "vitations" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch r.Method {
-										case "GET":
-											s.handleOrgsListPendingInvitationsRequest([1]string{
-												args[0],
-											}, w, r)
-										case "POST":
-											s.handleOrgsCreateInvitationRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET,POST")
-										}
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										// Param: "invitation_id"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx < 0 {
-											idx = len(elem)
-										}
-										args[1] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "DELETE":
-												s.handleOrgsCancelInvitationRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "DELETE")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/teams"
-											if l := len("/teams"); len(elem) >= l && elem[0:l] == "/teams" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "GET":
-													s.handleOrgsListInvitationTeamsRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET")
-												}
-
-												return
-											}
-										}
-									}
-								}
-							case 's': // Prefix: "ssues"
-								if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "GET":
-										s.handleIssuesListForOrgRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET")
-									}
-
-									return
-								}
-							}
-						case 'm': // Prefix: "m"
-							if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'e': // Prefix: "embers"
-								if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch r.Method {
-									case "GET":
-										s.handleOrgsListMembersRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET")
-									}
-
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args[1] = elem
-									elem = ""
-
-									if len(elem) == 0 {
-										// Leaf node.
-										switch r.Method {
-										case "DELETE":
-											s.handleOrgsRemoveMemberRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										case "GET":
-											s.handleOrgsCheckMembershipForUserRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "DELETE,GET")
-										}
-
-										return
-									}
-								case 'h': // Prefix: "hips/"
-									if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args[1] = elem
-									elem = ""
-
-									if len(elem) == 0 {
-										// Leaf node.
-										switch r.Method {
-										case "DELETE":
-											s.handleOrgsRemoveMembershipForUserRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										case "GET":
-											s.handleOrgsGetMembershipForUserRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										case "PUT":
-											s.handleOrgsSetMembershipForUserRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "DELETE,GET,PUT")
-										}
-
-										return
-									}
-								}
-							case 'i': // Prefix: "igrations"
-								if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch r.Method {
-									case "GET":
-										s.handleMigrationsListForOrgRequest([1]string{
-											args[0],
-										}, w, r)
-									case "POST":
-										s.handleMigrationsStartForOrgRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET,POST")
-									}
-
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "migration_id"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx < 0 {
-										idx = len(elem)
-									}
-									args[1] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										switch r.Method {
-										case "GET":
-											s.handleMigrationsGetStatusForOrgRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET")
-										}
-
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "archive"
-											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "DELETE":
-													s.handleMigrationsDeleteArchiveForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "GET":
-													s.handleMigrationsDownloadArchiveForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "DELETE,GET")
-												}
-
-												return
-											}
-										case 'r': // Prefix: "repos"
-											if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "repo_name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/lock"
-													if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf node.
-														switch r.Method {
-														case "DELETE":
-															s.handleMigrationsUnlockRepoForOrgRequest([3]string{
-																args[0],
-																args[1],
-																args[2],
-															}, w, r)
-														default:
-															s.notAllowed(w, r, "DELETE")
-														}
-
-														return
-													}
-												}
-											case 'i': // Prefix: "itories"
-												if l := len("itories"); len(elem) >= l && elem[0:l] == "itories" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "GET":
-														s.handleMigrationsListReposForOrgRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "GET")
-													}
-
-													return
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'o': // Prefix: "outside_collaborators"
-							if l := len("outside_collaborators"); len(elem) >= l && elem[0:l] == "outside_collaborators" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch r.Method {
-								case "GET":
-									s.handleOrgsListOutsideCollaboratorsRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET")
-								}
-
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "DELETE":
-										s.handleOrgsRemoveOutsideCollaboratorRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									case "PUT":
-										s.handleOrgsConvertMemberToOutsideCollaboratorRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "DELETE,PUT")
-									}
-
-									return
-								}
-							}
-						case 'p': // Prefix: "p"
-							if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "ackages"
-								if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch r.Method {
-									case "GET":
-										s.handlePackagesListPackagesForOrganizationRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET")
-									}
-
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "package_type"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx < 0 {
-										idx = len(elem)
-									}
-									args[1] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx < 0 {
-											idx = len(elem)
-										}
-										args[2] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "DELETE":
-												s.handlePackagesDeletePackageForOrgRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-											case "GET":
-												s.handlePackagesGetPackageForOrganizationRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-											default:
-												s.notAllowed(w, r, "DELETE,GET")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "restore"
-												if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handlePackagesRestorePackageForOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-											case 'v': // Prefix: "versions"
-												if l := len("versions"); len(elem) >= l && elem[0:l] == "versions" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch r.Method {
-													case "GET":
-														s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PUT")
 													}
 
 													return
@@ -3843,40 +2400,330 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													// Param: "package_version_id"
-													// Match until "/"
-													idx := strings.IndexByte(elem, '/')
-													if idx < 0 {
-														idx = len(elem)
-													}
-													args[3] = elem[:idx]
-													elem = elem[idx:]
+													// Param: "repository_id"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch r.Method {
 														case "DELETE":
-															s.handlePackagesDeletePackageVersionForOrgRequest([4]string{
+															s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
 																args[0],
 																args[1],
-																args[2],
-																args[3],
 															}, w, r)
-														case "GET":
-															s.handlePackagesGetPackageVersionForOrganizationRequest([4]string{
+														case "PUT":
+															s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest([2]string{
 																args[0],
 																args[1],
-																args[2],
-																args[3],
 															}, w, r)
 														default:
-															s.notAllowed(w, r, "DELETE,GET")
+															s.notAllowed(w, r, "DELETE,PUT")
 														}
 
 														return
 													}
+												}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleActionsGetAllowedActionsOrganizationRequest([1]string{
+															args[0],
+														}, w, r)
+													case "PUT":
+														s.handleActionsSetAllowedActionsOrganizationRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET,PUT")
+													}
+
+													return
+												}
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "GET":
+													s.handleActionsListSelfHostedRunnerGroupsForOrgRequest([1]string{
+														args[0],
+													}, w, r)
+												case "POST":
+													s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET,POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "DELETE":
+														s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "GET":
+														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "PATCH":
+														s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "DELETE,GET,PATCH")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/r"
+													if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
 													switch elem[0] {
-													case '/': // Prefix: "/restore"
-														if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+													case 'e': // Prefix: "epositories"
+														if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "GET":
+																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															case "PUT":
+																s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET,PUT")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "repository_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "DELETE":
+																	s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																case "PUT":
+																	s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "DELETE,PUT")
+																}
+
+																return
+															}
+														}
+													case 'u': // Prefix: "unners"
+														if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "GET":
+																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															case "PUT":
+																s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest([2]string{
+																	args[0],
+																	args[1],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "GET,PUT")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "runner_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "DELETE":
+																	s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																case "PUT":
+																	s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "DELETE,PUT")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "GET":
+													s.handleActionsListSelfHostedRunnersForOrgRequest([1]string{
+														args[0],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "GET")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleActionsListRunnerApplicationsForOrgRequest([1]string{
+																args[0],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
+
+														return
+													}
+												case 'r': // Prefix: "re"
+													if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'g': // Prefix: "gistration-token"
+														if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
 															elem = elem[l:]
 														} else {
 															break
@@ -3886,11 +2733,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handlePackagesRestorePackageVersionForOrgRequest([4]string{
+																s.handleActionsCreateRegistrationTokenForOrgRequest([1]string{
 																	args[0],
-																	args[1],
-																	args[2],
-																	args[3],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													case 'm': // Prefix: "move-token"
+														if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleActionsCreateRemoveTokenForOrgRequest([1]string{
+																	args[0],
 																}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
@@ -3900,36 +2764,203 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 													}
 												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "DELETE":
+														s.handleActionsDeleteSelfHostedRunnerFromOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "GET":
+														s.handleActionsGetSelfHostedRunnerForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "DELETE,GET")
+													}
+
+													return
+												}
+											}
+										}
+									case 's': // Prefix: "secrets"
+										if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "GET":
+												s.handleActionsListOrgSecretsRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public-key"
+												if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleActionsGetOrgPublicKeyRequest([1]string{
+															args[0],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+											}
+											// Param: "secret_name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "DELETE":
+													s.handleActionsDeleteOrgSecretRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												case "GET":
+													s.handleActionsGetOrgSecretRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												case "PUT":
+													s.handleActionsCreateOrUpdateOrgSecretRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "DELETE,GET,PUT")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/repositories"
+												if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "GET":
+														s.handleActionsListSelectedReposForOrgSecretRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "PUT":
+														s.handleActionsSetSelectedReposForOrgSecretRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET,PUT")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "repository_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "DELETE":
+															s.handleActionsRemoveSelectedRepoFromOrgSecretRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "PUT":
+															s.handleActionsAddSelectedRepoToOrgSecretRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "DELETE,PUT")
+														}
+
+														return
+													}
+												}
 											}
 										}
 									}
-								}
-							case 'r': // Prefix: "rojects"
-								if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									// Leaf node.
-									switch r.Method {
-									case "GET":
-										s.handleProjectsListForOrgRequest([1]string{
-											args[0],
-										}, w, r)
-									case "POST":
-										s.handleProjectsCreateForOrgRequest([1]string{
-											args[0],
-										}, w, r)
-									default:
-										s.notAllowed(w, r, "GET,POST")
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
+									} else {
+										break
 									}
 
-									return
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleOrgsGetAuditLogRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
 								}
-							case 'u': // Prefix: "ublic_members"
-								if l := len("ublic_members"); len(elem) >= l && elem[0:l] == "ublic_members" {
+							case 'b': // Prefix: "blocks"
+								if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
 									elem = elem[l:]
 								} else {
 									break
@@ -3938,7 +2969,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleOrgsListPublicMembersRequest([1]string{
+										s.handleOrgsListBlockedUsersRequest([1]string{
 											args[0],
 										}, w, r)
 									default:
@@ -3964,17 +2995,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf node.
 										switch r.Method {
 										case "DELETE":
-											s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest([2]string{
+											s.handleOrgsUnblockUserRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
 										case "GET":
-											s.handleOrgsCheckPublicMembershipForUserRequest([2]string{
+											s.handleOrgsCheckBlockedUserRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
 										case "PUT":
-											s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest([2]string{
+											s.handleOrgsBlockUserRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
@@ -3985,54 +3016,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 								}
-							}
-						case 'r': // Prefix: "repos"
-							if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								// Leaf node.
-								switch r.Method {
-								case "GET":
-									s.handleReposListForOrgRequest([1]string{
-										args[0],
-									}, w, r)
-								case "POST":
-									s.handleReposCreateInOrgRequest([1]string{
-										args[0],
-									}, w, r)
-								default:
-									s.notAllowed(w, r, "GET,POST")
-								}
-
-								return
-							}
-						case 's': // Prefix: "se"
-							if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'c': // Prefix: "cret-scanning/alerts"
-								if l := len("cret-scanning/alerts"); len(elem) >= l && elem[0:l] == "cret-scanning/alerts" {
+							case 'c': // Prefix: "credential-authorizations"
+								if l := len("credential-authorizations"); len(elem) >= l && elem[0:l] == "credential-authorizations" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleSecretScanningListAlertsForOrgRequest([1]string{
+										s.handleOrgsListSamlSSOAuthorizationsRequest([1]string{
 											args[0],
 										}, w, r)
 									default:
@@ -4040,93 +3034,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									return
-								}
-							case 't': // Prefix: "ttings/billing/"
-								if l := len("ttings/billing/"); len(elem) >= l && elem[0:l] == "ttings/billing/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
 								}
 								switch elem[0] {
-								case 'a': // Prefix: "actions"
-									if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
-									if len(elem) == 0 {
-										// Leaf node.
-										switch r.Method {
-										case "GET":
-											s.handleBillingGetGithubActionsBillingOrgRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET")
-										}
-
-										return
-									}
-								case 'p': // Prefix: "packages"
-									if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
-										elem = elem[l:]
-									} else {
-										break
-									}
+									// Param: "credential_id"
+									// Leaf parameter
+									args[1] = elem
+									elem = ""
 
 									if len(elem) == 0 {
 										// Leaf node.
 										switch r.Method {
-										case "GET":
-											s.handleBillingGetGithubPackagesBillingOrgRequest([1]string{
+										case "DELETE":
+											s.handleOrgsRemoveSamlSSOAuthorizationRequest([2]string{
 												args[0],
+												args[1],
 											}, w, r)
 										default:
-											s.notAllowed(w, r, "GET")
-										}
-
-										return
-									}
-								case 's': // Prefix: "shared-storage"
-									if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										// Leaf node.
-										switch r.Method {
-										case "GET":
-											s.handleBillingGetSharedStorageBillingOrgRequest([1]string{
-												args[0],
-											}, w, r)
-										default:
-											s.notAllowed(w, r, "GET")
+											s.notAllowed(w, r, "DELETE")
 										}
 
 										return
 									}
 								}
-							}
-						case 't': // Prefix: "team"
-							if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-sync/groups"
-								if l := len("-sync/groups"); len(elem) >= l && elem[0:l] == "-sync/groups" {
+							case 'e': // Prefix: "events"
+								if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
 									elem = elem[l:]
 								} else {
 									break
@@ -4136,7 +3074,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf node.
 									switch r.Method {
 									case "GET":
-										s.handleTeamsListIdpGroupsForOrgRequest([1]string{
+										s.handleActivityListPublicOrgEventsRequest([1]string{
 											args[0],
 										}, w, r)
 									default:
@@ -4145,8 +3083,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									return
 								}
-							case 's': // Prefix: "s"
-								if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+							case 'f': // Prefix: "failed_invitations"
+								if l := len("failed_invitations"); len(elem) >= l && elem[0:l] == "failed_invitations" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleOrgsListFailedInvitationsRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
+							case 'h': // Prefix: "hooks"
+								if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
 									elem = elem[l:]
 								} else {
 									break
@@ -4155,11 +3113,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								if len(elem) == 0 {
 									switch r.Method {
 									case "GET":
-										s.handleTeamsListRequest([1]string{
+										s.handleOrgsListWebhooksRequest([1]string{
 											args[0],
 										}, w, r)
 									case "POST":
-										s.handleTeamsCreateRequest([1]string{
+										s.handleOrgsCreateWebhookRequest([1]string{
 											args[0],
 										}, w, r)
 									default:
@@ -4176,7 +3134,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									// Param: "team_slug"
+									// Param: "hook_id"
 									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx < 0 {
@@ -4188,17 +3146,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									if len(elem) == 0 {
 										switch r.Method {
 										case "DELETE":
-											s.handleTeamsDeleteInOrgRequest([2]string{
+											s.handleOrgsDeleteWebhookRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
 										case "GET":
-											s.handleTeamsGetByNameRequest([2]string{
+											s.handleOrgsGetWebhookRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
 										case "PATCH":
-											s.handleTeamsUpdateInOrgRequest([2]string{
+											s.handleOrgsUpdateWebhookRequest([2]string{
 												args[0],
 												args[1],
 											}, w, r)
@@ -4220,284 +3178,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 										switch elem[0] {
-										case 'd': // Prefix: "discussions"
-											if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleTeamsListDiscussionsInOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												case "POST":
-													s.handleTeamsCreateDiscussionInOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET,POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "discussion_number"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													switch r.Method {
-													case "DELETE":
-														s.handleTeamsDeleteDiscussionInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "GET":
-														s.handleTeamsGetDiscussionInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "PATCH":
-														s.handleTeamsUpdateDiscussionInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "DELETE,GET,PATCH")
-													}
-
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "GET":
-																s.handleTeamsListDiscussionCommentsInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															case "POST":
-																s.handleTeamsCreateDiscussionCommentInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															default:
-																s.notAllowed(w, r, "GET,POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "comment_number"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx < 0 {
-																idx = len(elem)
-															}
-															args[3] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																switch r.Method {
-																case "DELETE":
-																	s.handleTeamsDeleteDiscussionCommentInOrgRequest([4]string{
-																		args[0],
-																		args[1],
-																		args[2],
-																		args[3],
-																	}, w, r)
-																case "GET":
-																	s.handleTeamsGetDiscussionCommentInOrgRequest([4]string{
-																		args[0],
-																		args[1],
-																		args[2],
-																		args[3],
-																	}, w, r)
-																case "PATCH":
-																	s.handleTeamsUpdateDiscussionCommentInOrgRequest([4]string{
-																		args[0],
-																		args[1],
-																		args[2],
-																		args[3],
-																	}, w, r)
-																default:
-																	s.notAllowed(w, r, "DELETE,GET,PATCH")
-																}
-
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/reactions"
-																if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	switch r.Method {
-																	case "GET":
-																		s.handleReactionsListForTeamDiscussionCommentInOrgRequest([4]string{
-																			args[0],
-																			args[1],
-																			args[2],
-																			args[3],
-																		}, w, r)
-																	case "POST":
-																		s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest([4]string{
-																			args[0],
-																			args[1],
-																			args[2],
-																			args[3],
-																		}, w, r)
-																	default:
-																		s.notAllowed(w, r, "GET,POST")
-																	}
-
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	// Param: "reaction_id"
-																	// Leaf parameter
-																	args[4] = elem
-																	elem = ""
-
-																	if len(elem) == 0 {
-																		// Leaf node.
-																		switch r.Method {
-																		case "DELETE":
-																			s.handleReactionsDeleteForTeamDiscussionCommentRequest([5]string{
-																				args[0],
-																				args[1],
-																				args[2],
-																				args[3],
-																				args[4],
-																			}, w, r)
-																		default:
-																			s.notAllowed(w, r, "DELETE")
-																		}
-
-																		return
-																	}
-																}
-															}
-														}
-													case 'r': // Prefix: "reactions"
-														if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "GET":
-																s.handleReactionsListForTeamDiscussionInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															case "POST":
-																s.handleReactionsCreateForTeamDiscussionInOrgRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-															default:
-																s.notAllowed(w, r, "GET,POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args[3] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "DELETE":
-																	s.handleReactionsDeleteForTeamDiscussionRequest([4]string{
-																		args[0],
-																		args[1],
-																		args[2],
-																		args[3],
-																	}, w, r)
-																default:
-																	s.notAllowed(w, r, "DELETE")
-																}
-
-																return
-															}
-														}
-													}
-												}
-											}
-										case 'i': // Prefix: "invitations"
-											if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
+										case 'c': // Prefix: "config"
+											if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
 												elem = elem[l:]
 											} else {
 												break
@@ -4507,18 +3189,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf node.
 												switch r.Method {
 												case "GET":
-													s.handleTeamsListPendingInvitationsInOrgRequest([2]string{
+													s.handleOrgsGetWebhookConfigForOrgRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												case "PATCH":
+													s.handleOrgsUpdateWebhookConfigForOrgRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
 												default:
-													s.notAllowed(w, r, "GET")
+													s.notAllowed(w, r, "GET,PATCH")
 												}
 
 												return
 											}
-										case 'm': // Prefix: "members"
-											if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+										case 'd': // Prefix: "deliveries"
+											if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
 												elem = elem[l:]
 											} else {
 												break
@@ -4527,68 +3214,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "GET":
-													s.handleTeamsListMembersInOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case 'h': // Prefix: "hips/"
-												if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "username"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "DELETE":
-														s.handleTeamsRemoveMembershipForUserInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "GET":
-														s.handleTeamsGetMembershipForUserInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "PUT":
-														s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "DELETE,GET,PUT")
-													}
-
-													return
-												}
-											}
-										case 'p': // Prefix: "projects"
-											if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleTeamsListProjectsInOrgRequest([2]string{
+													s.handleOrgsListWebhookDeliveriesRequest([2]string{
 														args[0],
 														args[1],
 													}, w, r)
@@ -4606,68 +3232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													break
 												}
 
-												// Param: "project_id"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "DELETE":
-														s.handleTeamsRemoveProjectInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "GET":
-														s.handleTeamsCheckPermissionsForProjectInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													case "PUT":
-														s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-													default:
-														s.notAllowed(w, r, "DELETE,GET,PUT")
-													}
-
-													return
-												}
-											}
-										case 'r': // Prefix: "repos"
-											if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "GET":
-													s.handleTeamsListReposInOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-												default:
-													s.notAllowed(w, r, "GET")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "owner"
+												// Param: "delivery_id"
 												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx < 0 {
@@ -4675,6 +3240,411 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												args[2] = elem[:idx]
 												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "GET":
+														s.handleOrgsGetWebhookDeliveryRequest([3]string{
+															args[0],
+															args[1],
+															args[2],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attempts"
+													if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleOrgsRedeliverWebhookDeliveryRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										case 'p': // Prefix: "pings"
+											if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf node.
+												switch r.Method {
+												case "POST":
+													s.handleOrgsPingWebhookRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "i"
+								if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "n"
+									if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 't': // Prefix: "teraction-limits"
+										if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "DELETE":
+												s.handleInteractionsRemoveRestrictionsForOrgRequest([1]string{
+													args[0],
+												}, w, r)
+											case "PUT":
+												s.handleInteractionsSetRestrictionsForOrgRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "DELETE,PUT")
+											}
+
+											return
+										}
+									case 'v': // Prefix: "vitations"
+										if l := len("vitations"); len(elem) >= l && elem[0:l] == "vitations" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "GET":
+												s.handleOrgsListPendingInvitationsRequest([1]string{
+													args[0],
+												}, w, r)
+											case "POST":
+												s.handleOrgsCreateInvitationRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET,POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "invitation_id"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "DELETE":
+													s.handleOrgsCancelInvitationRequest([2]string{
+														args[0],
+														args[1],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "DELETE")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/teams"
+												if l := len("/teams"); len(elem) >= l && elem[0:l] == "/teams" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "GET":
+														s.handleOrgsListInvitationTeamsRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+											}
+										}
+									}
+								case 's': // Prefix: "ssues"
+									if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleIssuesListForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+								}
+							case 'm': // Prefix: "m"
+								if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "embers"
+									if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "GET":
+											s.handleOrgsListMembersRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "DELETE":
+												s.handleOrgsRemoveMemberRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "GET":
+												s.handleOrgsCheckMembershipForUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "DELETE,GET")
+											}
+
+											return
+										}
+									case 'h': // Prefix: "hips/"
+										if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "DELETE":
+												s.handleOrgsRemoveMembershipForUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "GET":
+												s.handleOrgsGetMembershipForUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "PUT":
+												s.handleOrgsSetMembershipForUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "DELETE,GET,PUT")
+											}
+
+											return
+										}
+									}
+								case 'i': // Prefix: "igrations"
+									if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "GET":
+											s.handleMigrationsListForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										case "POST":
+											s.handleMigrationsStartForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET,POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "migration_id"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[1] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "GET":
+												s.handleMigrationsGetStatusForOrgRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "archive"
+												if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "DELETE":
+														s.handleMigrationsDeleteArchiveForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													case "GET":
+														s.handleMigrationsDownloadArchiveForOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "DELETE,GET")
+													}
+
+													return
+												}
+											case 'r': // Prefix: "repos"
+												if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+													elem = elem[l:]
+												} else {
+													break
+												}
 
 												if len(elem) == 0 {
 													break
@@ -4687,45 +3657,638 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													// Param: "repo"
-													// Leaf parameter
-													args[3] = elem
-													elem = ""
+													// Param: "repo_name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/lock"
+														if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "DELETE":
+																s.handleMigrationsUnlockRepoForOrgRequest([3]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "DELETE")
+															}
+
+															return
+														}
+													}
+												case 'i': // Prefix: "itories"
+													if l := len("itories"); len(elem) >= l && elem[0:l] == "itories" {
+														elem = elem[l:]
+													} else {
+														break
+													}
 
 													if len(elem) == 0 {
 														// Leaf node.
 														switch r.Method {
-														case "DELETE":
-															s.handleTeamsRemoveRepoInOrgRequest([4]string{
-																args[0],
-																args[1],
-																args[2],
-																args[3],
-															}, w, r)
 														case "GET":
-															s.handleTeamsCheckPermissionsForRepoInOrgRequest([4]string{
+															s.handleMigrationsListReposForOrgRequest([2]string{
 																args[0],
 																args[1],
-																args[2],
-																args[3],
-															}, w, r)
-														case "PUT":
-															s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest([4]string{
-																args[0],
-																args[1],
-																args[2],
-																args[3],
 															}, w, r)
 														default:
-															s.notAllowed(w, r, "DELETE,GET,PUT")
+															s.notAllowed(w, r, "GET")
 														}
 
 														return
 													}
 												}
 											}
-										case 't': // Prefix: "team"
-											if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+										}
+									}
+								}
+							case 'o': // Prefix: "outside_collaborators"
+								if l := len("outside_collaborators"); len(elem) >= l && elem[0:l] == "outside_collaborators" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch r.Method {
+									case "GET":
+										s.handleOrgsListOutsideCollaboratorsRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET")
+									}
+
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args[1] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "DELETE":
+											s.handleOrgsRemoveOutsideCollaboratorRequest([2]string{
+												args[0],
+												args[1],
+											}, w, r)
+										case "PUT":
+											s.handleOrgsConvertMemberToOutsideCollaboratorRequest([2]string{
+												args[0],
+												args[1],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "DELETE,PUT")
+										}
+
+										return
+									}
+								}
+							case 'p': // Prefix: "p"
+								if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "ackages"
+									if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "GET":
+											s.handlePackagesListPackagesForOrganizationRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[1] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "package_name"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[2] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "DELETE":
+													s.handlePackagesDeletePackageForOrgRequest([3]string{
+														args[0],
+														args[1],
+														args[2],
+													}, w, r)
+												case "GET":
+													s.handlePackagesGetPackageForOrganizationRequest([3]string{
+														args[0],
+														args[1],
+														args[2],
+													}, w, r)
+												default:
+													s.notAllowed(w, r, "DELETE,GET")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "restore"
+													if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handlePackagesRestorePackageForOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												case 'v': // Prefix: "versions"
+													if l := len("versions"); len(elem) >= l && elem[0:l] == "versions" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "GET":
+															s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "package_version_id"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[3] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "DELETE":
+																s.handlePackagesDeletePackageVersionForOrgRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+															case "GET":
+																s.handlePackagesGetPackageVersionForOrganizationRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "DELETE,GET")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handlePackagesRestorePackageVersionForOrgRequest([4]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																		args[3],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "rojects"
+									if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleProjectsListForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										case "POST":
+											s.handleProjectsCreateForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET,POST")
+										}
+
+										return
+									}
+								case 'u': // Prefix: "ublic_members"
+									if l := len("ublic_members"); len(elem) >= l && elem[0:l] == "ublic_members" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "GET":
+											s.handleOrgsListPublicMembersRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "DELETE":
+												s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "GET":
+												s.handleOrgsCheckPublicMembershipForUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "PUT":
+												s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "DELETE,GET,PUT")
+											}
+
+											return
+										}
+									}
+								}
+							case 'r': // Prefix: "repos"
+								if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									// Leaf node.
+									switch r.Method {
+									case "GET":
+										s.handleReposListForOrgRequest([1]string{
+											args[0],
+										}, w, r)
+									case "POST":
+										s.handleReposCreateInOrgRequest([1]string{
+											args[0],
+										}, w, r)
+									default:
+										s.notAllowed(w, r, "GET,POST")
+									}
+
+									return
+								}
+							case 's': // Prefix: "se"
+								if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "cret-scanning/alerts"
+									if l := len("cret-scanning/alerts"); len(elem) >= l && elem[0:l] == "cret-scanning/alerts" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleSecretScanningListAlertsForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+								case 't': // Prefix: "ttings/billing/"
+									if l := len("ttings/billing/"); len(elem) >= l && elem[0:l] == "ttings/billing/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "actions"
+										if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleBillingGetGithubActionsBillingOrgRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
+									case 'p': // Prefix: "packages"
+										if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleBillingGetGithubPackagesBillingOrgRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
+									case 's': // Prefix: "shared-storage"
+										if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf node.
+											switch r.Method {
+											case "GET":
+												s.handleBillingGetSharedStorageBillingOrgRequest([1]string{
+													args[0],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "GET")
+											}
+
+											return
+										}
+									}
+								}
+							case 't': // Prefix: "team"
+								if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-sync/groups"
+									if l := len("-sync/groups"); len(elem) >= l && elem[0:l] == "-sync/groups" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf node.
+										switch r.Method {
+										case "GET":
+											s.handleTeamsListIdpGroupsForOrgRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET")
+										}
+
+										return
+									}
+								case 's': // Prefix: "s"
+									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "GET":
+											s.handleTeamsListRequest([1]string{
+												args[0],
+											}, w, r)
+										case "POST":
+											s.handleTeamsCreateRequest([1]string{
+												args[0],
+											}, w, r)
+										default:
+											s.notAllowed(w, r, "GET,POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "team_slug"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[1] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "DELETE":
+												s.handleTeamsDeleteInOrgRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "GET":
+												s.handleTeamsGetByNameRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											case "PATCH":
+												s.handleTeamsUpdateInOrgRequest([2]string{
+													args[0],
+													args[1],
+												}, w, r)
+											default:
+												s.notAllowed(w, r, "DELETE,GET,PATCH")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 												elem = elem[l:]
 											} else {
 												break
@@ -4735,34 +4298,284 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 											switch elem[0] {
-											case '-': // Prefix: "-sync/group-mappings"
-												if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
+											case 'd': // Prefix: "discussions"
+												if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleTeamsListIdpGroupsInOrgRequest([2]string{
+														s.handleTeamsListDiscussionsInOrgRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
-													case "PATCH":
-														s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest([2]string{
+													case "POST":
+														s.handleTeamsCreateDiscussionInOrgRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
 													default:
-														s.notAllowed(w, r, "GET,PATCH")
+														s.notAllowed(w, r, "GET,POST")
 													}
 
 													return
 												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "discussion_number"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "DELETE":
+															s.handleTeamsDeleteDiscussionInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "GET":
+															s.handleTeamsGetDiscussionInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "PATCH":
+															s.handleTeamsUpdateDiscussionInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "DELETE,GET,PATCH")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "comments"
+															if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "GET":
+																	s.handleTeamsListDiscussionCommentsInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																case "POST":
+																	s.handleTeamsCreateDiscussionCommentInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET,POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "comment_number"
+																// Match until "/"
+																idx := strings.IndexByte(elem, '/')
+																if idx < 0 {
+																	idx = len(elem)
+																}
+																args[3] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	switch r.Method {
+																	case "DELETE":
+																		s.handleTeamsDeleteDiscussionCommentInOrgRequest([4]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																			args[3],
+																		}, w, r)
+																	case "GET":
+																		s.handleTeamsGetDiscussionCommentInOrgRequest([4]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																			args[3],
+																		}, w, r)
+																	case "PATCH":
+																		s.handleTeamsUpdateDiscussionCommentInOrgRequest([4]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																			args[3],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "DELETE,GET,PATCH")
+																	}
+
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch r.Method {
+																		case "GET":
+																			s.handleReactionsListForTeamDiscussionCommentInOrgRequest([4]string{
+																				args[0],
+																				args[1],
+																				args[2],
+																				args[3],
+																			}, w, r)
+																		case "POST":
+																			s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest([4]string{
+																				args[0],
+																				args[1],
+																				args[2],
+																				args[3],
+																			}, w, r)
+																		default:
+																			s.notAllowed(w, r, "GET,POST")
+																		}
+
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "reaction_id"
+																		// Leaf parameter
+																		args[4] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			// Leaf node.
+																			switch r.Method {
+																			case "DELETE":
+																				s.handleReactionsDeleteForTeamDiscussionCommentRequest([5]string{
+																					args[0],
+																					args[1],
+																					args[2],
+																					args[3],
+																					args[4],
+																				}, w, r)
+																			default:
+																				s.notAllowed(w, r, "DELETE")
+																			}
+
+																			return
+																		}
+																	}
+																}
+															}
+														case 'r': // Prefix: "reactions"
+															if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "GET":
+																	s.handleReactionsListForTeamDiscussionInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																case "POST":
+																	s.handleReactionsCreateForTeamDiscussionInOrgRequest([3]string{
+																		args[0],
+																		args[1],
+																		args[2],
+																	}, w, r)
+																default:
+																	s.notAllowed(w, r, "GET,POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "reaction_id"
+																// Leaf parameter
+																args[3] = elem
+																elem = ""
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "DELETE":
+																		s.handleReactionsDeleteForTeamDiscussionRequest([4]string{
+																			args[0],
+																			args[1],
+																			args[2],
+																			args[3],
+																		}, w, r)
+																	default:
+																		s.notAllowed(w, r, "DELETE")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 'i': // Prefix: "invitations"
+												if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
 													elem = elem[l:]
 												} else {
 													break
@@ -4772,7 +4585,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "GET":
-														s.handleTeamsListChildInOrgRequest([2]string{
+														s.handleTeamsListPendingInvitationsInOrgRequest([2]string{
 															args[0],
 															args[1],
 														}, w, r)
@@ -4781,6 +4594,272 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													return
+												}
+											case 'm': // Prefix: "members"
+												if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "GET":
+														s.handleTeamsListMembersInOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case 'h': // Prefix: "hips/"
+													if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "username"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "DELETE":
+															s.handleTeamsRemoveMembershipForUserInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "GET":
+															s.handleTeamsGetMembershipForUserInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "PUT":
+															s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "DELETE,GET,PUT")
+														}
+
+														return
+													}
+												}
+											case 'p': // Prefix: "projects"
+												if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "GET":
+														s.handleTeamsListProjectsInOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "project_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "DELETE":
+															s.handleTeamsRemoveProjectInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "GET":
+															s.handleTeamsCheckPermissionsForProjectInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														case "PUT":
+															s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest([3]string{
+																args[0],
+																args[1],
+																args[2],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "DELETE,GET,PUT")
+														}
+
+														return
+													}
+												}
+											case 'r': // Prefix: "repos"
+												if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "GET":
+														s.handleTeamsListReposInOrgRequest([2]string{
+															args[0],
+															args[1],
+														}, w, r)
+													default:
+														s.notAllowed(w, r, "GET")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "owner"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "repo"
+														// Leaf parameter
+														args[3] = elem
+														elem = ""
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "DELETE":
+																s.handleTeamsRemoveRepoInOrgRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+															case "GET":
+																s.handleTeamsCheckPermissionsForRepoInOrgRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+															case "PUT":
+																s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest([4]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																	args[3],
+																}, w, r)
+															default:
+																s.notAllowed(w, r, "DELETE,GET,PUT")
+															}
+
+															return
+														}
+													}
+												}
+											case 't': // Prefix: "team"
+												if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '-': // Prefix: "-sync/group-mappings"
+													if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleTeamsListIdpGroupsInOrgRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														case "PATCH":
+															s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET,PATCH")
+														}
+
+														return
+													}
+												case 's': // Prefix: "s"
+													if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "GET":
+															s.handleTeamsListChildInOrgRequest([2]string{
+																args[0],
+																args[1],
+															}, w, r)
+														default:
+															s.notAllowed(w, r, "GET")
+														}
+
+														return
+													}
 												}
 											}
 										}
@@ -10787,8 +10866,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	args[1],
 																	args[2],
 																}, w, r)
+															case "POST":
+																s.handleReposUploadReleaseAssetRequest([3]string{
+																	args[0],
+																	args[1],
+																	args[2],
+																}, w, r)
 															default:
-																s.notAllowed(w, r, "GET")
+																s.notAllowed(w, r, "GET,POST")
 															}
 
 															return
@@ -16366,8 +16451,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'a': // Prefix: "arketplace_listing/"
-					if l := len("arketplace_listing/"); len(elem) >= l && elem[0:l] == "arketplace_listing/" {
+				case 'a': // Prefix: "ark"
+					if l := len("ark"); len(elem) >= l && elem[0:l] == "ark" {
 						elem = elem[l:]
 					} else {
 						break
@@ -16377,33 +16462,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						break
 					}
 					switch elem[0] {
-					case 'a': // Prefix: "accounts/"
-						if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						// Param: "account_id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
-
-						if len(elem) == 0 {
-							switch method {
-							case "GET":
-								// Leaf: AppsGetSubscriptionPlanForAccount
-								r.name = "AppsGetSubscriptionPlanForAccount"
-								r.operationID = "apps/get-subscription-plan-for-account"
-								r.args = args
-								r.count = 1
-								return r, true
-							default:
-								return
-							}
-						}
-					case 'p': // Prefix: "plans"
-						if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+					case 'd': // Prefix: "down"
+						if l := len("down"); len(elem) >= l && elem[0:l] == "down" {
 							elem = elem[l:]
 						} else {
 							break
@@ -16411,9 +16471,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 
 						if len(elem) == 0 {
 							switch method {
-							case "GET":
-								r.name = "AppsListPlans"
-								r.operationID = "apps/list-plans"
+							case "POST":
+								r.name = "MarkdownRender"
+								r.operationID = "markdown/render"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16422,50 +16482,29 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 						switch elem[0] {
-						case '/': // Prefix: "/"
-							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						case '/': // Prefix: "/raw"
+							if l := len("/raw"); len(elem) >= l && elem[0:l] == "/raw" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Param: "plan_id"
-							// Match until "/"
-							idx := strings.IndexByte(elem, '/')
-							if idx < 0 {
-								idx = len(elem)
-							}
-							args[0] = elem[:idx]
-							elem = elem[idx:]
-
 							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/accounts"
-								if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: AppsListAccountsForPlan
-										r.name = "AppsListAccountsForPlan"
-										r.operationID = "apps/list-accounts-for-plan"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
+								switch method {
+								case "POST":
+									// Leaf: MarkdownRenderRaw
+									r.name = "MarkdownRenderRaw"
+									r.operationID = "markdown/render-raw"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
 								}
 							}
 						}
-					case 's': // Prefix: "stubbed/"
-						if l := len("stubbed/"); len(elem) >= l && elem[0:l] == "stubbed/" {
+					case 'e': // Prefix: "etplace_listing/"
+						if l := len("etplace_listing/"); len(elem) >= l && elem[0:l] == "etplace_listing/" {
 							elem = elem[l:]
 						} else {
 							break
@@ -16490,9 +16529,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									// Leaf: AppsGetSubscriptionPlanForAccountStubbed
-									r.name = "AppsGetSubscriptionPlanForAccountStubbed"
-									r.operationID = "apps/get-subscription-plan-for-account-stubbed"
+									// Leaf: AppsGetSubscriptionPlanForAccount
+									r.name = "AppsGetSubscriptionPlanForAccount"
+									r.operationID = "apps/get-subscription-plan-for-account"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -16510,8 +16549,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "AppsListPlansStubbed"
-									r.operationID = "apps/list-plans-stubbed"
+									r.name = "AppsListPlans"
+									r.operationID = "apps/list-plans"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -16550,14 +16589,113 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											// Leaf: AppsListAccountsForPlanStubbed
-											r.name = "AppsListAccountsForPlanStubbed"
-											r.operationID = "apps/list-accounts-for-plan-stubbed"
+											// Leaf: AppsListAccountsForPlan
+											r.name = "AppsListAccountsForPlan"
+											r.operationID = "apps/list-accounts-for-plan"
 											r.args = args
 											r.count = 1
 											return r, true
 										default:
 											return
+										}
+									}
+								}
+							}
+						case 's': // Prefix: "stubbed/"
+							if l := len("stubbed/"); len(elem) >= l && elem[0:l] == "stubbed/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "accounts/"
+								if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								// Param: "account_id"
+								// Leaf parameter
+								args[0] = elem
+								elem = ""
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										// Leaf: AppsGetSubscriptionPlanForAccountStubbed
+										r.name = "AppsGetSubscriptionPlanForAccountStubbed"
+										r.operationID = "apps/get-subscription-plan-for-account-stubbed"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+							case 'p': // Prefix: "plans"
+								if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "AppsListPlansStubbed"
+										r.operationID = "apps/list-plans-stubbed"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "plan_id"
+									// Match until "/"
+									idx := strings.IndexByte(elem, '/')
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[0] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/accounts"
+										if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "GET":
+												// Leaf: AppsListAccountsForPlanStubbed
+												r.name = "AppsListAccountsForPlanStubbed"
+												r.operationID = "apps/list-accounts-for-plan-stubbed"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
 										}
 									}
 								}
@@ -16756,8 +16894,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 'o': // Prefix: "org"
-				if l := len("org"); len(elem) >= l && elem[0:l] == "org" {
+			case 'o': // Prefix: "o"
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -16767,8 +16905,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'a': // Prefix: "anizations"
-					if l := len("anizations"); len(elem) >= l && elem[0:l] == "anizations" {
+				case 'c': // Prefix: "ctocat"
+					if l := len("ctocat"); len(elem) >= l && elem[0:l] == "ctocat" {
 						elem = elem[l:]
 					} else {
 						break
@@ -16777,9 +16915,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							// Leaf: OrgsList
-							r.name = "OrgsList"
-							r.operationID = "orgs/list"
+							// Leaf: MetaGetOctocat
+							r.name = "MetaGetOctocat"
+							r.operationID = "meta/get-octocat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16787,48 +16925,68 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							return
 						}
 					}
-				case 's': // Prefix: "s/"
-					if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+				case 'r': // Prefix: "rg"
+					if l := len("rg"); len(elem) >= l && elem[0:l] == "rg" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Param: "org"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
 					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							r.name = "OrgsGet"
-							r.operationID = "orgs/get"
-							r.args = args
-							r.count = 1
-							return r, true
-						default:
-							return
-						}
+						break
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/"
-						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					case 'a': // Prefix: "anizations"
+						if l := len("anizations"); len(elem) >= l && elem[0:l] == "anizations" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: OrgsList
+								r.name = "OrgsList"
+								r.operationID = "orgs/list"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+					case 's': // Prefix: "s/"
+						if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+							elem = elem[l:]
+						} else {
 							break
 						}
+
+						// Param: "org"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								r.name = "OrgsGet"
+								r.operationID = "orgs/get"
+								r.args = args
+								r.count = 1
+								return r, true
+							default:
+								return
+							}
+						}
 						switch elem[0] {
-						case 'a': // Prefix: "a"
-							if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+						case '/': // Prefix: "/"
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 								elem = elem[l:]
 							} else {
 								break
@@ -16838,8 +16996,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								break
 							}
 							switch elem[0] {
-							case 'c': // Prefix: "ctions/"
-								if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+							case 'a': // Prefix: "a"
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
 									elem = elem[l:]
 								} else {
 									break
@@ -16849,133 +17007,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									break
 								}
 								switch elem[0] {
-								case 'p': // Prefix: "permissions"
-									if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch method {
-										case "GET":
-											r.name = "ActionsGetGithubActionsPermissionsOrganization"
-											r.operationID = "actions/get-github-actions-permissions-organization"
-											r.args = args
-											r.count = 1
-											return r, true
-										case "PUT":
-											r.name = "ActionsSetGithubActionsPermissionsOrganization"
-											r.operationID = "actions/set-github-actions-permissions-organization"
-											r.args = args
-											r.count = 1
-											return r, true
-										default:
-											return
-										}
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'r': // Prefix: "repositories"
-											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
-													r.operationID = "actions/list-selected-repositories-enabled-github-actions-organization"
-													r.args = args
-													r.count = 1
-													return r, true
-												case "PUT":
-													r.name = "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization"
-													r.operationID = "actions/set-selected-repositories-enabled-github-actions-organization"
-													r.args = args
-													r.count = 1
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "repository_id"
-												// Leaf parameter
-												args[1] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													switch method {
-													case "DELETE":
-														// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
-														r.name = "ActionsDisableSelectedRepositoryGithubActionsOrganization"
-														r.operationID = "actions/disable-selected-repository-github-actions-organization"
-														r.args = args
-														r.count = 2
-														return r, true
-													case "PUT":
-														// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
-														r.name = "ActionsEnableSelectedRepositoryGithubActionsOrganization"
-														r.operationID = "actions/enable-selected-repository-github-actions-organization"
-														r.args = args
-														r.count = 2
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										case 's': // Prefix: "selected-actions"
-											if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													// Leaf: ActionsGetAllowedActionsOrganization
-													r.name = "ActionsGetAllowedActionsOrganization"
-													r.operationID = "actions/get-allowed-actions-organization"
-													r.args = args
-													r.count = 1
-													return r, true
-												case "PUT":
-													// Leaf: ActionsSetAllowedActionsOrganization
-													r.name = "ActionsSetAllowedActionsOrganization"
-													r.operationID = "actions/set-allowed-actions-organization"
-													r.args = args
-													r.count = 1
-													return r, true
-												default:
-													return
-												}
-											}
-										}
-									}
-								case 'r': // Prefix: "runner"
-									if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+								case 'c': // Prefix: "ctions/"
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
 										elem = elem[l:]
 									} else {
 										break
@@ -16985,8 +17018,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										break
 									}
 									switch elem[0] {
-									case '-': // Prefix: "-groups"
-										if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+									case 'p': // Prefix: "permissions"
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
 											elem = elem[l:]
 										} else {
 											break
@@ -16995,14 +17028,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
-												r.operationID = "actions/list-self-hosted-runner-groups-for-org"
+												r.name = "ActionsGetGithubActionsPermissionsOrganization"
+												r.operationID = "actions/get-github-actions-permissions-organization"
 												r.args = args
 												r.count = 1
 												return r, true
-											case "POST":
-												r.name = "ActionsCreateSelfHostedRunnerGroupForOrg"
-												r.operationID = "actions/create-self-hosted-runner-group-for-org"
+											case "PUT":
+												r.name = "ActionsSetGithubActionsPermissionsOrganization"
+												r.operationID = "actions/set-github-actions-permissions-organization"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17018,7 +17051,492 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												break
 											}
 
-											// Param: "runner_group_id"
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repositories"
+												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
+														r.operationID = "actions/list-selected-repositories-enabled-github-actions-organization"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PUT":
+														r.name = "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization"
+														r.operationID = "actions/set-selected-repositories-enabled-github-actions-organization"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "repository_id"
+													// Leaf parameter
+													args[1] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														switch method {
+														case "DELETE":
+															// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
+															r.name = "ActionsDisableSelectedRepositoryGithubActionsOrganization"
+															r.operationID = "actions/disable-selected-repository-github-actions-organization"
+															r.args = args
+															r.count = 2
+															return r, true
+														case "PUT":
+															// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
+															r.name = "ActionsEnableSelectedRepositoryGithubActionsOrganization"
+															r.operationID = "actions/enable-selected-repository-github-actions-organization"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 's': // Prefix: "selected-actions"
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														// Leaf: ActionsGetAllowedActionsOrganization
+														r.name = "ActionsGetAllowedActionsOrganization"
+														r.operationID = "actions/get-allowed-actions-organization"
+														r.args = args
+														r.count = 1
+														return r, true
+													case "PUT":
+														// Leaf: ActionsSetAllowedActionsOrganization
+														r.name = "ActionsSetAllowedActionsOrganization"
+														r.operationID = "actions/set-allowed-actions-organization"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "GET":
+													r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
+													r.operationID = "actions/list-self-hosted-runner-groups-for-org"
+													r.args = args
+													r.count = 1
+													return r, true
+												case "POST":
+													r.name = "ActionsCreateSelfHostedRunnerGroupForOrg"
+													r.operationID = "actions/create-self-hosted-runner-group-for-org"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[1] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													switch method {
+													case "DELETE":
+														r.name = "ActionsDeleteSelfHostedRunnerGroupFromOrg"
+														r.operationID = "actions/delete-self-hosted-runner-group-from-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "GET":
+														r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+														r.operationID = "actions/get-self-hosted-runner-group-for-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = "ActionsUpdateSelfHostedRunnerGroupForOrg"
+														r.operationID = "actions/update-self-hosted-runner-group-for-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/r"
+													if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'e': // Prefix: "epositories"
+														if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "GET":
+																r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.operationID = "actions/list-repo-access-to-self-hosted-runner-group-in-org"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PUT":
+																r.name = "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.operationID = "actions/set-repo-access-to-self-hosted-runner-group-in-org"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "repository_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																switch method {
+																case "DELETE":
+																	// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
+																	r.name = "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg"
+																	r.operationID = "actions/remove-repo-access-to-self-hosted-runner-group-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																case "PUT":
+																	// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
+																	r.name = "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg"
+																	r.operationID = "actions/add-repo-access-to-self-hosted-runner-group-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'u': // Prefix: "unners"
+														if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "GET":
+																r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+																r.operationID = "actions/list-self-hosted-runners-in-group-for-org"
+																r.args = args
+																r.count = 2
+																return r, true
+															case "PUT":
+																r.name = "ActionsSetSelfHostedRunnersInGroupForOrg"
+																r.operationID = "actions/set-self-hosted-runners-in-group-for-org"
+																r.args = args
+																r.count = 2
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															// Param: "runner_id"
+															// Leaf parameter
+															args[2] = elem
+															elem = ""
+
+															if len(elem) == 0 {
+																switch method {
+																case "DELETE":
+																	// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
+																	r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
+																	r.operationID = "actions/remove-self-hosted-runner-from-group-for-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																case "PUT":
+																	// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
+																	r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
+																	r.operationID = "actions/add-self-hosted-runner-to-group-for-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "GET":
+													r.name = "ActionsListSelfHostedRunnersForOrg"
+													r.operationID = "actions/list-self-hosted-runners-for-org"
+													r.args = args
+													r.count = 1
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "GET":
+															// Leaf: ActionsListRunnerApplicationsForOrg
+															r.name = "ActionsListRunnerApplicationsForOrg"
+															r.operationID = "actions/list-runner-applications-for-org"
+															r.args = args
+															r.count = 1
+															return r, true
+														default:
+															return
+														}
+													}
+												case 'r': // Prefix: "re"
+													if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'g': // Prefix: "gistration-token"
+														if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: ActionsCreateRegistrationTokenForOrg
+																r.name = "ActionsCreateRegistrationTokenForOrg"
+																r.operationID = "actions/create-registration-token-for-org"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
+														}
+													case 'm': // Prefix: "move-token"
+														if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: ActionsCreateRemoveTokenForOrg
+																r.name = "ActionsCreateRemoveTokenForOrg"
+																r.operationID = "actions/create-remove-token-for-org"
+																r.args = args
+																r.count = 1
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args[1] = elem
+												elem = ""
+
+												if len(elem) == 0 {
+													switch method {
+													case "DELETE":
+														// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
+														r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
+														r.operationID = "actions/delete-self-hosted-runner-from-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "GET":
+														// Leaf: ActionsGetSelfHostedRunnerForOrg
+														r.name = "ActionsGetSelfHostedRunnerForOrg"
+														r.operationID = "actions/get-self-hosted-runner-for-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										}
+									case 's': // Prefix: "secrets"
+										if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "GET":
+												r.name = "ActionsListOrgSecrets"
+												r.operationID = "actions/list-org-secrets"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public-key"
+												if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														// Leaf: ActionsGetOrgPublicKey
+														r.name = "ActionsGetOrgPublicKey"
+														r.operationID = "actions/get-org-public-key"
+														r.args = args
+														r.count = 1
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+											// Param: "secret_name"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx < 0 {
@@ -17030,20 +17548,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "DELETE":
-													r.name = "ActionsDeleteSelfHostedRunnerGroupFromOrg"
-													r.operationID = "actions/delete-self-hosted-runner-group-from-org"
+													r.name = "ActionsDeleteOrgSecret"
+													r.operationID = "actions/delete-org-secret"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
-													r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
-													r.operationID = "actions/get-self-hosted-runner-group-for-org"
+													r.name = "ActionsGetOrgSecret"
+													r.operationID = "actions/get-org-secret"
 													r.args = args
 													r.count = 2
 													return r, true
-												case "PATCH":
-													r.name = "ActionsUpdateSelfHostedRunnerGroupForOrg"
-													r.operationID = "actions/update-self-hosted-runner-group-for-org"
+												case "PUT":
+													r.name = "ActionsCreateOrUpdateOrgSecret"
+													r.operationID = "actions/create-or-update-org-secret"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17052,140 +17570,485 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/r"
-												if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+											case '/': // Prefix: "/repositories"
+												if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													break
+													switch method {
+													case "GET":
+														r.name = "ActionsListSelectedReposForOrgSecret"
+														r.operationID = "actions/list-selected-repos-for-org-secret"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PUT":
+														r.name = "ActionsSetSelectedReposForOrgSecret"
+														r.operationID = "actions/set-selected-repos-for-org-secret"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
 												}
 												switch elem[0] {
-												case 'e': // Prefix: "epositories"
-													if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 														elem = elem[l:]
 													} else {
 														break
 													}
 
-													if len(elem) == 0 {
-														switch method {
-														case "GET":
-															r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
-															r.operationID = "actions/list-repo-access-to-self-hosted-runner-group-in-org"
-															r.args = args
-															r.count = 2
-															return r, true
-														case "PUT":
-															r.name = "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg"
-															r.operationID = "actions/set-repo-access-to-self-hosted-runner-group-in-org"
-															r.args = args
-															r.count = 2
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "repository_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															switch method {
-															case "DELETE":
-																// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
-																r.name = "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg"
-																r.operationID = "actions/remove-repo-access-to-self-hosted-runner-group-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															case "PUT":
-																// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
-																r.name = "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg"
-																r.operationID = "actions/add-repo-access-to-self-hosted-runner-group-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															default:
-																return
-															}
-														}
-													}
-												case 'u': // Prefix: "unners"
-													if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
-														elem = elem[l:]
-													} else {
-														break
-													}
+													// Param: "repository_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
 
 													if len(elem) == 0 {
 														switch method {
-														case "GET":
-															r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
-															r.operationID = "actions/list-self-hosted-runners-in-group-for-org"
+														case "DELETE":
+															// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
+															r.name = "ActionsRemoveSelectedRepoFromOrgSecret"
+															r.operationID = "actions/remove-selected-repo-from-org-secret"
 															r.args = args
-															r.count = 2
+															r.count = 3
 															return r, true
 														case "PUT":
-															r.name = "ActionsSetSelfHostedRunnersInGroupForOrg"
-															r.operationID = "actions/set-self-hosted-runners-in-group-for-org"
+															// Leaf: ActionsAddSelectedRepoToOrgSecret
+															r.name = "ActionsAddSelectedRepoToOrgSecret"
+															r.operationID = "actions/add-selected-repo-to-org-secret"
 															r.args = args
-															r.count = 2
+															r.count = 3
 															return r, true
 														default:
 															return
-														}
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														// Param: "runner_id"
-														// Leaf parameter
-														args[2] = elem
-														elem = ""
-
-														if len(elem) == 0 {
-															switch method {
-															case "DELETE":
-																// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
-																r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
-																r.operationID = "actions/remove-self-hosted-runner-from-group-for-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															case "PUT":
-																// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
-																r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
-																r.operationID = "actions/add-self-hosted-runner-to-group-for-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															default:
-																return
-															}
 														}
 													}
 												}
 											}
 										}
-									case 's': // Prefix: "s"
-										if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+									}
+								case 'u': // Prefix: "udit-log"
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											// Leaf: OrgsGetAuditLog
+											r.name = "OrgsGetAuditLog"
+											r.operationID = "orgs/get-audit-log"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'b': // Prefix: "blocks"
+								if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "OrgsListBlockedUsers"
+										r.operationID = "orgs/list-blocked-users"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args[1] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										switch method {
+										case "DELETE":
+											// Leaf: OrgsUnblockUser
+											r.name = "OrgsUnblockUser"
+											r.operationID = "orgs/unblock-user"
+											r.args = args
+											r.count = 2
+											return r, true
+										case "GET":
+											// Leaf: OrgsCheckBlockedUser
+											r.name = "OrgsCheckBlockedUser"
+											r.operationID = "orgs/check-blocked-user"
+											r.args = args
+											r.count = 2
+											return r, true
+										case "PUT":
+											// Leaf: OrgsBlockUser
+											r.name = "OrgsBlockUser"
+											r.operationID = "orgs/block-user"
+											r.args = args
+											r.count = 2
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'c': // Prefix: "credential-authorizations"
+								if l := len("credential-authorizations"); len(elem) >= l && elem[0:l] == "credential-authorizations" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "OrgsListSamlSSOAuthorizations"
+										r.operationID = "orgs/list-saml-sso-authorizations"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "credential_id"
+									// Leaf parameter
+									args[1] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										switch method {
+										case "DELETE":
+											// Leaf: OrgsRemoveSamlSSOAuthorization
+											r.name = "OrgsRemoveSamlSSOAuthorization"
+											r.operationID = "orgs/remove-saml-sso-authorization"
+											r.args = args
+											r.count = 2
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'e': // Prefix: "events"
+								if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										// Leaf: ActivityListPublicOrgEvents
+										r.name = "ActivityListPublicOrgEvents"
+										r.operationID = "activity/list-public-org-events"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+							case 'f': // Prefix: "failed_invitations"
+								if l := len("failed_invitations"); len(elem) >= l && elem[0:l] == "failed_invitations" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										// Leaf: OrgsListFailedInvitations
+										r.name = "OrgsListFailedInvitations"
+										r.operationID = "orgs/list-failed-invitations"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+							case 'h': // Prefix: "hooks"
+								if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "OrgsListWebhooks"
+										r.operationID = "orgs/list-webhooks"
+										r.args = args
+										r.count = 1
+										return r, true
+									case "POST":
+										r.name = "OrgsCreateWebhook"
+										r.operationID = "orgs/create-webhook"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "hook_id"
+									// Match until "/"
+									idx := strings.IndexByte(elem, '/')
+									if idx < 0 {
+										idx = len(elem)
+									}
+									args[1] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										switch method {
+										case "DELETE":
+											r.name = "OrgsDeleteWebhook"
+											r.operationID = "orgs/delete-webhook"
+											r.args = args
+											r.count = 2
+											return r, true
+										case "GET":
+											r.name = "OrgsGetWebhook"
+											r.operationID = "orgs/get-webhook"
+											r.args = args
+											r.count = 2
+											return r, true
+										case "PATCH":
+											r.name = "OrgsUpdateWebhook"
+											r.operationID = "orgs/update-webhook"
+											r.args = args
+											r.count = 2
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "config"
+											if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "GET":
+													// Leaf: OrgsGetWebhookConfigForOrg
+													r.name = "OrgsGetWebhookConfigForOrg"
+													r.operationID = "orgs/get-webhook-config-for-org"
+													r.args = args
+													r.count = 2
+													return r, true
+												case "PATCH":
+													// Leaf: OrgsUpdateWebhookConfigForOrg
+													r.name = "OrgsUpdateWebhookConfigForOrg"
+													r.operationID = "orgs/update-webhook-config-for-org"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
+											}
+										case 'd': // Prefix: "deliveries"
+											if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "GET":
+													r.name = "OrgsListWebhookDeliveries"
+													r.operationID = "orgs/list-webhook-deliveries"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												// Param: "delivery_id"
+												// Match until "/"
+												idx := strings.IndexByte(elem, '/')
+												if idx < 0 {
+													idx = len(elem)
+												}
+												args[2] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														r.name = "OrgsGetWebhookDelivery"
+														r.operationID = "orgs/get-webhook-delivery"
+														r.args = args
+														r.count = 3
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attempts"
+													if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: OrgsRedeliverWebhookDelivery
+															r.name = "OrgsRedeliverWebhookDelivery"
+															r.operationID = "orgs/redeliver-webhook-delivery"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										case 'p': // Prefix: "pings"
+											if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													// Leaf: OrgsPingWebhook
+													r.name = "OrgsPingWebhook"
+													r.operationID = "orgs/ping-webhook"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "i"
+								if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "n"
+									if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 't': // Prefix: "teraction-limits"
+										if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "DELETE":
+												// Leaf: InteractionsRemoveRestrictionsForOrg
+												r.name = "InteractionsRemoveRestrictionsForOrg"
+												r.operationID = "interactions/remove-restrictions-for-org"
+												r.args = args
+												r.count = 1
+												return r, true
+											case "PUT":
+												// Leaf: InteractionsSetRestrictionsForOrg
+												r.name = "InteractionsSetRestrictionsForOrg"
+												r.operationID = "interactions/set-restrictions-for-org"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
+										}
+									case 'v': // Prefix: "vitations"
+										if l := len("vitations"); len(elem) >= l && elem[0:l] == "vitations" {
 											elem = elem[l:]
 										} else {
 											break
@@ -17194,8 +18057,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ActionsListSelfHostedRunnersForOrg"
-												r.operationID = "actions/list-self-hosted-runners-for-org"
+												r.name = "OrgsListPendingInvitations"
+												r.operationID = "orgs/list-pending-invitations"
+												r.args = args
+												r.count = 1
+												return r, true
+											case "POST":
+												r.name = "OrgsCreateInvitation"
+												r.operationID = "orgs/create-invitation"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17211,12 +18080,30 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												break
 											}
 
+											// Param: "invitation_id"
+											// Match until "/"
+											idx := strings.IndexByte(elem, '/')
+											if idx < 0 {
+												idx = len(elem)
+											}
+											args[1] = elem[:idx]
+											elem = elem[idx:]
+
 											if len(elem) == 0 {
-												break
+												switch method {
+												case "DELETE":
+													r.name = "OrgsCancelInvitation"
+													r.operationID = "orgs/cancel-invitation"
+													r.args = args
+													r.count = 2
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
-											case 'd': // Prefix: "downloads"
-												if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+											case '/': // Prefix: "/teams"
+												if l := len("/teams"); len(elem) >= l && elem[0:l] == "/teams" {
 													elem = elem[l:]
 												} else {
 													break
@@ -17225,98 +18112,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														// Leaf: ActionsListRunnerApplicationsForOrg
-														r.name = "ActionsListRunnerApplicationsForOrg"
-														r.operationID = "actions/list-runner-applications-for-org"
+														// Leaf: OrgsListInvitationTeams
+														r.name = "OrgsListInvitationTeams"
+														r.operationID = "orgs/list-invitation-teams"
 														r.args = args
-														r.count = 1
+														r.count = 2
 														return r, true
 													default:
 														return
 													}
 												}
-											case 'r': // Prefix: "re"
-												if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'g': // Prefix: "gistration-token"
-													if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															// Leaf: ActionsCreateRegistrationTokenForOrg
-															r.name = "ActionsCreateRegistrationTokenForOrg"
-															r.operationID = "actions/create-registration-token-for-org"
-															r.args = args
-															r.count = 1
-															return r, true
-														default:
-															return
-														}
-													}
-												case 'm': // Prefix: "move-token"
-													if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															// Leaf: ActionsCreateRemoveTokenForOrg
-															r.name = "ActionsCreateRemoveTokenForOrg"
-															r.operationID = "actions/create-remove-token-for-org"
-															r.args = args
-															r.count = 1
-															return r, true
-														default:
-															return
-														}
-													}
-												}
-											}
-											// Param: "runner_id"
-											// Leaf parameter
-											args[1] = elem
-											elem = ""
-
-											if len(elem) == 0 {
-												switch method {
-												case "DELETE":
-													// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
-													r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
-													r.operationID = "actions/delete-self-hosted-runner-from-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												case "GET":
-													// Leaf: ActionsGetSelfHostedRunnerForOrg
-													r.name = "ActionsGetSelfHostedRunnerForOrg"
-													r.operationID = "actions/get-self-hosted-runner-for-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
 											}
 										}
 									}
-								case 's': // Prefix: "secrets"
-									if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+								case 's': // Prefix: "ssues"
+									if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
 										elem = elem[l:]
 									} else {
 										break
@@ -17325,8 +18135,40 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ActionsListOrgSecrets"
-											r.operationID = "actions/list-org-secrets"
+											// Leaf: IssuesListForOrg
+											r.name = "IssuesListForOrg"
+											r.operationID = "issues/list-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'm': // Prefix: "m"
+								if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "embers"
+									if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											r.name = "OrgsListMembers"
+											r.operationID = "orgs/list-members"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -17342,32 +18184,105 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											break
 										}
 
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
 										if len(elem) == 0 {
+											switch method {
+											case "DELETE":
+												// Leaf: OrgsRemoveMember
+												r.name = "OrgsRemoveMember"
+												r.operationID = "orgs/remove-member"
+												r.args = args
+												r.count = 2
+												return r, true
+											case "GET":
+												// Leaf: OrgsCheckMembershipForUser
+												r.name = "OrgsCheckMembershipForUser"
+												r.operationID = "orgs/check-membership-for-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											default:
+												return
+											}
+										}
+									case 'h': // Prefix: "hips/"
+										if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+											elem = elem[l:]
+										} else {
 											break
 										}
-										switch elem[0] {
-										case 'p': // Prefix: "public-key"
-											if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
-												elem = elem[l:]
-											} else {
-												break
-											}
 
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													// Leaf: ActionsGetOrgPublicKey
-													r.name = "ActionsGetOrgPublicKey"
-													r.operationID = "actions/get-org-public-key"
-													r.args = args
-													r.count = 1
-													return r, true
-												default:
-													return
-												}
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
+										if len(elem) == 0 {
+											switch method {
+											case "DELETE":
+												// Leaf: OrgsRemoveMembershipForUser
+												r.name = "OrgsRemoveMembershipForUser"
+												r.operationID = "orgs/remove-membership-for-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											case "GET":
+												// Leaf: OrgsGetMembershipForUser
+												r.name = "OrgsGetMembershipForUser"
+												r.operationID = "orgs/get-membership-for-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											case "PUT":
+												// Leaf: OrgsSetMembershipForUser
+												r.name = "OrgsSetMembershipForUser"
+												r.operationID = "orgs/set-membership-for-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											default:
+												return
 											}
 										}
-										// Param: "secret_name"
+									}
+								case 'i': // Prefix: "igrations"
+									if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											r.name = "MigrationsListForOrg"
+											r.operationID = "migrations/list-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										case "POST":
+											r.name = "MigrationsStartForOrg"
+											r.operationID = "migrations/start-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "migration_id"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx < 0 {
@@ -17378,375 +18293,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 
 										if len(elem) == 0 {
 											switch method {
-											case "DELETE":
-												r.name = "ActionsDeleteOrgSecret"
-												r.operationID = "actions/delete-org-secret"
-												r.args = args
-												r.count = 2
-												return r, true
 											case "GET":
-												r.name = "ActionsGetOrgSecret"
-												r.operationID = "actions/get-org-secret"
-												r.args = args
-												r.count = 2
-												return r, true
-											case "PUT":
-												r.name = "ActionsCreateOrUpdateOrgSecret"
-												r.operationID = "actions/create-or-update-org-secret"
-												r.args = args
-												r.count = 2
-												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/repositories"
-											if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "ActionsListSelectedReposForOrgSecret"
-													r.operationID = "actions/list-selected-repos-for-org-secret"
-													r.args = args
-													r.count = 2
-													return r, true
-												case "PUT":
-													r.name = "ActionsSetSelectedReposForOrgSecret"
-													r.operationID = "actions/set-selected-repos-for-org-secret"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "repository_id"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													switch method {
-													case "DELETE":
-														// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
-														r.name = "ActionsRemoveSelectedRepoFromOrgSecret"
-														r.operationID = "actions/remove-selected-repo-from-org-secret"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "PUT":
-														// Leaf: ActionsAddSelectedRepoToOrgSecret
-														r.name = "ActionsAddSelectedRepoToOrgSecret"
-														r.operationID = "actions/add-selected-repo-to-org-secret"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							case 'u': // Prefix: "udit-log"
-								if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: OrgsGetAuditLog
-										r.name = "OrgsGetAuditLog"
-										r.operationID = "orgs/get-audit-log"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-							}
-						case 'b': // Prefix: "blocks"
-							if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									r.name = "OrgsListBlockedUsers"
-									r.operationID = "orgs/list-blocked-users"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									switch method {
-									case "DELETE":
-										// Leaf: OrgsUnblockUser
-										r.name = "OrgsUnblockUser"
-										r.operationID = "orgs/unblock-user"
-										r.args = args
-										r.count = 2
-										return r, true
-									case "GET":
-										// Leaf: OrgsCheckBlockedUser
-										r.name = "OrgsCheckBlockedUser"
-										r.operationID = "orgs/check-blocked-user"
-										r.args = args
-										r.count = 2
-										return r, true
-									case "PUT":
-										// Leaf: OrgsBlockUser
-										r.name = "OrgsBlockUser"
-										r.operationID = "orgs/block-user"
-										r.args = args
-										r.count = 2
-										return r, true
-									default:
-										return
-									}
-								}
-							}
-						case 'c': // Prefix: "credential-authorizations"
-							if l := len("credential-authorizations"); len(elem) >= l && elem[0:l] == "credential-authorizations" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									r.name = "OrgsListSamlSSOAuthorizations"
-									r.operationID = "orgs/list-saml-sso-authorizations"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "credential_id"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									switch method {
-									case "DELETE":
-										// Leaf: OrgsRemoveSamlSSOAuthorization
-										r.name = "OrgsRemoveSamlSSOAuthorization"
-										r.operationID = "orgs/remove-saml-sso-authorization"
-										r.args = args
-										r.count = 2
-										return r, true
-									default:
-										return
-									}
-								}
-							}
-						case 'e': // Prefix: "events"
-							if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									// Leaf: ActivityListPublicOrgEvents
-									r.name = "ActivityListPublicOrgEvents"
-									r.operationID = "activity/list-public-org-events"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-						case 'f': // Prefix: "failed_invitations"
-							if l := len("failed_invitations"); len(elem) >= l && elem[0:l] == "failed_invitations" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									// Leaf: OrgsListFailedInvitations
-									r.name = "OrgsListFailedInvitations"
-									r.operationID = "orgs/list-failed-invitations"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-						case 'h': // Prefix: "hooks"
-							if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									r.name = "OrgsListWebhooks"
-									r.operationID = "orgs/list-webhooks"
-									r.args = args
-									r.count = 1
-									return r, true
-								case "POST":
-									r.name = "OrgsCreateWebhook"
-									r.operationID = "orgs/create-webhook"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "hook_id"
-								// Match until "/"
-								idx := strings.IndexByte(elem, '/')
-								if idx < 0 {
-									idx = len(elem)
-								}
-								args[1] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									switch method {
-									case "DELETE":
-										r.name = "OrgsDeleteWebhook"
-										r.operationID = "orgs/delete-webhook"
-										r.args = args
-										r.count = 2
-										return r, true
-									case "GET":
-										r.name = "OrgsGetWebhook"
-										r.operationID = "orgs/get-webhook"
-										r.args = args
-										r.count = 2
-										return r, true
-									case "PATCH":
-										r.name = "OrgsUpdateWebhook"
-										r.operationID = "orgs/update-webhook"
-										r.args = args
-										r.count = 2
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "config"
-										if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "GET":
-												// Leaf: OrgsGetWebhookConfigForOrg
-												r.name = "OrgsGetWebhookConfigForOrg"
-												r.operationID = "orgs/get-webhook-config-for-org"
-												r.args = args
-												r.count = 2
-												return r, true
-											case "PATCH":
-												// Leaf: OrgsUpdateWebhookConfigForOrg
-												r.name = "OrgsUpdateWebhookConfigForOrg"
-												r.operationID = "orgs/update-webhook-config-for-org"
-												r.args = args
-												r.count = 2
-												return r, true
-											default:
-												return
-											}
-										}
-									case 'd': // Prefix: "deliveries"
-										if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "GET":
-												r.name = "OrgsListWebhookDeliveries"
-												r.operationID = "orgs/list-webhook-deliveries"
+												r.name = "MigrationsGetStatusForOrg"
+												r.operationID = "migrations/get-status-for-org"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17762,7 +18311,226 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												break
 											}
 
-											// Param: "delivery_id"
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "archive"
+												if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "DELETE":
+														// Leaf: MigrationsDeleteArchiveForOrg
+														r.name = "MigrationsDeleteArchiveForOrg"
+														r.operationID = "migrations/delete-archive-for-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "GET":
+														// Leaf: MigrationsDownloadArchiveForOrg
+														r.name = "MigrationsDownloadArchiveForOrg"
+														r.operationID = "migrations/download-archive-for-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+											case 'r': // Prefix: "repos"
+												if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "repo_name"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/lock"
+														if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "DELETE":
+																// Leaf: MigrationsUnlockRepoForOrg
+																r.name = "MigrationsUnlockRepoForOrg"
+																r.operationID = "migrations/unlock-repo-for-org"
+																r.args = args
+																r.count = 3
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'i': // Prefix: "itories"
+													if l := len("itories"); len(elem) >= l && elem[0:l] == "itories" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "GET":
+															// Leaf: MigrationsListReposForOrg
+															r.name = "MigrationsListReposForOrg"
+															r.operationID = "migrations/list-repos-for-org"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'o': // Prefix: "outside_collaborators"
+								if l := len("outside_collaborators"); len(elem) >= l && elem[0:l] == "outside_collaborators" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										r.name = "OrgsListOutsideCollaborators"
+										r.operationID = "orgs/list-outside-collaborators"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args[1] = elem
+									elem = ""
+
+									if len(elem) == 0 {
+										switch method {
+										case "DELETE":
+											// Leaf: OrgsRemoveOutsideCollaborator
+											r.name = "OrgsRemoveOutsideCollaborator"
+											r.operationID = "orgs/remove-outside-collaborator"
+											r.args = args
+											r.count = 2
+											return r, true
+										case "PUT":
+											// Leaf: OrgsConvertMemberToOutsideCollaborator
+											r.name = "OrgsConvertMemberToOutsideCollaborator"
+											r.operationID = "orgs/convert-member-to-outside-collaborator"
+											r.args = args
+											r.count = 2
+											return r, true
+										default:
+											return
+										}
+									}
+								}
+							case 'p': // Prefix: "p"
+								if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "ackages"
+									if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											r.name = "PackagesListPackagesForOrganization"
+											r.operationID = "packages/list-packages-for-organization"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until "/"
+										idx := strings.IndexByte(elem, '/')
+										if idx < 0 {
+											idx = len(elem)
+										}
+										args[1] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											// Param: "package_name"
 											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx < 0 {
@@ -17773,9 +18541,15 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 
 											if len(elem) == 0 {
 												switch method {
+												case "DELETE":
+													r.name = "PackagesDeletePackageForOrg"
+													r.operationID = "packages/delete-package-for-org"
+													r.args = args
+													r.count = 3
+													return r, true
 												case "GET":
-													r.name = "OrgsGetWebhookDelivery"
-													r.operationID = "orgs/get-webhook-delivery"
+													r.name = "PackagesGetPackageForOrganization"
+													r.operationID = "packages/get-package-for-organization"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -17784,102 +18558,120 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 											switch elem[0] {
-											case '/': // Prefix: "/attempts"
-												if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+											case '/': // Prefix: "/"
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														// Leaf: OrgsRedeliverWebhookDelivery
-														r.name = "OrgsRedeliverWebhookDelivery"
-														r.operationID = "orgs/redeliver-webhook-delivery"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
+													break
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "restore"
+													if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: PackagesRestorePackageForOrg
+															r.name = "PackagesRestorePackageForOrg"
+															r.operationID = "packages/restore-package-for-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+												case 'v': // Prefix: "versions"
+													if l := len("versions"); len(elem) >= l && elem[0:l] == "versions" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "GET":
+															r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
+															r.operationID = "packages/get-all-package-versions-for-package-owned-by-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "package_version_id"
+														// Match until "/"
+														idx := strings.IndexByte(elem, '/')
+														if idx < 0 {
+															idx = len(elem)
+														}
+														args[3] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															switch method {
+															case "DELETE":
+																r.name = "PackagesDeletePackageVersionForOrg"
+																r.operationID = "packages/delete-package-version-for-org"
+																r.args = args
+																r.count = 4
+																return r, true
+															case "GET":
+																r.name = "PackagesGetPackageVersionForOrganization"
+																r.operationID = "packages/get-package-version-for-organization"
+																r.args = args
+																r.count = 4
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: PackagesRestorePackageVersionForOrg
+																	r.name = "PackagesRestorePackageVersionForOrg"
+																	r.operationID = "packages/restore-package-version-for-org"
+																	r.args = args
+																	r.count = 4
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
 													}
 												}
 											}
 										}
-									case 'p': // Prefix: "pings"
-										if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												// Leaf: OrgsPingWebhook
-												r.name = "OrgsPingWebhook"
-												r.operationID = "orgs/ping-webhook"
-												r.args = args
-												r.count = 2
-												return r, true
-											default:
-												return
-											}
-										}
 									}
-								}
-							}
-						case 'i': // Prefix: "i"
-							if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'n': // Prefix: "n"
-								if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 't': // Prefix: "teraction-limits"
-									if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch method {
-										case "DELETE":
-											// Leaf: InteractionsRemoveRestrictionsForOrg
-											r.name = "InteractionsRemoveRestrictionsForOrg"
-											r.operationID = "interactions/remove-restrictions-for-org"
-											r.args = args
-											r.count = 1
-											return r, true
-										case "PUT":
-											// Leaf: InteractionsSetRestrictionsForOrg
-											r.name = "InteractionsSetRestrictionsForOrg"
-											r.operationID = "interactions/set-restrictions-for-org"
-											r.args = args
-											r.count = 1
-											return r, true
-										default:
-											return
-										}
-									}
-								case 'v': // Prefix: "vitations"
-									if l := len("vitations"); len(elem) >= l && elem[0:l] == "vitations" {
+								case 'r': // Prefix: "rojects"
+									if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
 										elem = elem[l:]
 									} else {
 										break
@@ -17888,14 +18680,35 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "OrgsListPendingInvitations"
-											r.operationID = "orgs/list-pending-invitations"
+											// Leaf: ProjectsListForOrg
+											r.name = "ProjectsListForOrg"
+											r.operationID = "projects/list-for-org"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "POST":
-											r.name = "OrgsCreateInvitation"
-											r.operationID = "orgs/create-invitation"
+											// Leaf: ProjectsCreateForOrg
+											r.name = "ProjectsCreateForOrg"
+											r.operationID = "projects/create-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								case 'u': // Prefix: "ublic_members"
+									if l := len("ublic_members"); len(elem) >= l && elem[0:l] == "ublic_members" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											r.name = "OrgsListPublicMembers"
+											r.operationID = "orgs/list-public-members"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -17911,7 +18724,236 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											break
 										}
 
-										// Param: "invitation_id"
+										// Param: "username"
+										// Leaf parameter
+										args[1] = elem
+										elem = ""
+
+										if len(elem) == 0 {
+											switch method {
+											case "DELETE":
+												// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
+												r.name = "OrgsRemovePublicMembershipForAuthenticatedUser"
+												r.operationID = "orgs/remove-public-membership-for-authenticated-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											case "GET":
+												// Leaf: OrgsCheckPublicMembershipForUser
+												r.name = "OrgsCheckPublicMembershipForUser"
+												r.operationID = "orgs/check-public-membership-for-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											case "PUT":
+												// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
+												r.name = "OrgsSetPublicMembershipForAuthenticatedUser"
+												r.operationID = "orgs/set-public-membership-for-authenticated-user"
+												r.args = args
+												r.count = 2
+												return r, true
+											default:
+												return
+											}
+										}
+									}
+								}
+							case 'r': // Prefix: "repos"
+								if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "GET":
+										// Leaf: ReposListForOrg
+										r.name = "ReposListForOrg"
+										r.operationID = "repos/list-for-org"
+										r.args = args
+										r.count = 1
+										return r, true
+									case "POST":
+										// Leaf: ReposCreateInOrg
+										r.name = "ReposCreateInOrg"
+										r.operationID = "repos/create-in-org"
+										r.args = args
+										r.count = 1
+										return r, true
+									default:
+										return
+									}
+								}
+							case 's': // Prefix: "se"
+								if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "cret-scanning/alerts"
+									if l := len("cret-scanning/alerts"); len(elem) >= l && elem[0:l] == "cret-scanning/alerts" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											// Leaf: SecretScanningListAlertsForOrg
+											r.name = "SecretScanningListAlertsForOrg"
+											r.operationID = "secret-scanning/list-alerts-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								case 't': // Prefix: "ttings/billing/"
+									if l := len("ttings/billing/"); len(elem) >= l && elem[0:l] == "ttings/billing/" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "actions"
+										if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "GET":
+												// Leaf: BillingGetGithubActionsBillingOrg
+												r.name = "BillingGetGithubActionsBillingOrg"
+												r.operationID = "billing/get-github-actions-billing-org"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
+										}
+									case 'p': // Prefix: "packages"
+										if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "GET":
+												// Leaf: BillingGetGithubPackagesBillingOrg
+												r.name = "BillingGetGithubPackagesBillingOrg"
+												r.operationID = "billing/get-github-packages-billing-org"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
+										}
+									case 's': // Prefix: "shared-storage"
+										if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "GET":
+												// Leaf: BillingGetSharedStorageBillingOrg
+												r.name = "BillingGetSharedStorageBillingOrg"
+												r.operationID = "billing/get-shared-storage-billing-org"
+												r.args = args
+												r.count = 1
+												return r, true
+											default:
+												return
+											}
+										}
+									}
+								}
+							case 't': // Prefix: "team"
+								if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-sync/groups"
+									if l := len("-sync/groups"); len(elem) >= l && elem[0:l] == "-sync/groups" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											// Leaf: TeamsListIdpGroupsForOrg
+											r.name = "TeamsListIdpGroupsForOrg"
+											r.operationID = "teams/list-idp-groups-for-org"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+								case 's': // Prefix: "s"
+									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "GET":
+											r.name = "TeamsList"
+											r.operationID = "teams/list"
+											r.args = args
+											r.count = 1
+											return r, true
+										case "POST":
+											r.name = "TeamsCreate"
+											r.operationID = "teams/create"
+											r.args = args
+											r.count = 1
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										// Param: "team_slug"
 										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx < 0 {
@@ -17923,466 +18965,22 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "DELETE":
-												r.name = "OrgsCancelInvitation"
-												r.operationID = "orgs/cancel-invitation"
+												r.name = "TeamsDeleteInOrg"
+												r.operationID = "teams/delete-in-org"
 												r.args = args
 												r.count = 2
 												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/teams"
-											if l := len("/teams"); len(elem) >= l && elem[0:l] == "/teams" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													// Leaf: OrgsListInvitationTeams
-													r.name = "OrgsListInvitationTeams"
-													r.operationID = "orgs/list-invitation-teams"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-										}
-									}
-								}
-							case 's': // Prefix: "ssues"
-								if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: IssuesListForOrg
-										r.name = "IssuesListForOrg"
-										r.operationID = "issues/list-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-							}
-						case 'm': // Prefix: "m"
-							if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'e': // Prefix: "embers"
-								if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										r.name = "OrgsListMembers"
-										r.operationID = "orgs/list-members"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args[1] = elem
-									elem = ""
-
-									if len(elem) == 0 {
-										switch method {
-										case "DELETE":
-											// Leaf: OrgsRemoveMember
-											r.name = "OrgsRemoveMember"
-											r.operationID = "orgs/remove-member"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "GET":
-											// Leaf: OrgsCheckMembershipForUser
-											r.name = "OrgsCheckMembershipForUser"
-											r.operationID = "orgs/check-membership-for-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										default:
-											return
-										}
-									}
-								case 'h': // Prefix: "hips/"
-									if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args[1] = elem
-									elem = ""
-
-									if len(elem) == 0 {
-										switch method {
-										case "DELETE":
-											// Leaf: OrgsRemoveMembershipForUser
-											r.name = "OrgsRemoveMembershipForUser"
-											r.operationID = "orgs/remove-membership-for-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "GET":
-											// Leaf: OrgsGetMembershipForUser
-											r.name = "OrgsGetMembershipForUser"
-											r.operationID = "orgs/get-membership-for-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "PUT":
-											// Leaf: OrgsSetMembershipForUser
-											r.name = "OrgsSetMembershipForUser"
-											r.operationID = "orgs/set-membership-for-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										default:
-											return
-										}
-									}
-								}
-							case 'i': // Prefix: "igrations"
-								if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										r.name = "MigrationsListForOrg"
-										r.operationID = "migrations/list-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									case "POST":
-										r.name = "MigrationsStartForOrg"
-										r.operationID = "migrations/start-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "migration_id"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx < 0 {
-										idx = len(elem)
-									}
-									args[1] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										switch method {
-										case "GET":
-											r.name = "MigrationsGetStatusForOrg"
-											r.operationID = "migrations/get-status-for-org"
-											r.args = args
-											r.count = 2
-											return r, true
-										default:
-											return
-										}
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "archive"
-											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "DELETE":
-													// Leaf: MigrationsDeleteArchiveForOrg
-													r.name = "MigrationsDeleteArchiveForOrg"
-													r.operationID = "migrations/delete-archive-for-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												case "GET":
-													// Leaf: MigrationsDownloadArchiveForOrg
-													r.name = "MigrationsDownloadArchiveForOrg"
-													r.operationID = "migrations/download-archive-for-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-										case 'r': // Prefix: "repos"
-											if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "repo_name"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/lock"
-													if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "DELETE":
-															// Leaf: MigrationsUnlockRepoForOrg
-															r.name = "MigrationsUnlockRepoForOrg"
-															r.operationID = "migrations/unlock-repo-for-org"
-															r.args = args
-															r.count = 3
-															return r, true
-														default:
-															return
-														}
-													}
-												}
-											case 'i': // Prefix: "itories"
-												if l := len("itories"); len(elem) >= l && elem[0:l] == "itories" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "GET":
-														// Leaf: MigrationsListReposForOrg
-														r.name = "MigrationsListReposForOrg"
-														r.operationID = "migrations/list-repos-for-org"
-														r.args = args
-														r.count = 2
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'o': // Prefix: "outside_collaborators"
-							if l := len("outside_collaborators"); len(elem) >= l && elem[0:l] == "outside_collaborators" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									r.name = "OrgsListOutsideCollaborators"
-									r.operationID = "orgs/list-outside-collaborators"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args[1] = elem
-								elem = ""
-
-								if len(elem) == 0 {
-									switch method {
-									case "DELETE":
-										// Leaf: OrgsRemoveOutsideCollaborator
-										r.name = "OrgsRemoveOutsideCollaborator"
-										r.operationID = "orgs/remove-outside-collaborator"
-										r.args = args
-										r.count = 2
-										return r, true
-									case "PUT":
-										// Leaf: OrgsConvertMemberToOutsideCollaborator
-										r.name = "OrgsConvertMemberToOutsideCollaborator"
-										r.operationID = "orgs/convert-member-to-outside-collaborator"
-										r.args = args
-										r.count = 2
-										return r, true
-									default:
-										return
-									}
-								}
-							}
-						case 'p': // Prefix: "p"
-							if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "ackages"
-								if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										r.name = "PackagesListPackagesForOrganization"
-										r.operationID = "packages/list-packages-for-organization"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "package_type"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx < 0 {
-										idx = len(elem)
-									}
-									args[1] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until "/"
-										idx := strings.IndexByte(elem, '/')
-										if idx < 0 {
-											idx = len(elem)
-										}
-										args[2] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											switch method {
-											case "DELETE":
-												r.name = "PackagesDeletePackageForOrg"
-												r.operationID = "packages/delete-package-for-org"
-												r.args = args
-												r.count = 3
-												return r, true
 											case "GET":
-												r.name = "PackagesGetPackageForOrganization"
-												r.operationID = "packages/get-package-for-organization"
+												r.name = "TeamsGetByName"
+												r.operationID = "teams/get-by-name"
 												r.args = args
-												r.count = 3
+												r.count = 2
+												return r, true
+											case "PATCH":
+												r.name = "TeamsUpdateInOrg"
+												r.operationID = "teams/update-in-org"
+												r.args = args
+												r.count = 2
 												return r, true
 											default:
 												return
@@ -18400,28 +18998,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												break
 											}
 											switch elem[0] {
-											case 'r': // Prefix: "restore"
-												if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														// Leaf: PackagesRestorePackageForOrg
-														r.name = "PackagesRestorePackageForOrg"
-														r.operationID = "packages/restore-package-for-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
-													}
-												}
-											case 'v': // Prefix: "versions"
-												if l := len("versions"); len(elem) >= l && elem[0:l] == "versions" {
+											case 'd': // Prefix: "discussions"
+												if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
 													elem = elem[l:]
 												} else {
 													break
@@ -18430,10 +19008,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
-														r.operationID = "packages/get-all-package-versions-for-package-owned-by-org"
+														r.name = "TeamsListDiscussionsInOrg"
+														r.operationID = "teams/list-discussions-in-org"
 														r.args = args
-														r.count = 3
+														r.count = 2
+														return r, true
+													case "POST":
+														r.name = "TeamsCreateDiscussionInOrg"
+														r.operationID = "teams/create-discussion-in-org"
+														r.args = args
+														r.count = 2
 														return r, true
 													default:
 														return
@@ -18447,47 +19031,439 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														break
 													}
 
-													// Param: "package_version_id"
+													// Param: "discussion_number"
 													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx < 0 {
 														idx = len(elem)
 													}
-													args[3] = elem[:idx]
+													args[2] = elem[:idx]
 													elem = elem[idx:]
 
 													if len(elem) == 0 {
 														switch method {
 														case "DELETE":
-															r.name = "PackagesDeletePackageVersionForOrg"
-															r.operationID = "packages/delete-package-version-for-org"
+															r.name = "TeamsDeleteDiscussionInOrg"
+															r.operationID = "teams/delete-discussion-in-org"
 															r.args = args
-															r.count = 4
+															r.count = 3
 															return r, true
 														case "GET":
-															r.name = "PackagesGetPackageVersionForOrganization"
-															r.operationID = "packages/get-package-version-for-organization"
+															r.name = "TeamsGetDiscussionInOrg"
+															r.operationID = "teams/get-discussion-in-org"
 															r.args = args
-															r.count = 4
+															r.count = 3
+															return r, true
+														case "PATCH":
+															r.name = "TeamsUpdateDiscussionInOrg"
+															r.operationID = "teams/update-discussion-in-org"
+															r.args = args
+															r.count = 3
 															return r, true
 														default:
 															return
 														}
 													}
 													switch elem[0] {
-													case '/': // Prefix: "/restore"
-														if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 															elem = elem[l:]
 														} else {
 															break
 														}
 
 														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "comments"
+															if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "GET":
+																	r.name = "TeamsListDiscussionCommentsInOrg"
+																	r.operationID = "teams/list-discussion-comments-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																case "POST":
+																	r.name = "TeamsCreateDiscussionCommentInOrg"
+																	r.operationID = "teams/create-discussion-comment-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "comment_number"
+																// Match until "/"
+																idx := strings.IndexByte(elem, '/')
+																if idx < 0 {
+																	idx = len(elem)
+																}
+																args[3] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "DELETE":
+																		r.name = "TeamsDeleteDiscussionCommentInOrg"
+																		r.operationID = "teams/delete-discussion-comment-in-org"
+																		r.args = args
+																		r.count = 4
+																		return r, true
+																	case "GET":
+																		r.name = "TeamsGetDiscussionCommentInOrg"
+																		r.operationID = "teams/get-discussion-comment-in-org"
+																		r.args = args
+																		r.count = 4
+																		return r, true
+																	case "PATCH":
+																		r.name = "TeamsUpdateDiscussionCommentInOrg"
+																		r.operationID = "teams/update-discussion-comment-in-org"
+																		r.args = args
+																		r.count = 4
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "GET":
+																			r.name = "ReactionsListForTeamDiscussionCommentInOrg"
+																			r.operationID = "reactions/list-for-team-discussion-comment-in-org"
+																			r.args = args
+																			r.count = 4
+																			return r, true
+																		case "POST":
+																			r.name = "ReactionsCreateForTeamDiscussionCommentInOrg"
+																			r.operationID = "reactions/create-for-team-discussion-comment-in-org"
+																			r.args = args
+																			r.count = 4
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
+																		} else {
+																			break
+																		}
+
+																		// Param: "reaction_id"
+																		// Leaf parameter
+																		args[4] = elem
+																		elem = ""
+
+																		if len(elem) == 0 {
+																			switch method {
+																			case "DELETE":
+																				// Leaf: ReactionsDeleteForTeamDiscussionComment
+																				r.name = "ReactionsDeleteForTeamDiscussionComment"
+																				r.operationID = "reactions/delete-for-team-discussion-comment"
+																				r.args = args
+																				r.count = 5
+																				return r, true
+																			default:
+																				return
+																			}
+																		}
+																	}
+																}
+															}
+														case 'r': // Prefix: "reactions"
+															if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "GET":
+																	r.name = "ReactionsListForTeamDiscussionInOrg"
+																	r.operationID = "reactions/list-for-team-discussion-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																case "POST":
+																	r.name = "ReactionsCreateForTeamDiscussionInOrg"
+																	r.operationID = "reactions/create-for-team-discussion-in-org"
+																	r.args = args
+																	r.count = 3
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																// Param: "reaction_id"
+																// Leaf parameter
+																args[3] = elem
+																elem = ""
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "DELETE":
+																		// Leaf: ReactionsDeleteForTeamDiscussion
+																		r.name = "ReactionsDeleteForTeamDiscussion"
+																		r.operationID = "reactions/delete-for-team-discussion"
+																		r.args = args
+																		r.count = 4
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 'i': // Prefix: "invitations"
+												if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														// Leaf: TeamsListPendingInvitationsInOrg
+														r.name = "TeamsListPendingInvitationsInOrg"
+														r.operationID = "teams/list-pending-invitations-in-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+											case 'm': // Prefix: "members"
+												if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														r.name = "TeamsListMembersInOrg"
+														r.operationID = "teams/list-members-in-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case 'h': // Prefix: "hips/"
+													if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "username"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														switch method {
+														case "DELETE":
+															// Leaf: TeamsRemoveMembershipForUserInOrg
+															r.name = "TeamsRemoveMembershipForUserInOrg"
+															r.operationID = "teams/remove-membership-for-user-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														case "GET":
+															// Leaf: TeamsGetMembershipForUserInOrg
+															r.name = "TeamsGetMembershipForUserInOrg"
+															r.operationID = "teams/get-membership-for-user-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														case "PUT":
+															// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
+															r.name = "TeamsAddOrUpdateMembershipForUserInOrg"
+															r.operationID = "teams/add-or-update-membership-for-user-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'p': // Prefix: "projects"
+												if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														r.name = "TeamsListProjectsInOrg"
+														r.operationID = "teams/list-projects-in-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "project_id"
+													// Leaf parameter
+													args[2] = elem
+													elem = ""
+
+													if len(elem) == 0 {
+														switch method {
+														case "DELETE":
+															// Leaf: TeamsRemoveProjectInOrg
+															r.name = "TeamsRemoveProjectInOrg"
+															r.operationID = "teams/remove-project-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														case "GET":
+															// Leaf: TeamsCheckPermissionsForProjectInOrg
+															r.name = "TeamsCheckPermissionsForProjectInOrg"
+															r.operationID = "teams/check-permissions-for-project-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														case "PUT":
+															// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
+															r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
+															r.operationID = "teams/add-or-update-project-permissions-in-org"
+															r.args = args
+															r.count = 3
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'r': // Prefix: "repos"
+												if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "GET":
+														r.name = "TeamsListReposInOrg"
+														r.operationID = "teams/list-repos-in-org"
+														r.args = args
+														r.count = 2
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													// Param: "owner"
+													// Match until "/"
+													idx := strings.IndexByte(elem, '/')
+													if idx < 0 {
+														idx = len(elem)
+													}
+													args[2] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														// Param: "repo"
+														// Leaf parameter
+														args[3] = elem
+														elem = ""
+
+														if len(elem) == 0 {
 															switch method {
-															case "POST":
-																// Leaf: PackagesRestorePackageVersionForOrg
-																r.name = "PackagesRestorePackageVersionForOrg"
-																r.operationID = "packages/restore-package-version-for-org"
+															case "DELETE":
+																// Leaf: TeamsRemoveRepoInOrg
+																r.name = "TeamsRemoveRepoInOrg"
+																r.operationID = "teams/remove-repo-in-org"
+																r.args = args
+																r.count = 4
+																return r, true
+															case "GET":
+																// Leaf: TeamsCheckPermissionsForRepoInOrg
+																r.name = "TeamsCheckPermissionsForRepoInOrg"
+																r.operationID = "teams/check-permissions-for-repo-in-org"
+																r.args = args
+																r.count = 4
+																return r, true
+															case "PUT":
+																// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
+																r.name = "TeamsAddOrUpdateRepoPermissionsInOrg"
+																r.operationID = "teams/add-or-update-repo-permissions-in-org"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -18497,869 +19473,63 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 													}
 												}
-											}
-										}
-									}
-								}
-							case 'r': // Prefix: "rojects"
-								if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: ProjectsListForOrg
-										r.name = "ProjectsListForOrg"
-										r.operationID = "projects/list-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									case "POST":
-										// Leaf: ProjectsCreateForOrg
-										r.name = "ProjectsCreateForOrg"
-										r.operationID = "projects/create-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-							case 'u': // Prefix: "ublic_members"
-								if l := len("ublic_members"); len(elem) >= l && elem[0:l] == "ublic_members" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										r.name = "OrgsListPublicMembers"
-										r.operationID = "orgs/list-public-members"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args[1] = elem
-									elem = ""
-
-									if len(elem) == 0 {
-										switch method {
-										case "DELETE":
-											// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
-											r.name = "OrgsRemovePublicMembershipForAuthenticatedUser"
-											r.operationID = "orgs/remove-public-membership-for-authenticated-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "GET":
-											// Leaf: OrgsCheckPublicMembershipForUser
-											r.name = "OrgsCheckPublicMembershipForUser"
-											r.operationID = "orgs/check-public-membership-for-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "PUT":
-											// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
-											r.name = "OrgsSetPublicMembershipForAuthenticatedUser"
-											r.operationID = "orgs/set-public-membership-for-authenticated-user"
-											r.args = args
-											r.count = 2
-											return r, true
-										default:
-											return
-										}
-									}
-								}
-							}
-						case 'r': // Prefix: "repos"
-							if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								switch method {
-								case "GET":
-									// Leaf: ReposListForOrg
-									r.name = "ReposListForOrg"
-									r.operationID = "repos/list-for-org"
-									r.args = args
-									r.count = 1
-									return r, true
-								case "POST":
-									// Leaf: ReposCreateInOrg
-									r.name = "ReposCreateInOrg"
-									r.operationID = "repos/create-in-org"
-									r.args = args
-									r.count = 1
-									return r, true
-								default:
-									return
-								}
-							}
-						case 's': // Prefix: "se"
-							if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'c': // Prefix: "cret-scanning/alerts"
-								if l := len("cret-scanning/alerts"); len(elem) >= l && elem[0:l] == "cret-scanning/alerts" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: SecretScanningListAlertsForOrg
-										r.name = "SecretScanningListAlertsForOrg"
-										r.operationID = "secret-scanning/list-alerts-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-							case 't': // Prefix: "ttings/billing/"
-								if l := len("ttings/billing/"); len(elem) >= l && elem[0:l] == "ttings/billing/" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "actions"
-									if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch method {
-										case "GET":
-											// Leaf: BillingGetGithubActionsBillingOrg
-											r.name = "BillingGetGithubActionsBillingOrg"
-											r.operationID = "billing/get-github-actions-billing-org"
-											r.args = args
-											r.count = 1
-											return r, true
-										default:
-											return
-										}
-									}
-								case 'p': // Prefix: "packages"
-									if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch method {
-										case "GET":
-											// Leaf: BillingGetGithubPackagesBillingOrg
-											r.name = "BillingGetGithubPackagesBillingOrg"
-											r.operationID = "billing/get-github-packages-billing-org"
-											r.args = args
-											r.count = 1
-											return r, true
-										default:
-											return
-										}
-									}
-								case 's': // Prefix: "shared-storage"
-									if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										switch method {
-										case "GET":
-											// Leaf: BillingGetSharedStorageBillingOrg
-											r.name = "BillingGetSharedStorageBillingOrg"
-											r.operationID = "billing/get-shared-storage-billing-org"
-											r.args = args
-											r.count = 1
-											return r, true
-										default:
-											return
-										}
-									}
-								}
-							}
-						case 't': // Prefix: "team"
-							if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-sync/groups"
-								if l := len("-sync/groups"); len(elem) >= l && elem[0:l] == "-sync/groups" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										// Leaf: TeamsListIdpGroupsForOrg
-										r.name = "TeamsListIdpGroupsForOrg"
-										r.operationID = "teams/list-idp-groups-for-org"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-							case 's': // Prefix: "s"
-								if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									switch method {
-									case "GET":
-										r.name = "TeamsList"
-										r.operationID = "teams/list"
-										r.args = args
-										r.count = 1
-										return r, true
-									case "POST":
-										r.name = "TeamsCreate"
-										r.operationID = "teams/create"
-										r.args = args
-										r.count = 1
-										return r, true
-									default:
-										return
-									}
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									// Param: "team_slug"
-									// Match until "/"
-									idx := strings.IndexByte(elem, '/')
-									if idx < 0 {
-										idx = len(elem)
-									}
-									args[1] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										switch method {
-										case "DELETE":
-											r.name = "TeamsDeleteInOrg"
-											r.operationID = "teams/delete-in-org"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "GET":
-											r.name = "TeamsGetByName"
-											r.operationID = "teams/get-by-name"
-											r.args = args
-											r.count = 2
-											return r, true
-										case "PATCH":
-											r.name = "TeamsUpdateInOrg"
-											r.operationID = "teams/update-in-org"
-											r.args = args
-											r.count = 2
-											return r, true
-										default:
-											return
-										}
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'd': // Prefix: "discussions"
-											if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "TeamsListDiscussionsInOrg"
-													r.operationID = "teams/list-discussions-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												case "POST":
-													r.name = "TeamsCreateDiscussionInOrg"
-													r.operationID = "teams/create-discussion-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											case 't': // Prefix: "team"
+												if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
 													elem = elem[l:]
 												} else {
 													break
 												}
-
-												// Param: "discussion_number"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													switch method {
-													case "DELETE":
-														r.name = "TeamsDeleteDiscussionInOrg"
-														r.operationID = "teams/delete-discussion-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "GET":
-														r.name = "TeamsGetDiscussionInOrg"
-														r.operationID = "teams/get-discussion-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "PATCH":
-														r.name = "TeamsUpdateDiscussionInOrg"
-														r.operationID = "teams/update-discussion-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
-													}
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "GET":
-																r.name = "TeamsListDiscussionCommentsInOrg"
-																r.operationID = "teams/list-discussion-comments-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															case "POST":
-																r.name = "TeamsCreateDiscussionCommentInOrg"
-																r.operationID = "teams/create-discussion-comment-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "comment_number"
-															// Match until "/"
-															idx := strings.IndexByte(elem, '/')
-															if idx < 0 {
-																idx = len(elem)
-															}
-															args[3] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																switch method {
-																case "DELETE":
-																	r.name = "TeamsDeleteDiscussionCommentInOrg"
-																	r.operationID = "teams/delete-discussion-comment-in-org"
-																	r.args = args
-																	r.count = 4
-																	return r, true
-																case "GET":
-																	r.name = "TeamsGetDiscussionCommentInOrg"
-																	r.operationID = "teams/get-discussion-comment-in-org"
-																	r.args = args
-																	r.count = 4
-																	return r, true
-																case "PATCH":
-																	r.name = "TeamsUpdateDiscussionCommentInOrg"
-																	r.operationID = "teams/update-discussion-comment-in-org"
-																	r.args = args
-																	r.count = 4
-																	return r, true
-																default:
-																	return
-																}
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/reactions"
-																if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	switch method {
-																	case "GET":
-																		r.name = "ReactionsListForTeamDiscussionCommentInOrg"
-																		r.operationID = "reactions/list-for-team-discussion-comment-in-org"
-																		r.args = args
-																		r.count = 4
-																		return r, true
-																	case "POST":
-																		r.name = "ReactionsCreateForTeamDiscussionCommentInOrg"
-																		r.operationID = "reactions/create-for-team-discussion-comment-in-org"
-																		r.args = args
-																		r.count = 4
-																		return r, true
-																	default:
-																		return
-																	}
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																		elem = elem[l:]
-																	} else {
-																		break
-																	}
-
-																	// Param: "reaction_id"
-																	// Leaf parameter
-																	args[4] = elem
-																	elem = ""
-
-																	if len(elem) == 0 {
-																		switch method {
-																		case "DELETE":
-																			// Leaf: ReactionsDeleteForTeamDiscussionComment
-																			r.name = "ReactionsDeleteForTeamDiscussionComment"
-																			r.operationID = "reactions/delete-for-team-discussion-comment"
-																			r.args = args
-																			r.count = 5
-																			return r, true
-																		default:
-																			return
-																		}
-																	}
-																}
-															}
-														}
-													case 'r': // Prefix: "reactions"
-														if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "GET":
-																r.name = "ReactionsListForTeamDiscussionInOrg"
-																r.operationID = "reactions/list-for-team-discussion-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															case "POST":
-																r.name = "ReactionsCreateForTeamDiscussionInOrg"
-																r.operationID = "reactions/create-for-team-discussion-in-org"
-																r.args = args
-																r.count = 3
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args[3] = elem
-															elem = ""
-
-															if len(elem) == 0 {
-																switch method {
-																case "DELETE":
-																	// Leaf: ReactionsDeleteForTeamDiscussion
-																	r.name = "ReactionsDeleteForTeamDiscussion"
-																	r.operationID = "reactions/delete-for-team-discussion"
-																	r.args = args
-																	r.count = 4
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'i': // Prefix: "invitations"
-											if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													// Leaf: TeamsListPendingInvitationsInOrg
-													r.name = "TeamsListPendingInvitationsInOrg"
-													r.operationID = "teams/list-pending-invitations-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-										case 'm': // Prefix: "members"
-											if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "TeamsListMembersInOrg"
-													r.operationID = "teams/list-members-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case 'h': // Prefix: "hips/"
-												if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "username"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													switch method {
-													case "DELETE":
-														// Leaf: TeamsRemoveMembershipForUserInOrg
-														r.name = "TeamsRemoveMembershipForUserInOrg"
-														r.operationID = "teams/remove-membership-for-user-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "GET":
-														// Leaf: TeamsGetMembershipForUserInOrg
-														r.name = "TeamsGetMembershipForUserInOrg"
-														r.operationID = "teams/get-membership-for-user-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "PUT":
-														// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
-														r.name = "TeamsAddOrUpdateMembershipForUserInOrg"
-														r.operationID = "teams/add-or-update-membership-for-user-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										case 'p': // Prefix: "projects"
-											if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "TeamsListProjectsInOrg"
-													r.operationID = "teams/list-projects-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "project_id"
-												// Leaf parameter
-												args[2] = elem
-												elem = ""
-
-												if len(elem) == 0 {
-													switch method {
-													case "DELETE":
-														// Leaf: TeamsRemoveProjectInOrg
-														r.name = "TeamsRemoveProjectInOrg"
-														r.operationID = "teams/remove-project-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "GET":
-														// Leaf: TeamsCheckPermissionsForProjectInOrg
-														r.name = "TeamsCheckPermissionsForProjectInOrg"
-														r.operationID = "teams/check-permissions-for-project-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													case "PUT":
-														// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
-														r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
-														r.operationID = "teams/add-or-update-project-permissions-in-org"
-														r.args = args
-														r.count = 3
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										case 'r': // Prefix: "repos"
-											if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "GET":
-													r.name = "TeamsListReposInOrg"
-													r.operationID = "teams/list-repos-in-org"
-													r.args = args
-													r.count = 2
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												// Param: "owner"
-												// Match until "/"
-												idx := strings.IndexByte(elem, '/')
-												if idx < 0 {
-													idx = len(elem)
-												}
-												args[2] = elem[:idx]
-												elem = elem[idx:]
 
 												if len(elem) == 0 {
 													break
 												}
 												switch elem[0] {
-												case '/': // Prefix: "/"
-													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												case '-': // Prefix: "-sync/group-mappings"
+													if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
 														elem = elem[l:]
 													} else {
 														break
 													}
-
-													// Param: "repo"
-													// Leaf parameter
-													args[3] = elem
-													elem = ""
 
 													if len(elem) == 0 {
 														switch method {
-														case "DELETE":
-															// Leaf: TeamsRemoveRepoInOrg
-															r.name = "TeamsRemoveRepoInOrg"
-															r.operationID = "teams/remove-repo-in-org"
-															r.args = args
-															r.count = 4
-															return r, true
 														case "GET":
-															// Leaf: TeamsCheckPermissionsForRepoInOrg
-															r.name = "TeamsCheckPermissionsForRepoInOrg"
-															r.operationID = "teams/check-permissions-for-repo-in-org"
+															// Leaf: TeamsListIdpGroupsInOrg
+															r.name = "TeamsListIdpGroupsInOrg"
+															r.operationID = "teams/list-idp-groups-in-org"
 															r.args = args
-															r.count = 4
+															r.count = 2
 															return r, true
-														case "PUT":
-															// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
-															r.name = "TeamsAddOrUpdateRepoPermissionsInOrg"
-															r.operationID = "teams/add-or-update-repo-permissions-in-org"
+														case "PATCH":
+															// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
+															r.name = "TeamsCreateOrUpdateIdpGroupConnectionsInOrg"
+															r.operationID = "teams/create-or-update-idp-group-connections-in-org"
 															r.args = args
-															r.count = 4
+															r.count = 2
 															return r, true
 														default:
 															return
 														}
 													}
-												}
-											}
-										case 't': // Prefix: "team"
-											if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '-': // Prefix: "-sync/group-mappings"
-												if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "GET":
-														// Leaf: TeamsListIdpGroupsInOrg
-														r.name = "TeamsListIdpGroupsInOrg"
-														r.operationID = "teams/list-idp-groups-in-org"
-														r.args = args
-														r.count = 2
-														return r, true
-													case "PATCH":
-														// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
-														r.name = "TeamsCreateOrUpdateIdpGroupConnectionsInOrg"
-														r.operationID = "teams/create-or-update-idp-group-connections-in-org"
-														r.args = args
-														r.count = 2
-														return r, true
-													default:
-														return
+												case 's': // Prefix: "s"
+													if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+														elem = elem[l:]
+													} else {
+														break
 													}
-												}
-											case 's': // Prefix: "s"
-												if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
-													elem = elem[l:]
-												} else {
-													break
-												}
 
-												if len(elem) == 0 {
-													switch method {
-													case "GET":
-														// Leaf: TeamsListChildInOrg
-														r.name = "TeamsListChildInOrg"
-														r.operationID = "teams/list-child-in-org"
-														r.args = args
-														r.count = 2
-														return r, true
-													default:
-														return
+													if len(elem) == 0 {
+														switch method {
+														case "GET":
+															// Leaf: TeamsListChildInOrg
+															r.name = "TeamsListChildInOrg"
+															r.operationID = "teams/list-child-in-org"
+															r.args = args
+															r.count = 2
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -25144,6 +25314,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																// Leaf: ReposListReleaseAssets
 																r.name = "ReposListReleaseAssets"
 																r.operationID = "repos/list-release-assets"
+																r.args = args
+																r.count = 3
+																return r, true
+															case "POST":
+																// Leaf: ReposUploadReleaseAsset
+																r.name = "ReposUploadReleaseAsset"
+																r.operationID = "repos/upload-release-asset"
 																r.args = args
 																r.count = 3
 																return r, true

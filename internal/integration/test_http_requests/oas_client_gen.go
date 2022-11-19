@@ -216,6 +216,69 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	return result, nil
 }
 
+// Base64Request invokes base64Request operation.
+//
+// POST /base64Request
+func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (res Base64RequestOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("base64Request"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "Base64Request",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	u.Path += "/base64Request"
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeBase64RequestRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeBase64RequestResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // MaskContentType invokes maskContentType operation.
 //
 // POST /maskContentType

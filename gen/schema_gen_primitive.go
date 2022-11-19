@@ -149,6 +149,7 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 func parseSimple(schema *jsonschema.Schema) *ir.Type {
 	mapping := TypeFormatMapping()
 
+	// TODO(tdakkota): check ContentEncoding field
 	t, found := mapping[schema.Type][schema.Format]
 	if !found {
 		// Fallback to default.

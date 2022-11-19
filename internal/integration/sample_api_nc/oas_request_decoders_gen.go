@@ -491,7 +491,8 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request) (
 	}
 	switch {
 	case ct == "application/octet-stream":
-		request := PetUploadAvatarByIDReq{Data: r.Body}
+		reader := r.Body
+		request := PetUploadAvatarByIDReq{Data: reader}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

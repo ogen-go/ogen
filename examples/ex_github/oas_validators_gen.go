@@ -7829,6 +7829,41 @@ func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
+func (s MarkdownRenderReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Mode.Set {
+			if err := func() error {
+				if err := s.Mode.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "mode",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s MarkdownRenderReqMode) Validate() error {
+	switch s {
+	case "markdown":
+		return nil
+	case "gfm":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
 func (s MarketplaceAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

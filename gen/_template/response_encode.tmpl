@@ -48,7 +48,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 		default:
 			return errors.Errorf("unexpected response type: %T", response)
 		}
-	{{- end }}
+	{{- end -}}
 }
 {{ end }}
 
@@ -102,7 +102,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 	{{- end }}
 {{- end }}
 
-{{- if $.NoContent }}
+{{ if $.NoContent }}
 	return nil
 {{- else }}
 	{{- $type := $.Type }}
@@ -114,13 +114,19 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 
 	{{- if $.Encoding.JSON }}
 		e := jx.GetEncoder()
-		{{ template "json/enc" elem $type $var }}
+		{{- template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
 	{{- else if $type.IsStream }}
-		if _, err := io.Copy(w, {{ $var }}); err != nil {
+		{{- if $type.IsBase64Stream }}
+		writer := base64.NewEncoder(base64.StdEncoding, w)
+		defer writer.Close()
+		{{- else }}
+		writer := w
+		{{- end }}
+		if _, err := io.Copy(writer, {{ $var }}); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil

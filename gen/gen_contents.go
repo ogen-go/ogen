@@ -328,45 +328,18 @@ func (g *Generator) generateContents(
 					Type:     t,
 				}
 				return nil
-
-			case ir.EncodingOctetStream:
-				if s := media.Schema; s != nil && !isBinary(s) {
-					return errors.Wrapf(
-						&ErrNotImplemented{Name: "complex application/octet-stream"},
-						"generate %q", s.Type,
-					)
-				}
-
-				// FIXME(tdakkota): box if optional is true?
-				t := ir.Stream(typeName)
-				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
-				}
-				return ctx.saveType(t)
-
-			case ir.EncodingTextPlain:
-				if s := media.Schema; s != nil && s.Type != "string" {
-					return errors.Wrapf(
-						&ErrNotImplemented{Name: "complex text/plain"},
-						"generate %q", s.Type,
-					)
-				}
-
-				// FIXME(tdakkota): box if optional is true?
-				t := ir.Stream(typeName)
-				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
-				}
-				return ctx.saveType(t)
-
 			default:
-				if isBinary(media.Schema) {
+				if s := media.Schema; isStream(s) {
 					// FIXME(tdakkota): box if optional is true?
-					t := ir.Stream(typeName)
+					t := ir.Stream(typeName, s)
+
+					switch encoding {
+					case ir.EncodingOctetStream, ir.EncodingTextPlain:
+					default:
+						encoding = ir.EncodingOctetStream
+					}
 					result[ir.ContentType(parsedContentType)] = ir.Media{
-						Encoding: ir.EncodingOctetStream,
+						Encoding: encoding,
 						Type:     t,
 					}
 					return ctx.saveType(t)

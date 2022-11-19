@@ -60,7 +60,12 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
     {{- $t = ($media.Type.MustField "Content").Type }}
 	{{- end }}
 	{{- if $t.IsStream }}
-		request := {{ $t.Go }}{Data: r.Body}
+		{{- if $t.IsBase64Stream }}
+		reader := base64.NewDecoder(base64.StdEncoding, r.Body)
+		{{- else }}
+		reader := r.Body
+		{{- end }}
+		request := {{ $t.Go }}{Data: reader}
 	{{- else if $e.JSON }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}

@@ -16,6 +16,10 @@ type Handler interface {
 	//
 	// POST /allRequestBodiesOptional
 	AllRequestBodiesOptional(ctx context.Context, req AllRequestBodiesOptionalReq) (AllRequestBodiesOptionalOK, error)
+	// Base64Request implements base64Request operation.
+	//
+	// POST /base64Request
+	Base64Request(ctx context.Context, req Base64RequestReq) (Base64RequestOK, error)
 	// MaskContentType implements maskContentType operation.
 	//
 	// POST /maskContentType
