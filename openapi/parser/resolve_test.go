@@ -3,6 +3,7 @@ package parser
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"testing"
 
 	yaml "github.com/go-faster/yamlx"
@@ -13,6 +14,10 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
+
+var testRootURL = &url.URL{
+	Path: "/root.json",
+}
 
 func compareJSON(t require.TestingT, expected, got any) {
 	// Compare as JSON because we can't skip locators.
@@ -110,7 +115,9 @@ func TestComplicatedReference(t *testing.T) {
 	a.NoError(raw.Encode(root))
 	root.Raw = &raw
 
-	spec, err := Parse(root, Settings{})
+	spec, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
 	a.NoError(err)
 
 	var (
@@ -129,7 +136,7 @@ func TestComplicatedReference(t *testing.T) {
 			},
 			Parameters: []*openapi.Parameter{
 				{
-					Ref:  refKey{Ptr: "#/paths/~1post/post/parameters/0"},
+					Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/parameters/0"},
 					Name: "param",
 					Schema: &jsonschema.Schema{
 						Type: "string",
@@ -140,7 +147,7 @@ func TestComplicatedReference(t *testing.T) {
 				},
 			},
 			RequestBody: &openapi.RequestBody{
-				Ref: refKey{Ptr: "#/paths/~1post/post/requestBody"},
+				Ref: refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody"},
 				Content: map[string]*openapi.MediaType{
 					"application/json": {
 						Schema: &jsonschema.Schema{
@@ -154,14 +161,14 @@ func TestComplicatedReference(t *testing.T) {
 			Security: []openapi.SecurityRequirement{},
 			Responses: map[string]*openapi.Response{
 				"200": {
-					Ref: refKey{Ptr: "#/paths/~1post/post/responses/200"},
+					Ref: refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/responses/200"},
 					Headers: map[string]*openapi.Header{
 						"ResponseHeader": responseHeader,
 					},
 					Content: map[string]*openapi.MediaType{
 						"application/json": {
 							Schema: &jsonschema.Schema{
-								Ref:  refKey{Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
+								Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
 								Type: "string",
 							},
 							Examples: map[string]*openapi.Example{},
@@ -221,7 +228,7 @@ func TestComplicatedReference(t *testing.T) {
 					Content: map[string]*openapi.MediaType{
 						"application/json": {
 							Schema: &jsonschema.Schema{
-								Ref:  refKey{Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
+								Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
 								Type: "string",
 							},
 							Examples: map[string]*openapi.Example{},

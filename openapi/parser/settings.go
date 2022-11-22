@@ -19,6 +19,8 @@ type Settings struct {
 	File location.File
 
 	// RootURL is the root URL of the spec.
+	//
+	// If nil, jsonpointer.DummyURL is used.
 	RootURL *url.URL
 
 	// DepthLimit limits the number of nested references. Default is 1000.
@@ -44,5 +46,8 @@ func (s *Settings) setDefaults() {
 	}
 	if s.DepthLimit == 0 {
 		s.DepthLimit = jsonpointer.DefaultDepthLimit
+	}
+	if s.RootURL == nil {
+		s.RootURL = jsonpointer.DummyURL()
 	}
 }

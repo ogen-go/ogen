@@ -3,6 +3,7 @@ package gen
 import (
 	"embed"
 	"io/fs"
+	"net/url"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -13,6 +14,7 @@ import (
 	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -45,7 +47,8 @@ func TestGenerateSchema(t *testing.T) {
 		if err := root.Decode(&rawSchema); err != nil {
 			return errors.Wrap(err, "unmarshal")
 		}
-		schema, err := p.Parse(&rawSchema)
+		ctx := jsonpointer.NewResolveCtx(&url.URL{Path: "/" + path}, jsonpointer.DefaultDepthLimit)
+		schema, err := p.Parse(&rawSchema, ctx)
 		if err != nil {
 			return errors.Wrap(err, "parse")
 		}

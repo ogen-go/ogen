@@ -13,7 +13,9 @@ import (
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/ogenzap"
+	"github.com/ogen-go/ogen/internal/urlpath"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -80,6 +82,15 @@ func run() error {
 	if flag.NArg() < 1 || specPath == "" {
 		return errors.New("no spec provided")
 	}
+	specPath = filepath.Clean(specPath)
+	abs, err := filepath.Abs(specPath)
+	if err != nil {
+		return err
+	}
+	rootURL, err := urlpath.URLFromFilePath(abs)
+	if err != nil {
+		return errors.Wrap(err, "convert file path to url")
+	}
 
 	data, err := os.ReadFile(specPath)
 	if err != nil {
@@ -99,7 +110,7 @@ func run() error {
 	if err := root.Decode(&rawSchema); err != nil {
 		return errors.Wrap(err, "unmarshal")
 	}
-	schema, err := p.Parse(&rawSchema)
+	schema, err := p.Parse(&rawSchema, jsonpointer.NewResolveCtx(rootURL, jsonpointer.DefaultDepthLimit))
 	if err != nil {
 		return errors.Wrap(err, "parse")
 	}

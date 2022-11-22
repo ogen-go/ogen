@@ -207,9 +207,7 @@ func TestExternalReference(t *testing.T) {
 	spec, err := Parse(root, Settings{
 		External: remote,
 		File:     location.NewFile("root.json", "root.json", nil),
-		RootURL: &url.URL{
-			Path: "/root.json",
-		},
+		RootURL:  testRootURL,
 	})
 	a.NoError(err)
 
@@ -368,9 +366,7 @@ func TestDuplicateOperationID(t *testing.T) {
 	_, err := Parse(root, Settings{
 		External: remote,
 		File:     location.NewFile("root.json", "root.json", nil),
-		RootURL: &url.URL{
-			Path: "/root.json",
-		},
+		RootURL:  testRootURL,
 	})
 	a.ErrorContains(err, "duplicate operationId: \"testGet\"")
 	// Ensure that the error contains the file name.
@@ -404,9 +400,7 @@ func TestExternalErrors(t *testing.T) {
 	_, err := Parse(root, Settings{
 		External: remote,
 		File:     location.NewFile("root.json", "root.json", nil),
-		RootURL: &url.URL{
-			Path: "/root.json",
-		},
+		RootURL:  testRootURL,
 	})
 	a.ErrorContains(err, "parse status code")
 

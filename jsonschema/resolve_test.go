@@ -41,10 +41,6 @@ func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 	return enc.Bytes(), nil
 }
 
-func testCtx() *jsonpointer.ResolveCtx {
-	return jsonpointer.NewResolveCtx(&url.URL{Path: "/root.json"}, jsonpointer.DefaultDepthLimit)
-}
-
 func TestExternalReference(t *testing.T) {
 	root := components{
 		"LocalSchema": {
@@ -98,7 +94,7 @@ func TestExternalReference(t *testing.T) {
 		Resolver: root,
 	})
 
-	out, err := parser.ParseWithContext(&RawSchema{
+	out, err := parser.Parse(&RawSchema{
 		Type: "array",
 		Items: &RawSchema{
 			Ref: "#/components/schemas/LocalSchema",
@@ -182,7 +178,8 @@ func TestLimitDepth(t *testing.T) {
 		parser := NewParser(Settings{
 			Resolver: root,
 		})
-		_, err := parser.Resolve("#/components/schemas/Schema1", jsonpointer.NewResolveCtx(nil, tt.limit))
+		ctx := jsonpointer.NewResolveCtx(&url.URL{Path: "/limit.json"}, tt.limit)
+		_, err := parser.Resolve("#/components/schemas/Schema1", ctx)
 		tt.checker(t, err, "limit: %d", tt.limit)
 	}
 }

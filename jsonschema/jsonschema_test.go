@@ -2,6 +2,7 @@ package jsonschema_test
 
 import (
 	"embed"
+	"net/url"
 	"path"
 	"strings"
 	"testing"
@@ -9,6 +10,7 @@ import (
 	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/testutil"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -34,7 +36,7 @@ func TestNegative(t *testing.T) {
 		p := jsonschema.NewParser(jsonschema.Settings{
 			File: location.NewFile(name, file, data),
 		})
-		_, err = p.Parse(&schema)
+		_, err = p.Parse(&schema, jsonpointer.NewResolveCtx(&url.URL{Path: "/" + file}, jsonpointer.DefaultDepthLimit))
 		a.Error(err)
 
 		var buf strings.Builder

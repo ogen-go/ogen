@@ -69,9 +69,12 @@ type ResolveCtx struct {
 // DefaultDepthLimit is default depth limit for ResolveCtx.
 const DefaultDepthLimit = 1000
 
-// DefaultCtx creates new ResolveCtx with default depth limit.
-func DefaultCtx() *ResolveCtx {
-	return NewResolveCtx(nil, DefaultDepthLimit)
+// DummyURL is dummy URL for testing purposes.
+func DummyURL() *url.URL {
+	return &url.URL{
+		Scheme: "jsonschema",
+		Host:   "dummy",
+	}
 }
 
 // NewResolveCtx creates new ResolveCtx.
@@ -94,17 +97,12 @@ func (r ResolveCtx) last() (last locstackItem, ok bool) {
 
 // Key creates new reference key.
 func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
-	parser := url.Parse
-	if r.root != nil {
-		parser = r.root.Parse
-	}
+	parser := r.root.Parse
 	if last, ok := r.last(); ok {
 		parser = last.loc.Parse
 	} else if strings.HasPrefix(ref, "#") {
 		key.Ptr = ref
-		if r.root != nil {
-			key.Loc = r.root.String()
-		}
+		key.Loc = r.root.String()
 		return key, nil
 	}
 
@@ -149,9 +147,6 @@ func (r *ResolveCtx) Delete(key RefKey) {
 
 // IsRoot returns true if location stack is empty.
 func (r *ResolveCtx) IsRoot(key RefKey) bool {
-	if r.root == nil || key.Loc == "" {
-		return true
-	}
 	resolved := errors.Must(r.root.Parse(key.Loc))
 	return resolved.String() == r.root.String()
 }

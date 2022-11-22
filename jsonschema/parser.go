@@ -44,12 +44,7 @@ func NewParser(s Settings) *Parser {
 }
 
 // Parse parses given RawSchema and returns parsed Schema.
-func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.ParseWithContext(schema, jsonpointer.DefaultCtx())
-}
-
-// ParseWithContext parses given RawSchema and returns parsed Schema.
-func (p *Parser) ParseWithContext(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+func (p *Parser) Parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
 	return p.parse(schema, ctx)
 }
 

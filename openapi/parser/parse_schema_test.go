@@ -117,9 +117,11 @@ func TestParseDiscriminator(t *testing.T) {
 	a := require.New(t)
 
 	ref := func(ptr string) refKey {
-		return refKey{Ptr: ptr}
+		return refKey{Loc: testRootURL.String(), Ptr: ptr}
 	}
-	spec, err := Parse(root, Settings{})
+	spec, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
 	a.NoError(err)
 	{
 		s := spec.Components.Schemas["PetRef"]

@@ -2,7 +2,6 @@ package parser
 
 import (
 	"encoding/json"
-	"net/url"
 	"testing"
 
 	"github.com/go-faster/errors"
@@ -43,9 +42,7 @@ func TestRemoteLocation(t *testing.T) {
 	_, err := Parse(root, Settings{
 		External: remote,
 		File:     location.NewFile("root.json", "root.json", nil),
-		RootURL: &url.URL{
-			Path: "/root.json",
-		},
+		RootURL:  testRootURL,
 	})
 	a.Error(err)
 	a.ErrorAs(err, new(*location.Error))
