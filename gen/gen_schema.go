@@ -107,11 +107,15 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	{
 		prev := gen.nameRef
 		gen.nameRef = func(ref jsonschema.Ref) (string, error) {
+			nref := ref
 			for _, trim := range opts.TrimPrefix {
-				ref.Ptr = strings.TrimPrefix(ref.Ptr, trim)
+				nref.Ptr = strings.TrimPrefix(nref.Ptr, trim)
+			}
+			if !strings.HasPrefix(nref.Ptr, "#") {
+				nref.Ptr = "#" + nref.Ptr
 			}
 
-			result, err := prev(ref)
+			result, err := prev(nref)
 			if err != nil {
 				return "", err
 			}
