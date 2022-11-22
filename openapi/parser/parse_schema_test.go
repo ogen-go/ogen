@@ -116,20 +116,25 @@ func TestParseDiscriminator(t *testing.T) {
 
 	a := require.New(t)
 
-	spec, err := Parse(root, Settings{})
+	ref := func(ptr string) refKey {
+		return refKey{Loc: testRootURL.String(), Ptr: ptr}
+	}
+	spec, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
 	a.NoError(err)
 	{
 		s := spec.Components.Schemas["PetRef"]
 		m := s.Discriminator.Mapping
-		a.Equal(m["cat"].Ref, "#/components/schemas/Cat")
-		a.Equal(m["dog"].Ref, "#/components/schemas/Dog")
-		a.Equal(m["cow"].Ref, "#/components/schemas/Cow")
+		a.Equal(m["cat"].Ref, ref("#/components/schemas/Cat"))
+		a.Equal(m["dog"].Ref, ref("#/components/schemas/Dog"))
+		a.Equal(m["cow"].Ref, ref("#/components/schemas/Cow"))
 	}
 	{
 		s := spec.Components.Schemas["PetSchemaName"]
 		m := s.Discriminator.Mapping
-		a.Equal(m["cat"].Ref, "#/components/schemas/Cat")
-		a.Equal(m["dog"].Ref, "#/components/schemas/Dog")
-		a.Equal(m["cow"].Ref, "#/components/schemas/Cow")
+		a.Equal(m["cat"].Ref, ref("#/components/schemas/Cat"))
+		a.Equal(m["dog"].Ref, ref("#/components/schemas/Dog"))
+		a.Equal(m["cow"].Ref, ref("#/components/schemas/Cow"))
 	}
 }

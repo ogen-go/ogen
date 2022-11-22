@@ -44,12 +44,7 @@ func NewParser(s Settings) *Parser {
 }
 
 // Parse parses given RawSchema and returns parsed Schema.
-func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.ParseWithContext(schema, jsonpointer.DefaultCtx())
-}
-
-// ParseWithContext parses given RawSchema and returns parsed Schema.
-func (p *Parser) ParseWithContext(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+func (p *Parser) Parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
 	return p.parse(schema, ctx)
 }
 
@@ -513,7 +508,7 @@ func (p *Parser) parseDiscriminator(d *RawDiscriminator, ctx *jsonpointer.Resolv
 			err error
 		)
 		switch {
-		case !strings.ContainsRune(ref, '#') && ctx.IsRoot():
+		case !strings.ContainsRune(ref, '#'):
 			// JSON Reference usually contains a fragment, e.g. "#/components/schemas/Foo" or
 			// "foo.json#/definitions/Bar", but this looks like a schema name.
 			//

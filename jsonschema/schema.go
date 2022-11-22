@@ -1,6 +1,7 @@
 package jsonschema
 
 import (
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/ogenregex"
 )
@@ -27,11 +28,14 @@ const (
 	Null SchemaType = "null"
 )
 
+// Ref is a JSON Schema reference.
+type Ref = jsonpointer.RefKey
+
 // Schema is a JSON Schema.
 type Schema struct {
 	XOgenName string // Annotation to set type name.
 
-	Ref string // Whether schema is referenced.
+	Ref Ref // Whether schema is referenced.
 
 	Type             SchemaType
 	Format           string // Schema format, optional.

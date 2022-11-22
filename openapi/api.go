@@ -1,7 +1,13 @@
 // Package openapi represents OpenAPI v3 Specification in Go.
 package openapi
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/jsonschema"
+)
+
+// Ref is a JSON Reference.
+type Ref = jsonpointer.RefKey
 
 // API represents parsed OpenAPI spec.
 type API struct {

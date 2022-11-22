@@ -12,7 +12,7 @@ type LocationError = location.Error
 
 func (p *Parser) file(ctx *jsonpointer.ResolveCtx) location.File {
 	file := ctx.File()
-	if file.IsZero() || ctx.IsRoot() {
+	if file.IsZero() {
 		return p.rootFile
 	}
 	return file

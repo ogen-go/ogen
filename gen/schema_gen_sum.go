@@ -62,14 +62,14 @@ func canUseTypeDiscriminator(sum []*ir.Type) bool {
 }
 
 func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
-	var do func(map[string]struct{}, []*jsonschema.Schema) error
-	do = func(ctx map[string]struct{}, schemas []*jsonschema.Schema) error {
+	var do func(map[jsonschema.Ref]struct{}, []*jsonschema.Schema) error
+	do = func(ctx map[jsonschema.Ref]struct{}, schemas []*jsonschema.Schema) error {
 		for i, s := range schemas {
 			if s == nil {
 				// Just skip nil schemas. We handle them later.
 				continue
 			}
-			if ref := s.Ref; ref != "" {
+			if ref := s.Ref; !ref.IsZero() {
 				if _, ok := ctx[ref]; ok {
 					return errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
 				}
@@ -94,7 +94,7 @@ func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
 		return nil
 	}
 
-	return do(map[string]struct{}{}, []*jsonschema.Schema{parent})
+	return do(map[jsonschema.Ref]struct{}{}, []*jsonschema.Schema{parent})
 }
 
 func (g *schemaGen) collectSumVariants(
@@ -135,8 +135,8 @@ func (g *schemaGen) collectSumVariants(
 	return sum, nil
 }
 
-func schemaName(ref string) (string, bool) {
-	_, after, ok := strings.Cut(ref, "#/")
+func schemaName(k jsonschema.Ref) (string, bool) {
+	_, after, ok := strings.Cut(k.Ptr, "#/")
 	if !ok || after == "" {
 		return "", false
 	}
@@ -255,7 +255,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			// Implicit mapping, defaults to type name.
 			keys := map[string]struct{}{}
 			for i, s := range sum.SumOf {
-				var ref string
+				var ref jsonschema.Ref
 				if s.Schema != nil {
 					ref = s.Schema.Ref
 				} else {
@@ -420,7 +420,7 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	}
 
 	// Do not modify reference fields, as they may still refer to the original schema.
-	if mergedSchema.Ref == "" {
+	if mergedSchema.Ref.IsZero() {
 		mergedSchema.Ref = schema.Ref
 	}
 	return g.generate(name, mergedSchema, false)

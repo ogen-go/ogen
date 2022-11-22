@@ -1,6 +1,8 @@
 package openapi
 
-import "github.com/ogen-go/ogen/internal/location"
+import (
+	"github.com/ogen-go/ogen/internal/location"
+)
 
 // Operation is an OpenAPI Operation.
 type Operation struct {
@@ -31,7 +33,7 @@ type Operation struct {
 
 // RequestBody of an OpenAPI Operation.
 type RequestBody struct {
-	Ref         string
+	Ref         Ref
 	Description string
 	Required    bool
 	Content     map[string]*MediaType
@@ -44,7 +46,7 @@ type Header = Parameter
 
 // Response is an OpenAPI Response definition.
 type Response struct {
-	Ref         string
+	Ref         Ref
 	Description string
 	Headers     map[string]*Header
 	Content     map[string]*MediaType

@@ -33,8 +33,12 @@ func (n NoExternal) Get(context.Context, string) ([]byte, error) {
 type ExternalOptions struct {
 	// HTTPClient sets http client to use. Defaults to http.DefaultClient.
 	HTTPClient *http.Client
+
 	// ReadFile sets function for reading files from fs. Defaults to os.ReadFile.
 	ReadFile func(p string) ([]byte, error)
+	// URLToFilePath sets function for converting url to file path. Defaults to urlpath.URLToFilePath.
+	URLToFilePath func(u *url.URL) (string, error)
+
 	// Logger sets logger to use. Defaults to zap.NewNop().
 	Logger *zap.Logger
 }
@@ -46,6 +50,9 @@ func (r *ExternalOptions) setDefaults() {
 	if r.ReadFile == nil {
 		r.ReadFile = os.ReadFile
 	}
+	if r.URLToFilePath == nil {
+		r.URLToFilePath = urlpath.URLToFilePath
+	}
 	if r.Logger == nil {
 		r.Logger = zap.NewNop()
 	}
@@ -54,9 +61,10 @@ func (r *ExternalOptions) setDefaults() {
 var _ ExternalResolver = externalResolver{}
 
 type externalResolver struct {
-	client   *http.Client
-	readFile func(p string) ([]byte, error)
-	logger   *zap.Logger
+	client        *http.Client
+	readFile      func(p string) ([]byte, error)
+	urlToFilePath func(u *url.URL) (string, error)
+	logger        *zap.Logger
 }
 
 // NewExternalResolver creates new ExternalResolver.
@@ -66,9 +74,10 @@ func NewExternalResolver(opts ExternalOptions) ExternalResolver {
 	opts.setDefaults()
 
 	return externalResolver{
-		client:   opts.HTTPClient,
-		readFile: opts.ReadFile,
-		logger:   opts.Logger,
+		client:        opts.HTTPClient,
+		readFile:      opts.ReadFile,
+		urlToFilePath: opts.URLToFilePath,
+		logger:        opts.Logger,
 	}
 }
 
@@ -125,7 +134,7 @@ func (e externalResolver) Get(ctx context.Context, loc string) ([]byte, error) {
 		data, err = e.httpGet(ctx, u)
 	case "file", "":
 		var p string
-		p, err = urlpath.URLToFilePath(u)
+		p, err = e.urlToFilePath(u)
 		if err != nil {
 			err = errors.Wrap(err, "convert url to file path")
 			break

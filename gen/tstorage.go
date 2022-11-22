@@ -4,11 +4,12 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 // tstorage is a type storage.
 type tstorage struct {
-	refs map[string]*ir.Type // Key: ref
+	refs map[jsonschema.Ref]*ir.Type // Key: ref
 
 	// types map contains public types.
 	// Public type is any type that has a name:
@@ -28,22 +29,22 @@ type tstorage struct {
 	//                         in the map because
 	//                         the type is anonymous.
 	//
-	types     map[string]*ir.Type     // Key: type name
-	responses map[string]*ir.Response // Key: ref
+	types     map[string]*ir.Type             // Key: type name
+	responses map[jsonschema.Ref]*ir.Response // Key: ref
 
 	// wtypes stores references to wrapped types:
 	//  * [T]StatusCode
 	//  * [T]Headers
 	//  * [T]StatusCodeWithHeaders
-	wtypes map[string]*ir.Type // Key: ref
+	wtypes map[jsonschema.Ref]*ir.Type // Key: ref
 }
 
 func newTStorage() *tstorage {
 	return &tstorage{
-		refs:      map[string]*ir.Type{},
+		refs:      map[jsonschema.Ref]*ir.Type{},
 		types:     map[string]*ir.Type{},
-		responses: map[string]*ir.Response{},
-		wtypes:    map[string]*ir.Type{},
+		responses: map[jsonschema.Ref]*ir.Response{},
+		wtypes:    map[jsonschema.Ref]*ir.Type{},
 	}
 }
 
@@ -78,7 +79,7 @@ func (s *tstorage) saveType(t *ir.Type) error {
 	return nil
 }
 
-func (s *tstorage) saveRef(ref string, t *ir.Type) error {
+func (s *tstorage) saveRef(ref jsonschema.Ref, t *ir.Type) error {
 	if _, ok := s.refs[ref]; ok {
 		return errors.Errorf("reference conflict: %q", ref)
 	}
@@ -91,7 +92,7 @@ func (s *tstorage) saveRef(ref string, t *ir.Type) error {
 	return nil
 }
 
-func (s *tstorage) saveResponse(ref string, r *ir.Response) error {
+func (s *tstorage) saveResponse(ref jsonschema.Ref, r *ir.Response) error {
 	if _, ok := s.responses[ref]; ok {
 		return errors.Errorf("reference conflict: %q", ref)
 	}
@@ -100,7 +101,7 @@ func (s *tstorage) saveResponse(ref string, r *ir.Response) error {
 	return nil
 }
 
-func (s *tstorage) saveWType(ref string, t *ir.Type) error {
+func (s *tstorage) saveWType(ref jsonschema.Ref, t *ir.Type) error {
 	if _, ok := s.wtypes[ref]; ok {
 		return errors.Errorf("reference conflict: %q", ref)
 	}

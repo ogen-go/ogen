@@ -9,7 +9,7 @@ import (
 )
 
 func (p *parser) parseSchema(schema *ogen.Schema, ctx *jsonpointer.ResolveCtx) (*jsonschema.Schema, error) {
-	s, err := p.schemaParser.ParseWithContext(schema.ToJSONSchema(), ctx)
+	s, err := p.schemaParser.Parse(schema.ToJSONSchema(), ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse schema")
 	}

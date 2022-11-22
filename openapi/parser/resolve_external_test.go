@@ -175,7 +175,7 @@ func TestExternalReference(t *testing.T) {
 			Components: &ogen.Components{
 				Schemas: map[string]*ogen.Schema{
 					"Schema": {
-						Ref: "root.json#",
+						Ref: "schema_file.json#",
 					},
 				},
 			},
@@ -200,27 +200,29 @@ func TestExternalReference(t *testing.T) {
 				},
 			},
 		},
-		"root.json": ogen.Schema{Type: "string"},
+		"schema_file.json": ogen.Schema{Type: "string"},
 	}
 
 	a := require.New(t)
 	spec, err := Parse(root, Settings{
 		External: remote,
+		File:     location.NewFile("root.json", "root.json", nil),
+		RootURL:  testRootURL,
 	})
 	a.NoError(err)
 
 	var (
 		schema = &jsonschema.Schema{
-			Ref:      "root.json#",
+			Ref:      refKey{Loc: "/schema_file.json", Ptr: "#"},
 			Type:     "string",
 			Examples: []jsonschema.Example{exampleValue},
 		}
 		localExample = &openapi.Example{
-			Ref:   "foo.json#/components/examples/RemoteExample",
+			Ref:   refKey{Loc: "/foo.json", Ptr: "#/components/examples/RemoteExample"},
 			Value: exampleValue,
 		}
 		param = &openapi.Parameter{
-			Ref:     "#/components/parameters/LocalParameter",
+			Ref:     refKey{Loc: "/foo.json", Ptr: "#/components/parameters/RemoteParameter"},
 			Name:    "parameter",
 			Schema:  schema,
 			In:      "query",
@@ -228,14 +230,14 @@ func TestExternalReference(t *testing.T) {
 			Explode: true,
 		}
 		requestBody = &openapi.RequestBody{
-			Ref:         "#/components/requestBodies/LocalRequestBody",
+			Ref:         refKey{Loc: "/foo.json", Ptr: "#/components/requestBodies/RemoteRequestBody"},
 			Description: "request description",
 			Content: map[string]*openapi.MediaType{
 				"application/json": {
 					Schema: schema,
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   "foo.json#/components/examples/RemoteExample",
+							Ref:   refKey{Loc: "/foo.json", Ptr: "#/components/examples/RemoteExample"},
 							Value: exampleValue,
 						},
 					},
@@ -244,11 +246,11 @@ func TestExternalReference(t *testing.T) {
 			},
 		}
 		response = &openapi.Response{
-			Ref:         "#/components/responses/LocalResponse",
+			Ref:         refKey{Loc: "/response.json", Ptr: "#"},
 			Description: "response description",
 			Headers: map[string]*openapi.Header{
 				"ResponseHeader": {
-					Ref:    "foo.json#/components/headers/RemoteHeader",
+					Ref:    refKey{Loc: "/foo.json", Ptr: "#/components/headers/RemoteHeader"},
 					Name:   "ResponseHeader",
 					In:     openapi.LocationHeader,
 					Style:  openapi.HeaderStyleSimple,
@@ -313,7 +315,7 @@ func TestExternalReference(t *testing.T) {
 			},
 			Examples: map[string]*openapi.Example{
 				"LocalExample": {
-					Ref:   "#/components/examples/LocalExample",
+					Ref:   refKey{Loc: "/foo.json", Ptr: "#/components/examples/RemoteExample"},
 					Value: exampleValue,
 				},
 			},
@@ -363,12 +365,14 @@ func TestDuplicateOperationID(t *testing.T) {
 	a := require.New(t)
 	_, err := Parse(root, Settings{
 		External: remote,
+		File:     location.NewFile("root.json", "root.json", nil),
+		RootURL:  testRootURL,
 	})
 	a.ErrorContains(err, "duplicate operationId: \"testGet\"")
 	// Ensure that the error contains the file name.
 	var locErr *location.Error
 	a.ErrorAs(err, &locErr)
-	a.Equal("pathItem.json", locErr.File.Name)
+	a.Equal("/pathItem.json", locErr.File.Name)
 }
 
 // Ensure that parser adds location information to the error, even if the error is occurred in the external file.
@@ -395,12 +399,14 @@ func TestExternalErrors(t *testing.T) {
 	a := require.New(t)
 	_, err := Parse(root, Settings{
 		External: remote,
+		File:     location.NewFile("root.json", "root.json", nil),
+		RootURL:  testRootURL,
 	})
 	a.ErrorContains(err, "parse status code")
 
 	var locErr *location.Error
 	a.ErrorAs(err, &locErr)
-	a.Equal("pathItem.json", locErr.File.Name)
+	a.Equal("/pathItem.json", locErr.File.Name)
 	a.True(locErr.PrettyPrint(io.Discard, false))
 }
 

@@ -2,6 +2,7 @@ package jsonschema
 
 import (
 	"fmt"
+	"net/url"
 	"strconv"
 	"strings"
 	"testing"
@@ -31,6 +32,10 @@ func (c components) ResolveReference(ref string) (*RawSchema, error) {
 	return s, nil
 }
 
+func testCtx() *jsonpointer.ResolveCtx {
+	return jsonpointer.NewResolveCtx(&url.URL{Path: "/root.json"}, jsonpointer.DefaultDepthLimit)
+}
+
 func TestSchemaSimple(t *testing.T) {
 	parser := NewParser(Settings{})
 
@@ -47,7 +52,7 @@ func TestSchemaSimple(t *testing.T) {
 			},
 		},
 		Required: []string{"id", "name"},
-	})
+	}, testCtx())
 	require.NoError(t, err)
 
 	expect := &Schema{
@@ -98,7 +103,7 @@ func TestSchemaRecursive(t *testing.T) {
 
 	pet := &Schema{
 		Type: Object,
-		Ref:  "#/components/schemas/Pet",
+		Ref:  Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
 	}
 	pet.Properties = []Property{
 		{
@@ -122,9 +127,9 @@ func TestSchemaRecursive(t *testing.T) {
 	}
 
 	expectRefcache := map[jsonpointer.RefKey]*Schema{
-		{Ref: "#/components/schemas/Pet"}: {
+		{Loc: "/root.json", Ptr: "#/components/schemas/Pet"}: {
 			Type: Object,
-			Ref:  "#/components/schemas/Pet",
+			Ref:  Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pet"},
 			Properties: []Property{
 				{
 					Name:     "id",
@@ -154,7 +159,7 @@ func TestSchemaRecursive(t *testing.T) {
 
 	out, err := parser.Parse(&RawSchema{
 		Ref: "#/components/schemas/Pet",
-	})
+	}, testCtx())
 	require.NoError(t, err)
 	require.Equal(t, expectRefcache, parser.refcache)
 	require.Equal(t, pet, out)
@@ -177,7 +182,7 @@ func TestSchemaInfiniteRecursion(t *testing.T) {
 		})
 		_, err := parser.Parse(&RawSchema{
 			Ref: "#/components/schemas/Type",
-		})
+		}, testCtx())
 		require.Error(t, err)
 	}
 }
@@ -213,7 +218,7 @@ func TestSchemaRefToRef(t *testing.T) {
 	})
 	_, err := parser.Parse(&RawSchema{
 		Ref: "#/components/schemas/referer",
-	})
+	}, testCtx())
 	require.NoError(t, err)
 }
 
@@ -289,7 +294,7 @@ func TestSchemaSideEffects(t *testing.T) {
 			},
 		},
 		Required: []string{"id", "name", "owner"},
-	})
+	}, testCtx())
 
 	require.NoError(t, err)
 	require.Equal(t, expect, out)
@@ -307,12 +312,12 @@ func TestSchemaReferencedArray(t *testing.T) {
 
 	pets := &Schema{
 		Type: Array,
-		Ref:  "#/components/schemas/Pets",
+		Ref:  Ref{Loc: "/root.json", Ptr: "#/components/schemas/Pets"},
 		Item: &Schema{Type: String},
 	}
 
 	expectRefcache := map[jsonpointer.RefKey]*Schema{
-		{Ref: "#/components/schemas/Pets"}: pets,
+		{Loc: "/root.json", Ptr: "#/components/schemas/Pets"}: pets,
 	}
 
 	expect := &Schema{
@@ -341,7 +346,7 @@ func TestSchemaReferencedArray(t *testing.T) {
 			},
 		},
 		Required: []string{"pets"},
-	})
+	}, testCtx())
 
 	require.NoError(t, err)
 	require.Equal(t, expectRefcache, parser.refcache)
@@ -377,7 +382,7 @@ func TestSchemaExtensions(t *testing.T) {
 			const filename = "test.yaml"
 			out, err := NewParser(Settings{
 				File: location.NewFile(filename, filename, data),
-			}).Parse(&raw)
+			}).Parse(&raw, testCtx())
 			if tt.expectErr {
 				a.Error(err)
 				return
@@ -405,14 +410,14 @@ func TestInvalidMultipleOf(t *testing.T) {
 				_, err := parser.Parse(&RawSchema{
 					Type:       typ,
 					MultipleOf: strconv.AppendInt(nil, int64(v), 10),
-				})
+				}, testCtx())
 				require.Errorf(t, err, "%d", v)
 			}
 		})
 		_, err := parser.Parse(&RawSchema{
 			Type:       typ,
 			MultipleOf: []byte("true"),
-		})
+		}, testCtx())
 		require.Error(t, err)
 	}
 }

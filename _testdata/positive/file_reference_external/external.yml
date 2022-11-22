@@ -1,0 +1,9 @@
+get:
+  operationId: external
+  responses:
+    "200":
+      description: ok
+      content:
+        application/json:
+          schema:
+            $ref: '../file_reference.yml#/components/schemas/TestSchema'

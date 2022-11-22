@@ -71,9 +71,12 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, re
 		return s, nil
 	}
 
-	r, err := p.getResolver(key.Loc)
-	if err != nil {
-		return nil, err
+	r := p.schemas[""]
+	if !ctx.IsRoot(key) {
+		r, err = p.getResolver(key.Loc)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	if err := ctx.AddKey(key, r.file); err != nil {
@@ -84,13 +87,13 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (_ *Schema, re
 		ctx.Delete(key)
 	}()
 
-	raw, err := r.ResolveReference(key.Ref)
+	raw, err := r.ResolveReference(key.Ptr)
 	if err != nil {
 		return nil, err
 	}
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
-		s.Ref = ref
+		s.Ref = key
 		p.refcache[key] = s
 		return p.extendInfo(raw, s, p.file(ctx))
 	})

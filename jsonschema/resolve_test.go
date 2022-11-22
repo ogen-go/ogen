@@ -3,6 +3,7 @@ package jsonschema
 import (
 	"context"
 	"encoding/json"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -98,26 +99,26 @@ func TestExternalReference(t *testing.T) {
 		Items: &RawSchema{
 			Ref: "#/components/schemas/LocalSchema",
 		},
-	})
+	}, testCtx())
 	require.NoError(t, err)
 
 	expect := &Schema{
 		Type: Array,
 		Item: &Schema{
-			Ref:  "foo.json#/components/schemas/RemoteSchema",
+			Ref:  Ref{Loc: "/foo.json", Ptr: "#/components/schemas/RemoteSchema"},
 			Type: Object,
 			Properties: []Property{
 				{
 					Name:   "relative",
-					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: Ref{Loc: "/foo.json", Ptr: "#/components/schemas/Property"}, Type: Number},
 				},
 				{
 					Name:   "absolute",
-					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: Ref{Loc: "/foo.json", Ptr: "#/components/schemas/Property"}, Type: Number},
 				},
 				{
 					Name:   "remote_absolute",
-					Schema: &Schema{Ref: "https://example.com/bar.json#/components/schemas/Property", Type: Boolean},
+					Schema: &Schema{Ref: Ref{Loc: "https://example.com/bar.json", Ptr: "#/components/schemas/Property"}, Type: Boolean},
 				},
 			},
 		},
@@ -177,7 +178,8 @@ func TestLimitDepth(t *testing.T) {
 		parser := NewParser(Settings{
 			Resolver: root,
 		})
-		_, err := parser.Resolve("#/components/schemas/Schema1", jsonpointer.NewResolveCtx(nil, tt.limit))
+		ctx := jsonpointer.NewResolveCtx(&url.URL{Path: "/limit.json"}, tt.limit)
+		_, err := parser.Resolve("#/components/schemas/Schema1", ctx)
 		tt.checker(t, err, "limit: %d", tt.limit)
 	}
 }

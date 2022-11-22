@@ -125,10 +125,12 @@ func (t Type) String() string {
 	b.WriteRune('(')
 	b.WriteString(t.Go())
 	b.WriteRune(')')
-	if s := t.Schema; s != nil && s.Ref != "" {
-		b.WriteRune('(')
-		b.WriteString(s.Ref)
-		b.WriteRune(')')
+	if s := t.Schema; s != nil {
+		if ref := s.Ref.String(); ref != "" {
+			b.WriteRune('(')
+			b.WriteString(ref)
+			b.WriteRune(')')
+		}
 	}
 	return b.String()
 }

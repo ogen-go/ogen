@@ -27,7 +27,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	for ref, t := range gen.localRefs {
 		if t.IsStruct() {
 			if err := checkStructRecursions(ctx, t); err != nil {
-				return errors.Wrap(err, ref)
+				return errors.Wrap(err, ref.String())
 			}
 		}
 		if err := ctx.saveRef(ref, t); err != nil {
@@ -99,19 +99,23 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	}
 
 	// TODO(tdakkota): pass input filename
-	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {
+	gen := newSchemaGen(func(ref jsonschema.Ref) (*ir.Type, bool) {
 		return nil, false
 	})
 	gen.log = opts.Logger.Named("schemagen")
 
 	{
 		prev := gen.nameRef
-		gen.nameRef = func(ref string) (string, error) {
+		gen.nameRef = func(ref jsonschema.Ref) (string, error) {
+			nref := ref
 			for _, trim := range opts.TrimPrefix {
-				ref = strings.TrimPrefix(ref, trim)
+				nref.Ptr = strings.TrimPrefix(nref.Ptr, trim)
+			}
+			if !strings.HasPrefix(nref.Ptr, "#") {
+				nref.Ptr = "#" + nref.Ptr
 			}
 
-			result, err := prev(ref)
+			result, err := prev(nref)
 			if err != nil {
 				return "", err
 			}

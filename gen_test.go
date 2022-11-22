@@ -1,6 +1,7 @@
 package ogen_test
 
 import (
+	"net/url"
 	"path"
 	"runtime/debug"
 	"strings"
@@ -17,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/openapi/parser"
 )
 
-func testGenerate(t *testing.T, filename string, data []byte, aliases ctAliases, ignore ...string) {
+func testGenerate(t *testing.T, dir, filename string, data []byte, aliases ctAliases, ignore ...string) {
 	t.Helper()
 	t.Parallel()
 	log := zaptest.NewLogger(t)
@@ -35,6 +36,28 @@ func testGenerate(t *testing.T, filename string, data []byte, aliases ctAliases,
 		ContentTypeAliases: aliases,
 		File:               location.NewFile(filename, filename, data),
 		Logger:             log,
+	}
+	if filename == "file_reference.yml" { // HACK
+		opt.AllowRemote = true
+		opt.RootURL = &url.URL{
+			Scheme: "file",
+			Path:   "/" + path.Join(dir, filename),
+		}
+		opt.Remote = gen.RemoteOptions{
+			ReadFile: func(p string) ([]byte, error) {
+				p = strings.TrimPrefix(p, "/")
+				return testdata.ReadFile(p)
+			},
+			URLToFilePath: func(u *url.URL) (string, error) {
+				// By default, urlpath.URLToFilePath output depends on the OS.
+				//
+				// But we use virtual filesystem, so we should use the fs.FS path.
+				if u.Path == "" {
+					return u.Opaque, nil
+				}
+				return u.Path, nil
+			},
+		}
 	}
 	t.Run("Gen", func(t *testing.T) {
 		defer func() {
@@ -77,9 +100,15 @@ func runPositive(root string,
 		}
 
 		walkTestdata(t, root, func(t *testing.T, file string, data []byte) {
+			dir := path.Dir(file)
+			if parent := path.Base(dir); parent == "file_reference_external" {
+				t.Skip("Special directory for testing remote references.")
+				return
+			}
+
 			file = strings.TrimPrefix(file, root+"/")
 			skip := skipSets[file]
-			testGenerate(t, file, data, aliases[file], skip...)
+			testGenerate(t, dir, file, data, aliases[file], skip...)
 		})
 	}
 }

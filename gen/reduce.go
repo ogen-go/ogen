@@ -21,7 +21,7 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		return nil
 	}
 	d := first.Responses["default"]
-	if d.Ref == "" {
+	if d.Ref.IsZero() {
 		// Not supported.
 		return nil
 	}
