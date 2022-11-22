@@ -187,6 +187,7 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			NoContent:      true,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
+			Headers:        s.Headers,
 		})
 	}
 	for contentType, media := range s.Contents {
@@ -196,6 +197,7 @@ func (s Response) ResponseInfo() []ResponseInfo {
 			ContentType:    contentType,
 			WithStatusCode: s.WithStatusCode,
 			WithHeaders:    s.WithHeaders,
+			Headers:        s.Headers,
 		})
 	}
 
