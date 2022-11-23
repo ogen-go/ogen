@@ -2,46 +2,22 @@ package gen
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*openapi.Response) (_ *ir.Responses, err error) {
+func (g *Generator) generateResponses(ctx *genctx, opName string, responses openapi.Responses) (_ *ir.Responses, err error) {
 	name := opName + "Res"
 	result := &ir.Responses{
-		StatusCode: make(map[int]*ir.Response, len(responses)),
+		StatusCode: make(map[int]*ir.Response, len(responses.StatusCode)),
 	}
 
 	// Sort responses by status code.
-	statusCodes := make([]int, 0, len(responses))
-	patterns := make([]string, 0, 5)
-	for status := range responses {
-		if status == "default" {
-			continue // Ignore default response.
-		}
-		switch strings.ToUpper(status) {
-		case "1XX", "2XX", "3XX", "4XX", "5XX":
-			patterns = append(patterns, status)
-			continue // Ignore pattern responses.
-		default:
-			code, err := strconv.Atoi(status)
-			if err != nil {
-				return nil, errors.Wrap(err, "parse response status code")
-			}
-
-			statusCodes = append(statusCodes, code)
-		}
-	}
-	slices.Sort(statusCodes)
-	slices.Sort(patterns)
-
+	statusCodes := xmaps.SortedKeys(responses.StatusCode)
 	for _, code := range statusCodes {
 		respName, err := pascal(opName, statusText(code))
 		if err != nil {
@@ -49,7 +25,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 		}
 
 		var (
-			resp = responses[strconv.Itoa(code)]
+			resp = responses.StatusCode[code]
 			doc  = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
 
@@ -59,34 +35,26 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 		}
 	}
 
-	for _, pattern := range patterns {
+	for idx, resp := range responses.Pattern {
+		if resp == nil {
+			continue
+		}
+		pattern := fmt.Sprintf("%dXX", idx+1)
+
 		respName, err := pascal(opName, pattern)
 		if err != nil {
 			return nil, errors.Wrapf(err, "%s: %s: response name", opName, pattern)
 		}
 
-		// Convert first digit to byte.
-		n := pattern[0] - '0'
-		switch n {
-		case 1, 2, 3, 4, 5:
-		default:
-			panic(fmt.Sprintf("unexpected pattern %q: code %d", pattern, n))
-		}
-		// Index starts from 0.
-		n--
+		var doc = fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
 
-		var (
-			resp = responses[pattern]
-			doc  = fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
-		)
-
-		result.Pattern[n], err = g.responseToIR(ctx, respName, doc, resp, true)
+		result.Pattern[idx], err = g.responseToIR(ctx, respName, doc, resp, true)
 		if err != nil {
 			return nil, errors.Wrapf(err, "pattern %q", pattern)
 		}
 	}
 
-	if def, ok := responses["default"]; ok && g.errType == nil {
+	if def := responses.Default; def != nil && g.errType == nil {
 		var (
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
