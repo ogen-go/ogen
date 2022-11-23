@@ -1,8 +1,6 @@
 package parser
 
 import (
-	"strconv"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
@@ -15,24 +13,24 @@ func (p *parser) parseResponses(
 	responses ogen.Responses,
 	locator location.Locator,
 	ctx *jsonpointer.ResolveCtx,
-) (_ map[string]*openapi.Response, err error) {
+) (result openapi.Responses, _ error) {
 	if len(responses) == 0 {
-		return nil, errors.New("no responses")
+		return result, errors.New("no responses")
 	}
 
-	result := make(map[string]*openapi.Response, len(responses))
-	for status, response := range responses {
-		if err := validateStatusCode(status); err != nil {
-			return nil, p.wrapLocation(p.file(ctx), locator.Key(status), err)
-		}
-
+	result = openapi.Responses{
+		StatusCode: map[int]*openapi.Response{},
+	}
+	for pattern, response := range responses {
 		resp, err := p.parseResponse(response, ctx)
 		if err != nil {
-			err := errors.Wrap(err, status)
-			return nil, p.wrapLocation(p.file(ctx), locator.Field(status), err)
+			err := errors.Wrap(err, pattern)
+			return result, p.wrapLocation(p.file(ctx), locator.Field(pattern), err)
 		}
 
-		result[status] = resp
+		if err := result.Add(pattern, resp); err != nil {
+			return result, p.wrapLocation(p.file(ctx), locator.Key(pattern), err)
+		}
 	}
 
 	return result, nil
@@ -72,22 +70,4 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *jsonpointer.ResolveCtx)
 		Content:     content,
 		Pointer:     locator.Pointer(p.file(ctx)),
 	}, nil
-}
-
-func validateStatusCode(v string) error {
-	switch v {
-	case "default", "1XX", "2XX", "3XX", "4XX", "5XX":
-		return nil
-
-	default:
-		code, err := strconv.Atoi(v)
-		if err != nil {
-			return errors.Wrap(err, "parse status code")
-		}
-
-		if code < 100 || code > 599 {
-			return errors.Errorf("unknown status code: %d", code)
-		}
-		return nil
-	}
 }

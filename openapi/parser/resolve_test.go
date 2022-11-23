@@ -159,32 +159,34 @@ func TestComplicatedReference(t *testing.T) {
 				},
 			},
 			Security: []openapi.SecurityRequirement{},
-			Responses: map[string]*openapi.Response{
-				"200": {
-					Ref: refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/responses/200"},
-					Headers: map[string]*openapi.Header{
-						"ResponseHeader": responseHeader,
-					},
-					Content: map[string]*openapi.MediaType{
-						"application/json": {
-							Schema: &jsonschema.Schema{
-								Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
-								Type: "string",
+			Responses: openapi.Responses{
+				StatusCode: map[int]*openapi.Response{
+					200: {
+						Ref: refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/responses/200"},
+						Headers: map[string]*openapi.Header{
+							"ResponseHeader": responseHeader,
+						},
+						Content: map[string]*openapi.MediaType{
+							"application/json": {
+								Schema: &jsonschema.Schema{
+									Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
+									Type: "string",
+								},
+								Examples: map[string]*openapi.Example{},
+								Encoding: map[string]*openapi.Encoding{},
 							},
-							Examples: map[string]*openapi.Example{},
-							Encoding: map[string]*openapi.Encoding{},
 						},
 					},
-				},
-				"201": {
-					Headers: map[string]*openapi.Header{
-						"ResponseHeader": responseHeader,
-					},
-					Content: map[string]*openapi.MediaType{
-						"application/json": {
-							Schema:   &jsonschema.Schema{Type: "string"},
-							Examples: map[string]*openapi.Example{},
-							Encoding: map[string]*openapi.Encoding{},
+					201: {
+						Headers: map[string]*openapi.Header{
+							"ResponseHeader": responseHeader,
+						},
+						Content: map[string]*openapi.MediaType{
+							"application/json": {
+								Schema:   &jsonschema.Schema{Type: "string"},
+								Examples: map[string]*openapi.Example{},
+								Encoding: map[string]*openapi.Encoding{},
+							},
 						},
 					},
 				},
@@ -220,19 +222,21 @@ func TestComplicatedReference(t *testing.T) {
 				},
 			},
 			Security: []openapi.SecurityRequirement{},
-			Responses: map[string]*openapi.Response{
-				"200": {
-					Headers: map[string]*openapi.Header{
-						"ResponseHeader": responseHeader,
-					},
-					Content: map[string]*openapi.MediaType{
-						"application/json": {
-							Schema: &jsonschema.Schema{
-								Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
-								Type: "string",
+			Responses: openapi.Responses{
+				StatusCode: map[int]*openapi.Response{
+					200: {
+						Headers: map[string]*openapi.Header{
+							"ResponseHeader": responseHeader,
+						},
+						Content: map[string]*openapi.MediaType{
+							"application/json": {
+								Schema: &jsonschema.Schema{
+									Ref:  refKey{Loc: "/root.json", Ptr: "#/paths/~1post/post/requestBody/content/application~1json/schema"},
+									Type: "string",
+								},
+								Examples: map[string]*openapi.Example{},
+								Encoding: map[string]*openapi.Encoding{},
 							},
-							Examples: map[string]*openapi.Example{},
-							Encoding: map[string]*openapi.Encoding{},
 						},
 					},
 				},

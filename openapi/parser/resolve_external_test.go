@@ -284,8 +284,10 @@ func TestExternalReference(t *testing.T) {
 				Parameters:  []*openapi.Parameter{param},
 				RequestBody: requestBody,
 				Security:    []openapi.SecurityRequirement{},
-				Responses: map[string]*openapi.Response{
-					"200": response,
+				Responses: openapi.Responses{
+					StatusCode: map[int]*openapi.Response{
+						200: response,
+					},
 				},
 			},
 			{
@@ -298,8 +300,10 @@ func TestExternalReference(t *testing.T) {
 				Parameters:  []*openapi.Parameter{},
 				RequestBody: nil,
 				Security:    []openapi.SecurityRequirement{},
-				Responses: map[string]*openapi.Response{
-					"200": response,
+				Responses: openapi.Responses{
+					StatusCode: map[int]*openapi.Response{
+						200: response,
+					},
 				},
 			},
 		},
@@ -402,7 +406,7 @@ func TestExternalErrors(t *testing.T) {
 		File:     location.NewFile("root.json", "root.json", nil),
 		RootURL:  testRootURL,
 	})
-	a.ErrorContains(err, "parse status code")
+	a.ErrorContains(err, "invalid response pattern")
 
 	var locErr *location.Error
 	a.ErrorAs(err, &locErr)
@@ -435,7 +439,7 @@ func TestInitialLocation(t *testing.T) {
 		op := ops[0]
 		a.Equal("/get", op.Path.String())
 
-		resp, ok := op.Responses["200"]
+		resp, ok := op.Responses.StatusCode[200]
 		a.True(ok)
 		content, ok := resp.Content["application/json"]
 		a.True(ok)

@@ -17,16 +17,16 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 
 	// Compare first default response to others.
 	first := ops[0]
-	if first.Responses == nil || first.Responses["default"] == nil {
+	d := first.Responses.Default
+	if d == nil {
 		return nil
 	}
-	d := first.Responses["default"]
 	if d.Ref.IsZero() {
 		// Not supported.
 		return nil
 	}
 	for _, spec := range ops[1:] {
-		if !reflect.DeepEqual(spec.Responses["default"], d) {
+		if !reflect.DeepEqual(spec.Responses.Default, d) {
 			return nil
 		}
 	}
