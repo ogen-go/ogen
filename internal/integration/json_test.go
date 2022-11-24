@@ -833,30 +833,6 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
-	t.Run("AnyOfTestSizeLimit", func(t *testing.T) {
-		for i, tc := range []struct {
-			Input    string
-			Expected api.AnyOfTestSizeLimitType
-			Error    bool
-		}{
-			{`10`, api.IntAnyOfTestSizeLimit, false},
-			{`"10"`, api.StringAnyOfTestSizeLimit, false},
-			{`true`, "", true},
-			{`null`, "", true},
-		} {
-			// Make range value copy to prevent data races.
-			tc := tc
-			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-				checker := require.NoError
-				if tc.Error {
-					checker = require.Error
-				}
-				r := api.AnyOfTestSizeLimit{}
-				checker(t, r.Decode(jx.DecodeStr(tc.Input)))
-				require.Equal(t, tc.Expected, r.Type)
-			})
-		}
-	})
 	t.Run("OptionalSum", func(t *testing.T) {
 		variant := func(t api.OneOfUUIDAndIntEnumType) api.OptOneOfUUIDAndIntEnum {
 			return api.NewOptOneOfUUIDAndIntEnum(api.OneOfUUIDAndIntEnum{

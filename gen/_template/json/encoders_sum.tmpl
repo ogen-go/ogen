@@ -31,14 +31,27 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	// Sum type {{ $d }}.
 	{{- if or ($d.Primitive) ($d.TypeDiscriminator) }}
 	switch t := d.Next(); t {
-	{{- range $s := $.SumOf }}
-	{{- with $typ := $s.JSON.Type }}
-	case jx.{{ $typ }}:
-	{{- else }}
-	case {{ $s.JSON.SumTypes }}:
-	{{- end }}
-		{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
-		s.Type = {{ $s.Name }}{{ $.Name }}
+	{{- range $cse := $.TypeDiscriminator }}
+	case {{ $cse.JXTypes }}:
+		{{- with $intType := $cse.IntType }}
+		num, err := d.Num()
+		if err != nil {
+			return errors.Wrap(err, "parse number")
+		}
+		if d := jx.DecodeBytes(num); num.IsInt() {
+			{{- $s := $intType }}
+			{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
+			s.Type = {{ $s.Name }}{{ $.Name }}
+		} else {
+        	{{- $s = $cse.Type }}
+        	{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
+			s.Type = {{ $s.Name }}{{ $.Name }}
+		}
+		{{- else }}
+			{{- $s := $cse.Type }}
+			{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
+			s.Type = {{ $s.Name }}{{ $.Name }}
+		{{- end }}
 	{{- end }}
 	default:
 		return errors.Errorf("unexpected json type %q", t)
@@ -104,12 +117,10 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	{{- range $s := $.SumOf }}
 	case {{ $s.Name }}{{ $.Name }}:
 		{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
-	{{- end}}
+	{{- end }}
 	default:
 		return errors.Errorf("inferred invalid type: %s", s.Type)
 	}
-	{{- else if $d.Discriminator  }}
-
 	{{- end }}
 	return nil
 }

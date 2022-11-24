@@ -15,169 +15,6 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s AnyOfTest) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields encodes fields.
-func (s AnyOfTest) encodeFields(e *jx.Encoder) {
-	{
-
-		e.FieldStart("medium")
-		e.Str(s.Medium)
-	}
-	{
-
-		e.FieldStart("sizeLimit")
-		s.SizeLimit.Encode(e)
-	}
-}
-
-var jsonFieldsNameOfAnyOfTest = [2]string{
-	0: "medium",
-	1: "sizeLimit",
-}
-
-// Decode decodes AnyOfTest from json.
-func (s *AnyOfTest) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AnyOfTest to nil")
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "medium":
-			requiredBitSet[0] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.Medium = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"medium\"")
-			}
-		case "sizeLimit":
-			requiredBitSet[0] |= 1 << 1
-			if err := func() error {
-				if err := s.SizeLimit.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"sizeLimit\"")
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode AnyOfTest")
-	}
-	// Validate required fields.
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000011,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfAnyOfTest) {
-					name = jsonFieldsNameOfAnyOfTest[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s AnyOfTest) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *AnyOfTest) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes AnyOfTestSizeLimit as json.
-func (s AnyOfTestSizeLimit) Encode(e *jx.Encoder) {
-	switch s.Type {
-	case IntAnyOfTestSizeLimit:
-		e.Int(s.Int)
-	case StringAnyOfTestSizeLimit:
-		e.Str(s.String)
-	}
-}
-
-// Decode decodes AnyOfTestSizeLimit from json.
-func (s *AnyOfTestSizeLimit) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode AnyOfTestSizeLimit to nil")
-	}
-	// Sum type type_discriminator.
-	switch t := d.Next(); t {
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntAnyOfTestSizeLimit
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringAnyOfTestSizeLimit
-	default:
-		return errors.Errorf("unexpected json type %q", t)
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s AnyOfTestSizeLimit) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *AnyOfTestSizeLimit) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
 func (s AnyTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -1691,13 +1528,6 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringID
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -1705,6 +1535,13 @@ func (s *ID) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntID
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringID
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3449,6 +3286,11 @@ func (s *OneOfBooleanSumNullables) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Array, jx.Null, jx.Number, jx.String:
+		if err := s.OneOfNullables.Decode(d); err != nil {
+			return err
+		}
+		s.Type = OneOfNullablesOneOfBooleanSumNullables
 	case jx.Bool:
 		v, err := d.Bool()
 		s.Bool = bool(v)
@@ -3456,11 +3298,6 @@ func (s *OneOfBooleanSumNullables) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = BoolOneOfBooleanSumNullables
-	case jx.Array, jx.Null, jx.Number, jx.String:
-		if err := s.OneOfNullables.Decode(d); err != nil {
-			return err
-		}
-		s.Type = OneOfNullablesOneOfBooleanSumNullables
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3946,25 +3783,6 @@ func (s *OneOfNullables) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		s.Type = NullOneOfNullables
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringOneOfNullables
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntOneOfNullables
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -3980,6 +3798,25 @@ func (s *OneOfNullables) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayOneOfNullables
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullOneOfNullables
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntOneOfNullables
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringOneOfNullables
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -4016,6 +3853,11 @@ func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Number:
+		if err := s.OneOfUUIDAndIntEnum1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
 	case jx.String:
 		v, err := json.DecodeUUID(d)
 		s.UUID = v
@@ -4023,11 +3865,6 @@ func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = UUIDOneOfUUIDAndIntEnum
-	case jx.Number:
-		if err := s.OneOfUUIDAndIntEnum1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -4105,25 +3942,6 @@ func (s *OneOfWithNullable) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		s.Type = NullOneOfWithNullable
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringOneOfWithNullable
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntOneOfWithNullable
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -4139,6 +3957,25 @@ func (s *OneOfWithNullable) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayOneOfWithNullable
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullOneOfWithNullable
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntOneOfWithNullable
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringOneOfWithNullable
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -4709,39 +4546,6 @@ func (s OnlyPatternedPropsObject) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OnlyPatternedPropsObject) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes AnyOfTest as json.
-func (o OptAnyOfTest) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes AnyOfTest from json.
-func (o *OptAnyOfTest) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptAnyOfTest to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptAnyOfTest) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptAnyOfTest) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -6263,12 +6067,6 @@ func (s Pet) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.TestAnyOf.Set {
-			e.FieldStart("testAnyOf")
-			s.TestAnyOf.Encode(e)
-		}
-	}
-	{
 		if s.TestMaxProperties.Set {
 			e.FieldStart("testMaxProperties")
 			s.TestMaxProperties.Encode(e)
@@ -6306,7 +6104,7 @@ func (s Pet) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPet = [31]string{
+var jsonFieldsNameOfPet = [30]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -6331,13 +6129,12 @@ var jsonFieldsNameOfPet = [31]string{
 	21: "testMap",
 	22: "testMapWithProps",
 	23: "testAny",
-	24: "testAnyOf",
-	25: "testMaxProperties",
-	26: "testDate",
-	27: "testDuration",
-	28: "testTime",
-	29: "testDateTime",
-	30: "nullValue",
+	24: "testMaxProperties",
+	25: "testDate",
+	26: "testDuration",
+	27: "testTime",
+	28: "testDateTime",
+	29: "nullValue",
 }
 
 // Decode decodes Pet from json.
@@ -6632,16 +6429,6 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"testAny\"")
-			}
-		case "testAnyOf":
-			if err := func() error {
-				s.TestAnyOf.Reset()
-				if err := s.TestAnyOf.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"testAnyOf\"")
 			}
 		case "testMaxProperties":
 			if err := func() error {

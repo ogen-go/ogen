@@ -14996,11 +14996,6 @@ func (s *SchemaAdditionalProperties) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.SchemaOrReference.Decode(d); err != nil {
-			return err
-		}
-		s.Type = SchemaOrReferenceSchemaAdditionalProperties
 	case jx.Bool:
 		v, err := d.Bool()
 		s.Bool = bool(v)
@@ -15008,6 +15003,11 @@ func (s *SchemaAdditionalProperties) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = BoolSchemaAdditionalProperties
+	case jx.Object:
+		if err := s.SchemaOrReference.Decode(d); err != nil {
+			return err
+		}
+		s.Type = SchemaOrReferenceSchemaAdditionalProperties
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}

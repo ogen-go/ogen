@@ -17,15 +17,26 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
-func canUseTypeDiscriminator(sum []*ir.Type) bool {
+func canUseTypeDiscriminator(sum []*ir.Type, isOneOf bool) bool {
 	var (
 		// Collect map of variant kinds.
 		typeMap      = map[string]struct{}{}
 		collectTypes func(sum []*ir.Type)
+
+		getType = func(t *ir.Type) string {
+			typ := t.JSON().Type()
+			if s := t.Schema; s != nil && s.Type == jsonschema.Integer && typ == "Number" {
+				// Special case for anyOf with integer and number.
+				if !isOneOf {
+					typ = "Integer"
+				}
+			}
+			return typ
+		}
 	)
 	collectTypes = func(sum []*ir.Type) {
 		for _, variant := range sum {
-			typ := variant.JSON().Type()
+			typ := getType(variant)
 			if typ == "" {
 				if variant.IsSum() {
 					collectTypes(variant.SumOf)
@@ -36,10 +47,12 @@ func canUseTypeDiscriminator(sum []*ir.Type) bool {
 		}
 	}
 
+	var hasSumVariant bool
 	for _, s := range sum {
-		typ := s.JSON().Type()
+		typ := getType(s)
 		switch {
 		case s.IsSum():
+			hasSumVariant = true
 			switch s.JSON().Sum().Type {
 			case ir.SumJSONDiscriminator, ir.SumJSONFields:
 				typeMap["Object"] = struct{}{}
@@ -53,10 +66,18 @@ func canUseTypeDiscriminator(sum []*ir.Type) bool {
 		}
 
 		if _, ok := typeMap[typ]; ok {
-			// Type kind is not unique, so we can distinguish variants by type.
+			// Type kind is not unique, so we cannot distinguish variants by type.
 			return false
 		}
 		typeMap[typ] = struct{}{}
+	}
+
+	_, hasInteger := typeMap["Integer"]
+	_, hasNumber := typeMap["Number"]
+	if hasInteger && hasNumber && hasSumVariant {
+		// TODO(tdakkota): Do not allow type discriminator for nested sum types with integer and
+		// 	number variants at the same time. We can add support for this later, but it's not trivial.
+		return false
 	}
 	return true
 }
@@ -162,8 +183,9 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	}
 
 	// Here we try to create sum type from anyOf for variants with JSON type-based discriminator.
-	if canUseTypeDiscriminator(sum.SumOf) {
+	if canUseTypeDiscriminator(sum.SumOf, false) {
 		sum.SumSpec.TypeDiscriminator = true
+
 		for _, v := range sum.SumOf {
 			switch v.Kind {
 			case ir.KindPrimitive, ir.KindEnum:
@@ -306,7 +328,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	}
 
 	// 2nd case: distinguish by serialization type.
-	if canUseTypeDiscriminator(sum.SumOf) {
+	if canUseTypeDiscriminator(sum.SumOf, true) {
 		sum.SumSpec.TypeDiscriminator = true
 		return sum, nil
 	}

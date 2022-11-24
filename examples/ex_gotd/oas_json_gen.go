@@ -11673,13 +11673,6 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringID
 	case jx.Number:
 		v, err := d.Int64()
 		s.Int64 = int64(v)
@@ -11687,6 +11680,13 @@ func (s *ID) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = Int64ID
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringID
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -20714,6 +20714,11 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.KeyboardButtonObject.Decode(d); err != nil {
+			return err
+		}
+		s.Type = KeyboardButtonObjectKeyboardButton
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -20721,11 +20726,6 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringKeyboardButton
-	case jx.Object:
-		if err := s.KeyboardButtonObject.Decode(d); err != nil {
-			return err
-		}
-		s.Type = KeyboardButtonObjectKeyboardButton
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -31647,11 +31647,6 @@ func (s *ResultMessageOrBooleanResult) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.Message.Decode(d); err != nil {
-			return err
-		}
-		s.Type = MessageResultMessageOrBooleanResult
 	case jx.Bool:
 		v, err := d.Bool()
 		s.Bool = bool(v)
@@ -31659,6 +31654,11 @@ func (s *ResultMessageOrBooleanResult) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = BoolResultMessageOrBooleanResult
+	case jx.Object:
+		if err := s.Message.Decode(d); err != nil {
+			return err
+		}
+		s.Type = MessageResultMessageOrBooleanResult
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
