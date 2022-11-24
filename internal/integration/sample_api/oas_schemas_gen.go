@@ -26,97 +26,6 @@ func (s *APIKey) SetAPIKey(val string) {
 	s.APIKey = val
 }
 
-// Type for testing some anyOf cases from Jaeger operator API schema.
-// Ref: #/components/schemas/AnyOfTest
-type AnyOfTest struct {
-	Medium    string             `json:"medium"`
-	SizeLimit AnyOfTestSizeLimit `json:"sizeLimit"`
-}
-
-// GetMedium returns the value of Medium.
-func (s AnyOfTest) GetMedium() string {
-	return s.Medium
-}
-
-// GetSizeLimit returns the value of SizeLimit.
-func (s AnyOfTest) GetSizeLimit() AnyOfTestSizeLimit {
-	return s.SizeLimit
-}
-
-// SetMedium sets the value of Medium.
-func (s *AnyOfTest) SetMedium(val string) {
-	s.Medium = val
-}
-
-// SetSizeLimit sets the value of SizeLimit.
-func (s *AnyOfTest) SetSizeLimit(val AnyOfTestSizeLimit) {
-	s.SizeLimit = val
-}
-
-// AnyOfTestSizeLimit represents sum type.
-type AnyOfTestSizeLimit struct {
-	Type   AnyOfTestSizeLimitType // switch on this field
-	Int    int
-	String string
-}
-
-// AnyOfTestSizeLimitType is oneOf type of AnyOfTestSizeLimit.
-type AnyOfTestSizeLimitType string
-
-// Possible values for AnyOfTestSizeLimitType.
-const (
-	IntAnyOfTestSizeLimit    AnyOfTestSizeLimitType = "int"
-	StringAnyOfTestSizeLimit AnyOfTestSizeLimitType = "string"
-)
-
-// IsInt reports whether AnyOfTestSizeLimit is int.
-func (s AnyOfTestSizeLimit) IsInt() bool { return s.Type == IntAnyOfTestSizeLimit }
-
-// IsString reports whether AnyOfTestSizeLimit is string.
-func (s AnyOfTestSizeLimit) IsString() bool { return s.Type == StringAnyOfTestSizeLimit }
-
-// SetInt sets AnyOfTestSizeLimit to int.
-func (s *AnyOfTestSizeLimit) SetInt(v int) {
-	s.Type = IntAnyOfTestSizeLimit
-	s.Int = v
-}
-
-// GetInt returns int and true boolean if AnyOfTestSizeLimit is int.
-func (s AnyOfTestSizeLimit) GetInt() (v int, ok bool) {
-	if !s.IsInt() {
-		return v, false
-	}
-	return s.Int, true
-}
-
-// NewIntAnyOfTestSizeLimit returns new AnyOfTestSizeLimit from int.
-func NewIntAnyOfTestSizeLimit(v int) AnyOfTestSizeLimit {
-	var s AnyOfTestSizeLimit
-	s.SetInt(v)
-	return s
-}
-
-// SetString sets AnyOfTestSizeLimit to string.
-func (s *AnyOfTestSizeLimit) SetString(v string) {
-	s.Type = StringAnyOfTestSizeLimit
-	s.String = v
-}
-
-// GetString returns string and true boolean if AnyOfTestSizeLimit is string.
-func (s AnyOfTestSizeLimit) GetString() (v string, ok bool) {
-	if !s.IsString() {
-		return v, false
-	}
-	return s.String, true
-}
-
-// NewStringAnyOfTestSizeLimit returns new AnyOfTestSizeLimit from string.
-func NewStringAnyOfTestSizeLimit(v string) AnyOfTestSizeLimit {
-	var s AnyOfTestSizeLimit
-	s.SetString(v)
-	return s
-}
-
 // Ref: #/components/schemas/AnyTest
 type AnyTest struct {
 	Empty    jx.Raw           `json:"empty"`
@@ -2215,52 +2124,6 @@ func (s *OnlyPatternedPropsObject) init() OnlyPatternedPropsObject {
 	return m
 }
 
-// NewOptAnyOfTest returns new OptAnyOfTest with value set to v.
-func NewOptAnyOfTest(v AnyOfTest) OptAnyOfTest {
-	return OptAnyOfTest{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAnyOfTest is optional AnyOfTest.
-type OptAnyOfTest struct {
-	Value AnyOfTest
-	Set   bool
-}
-
-// IsSet returns true if OptAnyOfTest was set.
-func (o OptAnyOfTest) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAnyOfTest) Reset() {
-	var v AnyOfTest
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAnyOfTest) SetTo(v AnyOfTest) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAnyOfTest) Get() (v AnyOfTest, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptAnyOfTest) Or(d AnyOfTest) AnyOfTest {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptAnyTest returns new OptAnyTest with value set to v.
 func NewOptAnyTest(v AnyTest) OptAnyTest {
 	return OptAnyTest{
@@ -4112,7 +3975,6 @@ type Pet struct {
 	TestMap           OptStringStringMap   `json:"testMap"`
 	TestMapWithProps  OptMapWithProperties `json:"testMapWithProps"`
 	TestAny           OptAnyTest           `json:"testAny"`
-	TestAnyOf         OptAnyOfTest         `json:"testAnyOf"`
 	TestMaxProperties OptMaxPropertiesTest `json:"testMaxProperties"`
 	TestDate          OptDate              `json:"testDate"`
 	TestDuration      OptDuration          `json:"testDuration"`
@@ -4239,11 +4101,6 @@ func (s Pet) GetTestMapWithProps() OptMapWithProperties {
 // GetTestAny returns the value of TestAny.
 func (s Pet) GetTestAny() OptAnyTest {
 	return s.TestAny
-}
-
-// GetTestAnyOf returns the value of TestAnyOf.
-func (s Pet) GetTestAnyOf() OptAnyOfTest {
-	return s.TestAnyOf
 }
 
 // GetTestMaxProperties returns the value of TestMaxProperties.
@@ -4394,11 +4251,6 @@ func (s *Pet) SetTestMapWithProps(val OptMapWithProperties) {
 // SetTestAny sets the value of TestAny.
 func (s *Pet) SetTestAny(val OptAnyTest) {
 	s.TestAny = val
-}
-
-// SetTestAnyOf sets the value of TestAnyOf.
-func (s *Pet) SetTestAnyOf(val OptAnyOfTest) {
-	s.TestAnyOf = val
 }
 
 // SetTestMaxProperties sets the value of TestMaxProperties.

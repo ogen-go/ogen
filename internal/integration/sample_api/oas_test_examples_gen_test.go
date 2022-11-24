@@ -11,30 +11,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestAnyOfTest_EncodeDecode(t *testing.T) {
-	var typ AnyOfTest
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AnyOfTest
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestAnyOfTestSizeLimit_EncodeDecode(t *testing.T) {
-	var typ AnyOfTestSizeLimit
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AnyOfTestSizeLimit
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestAnyTest_EncodeDecode(t *testing.T) {
 	var typ AnyTest
 	typ.SetFake()

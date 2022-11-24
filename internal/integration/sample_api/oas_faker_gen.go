@@ -13,30 +13,6 @@ import (
 )
 
 // SetFake set fake values.
-func (s *AnyOfTest) SetFake() {
-	{
-		{
-			s.Medium = "string"
-		}
-	}
-	{
-		{
-			s.SizeLimit.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *AnyOfTestSizeLimit) SetFake() {
-	var elem int
-
-	{
-		elem = int(0)
-	}
-	s.SetInt(elem)
-}
-
-// SetFake set fake values.
 func (s *AnyTest) SetFake() {
 	{
 		{
@@ -744,15 +720,6 @@ func (s *OnlyPatternedPropsObject) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptAnyOfTest) SetFake() {
-	var elem AnyOfTest
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
 func (s *OptAnyTest) SetFake() {
 	var elem AnyTest
 	{
@@ -1231,11 +1198,6 @@ func (s *Pet) SetFake() {
 	{
 		{
 			s.TestAny.SetFake()
-		}
-	}
-	{
-		{
-			s.TestAnyOf.SetFake()
 		}
 	}
 	{

@@ -119,38 +119,6 @@ func TestValidateMap(t *testing.T) {
 	}
 }
 
-func TestValidateSum(t *testing.T) {
-	for i, tc := range []struct {
-		Input string
-		Error bool
-	}{
-		{
-			`{"medium": "text", "sizeLimit": "aboba"}`,
-			true,
-		},
-		{
-			`{"medium": "text", "sizeLimit": 10}`,
-			false,
-		},
-		{
-			`{"medium": "text", "sizeLimit": "10"}`,
-			false,
-		},
-	} {
-		tc := tc
-		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			m := api.AnyOfTest{}
-			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
-
-			checker := require.NoError
-			if tc.Error {
-				checker = require.Error
-			}
-			checker(t, m.Validate())
-		})
-	}
-}
-
 func TestValidateFloat(t *testing.T) {
 	for i, tc := range []struct {
 		Input string

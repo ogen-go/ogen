@@ -3,8 +3,6 @@
 package api
 
 import (
-	"fmt"
-	"math/big"
 	"net/http"
 
 	"go.opentelemetry.io/otel"
@@ -12,6 +10,7 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/ogenregex"
@@ -19,27 +18,11 @@ import (
 )
 
 var regexMap = map[string]ogenregex.Regexp{
-	"^\\d-\\d$":                   ogenregex.MustCompile("^\\d-\\d$"),
-	"foo[^\r\n\u2028\u2029]*":     ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
-	"string_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
-}
-var ratMap = map[string]*big.Rat{
-	"10": func() *big.Rat {
-		r, ok := new(big.Rat).SetString("10")
-		if !ok {
-			panic(fmt.Sprintf("rat %q: can't parse", "10"))
-		}
-		return r
-	}(),
-	"5": func() *big.Rat {
-		r, ok := new(big.Rat).SetString("5")
-		if !ok {
-			panic(fmt.Sprintf("rat %q: can't parse", "5"))
-		}
-		return r
-	}(),
+	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": ogenregex.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
 }
 var (
+	// Allocate option closure once.
+	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
 	// Allocate option closure once.
 	serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
 )
@@ -147,9 +130,65 @@ func (cfg serverConfig) baseServer() (s baseServer, err error) {
 	return s, nil
 }
 
+type clientConfig struct {
+	otelConfig
+	Client ht.Client
+}
+
+// ClientOption is client config option.
+type ClientOption interface {
+	applyClient(*clientConfig)
+}
+
+var _ = []ClientOption{
+	(optionFunc[clientConfig])(nil),
+	(otelOptionFunc)(nil),
+}
+
+func (o optionFunc[C]) applyClient(c *C) {
+	o(c)
+}
+
+func (o otelOptionFunc) applyClient(c *clientConfig) {
+	o(&c.otelConfig)
+}
+
+func newClientConfig(opts ...ClientOption) clientConfig {
+	cfg := clientConfig{
+		Client: http.DefaultClient,
+	}
+	for _, opt := range opts {
+		opt.applyClient(&cfg)
+	}
+	cfg.initOTEL()
+	return cfg
+}
+
+type baseClient struct {
+	cfg      clientConfig
+	requests syncint64.Counter
+	errors   syncint64.Counter
+	duration syncint64.Histogram
+}
+
+func (cfg clientConfig) baseClient() (c baseClient, err error) {
+	c = baseClient{cfg: cfg}
+	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
+		return c, err
+	}
+	if c.errors, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientErrorsCount); err != nil {
+		return c, err
+	}
+	if c.duration, err = c.cfg.Meter.SyncInt64().Histogram(otelogen.ClientDuration); err != nil {
+		return c, err
+	}
+	return c, nil
+}
+
 // Option is config option.
 type Option interface {
 	ServerOption
+	ClientOption
 }
 
 // WithTracerProvider specifies a tracer provider to use for creating a tracer.
@@ -170,6 +209,15 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 	return otelOptionFunc(func(cfg *otelConfig) {
 		if provider != nil {
 			cfg.MeterProvider = provider
+		}
+	})
+}
+
+// WithClient specifies http client to use.
+func WithClient(client ht.Client) ClientOption {
+	return optionFunc[clientConfig](func(cfg *clientConfig) {
+		if client != nil {
+			cfg.Client = client
 		}
 	})
 }

@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/jaegerAnyOf": {
+      "get": {
+        "operationId": "jaegerAnyOf",
+        "responses": {
+          "200": {
+            "description": "Type for testing some anyOf cases from Jaeger operator API schema.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JaegerAnyOf"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oneUUID": {
+      "get": {
+        "operationId": "oneUUID",
+        "responses": {
+          "200": {
+            "description": "Check that anyOf with one UUID works fine.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OneUUID"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "JaegerAnyOf": {
+        "type": "object",
+        "required": [
+          "medium",
+          "sizeLimit"
+        ],
+        "properties": {
+          "medium": {
+            "type": "string"
+          },
+          "sizeLimit": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+            "x-kubernetes-int-or-string": true
+          }
+        }
+      },
+      "OneUUID": {
+        "required": [
+          "owner",
+          "version",
+          "subscription_id"
+        ],
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string",
+            "example": "uss1"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "exclusiveMinimum": false
+          },
+          "subscription_id": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SubscriptionUUID"
+              }
+            ]
+          }
+        }
+      },
+      "UUIDv4": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "SubscriptionUUID": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/UUIDv4"
+          }
+        ]
+      }
+    }
+  }
+}

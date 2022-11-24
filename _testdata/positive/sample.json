@@ -1283,9 +1283,6 @@
           "testAny": {
             "$ref": "#/components/schemas/AnyTest"
           },
-          "testAnyOf": {
-            "$ref": "#/components/schemas/AnyOfTest"
-          },
           "testMaxProperties": {
             "$ref": "#/components/schemas/MaxPropertiesTest"
           },
@@ -1364,31 +1361,6 @@
             ]
           }
         }
-      },
-      "AnyOfTest": {
-        "description": "Type for testing some anyOf cases from Jaeger operator API schema",
-        "required": [
-          "medium",
-          "sizeLimit"
-        ],
-        "properties": {
-          "medium": {
-            "type": "string"
-          },
-          "sizeLimit": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "string"
-              }
-            ],
-            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
-            "x-kubernetes-int-or-string": true
-          }
-        },
-        "type": "object"
       },
       "OneOfBugs": {
         "type": "object",
