@@ -230,7 +230,12 @@ func jsonType(t *Type) string {
 	switch t.Primitive {
 	case Bool:
 		return "Bool"
-	case String, Time, Duration, UUID, IP, URL, ByteSlice:
+	case Time:
+		if s := t.Schema; s != nil && s.Type == "integer" {
+			return "Number"
+		}
+		return "String"
+	case String, Duration, UUID, IP, URL, ByteSlice:
 		return "String"
 	case Null:
 		return "Null"
