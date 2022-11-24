@@ -3,6 +3,8 @@ package ir
 import (
 	"fmt"
 
+	"golang.org/x/exp/slices"
+
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -177,4 +179,63 @@ func (t *Type) SetFieldType(name string, newT *Type) {
 	}
 
 	panic(fmt.Sprintf("field with name %q not found", name))
+}
+
+// TypeDiscriminatorCase is a helper struct for describing type discriminator case.
+type TypeDiscriminatorCase struct {
+	// JXTypes is jx.Type values list.
+	JXTypes string
+	// Type is the type to be used for this case.
+	Type *Type
+	// IntType is the type to be used for this case when the type discriminator should distinguish
+	// between integer and float types.
+	IntType *Type
+}
+
+func (t *Type) TypeDiscriminator() (r []TypeDiscriminatorCase) {
+	if !t.Is(KindSum) || !t.SumSpec.TypeDiscriminator {
+		panic(unreachable(t))
+	}
+
+	var (
+		numberType *Type
+		intType    *Type
+	)
+	for _, v := range t.SumOf {
+		typ := v.JSON().Type()
+		if typ != "Number" {
+			if typ == "" {
+				typ = v.JSON().SumTypes()
+			} else {
+				typ = "jx." + typ
+			}
+			r = append(r, TypeDiscriminatorCase{
+				JXTypes: typ,
+				Type:    v,
+			})
+			continue
+		}
+		if s := v.Schema; s != nil && s.Type == jsonschema.Integer {
+			intType = v
+			continue
+		}
+		numberType = v
+	}
+
+	if intType != nil || numberType != nil {
+		cse := TypeDiscriminatorCase{
+			JXTypes: "jx.Number",
+			Type:    numberType,
+			IntType: intType,
+		}
+		if numberType == nil {
+			cse.Type = intType
+			cse.IntType = nil
+		}
+		r = append(r, cse)
+	}
+	slices.SortStableFunc(r, func(a, b TypeDiscriminatorCase) bool {
+		return a.JXTypes < b.JXTypes
+	})
+	return r
 }
