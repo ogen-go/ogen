@@ -1528,13 +1528,6 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringID
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -1542,6 +1535,13 @@ func (s *ID) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntID
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringID
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3286,6 +3286,11 @@ func (s *OneOfBooleanSumNullables) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Array, jx.Null, jx.Number, jx.String:
+		if err := s.OneOfNullables.Decode(d); err != nil {
+			return err
+		}
+		s.Type = OneOfNullablesOneOfBooleanSumNullables
 	case jx.Bool:
 		v, err := d.Bool()
 		s.Bool = bool(v)
@@ -3293,11 +3298,6 @@ func (s *OneOfBooleanSumNullables) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = BoolOneOfBooleanSumNullables
-	case jx.Array, jx.Null, jx.Number, jx.String:
-		if err := s.OneOfNullables.Decode(d); err != nil {
-			return err
-		}
-		s.Type = OneOfNullablesOneOfBooleanSumNullables
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3783,25 +3783,6 @@ func (s *OneOfNullables) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		s.Type = NullOneOfNullables
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringOneOfNullables
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntOneOfNullables
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -3817,6 +3798,25 @@ func (s *OneOfNullables) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayOneOfNullables
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullOneOfNullables
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntOneOfNullables
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringOneOfNullables
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3853,6 +3853,11 @@ func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Number:
+		if err := s.OneOfUUIDAndIntEnum1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
 	case jx.String:
 		v, err := json.DecodeUUID(d)
 		s.UUID = v
@@ -3860,11 +3865,6 @@ func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = UUIDOneOfUUIDAndIntEnum
-	case jx.Number:
-		if err := s.OneOfUUIDAndIntEnum1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -3942,25 +3942,6 @@ func (s *OneOfWithNullable) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		s.Type = NullOneOfWithNullable
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringOneOfWithNullable
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntOneOfWithNullable
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -3976,6 +3957,25 @@ func (s *OneOfWithNullable) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayOneOfWithNullable
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullOneOfWithNullable
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntOneOfWithNullable
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringOneOfWithNullable
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}

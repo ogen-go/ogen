@@ -37240,18 +37240,6 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
-	case jx.Object:
-		if err := s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	case jx.Array:
 		s.AnyArray = make([]jx.Raw, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -37267,6 +37255,18 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 			return err
 		}
 		s.Type = AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	case jx.Object:
+		if err := s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -56937,6 +56937,11 @@ func (s *IssueLabelsItem) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.IssueLabelsItem1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = IssueLabelsItem1IssueLabelsItem
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -56944,11 +56949,6 @@ func (s *IssueLabelsItem) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringIssueLabelsItem
-	case jx.Object:
-		if err := s.IssueLabelsItem1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = IssueLabelsItem1IssueLabelsItem
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -60001,6 +60001,11 @@ func (s *IssuesCreateReqLabelsItem) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.IssuesCreateReqLabelsItem1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -60008,11 +60013,6 @@ func (s *IssuesCreateReqLabelsItem) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringIssuesCreateReqLabelsItem
-	case jx.Object:
-		if err := s.IssuesCreateReqLabelsItem1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -60163,13 +60163,6 @@ func (s *IssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringIssuesCreateReqMilestone
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -60177,6 +60170,13 @@ func (s *IssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntIssuesCreateReqMilestone
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringIssuesCreateReqMilestone
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -60213,13 +60213,6 @@ func (s *IssuesCreateReqTitle) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringIssuesCreateReqTitle
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -60227,6 +60220,13 @@ func (s *IssuesCreateReqTitle) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntIssuesCreateReqTitle
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringIssuesCreateReqTitle
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -61832,6 +61832,11 @@ func (s *IssuesUpdateReqLabelsItem) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
+	case jx.Object:
+		if err := s.IssuesUpdateReqLabelsItem1.Decode(d); err != nil {
+			return err
+		}
+		s.Type = IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -61839,11 +61844,6 @@ func (s *IssuesUpdateReqLabelsItem) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringIssuesUpdateReqLabelsItem
-	case jx.Object:
-		if err := s.IssuesUpdateReqLabelsItem1.Decode(d); err != nil {
-			return err
-		}
-		s.Type = IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -61994,13 +61994,6 @@ func (s *IssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringIssuesUpdateReqMilestone
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -62008,6 +62001,13 @@ func (s *IssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntIssuesUpdateReqMilestone
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringIssuesUpdateReqMilestone
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -62084,13 +62084,6 @@ func (s *IssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringIssuesUpdateReqTitle
 	case jx.Number:
 		v, err := d.Int()
 		s.Int = int(v)
@@ -62098,6 +62091,13 @@ func (s *IssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = IntIssuesUpdateReqTitle
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringIssuesUpdateReqTitle
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -133181,11 +133181,6 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposAddAppAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -133201,6 +133196,11 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposAddAppAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposAddAppAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -133605,11 +133605,6 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposAddStatusCheckContextsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -133625,6 +133620,11 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposAddStatusCheckContextsReq
+	case jx.Object:
+		if err := s.ReposAddStatusCheckContextsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -133824,11 +133824,6 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposAddTeamAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -133844,6 +133839,11 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposAddTeamAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposAddTeamAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -134043,11 +134043,6 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposAddUserAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -134063,6 +134058,11 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposAddUserAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposAddUserAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -140768,11 +140768,6 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposRemoveAppAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -140788,6 +140783,11 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposRemoveAppAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposRemoveAppAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -140989,11 +140989,6 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposRemoveStatusCheckContextsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -141009,6 +141004,11 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposRemoveStatusCheckContextsReq
+	case jx.Object:
+		if err := s.ReposRemoveStatusCheckContextsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -141208,11 +141208,6 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposRemoveTeamAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -141228,6 +141223,11 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposRemoveTeamAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposRemoveTeamAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -141427,11 +141427,6 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposRemoveUserAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -141447,6 +141442,11 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposRemoveUserAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposRemoveUserAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -141928,11 +141928,6 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposSetAppAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -141948,6 +141943,11 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposSetAppAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposSetAppAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -142149,11 +142149,6 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposSetStatusCheckContextsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -142169,6 +142164,11 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposSetStatusCheckContextsReq
+	case jx.Object:
+		if err := s.ReposSetStatusCheckContextsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -142368,11 +142368,6 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposSetTeamAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -142388,6 +142383,11 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposSetTeamAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposSetTeamAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -142587,11 +142587,6 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.ReposSetUserAccessRestrictionsReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -142607,6 +142602,11 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayReposSetUserAccessRestrictionsReq
+	case jx.Object:
+		if err := s.ReposSetUserAccessRestrictionsReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -169102,11 +169102,6 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.UsersAddEmailForAuthenticatedReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -169122,6 +169117,11 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayUsersAddEmailForAuthenticatedReq
+	case jx.Object:
+		if err := s.UsersAddEmailForAuthenticatedReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -170175,11 +170175,6 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Object:
-		if err := s.UsersDeleteEmailForAuthenticatedReq0.Decode(d); err != nil {
-			return err
-		}
-		s.Type = UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -170195,6 +170190,11 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayUsersDeleteEmailForAuthenticatedReq
+	case jx.Object:
+		if err := s.UsersDeleteEmailForAuthenticatedReq0.Decode(d); err != nil {
+			return err
+		}
+		s.Type = UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq
 	case jx.String:
 		v, err := d.Str()
 		s.String = string(v)
@@ -173092,25 +173092,6 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		s.Type = NullValidationErrorErrorsItemValue
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringValidationErrorErrorsItemValue
-	case jx.Number:
-		v, err := d.Int()
-		s.Int = int(v)
-		if err != nil {
-			return err
-		}
-		s.Type = IntValidationErrorErrorsItemValue
 	case jx.Array:
 		s.StringArray = make([]string, 0)
 		if err := d.Arr(func(d *jx.Decoder) error {
@@ -173126,6 +173107,25 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = StringArrayValidationErrorErrorsItemValue
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		s.Type = NullValidationErrorErrorsItemValue
+	case jx.Number:
+		v, err := d.Int()
+		s.Int = int(v)
+		if err != nil {
+			return err
+		}
+		s.Type = IntValidationErrorErrorsItemValue
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringValidationErrorErrorsItemValue
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -173751,13 +173751,6 @@ func (s *WebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
-	case jx.String:
-		v, err := d.Str()
-		s.String = string(v)
-		if err != nil {
-			return err
-		}
-		s.Type = StringWebhookConfigInsecureSsl
 	case jx.Number:
 		v, err := d.Float64()
 		s.Float64 = float64(v)
@@ -173765,6 +173758,13 @@ func (s *WebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 			return err
 		}
 		s.Type = Float64WebhookConfigInsecureSsl
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringWebhookConfigInsecureSsl
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}

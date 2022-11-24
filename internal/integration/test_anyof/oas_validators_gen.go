@@ -8,6 +8,40 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+func (s AnyOfIntegerNumberString) Validate() error {
+	switch s.Type {
+	case IntAnyOfIntegerNumberString:
+		return nil // no validation needed
+	case Float64AnyOfIntegerNumberString:
+		if err := (validate.Float{}).Validate(float64(s.Float64)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	case StringAnyOfIntegerNumberString:
+		return nil // no validation needed
+	default:
+		return errors.Errorf("invalid type %q", s.Type)
+	}
+}
+
+func (s IntegerNumber) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Plain.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "plain",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s JaegerAnyOf) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {

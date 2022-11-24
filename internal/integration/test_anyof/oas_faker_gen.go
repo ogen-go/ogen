@@ -7,6 +7,25 @@ import (
 )
 
 // SetFake set fake values.
+func (s *AnyOfIntegerNumberString) SetFake() {
+	var elem int
+
+	{
+		elem = int(0)
+	}
+	s.SetInt(elem)
+}
+
+// SetFake set fake values.
+func (s *IntegerNumber) SetFake() {
+	{
+		{
+			s.Plain.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *JaegerAnyOf) SetFake() {
 	{
 		{

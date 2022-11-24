@@ -6,6 +6,112 @@ import (
 	"github.com/google/uuid"
 )
 
+// Ref: #/components/schemas/AnyOfIntegerNumberString
+// AnyOfIntegerNumberString represents sum type.
+type AnyOfIntegerNumberString struct {
+	Type    AnyOfIntegerNumberStringType // switch on this field
+	Int     int
+	Float64 float64
+	String  string
+}
+
+// AnyOfIntegerNumberStringType is oneOf type of AnyOfIntegerNumberString.
+type AnyOfIntegerNumberStringType string
+
+// Possible values for AnyOfIntegerNumberStringType.
+const (
+	IntAnyOfIntegerNumberString     AnyOfIntegerNumberStringType = "int"
+	Float64AnyOfIntegerNumberString AnyOfIntegerNumberStringType = "float64"
+	StringAnyOfIntegerNumberString  AnyOfIntegerNumberStringType = "string"
+)
+
+// IsInt reports whether AnyOfIntegerNumberString is int.
+func (s AnyOfIntegerNumberString) IsInt() bool { return s.Type == IntAnyOfIntegerNumberString }
+
+// IsFloat64 reports whether AnyOfIntegerNumberString is float64.
+func (s AnyOfIntegerNumberString) IsFloat64() bool { return s.Type == Float64AnyOfIntegerNumberString }
+
+// IsString reports whether AnyOfIntegerNumberString is string.
+func (s AnyOfIntegerNumberString) IsString() bool { return s.Type == StringAnyOfIntegerNumberString }
+
+// SetInt sets AnyOfIntegerNumberString to int.
+func (s *AnyOfIntegerNumberString) SetInt(v int) {
+	s.Type = IntAnyOfIntegerNumberString
+	s.Int = v
+}
+
+// GetInt returns int and true boolean if AnyOfIntegerNumberString is int.
+func (s AnyOfIntegerNumberString) GetInt() (v int, ok bool) {
+	if !s.IsInt() {
+		return v, false
+	}
+	return s.Int, true
+}
+
+// NewIntAnyOfIntegerNumberString returns new AnyOfIntegerNumberString from int.
+func NewIntAnyOfIntegerNumberString(v int) AnyOfIntegerNumberString {
+	var s AnyOfIntegerNumberString
+	s.SetInt(v)
+	return s
+}
+
+// SetFloat64 sets AnyOfIntegerNumberString to float64.
+func (s *AnyOfIntegerNumberString) SetFloat64(v float64) {
+	s.Type = Float64AnyOfIntegerNumberString
+	s.Float64 = v
+}
+
+// GetFloat64 returns float64 and true boolean if AnyOfIntegerNumberString is float64.
+func (s AnyOfIntegerNumberString) GetFloat64() (v float64, ok bool) {
+	if !s.IsFloat64() {
+		return v, false
+	}
+	return s.Float64, true
+}
+
+// NewFloat64AnyOfIntegerNumberString returns new AnyOfIntegerNumberString from float64.
+func NewFloat64AnyOfIntegerNumberString(v float64) AnyOfIntegerNumberString {
+	var s AnyOfIntegerNumberString
+	s.SetFloat64(v)
+	return s
+}
+
+// SetString sets AnyOfIntegerNumberString to string.
+func (s *AnyOfIntegerNumberString) SetString(v string) {
+	s.Type = StringAnyOfIntegerNumberString
+	s.String = v
+}
+
+// GetString returns string and true boolean if AnyOfIntegerNumberString is string.
+func (s AnyOfIntegerNumberString) GetString() (v string, ok bool) {
+	if !s.IsString() {
+		return v, false
+	}
+	return s.String, true
+}
+
+// NewStringAnyOfIntegerNumberString returns new AnyOfIntegerNumberString from string.
+func NewStringAnyOfIntegerNumberString(v string) AnyOfIntegerNumberString {
+	var s AnyOfIntegerNumberString
+	s.SetString(v)
+	return s
+}
+
+// Ref: #/components/schemas/IntegerNumber
+type IntegerNumber struct {
+	Plain AnyOfIntegerNumberString `json:"plain"`
+}
+
+// GetPlain returns the value of Plain.
+func (s IntegerNumber) GetPlain() AnyOfIntegerNumberString {
+	return s.Plain
+}
+
+// SetPlain sets the value of Plain.
+func (s *IntegerNumber) SetPlain(val AnyOfIntegerNumberString) {
+	s.Plain = val
+}
+
 // Ref: #/components/schemas/JaegerAnyOf
 type JaegerAnyOf struct {
 	Medium    string               `json:"medium"`

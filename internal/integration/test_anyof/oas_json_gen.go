@@ -14,6 +14,166 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// Encode encodes AnyOfIntegerNumberString as json.
+func (s AnyOfIntegerNumberString) Encode(e *jx.Encoder) {
+	switch s.Type {
+	case IntAnyOfIntegerNumberString:
+		e.Int(s.Int)
+	case Float64AnyOfIntegerNumberString:
+		e.Float64(s.Float64)
+	case StringAnyOfIntegerNumberString:
+		e.Str(s.String)
+	}
+}
+
+// Decode decodes AnyOfIntegerNumberString from json.
+func (s *AnyOfIntegerNumberString) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AnyOfIntegerNumberString to nil")
+	}
+	// Sum type type_discriminator.
+	switch t := d.Next(); t {
+	case jx.Number:
+		num, err := d.Num()
+		if err != nil {
+			return errors.Wrap(err, "parse number")
+		}
+		if d := jx.DecodeBytes(num); num.IsInt() {
+			v, err := d.Int()
+			s.Int = int(v)
+			if err != nil {
+				return err
+			}
+			s.Type = IntAnyOfIntegerNumberString
+		} else {
+			v, err := d.Float64()
+			s.Float64 = float64(v)
+			if err != nil {
+				return err
+			}
+			s.Type = Float64AnyOfIntegerNumberString
+		}
+	case jx.String:
+		v, err := d.Str()
+		s.String = string(v)
+		if err != nil {
+			return err
+		}
+		s.Type = StringAnyOfIntegerNumberString
+	default:
+		return errors.Errorf("unexpected json type %q", t)
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s AnyOfIntegerNumberString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AnyOfIntegerNumberString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s IntegerNumber) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s IntegerNumber) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("plain")
+		s.Plain.Encode(e)
+	}
+}
+
+var jsonFieldsNameOfIntegerNumber = [1]string{
+	0: "plain",
+}
+
+// Decode decodes IntegerNumber from json.
+func (s *IntegerNumber) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode IntegerNumber to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "plain":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				if err := s.Plain.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"plain\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode IntegerNumber")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIntegerNumber) {
+					name = jsonFieldsNameOfIntegerNumber[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IntegerNumber) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IntegerNumber) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s JaegerAnyOf) Encode(e *jx.Encoder) {
 	e.ObjStart()

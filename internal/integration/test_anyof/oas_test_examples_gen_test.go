@@ -11,6 +11,30 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestAnyOfIntegerNumberString_EncodeDecode(t *testing.T) {
+	var typ AnyOfIntegerNumberString
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AnyOfIntegerNumberString
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIntegerNumber_EncodeDecode(t *testing.T) {
+	var typ IntegerNumber
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IntegerNumber
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestJaegerAnyOf_EncodeDecode(t *testing.T) {
 	var typ JaegerAnyOf
 	typ.SetFake()

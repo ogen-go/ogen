@@ -8,6 +8,10 @@ import (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// IntegerNumber implements integerNumber operation.
+	//
+	// GET /integerNumber
+	IntegerNumber(ctx context.Context) (IntegerNumber, error)
 	// JaegerAnyOf implements jaegerAnyOf operation.
 	//
 	// GET /jaegerAnyOf

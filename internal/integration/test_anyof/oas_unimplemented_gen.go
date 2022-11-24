@@ -13,6 +13,13 @@ type UnimplementedHandler struct{}
 
 var _ Handler = UnimplementedHandler{}
 
+// IntegerNumber implements integerNumber operation.
+//
+// GET /integerNumber
+func (UnimplementedHandler) IntegerNumber(ctx context.Context) (r IntegerNumber, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // JaegerAnyOf implements jaegerAnyOf operation.
 //
 // GET /jaegerAnyOf
