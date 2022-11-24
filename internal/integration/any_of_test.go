@@ -90,4 +90,38 @@ func TestAnyOf(t *testing.T) {
 			})
 		}
 	})
+	t.Run("AnyOfIntegerNumberString", func(t *testing.T) {
+		vInt := api.NewIntAnyOfIntegerNumberString
+		vFloat := api.NewFloat64AnyOfIntegerNumberString
+		vString := api.NewStringAnyOfIntegerNumberString
+		zero := api.AnyOfIntegerNumberString{}
+		for i, tc := range []struct {
+			Input    string
+			Expected api.AnyOfIntegerNumberString
+			Error    bool
+		}{
+			{`0`, vInt(0), false},
+			{`10`, vInt(10), false},
+			{`0.0`, vFloat(0.0), false},
+			{`10.0`, vFloat(10.0), false},
+			{`0e0`, vFloat(0e0), false},
+			{`0E0`, vFloat(0e0), false},
+			{`"10e0"`, vString("10e0"), false},
+			{`"foo"`, vString("foo"), false},
+			{`true`, zero, true},
+			{`null`, zero, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				checker := require.NoError
+				if tc.Error {
+					checker = require.Error
+				}
+				r := api.AnyOfIntegerNumberString{}
+				checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+				require.Equal(t, tc.Expected, r)
+			})
+		}
+	})
 }

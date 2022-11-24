@@ -38,6 +38,23 @@
           }
         }
       }
+    },
+    "/integerNumber": {
+      "get": {
+        "operationId": "integerNumber",
+        "responses": {
+          "200": {
+            "description": "Check that anyOf with integer, number and string works fine.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IntegerNumber"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -101,6 +118,30 @@
         "anyOf": [
           {
             "$ref": "#/components/schemas/UUIDv4"
+          }
+        ]
+      },
+      "IntegerNumber": {
+        "type": "object",
+        "required": [
+          "plain"
+        ],
+        "properties": {
+          "plain": {
+            "$ref": "#/components/schemas/AnyOfIntegerNumberString"
+          }
+        }
+      },
+      "AnyOfIntegerNumberString": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
           }
         ]
       }
