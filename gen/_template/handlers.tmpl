@@ -112,7 +112,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 	}()
 	{{- end }}
 
-	var response {{ $op.Responses.Type.Go }}
+	var response {{ $op.Responses.GoType }}
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context: ctx,
@@ -131,9 +131,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		}
 
 		type (
-			Request = {{ if $op.Request }}{{ $op.Request.Type.Go }}{{ else }}struct{}{{ end }}
+			Request = {{ if $op.Request }}{{ $op.Request.GoType }}{{ else }}struct{}{{ end }}
 			Params = {{ if $op.Params }}{{ $op.Name }}Params{{ else }}struct{}{{ end }}
-			Response = {{ $op.Responses.Type.Go }}
+			Response = {{ $op.Responses.GoType }}
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -154,8 +154,8 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		recordError("Internal", err)
 		{{- if and $.Config.Error (not $op.WebhookInfo) }}
-		if errRes, ok := errors.Into[*{{ $.Config.ErrorType.Go }}](err); ok {
-			encodeErrorResponse(*errRes, w, span)
+		if errRes, ok := errors.Into[{{ $.Config.ErrorGoType }}](err); ok {
+			encodeErrorResponse(errRes, w, span)
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {

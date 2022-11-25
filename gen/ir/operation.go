@@ -134,6 +134,17 @@ func (op Parameter) Default() Default {
 	return Default{}
 }
 
+func doTakePtr(t *Type) bool {
+	return t.IsInterface() || t.DoPassByPointer()
+}
+
+func reqRespGoType(t *Type) string {
+	if t.DoPassByPointer() {
+		return "*" + t.Go()
+	}
+	return t.Go()
+}
+
 type Request struct {
 	Type      *Type
 	EmptyBody *Type
@@ -141,11 +152,31 @@ type Request struct {
 	Spec      *openapi.RequestBody
 }
 
+// DoTakePtr returns true if type should be taken by pointer.
+func (r *Request) DoTakePtr() bool {
+	return doTakePtr(r.Type)
+}
+
+// GoType returns Go type of this response.
+func (r *Request) GoType() string {
+	return reqRespGoType(r.Type)
+}
+
 type Responses struct {
 	Type       *Type
 	Pattern    [5]*Response
 	StatusCode map[int]*Response
 	Default    *Response
+}
+
+// DoTakePtr returns true if type should be taken by pointer.
+func (r *Responses) DoTakePtr() bool {
+	return doTakePtr(r.Type)
+}
+
+// GoType returns Go type of this response.
+func (r *Responses) GoType() string {
+	return reqRespGoType(r.Type)
 }
 
 func (r *Responses) HasPattern() bool {

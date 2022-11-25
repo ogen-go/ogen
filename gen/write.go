@@ -39,6 +39,15 @@ type TemplateConfig struct {
 	skipTestRegex *regexp.Regexp
 }
 
+// ErrorGoType returns Go type of error.
+func (t TemplateConfig) ErrorGoType() string {
+	typ := t.ErrorType
+	if typ.DoPassByPointer() {
+		return "*" + typ.Go()
+	}
+	return typ.Go()
+}
+
 // SkipTest returns true, if test should be skipped.
 func (t TemplateConfig) SkipTest(typ *ir.Type) bool {
 	return t.skipTestRegex != nil && t.skipTestRegex.MatchString(typ.Name)

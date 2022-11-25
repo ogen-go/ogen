@@ -239,3 +239,8 @@ func (t *Type) TypeDiscriminator() (r []TypeDiscriminatorCase) {
 	})
 	return r
 }
+
+// DoPassByPointer returns true if type should be passed by pointer.
+func (t *Type) DoPassByPointer() bool {
+	return t.IsStruct()
+}
