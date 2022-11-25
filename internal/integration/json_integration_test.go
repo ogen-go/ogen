@@ -79,21 +79,20 @@ func TestExampleJSON(t *testing.T) {
 	}
 
 	for _, tc := range []struct {
-		Name  string
-		Value interface {
-			json.Marshaler
-		}
+		Name     string
+		Value    json.Marshaler
 		Expected string
 	}{
 		{
 			Name:  "Pet",
-			Value: pet,
+			Value: &pet,
 		},
 		{
 			Name: "PetWithPrimary",
-			Value: func(input api.Pet) (r api.Pet) {
-				r = input
-				r.Primary = &input
+			Value: func(input api.Pet) (r *api.Pet) {
+				r = &input
+				cpy := input
+				r.Primary = &cpy
 				return r
 			}(pet),
 		},

@@ -13,12 +13,12 @@ import (
 type sampleErrServer struct {
 }
 
-func (s sampleErrServer) DataCreate(ctx context.Context, req api.OptData) (api.Data, error) {
+func (s sampleErrServer) DataCreate(ctx context.Context, req api.OptData) (*api.Data, error) {
 	panic("implement me")
 }
 
-func (s sampleErrServer) DataGet(ctx context.Context) (api.Data, error) {
-	return api.Data{}, &api.ErrorStatusCode{
+func (s sampleErrServer) DataGet(ctx context.Context) (*api.Data, error) {
+	return nil, &api.ErrorStatusCode{
 		StatusCode: 500,
 		Response: api.Error{
 			Code:    -200,
@@ -27,7 +27,7 @@ func (s sampleErrServer) DataGet(ctx context.Context) (api.Data, error) {
 	}
 }
 
-func (s sampleErrServer) NewError(ctx context.Context, err error) api.ErrorStatusCode {
+func (s sampleErrServer) NewError(ctx context.Context, err error) *api.ErrorStatusCode {
 	panic("should not be called")
 }
 

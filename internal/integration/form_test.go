@@ -22,8 +22,8 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func testForm() api.TestForm {
-	return api.TestForm{
+func testForm() *api.TestForm {
+	return &api.TestForm{
 		ID:          api.NewOptInt(10),
 		UUID:        api.NewOptUUID(uuid.MustParse("00000000-0000-0000-0000-000000000000")),
 		Description: "foobar",
@@ -56,20 +56,21 @@ type testFormServer struct {
 	a *assert.Assertions
 }
 
-func (s testFormServer) TestFormURLEncoded(ctx context.Context, req api.TestForm) (r api.TestFormURLEncodedOK, _ error) {
+func (s testFormServer) TestFormURLEncoded(ctx context.Context, req *api.TestForm) (*api.TestFormURLEncodedOK, error) {
 	s.a.Equal(testForm(), req)
-	return r, nil
+	return new(api.TestFormURLEncodedOK), nil
 }
 
-func (s testFormServer) TestMultipart(ctx context.Context, req api.TestForm) (r api.TestMultipartOK, _ error) {
+func (s testFormServer) TestMultipart(ctx context.Context, req *api.TestForm) (*api.TestMultipartOK, error) {
 	s.a.Equal(testForm(), req)
-	return r, nil
+	return new(api.TestMultipartOK), nil
 }
 
-func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMultipartUploadReqForm) (
-	r api.TestMultipartUploadOK,
-	_ error,
+func (s testFormServer) TestMultipartUpload(ctx context.Context, req *api.TestMultipartUploadReqForm) (
+	*api.TestMultipartUploadOK,
+	error,
 ) {
+	r := new(api.TestMultipartUploadOK)
 	readFile := func(f ht.MultipartFile, to *string) error {
 		var b strings.Builder
 		if _, err := io.Copy(&b, f.File); err != nil {
@@ -112,8 +113,8 @@ func (s testFormServer) TestMultipartUpload(ctx context.Context, req api.TestMul
 func (s testFormServer) TestShareFormSchema(
 	ctx context.Context,
 	req api.TestShareFormSchemaReq,
-) (api.TestShareFormSchemaOK, error) {
-	return api.TestShareFormSchemaOK{}, nil
+) (*api.TestShareFormSchemaOK, error) {
+	return &api.TestShareFormSchemaOK{}, nil
 }
 
 func TestURIEncodingE2E(t *testing.T) {
@@ -240,7 +241,7 @@ func TestMultipartUploadE2E(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			a := require.New(t)
 
-			req := api.TestMultipartUploadReqForm{
+			req := &api.TestMultipartUploadReqForm{
 				File: ht.MultipartFile{
 					Name: "pablo.jpg",
 					File: strings.NewReader(tt.file),

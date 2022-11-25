@@ -13,13 +13,13 @@ import (
 
 type server struct{}
 
-func (server) JSON(ctx context.Context) (techempower.HelloWorld, error) {
-	return techempower.HelloWorld{
+func (server) JSON(ctx context.Context) (*techempower.HelloWorld, error) {
+	return &techempower.HelloWorld{
 		Message: "Hello, world",
 	}, nil
 }
 
-func (server) DB(ctx context.Context) (techempower.WorldObject, error) { panic("implement me") }
+func (server) DB(ctx context.Context) (*techempower.WorldObject, error) { panic("implement me") }
 func (server) Caching(ctx context.Context, params techempower.CachingParams) (techempower.WorldObjects, error) {
 	panic("implement me")
 }

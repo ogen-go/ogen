@@ -25,8 +25,8 @@ func (t testHTTPResponses) AnyContentTypeBinaryStringSchema(ctx context.Context)
 	}, nil
 }
 
-func (t testHTTPResponses) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
-	return api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
+func (t testHTTPResponses) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (*api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error) {
+	return &api.AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
 		StatusCode: 200,
 		Response: api.AnyContentTypeBinaryStringSchemaDefaultDef{
 			Data: bytes.NewReader(t.data),
@@ -95,21 +95,21 @@ func (t testHTTPResponses) Combined(ctx context.Context, params api.CombinedPara
 	}
 }
 
-func (t testHTTPResponses) Headers200(ctx context.Context) (api.Headers200OK, error) {
-	return api.Headers200OK{
+func (t testHTTPResponses) Headers200(ctx context.Context) (*api.Headers200OK, error) {
+	return &api.Headers200OK{
 		TestHeader: "foo",
 	}, nil
 }
 
-func (t testHTTPResponses) HeadersDefault(ctx context.Context) (api.HeadersDefaultDef, error) {
-	return api.HeadersDefaultDef{
+func (t testHTTPResponses) HeadersDefault(ctx context.Context) (*api.HeadersDefaultDef, error) {
+	return &api.HeadersDefaultDef{
 		TestHeader: "202",
 		StatusCode: 202,
 	}, nil
 }
 
-func (t testHTTPResponses) HeadersPattern(ctx context.Context) (api.HeadersPattern4XX, error) {
-	return api.HeadersPattern4XX{
+func (t testHTTPResponses) HeadersPattern(ctx context.Context) (*api.HeadersPattern4XX, error) {
+	return &api.HeadersPattern4XX{
 		TestHeader: "404",
 		StatusCode: 404,
 	}, nil
