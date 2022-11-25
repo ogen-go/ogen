@@ -36,7 +36,7 @@ func decodeIntegerNumberResponse(resp *http.Response) (res IntegerNumber, err er
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -72,7 +72,7 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res JaegerAnyOf, err error)
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -108,7 +108,7 @@ func decodeOneUUIDResponse(resp *http.Response) (res OneUUID, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")

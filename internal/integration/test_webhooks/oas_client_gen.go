@@ -144,6 +144,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 }
 
 // StatusWebhook invokes statusWebhook operation.
+//
 func (c *WebhookClient) StatusWebhook(ctx context.Context, targetURL string) (res StatusWebhookOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("statusWebhook"),
@@ -205,6 +206,7 @@ func (c *WebhookClient) StatusWebhook(ctx context.Context, targetURL string) (re
 }
 
 // UpdateDelete invokes DELETE update operation.
+//
 func (c *WebhookClient) UpdateDelete(ctx context.Context, targetURL string) (res UpdateDeleteRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.WebhookName("update"),
@@ -265,6 +267,7 @@ func (c *WebhookClient) UpdateDelete(ctx context.Context, targetURL string) (res
 }
 
 // UpdateWebhook invokes updateWebhook operation.
+//
 func (c *WebhookClient) UpdateWebhook(ctx context.Context, targetURL string, request OptEvent, params UpdateWebhookParams) (res UpdateWebhookRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updateWebhook"),

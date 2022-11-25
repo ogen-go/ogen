@@ -38,7 +38,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -69,7 +69,7 @@ func decodeProbeLivenessResponse(resp *http.Response) (res string, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")

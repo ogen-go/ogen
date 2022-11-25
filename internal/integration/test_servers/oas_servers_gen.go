@@ -76,6 +76,7 @@ func (s ProductionServer) Build() (string, error) {
 }
 
 // PrefixServer is a server URL template.
+//
 type PrefixServer struct {
 	Val string `json:"val" yaml:"val"`
 }

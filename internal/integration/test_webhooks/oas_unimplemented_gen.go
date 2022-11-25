@@ -30,16 +30,19 @@ func (UnimplementedHandler) NewError(ctx context.Context, err error) (r ErrorSta
 var _ WebhookHandler = UnimplementedHandler{}
 
 // StatusWebhook implements statusWebhook operation.
+//
 func (UnimplementedHandler) StatusWebhook(ctx context.Context) (r StatusWebhookOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // UpdateDelete implements DELETE update operation.
+//
 func (UnimplementedHandler) UpdateDelete(ctx context.Context) (r UpdateDeleteRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // UpdateWebhook implements updateWebhook operation.
+//
 func (UnimplementedHandler) UpdateWebhook(ctx context.Context, req OptEvent, params UpdateWebhookParams) (r UpdateWebhookRes, _ error) {
 	return r, ht.ErrNotImplemented
 }

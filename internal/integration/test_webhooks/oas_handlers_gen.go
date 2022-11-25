@@ -124,6 +124,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, w http.ResponseWriter
 }
 
 // handleStatusWebhookRequest handles statusWebhook operation.
+//
 func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("statusWebhook"),
@@ -201,6 +202,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, w http.Respon
 }
 
 // handleUpdateDeleteRequest handles DELETE update operation.
+//
 func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.WebhookName("update"),
@@ -277,6 +279,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, w http.Respons
 }
 
 // handleUpdateWebhookRequest handles updateWebhook operation.
+//
 func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updateWebhook"),

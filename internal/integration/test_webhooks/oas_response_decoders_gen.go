@@ -36,7 +36,7 @@ func decodePublishEventResponse(resp *http.Response) (res Event, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -67,7 +67,7 @@ func decodePublishEventResponse(resp *http.Response) (res Event, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -109,7 +109,7 @@ func decodeStatusWebhookResponse(resp *http.Response) (res StatusWebhookOK, err 
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -148,7 +148,7 @@ func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, err e
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
+			return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 		}
 		if err := d.Skip(); err != io.EOF {
 			return res, errors.New("unexpected trailing data")
@@ -185,7 +185,7 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, errors.Wrap(err, "decode \"application/json\"")
+				return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 			}
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
@@ -215,7 +215,7 @@ func decodeUpdateWebhookResponse(resp *http.Response) (res UpdateWebhookRes, err
 			}
 			return nil
 		}(); err != nil {
-			return res, errors.Wrap(err, "decode \"application/json\"")
+			return res, errors.Wrapf(err, "decode \"application/json\", body: %s", string(b))
 		}
 		if err := d.Skip(); err != io.EOF {
 			return res, errors.New("unexpected trailing data")
