@@ -14,14 +14,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s *Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Error) encodeFields(e *jx.Encoder) {
+func (s *Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("error")
@@ -98,7 +98,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Error) MarshalJSON() ([]byte, error) {
+func (s *Error) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111,14 +111,14 @@ func (s *Error) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Event) Encode(e *jx.Encoder) {
+func (s *Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Event) encodeFields(e *jx.Encoder) {
+func (s *Event) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -213,7 +213,7 @@ func (s *Event) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Event) MarshalJSON() ([]byte, error) {
+func (s *Event) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -294,14 +294,14 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StatusWebhookOK) Encode(e *jx.Encoder) {
+func (s *StatusWebhookOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s StatusWebhookOK) encodeFields(e *jx.Encoder) {
+func (s *StatusWebhookOK) encodeFields(e *jx.Encoder) {
 	{
 		if s.Status.Set {
 			e.FieldStart("status")
@@ -344,7 +344,7 @@ func (s *StatusWebhookOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s StatusWebhookOK) MarshalJSON() ([]byte, error) {
+func (s *StatusWebhookOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -357,14 +357,14 @@ func (s *StatusWebhookOK) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WebhookResponse) Encode(e *jx.Encoder) {
+func (s *WebhookResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WebhookResponse) encodeFields(e *jx.Encoder) {
+func (s *WebhookResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -458,7 +458,7 @@ func (s *WebhookResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WebhookResponse) MarshalJSON() ([]byte, error) {
+func (s *WebhookResponse) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

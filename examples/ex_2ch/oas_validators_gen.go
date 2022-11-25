@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s Board) Validate() error {
+func (s *Board) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.FileTypes == nil {
@@ -51,7 +51,7 @@ func (s Boards) Validate() error {
 	}
 	return nil
 }
-func (s Captcha) Validate() error {
+func (s *Captcha) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -107,7 +107,7 @@ func (s CaptchaType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Error) Validate() error {
+func (s *Error) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Code.Set {
@@ -206,7 +206,7 @@ func (s ErrorCode) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s File) Validate() error {
+func (s *File) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -252,7 +252,7 @@ func (s FileType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Like) Validate() error {
+func (s *Like) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -277,7 +277,7 @@ func (s Like) Validate() error {
 	}
 	return nil
 }
-func (s MobilePost) Validate() error {
+func (s *MobilePost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -320,7 +320,7 @@ func (s MobilePost) Validate() error {
 	}
 	return nil
 }
-func (s MobileThreadLastInfo) Validate() error {
+func (s *MobileThreadLastInfo) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -345,7 +345,7 @@ func (s MobileThreadLastInfo) Validate() error {
 	}
 	return nil
 }
-func (s MobileThreadPostsAfter) Validate() error {
+func (s *MobileThreadPostsAfter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -396,7 +396,7 @@ func (s MobileThreadPostsAfter) Validate() error {
 	return nil
 }
 
-func (s Passcode) Validate() error {
+func (s *Passcode) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -421,7 +421,7 @@ func (s Passcode) Validate() error {
 	}
 	return nil
 }
-func (s Post) Validate() error {
+func (s *Post) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -453,7 +453,7 @@ func (s Post) Validate() error {
 	}
 	return nil
 }
-func (s PostingNewPost) Validate() error {
+func (s *PostingNewPost) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -478,7 +478,7 @@ func (s PostingNewPost) Validate() error {
 	}
 	return nil
 }
-func (s PostingNewThread) Validate() error {
+func (s *PostingNewThread) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -503,7 +503,7 @@ func (s PostingNewThread) Validate() error {
 	}
 	return nil
 }
-func (s Report) Validate() error {
+func (s *Report) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Error.Set {
@@ -545,7 +545,7 @@ func (s UserPostingPostOK) Validate() error {
 	}
 }
 
-func (s UserPostingPostReq) Validate() error {
+func (s *UserPostingPostReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CaptchaType.Validate(); err != nil {

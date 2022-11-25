@@ -2515,7 +2515,7 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredEmptyStructRequest(
-	req TestRequestRequiredEmptyStructReq,
+	req *TestRequestRequiredEmptyStructReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -2529,7 +2529,7 @@ func encodeTestRequestRequiredEmptyStructRequest(
 }
 
 func encodeTestRequestRequiredFormatTestRequest(
-	req TestRequestRequiredFormatTestReq,
+	req *TestRequestRequiredFormatTestReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

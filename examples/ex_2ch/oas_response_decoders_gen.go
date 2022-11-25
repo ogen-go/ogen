@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res Captcha, err error) {
+func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41,7 +41,7 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res Captcha, 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -61,7 +61,7 @@ func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICapt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res Captcha, err error) {
+func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -89,7 +89,7 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res Captcha
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -97,7 +97,7 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res Captcha
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res Captcha, err error) {
+func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -125,7 +125,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res C
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -133,16 +133,16 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
+		return &APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res Captcha, err error) {
+func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -170,7 +170,7 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res Captcha, e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -178,16 +178,16 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res Captcha, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res APICaptchaRecaptchaMobileGetOK, err error) {
+func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaRecaptchaMobileGetOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return APICaptchaRecaptchaMobileGetOK{}, nil
+		return &APICaptchaRecaptchaMobileGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIDislikeGetResponse(resp *http.Response) (res Like, err error) {
+func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -215,7 +215,7 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res Like, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -223,7 +223,7 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res Like, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPILikeGetResponse(resp *http.Response) (res Like, err error) {
+func decodeAPILikeGetResponse(resp *http.Response) (res *Like, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -251,7 +251,7 @@ func decodeAPILikeGetResponse(resp *http.Response) (res Like, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -259,7 +259,7 @@ func decodeAPILikeGetResponse(resp *http.Response) (res Like, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res MobileThreadPostsAfter, err error) {
+func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *MobileThreadPostsAfter, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -287,7 +287,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res M
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -331,7 +331,7 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res MobileThreadLastInfo, err error) {
+func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *MobileThreadLastInfo, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -359,7 +359,7 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res Mobil
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -367,7 +367,7 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res Mobil
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res MobilePost, err error) {
+func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobilePost, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -395,7 +395,7 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res MobilePo
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -403,7 +403,7 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res MobilePo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserPassloginPostResponse(resp *http.Response) (res Passcode, err error) {
+func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -431,7 +431,7 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res Passcode, err err
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -475,7 +475,7 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserReportPostResponse(resp *http.Response) (res Report, err error) {
+func decodeUserReportPostResponse(resp *http.Response) (res *Report, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -503,7 +503,7 @@ func decodeUserReportPostResponse(resp *http.Response) (res Report, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

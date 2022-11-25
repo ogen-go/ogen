@@ -13,14 +13,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s CombinedOK) Encode(e *jx.Encoder) {
+func (s *CombinedOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s CombinedOK) encodeFields(e *jx.Encoder) {
+func (s *CombinedOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ok")
@@ -97,7 +97,7 @@ func (s *CombinedOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CombinedOK) MarshalJSON() ([]byte, error) {
+func (s *CombinedOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

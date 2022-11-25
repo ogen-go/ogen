@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s Location) Validate() error {
+func (s *Location) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Lat)); err != nil {
@@ -38,7 +38,7 @@ func (s Location) Validate() error {
 	return nil
 }
 
-func (s ObjectsWithConflictingArrayPropertyReq) Validate() error {
+func (s *ObjectsWithConflictingArrayPropertyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Foo == nil {
@@ -84,7 +84,7 @@ func (s ObjectsWithConflictingArrayPropertyReq) Validate() error {
 	}
 	return nil
 }
-func (s ObjectsWithConflictingPropertiesReq) Validate() error {
+func (s *ObjectsWithConflictingPropertiesReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -138,31 +138,31 @@ func (s ObjectsWithConflictingPropertiesReq) Validate() error {
 	return nil
 }
 
-func (s ReferencedAllofApplicationJSON) Validate() error {
+func (s *ReferencedAllofApplicationJSON) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReferencedAllofMultipartFormData) Validate() error {
+func (s *ReferencedAllofMultipartFormData) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReferencedAllofOptionalApplicationJSON) Validate() error {
+func (s *ReferencedAllofOptionalApplicationJSON) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReferencedAllofOptionalMultipartFormData) Validate() error {
+func (s *ReferencedAllofOptionalMultipartFormData) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s Robot) Validate() error {
+func (s *Robot) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {

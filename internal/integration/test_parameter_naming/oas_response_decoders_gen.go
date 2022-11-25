@@ -8,20 +8,20 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeHealthzGetResponse(resp *http.Response) (res HealthzGetOK, err error) {
+func decodeHealthzGetResponse(resp *http.Response) (res *HealthzGetOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return HealthzGetOK{}, nil
+		return &HealthzGetOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSameNameResponse(resp *http.Response) (res SameNameOK, err error) {
+func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
-		return SameNameOK{}, nil
+		return &SameNameOK{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }

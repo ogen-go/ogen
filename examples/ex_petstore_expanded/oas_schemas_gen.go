@@ -14,12 +14,12 @@ type Error struct {
 }
 
 // GetCode returns the value of Code.
-func (s Error) GetCode() int32 {
+func (s *Error) GetCode() int32 {
 	return s.Code
 }
 
 // GetMessage returns the value of Message.
-func (s Error) GetMessage() string {
+func (s *Error) GetMessage() string {
 	return s.Message
 }
 
@@ -40,12 +40,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 
@@ -75,12 +75,12 @@ type NewPet struct {
 }
 
 // GetName returns the value of Name.
-func (s NewPet) GetName() string {
+func (s *NewPet) GetName() string {
 	return s.Name
 }
 
 // GetTag returns the value of Tag.
-func (s NewPet) GetTag() OptString {
+func (s *NewPet) GetTag() OptString {
 	return s.Tag
 }
 
@@ -195,17 +195,17 @@ type Pet struct {
 }
 
 // GetName returns the value of Name.
-func (s Pet) GetName() string {
+func (s *Pet) GetName() string {
 	return s.Name
 }
 
 // GetTag returns the value of Tag.
-func (s Pet) GetTag() OptString {
+func (s *Pet) GetTag() OptString {
 	return s.Tag
 }
 
 // GetID returns the value of ID.
-func (s Pet) GetID() int64 {
+func (s *Pet) GetID() int64 {
 	return s.ID
 }
 

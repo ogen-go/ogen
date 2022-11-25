@@ -12,7 +12,7 @@ import (
 )
 
 func encodeAddPetRequest(
-	req NewPet,
+	req *NewPet,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

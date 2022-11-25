@@ -73,7 +73,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	var response Data
+	var response *Data
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -87,7 +87,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		type (
 			Request  = OptData
 			Params   = struct{}
-			Response = Data
+			Response = *Data
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -107,7 +107,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
+			encodeErrorResponse(errRes, w, span)
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
@@ -161,7 +161,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 		err error
 	)
 
-	var response Data
+	var response *Data
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -175,7 +175,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = Data
+			Response = *Data
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -195,7 +195,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
-			encodeErrorResponse(*errRes, w, span)
+			encodeErrorResponse(errRes, w, span)
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {

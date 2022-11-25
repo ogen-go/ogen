@@ -8,7 +8,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s TestMultipartUploadOK) Validate() error {
+func (s *TestMultipartUploadOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Files == nil {
@@ -34,7 +34,7 @@ func (s TestMultipartUploadOK) Validate() error {
 	}
 	return nil
 }
-func (s TestMultipartUploadReq) Validate() error {
+func (s *TestMultipartUploadReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Files == nil {
@@ -60,7 +60,7 @@ func (s TestMultipartUploadReq) Validate() error {
 	}
 	return nil
 }
-func (s TestMultipartUploadReqForm) Validate() error {
+func (s *TestMultipartUploadReqForm) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Array{

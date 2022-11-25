@@ -13,14 +13,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s HelloWorld) Encode(e *jx.Encoder) {
+func (s *HelloWorld) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s HelloWorld) encodeFields(e *jx.Encoder) {
+func (s *HelloWorld) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
@@ -98,7 +98,7 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s HelloWorld) MarshalJSON() ([]byte, error) {
+func (s *HelloWorld) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -111,14 +111,14 @@ func (s *HelloWorld) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorldObject) Encode(e *jx.Encoder) {
+func (s *WorldObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s WorldObject) encodeFields(e *jx.Encoder) {
+func (s *WorldObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -213,7 +213,7 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s WorldObject) MarshalJSON() ([]byte, error) {
+func (s *WorldObject) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

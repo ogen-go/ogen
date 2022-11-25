@@ -51,7 +51,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 		err error
 	)
 
-	var response ProbeLivenessOK
+	var response *ProbeLivenessOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -65,7 +65,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = ProbeLivenessOK
+			Response = *ProbeLivenessOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

@@ -103,7 +103,7 @@ type IntegerNumber struct {
 }
 
 // GetPlain returns the value of Plain.
-func (s IntegerNumber) GetPlain() AnyOfIntegerNumberString {
+func (s *IntegerNumber) GetPlain() AnyOfIntegerNumberString {
 	return s.Plain
 }
 
@@ -119,12 +119,12 @@ type JaegerAnyOf struct {
 }
 
 // GetMedium returns the value of Medium.
-func (s JaegerAnyOf) GetMedium() string {
+func (s *JaegerAnyOf) GetMedium() string {
 	return s.Medium
 }
 
 // GetSizeLimit returns the value of SizeLimit.
-func (s JaegerAnyOf) GetSizeLimit() JaegerAnyOfSizeLimit {
+func (s *JaegerAnyOf) GetSizeLimit() JaegerAnyOfSizeLimit {
 	return s.SizeLimit
 }
 
@@ -210,17 +210,17 @@ type OneUUID struct {
 }
 
 // GetOwner returns the value of Owner.
-func (s OneUUID) GetOwner() string {
+func (s *OneUUID) GetOwner() string {
 	return s.Owner
 }
 
 // GetVersion returns the value of Version.
-func (s OneUUID) GetVersion() int32 {
+func (s *OneUUID) GetVersion() int32 {
 	return s.Version
 }
 
 // GetSubscriptionID returns the value of SubscriptionID.
-func (s OneUUID) GetSubscriptionID() OneUUIDSubscriptionID {
+func (s *OneUUID) GetSubscriptionID() OneUUIDSubscriptionID {
 	return s.SubscriptionID
 }
 

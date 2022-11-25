@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeDefaultTestRequest(r *http.Request) (
-	req DefaultTest,
+	req *DefaultTest,
 	close func() error,
 	rerr error,
 ) {
@@ -74,7 +74,7 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -158,7 +158,7 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 }
 
 func (s *Server) decodeOneofBugRequest(r *http.Request) (
-	req OneOfBugs,
+	req *OneOfBugs,
 	close func() error,
 	rerr error,
 ) {
@@ -217,7 +217,7 @@ func (s *Server) decodeOneofBugRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -500,7 +500,7 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
-	req TestFloatValidation,
+	req *TestFloatValidation,
 	close func() error,
 	rerr error,
 ) {
@@ -559,7 +559,7 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

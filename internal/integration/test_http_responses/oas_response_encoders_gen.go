@@ -26,7 +26,7 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 	return nil
 }
 
-func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.
@@ -136,7 +136,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 	}
 }
 
-func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span trace.Span) error {
+func encodeHeaders200Response(response *Headers200OK, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -252,7 +252,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 	}
 }
 
-func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
+func encodeHeadersDefaultResponse(response *HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -285,7 +285,7 @@ func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWri
 	return nil
 }
 
-func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
+func encodeHeadersPatternResponse(response *HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())

@@ -62,7 +62,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // HealthzGet invokes GET /healthz operation.
 //
 // GET /healthz
-func (c *Client) HealthzGet(ctx context.Context, params HealthzGetParams) (res HealthzGetOK, err error) {
+func (c *Client) HealthzGet(ctx context.Context, params HealthzGetParams) (res *HealthzGetOK, err error) {
 	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
@@ -195,7 +195,7 @@ func (c *Client) HealthzGet(ctx context.Context, params HealthzGetParams) (res H
 // Parameter with different location, but the same name.
 //
 // GET /same_name/{path}
-func (c *Client) SameName(ctx context.Context, params SameNameParams) (res SameNameOK, err error) {
+func (c *Client) SameName(ctx context.Context, params SameNameParams) (res *SameNameOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
 	}

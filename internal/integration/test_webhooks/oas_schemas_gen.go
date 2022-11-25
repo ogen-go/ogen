@@ -18,7 +18,7 @@ type Error struct {
 }
 
 // GetError returns the value of Error.
-func (s Error) GetError() string {
+func (s *Error) GetError() string {
 	return s.Error
 }
 
@@ -34,12 +34,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 
@@ -63,12 +63,12 @@ type Event struct {
 }
 
 // GetID returns the value of ID.
-func (s Event) GetID() uuid.UUID {
+func (s *Event) GetID() uuid.UUID {
 	return s.ID
 }
 
 // GetMessage returns the value of Message.
-func (s Event) GetMessage() string {
+func (s *Event) GetMessage() string {
 	return s.Message
 }
 
@@ -179,7 +179,7 @@ type StatusWebhookOK struct {
 }
 
 // GetStatus returns the value of Status.
-func (s StatusWebhookOK) GetStatus() OptString {
+func (s *StatusWebhookOK) GetStatus() OptString {
 	return s.Status
 }
 
@@ -200,12 +200,12 @@ type WebhookResponse struct {
 }
 
 // GetID returns the value of ID.
-func (s WebhookResponse) GetID() uuid.UUID {
+func (s *WebhookResponse) GetID() uuid.UUID {
 	return s.ID
 }
 
 // GetEventType returns the value of EventType.
-func (s WebhookResponse) GetEventType() OptString {
+func (s *WebhookResponse) GetEventType() OptString {
 	return s.EventType
 }
 

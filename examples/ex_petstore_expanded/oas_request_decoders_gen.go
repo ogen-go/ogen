@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeAddPetRequest(r *http.Request) (
-	req NewPet,
+	req *NewPet,
 	close func() error,
 	rerr error,
 ) {
@@ -66,7 +66,7 @@ func (s *Server) decodeAddPetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

@@ -83,7 +83,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 		}
 
 		type (
-			Request  = CreatePetReq
+			Request  = *CreatePetReq
 			Params   = struct{}
 			Response = CreatePetRes
 		)
@@ -197,7 +197,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 		}
 
 		type (
-			Request  = CreatePetCategoriesReq
+			Request  = *CreatePetCategoriesReq
 			Params   = CreatePetCategoriesParams
 			Response = CreatePetCategoriesRes
 		)
@@ -311,7 +311,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 		}
 
 		type (
-			Request  = CreatePetFriendsReq
+			Request  = *CreatePetFriendsReq
 			Params   = CreatePetFriendsParams
 			Response = CreatePetFriendsRes
 		)
@@ -425,7 +425,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 		}
 
 		type (
-			Request  = CreatePetOwnerReq
+			Request  = *CreatePetOwnerReq
 			Params   = CreatePetOwnerParams
 			Response = CreatePetOwnerRes
 		)
@@ -1252,7 +1252,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 		}
 
 		type (
-			Request  = UpdatePetReq
+			Request  = *UpdatePetReq
 			Params   = UpdatePetParams
 			Response = UpdatePetRes
 		)

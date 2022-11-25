@@ -17,7 +17,7 @@ type APIKey struct {
 }
 
 // GetAPIKey returns the value of APIKey.
-func (s APIKey) GetAPIKey() string {
+func (s *APIKey) GetAPIKey() string {
 	return s.APIKey
 }
 
@@ -34,17 +34,17 @@ type AnyTest struct {
 }
 
 // GetEmpty returns the value of Empty.
-func (s AnyTest) GetEmpty() jx.Raw {
+func (s *AnyTest) GetEmpty() jx.Raw {
 	return s.Empty
 }
 
 // GetAnyMap returns the value of AnyMap.
-func (s AnyTest) GetAnyMap() OptAnyTestAnyMap {
+func (s *AnyTest) GetAnyMap() OptAnyTestAnyMap {
 	return s.AnyMap
 }
 
 // GetAnyArray returns the value of AnyArray.
-func (s AnyTest) GetAnyArray() []jx.Raw {
+func (s *AnyTest) GetAnyArray() []jx.Raw {
 	return s.AnyArray
 }
 
@@ -84,22 +84,22 @@ type ArrayTest struct {
 }
 
 // GetRequired returns the value of Required.
-func (s ArrayTest) GetRequired() []string {
+func (s *ArrayTest) GetRequired() []string {
 	return s.Required
 }
 
 // GetOptional returns the value of Optional.
-func (s ArrayTest) GetOptional() []string {
+func (s *ArrayTest) GetOptional() []string {
 	return s.Optional
 }
 
 // GetNullableRequired returns the value of NullableRequired.
-func (s ArrayTest) GetNullableRequired() []string {
+func (s *ArrayTest) GetNullableRequired() []string {
 	return s.NullableRequired
 }
 
 // GetNullableOptional returns the value of NullableOptional.
-func (s ArrayTest) GetNullableOptional() OptNilStringArray {
+func (s *ArrayTest) GetNullableOptional() OptNilStringArray {
 	return s.NullableOptional
 }
 
@@ -135,37 +135,37 @@ type Data struct {
 }
 
 // GetID returns the value of ID.
-func (s Data) GetID() ID {
+func (s *Data) GetID() ID {
 	return s.ID
 }
 
 // GetDescription returns the value of Description.
-func (s Data) GetDescription() DataDescription {
+func (s *Data) GetDescription() DataDescription {
 	return s.Description
 }
 
 // GetEmail returns the value of Email.
-func (s Data) GetEmail() string {
+func (s *Data) GetEmail() string {
 	return s.Email
 }
 
 // GetHostname returns the value of Hostname.
-func (s Data) GetHostname() string {
+func (s *Data) GetHostname() string {
 	return s.Hostname
 }
 
 // GetFormat returns the value of Format.
-func (s Data) GetFormat() string {
+func (s *Data) GetFormat() string {
 	return s.Format
 }
 
 // GetBase64 returns the value of Base64.
-func (s Data) GetBase64() []byte {
+func (s *Data) GetBase64() []byte {
 	return s.Base64
 }
 
 // GetNullableEnum returns the value of NullableEnum.
-func (s Data) GetNullableEnum() OptNullableEnums {
+func (s *Data) GetNullableEnum() OptNullableEnums {
 	return s.NullableEnum
 }
 
@@ -292,77 +292,77 @@ type DefaultTest struct {
 }
 
 // GetRequired returns the value of Required.
-func (s DefaultTest) GetRequired() string {
+func (s *DefaultTest) GetRequired() string {
 	return s.Required
 }
 
 // GetStr returns the value of Str.
-func (s DefaultTest) GetStr() OptString {
+func (s *DefaultTest) GetStr() OptString {
 	return s.Str
 }
 
 // GetNullStr returns the value of NullStr.
-func (s DefaultTest) GetNullStr() OptNilString {
+func (s *DefaultTest) GetNullStr() OptNilString {
 	return s.NullStr
 }
 
 // GetEnum returns the value of Enum.
-func (s DefaultTest) GetEnum() OptDefaultTestEnum {
+func (s *DefaultTest) GetEnum() OptDefaultTestEnum {
 	return s.Enum
 }
 
 // GetUUID returns the value of UUID.
-func (s DefaultTest) GetUUID() OptUUID {
+func (s *DefaultTest) GetUUID() OptUUID {
 	return s.UUID
 }
 
 // GetIP returns the value of IP.
-func (s DefaultTest) GetIP() OptIP {
+func (s *DefaultTest) GetIP() OptIP {
 	return s.IP
 }
 
 // GetIPV4 returns the value of IPV4.
-func (s DefaultTest) GetIPV4() OptIPv4 {
+func (s *DefaultTest) GetIPV4() OptIPv4 {
 	return s.IPV4
 }
 
 // GetIPV6 returns the value of IPV6.
-func (s DefaultTest) GetIPV6() OptIPv6 {
+func (s *DefaultTest) GetIPV6() OptIPv6 {
 	return s.IPV6
 }
 
 // GetURI returns the value of URI.
-func (s DefaultTest) GetURI() OptURI {
+func (s *DefaultTest) GetURI() OptURI {
 	return s.URI
 }
 
 // GetBirthday returns the value of Birthday.
-func (s DefaultTest) GetBirthday() OptDate {
+func (s *DefaultTest) GetBirthday() OptDate {
 	return s.Birthday
 }
 
 // GetRate returns the value of Rate.
-func (s DefaultTest) GetRate() OptDuration {
+func (s *DefaultTest) GetRate() OptDuration {
 	return s.Rate
 }
 
 // GetEmail returns the value of Email.
-func (s DefaultTest) GetEmail() OptString {
+func (s *DefaultTest) GetEmail() OptString {
 	return s.Email
 }
 
 // GetHostname returns the value of Hostname.
-func (s DefaultTest) GetHostname() OptString {
+func (s *DefaultTest) GetHostname() OptString {
 	return s.Hostname
 }
 
 // GetFormat returns the value of Format.
-func (s DefaultTest) GetFormat() OptString {
+func (s *DefaultTest) GetFormat() OptString {
 	return s.Format
 }
 
 // GetBase64 returns the value of Base64.
-func (s DefaultTest) GetBase64() []byte {
+func (s *DefaultTest) GetBase64() []byte {
 	return s.Base64
 }
 
@@ -456,17 +456,17 @@ type DescriptionDetailed struct {
 }
 
 // GetName returns the value of Name.
-func (s DescriptionDetailed) GetName() string {
+func (s *DescriptionDetailed) GetName() string {
 	return s.Name
 }
 
 // GetCount returns the value of Count.
-func (s DescriptionDetailed) GetCount() int {
+func (s *DescriptionDetailed) GetCount() int {
 	return s.Count
 }
 
 // GetID returns the value of ID.
-func (s DescriptionDetailed) GetID() OptID {
+func (s *DescriptionDetailed) GetID() OptID {
 	return s.ID
 }
 
@@ -491,7 +491,7 @@ type DescriptionSimple struct {
 }
 
 // GetDescription returns the value of Description.
-func (s DescriptionSimple) GetDescription() string {
+func (s *DescriptionSimple) GetDescription() string {
 	return s.Description
 }
 
@@ -506,12 +506,12 @@ type Error struct {
 }
 
 // GetCode returns the value of Code.
-func (s Error) GetCode() int64 {
+func (s *Error) GetCode() int64 {
 	return s.Code
 }
 
 // GetMessage returns the value of Message.
-func (s Error) GetMessage() string {
+func (s *Error) GetMessage() string {
 	return s.Message
 }
 
@@ -532,12 +532,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 
@@ -562,7 +562,7 @@ type FoobarPutDef struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s FoobarPutDef) GetStatusCode() int {
+func (s *FoobarPutDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -578,12 +578,12 @@ type Hash struct {
 }
 
 // GetRaw returns the value of Raw.
-func (s Hash) GetRaw() []byte {
+func (s *Hash) GetRaw() []byte {
 	return s.Raw
 }
 
 // GetHex returns the value of Hex.
-func (s Hash) GetHex() string {
+func (s *Hash) GetHex() string {
 	return s.Hex
 }
 
@@ -786,17 +786,17 @@ type Issue1430 struct {
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
-func (s Issue1430) GetCommonMinus1() string {
+func (s *Issue1430) GetCommonMinus1() string {
 	return s.CommonMinus1
 }
 
 // GetCommonMinus2 returns the value of CommonMinus2.
-func (s Issue1430) GetCommonMinus2() int {
+func (s *Issue1430) GetCommonMinus2() int {
 	return s.CommonMinus2
 }
 
 // GetUniqueMinus1 returns the value of UniqueMinus1.
-func (s Issue1430) GetUniqueMinus1() string {
+func (s *Issue1430) GetUniqueMinus1() string {
 	return s.UniqueMinus1
 }
 
@@ -822,17 +822,17 @@ type Issue1431 struct {
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
-func (s Issue1431) GetCommonMinus1() string {
+func (s *Issue1431) GetCommonMinus1() string {
 	return s.CommonMinus1
 }
 
 // GetCommonMinus2 returns the value of CommonMinus2.
-func (s Issue1431) GetCommonMinus2() int {
+func (s *Issue1431) GetCommonMinus2() int {
 	return s.CommonMinus2
 }
 
 // GetUniqueMinus2 returns the value of UniqueMinus2.
-func (s Issue1431) GetUniqueMinus2() string {
+func (s *Issue1431) GetUniqueMinus2() string {
 	return s.UniqueMinus2
 }
 
@@ -859,22 +859,22 @@ type Issue1432 struct {
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
-func (s Issue1432) GetCommonMinus1() string {
+func (s *Issue1432) GetCommonMinus1() string {
 	return s.CommonMinus1
 }
 
 // GetCommonMinus2 returns the value of CommonMinus2.
-func (s Issue1432) GetCommonMinus2() int {
+func (s *Issue1432) GetCommonMinus2() int {
 	return s.CommonMinus2
 }
 
 // GetCommonMinus3 returns the value of CommonMinus3.
-func (s Issue1432) GetCommonMinus3() OptInt {
+func (s *Issue1432) GetCommonMinus3() OptInt {
 	return s.CommonMinus3
 }
 
 // GetUniqueMinus3 returns the value of UniqueMinus3.
-func (s Issue1432) GetUniqueMinus3() string {
+func (s *Issue1432) GetUniqueMinus3() string {
 	return s.UniqueMinus3
 }
 
@@ -904,12 +904,12 @@ type Issue1433 struct {
 }
 
 // GetCommonMinus3 returns the value of CommonMinus3.
-func (s Issue1433) GetCommonMinus3() OptInt {
+func (s *Issue1433) GetCommonMinus3() OptInt {
 	return s.CommonMinus3
 }
 
 // GetUniqueMinus4 returns the value of UniqueMinus4.
-func (s Issue1433) GetUniqueMinus4() string {
+func (s *Issue1433) GetUniqueMinus4() string {
 	return s.UniqueMinus4
 }
 
@@ -934,32 +934,32 @@ type MapWithProperties struct {
 }
 
 // GetRequired returns the value of Required.
-func (s MapWithProperties) GetRequired() int {
+func (s *MapWithProperties) GetRequired() int {
 	return s.Required
 }
 
 // GetOptional returns the value of Optional.
-func (s MapWithProperties) GetOptional() OptInt {
+func (s *MapWithProperties) GetOptional() OptInt {
 	return s.Optional
 }
 
 // GetSubMap returns the value of SubMap.
-func (s MapWithProperties) GetSubMap() OptStringMap {
+func (s *MapWithProperties) GetSubMap() OptStringMap {
 	return s.SubMap
 }
 
 // GetInlinedSubMap returns the value of InlinedSubMap.
-func (s MapWithProperties) GetInlinedSubMap() OptMapWithPropertiesInlinedSubMap {
+func (s *MapWithProperties) GetInlinedSubMap() OptMapWithPropertiesInlinedSubMap {
 	return s.InlinedSubMap
 }
 
 // GetMapValidation returns the value of MapValidation.
-func (s MapWithProperties) GetMapValidation() OptValidationStringMap {
+func (s *MapWithProperties) GetMapValidation() OptValidationStringMap {
 	return s.MapValidation
 }
 
 // GetAdditionalProps returns the value of AdditionalProps.
-func (s MapWithProperties) GetAdditionalProps() MapWithPropertiesAdditional {
+func (s *MapWithProperties) GetAdditionalProps() MapWithPropertiesAdditional {
 	return s.AdditionalProps
 }
 
@@ -1024,22 +1024,22 @@ type MaxPropertiesTest struct {
 }
 
 // GetRequired returns the value of Required.
-func (s MaxPropertiesTest) GetRequired() int {
+func (s *MaxPropertiesTest) GetRequired() int {
 	return s.Required
 }
 
 // GetOptionalA returns the value of OptionalA.
-func (s MaxPropertiesTest) GetOptionalA() OptInt {
+func (s *MaxPropertiesTest) GetOptionalA() OptInt {
 	return s.OptionalA
 }
 
 // GetOptionalB returns the value of OptionalB.
-func (s MaxPropertiesTest) GetOptionalB() OptInt {
+func (s *MaxPropertiesTest) GetOptionalB() OptInt {
 	return s.OptionalB
 }
 
 // GetOptionalC returns the value of OptionalC.
-func (s MaxPropertiesTest) GetOptionalC() OptInt {
+func (s *MaxPropertiesTest) GetOptionalC() OptInt {
 	return s.OptionalC
 }
 
@@ -1108,12 +1108,12 @@ type NilIntStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s NilIntStatusCode) GetStatusCode() int {
+func (s *NilIntStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s NilIntStatusCode) GetResponse() NilInt {
+func (s *NilIntStatusCode) GetResponse() NilInt {
 	return s.Response
 }
 
@@ -1287,17 +1287,17 @@ type NoAdditionalPropertiesTest struct {
 }
 
 // GetEmpty returns the value of Empty.
-func (s NoAdditionalPropertiesTest) GetEmpty() *OnlyEmptyObject {
+func (s *NoAdditionalPropertiesTest) GetEmpty() *OnlyEmptyObject {
 	return s.Empty
 }
 
 // GetOneProperty returns the value of OneProperty.
-func (s NoAdditionalPropertiesTest) GetOneProperty() OptOnePropertyObject {
+func (s *NoAdditionalPropertiesTest) GetOneProperty() OptOnePropertyObject {
 	return s.OneProperty
 }
 
 // GetOnlyPatterned returns the value of OnlyPatterned.
-func (s NoAdditionalPropertiesTest) GetOnlyPatterned() OptOnlyPatternedPropsObject {
+func (s *NoAdditionalPropertiesTest) GetOnlyPatterned() OptOnlyPatternedPropsObject {
 	return s.OnlyPatterned
 }
 
@@ -1338,17 +1338,17 @@ type NullableEnums struct {
 }
 
 // GetOnlyNullable returns the value of OnlyNullable.
-func (s NullableEnums) GetOnlyNullable() NilNullableEnumsOnlyNullable {
+func (s *NullableEnums) GetOnlyNullable() NilNullableEnumsOnlyNullable {
 	return s.OnlyNullable
 }
 
 // GetOnlyNullValue returns the value of OnlyNullValue.
-func (s NullableEnums) GetOnlyNullValue() NilNullableEnumsOnlyNullValue {
+func (s *NullableEnums) GetOnlyNullValue() NilNullableEnumsOnlyNullValue {
 	return s.OnlyNullValue
 }
 
 // GetBoth returns the value of Both.
-func (s NullableEnums) GetBoth() NilNullableEnumsBoth {
+func (s *NullableEnums) GetBoth() NilNullableEnumsBoth {
 	return s.Both
 }
 
@@ -1469,22 +1469,22 @@ type OneOfBugs struct {
 }
 
 // GetIssue143 returns the value of Issue143.
-func (s OneOfBugs) GetIssue143() Issue143 {
+func (s *OneOfBugs) GetIssue143() Issue143 {
 	return s.Issue143
 }
 
 // GetAdditionalMinusFields returns the value of AdditionalMinusFields.
-func (s OneOfBugs) GetAdditionalMinusFields() OneVariantHasNoUniqueFields {
+func (s *OneOfBugs) GetAdditionalMinusFields() OneVariantHasNoUniqueFields {
 	return s.AdditionalMinusFields
 }
 
 // GetOneOfMinusUUIDMinusIntMinusEnum returns the value of OneOfMinusUUIDMinusIntMinusEnum.
-func (s OneOfBugs) GetOneOfMinusUUIDMinusIntMinusEnum() OptOneOfUUIDAndIntEnum {
+func (s *OneOfBugs) GetOneOfMinusUUIDMinusIntMinusEnum() OptOneOfUUIDAndIntEnum {
 	return s.OneOfMinusUUIDMinusIntMinusEnum
 }
 
 // GetOneOfMinusMappingMinusReference returns the value of OneOfMinusMappingMinusReference.
-func (s OneOfBugs) GetOneOfMinusMappingMinusReference() OptOneOfMappingReference {
+func (s *OneOfBugs) GetOneOfMinusMappingMinusReference() OptOneOfMappingReference {
 	return s.OneOfMinusMappingMinusReference
 }
 
@@ -1583,7 +1583,7 @@ type OneOfMappingReferenceA struct {
 }
 
 // GetDescription returns the value of Description.
-func (s OneOfMappingReferenceA) GetDescription() OptString {
+func (s *OneOfMappingReferenceA) GetDescription() OptString {
 	return s.Description
 }
 
@@ -1600,17 +1600,17 @@ type OneOfMappingReferenceB struct {
 }
 
 // GetCode returns the value of Code.
-func (s OneOfMappingReferenceB) GetCode() OptInt32 {
+func (s *OneOfMappingReferenceB) GetCode() OptInt32 {
 	return s.Code
 }
 
 // GetData returns the value of Data.
-func (s OneOfMappingReferenceB) GetData() *OneOfMappingReferenceBData {
+func (s *OneOfMappingReferenceB) GetData() *OneOfMappingReferenceBData {
 	return s.Data
 }
 
 // GetInfo returns the value of Info.
-func (s OneOfMappingReferenceB) GetInfo() OptString {
+func (s *OneOfMappingReferenceB) GetInfo() OptString {
 	return s.Info
 }
 
@@ -1945,7 +1945,7 @@ type OnePropertyObject struct {
 }
 
 // GetFoo returns the value of Foo.
-func (s OnePropertyObject) GetFoo() string {
+func (s *OnePropertyObject) GetFoo() string {
 	return s.Foo
 }
 
@@ -2030,17 +2030,17 @@ type OneVariantHasNoUniqueFields0 struct {
 }
 
 // GetA returns the value of A.
-func (s OneVariantHasNoUniqueFields0) GetA() string {
+func (s *OneVariantHasNoUniqueFields0) GetA() string {
 	return s.A
 }
 
 // GetB returns the value of B.
-func (s OneVariantHasNoUniqueFields0) GetB() OptInt {
+func (s *OneVariantHasNoUniqueFields0) GetB() OptInt {
 	return s.B
 }
 
 // GetC returns the value of C.
-func (s OneVariantHasNoUniqueFields0) GetC() string {
+func (s *OneVariantHasNoUniqueFields0) GetC() string {
 	return s.C
 }
 
@@ -2067,22 +2067,22 @@ type OneVariantHasNoUniqueFields1 struct {
 }
 
 // GetA returns the value of A.
-func (s OneVariantHasNoUniqueFields1) GetA() string {
+func (s *OneVariantHasNoUniqueFields1) GetA() string {
 	return s.A
 }
 
 // GetB returns the value of B.
-func (s OneVariantHasNoUniqueFields1) GetB() OptInt {
+func (s *OneVariantHasNoUniqueFields1) GetB() OptInt {
 	return s.B
 }
 
 // GetC returns the value of C.
-func (s OneVariantHasNoUniqueFields1) GetC() string {
+func (s *OneVariantHasNoUniqueFields1) GetC() string {
 	return s.C
 }
 
 // GetD returns the value of D.
-func (s OneVariantHasNoUniqueFields1) GetD() OptInt {
+func (s *OneVariantHasNoUniqueFields1) GetD() OptInt {
 	return s.D
 }
 
@@ -3984,152 +3984,152 @@ type Pet struct {
 }
 
 // GetPrimary returns the value of Primary.
-func (s Pet) GetPrimary() *Pet {
+func (s *Pet) GetPrimary() *Pet {
 	return s.Primary
 }
 
 // GetID returns the value of ID.
-func (s Pet) GetID() int64 {
+func (s *Pet) GetID() int64 {
 	return s.ID
 }
 
 // GetUniqueID returns the value of UniqueID.
-func (s Pet) GetUniqueID() uuid.UUID {
+func (s *Pet) GetUniqueID() uuid.UUID {
 	return s.UniqueID
 }
 
 // GetName returns the value of Name.
-func (s Pet) GetName() string {
+func (s *Pet) GetName() string {
 	return s.Name
 }
 
 // GetType returns the value of Type.
-func (s Pet) GetType() OptPetType {
+func (s *Pet) GetType() OptPetType {
 	return s.Type
 }
 
 // GetKind returns the value of Kind.
-func (s Pet) GetKind() PetKind {
+func (s *Pet) GetKind() PetKind {
 	return s.Kind
 }
 
 // GetTag returns the value of Tag.
-func (s Pet) GetTag() OptUUID {
+func (s *Pet) GetTag() OptUUID {
 	return s.Tag
 }
 
 // GetIP returns the value of IP.
-func (s Pet) GetIP() netip.Addr {
+func (s *Pet) GetIP() netip.Addr {
 	return s.IP
 }
 
 // GetIPV4 returns the value of IPV4.
-func (s Pet) GetIPV4() netip.Addr {
+func (s *Pet) GetIPV4() netip.Addr {
 	return s.IPV4
 }
 
 // GetIPV6 returns the value of IPV6.
-func (s Pet) GetIPV6() netip.Addr {
+func (s *Pet) GetIPV6() netip.Addr {
 	return s.IPV6
 }
 
 // GetURI returns the value of URI.
-func (s Pet) GetURI() url.URL {
+func (s *Pet) GetURI() url.URL {
 	return s.URI
 }
 
 // GetBirthday returns the value of Birthday.
-func (s Pet) GetBirthday() time.Time {
+func (s *Pet) GetBirthday() time.Time {
 	return s.Birthday
 }
 
 // GetRate returns the value of Rate.
-func (s Pet) GetRate() time.Duration {
+func (s *Pet) GetRate() time.Duration {
 	return s.Rate
 }
 
 // GetNickname returns the value of Nickname.
-func (s Pet) GetNickname() NilString {
+func (s *Pet) GetNickname() NilString {
 	return s.Nickname
 }
 
 // GetNullStr returns the value of NullStr.
-func (s Pet) GetNullStr() OptNilString {
+func (s *Pet) GetNullStr() OptNilString {
 	return s.NullStr
 }
 
 // GetFriends returns the value of Friends.
-func (s Pet) GetFriends() []Pet {
+func (s *Pet) GetFriends() []Pet {
 	return s.Friends
 }
 
 // GetNext returns the value of Next.
-func (s Pet) GetNext() OptData {
+func (s *Pet) GetNext() OptData {
 	return s.Next
 }
 
 // GetTestInteger1 returns the value of TestInteger1.
-func (s Pet) GetTestInteger1() OptInt {
+func (s *Pet) GetTestInteger1() OptInt {
 	return s.TestInteger1
 }
 
 // GetTestFloat1 returns the value of TestFloat1.
-func (s Pet) GetTestFloat1() OptFloat64 {
+func (s *Pet) GetTestFloat1() OptFloat64 {
 	return s.TestFloat1
 }
 
 // GetTestArray1 returns the value of TestArray1.
-func (s Pet) GetTestArray1() [][]string {
+func (s *Pet) GetTestArray1() [][]string {
 	return s.TestArray1
 }
 
 // GetTestArray2 returns the value of TestArray2.
-func (s Pet) GetTestArray2() OptArrayTest {
+func (s *Pet) GetTestArray2() OptArrayTest {
 	return s.TestArray2
 }
 
 // GetTestMap returns the value of TestMap.
-func (s Pet) GetTestMap() OptStringStringMap {
+func (s *Pet) GetTestMap() OptStringStringMap {
 	return s.TestMap
 }
 
 // GetTestMapWithProps returns the value of TestMapWithProps.
-func (s Pet) GetTestMapWithProps() OptMapWithProperties {
+func (s *Pet) GetTestMapWithProps() OptMapWithProperties {
 	return s.TestMapWithProps
 }
 
 // GetTestAny returns the value of TestAny.
-func (s Pet) GetTestAny() OptAnyTest {
+func (s *Pet) GetTestAny() OptAnyTest {
 	return s.TestAny
 }
 
 // GetTestMaxProperties returns the value of TestMaxProperties.
-func (s Pet) GetTestMaxProperties() OptMaxPropertiesTest {
+func (s *Pet) GetTestMaxProperties() OptMaxPropertiesTest {
 	return s.TestMaxProperties
 }
 
 // GetTestDate returns the value of TestDate.
-func (s Pet) GetTestDate() OptDate {
+func (s *Pet) GetTestDate() OptDate {
 	return s.TestDate
 }
 
 // GetTestDuration returns the value of TestDuration.
-func (s Pet) GetTestDuration() OptDuration {
+func (s *Pet) GetTestDuration() OptDuration {
 	return s.TestDuration
 }
 
 // GetTestTime returns the value of TestTime.
-func (s Pet) GetTestTime() OptTime {
+func (s *Pet) GetTestTime() OptTime {
 	return s.TestTime
 }
 
 // GetTestDateTime returns the value of TestDateTime.
-func (s Pet) GetTestDateTime() OptDateTime {
+func (s *Pet) GetTestDateTime() OptDateTime {
 	return s.TestDateTime
 }
 
 // GetNullValue returns the value of NullValue.
-func (s Pet) GetNullValue() OptNullValue {
+func (s *Pet) GetNullValue() OptNullValue {
 	return s.NullValue
 }
 
@@ -4318,7 +4318,7 @@ type PetGetDef struct {
 }
 
 // GetMessage returns the value of Message.
-func (s PetGetDef) GetMessage() string {
+func (s *PetGetDef) GetMessage() string {
 	return s.Message
 }
 
@@ -4334,12 +4334,12 @@ type PetGetDefStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s PetGetDefStatusCode) GetStatusCode() int {
+func (s *PetGetDefStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s PetGetDefStatusCode) GetResponse() PetGetDef {
+func (s *PetGetDefStatusCode) GetResponse() PetGetDef {
 	return s.Response
 }
 
@@ -4377,7 +4377,7 @@ type PetUpdateNameAliasPostDef struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s PetUpdateNameAliasPostDef) GetStatusCode() int {
+func (s *PetUpdateNameAliasPostDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -4392,7 +4392,7 @@ type PetUpdateNamePostDef struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s PetUpdateNamePostDef) GetStatusCode() int {
+func (s *PetUpdateNamePostDef) GetStatusCode() int {
 	return s.StatusCode
 }
 
@@ -4426,12 +4426,12 @@ type RecursiveMap struct {
 }
 
 // GetOptionalRecursiveField returns the value of OptionalRecursiveField.
-func (s RecursiveMap) GetOptionalRecursiveField() *RecursiveMap {
+func (s *RecursiveMap) GetOptionalRecursiveField() *RecursiveMap {
 	return s.OptionalRecursiveField
 }
 
 // GetAdditionalProps returns the value of AdditionalProps.
-func (s RecursiveMap) GetAdditionalProps() RecursiveMapAdditional {
+func (s *RecursiveMap) GetAdditionalProps() RecursiveMapAdditional {
 	return s.AdditionalProps
 }
 
@@ -4464,12 +4464,12 @@ type StringIntMap struct {
 }
 
 // GetAdditionalProps returns the value of AdditionalProps.
-func (s StringIntMap) GetAdditionalProps() StringIntMapAdditional {
+func (s *StringIntMap) GetAdditionalProps() StringIntMapAdditional {
 	return s.AdditionalProps
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
-func (s StringIntMap) GetPattern0Props() StringIntMapPattern0 {
+func (s *StringIntMap) GetPattern0Props() StringIntMapPattern0 {
 	return s.Pattern0Props
 }
 
@@ -4537,22 +4537,22 @@ type TestContentParameterParam struct {
 }
 
 // GetStyle returns the value of Style.
-func (s TestContentParameterParam) GetStyle() string {
+func (s *TestContentParameterParam) GetStyle() string {
 	return s.Style
 }
 
 // GetMin returns the value of Min.
-func (s TestContentParameterParam) GetMin() int {
+func (s *TestContentParameterParam) GetMin() int {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestContentParameterParam) GetMax() int {
+func (s *TestContentParameterParam) GetMax() int {
 	return s.Max
 }
 
 // GetFilter returns the value of Filter.
-func (s TestContentParameterParam) GetFilter() string {
+func (s *TestContentParameterParam) GetFilter() string {
 	return s.Filter
 }
 
@@ -4583,12 +4583,12 @@ type TestFloatValidation struct {
 }
 
 // GetMinmax returns the value of Minmax.
-func (s TestFloatValidation) GetMinmax() float64 {
+func (s *TestFloatValidation) GetMinmax() float64 {
 	return s.Minmax
 }
 
 // GetMultipleOf returns the value of MultipleOf.
-func (s TestFloatValidation) GetMultipleOf() float64 {
+func (s *TestFloatValidation) GetMultipleOf() float64 {
 	return s.MultipleOf
 }
 
@@ -4620,17 +4620,17 @@ type TestObjectQueryParameterDeepObject struct {
 }
 
 // GetMin returns the value of Min.
-func (s TestObjectQueryParameterDeepObject) GetMin() int {
+func (s *TestObjectQueryParameterDeepObject) GetMin() int {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestObjectQueryParameterDeepObject) GetMax() int {
+func (s *TestObjectQueryParameterDeepObject) GetMax() int {
 	return s.Max
 }
 
 // GetFilter returns the value of Filter.
-func (s TestObjectQueryParameterDeepObject) GetFilter() string {
+func (s *TestObjectQueryParameterDeepObject) GetFilter() string {
 	return s.Filter
 }
 
@@ -4656,17 +4656,17 @@ type TestObjectQueryParameterFormObject struct {
 }
 
 // GetMin returns the value of Min.
-func (s TestObjectQueryParameterFormObject) GetMin() int {
+func (s *TestObjectQueryParameterFormObject) GetMin() int {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestObjectQueryParameterFormObject) GetMax() int {
+func (s *TestObjectQueryParameterFormObject) GetMax() int {
 	return s.Max
 }
 
 // GetFilter returns the value of Filter.
-func (s TestObjectQueryParameterFormObject) GetFilter() string {
+func (s *TestObjectQueryParameterFormObject) GetFilter() string {
 	return s.Filter
 }
 
@@ -4693,22 +4693,22 @@ type TestObjectQueryParameterOK struct {
 }
 
 // GetStyle returns the value of Style.
-func (s TestObjectQueryParameterOK) GetStyle() string {
+func (s *TestObjectQueryParameterOK) GetStyle() string {
 	return s.Style
 }
 
 // GetMin returns the value of Min.
-func (s TestObjectQueryParameterOK) GetMin() int {
+func (s *TestObjectQueryParameterOK) GetMin() int {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestObjectQueryParameterOK) GetMax() int {
+func (s *TestObjectQueryParameterOK) GetMax() int {
 	return s.Max
 }
 
 // GetFilter returns the value of Filter.
-func (s TestObjectQueryParameterOK) GetFilter() string {
+func (s *TestObjectQueryParameterOK) GetFilter() string {
 	return s.Filter
 }
 

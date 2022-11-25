@@ -255,7 +255,7 @@ func encodeBase64RequestRequest(
 }
 
 func encodeMaskContentTypeRequest(
-	req MaskContentTypeReqWithContentType,
+	req *MaskContentTypeReqWithContentType,
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
@@ -271,7 +271,7 @@ func encodeMaskContentTypeRequest(
 }
 
 func encodeMaskContentTypeOptionalRequest(
-	req MaskContentTypeOptionalReqWithContentType,
+	req *MaskContentTypeOptionalReqWithContentType,
 	r *http.Request,
 ) error {
 	contentType := req.ContentType

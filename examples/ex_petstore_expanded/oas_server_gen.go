@@ -13,7 +13,7 @@ type Handler interface {
 	// Creates a new pet in the store. Duplicates are allowed.
 	//
 	// POST /pets
-	AddPet(ctx context.Context, req NewPet) (AddPetRes, error)
+	AddPet(ctx context.Context, req *NewPet) (AddPetRes, error)
 	// DeletePet implements deletePet operation.
 	//
 	// Deletes a single pet based on the ID supplied.

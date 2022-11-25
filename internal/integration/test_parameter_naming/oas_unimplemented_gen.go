@@ -16,7 +16,7 @@ var _ Handler = UnimplementedHandler{}
 // HealthzGet implements GET /healthz operation.
 //
 // GET /healthz
-func (UnimplementedHandler) HealthzGet(ctx context.Context, params HealthzGetParams) (r HealthzGetOK, _ error) {
+func (UnimplementedHandler) HealthzGet(ctx context.Context, params HealthzGetParams) (r *HealthzGetOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -25,6 +25,6 @@ func (UnimplementedHandler) HealthzGet(ctx context.Context, params HealthzGetPar
 // Parameter with different location, but the same name.
 //
 // GET /same_name/{path}
-func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams) (r SameNameOK, _ error) {
+func (UnimplementedHandler) SameName(ctx context.Context, params SameNameParams) (r *SameNameOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

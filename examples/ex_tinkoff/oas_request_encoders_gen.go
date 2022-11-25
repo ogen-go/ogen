@@ -12,7 +12,7 @@ import (
 )
 
 func encodeOrdersLimitOrderPostRequest(
-	req LimitOrderRequest,
+	req *LimitOrderRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -26,7 +26,7 @@ func encodeOrdersLimitOrderPostRequest(
 }
 
 func encodeOrdersMarketOrderPostRequest(
-	req MarketOrderRequest,
+	req *MarketOrderRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -40,7 +40,7 @@ func encodeOrdersMarketOrderPostRequest(
 }
 
 func encodeSandboxCurrenciesBalancePostRequest(
-	req SandboxSetCurrencyBalanceRequest,
+	req *SandboxSetCurrencyBalanceRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -54,7 +54,7 @@ func encodeSandboxCurrenciesBalancePostRequest(
 }
 
 func encodeSandboxPositionsBalancePostRequest(
-	req SandboxSetPositionBalanceRequest,
+	req *SandboxSetPositionBalanceRequest,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

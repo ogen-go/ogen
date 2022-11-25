@@ -33,7 +33,7 @@ func (UnimplementedHandler) Caching(ctx context.Context, params CachingParams) (
 // random number generator, database driver, and database connection pool.
 //
 // GET /db
-func (UnimplementedHandler) DB(ctx context.Context) (r WorldObject, _ error) {
+func (UnimplementedHandler) DB(ctx context.Context) (r *WorldObject, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -44,7 +44,7 @@ func (UnimplementedHandler) DB(ctx context.Context) (r WorldObject, _ error) {
 // response header generation, and request count throughput.
 //
 // GET /json
-func (UnimplementedHandler) JSON(ctx context.Context) (r HelloWorld, _ error) {
+func (UnimplementedHandler) JSON(ctx context.Context) (r *HelloWorld, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

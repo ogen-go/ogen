@@ -10,7 +10,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
+func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -36,7 +36,7 @@ func (s ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsCreateOrUpdateOrgSecretReq) Validate() error {
+func (s *ActionsCreateOrUpdateOrgSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.EncryptedValue.Set {
@@ -92,7 +92,7 @@ func (s ActionsCreateOrUpdateOrgSecretReqVisibility) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActionsCreateOrUpdateRepoSecretReq) Validate() error {
+func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.EncryptedValue.Set {
@@ -125,7 +125,7 @@ func (s ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Validate() error {
+func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -162,7 +162,7 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Validate() error 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActionsEnterprisePermissions) Validate() error {
+func (s *ActionsEnterprisePermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledOrganizations.Validate(); err != nil {
@@ -198,7 +198,7 @@ func (s ActionsEnterprisePermissions) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListArtifactsForRepoOK) Validate() error {
+func (s *ActionsListArtifactsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -216,7 +216,7 @@ func (s ActionsListArtifactsForRepoOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListArtifactsForRepoOKHeaders) Validate() error {
+func (s *ActionsListArtifactsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -234,7 +234,7 @@ func (s ActionsListArtifactsForRepoOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListEnvironmentSecretsOK) Validate() error {
+func (s *ActionsListEnvironmentSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -252,7 +252,7 @@ func (s ActionsListEnvironmentSecretsOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListEnvironmentSecretsOKHeaders) Validate() error {
+func (s *ActionsListEnvironmentSecretsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -280,7 +280,7 @@ func (s ActionsListJobsForWorkflowRunFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActionsListJobsForWorkflowRunOK) Validate() error {
+func (s *ActionsListJobsForWorkflowRunOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Jobs == nil {
@@ -315,7 +315,7 @@ func (s ActionsListJobsForWorkflowRunOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListJobsForWorkflowRunOKHeaders) Validate() error {
+func (s *ActionsListJobsForWorkflowRunOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -333,7 +333,7 @@ func (s ActionsListJobsForWorkflowRunOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListOrgSecretsOK) Validate() error {
+func (s *ActionsListOrgSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -368,7 +368,7 @@ func (s ActionsListOrgSecretsOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListOrgSecretsOKHeaders) Validate() error {
+func (s *ActionsListOrgSecretsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -386,7 +386,7 @@ func (s ActionsListOrgSecretsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
+func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -415,7 +415,7 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoSecretsOK) Validate() error {
+func (s *ActionsListRepoSecretsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Secrets == nil {
@@ -433,7 +433,7 @@ func (s ActionsListRepoSecretsOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoSecretsOKHeaders) Validate() error {
+func (s *ActionsListRepoSecretsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -451,7 +451,7 @@ func (s ActionsListRepoSecretsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoWorkflowsOK) Validate() error {
+func (s *ActionsListRepoWorkflowsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Workflows == nil {
@@ -486,7 +486,7 @@ func (s ActionsListRepoWorkflowsOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListRepoWorkflowsOKHeaders) Validate() error {
+func (s *ActionsListRepoWorkflowsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -504,7 +504,7 @@ func (s ActionsListRepoWorkflowsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelectedReposForOrgSecretOK) Validate() error {
+func (s *ActionsListSelectedReposForOrgSecretOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -522,7 +522,7 @@ func (s ActionsListSelectedReposForOrgSecretOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Validate() error {
+func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -551,7 +551,7 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Valid
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
+func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -597,7 +597,7 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForOrgOK) Validate() error {
+func (s *ActionsListSelfHostedRunnersForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -632,7 +632,7 @@ func (s ActionsListSelfHostedRunnersForOrgOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForOrgOKHeaders) Validate() error {
+func (s *ActionsListSelfHostedRunnersForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -650,7 +650,7 @@ func (s ActionsListSelfHostedRunnersForOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForRepoOK) Validate() error {
+func (s *ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -685,7 +685,7 @@ func (s ActionsListSelfHostedRunnersForRepoOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersForRepoOKHeaders) Validate() error {
+func (s *ActionsListSelfHostedRunnersForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -703,7 +703,7 @@ func (s ActionsListSelfHostedRunnersForRepoOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -749,7 +749,7 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListSelfHostedRunnersInGroupForOrgOKHeaders) Validate() error {
+func (s *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -767,7 +767,7 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunArtifactsOK) Validate() error {
+func (s *ActionsListWorkflowRunArtifactsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Artifacts == nil {
@@ -785,7 +785,7 @@ func (s ActionsListWorkflowRunArtifactsOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunArtifactsOKHeaders) Validate() error {
+func (s *ActionsListWorkflowRunArtifactsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -803,7 +803,7 @@ func (s ActionsListWorkflowRunArtifactsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunsForRepoOK) Validate() error {
+func (s *ActionsListWorkflowRunsForRepoOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.WorkflowRuns == nil {
@@ -821,7 +821,7 @@ func (s ActionsListWorkflowRunsForRepoOK) Validate() error {
 	}
 	return nil
 }
-func (s ActionsListWorkflowRunsForRepoOKHeaders) Validate() error {
+func (s *ActionsListWorkflowRunsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -871,7 +871,7 @@ func (s ActionsListWorkflowRunsForRepoStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActionsOrganizationPermissions) Validate() error {
+func (s *ActionsOrganizationPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledRepositories.Validate(); err != nil {
@@ -907,7 +907,7 @@ func (s ActionsOrganizationPermissions) Validate() error {
 	}
 	return nil
 }
-func (s ActionsRepositoryPermissions) Validate() error {
+func (s *ActionsRepositoryPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AllowedActions.Set {
@@ -932,7 +932,7 @@ func (s ActionsRepositoryPermissions) Validate() error {
 	}
 	return nil
 }
-func (s ActionsReviewPendingDeploymentsForRunReq) Validate() error {
+func (s *ActionsReviewPendingDeploymentsForRunReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.EnvironmentIds == nil {
@@ -971,7 +971,7 @@ func (s ActionsReviewPendingDeploymentsForRunReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
+func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledRepositories.Validate(); err != nil {
@@ -1007,7 +1007,7 @@ func (s ActionsSetGithubActionsPermissionsOrganizationReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
+func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AllowedActions.Set {
@@ -1032,7 +1032,7 @@ func (s ActionsSetGithubActionsPermissionsRepositoryReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
+func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1050,7 +1050,7 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsSetSelectedReposForOrgSecretReq) Validate() error {
+func (s *ActionsSetSelectedReposForOrgSecretReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1068,7 +1068,7 @@ func (s ActionsSetSelectedReposForOrgSecretReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Validate() error {
+func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedRepositoryIds == nil {
@@ -1086,7 +1086,7 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Valid
 	}
 	return nil
 }
-func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
+func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -1104,7 +1104,7 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Validate() error {
 	}
 	return nil
 }
-func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) Validate() error {
+func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -1141,7 +1141,7 @@ func (s ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Validate() error 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActivityListNotificationsForAuthenticatedUserOKHeaders) Validate() error {
+func (s *ActivityListNotificationsForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1205,7 +1205,7 @@ func (s ActivityListPublicEventsOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) Validate() error {
+func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1233,7 +1233,7 @@ func (s ActivityListReposStarredByAuthenticatedUserDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActivityListReposStarredByAuthenticatedUserOKHeaders) Validate() error {
+func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1261,7 +1261,7 @@ func (s ActivityListReposStarredByAuthenticatedUserSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ActivityListReposWatchedByUserOKHeaders) Validate() error {
+func (s *ActivityListReposWatchedByUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1279,7 +1279,7 @@ func (s ActivityListReposWatchedByUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ActivityListWatchedReposForAuthenticatedUserOKHeaders) Validate() error {
+func (s *ActivityListWatchedReposForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1297,7 +1297,7 @@ func (s ActivityListWatchedReposForAuthenticatedUserOKHeaders) Validate() error 
 	}
 	return nil
 }
-func (s ActivityListWatchersForRepoOKHeaders) Validate() error {
+func (s *ActivityListWatchersForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -1327,7 +1327,7 @@ func (s AllowedActions) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s AppPermissions) Validate() error {
+func (s *AppPermissions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Actions.Set {
@@ -2200,7 +2200,7 @@ func (s AppPermissionsWorkflows) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ApplicationGrant) Validate() error {
+func (s *ApplicationGrant) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Scopes == nil {
@@ -2218,7 +2218,7 @@ func (s ApplicationGrant) Validate() error {
 	}
 	return nil
 }
-func (s AppsCreateContentAttachmentReq) Validate() error {
+func (s *AppsCreateContentAttachmentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -2263,7 +2263,7 @@ func (s AppsCreateContentAttachmentReq) Validate() error {
 	}
 	return nil
 }
-func (s AppsCreateFromManifestCreated) Validate() error {
+func (s *AppsCreateFromManifestCreated) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -2281,7 +2281,7 @@ func (s AppsCreateFromManifestCreated) Validate() error {
 	}
 	return nil
 }
-func (s AppsCreateInstallationAccessTokenReq) Validate() error {
+func (s *AppsCreateInstallationAccessTokenReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions.Set {
@@ -2316,7 +2316,7 @@ func (s AppsListAccountsForPlanDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s AppsListAccountsForPlanOKHeaders) Validate() error {
+func (s *AppsListAccountsForPlanOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2371,7 +2371,7 @@ func (s AppsListAccountsForPlanStubbedDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s AppsListAccountsForPlanStubbedOKHeaders) Validate() error {
+func (s *AppsListAccountsForPlanStubbedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2416,7 +2416,7 @@ func (s AppsListAccountsForPlanStubbedSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
+func (s *AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -2434,7 +2434,7 @@ func (s AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
 	}
 	return nil
 }
-func (s AppsListInstallationReposForAuthenticatedUserOKHeaders) Validate() error {
+func (s *AppsListInstallationReposForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2452,7 +2452,7 @@ func (s AppsListInstallationReposForAuthenticatedUserOKHeaders) Validate() error
 	}
 	return nil
 }
-func (s AppsListPlansOKHeaders) Validate() error {
+func (s *AppsListPlansOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2487,7 +2487,7 @@ func (s AppsListPlansOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s AppsListPlansStubbedOKHeaders) Validate() error {
+func (s *AppsListPlansStubbedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2522,7 +2522,7 @@ func (s AppsListPlansStubbedOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s AppsListReposAccessibleToInstallationOK) Validate() error {
+func (s *AppsListReposAccessibleToInstallationOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -2540,7 +2540,7 @@ func (s AppsListReposAccessibleToInstallationOK) Validate() error {
 	}
 	return nil
 }
-func (s AppsListReposAccessibleToInstallationOKHeaders) Validate() error {
+func (s *AppsListReposAccessibleToInstallationOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2558,7 +2558,7 @@ func (s AppsListReposAccessibleToInstallationOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s AppsListSubscriptionsForAuthenticatedUserOKHeaders) Validate() error {
+func (s *AppsListSubscriptionsForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2593,7 +2593,7 @@ func (s AppsListSubscriptionsForAuthenticatedUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) Validate() error {
+func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -2651,7 +2651,7 @@ func (s AppsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s AppsScopeTokenReq) Validate() error {
+func (s *AppsScopeTokenReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions.Set {
@@ -2676,7 +2676,7 @@ func (s AppsScopeTokenReq) Validate() error {
 	}
 	return nil
 }
-func (s AppsUpdateWebhookConfigForAppReq) Validate() error {
+func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -2701,7 +2701,7 @@ func (s AppsUpdateWebhookConfigForAppReq) Validate() error {
 	}
 	return nil
 }
-func (s AuthenticationToken) Validate() error {
+func (s *AuthenticationToken) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RepositorySelection.Set {
@@ -2758,7 +2758,7 @@ func (s AuthorAssociation) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Authorization) Validate() error {
+func (s *Authorization) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Installation.Set {
@@ -2783,7 +2783,7 @@ func (s Authorization) Validate() error {
 	}
 	return nil
 }
-func (s AuthorizationHeaders) Validate() error {
+func (s *AuthorizationHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -2801,7 +2801,7 @@ func (s AuthorizationHeaders) Validate() error {
 	}
 	return nil
 }
-func (s AutoMerge) Validate() error {
+func (s *AutoMerge) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.MergeMethod.Validate(); err != nil {
@@ -2831,7 +2831,7 @@ func (s AutoMergeMergeMethod) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s BranchProtection) Validate() error {
+func (s *BranchProtection) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredStatusChecks.Set {
@@ -2892,7 +2892,7 @@ func (s BranchProtection) Validate() error {
 	}
 	return nil
 }
-func (s BranchProtectionRequiredStatusChecks) Validate() error {
+func (s *BranchProtectionRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -2910,7 +2910,7 @@ func (s BranchProtectionRequiredStatusChecks) Validate() error {
 	}
 	return nil
 }
-func (s BranchRestrictionPolicy) Validate() error {
+func (s *BranchRestrictionPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -2950,7 +2950,7 @@ func (s BranchRestrictionPolicy) Validate() error {
 	}
 	return nil
 }
-func (s BranchWithProtection) Validate() error {
+func (s *BranchWithProtection) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Commit.Validate(); err != nil {
@@ -2979,7 +2979,7 @@ func (s BranchWithProtection) Validate() error {
 	}
 	return nil
 }
-func (s CheckRun) Validate() error {
+func (s *CheckRun) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -3080,7 +3080,7 @@ func (s CheckRunStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CheckSuite) Validate() error {
+func (s *CheckSuite) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Value.Validate(); err != nil {
@@ -3152,19 +3152,19 @@ func (s CheckSuiteStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ChecksCreateSuiteApplicationJSONCreated) Validate() error {
+func (s *ChecksCreateSuiteApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ChecksCreateSuiteApplicationJSONOK) Validate() error {
+func (s *ChecksCreateSuiteApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ChecksListAnnotationsOKHeaders) Validate() error {
+func (s *ChecksListAnnotationsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -3192,7 +3192,7 @@ func (s ChecksListForRefFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ChecksListForRefOK) Validate() error {
+func (s *ChecksListForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -3227,7 +3227,7 @@ func (s ChecksListForRefOK) Validate() error {
 	}
 	return nil
 }
-func (s ChecksListForRefOKHeaders) Validate() error {
+func (s *ChecksListForRefOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3267,7 +3267,7 @@ func (s ChecksListForSuiteFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ChecksListForSuiteOK) Validate() error {
+func (s *ChecksListForSuiteOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckRuns == nil {
@@ -3302,7 +3302,7 @@ func (s ChecksListForSuiteOK) Validate() error {
 	}
 	return nil
 }
-func (s ChecksListForSuiteOKHeaders) Validate() error {
+func (s *ChecksListForSuiteOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3332,7 +3332,7 @@ func (s ChecksListForSuiteStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ChecksListSuitesForRefOK) Validate() error {
+func (s *ChecksListSuitesForRefOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.CheckSuites == nil {
@@ -3367,7 +3367,7 @@ func (s ChecksListSuitesForRefOK) Validate() error {
 	}
 	return nil
 }
-func (s ChecksListSuitesForRefOKHeaders) Validate() error {
+func (s *ChecksListSuitesForRefOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -3385,7 +3385,7 @@ func (s ChecksListSuitesForRefOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s CloneTraffic) Validate() error {
+func (s *CloneTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Clones == nil {
@@ -3409,7 +3409,7 @@ func (s CodeFrequencyStat) Validate() error {
 	}
 	return nil
 }
-func (s CodeScanningAlert) Validate() error {
+func (s *CodeScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -3486,7 +3486,7 @@ func (s CodeScanningAlertDismissedReason) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CodeScanningAlertInstance) Validate() error {
+func (s *CodeScanningAlertInstance) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -3536,7 +3536,7 @@ func (s CodeScanningAlertInstance) Validate() error {
 	}
 	return nil
 }
-func (s CodeScanningAlertItems) Validate() error {
+func (s *CodeScanningAlertItems) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -3587,7 +3587,7 @@ func (s CodeScanningAlertItems) Validate() error {
 	}
 	return nil
 }
-func (s CodeScanningAlertRule) Validate() error {
+func (s *CodeScanningAlertRule) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Severity.Set {
@@ -3676,7 +3676,7 @@ func (s CodeScanningAlertRuleSeverity) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CodeScanningAlertRuleSummary) Validate() error {
+func (s *CodeScanningAlertRuleSummary) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Severity.Set {
@@ -3739,7 +3739,7 @@ func (s CodeScanningAlertState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CodeScanningAnalysis) Validate() error {
+func (s *CodeScanningAnalysis) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CommitSha.Validate(); err != nil {
@@ -3840,7 +3840,7 @@ func (s CodeScanningListRecentAnalysesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s CodeScanningSarifsStatus) Validate() error {
+func (s *CodeScanningSarifsStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.ProcessingStatus.Set {
@@ -3875,7 +3875,7 @@ func (s CodeScanningSarifsStatusProcessingStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CodeScanningUpdateAlertReq) Validate() error {
+func (s *CodeScanningUpdateAlertReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -3911,7 +3911,7 @@ func (s CodeScanningUpdateAlertReq) Validate() error {
 	}
 	return nil
 }
-func (s CodeScanningUploadSarifReq) Validate() error {
+func (s *CodeScanningUploadSarifReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.CommitSha.Validate(); err != nil {
@@ -3929,7 +3929,7 @@ func (s CodeScanningUploadSarifReq) Validate() error {
 	}
 	return nil
 }
-func (s CodeSearchResultItem) Validate() error {
+func (s *CodeSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -3972,7 +3972,7 @@ func (s CodesOfConductGetAllCodesOfConductOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s CombinedCommitStatus) Validate() error {
+func (s *CombinedCommitStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Statuses == nil {
@@ -3990,7 +3990,7 @@ func (s CombinedCommitStatus) Validate() error {
 	}
 	return nil
 }
-func (s Commit) Validate() error {
+func (s *Commit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -4008,7 +4008,7 @@ func (s Commit) Validate() error {
 	}
 	return nil
 }
-func (s CommitActivity) Validate() error {
+func (s *CommitActivity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Days == nil {
@@ -4026,7 +4026,7 @@ func (s CommitActivity) Validate() error {
 	}
 	return nil
 }
-func (s CommitComment) Validate() error {
+func (s *CommitComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -4044,7 +4044,7 @@ func (s CommitComment) Validate() error {
 	}
 	return nil
 }
-func (s CommitCommentHeaders) Validate() error {
+func (s *CommitCommentHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4062,7 +4062,7 @@ func (s CommitCommentHeaders) Validate() error {
 	}
 	return nil
 }
-func (s CommitComparison) Validate() error {
+func (s *CommitComparison) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.BaseCommit.Validate(); err != nil {
@@ -4169,7 +4169,7 @@ func (s CommitComparisonStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s CommitSearchResultItem) Validate() error {
+func (s *CommitSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -4217,7 +4217,7 @@ func (s CommitSearchResultItem) Validate() error {
 	}
 	return nil
 }
-func (s ContentReferenceAttachment) Validate() error {
+func (s *ContentReferenceAttachment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4262,7 +4262,7 @@ func (s ContentReferenceAttachment) Validate() error {
 	}
 	return nil
 }
-func (s ContributorActivity) Validate() error {
+func (s *ContributorActivity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Weeks == nil {
@@ -4280,7 +4280,7 @@ func (s ContributorActivity) Validate() error {
 	}
 	return nil
 }
-func (s Deployment) Validate() error {
+func (s *Deployment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.PerformedViaGithubApp.Set {
@@ -4305,7 +4305,7 @@ func (s Deployment) Validate() error {
 	}
 	return nil
 }
-func (s DeploymentSimple) Validate() error {
+func (s *DeploymentSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.PerformedViaGithubApp.Set {
@@ -4330,7 +4330,7 @@ func (s DeploymentSimple) Validate() error {
 	}
 	return nil
 }
-func (s DeploymentStatus) Validate() error {
+func (s *DeploymentStatus) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -4385,7 +4385,7 @@ func (s DeploymentStatus) Validate() error {
 	}
 	return nil
 }
-func (s DeploymentStatusHeaders) Validate() error {
+func (s *DeploymentStatusHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4423,7 +4423,7 @@ func (s DeploymentStatusState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s DiffEntry) Validate() error {
+func (s *DiffEntry) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -4461,7 +4461,7 @@ func (s DiffEntryStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Email) Validate() error {
+func (s *Email) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -4511,7 +4511,7 @@ func (s EnabledRepositories) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -4568,7 +4568,7 @@ func (s EnterpriseAdminGetAuditLogOrder) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Validate() error {
+func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4597,7 +4597,7 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Valid
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Validate() error {
+func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4626,7 +4626,7 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4672,7 +4672,7 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Validate() err
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.TotalCount.Set {
@@ -4722,7 +4722,7 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Validate() error {
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders) Validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4740,7 +4740,7 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders) Validate() e
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.TotalCount)); err != nil {
@@ -4786,7 +4786,7 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Validate() e
 	}
 	return nil
 }
-func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders) Validate() error {
+func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -4804,7 +4804,7 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders) Valid
 	}
 	return nil
 }
-func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -4822,7 +4822,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Validate() error {
 	}
 	return nil
 }
-func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
+func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -4851,7 +4851,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Validate() error {
 	}
 	return nil
 }
-func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.EnabledOrganizations.Validate(); err != nil {
@@ -4887,7 +4887,7 @@ func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Validate() erro
 	}
 	return nil
 }
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate() error {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -4905,7 +4905,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Validate(
 	}
 	return nil
 }
-func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate() error {
+func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -4934,7 +4934,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Validate()
 	}
 	return nil
 }
-func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
@@ -4952,7 +4952,7 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Valid
 	}
 	return nil
 }
-func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SelectedOrganizationIds == nil {
@@ -4970,7 +4970,7 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 	}
 	return nil
 }
-func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Runners == nil {
@@ -4988,7 +4988,7 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Validate() e
 	}
 	return nil
 }
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5042,7 +5042,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Validate() error {
 	}
 	return nil
 }
-func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Validate() error {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Op.Validate(); err != nil {
@@ -5112,7 +5112,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) 
 	}
 }
 
-func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
+func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -5141,7 +5141,7 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Validate() error {
 	}
 	return nil
 }
-func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
+func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -5176,7 +5176,7 @@ func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Va
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s EnvironmentApprovals) Validate() error {
+func (s *EnvironmentApprovals) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Environments == nil {
@@ -5215,7 +5215,7 @@ func (s EnvironmentApprovalsState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Event) Validate() error {
+func (s *Event) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Payload.Validate(); err != nil {
@@ -5233,7 +5233,7 @@ func (s Event) Validate() error {
 	}
 	return nil
 }
-func (s EventPayload) Validate() error {
+func (s *EventPayload) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Issue.Set {
@@ -5276,7 +5276,7 @@ func (s EventPayload) Validate() error {
 	}
 	return nil
 }
-func (s FullRepository) Validate() error {
+func (s *FullRepository) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.SecurityAndAnalysis.Set {
@@ -5301,7 +5301,7 @@ func (s FullRepository) Validate() error {
 	}
 	return nil
 }
-func (s FullRepositorySecurityAndAnalysis) Validate() error {
+func (s *FullRepositorySecurityAndAnalysis) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.AdvancedSecurity.Set {
@@ -5344,7 +5344,7 @@ func (s FullRepositorySecurityAndAnalysis) Validate() error {
 	}
 	return nil
 }
-func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
+func (s *FullRepositorySecurityAndAnalysisAdvancedSecurity) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Status.Set {
@@ -5379,7 +5379,7 @@ func (s FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Validate() erro
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
+func (s *FullRepositorySecurityAndAnalysisSecretScanning) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Status.Set {
@@ -5414,7 +5414,7 @@ func (s FullRepositorySecurityAndAnalysisSecretScanningStatus) Validate() error 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s GistComment) Validate() error {
+func (s *GistComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5451,7 +5451,7 @@ func (s GistComment) Validate() error {
 	}
 	return nil
 }
-func (s GistCommentHeaders) Validate() error {
+func (s *GistCommentHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5469,7 +5469,7 @@ func (s GistCommentHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistSimple) Validate() error {
+func (s *GistSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Forks.Set {
@@ -5529,7 +5529,7 @@ func (s GistSimple) Validate() error {
 	}
 	return nil
 }
-func (s GistSimpleForksItem) Validate() error {
+func (s *GistSimpleForksItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.User.Set {
@@ -5554,7 +5554,7 @@ func (s GistSimpleForksItem) Validate() error {
 	}
 	return nil
 }
-func (s GistSimpleHeaders) Validate() error {
+func (s *GistSimpleHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5572,7 +5572,7 @@ func (s GistSimpleHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsCreateCommentReq) Validate() error {
+func (s *GistsCreateCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5598,7 +5598,7 @@ func (s GistsCreateCommentReq) Validate() error {
 	}
 	return nil
 }
-func (s GistsCreateReq) Validate() error {
+func (s *GistsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Public.Set {
@@ -5647,7 +5647,7 @@ func (s GistsCreateReqPublic1) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s GistsListCommentsOKHeaders) Validate() error {
+func (s *GistsListCommentsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5682,7 +5682,7 @@ func (s GistsListCommentsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListCommitsOKHeaders) Validate() error {
+func (s *GistsListCommitsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5700,7 +5700,7 @@ func (s GistsListCommitsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListForUserOKHeaders) Validate() error {
+func (s *GistsListForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5718,7 +5718,7 @@ func (s GistsListForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListForksOKHeaders) Validate() error {
+func (s *GistsListForksOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5753,7 +5753,7 @@ func (s GistsListForksOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListOKHeaders) Validate() error {
+func (s *GistsListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5771,7 +5771,7 @@ func (s GistsListOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListPublicOKHeaders) Validate() error {
+func (s *GistsListPublicOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5789,7 +5789,7 @@ func (s GistsListPublicOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsListStarredOKHeaders) Validate() error {
+func (s *GistsListStarredOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -5807,7 +5807,7 @@ func (s GistsListStarredOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GistsUpdateCommentReq) Validate() error {
+func (s *GistsUpdateCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -5833,7 +5833,7 @@ func (s GistsUpdateCommentReq) Validate() error {
 	}
 	return nil
 }
-func (s GitCommit) Validate() error {
+func (s *GitCommit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Parents == nil {
@@ -5851,7 +5851,7 @@ func (s GitCommit) Validate() error {
 	}
 	return nil
 }
-func (s GitCommitHeaders) Validate() error {
+func (s *GitCommitHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -5869,7 +5869,7 @@ func (s GitCommitHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GitCreateTagReq) Validate() error {
+func (s *GitCreateTagReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Type.Validate(); err != nil {
@@ -5899,7 +5899,7 @@ func (s GitCreateTagReqType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s GitCreateTreeReq) Validate() error {
+func (s *GitCreateTreeReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
@@ -5934,7 +5934,7 @@ func (s GitCreateTreeReq) Validate() error {
 	}
 	return nil
 }
-func (s GitCreateTreeReqTreeItem) Validate() error {
+func (s *GitCreateTreeReqTreeItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Mode.Set {
@@ -6005,7 +6005,7 @@ func (s GitCreateTreeReqTreeItemType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s GitListMatchingRefsOKHeaders) Validate() error {
+func (s *GitListMatchingRefsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6040,7 +6040,7 @@ func (s GitListMatchingRefsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GitRef) Validate() error {
+func (s *GitRef) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Object.Validate(); err != nil {
@@ -6058,7 +6058,7 @@ func (s GitRef) Validate() error {
 	}
 	return nil
 }
-func (s GitRefHeaders) Validate() error {
+func (s *GitRefHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6076,7 +6076,7 @@ func (s GitRefHeaders) Validate() error {
 	}
 	return nil
 }
-func (s GitRefObject) Validate() error {
+func (s *GitRefObject) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -6102,7 +6102,7 @@ func (s GitRefObject) Validate() error {
 	}
 	return nil
 }
-func (s GitTree) Validate() error {
+func (s *GitTree) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tree == nil {
@@ -6120,7 +6120,7 @@ func (s GitTree) Validate() error {
 	}
 	return nil
 }
-func (s GitTreeHeaders) Validate() error {
+func (s *GitTreeHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6144,7 +6144,7 @@ func (s GitignoreGetAllTemplatesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s GpgKey) Validate() error {
+func (s *GpgKey) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -6173,7 +6173,7 @@ func (s GpgKey) Validate() error {
 	}
 	return nil
 }
-func (s Hook) Validate() error {
+func (s *Hook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -6202,7 +6202,7 @@ func (s Hook) Validate() error {
 	}
 	return nil
 }
-func (s HookConfig) Validate() error {
+func (s *HookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -6227,7 +6227,7 @@ func (s HookConfig) Validate() error {
 	}
 	return nil
 }
-func (s HookDelivery) Validate() error {
+func (s *HookDelivery) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
@@ -6245,7 +6245,7 @@ func (s HookDelivery) Validate() error {
 	}
 	return nil
 }
-func (s HookDeliveryItem) Validate() error {
+func (s *HookDeliveryItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Duration)); err != nil {
@@ -6263,7 +6263,7 @@ func (s HookDeliveryItem) Validate() error {
 	}
 	return nil
 }
-func (s HookHeaders) Validate() error {
+func (s *HookHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6281,7 +6281,7 @@ func (s HookHeaders) Validate() error {
 	}
 	return nil
 }
-func (s Hovercard) Validate() error {
+func (s *Hovercard) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -6299,7 +6299,7 @@ func (s Hovercard) Validate() error {
 	}
 	return nil
 }
-func (s Import) Validate() error {
+func (s *Import) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -6317,7 +6317,7 @@ func (s Import) Validate() error {
 	}
 	return nil
 }
-func (s ImportHeaders) Validate() error {
+func (s *ImportHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6373,7 +6373,7 @@ func (s ImportStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s InstallationToken) Validate() error {
+func (s *InstallationToken) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions.Set {
@@ -6426,7 +6426,7 @@ func (s InstallationTokenRepositorySelection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Integration) Validate() error {
+func (s *Integration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -6472,7 +6472,7 @@ func (s InteractionGroup) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s InteractionLimit) Validate() error {
+func (s *InteractionLimit) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Limit.Validate(); err != nil {
@@ -6508,7 +6508,7 @@ func (s InteractionLimit) Validate() error {
 	}
 	return nil
 }
-func (s InteractionLimitResponse) Validate() error {
+func (s *InteractionLimitResponse) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Limit.Validate(); err != nil {
@@ -6526,7 +6526,7 @@ func (s InteractionLimitResponse) Validate() error {
 	}
 	return nil
 }
-func (s Issue) Validate() error {
+func (s *Issue) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -6602,7 +6602,7 @@ func (s Issue) Validate() error {
 	}
 	return nil
 }
-func (s IssueComment) Validate() error {
+func (s *IssueComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -6638,7 +6638,7 @@ func (s IssueComment) Validate() error {
 	}
 	return nil
 }
-func (s IssueCommentHeaders) Validate() error {
+func (s *IssueCommentHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6656,7 +6656,7 @@ func (s IssueCommentHeaders) Validate() error {
 	}
 	return nil
 }
-func (s IssueEvent) Validate() error {
+func (s *IssueEvent) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Issue.Set {
@@ -6717,7 +6717,7 @@ func (s IssueEvent) Validate() error {
 	}
 	return nil
 }
-func (s IssueHeaders) Validate() error {
+func (s *IssueHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -6735,7 +6735,7 @@ func (s IssueHeaders) Validate() error {
 	}
 	return nil
 }
-func (s IssueSearchResultItem) Validate() error {
+func (s *IssueSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Assignees.Set {
@@ -6841,7 +6841,7 @@ func (s IssueSearchResultItem) Validate() error {
 	}
 	return nil
 }
-func (s IssueSimple) Validate() error {
+func (s *IssueSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -6917,7 +6917,7 @@ func (s IssueSimple) Validate() error {
 	}
 	return nil
 }
-func (s IssuesCreateMilestoneReq) Validate() error {
+func (s *IssuesCreateMilestoneReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -6952,7 +6952,7 @@ func (s IssuesCreateMilestoneReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListAssigneesOKHeaders) Validate() error {
+func (s *IssuesListAssigneesOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -6980,7 +6980,7 @@ func (s IssuesListCommentsForRepoDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListCommentsForRepoOKHeaders) Validate() error {
+func (s *IssuesListCommentsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7025,7 +7025,7 @@ func (s IssuesListCommentsForRepoSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListCommentsOKHeaders) Validate() error {
+func (s *IssuesListCommentsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7070,7 +7070,7 @@ func (s IssuesListDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListEventsForRepoOKHeaders) Validate() error {
+func (s *IssuesListEventsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7151,7 +7151,7 @@ func (s IssuesListForAuthenticatedUserFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListForAuthenticatedUserOKHeaders) Validate() error {
+func (s *IssuesListForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7238,7 +7238,7 @@ func (s IssuesListForOrgFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListForOrgOKHeaders) Validate() error {
+func (s *IssuesListForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7307,7 +7307,7 @@ func (s IssuesListForRepoDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListForRepoOKHeaders) Validate() error {
+func (s *IssuesListForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7366,7 +7366,7 @@ func (s IssuesListForRepoState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListLabelsForMilestoneOKHeaders) Validate() error {
+func (s *IssuesListLabelsForMilestoneOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7384,7 +7384,7 @@ func (s IssuesListLabelsForMilestoneOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s IssuesListLabelsForRepoOKHeaders) Validate() error {
+func (s *IssuesListLabelsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7402,7 +7402,7 @@ func (s IssuesListLabelsForRepoOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s IssuesListLabelsOnIssueOKHeaders) Validate() error {
+func (s *IssuesListLabelsOnIssueOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7430,7 +7430,7 @@ func (s IssuesListMilestonesDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListMilestonesOKHeaders) Validate() error {
+func (s *IssuesListMilestonesOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7487,7 +7487,7 @@ func (s IssuesListMilestonesState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesListOKHeaders) Validate() error {
+func (s *IssuesListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -7546,7 +7546,7 @@ func (s IssuesListState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesLockReq) Validate() error {
+func (s *IssuesLockReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.LockReason.Set {
@@ -7591,7 +7591,7 @@ func (s IssuesRemoveLabelOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s IssuesUpdateMilestoneReq) Validate() error {
+func (s *IssuesUpdateMilestoneReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -7626,7 +7626,7 @@ func (s IssuesUpdateMilestoneReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s IssuesUpdateReq) Validate() error {
+func (s *IssuesUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -7661,7 +7661,7 @@ func (s IssuesUpdateReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Job) Validate() error {
+func (s *Job) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -7716,7 +7716,7 @@ func (s JobStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s JobStepsItem) Validate() error {
+func (s *JobStepsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Validate(); err != nil {
@@ -7746,7 +7746,7 @@ func (s JobStepsItemStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s LabelSearchResultItem) Validate() error {
+func (s *LabelSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -7783,7 +7783,7 @@ func (s LabelSearchResultItem) Validate() error {
 	}
 	return nil
 }
-func (s License) Validate() error {
+func (s *License) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions == nil {
@@ -7829,7 +7829,7 @@ func (s LicensesGetAllCommonlyUsedOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s MarkdownRenderReq) Validate() error {
+func (s *MarkdownRenderReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Mode.Set {
@@ -7864,7 +7864,7 @@ func (s MarkdownRenderReqMode) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MarketplaceAccount) Validate() error {
+func (s *MarketplaceAccount) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Email.Set {
@@ -7923,7 +7923,7 @@ func (s MarketplaceAccount) Validate() error {
 	}
 	return nil
 }
-func (s MarketplaceListingPlan) Validate() error {
+func (s *MarketplaceListingPlan) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Bullets == nil {
@@ -7941,7 +7941,7 @@ func (s MarketplaceListingPlan) Validate() error {
 	}
 	return nil
 }
-func (s MarketplacePurchase) Validate() error {
+func (s *MarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.MarketplacePendingChange.Set {
@@ -7977,7 +7977,7 @@ func (s MarketplacePurchase) Validate() error {
 	}
 	return nil
 }
-func (s MarketplacePurchaseMarketplacePendingChange) Validate() error {
+func (s *MarketplacePurchaseMarketplacePendingChange) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Plan.Set {
@@ -8002,7 +8002,7 @@ func (s MarketplacePurchaseMarketplacePendingChange) Validate() error {
 	}
 	return nil
 }
-func (s MarketplacePurchaseMarketplacePurchase) Validate() error {
+func (s *MarketplacePurchaseMarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Plan.Set {
@@ -8027,7 +8027,7 @@ func (s MarketplacePurchaseMarketplacePurchase) Validate() error {
 	}
 	return nil
 }
-func (s MergedUpstream) Validate() error {
+func (s *MergedUpstream) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.MergeType.Set {
@@ -8064,7 +8064,7 @@ func (s MergedUpstreamMergeType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Migration) Validate() error {
+func (s *Migration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -8096,7 +8096,7 @@ func (s MigrationsGetStatusForOrgExcludeItem) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MigrationsListForAuthenticatedUserOKHeaders) Validate() error {
+func (s *MigrationsListForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8139,7 +8139,7 @@ func (s MigrationsListForOrgExcludeItem) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MigrationsListForOrgOKHeaders) Validate() error {
+func (s *MigrationsListForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8174,7 +8174,7 @@ func (s MigrationsListForOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s MigrationsListReposForOrgOKHeaders) Validate() error {
+func (s *MigrationsListReposForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8192,7 +8192,7 @@ func (s MigrationsListReposForOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s MigrationsListReposForUserOKHeaders) Validate() error {
+func (s *MigrationsListReposForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8210,7 +8210,7 @@ func (s MigrationsListReposForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s MigrationsSetLfsPreferenceReq) Validate() error {
+func (s *MigrationsSetLfsPreferenceReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.UseLfs.Validate(); err != nil {
@@ -8238,7 +8238,7 @@ func (s MigrationsSetLfsPreferenceReqUseLfs) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MigrationsStartForAuthenticatedUserReq) Validate() error {
+func (s *MigrationsStartForAuthenticatedUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -8289,7 +8289,7 @@ func (s MigrationsStartForAuthenticatedUserReqExcludeItem) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MigrationsStartForOrgReq) Validate() error {
+func (s *MigrationsStartForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Repositories == nil {
@@ -8340,7 +8340,7 @@ func (s MigrationsStartForOrgReqExcludeItem) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s MigrationsStartImportReq) Validate() error {
+func (s *MigrationsStartImportReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Vcs.Set {
@@ -8379,7 +8379,7 @@ func (s MigrationsStartImportReqVcs) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Milestone) Validate() error {
+func (s *Milestone) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -8397,7 +8397,7 @@ func (s Milestone) Validate() error {
 	}
 	return nil
 }
-func (s MilestoneHeaders) Validate() error {
+func (s *MilestoneHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -8426,7 +8426,7 @@ func (s MilestoneState) Validate() error {
 	}
 }
 
-func (s NullableIntegration) Validate() error {
+func (s *NullableIntegration) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -8444,7 +8444,7 @@ func (s NullableIntegration) Validate() error {
 	}
 	return nil
 }
-func (s NullableMilestone) Validate() error {
+func (s *NullableMilestone) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -8472,7 +8472,7 @@ func (s NullableMilestoneState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s NullableScopedInstallation) Validate() error {
+func (s *NullableScopedInstallation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Permissions.Validate(); err != nil {
@@ -8511,7 +8511,7 @@ func (s NullableScopedInstallationRepositorySelection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
+func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Scopes.Set {
@@ -8588,19 +8588,19 @@ func (s OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -8644,19 +8644,19 @@ func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Vali
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error {
+func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -8700,7 +8700,7 @@ func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error {
 	}
 	return nil
 }
-func (s OAuthAuthorizationsListAuthorizationsOKHeaders) Validate() error {
+func (s *OAuthAuthorizationsListAuthorizationsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8735,7 +8735,7 @@ func (s OAuthAuthorizationsListAuthorizationsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
+func (s *OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -8770,7 +8770,7 @@ func (s OAuthAuthorizationsListGrantsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
+func (s *OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Scopes.Set {
@@ -8796,7 +8796,7 @@ func (s OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
 	return nil
 }
 
-func (s OrgHook) Validate() error {
+func (s *OrgHook) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Events == nil {
@@ -8814,7 +8814,7 @@ func (s OrgHook) Validate() error {
 	}
 	return nil
 }
-func (s OrgHookHeaders) Validate() error {
+func (s *OrgHookHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -8832,7 +8832,7 @@ func (s OrgHookHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgMembership) Validate() error {
+func (s *OrgMembership) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -8883,7 +8883,7 @@ func (s OrgMembershipState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrganizationActionsSecret) Validate() error {
+func (s *OrganizationActionsSecret) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Visibility.Validate(); err != nil {
@@ -8913,7 +8913,7 @@ func (s OrganizationActionsSecretVisibility) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrganizationFull) Validate() error {
+func (s *OrganizationFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Email.Set {
@@ -8972,7 +8972,7 @@ func (s OrganizationFull) Validate() error {
 	}
 	return nil
 }
-func (s OrganizationSecretScanningAlert) Validate() error {
+func (s *OrganizationSecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -9015,7 +9015,7 @@ func (s OrganizationSecretScanningAlert) Validate() error {
 	}
 	return nil
 }
-func (s OrgsCreateInvitationReq) Validate() error {
+func (s *OrgsCreateInvitationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Role.Set {
@@ -9052,7 +9052,7 @@ func (s OrgsCreateInvitationReqRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsCreateWebhookReq) Validate() error {
+func (s *OrgsCreateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Config.Validate(); err != nil {
@@ -9070,7 +9070,7 @@ func (s OrgsCreateWebhookReq) Validate() error {
 	}
 	return nil
 }
-func (s OrgsCreateWebhookReqConfig) Validate() error {
+func (s *OrgsCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -9123,7 +9123,7 @@ func (s OrgsListBlockedUsersOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListFailedInvitationsOKHeaders) Validate() error {
+func (s *OrgsListFailedInvitationsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9141,7 +9141,7 @@ func (s OrgsListFailedInvitationsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListForAuthenticatedUserOKHeaders) Validate() error {
+func (s *OrgsListForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9159,7 +9159,7 @@ func (s OrgsListForAuthenticatedUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListForUserOKHeaders) Validate() error {
+func (s *OrgsListForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9177,7 +9177,7 @@ func (s OrgsListForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListInvitationTeamsOKHeaders) Validate() error {
+func (s *OrgsListInvitationTeamsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9205,7 +9205,7 @@ func (s OrgsListMembersFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsListMembersOKHeaders) Validate() error {
+func (s *OrgsListMembersOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9235,7 +9235,7 @@ func (s OrgsListMembersRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsListMembershipsForAuthenticatedUserOKHeaders) Validate() error {
+func (s *OrgsListMembershipsForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9280,7 +9280,7 @@ func (s OrgsListMembershipsForAuthenticatedUserState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsListOKHeaders) Validate() error {
+func (s *OrgsListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9308,7 +9308,7 @@ func (s OrgsListOutsideCollaboratorsFilter) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsListOutsideCollaboratorsOKHeaders) Validate() error {
+func (s *OrgsListOutsideCollaboratorsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9326,7 +9326,7 @@ func (s OrgsListOutsideCollaboratorsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListPendingInvitationsOKHeaders) Validate() error {
+func (s *OrgsListPendingInvitationsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9344,7 +9344,7 @@ func (s OrgsListPendingInvitationsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListPublicMembersOKHeaders) Validate() error {
+func (s *OrgsListPublicMembersOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9385,7 +9385,7 @@ func (s OrgsListWebhookDeliveriesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s OrgsListWebhooksOKHeaders) Validate() error {
+func (s *OrgsListWebhooksOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -9420,7 +9420,7 @@ func (s OrgsListWebhooksOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s OrgsSetMembershipForUserReq) Validate() error {
+func (s *OrgsSetMembershipForUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Role.Set {
@@ -9455,7 +9455,7 @@ func (s OrgsSetMembershipForUserReqRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsUpdateMembershipForAuthenticatedUserReq) Validate() error {
+func (s *OrgsUpdateMembershipForAuthenticatedUserReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -9481,7 +9481,7 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s OrgsUpdateWebhookConfigForOrgReq) Validate() error {
+func (s *OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -9506,7 +9506,7 @@ func (s OrgsUpdateWebhookConfigForOrgReq) Validate() error {
 	}
 	return nil
 }
-func (s OrgsUpdateWebhookReq) Validate() error {
+func (s *OrgsUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Config.Set {
@@ -9531,7 +9531,7 @@ func (s OrgsUpdateWebhookReq) Validate() error {
 	}
 	return nil
 }
-func (s OrgsUpdateWebhookReqConfig) Validate() error {
+func (s *OrgsUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -9556,7 +9556,7 @@ func (s OrgsUpdateWebhookReqConfig) Validate() error {
 	}
 	return nil
 }
-func (s Package) Validate() error {
+func (s *Package) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.PackageType.Validate(); err != nil {
@@ -9603,7 +9603,7 @@ func (s PackagePackageType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PackageVersion) Validate() error {
+func (s *PackageVersion) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Metadata.Set {
@@ -9628,7 +9628,7 @@ func (s PackageVersion) Validate() error {
 	}
 	return nil
 }
-func (s PackageVersionMetadata) Validate() error {
+func (s *PackageVersionMetadata) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.PackageType.Validate(); err != nil {
@@ -9664,7 +9664,7 @@ func (s PackageVersionMetadata) Validate() error {
 	}
 	return nil
 }
-func (s PackageVersionMetadataContainer) Validate() error {
+func (s *PackageVersionMetadataContainer) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Tags == nil {
@@ -10313,7 +10313,7 @@ func (s PackagesRestorePackageVersionForUserPackageType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Page) Validate() error {
+func (s *Page) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Status.Value.Validate(); err != nil {
@@ -10391,7 +10391,7 @@ func (s PageStatus) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PagesHTTPSCertificate) Validate() error {
+func (s *PagesHTTPSCertificate) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -10450,7 +10450,7 @@ func (s PagesHTTPSCertificateState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ParticipationStats) Validate() error {
+func (s *ParticipationStats) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.All == nil {
@@ -10479,7 +10479,7 @@ func (s ParticipationStats) Validate() error {
 	}
 	return nil
 }
-func (s PrivateUser) Validate() error {
+func (s *PrivateUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -10505,7 +10505,7 @@ func (s PrivateUser) Validate() error {
 	}
 	return nil
 }
-func (s Project) Validate() error {
+func (s *Project) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OrganizationPermission.Set {
@@ -10544,7 +10544,7 @@ func (s ProjectOrganizationPermission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsAddCollaboratorReq) Validate() error {
+func (s *ProjectsAddCollaboratorReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -10593,7 +10593,7 @@ func (s ProjectsListCardsArchivedState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsListCardsOKHeaders) Validate() error {
+func (s *ProjectsListCardsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10623,7 +10623,7 @@ func (s ProjectsListCollaboratorsAffiliation) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsListCollaboratorsOKHeaders) Validate() error {
+func (s *ProjectsListCollaboratorsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10641,7 +10641,7 @@ func (s ProjectsListCollaboratorsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ProjectsListColumnsOKHeaders) Validate() error {
+func (s *ProjectsListColumnsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10659,7 +10659,7 @@ func (s ProjectsListColumnsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ProjectsListForOrgOKHeaders) Validate() error {
+func (s *ProjectsListForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10706,7 +10706,7 @@ func (s ProjectsListForOrgState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsListForRepoOKHeaders) Validate() error {
+func (s *ProjectsListForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10753,7 +10753,7 @@ func (s ProjectsListForRepoState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsListForUserOKHeaders) Validate() error {
+func (s *ProjectsListForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -10800,7 +10800,7 @@ func (s ProjectsListForUserState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProjectsMoveCardReq) Validate() error {
+func (s *ProjectsMoveCardReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -10826,7 +10826,7 @@ func (s ProjectsMoveCardReq) Validate() error {
 	}
 	return nil
 }
-func (s ProjectsMoveColumnReq) Validate() error {
+func (s *ProjectsMoveColumnReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -10852,7 +10852,7 @@ func (s ProjectsMoveColumnReq) Validate() error {
 	}
 	return nil
 }
-func (s ProjectsUpdateReq) Validate() error {
+func (s *ProjectsUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.OrganizationPermission.Set {
@@ -10891,7 +10891,7 @@ func (s ProjectsUpdateReqOrganizationPermission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ProtectedBranch) Validate() error {
+func (s *ProtectedBranch) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredStatusChecks.Set {
@@ -10952,7 +10952,7 @@ func (s ProtectedBranch) Validate() error {
 	}
 	return nil
 }
-func (s ProtectedBranchPullRequestReview) Validate() error {
+func (s *ProtectedBranchPullRequestReview) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.RequiredApprovingReviewCount.Set {
@@ -10986,7 +10986,7 @@ func (s ProtectedBranchPullRequestReview) Validate() error {
 	}
 	return nil
 }
-func (s ProtectedBranchRequiredPullRequestReviews) Validate() error {
+func (s *ProtectedBranchRequiredPullRequestReviews) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.DismissalRestrictions.Set {
@@ -11011,7 +11011,7 @@ func (s ProtectedBranchRequiredPullRequestReviews) Validate() error {
 	}
 	return nil
 }
-func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate() error {
+func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -11040,7 +11040,7 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate
 	}
 	return nil
 }
-func (s PublicUser) Validate() error {
+func (s *PublicUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -11066,7 +11066,7 @@ func (s PublicUser) Validate() error {
 	}
 	return nil
 }
-func (s PullRequest) Validate() error {
+func (s *PullRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -11182,7 +11182,7 @@ func (s PullRequest) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestHeaders) Validate() error {
+func (s *PullRequestHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11200,7 +11200,7 @@ func (s PullRequestHeaders) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestReview) Validate() error {
+func (s *PullRequestReview) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -11218,7 +11218,7 @@ func (s PullRequestReview) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestReviewComment) Validate() error {
+func (s *PullRequestReviewComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -11272,7 +11272,7 @@ func (s PullRequestReviewComment) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestReviewCommentHeaders) Validate() error {
+func (s *PullRequestReviewCommentHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11310,7 +11310,7 @@ func (s PullRequestReviewCommentStartSide) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullRequestReviewRequest) Validate() error {
+func (s *PullRequestReviewRequest) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -11339,7 +11339,7 @@ func (s PullRequestReviewRequest) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestReviewRequestHeaders) Validate() error {
+func (s *PullRequestReviewRequestHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -11357,7 +11357,7 @@ func (s PullRequestReviewRequestHeaders) Validate() error {
 	}
 	return nil
 }
-func (s PullRequestSimple) Validate() error {
+func (s *PullRequestSimple) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -11472,7 +11472,7 @@ func (s PullRequestState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsCreateReviewCommentReq) Validate() error {
+func (s *PullsCreateReviewCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Side.Set {
@@ -11537,7 +11537,7 @@ func (s PullsCreateReviewCommentReqStartSide) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsCreateReviewReq) Validate() error {
+func (s *PullsCreateReviewReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Event.Set {
@@ -11574,7 +11574,7 @@ func (s PullsCreateReviewReqEvent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsListCommentsForReviewOKHeaders) Validate() error {
+func (s *PullsListCommentsForReviewOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11609,7 +11609,7 @@ func (s PullsListCommentsForReviewOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s PullsListCommitsOKHeaders) Validate() error {
+func (s *PullsListCommitsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11654,7 +11654,7 @@ func (s PullsListDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsListFilesOKHeaders) Validate() error {
+func (s *PullsListFilesOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11689,7 +11689,7 @@ func (s PullsListFilesOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s PullsListOKHeaders) Validate() error {
+func (s *PullsListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11744,7 +11744,7 @@ func (s PullsListReviewCommentsForRepoDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsListReviewCommentsForRepoOKHeaders) Validate() error {
+func (s *PullsListReviewCommentsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11791,7 +11791,7 @@ func (s PullsListReviewCommentsForRepoSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsListReviewCommentsOKHeaders) Validate() error {
+func (s *PullsListReviewCommentsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11836,7 +11836,7 @@ func (s PullsListReviewCommentsSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsListReviewsOKHeaders) Validate() error {
+func (s *PullsListReviewsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -11897,7 +11897,7 @@ func (s PullsListState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsMergeReq) Validate() error {
+func (s *PullsMergeReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.MergeMethod.Set {
@@ -11934,7 +11934,7 @@ func (s PullsMergeReqMergeMethod) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsRemoveRequestedReviewersReq) Validate() error {
+func (s *PullsRemoveRequestedReviewersReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Reviewers == nil {
@@ -11952,7 +11952,7 @@ func (s PullsRemoveRequestedReviewersReq) Validate() error {
 	}
 	return nil
 }
-func (s PullsSubmitReviewReq) Validate() error {
+func (s *PullsSubmitReviewReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Event.Validate(); err != nil {
@@ -11982,7 +11982,7 @@ func (s PullsSubmitReviewReqEvent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s PullsUpdateReq) Validate() error {
+func (s *PullsUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -12017,7 +12017,7 @@ func (s PullsUpdateReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Reaction) Validate() error {
+func (s *Reaction) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12057,19 +12057,19 @@ func (s ReactionContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForCommitCommentApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForCommitCommentApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForCommitCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForCommitCommentApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForCommitCommentReq) Validate() error {
+func (s *ReactionsCreateForCommitCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12109,31 +12109,31 @@ func (s ReactionsCreateForCommitCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForIssueApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForIssueApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForIssueApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForIssueApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForIssueCommentApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForIssueCommentApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForIssueCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForIssueCommentApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForIssueCommentReq) Validate() error {
+func (s *ReactionsCreateForIssueCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12173,7 +12173,7 @@ func (s ReactionsCreateForIssueCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForIssueReq) Validate() error {
+func (s *ReactionsCreateForIssueReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12213,19 +12213,19 @@ func (s ReactionsCreateForIssueReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForPullRequestReviewCommentReq) Validate() error {
+func (s *ReactionsCreateForPullRequestReviewCommentReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12265,19 +12265,19 @@ func (s ReactionsCreateForPullRequestReviewCommentReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForReleaseApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForReleaseApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForReleaseApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForReleaseApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForReleaseReq) Validate() error {
+func (s *ReactionsCreateForReleaseReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12313,19 +12313,19 @@ func (s ReactionsCreateForReleaseReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12365,7 +12365,7 @@ func (s ReactionsCreateForTeamDiscussionCommentInOrgReqContent) Validate() error
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionCommentLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12405,19 +12405,19 @@ func (s ReactionsCreateForTeamDiscussionCommentLegacyReqContent) Validate() erro
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s ReactionsCreateForTeamDiscussionInOrgReq) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12457,7 +12457,7 @@ func (s ReactionsCreateForTeamDiscussionInOrgReqContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsCreateForTeamDiscussionLegacyReq) Validate() error {
+func (s *ReactionsCreateForTeamDiscussionLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -12519,7 +12519,7 @@ func (s ReactionsListForCommitCommentContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForCommitCommentOKHeaders) Validate() error {
+func (s *ReactionsListForCommitCommentOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12576,7 +12576,7 @@ func (s ReactionsListForIssueCommentContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForIssueCommentOKHeaders) Validate() error {
+func (s *ReactionsListForIssueCommentOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12633,7 +12633,7 @@ func (s ReactionsListForIssueContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForIssueOKHeaders) Validate() error {
+func (s *ReactionsListForIssueOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12690,7 +12690,7 @@ func (s ReactionsListForPullRequestReviewCommentContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForPullRequestReviewCommentOKHeaders) Validate() error {
+func (s *ReactionsListForPullRequestReviewCommentOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12747,7 +12747,7 @@ func (s ReactionsListForTeamDiscussionCommentInOrgContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForTeamDiscussionCommentInOrgOKHeaders) Validate() error {
+func (s *ReactionsListForTeamDiscussionCommentInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12804,7 +12804,7 @@ func (s ReactionsListForTeamDiscussionCommentLegacyContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForTeamDiscussionCommentLegacyOKHeaders) Validate() error {
+func (s *ReactionsListForTeamDiscussionCommentLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12861,7 +12861,7 @@ func (s ReactionsListForTeamDiscussionInOrgContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForTeamDiscussionInOrgOKHeaders) Validate() error {
+func (s *ReactionsListForTeamDiscussionInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12918,7 +12918,7 @@ func (s ReactionsListForTeamDiscussionLegacyContent) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReactionsListForTeamDiscussionLegacyOKHeaders) Validate() error {
+func (s *ReactionsListForTeamDiscussionLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -12953,7 +12953,7 @@ func (s ReactionsListForTeamDiscussionLegacyOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s Release) Validate() error {
+func (s *Release) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Assets == nil {
@@ -12988,7 +12988,7 @@ func (s Release) Validate() error {
 	}
 	return nil
 }
-func (s ReleaseAsset) Validate() error {
+func (s *ReleaseAsset) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -13016,7 +13016,7 @@ func (s ReleaseAssetState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReleaseHeaders) Validate() error {
+func (s *ReleaseHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Response.Validate(); err != nil {
@@ -13034,7 +13034,7 @@ func (s ReleaseHeaders) Validate() error {
 	}
 	return nil
 }
-func (s RepoSearchResultItem) Validate() error {
+func (s *RepoSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -13111,7 +13111,7 @@ func (s ReposAddAppAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposAddAppAccessRestrictionsReq0) Validate() error {
+func (s *ReposAddAppAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -13129,7 +13129,7 @@ func (s ReposAddAppAccessRestrictionsReq0) Validate() error {
 	}
 	return nil
 }
-func (s ReposAddCollaboratorReq) Validate() error {
+func (s *ReposAddCollaboratorReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -13193,7 +13193,7 @@ func (s ReposAddStatusCheckContextsReq) Validate() error {
 	}
 }
 
-func (s ReposAddStatusCheckContextsReq0) Validate() error {
+func (s *ReposAddStatusCheckContextsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -13234,7 +13234,7 @@ func (s ReposAddTeamAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposAddTeamAccessRestrictionsReq0) Validate() error {
+func (s *ReposAddTeamAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -13275,7 +13275,7 @@ func (s ReposAddUserAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposAddUserAccessRestrictionsReq0) Validate() error {
+func (s *ReposAddUserAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -13293,7 +13293,7 @@ func (s ReposAddUserAccessRestrictionsReq0) Validate() error {
 	}
 	return nil
 }
-func (s ReposCreateCommitStatusReq) Validate() error {
+func (s *ReposCreateCommitStatusReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -13325,7 +13325,7 @@ func (s ReposCreateCommitStatusReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposCreateDeploymentStatusReq) Validate() error {
+func (s *ReposCreateDeploymentStatusReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -13393,7 +13393,7 @@ func (s ReposCreateDeploymentStatusReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposCreateDispatchEventReq) Validate() error {
+func (s *ReposCreateDispatchEventReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -13445,7 +13445,7 @@ func (s ReposCreateDispatchEventReqClientPayload) Validate() error {
 	}
 	return nil
 }
-func (s ReposCreateInOrgReq) Validate() error {
+func (s *ReposCreateInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -13484,7 +13484,7 @@ func (s ReposCreateInOrgReqVisibility) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposCreatePagesSiteReq) Validate() error {
+func (s *ReposCreatePagesSiteReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Source.Validate(); err != nil {
@@ -13502,7 +13502,7 @@ func (s ReposCreatePagesSiteReq) Validate() error {
 	}
 	return nil
 }
-func (s ReposCreatePagesSiteReqSource) Validate() error {
+func (s *ReposCreatePagesSiteReqSource) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Path.Set {
@@ -13537,7 +13537,7 @@ func (s ReposCreatePagesSiteReqSourcePath) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposCreateWebhookReq) Validate() error {
+func (s *ReposCreateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Config.Set {
@@ -13562,7 +13562,7 @@ func (s ReposCreateWebhookReq) Validate() error {
 	}
 	return nil
 }
-func (s ReposCreateWebhookReqConfig) Validate() error {
+func (s *ReposCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -13762,7 +13762,7 @@ func (s ReposListBranchesForHeadCommitOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s ReposListBranchesOKHeaders) Validate() error {
+func (s *ReposListBranchesOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13809,7 +13809,7 @@ func (s ReposListCollaboratorsAffiliation) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposListCollaboratorsOKHeaders) Validate() error {
+func (s *ReposListCollaboratorsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13827,42 +13827,7 @@ func (s ReposListCollaboratorsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListCommentsForCommitOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Response {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ReposListCommitCommentsForRepoOKHeaders) Validate() error {
+func (s *ReposListCommentsForCommitOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13897,25 +13862,7 @@ func (s ReposListCommitCommentsForRepoOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListCommitStatusesForRefOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ReposListCommitsOKHeaders) Validate() error {
+func (s *ReposListCommitCommentsForRepoOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13950,7 +13897,7 @@ func (s ReposListCommitsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListContributorsOKHeaders) Validate() error {
+func (s *ReposListCommitStatusesForRefOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -13968,25 +13915,7 @@ func (s ReposListContributorsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListDeployKeysOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ReposListDeploymentStatusesOKHeaders) Validate() error {
+func (s *ReposListCommitsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14021,7 +13950,78 @@ func (s ReposListDeploymentStatusesOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListDeploymentsOKHeaders) Validate() error {
+func (s *ReposListContributorsOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReposListDeployKeysOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReposListDeploymentStatusesOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Response {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReposListDeploymentsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14124,7 +14124,7 @@ func (s ReposListForOrgDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposListForOrgOKHeaders) Validate() error {
+func (s *ReposListForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14186,7 +14186,7 @@ func (s ReposListForUserDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposListForUserOKHeaders) Validate() error {
+func (s *ReposListForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14230,7 +14230,7 @@ func (s ReposListForUserType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposListForksOKHeaders) Validate() error {
+func (s *ReposListForksOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14262,7 +14262,7 @@ func (s ReposListForksSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposListInvitationsForAuthenticatedUserOKHeaders) Validate() error {
+func (s *ReposListInvitationsForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14297,7 +14297,7 @@ func (s ReposListInvitationsForAuthenticatedUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListInvitationsOKHeaders) Validate() error {
+func (s *ReposListInvitationsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14332,7 +14332,7 @@ func (s ReposListInvitationsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListPagesBuildsOKHeaders) Validate() error {
+func (s *ReposListPagesBuildsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14350,7 +14350,7 @@ func (s ReposListPagesBuildsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListPublicOKHeaders) Validate() error {
+func (s *ReposListPublicOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14368,42 +14368,7 @@ func (s ReposListPublicOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListPullRequestsAssociatedWithCommitOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Response {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ReposListReleaseAssetsOKHeaders) Validate() error {
+func (s *ReposListPullRequestsAssociatedWithCommitOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14438,7 +14403,7 @@ func (s ReposListReleaseAssetsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListReleasesOKHeaders) Validate() error {
+func (s *ReposListReleaseAssetsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14473,7 +14438,42 @@ func (s ReposListReleasesOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListTagsOKHeaders) Validate() error {
+func (s *ReposListReleasesOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Response {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ReposListTagsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14491,7 +14491,7 @@ func (s ReposListTagsOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s ReposListTeamsOKHeaders) Validate() error {
+func (s *ReposListTeamsOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14532,7 +14532,7 @@ func (s ReposListWebhookDeliveriesOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s ReposListWebhooksOKHeaders) Validate() error {
+func (s *ReposListWebhooksOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -14607,7 +14607,7 @@ func (s ReposRemoveAppAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposRemoveAppAccessRestrictionsReq0) Validate() error {
+func (s *ReposRemoveAppAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -14648,7 +14648,7 @@ func (s ReposRemoveStatusCheckContextsReq) Validate() error {
 	}
 }
 
-func (s ReposRemoveStatusCheckContextsReq0) Validate() error {
+func (s *ReposRemoveStatusCheckContextsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -14689,7 +14689,7 @@ func (s ReposRemoveTeamAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposRemoveTeamAccessRestrictionsReq0) Validate() error {
+func (s *ReposRemoveTeamAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -14730,7 +14730,7 @@ func (s ReposRemoveUserAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposRemoveUserAccessRestrictionsReq0) Validate() error {
+func (s *ReposRemoveUserAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -14748,7 +14748,7 @@ func (s ReposRemoveUserAccessRestrictionsReq0) Validate() error {
 	}
 	return nil
 }
-func (s ReposReplaceAllTopicsReq) Validate() error {
+func (s *ReposReplaceAllTopicsReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
@@ -14806,7 +14806,7 @@ func (s ReposSetAppAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposSetAppAccessRestrictionsReq0) Validate() error {
+func (s *ReposSetAppAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Apps == nil {
@@ -14847,7 +14847,7 @@ func (s ReposSetStatusCheckContextsReq) Validate() error {
 	}
 }
 
-func (s ReposSetStatusCheckContextsReq0) Validate() error {
+func (s *ReposSetStatusCheckContextsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -14888,7 +14888,7 @@ func (s ReposSetTeamAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposSetTeamAccessRestrictionsReq0) Validate() error {
+func (s *ReposSetTeamAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Teams == nil {
@@ -14929,7 +14929,7 @@ func (s ReposSetUserAccessRestrictionsReq) Validate() error {
 	}
 }
 
-func (s ReposSetUserAccessRestrictionsReq0) Validate() error {
+func (s *ReposSetUserAccessRestrictionsReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -14947,7 +14947,7 @@ func (s ReposSetUserAccessRestrictionsReq0) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateBranchProtectionReq) Validate() error {
+func (s *ReposUpdateBranchProtectionReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.RequiredStatusChecks.Value.Validate(); err != nil {
@@ -14976,7 +14976,7 @@ func (s ReposUpdateBranchProtectionReq) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
+func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -14994,7 +14994,7 @@ func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
+func (s *ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Users == nil {
@@ -15023,7 +15023,7 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateInvitationReq) Validate() error {
+func (s *ReposUpdateInvitationReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permissions.Set {
@@ -15064,7 +15064,7 @@ func (s ReposUpdateInvitationReqPermissions) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposUpdateReq) Validate() error {
+func (s *ReposUpdateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Visibility.Set {
@@ -15103,7 +15103,7 @@ func (s ReposUpdateReqVisibility) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReposUpdateWebhookConfigForRepoReq) Validate() error {
+func (s *ReposUpdateWebhookConfigForRepoReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -15128,7 +15128,7 @@ func (s ReposUpdateWebhookConfigForRepoReq) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateWebhookReq) Validate() error {
+func (s *ReposUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Config.Set {
@@ -15153,7 +15153,7 @@ func (s ReposUpdateWebhookReq) Validate() error {
 	}
 	return nil
 }
-func (s ReposUpdateWebhookReqConfig) Validate() error {
+func (s *ReposUpdateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -15178,7 +15178,7 @@ func (s ReposUpdateWebhookReqConfig) Validate() error {
 	}
 	return nil
 }
-func (s RepositoryInvitation) Validate() error {
+func (s *RepositoryInvitation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Permissions.Validate(); err != nil {
@@ -15212,7 +15212,7 @@ func (s RepositoryInvitationPermissions) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ReviewComment) Validate() error {
+func (s *ReviewComment) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.AuthorAssociation.Validate(); err != nil {
@@ -15286,7 +15286,7 @@ func (s ReviewCommentStartSide) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Runner) Validate() error {
+func (s *Runner) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Labels == nil {
@@ -15321,7 +15321,7 @@ func (s Runner) Validate() error {
 	}
 	return nil
 }
-func (s RunnerGroupsEnterprise) Validate() error {
+func (s *RunnerGroupsEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
@@ -15339,7 +15339,7 @@ func (s RunnerGroupsEnterprise) Validate() error {
 	}
 	return nil
 }
-func (s RunnerGroupsOrg) Validate() error {
+func (s *RunnerGroupsOrg) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.ID)); err != nil {
@@ -15357,7 +15357,7 @@ func (s RunnerGroupsOrg) Validate() error {
 	}
 	return nil
 }
-func (s RunnerLabelsItem) Validate() error {
+func (s *RunnerLabelsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Type.Set {
@@ -15392,7 +15392,7 @@ func (s RunnerLabelsItemType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ScimEnterpriseGroup) Validate() error {
+func (s *ScimEnterpriseGroup) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -15410,7 +15410,7 @@ func (s ScimEnterpriseGroup) Validate() error {
 	}
 	return nil
 }
-func (s ScimEnterpriseUser) Validate() error {
+func (s *ScimEnterpriseUser) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -15428,104 +15428,7 @@ func (s ScimEnterpriseUser) Validate() error {
 	}
 	return nil
 }
-func (s ScimGroupListEnterprise) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Schemas == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "schemas",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(s.TotalResults)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "totalResults",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(s.ItemsPerPage)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "itemsPerPage",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if err := (validate.Float{}).Validate(float64(s.StartIndex)); err != nil {
-			return errors.Wrap(err, "float")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "startIndex",
-			Error: err,
-		})
-	}
-	if err := func() error {
-		if s.Resources == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Resources {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Resources",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimGroupListEnterpriseResourcesItem) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Schemas == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "schemas",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s ScimUserListEnterprise) Validate() error {
+func (s *ScimGroupListEnterprise) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -15604,7 +15507,7 @@ func (s ScimUserListEnterprise) Validate() error {
 	}
 	return nil
 }
-func (s ScimUserListEnterpriseResourcesItem) Validate() error {
+func (s *ScimGroupListEnterpriseResourcesItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas == nil {
@@ -15622,7 +15525,104 @@ func (s ScimUserListEnterpriseResourcesItem) Validate() error {
 	}
 	return nil
 }
-func (s SearchCodeOK) Validate() error {
+func (s *ScimUserListEnterprise) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Schemas == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).Validate(float64(s.TotalResults)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "totalResults",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).Validate(float64(s.ItemsPerPage)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "itemsPerPage",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Float{}).Validate(float64(s.StartIndex)); err != nil {
+			return errors.Wrap(err, "float")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "startIndex",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.Resources == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Resources {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Resources",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *ScimUserListEnterpriseResourcesItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Schemas == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "schemas",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *SearchCodeOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15675,7 +15675,7 @@ func (s SearchCodeSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SearchCommitsOK) Validate() error {
+func (s *SearchCommitsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15730,7 +15730,7 @@ func (s SearchCommitsSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SearchIssuesAndPullRequestsOK) Validate() error {
+func (s *SearchIssuesAndPullRequestsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15803,7 +15803,7 @@ func (s SearchIssuesAndPullRequestsSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SearchLabelsOK) Validate() error {
+func (s *SearchLabelsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15858,7 +15858,7 @@ func (s SearchLabelsSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SearchReposOK) Validate() error {
+func (s *SearchReposOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15923,7 +15923,7 @@ func (s SearchResultTextMatches) Validate() error {
 	}
 	return nil
 }
-func (s SearchTopicsOK) Validate() error {
+func (s *SearchTopicsOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -15958,7 +15958,7 @@ func (s SearchTopicsOK) Validate() error {
 	}
 	return nil
 }
-func (s SearchUsersOK) Validate() error {
+func (s *SearchUsersOK) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Items == nil {
@@ -16015,7 +16015,7 @@ func (s SearchUsersSort) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SecretScanningAlert) Validate() error {
+func (s *SecretScanningAlert) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.State.Set {
@@ -16082,7 +16082,7 @@ func (s SecretScanningAlertState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SecretScanningListAlertsForOrgOKHeaders) Validate() error {
+func (s *SecretScanningListAlertsForOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16160,7 +16160,7 @@ func (s SecretScanningListAlertsForRepoState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s SecretScanningUpdateAlertReq) Validate() error {
+func (s *SecretScanningUpdateAlertReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {
@@ -16196,7 +16196,7 @@ func (s SecretScanningUpdateAlertReq) Validate() error {
 	}
 	return nil
 }
-func (s ShortBranch) Validate() error {
+func (s *ShortBranch) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Protection.Set {
@@ -16221,7 +16221,7 @@ func (s ShortBranch) Validate() error {
 	}
 	return nil
 }
-func (s StatusCheckPolicy) Validate() error {
+func (s *StatusCheckPolicy) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Contexts == nil {
@@ -16239,7 +16239,7 @@ func (s StatusCheckPolicy) Validate() error {
 	}
 	return nil
 }
-func (s TeamFull) Validate() error {
+func (s *TeamFull) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Privacy.Set {
@@ -16285,7 +16285,7 @@ func (s TeamFullPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamMembership) Validate() error {
+func (s *TeamMembership) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Role.Validate(); err != nil {
@@ -16334,7 +16334,7 @@ func (s TeamMembershipState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateMembershipForUserInOrgReq) Validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Role.Set {
@@ -16369,7 +16369,7 @@ func (s TeamsAddOrUpdateMembershipForUserInOrgReqRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateMembershipForUserLegacyReq) Validate() error {
+func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Role.Set {
@@ -16404,7 +16404,7 @@ func (s TeamsAddOrUpdateMembershipForUserLegacyReqRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) Validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -16441,7 +16441,7 @@ func (s TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) Validate() error {
+func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -16478,7 +16478,7 @@ func (s TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Validate() error 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) Validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -16519,7 +16519,7 @@ func (s TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) Validate() error {
+func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Permission.Set {
@@ -16556,7 +16556,7 @@ func (s TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Groups == nil {
@@ -16574,7 +16574,7 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Validate() error {
 	}
 	return nil
 }
-func (s TeamsCreateReq) Validate() error {
+func (s *TeamsCreateReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Privacy.Set {
@@ -16639,7 +16639,7 @@ func (s TeamsCreateReqPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListChildInOrgOKHeaders) Validate() error {
+func (s *TeamsListChildInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16657,7 +16657,7 @@ func (s TeamsListChildInOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListChildLegacyOKHeaders) Validate() error {
+func (s *TeamsListChildLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16685,7 +16685,7 @@ func (s TeamsListDiscussionCommentsInOrgDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListDiscussionCommentsInOrgOKHeaders) Validate() error {
+func (s *TeamsListDiscussionCommentsInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16713,7 +16713,7 @@ func (s TeamsListDiscussionCommentsLegacyDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListDiscussionCommentsLegacyOKHeaders) Validate() error {
+func (s *TeamsListDiscussionCommentsLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16741,7 +16741,7 @@ func (s TeamsListDiscussionsInOrgDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListDiscussionsInOrgOKHeaders) Validate() error {
+func (s *TeamsListDiscussionsInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16769,7 +16769,7 @@ func (s TeamsListDiscussionsLegacyDirection) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListDiscussionsLegacyOKHeaders) Validate() error {
+func (s *TeamsListDiscussionsLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16787,7 +16787,7 @@ func (s TeamsListDiscussionsLegacyOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListForAuthenticatedUserOKHeaders) Validate() error {
+func (s *TeamsListForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16822,7 +16822,7 @@ func (s TeamsListForAuthenticatedUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListMembersInOrgOKHeaders) Validate() error {
+func (s *TeamsListMembersInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16852,7 +16852,7 @@ func (s TeamsListMembersInOrgRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListMembersLegacyOKHeaders) Validate() error {
+func (s *TeamsListMembersLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16882,7 +16882,7 @@ func (s TeamsListMembersLegacyRole) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsListOKHeaders) Validate() error {
+func (s *TeamsListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16900,7 +16900,7 @@ func (s TeamsListOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListPendingInvitationsInOrgOKHeaders) Validate() error {
+func (s *TeamsListPendingInvitationsInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16918,7 +16918,7 @@ func (s TeamsListPendingInvitationsInOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListPendingInvitationsLegacyOKHeaders) Validate() error {
+func (s *TeamsListPendingInvitationsLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16936,7 +16936,7 @@ func (s TeamsListPendingInvitationsLegacyOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListProjectsInOrgOKHeaders) Validate() error {
+func (s *TeamsListProjectsInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16954,7 +16954,7 @@ func (s TeamsListProjectsInOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListProjectsLegacyOKHeaders) Validate() error {
+func (s *TeamsListProjectsLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16972,7 +16972,7 @@ func (s TeamsListProjectsLegacyOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListReposInOrgOKHeaders) Validate() error {
+func (s *TeamsListReposInOrgOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -16990,7 +16990,7 @@ func (s TeamsListReposInOrgOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsListReposLegacyOKHeaders) Validate() error {
+func (s *TeamsListReposLegacyOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17008,7 +17008,7 @@ func (s TeamsListReposLegacyOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s TeamsUpdateInOrgReq) Validate() error {
+func (s *TeamsUpdateInOrgReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Privacy.Set {
@@ -17073,19 +17073,19 @@ func (s TeamsUpdateInOrgReqPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s TeamsUpdateLegacyApplicationJSONCreated) Validate() error {
+func (s *TeamsUpdateLegacyApplicationJSONCreated) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s TeamsUpdateLegacyApplicationJSONOK) Validate() error {
+func (s *TeamsUpdateLegacyApplicationJSONOK) Validate() error {
 	if err := s.Validate(); err != nil {
 		return err
 	}
 	return nil
 }
-func (s TeamsUpdateLegacyReq) Validate() error {
+func (s *TeamsUpdateLegacyReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Privacy.Set {
@@ -17150,7 +17150,7 @@ func (s TeamsUpdateLegacyReqPrivacy) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s Topic) Validate() error {
+func (s *Topic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Names == nil {
@@ -17168,7 +17168,7 @@ func (s Topic) Validate() error {
 	}
 	return nil
 }
-func (s TopicSearchResultItem) Validate() error {
+func (s *TopicSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -17241,7 +17241,7 @@ func (s TopicSearchResultItem) Validate() error {
 	}
 	return nil
 }
-func (s UserMarketplacePurchase) Validate() error {
+func (s *UserMarketplacePurchase) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Account.Validate(); err != nil {
@@ -17270,7 +17270,7 @@ func (s UserMarketplacePurchase) Validate() error {
 	}
 	return nil
 }
-func (s UserSearchResultItem) Validate() error {
+func (s *UserSearchResultItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Float{}).Validate(float64(s.Score)); err != nil {
@@ -17375,7 +17375,7 @@ func (s UsersAddEmailForAuthenticatedReq) Validate() error {
 	}
 }
 
-func (s UsersAddEmailForAuthenticatedReq0) Validate() error {
+func (s *UsersAddEmailForAuthenticatedReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -17393,7 +17393,7 @@ func (s UsersAddEmailForAuthenticatedReq0) Validate() error {
 	}
 	return nil
 }
-func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
+func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.String{
@@ -17438,7 +17438,7 @@ func (s UsersDeleteEmailForAuthenticatedReq) Validate() error {
 	}
 }
 
-func (s UsersDeleteEmailForAuthenticatedReq0) Validate() error {
+func (s *UsersDeleteEmailForAuthenticatedReq0) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Emails == nil {
@@ -17510,7 +17510,7 @@ func (s UsersListBlockedByAuthenticatedOKApplicationJSON) Validate() error {
 	}
 	return nil
 }
-func (s UsersListEmailsForAuthenticatedOKHeaders) Validate() error {
+func (s *UsersListEmailsForAuthenticatedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17545,7 +17545,7 @@ func (s UsersListEmailsForAuthenticatedOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListFollowedByAuthenticatedOKHeaders) Validate() error {
+func (s *UsersListFollowedByAuthenticatedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17563,7 +17563,7 @@ func (s UsersListFollowedByAuthenticatedOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListFollowersForAuthenticatedUserOKHeaders) Validate() error {
+func (s *UsersListFollowersForAuthenticatedUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17581,7 +17581,7 @@ func (s UsersListFollowersForAuthenticatedUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListFollowersForUserOKHeaders) Validate() error {
+func (s *UsersListFollowersForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17599,7 +17599,7 @@ func (s UsersListFollowersForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListFollowingForUserOKHeaders) Validate() error {
+func (s *UsersListFollowingForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17617,42 +17617,7 @@ func (s UsersListFollowingForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListGpgKeysForAuthenticatedOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		var failures []validate.FieldError
-		for i, elem := range s.Response {
-			if err := func() error {
-				if err := elem.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				failures = append(failures, validate.FieldError{
-					Name:  fmt.Sprintf("[%d]", i),
-					Error: err,
-				})
-			}
-		}
-		if len(failures) > 0 {
-			return &validate.Error{Fields: failures}
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s UsersListGpgKeysForUserOKHeaders) Validate() error {
+func (s *UsersListGpgKeysForAuthenticatedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17687,25 +17652,7 @@ func (s UsersListGpgKeysForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListOKHeaders) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if s.Response == nil {
-			return errors.New("nil is invalid value")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Response",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s UsersListPublicEmailsForAuthenticatedOKHeaders) Validate() error {
+func (s *UsersListGpgKeysForUserOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17740,7 +17687,7 @@ func (s UsersListPublicEmailsForAuthenticatedOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListPublicKeysForUserOKHeaders) Validate() error {
+func (s *UsersListOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17758,7 +17705,60 @@ func (s UsersListPublicKeysForUserOKHeaders) Validate() error {
 	}
 	return nil
 }
-func (s UsersListPublicSSHKeysForAuthenticatedOKHeaders) Validate() error {
+func (s *UsersListPublicEmailsForAuthenticatedOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.Response {
+			if err := func() error {
+				if err := elem.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *UsersListPublicKeysForUserOKHeaders) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Response == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "Response",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s *UsersListPublicSSHKeysForAuthenticatedOKHeaders) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Response == nil {
@@ -17799,7 +17799,7 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Validat
 	}
 	return nil
 }
-func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Validate() error {
+func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Visibility.Validate(); err != nil {
@@ -17827,7 +17827,7 @@ func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Validate() 
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s ValidationError) Validate() error {
+func (s *ValidationError) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -17859,7 +17859,7 @@ func (s ValidationError) Validate() error {
 	}
 	return nil
 }
-func (s ValidationErrorErrorsItem) Validate() error {
+func (s *ValidationErrorErrorsItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Value.Set {
@@ -17902,7 +17902,7 @@ func (s ValidationErrorErrorsItemValue) Validate() error {
 	}
 }
 
-func (s ViewTraffic) Validate() error {
+func (s *ViewTraffic) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Views == nil {
@@ -17920,7 +17920,7 @@ func (s ViewTraffic) Validate() error {
 	}
 	return nil
 }
-func (s WebhookConfig) Validate() error {
+func (s *WebhookConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.InsecureSsl.Set {
@@ -17959,7 +17959,7 @@ func (s WebhookConfigInsecureSsl) Validate() error {
 	}
 }
 
-func (s Workflow) Validate() error {
+func (s *Workflow) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.State.Validate(); err != nil {

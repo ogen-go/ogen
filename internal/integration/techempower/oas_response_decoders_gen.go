@@ -49,7 +49,7 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
+func decodeDBResponse(resp *http.Response) (res *WorldObject, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -77,7 +77,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -85,7 +85,7 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
+func decodeJSONResponse(resp *http.Response) (res *HelloWorld, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -113,7 +113,7 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

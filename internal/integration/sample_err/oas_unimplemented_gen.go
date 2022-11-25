@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Creates data.
 //
 // POST /data
-func (UnimplementedHandler) DataCreate(ctx context.Context, req OptData) (r Data, _ error) {
+func (UnimplementedHandler) DataCreate(ctx context.Context, req OptData) (r *Data, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -27,13 +27,14 @@ func (UnimplementedHandler) DataCreate(ctx context.Context, req OptData) (r Data
 // Retrieve data.
 //
 // GET /data
-func (UnimplementedHandler) DataGet(ctx context.Context) (r Data, _ error) {
+func (UnimplementedHandler) DataGet(ctx context.Context) (r *Data, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// NewError creates ErrorStatusCode from error returned by handler.
+// NewError creates *ErrorStatusCode from error returned by handler.
 //
 // Used for common default response.
-func (UnimplementedHandler) NewError(ctx context.Context, err error) (r ErrorStatusCode) {
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
 	return r
 }

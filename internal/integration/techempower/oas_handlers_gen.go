@@ -157,7 +157,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 		err error
 	)
 
-	var response WorldObject
+	var response *WorldObject
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -171,7 +171,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = WorldObject
+			Response = *WorldObject
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -239,7 +239,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 		err error
 	)
 
-	var response HelloWorld
+	var response *HelloWorld
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -253,7 +253,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = HelloWorld
+			Response = *HelloWorld
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

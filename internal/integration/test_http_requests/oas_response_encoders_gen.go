@@ -50,7 +50,7 @@ func encodeBase64RequestResponse(response Base64RequestOK, w http.ResponseWriter
 	return nil
 }
 
-func encodeMaskContentTypeResponse(response MaskResponse, w http.ResponseWriter, span trace.Span) error {
+func encodeMaskContentTypeResponse(response *MaskResponse, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -63,7 +63,7 @@ func encodeMaskContentTypeResponse(response MaskResponse, w http.ResponseWriter,
 	return nil
 }
 
-func encodeMaskContentTypeOptionalResponse(response MaskResponse, w http.ResponseWriter, span trace.Span) error {
+func encodeMaskContentTypeOptionalResponse(response *MaskResponse, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

@@ -13,14 +13,14 @@ import (
 )
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s *Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Error) encodeFields(e *jx.Encoder) {
+func (s *Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -115,7 +115,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Error) MarshalJSON() ([]byte, error) {
+func (s *Error) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -178,14 +178,14 @@ func (s *FindPetsOKApplicationJSON) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NewPet) Encode(e *jx.Encoder) {
+func (s *NewPet) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NewPet) encodeFields(e *jx.Encoder) {
+func (s *NewPet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -279,7 +279,7 @@ func (s *NewPet) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NewPet) MarshalJSON() ([]byte, error) {
+func (s *NewPet) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -327,14 +327,14 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Pet) Encode(e *jx.Encoder) {
+func (s *Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s Pet) encodeFields(e *jx.Encoder) {
+func (s *Pet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -446,7 +446,7 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s Pet) MarshalJSON() ([]byte, error) {
+func (s *Pet) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

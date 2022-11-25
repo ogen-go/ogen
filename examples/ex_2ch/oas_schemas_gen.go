@@ -56,132 +56,132 @@ type Board struct {
 }
 
 // GetID returns the value of ID.
-func (s Board) GetID() string {
+func (s *Board) GetID() string {
 	return s.ID
 }
 
 // GetName returns the value of Name.
-func (s Board) GetName() string {
+func (s *Board) GetName() string {
 	return s.Name
 }
 
 // GetCategory returns the value of Category.
-func (s Board) GetCategory() string {
+func (s *Board) GetCategory() string {
 	return s.Category
 }
 
 // GetInfo returns the value of Info.
-func (s Board) GetInfo() string {
+func (s *Board) GetInfo() string {
 	return s.Info
 }
 
 // GetInfoOuter returns the value of InfoOuter.
-func (s Board) GetInfoOuter() string {
+func (s *Board) GetInfoOuter() string {
 	return s.InfoOuter
 }
 
 // GetThreadsPerPage returns the value of ThreadsPerPage.
-func (s Board) GetThreadsPerPage() int {
+func (s *Board) GetThreadsPerPage() int {
 	return s.ThreadsPerPage
 }
 
 // GetBumpLimit returns the value of BumpLimit.
-func (s Board) GetBumpLimit() int {
+func (s *Board) GetBumpLimit() int {
 	return s.BumpLimit
 }
 
 // GetMaxPages returns the value of MaxPages.
-func (s Board) GetMaxPages() int {
+func (s *Board) GetMaxPages() int {
 	return s.MaxPages
 }
 
 // GetDefaultName returns the value of DefaultName.
-func (s Board) GetDefaultName() string {
+func (s *Board) GetDefaultName() string {
 	return s.DefaultName
 }
 
 // GetEnableNames returns the value of EnableNames.
-func (s Board) GetEnableNames() bool {
+func (s *Board) GetEnableNames() bool {
 	return s.EnableNames
 }
 
 // GetEnableTrips returns the value of EnableTrips.
-func (s Board) GetEnableTrips() bool {
+func (s *Board) GetEnableTrips() bool {
 	return s.EnableTrips
 }
 
 // GetEnableSubject returns the value of EnableSubject.
-func (s Board) GetEnableSubject() bool {
+func (s *Board) GetEnableSubject() bool {
 	return s.EnableSubject
 }
 
 // GetEnableSage returns the value of EnableSage.
-func (s Board) GetEnableSage() bool {
+func (s *Board) GetEnableSage() bool {
 	return s.EnableSage
 }
 
 // GetEnableIcons returns the value of EnableIcons.
-func (s Board) GetEnableIcons() bool {
+func (s *Board) GetEnableIcons() bool {
 	return s.EnableIcons
 }
 
 // GetEnableFlags returns the value of EnableFlags.
-func (s Board) GetEnableFlags() bool {
+func (s *Board) GetEnableFlags() bool {
 	return s.EnableFlags
 }
 
 // GetEnableDices returns the value of EnableDices.
-func (s Board) GetEnableDices() bool {
+func (s *Board) GetEnableDices() bool {
 	return s.EnableDices
 }
 
 // GetEnableShield returns the value of EnableShield.
-func (s Board) GetEnableShield() bool {
+func (s *Board) GetEnableShield() bool {
 	return s.EnableShield
 }
 
 // GetEnableThreadTags returns the value of EnableThreadTags.
-func (s Board) GetEnableThreadTags() bool {
+func (s *Board) GetEnableThreadTags() bool {
 	return s.EnableThreadTags
 }
 
 // GetEnablePosting returns the value of EnablePosting.
-func (s Board) GetEnablePosting() bool {
+func (s *Board) GetEnablePosting() bool {
 	return s.EnablePosting
 }
 
 // GetEnableLikes returns the value of EnableLikes.
-func (s Board) GetEnableLikes() bool {
+func (s *Board) GetEnableLikes() bool {
 	return s.EnableLikes
 }
 
 // GetEnableOekaki returns the value of EnableOekaki.
-func (s Board) GetEnableOekaki() bool {
+func (s *Board) GetEnableOekaki() bool {
 	return s.EnableOekaki
 }
 
 // GetFileTypes returns the value of FileTypes.
-func (s Board) GetFileTypes() []string {
+func (s *Board) GetFileTypes() []string {
 	return s.FileTypes
 }
 
 // GetMaxComment returns the value of MaxComment.
-func (s Board) GetMaxComment() int {
+func (s *Board) GetMaxComment() int {
 	return s.MaxComment
 }
 
 // GetMaxFilesSize returns the value of MaxFilesSize.
-func (s Board) GetMaxFilesSize() int {
+func (s *Board) GetMaxFilesSize() int {
 	return s.MaxFilesSize
 }
 
 // GetTags returns the value of Tags.
-func (s Board) GetTags() []string {
+func (s *Board) GetTags() []string {
 	return s.Tags
 }
 
 // GetIcons returns the value of Icons.
-func (s Board) GetIcons() []BoardIconsItem {
+func (s *Board) GetIcons() []BoardIconsItem {
 	return s.Icons
 }
 
@@ -322,17 +322,17 @@ type BoardIconsItem struct {
 }
 
 // GetNum returns the value of Num.
-func (s BoardIconsItem) GetNum() OptInt {
+func (s *BoardIconsItem) GetNum() OptInt {
 	return s.Num
 }
 
 // GetName returns the value of Name.
-func (s BoardIconsItem) GetName() OptString {
+func (s *BoardIconsItem) GetName() OptString {
 	return s.Name
 }
 
 // GetURL returns the value of URL.
-func (s BoardIconsItem) GetURL() OptString {
+func (s *BoardIconsItem) GetURL() OptString {
 	return s.URL
 }
 
@@ -374,32 +374,32 @@ type Captcha struct {
 }
 
 // GetResult returns the value of Result.
-func (s Captcha) GetResult() int {
+func (s *Captcha) GetResult() int {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s Captcha) GetError() OptError {
+func (s *Captcha) GetError() OptError {
 	return s.Error
 }
 
 // GetType returns the value of Type.
-func (s Captcha) GetType() CaptchaType {
+func (s *Captcha) GetType() CaptchaType {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s Captcha) GetID() string {
+func (s *Captcha) GetID() string {
 	return s.ID
 }
 
 // GetExpires returns the value of Expires.
-func (s Captcha) GetExpires() OptInt {
+func (s *Captcha) GetExpires() OptInt {
 	return s.Expires
 }
 
 // GetInput returns the value of Input.
-func (s Captcha) GetInput() OptString {
+func (s *Captcha) GetInput() OptString {
 	return s.Input
 }
 
@@ -471,12 +471,12 @@ type Error struct {
 }
 
 // GetCode returns the value of Code.
-func (s Error) GetCode() OptErrorCode {
+func (s *Error) GetCode() OptErrorCode {
 	return s.Code
 }
 
 // GetMessage returns the value of Message.
-func (s Error) GetMessage() OptString {
+func (s *Error) GetMessage() OptString {
 	return s.Message
 }
 
@@ -614,92 +614,92 @@ type File struct {
 }
 
 // GetName returns the value of Name.
-func (s File) GetName() string {
+func (s *File) GetName() string {
 	return s.Name
 }
 
 // GetFullname returns the value of Fullname.
-func (s File) GetFullname() string {
+func (s *File) GetFullname() string {
 	return s.Fullname
 }
 
 // GetDisplayname returns the value of Displayname.
-func (s File) GetDisplayname() string {
+func (s *File) GetDisplayname() string {
 	return s.Displayname
 }
 
 // GetPath returns the value of Path.
-func (s File) GetPath() string {
+func (s *File) GetPath() string {
 	return s.Path
 }
 
 // GetThumbnail returns the value of Thumbnail.
-func (s File) GetThumbnail() string {
+func (s *File) GetThumbnail() string {
 	return s.Thumbnail
 }
 
 // GetMD5 returns the value of MD5.
-func (s File) GetMD5() OptString {
+func (s *File) GetMD5() OptString {
 	return s.MD5
 }
 
 // GetType returns the value of Type.
-func (s File) GetType() FileType {
+func (s *File) GetType() FileType {
 	return s.Type
 }
 
 // GetSize returns the value of Size.
-func (s File) GetSize() int {
+func (s *File) GetSize() int {
 	return s.Size
 }
 
 // GetWidth returns the value of Width.
-func (s File) GetWidth() int {
+func (s *File) GetWidth() int {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s File) GetHeight() int {
+func (s *File) GetHeight() int {
 	return s.Height
 }
 
 // GetTnWidth returns the value of TnWidth.
-func (s File) GetTnWidth() int {
+func (s *File) GetTnWidth() int {
 	return s.TnWidth
 }
 
 // GetTnHeight returns the value of TnHeight.
-func (s File) GetTnHeight() int {
+func (s *File) GetTnHeight() int {
 	return s.TnHeight
 }
 
 // GetNsfw returns the value of Nsfw.
-func (s File) GetNsfw() OptInt {
+func (s *File) GetNsfw() OptInt {
 	return s.Nsfw
 }
 
 // GetDuration returns the value of Duration.
-func (s File) GetDuration() OptString {
+func (s *File) GetDuration() OptString {
 	return s.Duration
 }
 
 // GetDurationSecs returns the value of DurationSecs.
-func (s File) GetDurationSecs() OptInt {
+func (s *File) GetDurationSecs() OptInt {
 	return s.DurationSecs
 }
 
 // GetPack returns the value of Pack.
-func (s File) GetPack() OptString {
+func (s *File) GetPack() OptString {
 	return s.Pack
 }
 
 // GetSticker returns the value of Sticker.
-func (s File) GetSticker() OptString {
+func (s *File) GetSticker() OptString {
 	return s.Sticker
 }
 
 // GetInstall returns the value of Install.
-func (s File) GetInstall() OptString {
+func (s *File) GetInstall() OptString {
 	return s.Install
 }
 
@@ -828,12 +828,12 @@ type Like struct {
 }
 
 // GetResult returns the value of Result.
-func (s Like) GetResult() OptInt {
+func (s *Like) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s Like) GetError() OptError {
+func (s *Like) GetError() OptError {
 	return s.Error
 }
 
@@ -855,17 +855,17 @@ type MobilePost struct {
 }
 
 // GetResult returns the value of Result.
-func (s MobilePost) GetResult() OptInt {
+func (s *MobilePost) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s MobilePost) GetError() OptError {
+func (s *MobilePost) GetError() OptError {
 	return s.Error
 }
 
 // GetPost returns the value of Post.
-func (s MobilePost) GetPost() OptPost {
+func (s *MobilePost) GetPost() OptPost {
 	return s.Post
 }
 
@@ -892,17 +892,17 @@ type MobileThreadLastInfo struct {
 }
 
 // GetResult returns the value of Result.
-func (s MobileThreadLastInfo) GetResult() OptInt {
+func (s *MobileThreadLastInfo) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s MobileThreadLastInfo) GetError() OptError {
+func (s *MobileThreadLastInfo) GetError() OptError {
 	return s.Error
 }
 
 // GetThread returns the value of Thread.
-func (s MobileThreadLastInfo) GetThread() OptMobileThreadLastInfoThread {
+func (s *MobileThreadLastInfo) GetThread() OptMobileThreadLastInfoThread {
 	return s.Thread
 }
 
@@ -928,17 +928,17 @@ type MobileThreadLastInfoThread struct {
 }
 
 // GetNum returns the value of Num.
-func (s MobileThreadLastInfoThread) GetNum() OptInt {
+func (s *MobileThreadLastInfoThread) GetNum() OptInt {
 	return s.Num
 }
 
 // GetTimestamp returns the value of Timestamp.
-func (s MobileThreadLastInfoThread) GetTimestamp() OptInt {
+func (s *MobileThreadLastInfoThread) GetTimestamp() OptInt {
 	return s.Timestamp
 }
 
 // GetPosts returns the value of Posts.
-func (s MobileThreadLastInfoThread) GetPosts() OptInt {
+func (s *MobileThreadLastInfoThread) GetPosts() OptInt {
 	return s.Posts
 }
 
@@ -966,22 +966,22 @@ type MobileThreadPostsAfter struct {
 }
 
 // GetResult returns the value of Result.
-func (s MobileThreadPostsAfter) GetResult() OptInt {
+func (s *MobileThreadPostsAfter) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s MobileThreadPostsAfter) GetError() OptError {
+func (s *MobileThreadPostsAfter) GetError() OptError {
 	return s.Error
 }
 
 // GetUniquePosters returns the value of UniquePosters.
-func (s MobileThreadPostsAfter) GetUniquePosters() OptInt {
+func (s *MobileThreadPostsAfter) GetUniquePosters() OptInt {
 	return s.UniquePosters
 }
 
 // GetPosts returns the value of Posts.
-func (s MobileThreadPostsAfter) GetPosts() []Post {
+func (s *MobileThreadPostsAfter) GetPosts() []Post {
 	return s.Posts
 }
 
@@ -1519,17 +1519,17 @@ type Passcode struct {
 }
 
 // GetResult returns the value of Result.
-func (s Passcode) GetResult() OptInt {
+func (s *Passcode) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s Passcode) GetError() OptError {
+func (s *Passcode) GetError() OptError {
 	return s.Error
 }
 
 // GetPasscode returns the value of Passcode.
-func (s Passcode) GetPasscode() OptPasscodePasscode {
+func (s *Passcode) GetPasscode() OptPasscodePasscode {
 	return s.Passcode
 }
 
@@ -1554,12 +1554,12 @@ type PasscodePasscode struct {
 }
 
 // GetType returns the value of Type.
-func (s PasscodePasscode) GetType() OptString {
+func (s *PasscodePasscode) GetType() OptString {
 	return s.Type
 }
 
 // GetExpires returns the value of Expires.
-func (s PasscodePasscode) GetExpires() OptInt {
+func (s *PasscodePasscode) GetExpires() OptInt {
 	return s.Expires
 }
 
@@ -1602,117 +1602,117 @@ type Post struct {
 }
 
 // GetNum returns the value of Num.
-func (s Post) GetNum() int {
+func (s *Post) GetNum() int {
 	return s.Num
 }
 
 // GetParent returns the value of Parent.
-func (s Post) GetParent() int {
+func (s *Post) GetParent() int {
 	return s.Parent
 }
 
 // GetBoard returns the value of Board.
-func (s Post) GetBoard() string {
+func (s *Post) GetBoard() string {
 	return s.Board
 }
 
 // GetTimestamp returns the value of Timestamp.
-func (s Post) GetTimestamp() int {
+func (s *Post) GetTimestamp() int {
 	return s.Timestamp
 }
 
 // GetLasthit returns the value of Lasthit.
-func (s Post) GetLasthit() int {
+func (s *Post) GetLasthit() int {
 	return s.Lasthit
 }
 
 // GetDate returns the value of Date.
-func (s Post) GetDate() string {
+func (s *Post) GetDate() string {
 	return s.Date
 }
 
 // GetEmail returns the value of Email.
-func (s Post) GetEmail() OptString {
+func (s *Post) GetEmail() OptString {
 	return s.Email
 }
 
 // GetSubject returns the value of Subject.
-func (s Post) GetSubject() OptString {
+func (s *Post) GetSubject() OptString {
 	return s.Subject
 }
 
 // GetComment returns the value of Comment.
-func (s Post) GetComment() string {
+func (s *Post) GetComment() string {
 	return s.Comment
 }
 
 // GetFiles returns the value of Files.
-func (s Post) GetFiles() []File {
+func (s *Post) GetFiles() []File {
 	return s.Files
 }
 
 // GetViews returns the value of Views.
-func (s Post) GetViews() int {
+func (s *Post) GetViews() int {
 	return s.Views
 }
 
 // GetSticky returns the value of Sticky.
-func (s Post) GetSticky() int {
+func (s *Post) GetSticky() int {
 	return s.Sticky
 }
 
 // GetEndless returns the value of Endless.
-func (s Post) GetEndless() int {
+func (s *Post) GetEndless() int {
 	return s.Endless
 }
 
 // GetClosed returns the value of Closed.
-func (s Post) GetClosed() int {
+func (s *Post) GetClosed() int {
 	return s.Closed
 }
 
 // GetBanned returns the value of Banned.
-func (s Post) GetBanned() int {
+func (s *Post) GetBanned() int {
 	return s.Banned
 }
 
 // GetOp returns the value of Op.
-func (s Post) GetOp() int {
+func (s *Post) GetOp() int {
 	return s.Op
 }
 
 // GetName returns the value of Name.
-func (s Post) GetName() OptString {
+func (s *Post) GetName() OptString {
 	return s.Name
 }
 
 // GetIcon returns the value of Icon.
-func (s Post) GetIcon() OptString {
+func (s *Post) GetIcon() OptString {
 	return s.Icon
 }
 
 // GetTrip returns the value of Trip.
-func (s Post) GetTrip() OptString {
+func (s *Post) GetTrip() OptString {
 	return s.Trip
 }
 
 // GetTripStyle returns the value of TripStyle.
-func (s Post) GetTripStyle() OptString {
+func (s *Post) GetTripStyle() OptString {
 	return s.TripStyle
 }
 
 // GetTags returns the value of Tags.
-func (s Post) GetTags() OptString {
+func (s *Post) GetTags() OptString {
 	return s.Tags
 }
 
 // GetLikes returns the value of Likes.
-func (s Post) GetLikes() OptInt {
+func (s *Post) GetLikes() OptInt {
 	return s.Likes
 }
 
 // GetDislikes returns the value of Dislikes.
-func (s Post) GetDislikes() OptInt {
+func (s *Post) GetDislikes() OptInt {
 	return s.Dislikes
 }
 
@@ -1840,17 +1840,17 @@ type PostingNewPost struct {
 }
 
 // GetResult returns the value of Result.
-func (s PostingNewPost) GetResult() OptInt {
+func (s *PostingNewPost) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s PostingNewPost) GetError() OptError {
+func (s *PostingNewPost) GetError() OptError {
 	return s.Error
 }
 
 // GetNum returns the value of Num.
-func (s PostingNewPost) GetNum() OptInt {
+func (s *PostingNewPost) GetNum() OptInt {
 	return s.Num
 }
 
@@ -1878,17 +1878,17 @@ type PostingNewThread struct {
 }
 
 // GetResult returns the value of Result.
-func (s PostingNewThread) GetResult() OptInt {
+func (s *PostingNewThread) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s PostingNewThread) GetError() OptError {
+func (s *PostingNewThread) GetError() OptError {
 	return s.Error
 }
 
 // GetThread returns the value of Thread.
-func (s PostingNewThread) GetThread() OptInt {
+func (s *PostingNewThread) GetThread() OptInt {
 	return s.Thread
 }
 
@@ -1914,12 +1914,12 @@ type Report struct {
 }
 
 // GetResult returns the value of Result.
-func (s Report) GetResult() OptInt {
+func (s *Report) GetResult() OptInt {
 	return s.Result
 }
 
 // GetError returns the value of Error.
-func (s Report) GetError() OptError {
+func (s *Report) GetError() OptError {
 	return s.Error
 }
 
@@ -1938,7 +1938,7 @@ type UserPassloginPostReq struct {
 }
 
 // GetPasscode returns the value of Passcode.
-func (s UserPassloginPostReq) GetPasscode() string {
+func (s *UserPassloginPostReq) GetPasscode() string {
 	return s.Passcode
 }
 
@@ -2039,57 +2039,57 @@ type UserPostingPostReq struct {
 }
 
 // GetCaptchaType returns the value of CaptchaType.
-func (s UserPostingPostReq) GetCaptchaType() CaptchaType {
+func (s *UserPostingPostReq) GetCaptchaType() CaptchaType {
 	return s.CaptchaType
 }
 
 // GetBoard returns the value of Board.
-func (s UserPostingPostReq) GetBoard() string {
+func (s *UserPostingPostReq) GetBoard() string {
 	return s.Board
 }
 
 // GetThread returns the value of Thread.
-func (s UserPostingPostReq) GetThread() OptInt {
+func (s *UserPostingPostReq) GetThread() OptInt {
 	return s.Thread
 }
 
 // GetName returns the value of Name.
-func (s UserPostingPostReq) GetName() OptString {
+func (s *UserPostingPostReq) GetName() OptString {
 	return s.Name
 }
 
 // GetEmail returns the value of Email.
-func (s UserPostingPostReq) GetEmail() OptString {
+func (s *UserPostingPostReq) GetEmail() OptString {
 	return s.Email
 }
 
 // GetTags returns the value of Tags.
-func (s UserPostingPostReq) GetTags() OptString {
+func (s *UserPostingPostReq) GetTags() OptString {
 	return s.Tags
 }
 
 // GetSubject returns the value of Subject.
-func (s UserPostingPostReq) GetSubject() OptString {
+func (s *UserPostingPostReq) GetSubject() OptString {
 	return s.Subject
 }
 
 // GetComment returns the value of Comment.
-func (s UserPostingPostReq) GetComment() OptString {
+func (s *UserPostingPostReq) GetComment() OptString {
 	return s.Comment
 }
 
 // GetIcon returns the value of Icon.
-func (s UserPostingPostReq) GetIcon() OptInt {
+func (s *UserPostingPostReq) GetIcon() OptInt {
 	return s.Icon
 }
 
 // GetOpMark returns the value of OpMark.
-func (s UserPostingPostReq) GetOpMark() OptInt {
+func (s *UserPostingPostReq) GetOpMark() OptInt {
 	return s.OpMark
 }
 
 // GetFile returns the value of File.
-func (s UserPostingPostReq) GetFile() []string {
+func (s *UserPostingPostReq) GetFile() []string {
 	return s.File
 }
 
@@ -2156,22 +2156,22 @@ type UserReportPostReq struct {
 }
 
 // GetBoard returns the value of Board.
-func (s UserReportPostReq) GetBoard() string {
+func (s *UserReportPostReq) GetBoard() string {
 	return s.Board
 }
 
 // GetThread returns the value of Thread.
-func (s UserReportPostReq) GetThread() int {
+func (s *UserReportPostReq) GetThread() int {
 	return s.Thread
 }
 
 // GetPost returns the value of Post.
-func (s UserReportPostReq) GetPost() []int {
+func (s *UserReportPostReq) GetPost() []int {
 	return s.Post
 }
 
 // GetComment returns the value of Comment.
-func (s UserReportPostReq) GetComment() string {
+func (s *UserReportPostReq) GetComment() string {
 	return s.Comment
 }
 

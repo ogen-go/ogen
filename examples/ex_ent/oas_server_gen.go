@@ -13,25 +13,25 @@ type Handler interface {
 	// Creates a new Pet and persists it to storage.
 	//
 	// POST /pets
-	CreatePet(ctx context.Context, req CreatePetReq) (CreatePetRes, error)
+	CreatePet(ctx context.Context, req *CreatePetReq) (CreatePetRes, error)
 	// CreatePetCategories implements createPetCategories operation.
 	//
 	// Creates a new Category and attaches it to the Pet.
 	//
 	// POST /pets/{id}/categories
-	CreatePetCategories(ctx context.Context, req CreatePetCategoriesReq, params CreatePetCategoriesParams) (CreatePetCategoriesRes, error)
+	CreatePetCategories(ctx context.Context, req *CreatePetCategoriesReq, params CreatePetCategoriesParams) (CreatePetCategoriesRes, error)
 	// CreatePetFriends implements createPetFriends operation.
 	//
 	// Creates a new Pet and attaches it to the Pet.
 	//
 	// POST /pets/{id}/friends
-	CreatePetFriends(ctx context.Context, req CreatePetFriendsReq, params CreatePetFriendsParams) (CreatePetFriendsRes, error)
+	CreatePetFriends(ctx context.Context, req *CreatePetFriendsReq, params CreatePetFriendsParams) (CreatePetFriendsRes, error)
 	// CreatePetOwner implements createPetOwner operation.
 	//
 	// Creates a new User and attaches it to the Pet.
 	//
 	// POST /pets/{id}/owner
-	CreatePetOwner(ctx context.Context, req CreatePetOwnerReq, params CreatePetOwnerParams) (CreatePetOwnerRes, error)
+	CreatePetOwner(ctx context.Context, req *CreatePetOwnerReq, params CreatePetOwnerParams) (CreatePetOwnerRes, error)
 	// DeletePet implements deletePet operation.
 	//
 	// Deletes the Pet with the requested ID.
@@ -79,7 +79,7 @@ type Handler interface {
 	// Updates a Pet and persists changes to storage.
 	//
 	// PATCH /pets/{id}
-	UpdatePet(ctx context.Context, req UpdatePetReq, params UpdatePetParams) (UpdatePetRes, error)
+	UpdatePet(ctx context.Context, req *UpdatePetReq, params UpdatePetParams) (UpdatePetRes, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

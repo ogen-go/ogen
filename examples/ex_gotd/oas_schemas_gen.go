@@ -34,37 +34,37 @@ type AddStickerToSet struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s AddStickerToSet) GetUserID() int64 {
+func (s *AddStickerToSet) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetName returns the value of Name.
-func (s AddStickerToSet) GetName() string {
+func (s *AddStickerToSet) GetName() string {
 	return s.Name
 }
 
 // GetPNGSticker returns the value of PNGSticker.
-func (s AddStickerToSet) GetPNGSticker() OptString {
+func (s *AddStickerToSet) GetPNGSticker() OptString {
 	return s.PNGSticker
 }
 
 // GetTgsSticker returns the value of TgsSticker.
-func (s AddStickerToSet) GetTgsSticker() OptString {
+func (s *AddStickerToSet) GetTgsSticker() OptString {
 	return s.TgsSticker
 }
 
 // GetWebmSticker returns the value of WebmSticker.
-func (s AddStickerToSet) GetWebmSticker() OptString {
+func (s *AddStickerToSet) GetWebmSticker() OptString {
 	return s.WebmSticker
 }
 
 // GetEmojis returns the value of Emojis.
-func (s AddStickerToSet) GetEmojis() string {
+func (s *AddStickerToSet) GetEmojis() string {
 	return s.Emojis
 }
 
 // GetMaskPosition returns the value of MaskPosition.
-func (s AddStickerToSet) GetMaskPosition() OptMaskPosition {
+func (s *AddStickerToSet) GetMaskPosition() OptMaskPosition {
 	return s.MaskPosition
 }
 
@@ -127,47 +127,47 @@ type Animation struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Animation) GetFileID() string {
+func (s *Animation) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Animation) GetFileUniqueID() string {
+func (s *Animation) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetWidth returns the value of Width.
-func (s Animation) GetWidth() int {
+func (s *Animation) GetWidth() int {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s Animation) GetHeight() int {
+func (s *Animation) GetHeight() int {
 	return s.Height
 }
 
 // GetDuration returns the value of Duration.
-func (s Animation) GetDuration() int {
+func (s *Animation) GetDuration() int {
 	return s.Duration
 }
 
 // GetThumb returns the value of Thumb.
-func (s Animation) GetThumb() OptPhotoSize {
+func (s *Animation) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
 // GetFileName returns the value of FileName.
-func (s Animation) GetFileName() OptString {
+func (s *Animation) GetFileName() OptString {
 	return s.FileName
 }
 
 // GetMimeType returns the value of MimeType.
-func (s Animation) GetMimeType() OptString {
+func (s *Animation) GetMimeType() OptString {
 	return s.MimeType
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Animation) GetFileSize() OptInt {
+func (s *Animation) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -237,27 +237,27 @@ type AnswerCallbackQuery struct {
 }
 
 // GetCallbackQueryID returns the value of CallbackQueryID.
-func (s AnswerCallbackQuery) GetCallbackQueryID() string {
+func (s *AnswerCallbackQuery) GetCallbackQueryID() string {
 	return s.CallbackQueryID
 }
 
 // GetText returns the value of Text.
-func (s AnswerCallbackQuery) GetText() OptString {
+func (s *AnswerCallbackQuery) GetText() OptString {
 	return s.Text
 }
 
 // GetShowAlert returns the value of ShowAlert.
-func (s AnswerCallbackQuery) GetShowAlert() OptBool {
+func (s *AnswerCallbackQuery) GetShowAlert() OptBool {
 	return s.ShowAlert
 }
 
 // GetURL returns the value of URL.
-func (s AnswerCallbackQuery) GetURL() OptString {
+func (s *AnswerCallbackQuery) GetURL() OptString {
 	return s.URL
 }
 
 // GetCacheTime returns the value of CacheTime.
-func (s AnswerCallbackQuery) GetCacheTime() OptInt {
+func (s *AnswerCallbackQuery) GetCacheTime() OptInt {
 	return s.CacheTime
 }
 
@@ -318,37 +318,37 @@ type AnswerInlineQuery struct {
 }
 
 // GetInlineQueryID returns the value of InlineQueryID.
-func (s AnswerInlineQuery) GetInlineQueryID() string {
+func (s *AnswerInlineQuery) GetInlineQueryID() string {
 	return s.InlineQueryID
 }
 
 // GetResults returns the value of Results.
-func (s AnswerInlineQuery) GetResults() []InlineQueryResult {
+func (s *AnswerInlineQuery) GetResults() []InlineQueryResult {
 	return s.Results
 }
 
 // GetCacheTime returns the value of CacheTime.
-func (s AnswerInlineQuery) GetCacheTime() OptInt {
+func (s *AnswerInlineQuery) GetCacheTime() OptInt {
 	return s.CacheTime
 }
 
 // GetIsPersonal returns the value of IsPersonal.
-func (s AnswerInlineQuery) GetIsPersonal() OptBool {
+func (s *AnswerInlineQuery) GetIsPersonal() OptBool {
 	return s.IsPersonal
 }
 
 // GetNextOffset returns the value of NextOffset.
-func (s AnswerInlineQuery) GetNextOffset() OptString {
+func (s *AnswerInlineQuery) GetNextOffset() OptString {
 	return s.NextOffset
 }
 
 // GetSwitchPmText returns the value of SwitchPmText.
-func (s AnswerInlineQuery) GetSwitchPmText() OptString {
+func (s *AnswerInlineQuery) GetSwitchPmText() OptString {
 	return s.SwitchPmText
 }
 
 // GetSwitchPmParameter returns the value of SwitchPmParameter.
-func (s AnswerInlineQuery) GetSwitchPmParameter() OptString {
+func (s *AnswerInlineQuery) GetSwitchPmParameter() OptString {
 	return s.SwitchPmParameter
 }
 
@@ -403,17 +403,17 @@ type AnswerPreCheckoutQuery struct {
 }
 
 // GetPreCheckoutQueryID returns the value of PreCheckoutQueryID.
-func (s AnswerPreCheckoutQuery) GetPreCheckoutQueryID() string {
+func (s *AnswerPreCheckoutQuery) GetPreCheckoutQueryID() string {
 	return s.PreCheckoutQueryID
 }
 
 // GetOk returns the value of Ok.
-func (s AnswerPreCheckoutQuery) GetOk() bool {
+func (s *AnswerPreCheckoutQuery) GetOk() bool {
 	return s.Ok
 }
 
 // GetErrorMessage returns the value of ErrorMessage.
-func (s AnswerPreCheckoutQuery) GetErrorMessage() OptString {
+func (s *AnswerPreCheckoutQuery) GetErrorMessage() OptString {
 	return s.ErrorMessage
 }
 
@@ -449,22 +449,22 @@ type AnswerShippingQuery struct {
 }
 
 // GetShippingQueryID returns the value of ShippingQueryID.
-func (s AnswerShippingQuery) GetShippingQueryID() string {
+func (s *AnswerShippingQuery) GetShippingQueryID() string {
 	return s.ShippingQueryID
 }
 
 // GetOk returns the value of Ok.
-func (s AnswerShippingQuery) GetOk() bool {
+func (s *AnswerShippingQuery) GetOk() bool {
 	return s.Ok
 }
 
 // GetShippingOptions returns the value of ShippingOptions.
-func (s AnswerShippingQuery) GetShippingOptions() []ShippingOption {
+func (s *AnswerShippingQuery) GetShippingOptions() []ShippingOption {
 	return s.ShippingOptions
 }
 
 // GetErrorMessage returns the value of ErrorMessage.
-func (s AnswerShippingQuery) GetErrorMessage() OptString {
+func (s *AnswerShippingQuery) GetErrorMessage() OptString {
 	return s.ErrorMessage
 }
 
@@ -497,12 +497,12 @@ type AnswerWebAppQuery struct {
 }
 
 // GetWebAppQueryID returns the value of WebAppQueryID.
-func (s AnswerWebAppQuery) GetWebAppQueryID() string {
+func (s *AnswerWebAppQuery) GetWebAppQueryID() string {
 	return s.WebAppQueryID
 }
 
 // GetResult returns the value of Result.
-func (s AnswerWebAppQuery) GetResult() InlineQueryResult {
+func (s *AnswerWebAppQuery) GetResult() InlineQueryResult {
 	return s.Result
 }
 
@@ -525,12 +525,12 @@ type ApproveChatJoinRequest struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s ApproveChatJoinRequest) GetChatID() ID {
+func (s *ApproveChatJoinRequest) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s ApproveChatJoinRequest) GetUserID() int64 {
+func (s *ApproveChatJoinRequest) GetUserID() int64 {
 	return s.UserID
 }
 
@@ -568,47 +568,47 @@ type Audio struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Audio) GetFileID() string {
+func (s *Audio) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Audio) GetFileUniqueID() string {
+func (s *Audio) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetDuration returns the value of Duration.
-func (s Audio) GetDuration() int {
+func (s *Audio) GetDuration() int {
 	return s.Duration
 }
 
 // GetPerformer returns the value of Performer.
-func (s Audio) GetPerformer() OptString {
+func (s *Audio) GetPerformer() OptString {
 	return s.Performer
 }
 
 // GetTitle returns the value of Title.
-func (s Audio) GetTitle() OptString {
+func (s *Audio) GetTitle() OptString {
 	return s.Title
 }
 
 // GetFileName returns the value of FileName.
-func (s Audio) GetFileName() OptString {
+func (s *Audio) GetFileName() OptString {
 	return s.FileName
 }
 
 // GetMimeType returns the value of MimeType.
-func (s Audio) GetMimeType() OptString {
+func (s *Audio) GetMimeType() OptString {
 	return s.MimeType
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Audio) GetFileSize() OptInt {
+func (s *Audio) GetFileSize() OptInt {
 	return s.FileSize
 }
 
 // GetThumb returns the value of Thumb.
-func (s Audio) GetThumb() OptPhotoSize {
+func (s *Audio) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
@@ -674,22 +674,22 @@ type BanChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s BanChatMember) GetChatID() ID {
+func (s *BanChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s BanChatMember) GetUserID() int64 {
+func (s *BanChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetUntilDate returns the value of UntilDate.
-func (s BanChatMember) GetUntilDate() OptInt {
+func (s *BanChatMember) GetUntilDate() OptInt {
 	return s.UntilDate
 }
 
 // GetRevokeMessages returns the value of RevokeMessages.
-func (s BanChatMember) GetRevokeMessages() OptBool {
+func (s *BanChatMember) GetRevokeMessages() OptBool {
 	return s.RevokeMessages
 }
 
@@ -722,12 +722,12 @@ type BanChatSenderChat struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s BanChatSenderChat) GetChatID() ID {
+func (s *BanChatSenderChat) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetSenderChatID returns the value of SenderChatID.
-func (s BanChatSenderChat) GetSenderChatID() int64 {
+func (s *BanChatSenderChat) GetSenderChatID() int64 {
 	return s.SenderChatID
 }
 
@@ -752,12 +752,12 @@ type BotCommand struct {
 }
 
 // GetCommand returns the value of Command.
-func (s BotCommand) GetCommand() string {
+func (s *BotCommand) GetCommand() string {
 	return s.Command
 }
 
 // GetDescription returns the value of Description.
-func (s BotCommand) GetDescription() string {
+func (s *BotCommand) GetDescription() string {
 	return s.Description
 }
 
@@ -1000,7 +1000,7 @@ type BotCommandScopeChat struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s BotCommandScopeChat) GetChatID() ID {
+func (s *BotCommandScopeChat) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -1017,7 +1017,7 @@ type BotCommandScopeChatAdministrators struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s BotCommandScopeChatAdministrators) GetChatID() ID {
+func (s *BotCommandScopeChatAdministrators) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -1035,12 +1035,12 @@ type BotCommandScopeChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s BotCommandScopeChatMember) GetChatID() ID {
+func (s *BotCommandScopeChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s BotCommandScopeChatMember) GetUserID() int64 {
+func (s *BotCommandScopeChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
@@ -1087,37 +1087,37 @@ type CallbackQuery struct {
 }
 
 // GetID returns the value of ID.
-func (s CallbackQuery) GetID() string {
+func (s *CallbackQuery) GetID() string {
 	return s.ID
 }
 
 // GetFrom returns the value of From.
-func (s CallbackQuery) GetFrom() User {
+func (s *CallbackQuery) GetFrom() User {
 	return s.From
 }
 
 // GetMessage returns the value of Message.
-func (s CallbackQuery) GetMessage() OptMessage {
+func (s *CallbackQuery) GetMessage() OptMessage {
 	return s.Message
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s CallbackQuery) GetInlineMessageID() OptString {
+func (s *CallbackQuery) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetChatInstance returns the value of ChatInstance.
-func (s CallbackQuery) GetChatInstance() string {
+func (s *CallbackQuery) GetChatInstance() string {
 	return s.ChatInstance
 }
 
 // GetData returns the value of Data.
-func (s CallbackQuery) GetData() OptString {
+func (s *CallbackQuery) GetData() OptString {
 	return s.Data
 }
 
 // GetGameShortName returns the value of GameShortName.
-func (s CallbackQuery) GetGameShortName() OptString {
+func (s *CallbackQuery) GetGameShortName() OptString {
 	return s.GameShortName
 }
 
@@ -1209,107 +1209,107 @@ type Chat struct {
 }
 
 // GetID returns the value of ID.
-func (s Chat) GetID() int64 {
+func (s *Chat) GetID() int64 {
 	return s.ID
 }
 
 // GetType returns the value of Type.
-func (s Chat) GetType() ChatType {
+func (s *Chat) GetType() ChatType {
 	return s.Type
 }
 
 // GetTitle returns the value of Title.
-func (s Chat) GetTitle() OptString {
+func (s *Chat) GetTitle() OptString {
 	return s.Title
 }
 
 // GetUsername returns the value of Username.
-func (s Chat) GetUsername() OptString {
+func (s *Chat) GetUsername() OptString {
 	return s.Username
 }
 
 // GetFirstName returns the value of FirstName.
-func (s Chat) GetFirstName() OptString {
+func (s *Chat) GetFirstName() OptString {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s Chat) GetLastName() OptString {
+func (s *Chat) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetPhoto returns the value of Photo.
-func (s Chat) GetPhoto() OptChatPhoto {
+func (s *Chat) GetPhoto() OptChatPhoto {
 	return s.Photo
 }
 
 // GetBio returns the value of Bio.
-func (s Chat) GetBio() OptString {
+func (s *Chat) GetBio() OptString {
 	return s.Bio
 }
 
 // GetHasPrivateForwards returns the value of HasPrivateForwards.
-func (s Chat) GetHasPrivateForwards() OptBool {
+func (s *Chat) GetHasPrivateForwards() OptBool {
 	return s.HasPrivateForwards
 }
 
 // GetDescription returns the value of Description.
-func (s Chat) GetDescription() OptString {
+func (s *Chat) GetDescription() OptString {
 	return s.Description
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s Chat) GetInviteLink() OptString {
+func (s *Chat) GetInviteLink() OptString {
 	return s.InviteLink
 }
 
 // GetPinnedMessage returns the value of PinnedMessage.
-func (s Chat) GetPinnedMessage() *Message {
+func (s *Chat) GetPinnedMessage() *Message {
 	return s.PinnedMessage
 }
 
 // GetPermissions returns the value of Permissions.
-func (s Chat) GetPermissions() OptChatPermissions {
+func (s *Chat) GetPermissions() OptChatPermissions {
 	return s.Permissions
 }
 
 // GetSlowModeDelay returns the value of SlowModeDelay.
-func (s Chat) GetSlowModeDelay() OptInt {
+func (s *Chat) GetSlowModeDelay() OptInt {
 	return s.SlowModeDelay
 }
 
 // GetMessageAutoDeleteTime returns the value of MessageAutoDeleteTime.
-func (s Chat) GetMessageAutoDeleteTime() OptInt {
+func (s *Chat) GetMessageAutoDeleteTime() OptInt {
 	return s.MessageAutoDeleteTime
 }
 
 // GetHasProtectedContent returns the value of HasProtectedContent.
-func (s Chat) GetHasProtectedContent() OptBool {
+func (s *Chat) GetHasProtectedContent() OptBool {
 	return s.HasProtectedContent
 }
 
 // GetStickerSetName returns the value of StickerSetName.
-func (s Chat) GetStickerSetName() OptString {
+func (s *Chat) GetStickerSetName() OptString {
 	return s.StickerSetName
 }
 
 // GetCanSetStickerSet returns the value of CanSetStickerSet.
-func (s Chat) GetCanSetStickerSet() OptBool {
+func (s *Chat) GetCanSetStickerSet() OptBool {
 	return s.CanSetStickerSet
 }
 
 // GetLinkedChatID returns the value of LinkedChatID.
-func (s Chat) GetLinkedChatID() OptInt64 {
+func (s *Chat) GetLinkedChatID() OptInt64 {
 	return s.LinkedChatID
 }
 
 // GetLocation returns the value of Location.
-func (s Chat) GetLocation() OptChatLocation {
+func (s *Chat) GetLocation() OptChatLocation {
 	return s.Location
 }
 
 // GetAllMembersAreAdministrators returns the value of AllMembersAreAdministrators.
-func (s Chat) GetAllMembersAreAdministrators() OptBool {
+func (s *Chat) GetAllMembersAreAdministrators() OptBool {
 	return s.AllMembersAreAdministrators
 }
 
@@ -1450,57 +1450,57 @@ type ChatAdministratorRights struct {
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s ChatAdministratorRights) GetIsAnonymous() bool {
+func (s *ChatAdministratorRights) GetIsAnonymous() bool {
 	return s.IsAnonymous
 }
 
 // GetCanManageChat returns the value of CanManageChat.
-func (s ChatAdministratorRights) GetCanManageChat() bool {
+func (s *ChatAdministratorRights) GetCanManageChat() bool {
 	return s.CanManageChat
 }
 
 // GetCanDeleteMessages returns the value of CanDeleteMessages.
-func (s ChatAdministratorRights) GetCanDeleteMessages() bool {
+func (s *ChatAdministratorRights) GetCanDeleteMessages() bool {
 	return s.CanDeleteMessages
 }
 
 // GetCanManageVideoChats returns the value of CanManageVideoChats.
-func (s ChatAdministratorRights) GetCanManageVideoChats() bool {
+func (s *ChatAdministratorRights) GetCanManageVideoChats() bool {
 	return s.CanManageVideoChats
 }
 
 // GetCanRestrictMembers returns the value of CanRestrictMembers.
-func (s ChatAdministratorRights) GetCanRestrictMembers() bool {
+func (s *ChatAdministratorRights) GetCanRestrictMembers() bool {
 	return s.CanRestrictMembers
 }
 
 // GetCanPromoteMembers returns the value of CanPromoteMembers.
-func (s ChatAdministratorRights) GetCanPromoteMembers() bool {
+func (s *ChatAdministratorRights) GetCanPromoteMembers() bool {
 	return s.CanPromoteMembers
 }
 
 // GetCanChangeInfo returns the value of CanChangeInfo.
-func (s ChatAdministratorRights) GetCanChangeInfo() bool {
+func (s *ChatAdministratorRights) GetCanChangeInfo() bool {
 	return s.CanChangeInfo
 }
 
 // GetCanInviteUsers returns the value of CanInviteUsers.
-func (s ChatAdministratorRights) GetCanInviteUsers() bool {
+func (s *ChatAdministratorRights) GetCanInviteUsers() bool {
 	return s.CanInviteUsers
 }
 
 // GetCanPostMessages returns the value of CanPostMessages.
-func (s ChatAdministratorRights) GetCanPostMessages() OptBool {
+func (s *ChatAdministratorRights) GetCanPostMessages() OptBool {
 	return s.CanPostMessages
 }
 
 // GetCanEditMessages returns the value of CanEditMessages.
-func (s ChatAdministratorRights) GetCanEditMessages() OptBool {
+func (s *ChatAdministratorRights) GetCanEditMessages() OptBool {
 	return s.CanEditMessages
 }
 
 // GetCanPinMessages returns the value of CanPinMessages.
-func (s ChatAdministratorRights) GetCanPinMessages() OptBool {
+func (s *ChatAdministratorRights) GetCanPinMessages() OptBool {
 	return s.CanPinMessages
 }
 
@@ -1584,47 +1584,47 @@ type ChatInviteLink struct {
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s ChatInviteLink) GetInviteLink() string {
+func (s *ChatInviteLink) GetInviteLink() string {
 	return s.InviteLink
 }
 
 // GetCreator returns the value of Creator.
-func (s ChatInviteLink) GetCreator() User {
+func (s *ChatInviteLink) GetCreator() User {
 	return s.Creator
 }
 
 // GetCreatesJoinRequest returns the value of CreatesJoinRequest.
-func (s ChatInviteLink) GetCreatesJoinRequest() bool {
+func (s *ChatInviteLink) GetCreatesJoinRequest() bool {
 	return s.CreatesJoinRequest
 }
 
 // GetIsPrimary returns the value of IsPrimary.
-func (s ChatInviteLink) GetIsPrimary() bool {
+func (s *ChatInviteLink) GetIsPrimary() bool {
 	return s.IsPrimary
 }
 
 // GetIsRevoked returns the value of IsRevoked.
-func (s ChatInviteLink) GetIsRevoked() bool {
+func (s *ChatInviteLink) GetIsRevoked() bool {
 	return s.IsRevoked
 }
 
 // GetName returns the value of Name.
-func (s ChatInviteLink) GetName() OptString {
+func (s *ChatInviteLink) GetName() OptString {
 	return s.Name
 }
 
 // GetExpireDate returns the value of ExpireDate.
-func (s ChatInviteLink) GetExpireDate() OptInt {
+func (s *ChatInviteLink) GetExpireDate() OptInt {
 	return s.ExpireDate
 }
 
 // GetMemberLimit returns the value of MemberLimit.
-func (s ChatInviteLink) GetMemberLimit() OptInt {
+func (s *ChatInviteLink) GetMemberLimit() OptInt {
 	return s.MemberLimit
 }
 
 // GetPendingJoinRequestCount returns the value of PendingJoinRequestCount.
-func (s ChatInviteLink) GetPendingJoinRequestCount() OptInt {
+func (s *ChatInviteLink) GetPendingJoinRequestCount() OptInt {
 	return s.PendingJoinRequestCount
 }
 
@@ -1686,27 +1686,27 @@ type ChatJoinRequest struct {
 }
 
 // GetChat returns the value of Chat.
-func (s ChatJoinRequest) GetChat() Chat {
+func (s *ChatJoinRequest) GetChat() Chat {
 	return s.Chat
 }
 
 // GetFrom returns the value of From.
-func (s ChatJoinRequest) GetFrom() User {
+func (s *ChatJoinRequest) GetFrom() User {
 	return s.From
 }
 
 // GetDate returns the value of Date.
-func (s ChatJoinRequest) GetDate() int {
+func (s *ChatJoinRequest) GetDate() int {
 	return s.Date
 }
 
 // GetBio returns the value of Bio.
-func (s ChatJoinRequest) GetBio() OptString {
+func (s *ChatJoinRequest) GetBio() OptString {
 	return s.Bio
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s ChatJoinRequest) GetInviteLink() OptChatInviteLink {
+func (s *ChatJoinRequest) GetInviteLink() OptChatInviteLink {
 	return s.InviteLink
 }
 
@@ -1744,12 +1744,12 @@ type ChatLocation struct {
 }
 
 // GetLocation returns the value of Location.
-func (s ChatLocation) GetLocation() Location {
+func (s *ChatLocation) GetLocation() Location {
 	return s.Location
 }
 
 // GetAddress returns the value of Address.
-func (s ChatLocation) GetAddress() string {
+func (s *ChatLocation) GetAddress() string {
 	return s.Address
 }
 
@@ -1975,77 +1975,77 @@ type ChatMemberAdministrator struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberAdministrator) GetStatus() string {
+func (s *ChatMemberAdministrator) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberAdministrator) GetUser() User {
+func (s *ChatMemberAdministrator) GetUser() User {
 	return s.User
 }
 
 // GetCanBeEdited returns the value of CanBeEdited.
-func (s ChatMemberAdministrator) GetCanBeEdited() bool {
+func (s *ChatMemberAdministrator) GetCanBeEdited() bool {
 	return s.CanBeEdited
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s ChatMemberAdministrator) GetIsAnonymous() bool {
+func (s *ChatMemberAdministrator) GetIsAnonymous() bool {
 	return s.IsAnonymous
 }
 
 // GetCanManageChat returns the value of CanManageChat.
-func (s ChatMemberAdministrator) GetCanManageChat() bool {
+func (s *ChatMemberAdministrator) GetCanManageChat() bool {
 	return s.CanManageChat
 }
 
 // GetCanDeleteMessages returns the value of CanDeleteMessages.
-func (s ChatMemberAdministrator) GetCanDeleteMessages() bool {
+func (s *ChatMemberAdministrator) GetCanDeleteMessages() bool {
 	return s.CanDeleteMessages
 }
 
 // GetCanManageVideoChats returns the value of CanManageVideoChats.
-func (s ChatMemberAdministrator) GetCanManageVideoChats() bool {
+func (s *ChatMemberAdministrator) GetCanManageVideoChats() bool {
 	return s.CanManageVideoChats
 }
 
 // GetCanRestrictMembers returns the value of CanRestrictMembers.
-func (s ChatMemberAdministrator) GetCanRestrictMembers() bool {
+func (s *ChatMemberAdministrator) GetCanRestrictMembers() bool {
 	return s.CanRestrictMembers
 }
 
 // GetCanPromoteMembers returns the value of CanPromoteMembers.
-func (s ChatMemberAdministrator) GetCanPromoteMembers() bool {
+func (s *ChatMemberAdministrator) GetCanPromoteMembers() bool {
 	return s.CanPromoteMembers
 }
 
 // GetCanChangeInfo returns the value of CanChangeInfo.
-func (s ChatMemberAdministrator) GetCanChangeInfo() bool {
+func (s *ChatMemberAdministrator) GetCanChangeInfo() bool {
 	return s.CanChangeInfo
 }
 
 // GetCanInviteUsers returns the value of CanInviteUsers.
-func (s ChatMemberAdministrator) GetCanInviteUsers() bool {
+func (s *ChatMemberAdministrator) GetCanInviteUsers() bool {
 	return s.CanInviteUsers
 }
 
 // GetCanPostMessages returns the value of CanPostMessages.
-func (s ChatMemberAdministrator) GetCanPostMessages() OptBool {
+func (s *ChatMemberAdministrator) GetCanPostMessages() OptBool {
 	return s.CanPostMessages
 }
 
 // GetCanEditMessages returns the value of CanEditMessages.
-func (s ChatMemberAdministrator) GetCanEditMessages() OptBool {
+func (s *ChatMemberAdministrator) GetCanEditMessages() OptBool {
 	return s.CanEditMessages
 }
 
 // GetCanPinMessages returns the value of CanPinMessages.
-func (s ChatMemberAdministrator) GetCanPinMessages() OptBool {
+func (s *ChatMemberAdministrator) GetCanPinMessages() OptBool {
 	return s.CanPinMessages
 }
 
 // GetCustomTitle returns the value of CustomTitle.
-func (s ChatMemberAdministrator) GetCustomTitle() OptString {
+func (s *ChatMemberAdministrator) GetCustomTitle() OptString {
 	return s.CustomTitle
 }
 
@@ -2137,17 +2137,17 @@ type ChatMemberBanned struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberBanned) GetStatus() string {
+func (s *ChatMemberBanned) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberBanned) GetUser() User {
+func (s *ChatMemberBanned) GetUser() User {
 	return s.User
 }
 
 // GetUntilDate returns the value of UntilDate.
-func (s ChatMemberBanned) GetUntilDate() int {
+func (s *ChatMemberBanned) GetUntilDate() int {
 	return s.UntilDate
 }
 
@@ -2175,12 +2175,12 @@ type ChatMemberLeft struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberLeft) GetStatus() string {
+func (s *ChatMemberLeft) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberLeft) GetUser() User {
+func (s *ChatMemberLeft) GetUser() User {
 	return s.User
 }
 
@@ -2203,12 +2203,12 @@ type ChatMemberMember struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberMember) GetStatus() string {
+func (s *ChatMemberMember) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberMember) GetUser() User {
+func (s *ChatMemberMember) GetUser() User {
 	return s.User
 }
 
@@ -2235,22 +2235,22 @@ type ChatMemberOwner struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberOwner) GetStatus() string {
+func (s *ChatMemberOwner) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberOwner) GetUser() User {
+func (s *ChatMemberOwner) GetUser() User {
 	return s.User
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s ChatMemberOwner) GetIsAnonymous() bool {
+func (s *ChatMemberOwner) GetIsAnonymous() bool {
 	return s.IsAnonymous
 }
 
 // GetCustomTitle returns the value of CustomTitle.
-func (s ChatMemberOwner) GetCustomTitle() OptString {
+func (s *ChatMemberOwner) GetCustomTitle() OptString {
 	return s.CustomTitle
 }
 
@@ -2304,62 +2304,62 @@ type ChatMemberRestricted struct {
 }
 
 // GetStatus returns the value of Status.
-func (s ChatMemberRestricted) GetStatus() string {
+func (s *ChatMemberRestricted) GetStatus() string {
 	return s.Status
 }
 
 // GetUser returns the value of User.
-func (s ChatMemberRestricted) GetUser() User {
+func (s *ChatMemberRestricted) GetUser() User {
 	return s.User
 }
 
 // GetIsMember returns the value of IsMember.
-func (s ChatMemberRestricted) GetIsMember() bool {
+func (s *ChatMemberRestricted) GetIsMember() bool {
 	return s.IsMember
 }
 
 // GetCanChangeInfo returns the value of CanChangeInfo.
-func (s ChatMemberRestricted) GetCanChangeInfo() bool {
+func (s *ChatMemberRestricted) GetCanChangeInfo() bool {
 	return s.CanChangeInfo
 }
 
 // GetCanInviteUsers returns the value of CanInviteUsers.
-func (s ChatMemberRestricted) GetCanInviteUsers() bool {
+func (s *ChatMemberRestricted) GetCanInviteUsers() bool {
 	return s.CanInviteUsers
 }
 
 // GetCanPinMessages returns the value of CanPinMessages.
-func (s ChatMemberRestricted) GetCanPinMessages() bool {
+func (s *ChatMemberRestricted) GetCanPinMessages() bool {
 	return s.CanPinMessages
 }
 
 // GetCanSendMessages returns the value of CanSendMessages.
-func (s ChatMemberRestricted) GetCanSendMessages() bool {
+func (s *ChatMemberRestricted) GetCanSendMessages() bool {
 	return s.CanSendMessages
 }
 
 // GetCanSendMediaMessages returns the value of CanSendMediaMessages.
-func (s ChatMemberRestricted) GetCanSendMediaMessages() bool {
+func (s *ChatMemberRestricted) GetCanSendMediaMessages() bool {
 	return s.CanSendMediaMessages
 }
 
 // GetCanSendPolls returns the value of CanSendPolls.
-func (s ChatMemberRestricted) GetCanSendPolls() bool {
+func (s *ChatMemberRestricted) GetCanSendPolls() bool {
 	return s.CanSendPolls
 }
 
 // GetCanSendOtherMessages returns the value of CanSendOtherMessages.
-func (s ChatMemberRestricted) GetCanSendOtherMessages() bool {
+func (s *ChatMemberRestricted) GetCanSendOtherMessages() bool {
 	return s.CanSendOtherMessages
 }
 
 // GetCanAddWebPagePreviews returns the value of CanAddWebPagePreviews.
-func (s ChatMemberRestricted) GetCanAddWebPagePreviews() bool {
+func (s *ChatMemberRestricted) GetCanAddWebPagePreviews() bool {
 	return s.CanAddWebPagePreviews
 }
 
 // GetUntilDate returns the value of UntilDate.
-func (s ChatMemberRestricted) GetUntilDate() int {
+func (s *ChatMemberRestricted) GetUntilDate() int {
 	return s.UntilDate
 }
 
@@ -2436,32 +2436,32 @@ type ChatMemberUpdated struct {
 }
 
 // GetChat returns the value of Chat.
-func (s ChatMemberUpdated) GetChat() Chat {
+func (s *ChatMemberUpdated) GetChat() Chat {
 	return s.Chat
 }
 
 // GetFrom returns the value of From.
-func (s ChatMemberUpdated) GetFrom() User {
+func (s *ChatMemberUpdated) GetFrom() User {
 	return s.From
 }
 
 // GetDate returns the value of Date.
-func (s ChatMemberUpdated) GetDate() int {
+func (s *ChatMemberUpdated) GetDate() int {
 	return s.Date
 }
 
 // GetOldChatMember returns the value of OldChatMember.
-func (s ChatMemberUpdated) GetOldChatMember() ChatMember {
+func (s *ChatMemberUpdated) GetOldChatMember() ChatMember {
 	return s.OldChatMember
 }
 
 // GetNewChatMember returns the value of NewChatMember.
-func (s ChatMemberUpdated) GetNewChatMember() ChatMember {
+func (s *ChatMemberUpdated) GetNewChatMember() ChatMember {
 	return s.NewChatMember
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s ChatMemberUpdated) GetInviteLink() OptChatInviteLink {
+func (s *ChatMemberUpdated) GetInviteLink() OptChatInviteLink {
 	return s.InviteLink
 }
 
@@ -2521,42 +2521,42 @@ type ChatPermissions struct {
 }
 
 // GetCanSendMessages returns the value of CanSendMessages.
-func (s ChatPermissions) GetCanSendMessages() OptBool {
+func (s *ChatPermissions) GetCanSendMessages() OptBool {
 	return s.CanSendMessages
 }
 
 // GetCanSendMediaMessages returns the value of CanSendMediaMessages.
-func (s ChatPermissions) GetCanSendMediaMessages() OptBool {
+func (s *ChatPermissions) GetCanSendMediaMessages() OptBool {
 	return s.CanSendMediaMessages
 }
 
 // GetCanSendPolls returns the value of CanSendPolls.
-func (s ChatPermissions) GetCanSendPolls() OptBool {
+func (s *ChatPermissions) GetCanSendPolls() OptBool {
 	return s.CanSendPolls
 }
 
 // GetCanSendOtherMessages returns the value of CanSendOtherMessages.
-func (s ChatPermissions) GetCanSendOtherMessages() OptBool {
+func (s *ChatPermissions) GetCanSendOtherMessages() OptBool {
 	return s.CanSendOtherMessages
 }
 
 // GetCanAddWebPagePreviews returns the value of CanAddWebPagePreviews.
-func (s ChatPermissions) GetCanAddWebPagePreviews() OptBool {
+func (s *ChatPermissions) GetCanAddWebPagePreviews() OptBool {
 	return s.CanAddWebPagePreviews
 }
 
 // GetCanChangeInfo returns the value of CanChangeInfo.
-func (s ChatPermissions) GetCanChangeInfo() OptBool {
+func (s *ChatPermissions) GetCanChangeInfo() OptBool {
 	return s.CanChangeInfo
 }
 
 // GetCanInviteUsers returns the value of CanInviteUsers.
-func (s ChatPermissions) GetCanInviteUsers() OptBool {
+func (s *ChatPermissions) GetCanInviteUsers() OptBool {
 	return s.CanInviteUsers
 }
 
 // GetCanPinMessages returns the value of CanPinMessages.
-func (s ChatPermissions) GetCanPinMessages() OptBool {
+func (s *ChatPermissions) GetCanPinMessages() OptBool {
 	return s.CanPinMessages
 }
 
@@ -2618,22 +2618,22 @@ type ChatPhoto struct {
 }
 
 // GetSmallFileID returns the value of SmallFileID.
-func (s ChatPhoto) GetSmallFileID() string {
+func (s *ChatPhoto) GetSmallFileID() string {
 	return s.SmallFileID
 }
 
 // GetSmallFileUniqueID returns the value of SmallFileUniqueID.
-func (s ChatPhoto) GetSmallFileUniqueID() string {
+func (s *ChatPhoto) GetSmallFileUniqueID() string {
 	return s.SmallFileUniqueID
 }
 
 // GetBigFileID returns the value of BigFileID.
-func (s ChatPhoto) GetBigFileID() string {
+func (s *ChatPhoto) GetBigFileID() string {
 	return s.BigFileID
 }
 
 // GetBigFileUniqueID returns the value of BigFileUniqueID.
-func (s ChatPhoto) GetBigFileUniqueID() string {
+func (s *ChatPhoto) GetBigFileUniqueID() string {
 	return s.BigFileUniqueID
 }
 
@@ -2682,27 +2682,27 @@ type ChosenInlineResult struct {
 }
 
 // GetResultID returns the value of ResultID.
-func (s ChosenInlineResult) GetResultID() string {
+func (s *ChosenInlineResult) GetResultID() string {
 	return s.ResultID
 }
 
 // GetFrom returns the value of From.
-func (s ChosenInlineResult) GetFrom() User {
+func (s *ChosenInlineResult) GetFrom() User {
 	return s.From
 }
 
 // GetLocation returns the value of Location.
-func (s ChosenInlineResult) GetLocation() OptLocation {
+func (s *ChosenInlineResult) GetLocation() OptLocation {
 	return s.Location
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s ChosenInlineResult) GetInlineMessageID() OptString {
+func (s *ChosenInlineResult) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetQuery returns the value of Query.
-func (s ChosenInlineResult) GetQuery() string {
+func (s *ChosenInlineResult) GetQuery() string {
 	return s.Query
 }
 
@@ -2750,27 +2750,27 @@ type Contact struct {
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s Contact) GetPhoneNumber() string {
+func (s *Contact) GetPhoneNumber() string {
 	return s.PhoneNumber
 }
 
 // GetFirstName returns the value of FirstName.
-func (s Contact) GetFirstName() string {
+func (s *Contact) GetFirstName() string {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s Contact) GetLastName() OptString {
+func (s *Contact) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetUserID returns the value of UserID.
-func (s Contact) GetUserID() OptInt64 {
+func (s *Contact) GetUserID() OptInt64 {
 	return s.UserID
 }
 
 // GetVcard returns the value of Vcard.
-func (s Contact) GetVcard() OptString {
+func (s *Contact) GetVcard() OptString {
 	return s.Vcard
 }
 
@@ -2826,57 +2826,57 @@ type CopyMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s CopyMessage) GetChatID() ID {
+func (s *CopyMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetFromChatID returns the value of FromChatID.
-func (s CopyMessage) GetFromChatID() ID {
+func (s *CopyMessage) GetFromChatID() ID {
 	return s.FromChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s CopyMessage) GetMessageID() int {
+func (s *CopyMessage) GetMessageID() int {
 	return s.MessageID
 }
 
 // GetCaption returns the value of Caption.
-func (s CopyMessage) GetCaption() OptString {
+func (s *CopyMessage) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s CopyMessage) GetParseMode() OptString {
+func (s *CopyMessage) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s CopyMessage) GetCaptionEntities() []MessageEntity {
+func (s *CopyMessage) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s CopyMessage) GetDisableNotification() OptBool {
+func (s *CopyMessage) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s CopyMessage) GetProtectContent() OptBool {
+func (s *CopyMessage) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s CopyMessage) GetReplyToMessageID() OptInt {
+func (s *CopyMessage) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s CopyMessage) GetAllowSendingWithoutReply() OptBool {
+func (s *CopyMessage) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s CopyMessage) GetReplyMarkup() OptSendReplyMarkup {
+func (s *CopyMessage) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -2952,27 +2952,27 @@ type CreateChatInviteLink struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s CreateChatInviteLink) GetChatID() ID {
+func (s *CreateChatInviteLink) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetName returns the value of Name.
-func (s CreateChatInviteLink) GetName() OptString {
+func (s *CreateChatInviteLink) GetName() OptString {
 	return s.Name
 }
 
 // GetExpireDate returns the value of ExpireDate.
-func (s CreateChatInviteLink) GetExpireDate() OptInt {
+func (s *CreateChatInviteLink) GetExpireDate() OptInt {
 	return s.ExpireDate
 }
 
 // GetMemberLimit returns the value of MemberLimit.
-func (s CreateChatInviteLink) GetMemberLimit() OptInt {
+func (s *CreateChatInviteLink) GetMemberLimit() OptInt {
 	return s.MemberLimit
 }
 
 // GetCreatesJoinRequest returns the value of CreatesJoinRequest.
-func (s CreateChatInviteLink) GetCreatesJoinRequest() OptBool {
+func (s *CreateChatInviteLink) GetCreatesJoinRequest() OptBool {
 	return s.CreatesJoinRequest
 }
 
@@ -3032,47 +3032,47 @@ type CreateNewStickerSet struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s CreateNewStickerSet) GetUserID() int64 {
+func (s *CreateNewStickerSet) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetName returns the value of Name.
-func (s CreateNewStickerSet) GetName() string {
+func (s *CreateNewStickerSet) GetName() string {
 	return s.Name
 }
 
 // GetTitle returns the value of Title.
-func (s CreateNewStickerSet) GetTitle() string {
+func (s *CreateNewStickerSet) GetTitle() string {
 	return s.Title
 }
 
 // GetPNGSticker returns the value of PNGSticker.
-func (s CreateNewStickerSet) GetPNGSticker() OptString {
+func (s *CreateNewStickerSet) GetPNGSticker() OptString {
 	return s.PNGSticker
 }
 
 // GetTgsSticker returns the value of TgsSticker.
-func (s CreateNewStickerSet) GetTgsSticker() OptString {
+func (s *CreateNewStickerSet) GetTgsSticker() OptString {
 	return s.TgsSticker
 }
 
 // GetWebmSticker returns the value of WebmSticker.
-func (s CreateNewStickerSet) GetWebmSticker() OptString {
+func (s *CreateNewStickerSet) GetWebmSticker() OptString {
 	return s.WebmSticker
 }
 
 // GetEmojis returns the value of Emojis.
-func (s CreateNewStickerSet) GetEmojis() string {
+func (s *CreateNewStickerSet) GetEmojis() string {
 	return s.Emojis
 }
 
 // GetContainsMasks returns the value of ContainsMasks.
-func (s CreateNewStickerSet) GetContainsMasks() OptBool {
+func (s *CreateNewStickerSet) GetContainsMasks() OptBool {
 	return s.ContainsMasks
 }
 
 // GetMaskPosition returns the value of MaskPosition.
-func (s CreateNewStickerSet) GetMaskPosition() OptMaskPosition {
+func (s *CreateNewStickerSet) GetMaskPosition() OptMaskPosition {
 	return s.MaskPosition
 }
 
@@ -3130,12 +3130,12 @@ type DeclineChatJoinRequest struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s DeclineChatJoinRequest) GetChatID() ID {
+func (s *DeclineChatJoinRequest) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s DeclineChatJoinRequest) GetUserID() int64 {
+func (s *DeclineChatJoinRequest) GetUserID() int64 {
 	return s.UserID
 }
 
@@ -3156,7 +3156,7 @@ type DeleteChatPhoto struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s DeleteChatPhoto) GetChatID() ID {
+func (s *DeleteChatPhoto) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -3172,7 +3172,7 @@ type DeleteChatStickerSet struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s DeleteChatStickerSet) GetChatID() ID {
+func (s *DeleteChatStickerSet) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -3190,12 +3190,12 @@ type DeleteMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s DeleteMessage) GetChatID() ID {
+func (s *DeleteMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s DeleteMessage) GetMessageID() int {
+func (s *DeleteMessage) GetMessageID() int {
 	return s.MessageID
 }
 
@@ -3219,12 +3219,12 @@ type DeleteMyCommands struct {
 }
 
 // GetScope returns the value of Scope.
-func (s DeleteMyCommands) GetScope() OptBotCommandScope {
+func (s *DeleteMyCommands) GetScope() OptBotCommandScope {
 	return s.Scope
 }
 
 // GetLanguageCode returns the value of LanguageCode.
-func (s DeleteMyCommands) GetLanguageCode() OptString {
+func (s *DeleteMyCommands) GetLanguageCode() OptString {
 	return s.LanguageCode
 }
 
@@ -3246,7 +3246,7 @@ type DeleteStickerFromSet struct {
 }
 
 // GetSticker returns the value of Sticker.
-func (s DeleteStickerFromSet) GetSticker() string {
+func (s *DeleteStickerFromSet) GetSticker() string {
 	return s.Sticker
 }
 
@@ -3263,7 +3263,7 @@ type DeleteWebhook struct {
 }
 
 // GetDropPendingUpdates returns the value of DropPendingUpdates.
-func (s DeleteWebhook) GetDropPendingUpdates() OptBool {
+func (s *DeleteWebhook) GetDropPendingUpdates() OptBool {
 	return s.DropPendingUpdates
 }
 
@@ -3283,12 +3283,12 @@ type Dice struct {
 }
 
 // GetEmoji returns the value of Emoji.
-func (s Dice) GetEmoji() string {
+func (s *Dice) GetEmoji() string {
 	return s.Emoji
 }
 
 // GetValue returns the value of Value.
-func (s Dice) GetValue() int {
+func (s *Dice) GetValue() int {
 	return s.Value
 }
 
@@ -3320,32 +3320,32 @@ type Document struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Document) GetFileID() string {
+func (s *Document) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Document) GetFileUniqueID() string {
+func (s *Document) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetThumb returns the value of Thumb.
-func (s Document) GetThumb() OptPhotoSize {
+func (s *Document) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
 // GetFileName returns the value of FileName.
-func (s Document) GetFileName() OptString {
+func (s *Document) GetFileName() OptString {
 	return s.FileName
 }
 
 // GetMimeType returns the value of MimeType.
-func (s Document) GetMimeType() OptString {
+func (s *Document) GetMimeType() OptString {
 	return s.MimeType
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Document) GetFileSize() OptInt {
+func (s *Document) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -3398,32 +3398,32 @@ type EditChatInviteLink struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditChatInviteLink) GetChatID() ID {
+func (s *EditChatInviteLink) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s EditChatInviteLink) GetInviteLink() string {
+func (s *EditChatInviteLink) GetInviteLink() string {
 	return s.InviteLink
 }
 
 // GetName returns the value of Name.
-func (s EditChatInviteLink) GetName() OptString {
+func (s *EditChatInviteLink) GetName() OptString {
 	return s.Name
 }
 
 // GetExpireDate returns the value of ExpireDate.
-func (s EditChatInviteLink) GetExpireDate() OptInt {
+func (s *EditChatInviteLink) GetExpireDate() OptInt {
 	return s.ExpireDate
 }
 
 // GetMemberLimit returns the value of MemberLimit.
-func (s EditChatInviteLink) GetMemberLimit() OptInt {
+func (s *EditChatInviteLink) GetMemberLimit() OptInt {
 	return s.MemberLimit
 }
 
 // GetCreatesJoinRequest returns the value of CreatesJoinRequest.
-func (s EditChatInviteLink) GetCreatesJoinRequest() OptBool {
+func (s *EditChatInviteLink) GetCreatesJoinRequest() OptBool {
 	return s.CreatesJoinRequest
 }
 
@@ -3476,37 +3476,37 @@ type EditMessageCaption struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditMessageCaption) GetChatID() OptID {
+func (s *EditMessageCaption) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s EditMessageCaption) GetMessageID() OptInt {
+func (s *EditMessageCaption) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s EditMessageCaption) GetInlineMessageID() OptString {
+func (s *EditMessageCaption) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetCaption returns the value of Caption.
-func (s EditMessageCaption) GetCaption() OptString {
+func (s *EditMessageCaption) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s EditMessageCaption) GetParseMode() OptString {
+func (s *EditMessageCaption) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s EditMessageCaption) GetCaptionEntities() []MessageEntity {
+func (s *EditMessageCaption) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s EditMessageCaption) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *EditMessageCaption) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -3568,47 +3568,47 @@ type EditMessageLiveLocation struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditMessageLiveLocation) GetChatID() OptID {
+func (s *EditMessageLiveLocation) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s EditMessageLiveLocation) GetMessageID() OptInt {
+func (s *EditMessageLiveLocation) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s EditMessageLiveLocation) GetInlineMessageID() OptString {
+func (s *EditMessageLiveLocation) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetLatitude returns the value of Latitude.
-func (s EditMessageLiveLocation) GetLatitude() float64 {
+func (s *EditMessageLiveLocation) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s EditMessageLiveLocation) GetLongitude() float64 {
+func (s *EditMessageLiveLocation) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetHorizontalAccuracy returns the value of HorizontalAccuracy.
-func (s EditMessageLiveLocation) GetHorizontalAccuracy() OptFloat64 {
+func (s *EditMessageLiveLocation) GetHorizontalAccuracy() OptFloat64 {
 	return s.HorizontalAccuracy
 }
 
 // GetHeading returns the value of Heading.
-func (s EditMessageLiveLocation) GetHeading() OptInt {
+func (s *EditMessageLiveLocation) GetHeading() OptInt {
 	return s.Heading
 }
 
 // GetProximityAlertRadius returns the value of ProximityAlertRadius.
-func (s EditMessageLiveLocation) GetProximityAlertRadius() OptInt {
+func (s *EditMessageLiveLocation) GetProximityAlertRadius() OptInt {
 	return s.ProximityAlertRadius
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s EditMessageLiveLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *EditMessageLiveLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -3670,27 +3670,27 @@ type EditMessageMedia struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditMessageMedia) GetChatID() OptID {
+func (s *EditMessageMedia) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s EditMessageMedia) GetMessageID() OptInt {
+func (s *EditMessageMedia) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s EditMessageMedia) GetInlineMessageID() OptString {
+func (s *EditMessageMedia) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetMedia returns the value of Media.
-func (s EditMessageMedia) GetMedia() InputMedia {
+func (s *EditMessageMedia) GetMedia() InputMedia {
 	return s.Media
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s EditMessageMedia) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *EditMessageMedia) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -3731,22 +3731,22 @@ type EditMessageReplyMarkup struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditMessageReplyMarkup) GetChatID() OptID {
+func (s *EditMessageReplyMarkup) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s EditMessageReplyMarkup) GetMessageID() OptInt {
+func (s *EditMessageReplyMarkup) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s EditMessageReplyMarkup) GetInlineMessageID() OptString {
+func (s *EditMessageReplyMarkup) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s EditMessageReplyMarkup) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *EditMessageReplyMarkup) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -3791,42 +3791,42 @@ type EditMessageText struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s EditMessageText) GetChatID() OptID {
+func (s *EditMessageText) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s EditMessageText) GetMessageID() OptInt {
+func (s *EditMessageText) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s EditMessageText) GetInlineMessageID() OptString {
+func (s *EditMessageText) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetText returns the value of Text.
-func (s EditMessageText) GetText() string {
+func (s *EditMessageText) GetText() string {
 	return s.Text
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s EditMessageText) GetParseMode() OptString {
+func (s *EditMessageText) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetEntities returns the value of Entities.
-func (s EditMessageText) GetEntities() []MessageEntity {
+func (s *EditMessageText) GetEntities() []MessageEntity {
 	return s.Entities
 }
 
 // GetDisableWebPagePreview returns the value of DisableWebPagePreview.
-func (s EditMessageText) GetDisableWebPagePreview() OptBool {
+func (s *EditMessageText) GetDisableWebPagePreview() OptBool {
 	return s.DisableWebPagePreview
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s EditMessageText) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *EditMessageText) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -3885,17 +3885,17 @@ type EncryptedCredentials struct {
 }
 
 // GetData returns the value of Data.
-func (s EncryptedCredentials) GetData() string {
+func (s *EncryptedCredentials) GetData() string {
 	return s.Data
 }
 
 // GetHash returns the value of Hash.
-func (s EncryptedCredentials) GetHash() string {
+func (s *EncryptedCredentials) GetHash() string {
 	return s.Hash
 }
 
 // GetSecret returns the value of Secret.
-func (s EncryptedCredentials) GetSecret() string {
+func (s *EncryptedCredentials) GetSecret() string {
 	return s.Secret
 }
 
@@ -3947,52 +3947,52 @@ type EncryptedPassportElement struct {
 }
 
 // GetType returns the value of Type.
-func (s EncryptedPassportElement) GetType() EncryptedPassportElementType {
+func (s *EncryptedPassportElement) GetType() EncryptedPassportElementType {
 	return s.Type
 }
 
 // GetData returns the value of Data.
-func (s EncryptedPassportElement) GetData() OptString {
+func (s *EncryptedPassportElement) GetData() OptString {
 	return s.Data
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s EncryptedPassportElement) GetPhoneNumber() OptString {
+func (s *EncryptedPassportElement) GetPhoneNumber() OptString {
 	return s.PhoneNumber
 }
 
 // GetEmail returns the value of Email.
-func (s EncryptedPassportElement) GetEmail() OptString {
+func (s *EncryptedPassportElement) GetEmail() OptString {
 	return s.Email
 }
 
 // GetFiles returns the value of Files.
-func (s EncryptedPassportElement) GetFiles() []PassportFile {
+func (s *EncryptedPassportElement) GetFiles() []PassportFile {
 	return s.Files
 }
 
 // GetFrontSide returns the value of FrontSide.
-func (s EncryptedPassportElement) GetFrontSide() OptPassportFile {
+func (s *EncryptedPassportElement) GetFrontSide() OptPassportFile {
 	return s.FrontSide
 }
 
 // GetReverseSide returns the value of ReverseSide.
-func (s EncryptedPassportElement) GetReverseSide() OptPassportFile {
+func (s *EncryptedPassportElement) GetReverseSide() OptPassportFile {
 	return s.ReverseSide
 }
 
 // GetSelfie returns the value of Selfie.
-func (s EncryptedPassportElement) GetSelfie() OptPassportFile {
+func (s *EncryptedPassportElement) GetSelfie() OptPassportFile {
 	return s.Selfie
 }
 
 // GetTranslation returns the value of Translation.
-func (s EncryptedPassportElement) GetTranslation() []PassportFile {
+func (s *EncryptedPassportElement) GetTranslation() []PassportFile {
 	return s.Translation
 }
 
 // GetHash returns the value of Hash.
-func (s EncryptedPassportElement) GetHash() string {
+func (s *EncryptedPassportElement) GetHash() string {
 	return s.Hash
 }
 
@@ -4076,22 +4076,22 @@ type Error struct {
 }
 
 // GetOk returns the value of Ok.
-func (s Error) GetOk() bool {
+func (s *Error) GetOk() bool {
 	return s.Ok
 }
 
 // GetErrorCode returns the value of ErrorCode.
-func (s Error) GetErrorCode() int {
+func (s *Error) GetErrorCode() int {
 	return s.ErrorCode
 }
 
 // GetDescription returns the value of Description.
-func (s Error) GetDescription() string {
+func (s *Error) GetDescription() string {
 	return s.Description
 }
 
 // GetParameters returns the value of Parameters.
-func (s Error) GetParameters() OptResponse {
+func (s *Error) GetParameters() OptResponse {
 	return s.Parameters
 }
 
@@ -4122,12 +4122,12 @@ type ErrorStatusCode struct {
 }
 
 // GetStatusCode returns the value of StatusCode.
-func (s ErrorStatusCode) GetStatusCode() int {
+func (s *ErrorStatusCode) GetStatusCode() int {
 	return s.StatusCode
 }
 
 // GetResponse returns the value of Response.
-func (s ErrorStatusCode) GetResponse() Error {
+func (s *ErrorStatusCode) GetResponse() Error {
 	return s.Response
 }
 
@@ -4148,7 +4148,7 @@ type ExportChatInviteLink struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s ExportChatInviteLink) GetChatID() ID {
+func (s *ExportChatInviteLink) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -4174,22 +4174,22 @@ type File struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s File) GetFileID() string {
+func (s *File) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s File) GetFileUniqueID() string {
+func (s *File) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetFileSize returns the value of FileSize.
-func (s File) GetFileSize() OptInt {
+func (s *File) GetFileSize() OptInt {
 	return s.FileSize
 }
 
 // GetFilePath returns the value of FilePath.
-func (s File) GetFilePath() OptString {
+func (s *File) GetFilePath() OptString {
 	return s.FilePath
 }
 
@@ -4231,17 +4231,17 @@ type ForceReply struct {
 }
 
 // GetForceReply returns the value of ForceReply.
-func (s ForceReply) GetForceReply() bool {
+func (s *ForceReply) GetForceReply() bool {
 	return s.ForceReply
 }
 
 // GetInputFieldPlaceholder returns the value of InputFieldPlaceholder.
-func (s ForceReply) GetInputFieldPlaceholder() OptString {
+func (s *ForceReply) GetInputFieldPlaceholder() OptString {
 	return s.InputFieldPlaceholder
 }
 
 // GetSelective returns the value of Selective.
-func (s ForceReply) GetSelective() OptBool {
+func (s *ForceReply) GetSelective() OptBool {
 	return s.Selective
 }
 
@@ -4274,27 +4274,27 @@ type ForwardMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s ForwardMessage) GetChatID() ID {
+func (s *ForwardMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetFromChatID returns the value of FromChatID.
-func (s ForwardMessage) GetFromChatID() ID {
+func (s *ForwardMessage) GetFromChatID() ID {
 	return s.FromChatID
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s ForwardMessage) GetDisableNotification() OptBool {
+func (s *ForwardMessage) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s ForwardMessage) GetProtectContent() OptBool {
+func (s *ForwardMessage) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetMessageID returns the value of MessageID.
-func (s ForwardMessage) GetMessageID() int {
+func (s *ForwardMessage) GetMessageID() int {
 	return s.MessageID
 }
 
@@ -4343,32 +4343,32 @@ type Game struct {
 }
 
 // GetTitle returns the value of Title.
-func (s Game) GetTitle() string {
+func (s *Game) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s Game) GetDescription() string {
+func (s *Game) GetDescription() string {
 	return s.Description
 }
 
 // GetPhoto returns the value of Photo.
-func (s Game) GetPhoto() []PhotoSize {
+func (s *Game) GetPhoto() []PhotoSize {
 	return s.Photo
 }
 
 // GetText returns the value of Text.
-func (s Game) GetText() OptString {
+func (s *Game) GetText() OptString {
 	return s.Text
 }
 
 // GetTextEntities returns the value of TextEntities.
-func (s Game) GetTextEntities() []MessageEntity {
+func (s *Game) GetTextEntities() []MessageEntity {
 	return s.TextEntities
 }
 
 // GetAnimation returns the value of Animation.
-func (s Game) GetAnimation() OptAnimation {
+func (s *Game) GetAnimation() OptAnimation {
 	return s.Animation
 }
 
@@ -4413,17 +4413,17 @@ type GameHighScore struct {
 }
 
 // GetPosition returns the value of Position.
-func (s GameHighScore) GetPosition() int {
+func (s *GameHighScore) GetPosition() int {
 	return s.Position
 }
 
 // GetUser returns the value of User.
-func (s GameHighScore) GetUser() User {
+func (s *GameHighScore) GetUser() User {
 	return s.User
 }
 
 // GetScore returns the value of Score.
-func (s GameHighScore) GetScore() int {
+func (s *GameHighScore) GetScore() int {
 	return s.Score
 }
 
@@ -4449,7 +4449,7 @@ type GetChat struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetChat) GetChatID() ID {
+func (s *GetChat) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -4465,7 +4465,7 @@ type GetChatAdministrators struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetChatAdministrators) GetChatID() ID {
+func (s *GetChatAdministrators) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -4483,12 +4483,12 @@ type GetChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetChatMember) GetChatID() ID {
+func (s *GetChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s GetChatMember) GetUserID() int64 {
+func (s *GetChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
@@ -4509,7 +4509,7 @@ type GetChatMemberCount struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetChatMemberCount) GetChatID() ID {
+func (s *GetChatMemberCount) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -4527,7 +4527,7 @@ type GetChatMenuButton struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetChatMenuButton) GetChatID() OptInt64 {
+func (s *GetChatMenuButton) GetChatID() OptInt64 {
 	return s.ChatID
 }
 
@@ -4544,7 +4544,7 @@ type GetFile struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s GetFile) GetFileID() string {
+func (s *GetFile) GetFileID() string {
 	return s.FileID
 }
 
@@ -4567,22 +4567,22 @@ type GetGameHighScores struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s GetGameHighScores) GetUserID() int64 {
+func (s *GetGameHighScores) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetChatID returns the value of ChatID.
-func (s GetGameHighScores) GetChatID() OptInt64 {
+func (s *GetGameHighScores) GetChatID() OptInt64 {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s GetGameHighScores) GetMessageID() OptInt {
+func (s *GetGameHighScores) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s GetGameHighScores) GetInlineMessageID() OptString {
+func (s *GetGameHighScores) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
@@ -4615,12 +4615,12 @@ type GetMyCommands struct {
 }
 
 // GetScope returns the value of Scope.
-func (s GetMyCommands) GetScope() OptBotCommandScope {
+func (s *GetMyCommands) GetScope() OptBotCommandScope {
 	return s.Scope
 }
 
 // GetLanguageCode returns the value of LanguageCode.
-func (s GetMyCommands) GetLanguageCode() OptString {
+func (s *GetMyCommands) GetLanguageCode() OptString {
 	return s.LanguageCode
 }
 
@@ -4643,7 +4643,7 @@ type GetMyDefaultAdministratorRights struct {
 }
 
 // GetForChannels returns the value of ForChannels.
-func (s GetMyDefaultAdministratorRights) GetForChannels() OptBool {
+func (s *GetMyDefaultAdministratorRights) GetForChannels() OptBool {
 	return s.ForChannels
 }
 
@@ -4660,7 +4660,7 @@ type GetStickerSet struct {
 }
 
 // GetName returns the value of Name.
-func (s GetStickerSet) GetName() string {
+func (s *GetStickerSet) GetName() string {
 	return s.Name
 }
 
@@ -4693,22 +4693,22 @@ type GetUpdates struct {
 }
 
 // GetOffset returns the value of Offset.
-func (s GetUpdates) GetOffset() OptInt {
+func (s *GetUpdates) GetOffset() OptInt {
 	return s.Offset
 }
 
 // GetLimit returns the value of Limit.
-func (s GetUpdates) GetLimit() OptInt {
+func (s *GetUpdates) GetLimit() OptInt {
 	return s.Limit
 }
 
 // GetTimeout returns the value of Timeout.
-func (s GetUpdates) GetTimeout() OptInt {
+func (s *GetUpdates) GetTimeout() OptInt {
 	return s.Timeout
 }
 
 // GetAllowedUpdates returns the value of AllowedUpdates.
-func (s GetUpdates) GetAllowedUpdates() []string {
+func (s *GetUpdates) GetAllowedUpdates() []string {
 	return s.AllowedUpdates
 }
 
@@ -4744,17 +4744,17 @@ type GetUserProfilePhotos struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s GetUserProfilePhotos) GetUserID() int64 {
+func (s *GetUserProfilePhotos) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetOffset returns the value of Offset.
-func (s GetUserProfilePhotos) GetOffset() OptInt {
+func (s *GetUserProfilePhotos) GetOffset() OptInt {
 	return s.Offset
 }
 
 // GetLimit returns the value of Limit.
-func (s GetUserProfilePhotos) GetLimit() OptInt {
+func (s *GetUserProfilePhotos) GetLimit() OptInt {
 	return s.Limit
 }
 
@@ -4871,47 +4871,47 @@ type InlineKeyboardButton struct {
 }
 
 // GetText returns the value of Text.
-func (s InlineKeyboardButton) GetText() string {
+func (s *InlineKeyboardButton) GetText() string {
 	return s.Text
 }
 
 // GetURL returns the value of URL.
-func (s InlineKeyboardButton) GetURL() OptString {
+func (s *InlineKeyboardButton) GetURL() OptString {
 	return s.URL
 }
 
 // GetCallbackData returns the value of CallbackData.
-func (s InlineKeyboardButton) GetCallbackData() OptString {
+func (s *InlineKeyboardButton) GetCallbackData() OptString {
 	return s.CallbackData
 }
 
 // GetWebApp returns the value of WebApp.
-func (s InlineKeyboardButton) GetWebApp() OptWebAppInfo {
+func (s *InlineKeyboardButton) GetWebApp() OptWebAppInfo {
 	return s.WebApp
 }
 
 // GetLoginURL returns the value of LoginURL.
-func (s InlineKeyboardButton) GetLoginURL() OptLoginUrl {
+func (s *InlineKeyboardButton) GetLoginURL() OptLoginUrl {
 	return s.LoginURL
 }
 
 // GetSwitchInlineQuery returns the value of SwitchInlineQuery.
-func (s InlineKeyboardButton) GetSwitchInlineQuery() OptString {
+func (s *InlineKeyboardButton) GetSwitchInlineQuery() OptString {
 	return s.SwitchInlineQuery
 }
 
 // GetSwitchInlineQueryCurrentChat returns the value of SwitchInlineQueryCurrentChat.
-func (s InlineKeyboardButton) GetSwitchInlineQueryCurrentChat() OptString {
+func (s *InlineKeyboardButton) GetSwitchInlineQueryCurrentChat() OptString {
 	return s.SwitchInlineQueryCurrentChat
 }
 
 // GetCallbackGame returns the value of CallbackGame.
-func (s InlineKeyboardButton) GetCallbackGame() *CallbackGame {
+func (s *InlineKeyboardButton) GetCallbackGame() *CallbackGame {
 	return s.CallbackGame
 }
 
 // GetPay returns the value of Pay.
-func (s InlineKeyboardButton) GetPay() OptBool {
+func (s *InlineKeyboardButton) GetPay() OptBool {
 	return s.Pay
 }
 
@@ -4968,7 +4968,7 @@ type InlineKeyboardMarkup struct {
 }
 
 // GetInlineKeyboard returns the value of InlineKeyboard.
-func (s InlineKeyboardMarkup) GetInlineKeyboard() [][]InlineKeyboardButton {
+func (s *InlineKeyboardMarkup) GetInlineKeyboard() [][]InlineKeyboardButton {
 	return s.InlineKeyboard
 }
 
@@ -4997,32 +4997,32 @@ type InlineQuery struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQuery) GetID() string {
+func (s *InlineQuery) GetID() string {
 	return s.ID
 }
 
 // GetFrom returns the value of From.
-func (s InlineQuery) GetFrom() User {
+func (s *InlineQuery) GetFrom() User {
 	return s.From
 }
 
 // GetQuery returns the value of Query.
-func (s InlineQuery) GetQuery() string {
+func (s *InlineQuery) GetQuery() string {
 	return s.Query
 }
 
 // GetOffset returns the value of Offset.
-func (s InlineQuery) GetOffset() string {
+func (s *InlineQuery) GetOffset() string {
 	return s.Offset
 }
 
 // GetChatType returns the value of ChatType.
-func (s InlineQuery) GetChatType() OptInlineQueryChatType {
+func (s *InlineQuery) GetChatType() OptInlineQueryChatType {
 	return s.ChatType
 }
 
 // GetLocation returns the value of Location.
-func (s InlineQuery) GetLocation() OptLocation {
+func (s *InlineQuery) GetLocation() OptLocation {
 	return s.Location
 }
 
@@ -5668,52 +5668,52 @@ type InlineQueryResultArticle struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultArticle) GetID() string {
+func (s *InlineQueryResultArticle) GetID() string {
 	return s.ID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultArticle) GetTitle() string {
+func (s *InlineQueryResultArticle) GetTitle() string {
 	return s.Title
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultArticle) GetInputMessageContent() InputMessageContent {
+func (s *InlineQueryResultArticle) GetInputMessageContent() InputMessageContent {
 	return s.InputMessageContent
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultArticle) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultArticle) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetURL returns the value of URL.
-func (s InlineQueryResultArticle) GetURL() OptString {
+func (s *InlineQueryResultArticle) GetURL() OptString {
 	return s.URL
 }
 
 // GetHideURL returns the value of HideURL.
-func (s InlineQueryResultArticle) GetHideURL() OptBool {
+func (s *InlineQueryResultArticle) GetHideURL() OptBool {
 	return s.HideURL
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultArticle) GetDescription() OptString {
+func (s *InlineQueryResultArticle) GetDescription() OptString {
 	return s.Description
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultArticle) GetThumbURL() OptString {
+func (s *InlineQueryResultArticle) GetThumbURL() OptString {
 	return s.ThumbURL
 }
 
 // GetThumbWidth returns the value of ThumbWidth.
-func (s InlineQueryResultArticle) GetThumbWidth() OptInt {
+func (s *InlineQueryResultArticle) GetThumbWidth() OptInt {
 	return s.ThumbWidth
 }
 
 // GetThumbHeight returns the value of ThumbHeight.
-func (s InlineQueryResultArticle) GetThumbHeight() OptInt {
+func (s *InlineQueryResultArticle) GetThumbHeight() OptInt {
 	return s.ThumbHeight
 }
 
@@ -5793,52 +5793,52 @@ type InlineQueryResultAudio struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultAudio) GetID() string {
+func (s *InlineQueryResultAudio) GetID() string {
 	return s.ID
 }
 
 // GetAudioURL returns the value of AudioURL.
-func (s InlineQueryResultAudio) GetAudioURL() string {
+func (s *InlineQueryResultAudio) GetAudioURL() string {
 	return s.AudioURL
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultAudio) GetTitle() string {
+func (s *InlineQueryResultAudio) GetTitle() string {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultAudio) GetCaption() OptString {
+func (s *InlineQueryResultAudio) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultAudio) GetParseMode() OptString {
+func (s *InlineQueryResultAudio) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultAudio) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultAudio) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetPerformer returns the value of Performer.
-func (s InlineQueryResultAudio) GetPerformer() OptString {
+func (s *InlineQueryResultAudio) GetPerformer() OptString {
 	return s.Performer
 }
 
 // GetAudioDuration returns the value of AudioDuration.
-func (s InlineQueryResultAudio) GetAudioDuration() OptInt {
+func (s *InlineQueryResultAudio) GetAudioDuration() OptInt {
 	return s.AudioDuration
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultAudio) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultAudio) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultAudio) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultAudio) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -5914,42 +5914,42 @@ type InlineQueryResultCachedAudio struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedAudio) GetType() string {
+func (s *InlineQueryResultCachedAudio) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedAudio) GetID() string {
+func (s *InlineQueryResultCachedAudio) GetID() string {
 	return s.ID
 }
 
 // GetAudioFileID returns the value of AudioFileID.
-func (s InlineQueryResultCachedAudio) GetAudioFileID() string {
+func (s *InlineQueryResultCachedAudio) GetAudioFileID() string {
 	return s.AudioFileID
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedAudio) GetCaption() OptString {
+func (s *InlineQueryResultCachedAudio) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedAudio) GetParseMode() OptString {
+func (s *InlineQueryResultCachedAudio) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedAudio) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedAudio) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedAudio) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedAudio) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedAudio) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedAudio) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6019,52 +6019,52 @@ type InlineQueryResultCachedDocument struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedDocument) GetType() string {
+func (s *InlineQueryResultCachedDocument) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedDocument) GetID() string {
+func (s *InlineQueryResultCachedDocument) GetID() string {
 	return s.ID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedDocument) GetTitle() string {
+func (s *InlineQueryResultCachedDocument) GetTitle() string {
 	return s.Title
 }
 
 // GetDocumentFileID returns the value of DocumentFileID.
-func (s InlineQueryResultCachedDocument) GetDocumentFileID() string {
+func (s *InlineQueryResultCachedDocument) GetDocumentFileID() string {
 	return s.DocumentFileID
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultCachedDocument) GetDescription() OptString {
+func (s *InlineQueryResultCachedDocument) GetDescription() OptString {
 	return s.Description
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedDocument) GetCaption() OptString {
+func (s *InlineQueryResultCachedDocument) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedDocument) GetParseMode() OptString {
+func (s *InlineQueryResultCachedDocument) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedDocument) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedDocument) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedDocument) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedDocument) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedDocument) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedDocument) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6142,47 +6142,47 @@ type InlineQueryResultCachedGif struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedGif) GetType() string {
+func (s *InlineQueryResultCachedGif) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedGif) GetID() string {
+func (s *InlineQueryResultCachedGif) GetID() string {
 	return s.ID
 }
 
 // GetGIFFileID returns the value of GIFFileID.
-func (s InlineQueryResultCachedGif) GetGIFFileID() string {
+func (s *InlineQueryResultCachedGif) GetGIFFileID() string {
 	return s.GIFFileID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedGif) GetTitle() OptString {
+func (s *InlineQueryResultCachedGif) GetTitle() OptString {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedGif) GetCaption() OptString {
+func (s *InlineQueryResultCachedGif) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedGif) GetParseMode() OptString {
+func (s *InlineQueryResultCachedGif) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedGif) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedGif) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedGif) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedGif) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedGif) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedGif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6256,47 +6256,47 @@ type InlineQueryResultCachedMpeg4Gif struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedMpeg4Gif) GetType() string {
+func (s *InlineQueryResultCachedMpeg4Gif) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedMpeg4Gif) GetID() string {
+func (s *InlineQueryResultCachedMpeg4Gif) GetID() string {
 	return s.ID
 }
 
 // GetMpeg4FileID returns the value of Mpeg4FileID.
-func (s InlineQueryResultCachedMpeg4Gif) GetMpeg4FileID() string {
+func (s *InlineQueryResultCachedMpeg4Gif) GetMpeg4FileID() string {
 	return s.Mpeg4FileID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedMpeg4Gif) GetTitle() OptString {
+func (s *InlineQueryResultCachedMpeg4Gif) GetTitle() OptString {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedMpeg4Gif) GetCaption() OptString {
+func (s *InlineQueryResultCachedMpeg4Gif) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedMpeg4Gif) GetParseMode() OptString {
+func (s *InlineQueryResultCachedMpeg4Gif) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedMpeg4Gif) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedMpeg4Gif) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedMpeg4Gif) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedMpeg4Gif) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedMpeg4Gif) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedMpeg4Gif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6371,52 +6371,52 @@ type InlineQueryResultCachedPhoto struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedPhoto) GetType() string {
+func (s *InlineQueryResultCachedPhoto) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedPhoto) GetID() string {
+func (s *InlineQueryResultCachedPhoto) GetID() string {
 	return s.ID
 }
 
 // GetPhotoFileID returns the value of PhotoFileID.
-func (s InlineQueryResultCachedPhoto) GetPhotoFileID() string {
+func (s *InlineQueryResultCachedPhoto) GetPhotoFileID() string {
 	return s.PhotoFileID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedPhoto) GetTitle() OptString {
+func (s *InlineQueryResultCachedPhoto) GetTitle() OptString {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultCachedPhoto) GetDescription() OptString {
+func (s *InlineQueryResultCachedPhoto) GetDescription() OptString {
 	return s.Description
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedPhoto) GetCaption() OptString {
+func (s *InlineQueryResultCachedPhoto) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedPhoto) GetParseMode() OptString {
+func (s *InlineQueryResultCachedPhoto) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedPhoto) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedPhoto) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedPhoto) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedPhoto) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedPhoto) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedPhoto) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6484,22 +6484,22 @@ type InlineQueryResultCachedSticker struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedSticker) GetID() string {
+func (s *InlineQueryResultCachedSticker) GetID() string {
 	return s.ID
 }
 
 // GetStickerFileID returns the value of StickerFileID.
-func (s InlineQueryResultCachedSticker) GetStickerFileID() string {
+func (s *InlineQueryResultCachedSticker) GetStickerFileID() string {
 	return s.StickerFileID
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedSticker) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedSticker) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedSticker) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedSticker) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6549,52 +6549,52 @@ type InlineQueryResultCachedVideo struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedVideo) GetType() string {
+func (s *InlineQueryResultCachedVideo) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedVideo) GetID() string {
+func (s *InlineQueryResultCachedVideo) GetID() string {
 	return s.ID
 }
 
 // GetVideoFileID returns the value of VideoFileID.
-func (s InlineQueryResultCachedVideo) GetVideoFileID() string {
+func (s *InlineQueryResultCachedVideo) GetVideoFileID() string {
 	return s.VideoFileID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedVideo) GetTitle() string {
+func (s *InlineQueryResultCachedVideo) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultCachedVideo) GetDescription() OptString {
+func (s *InlineQueryResultCachedVideo) GetDescription() OptString {
 	return s.Description
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedVideo) GetCaption() OptString {
+func (s *InlineQueryResultCachedVideo) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedVideo) GetParseMode() OptString {
+func (s *InlineQueryResultCachedVideo) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedVideo) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedVideo) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedVideo) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedVideo) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedVideo) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedVideo) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6672,47 +6672,47 @@ type InlineQueryResultCachedVoice struct {
 }
 
 // GetType returns the value of Type.
-func (s InlineQueryResultCachedVoice) GetType() string {
+func (s *InlineQueryResultCachedVoice) GetType() string {
 	return s.Type
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultCachedVoice) GetID() string {
+func (s *InlineQueryResultCachedVoice) GetID() string {
 	return s.ID
 }
 
 // GetVoiceFileID returns the value of VoiceFileID.
-func (s InlineQueryResultCachedVoice) GetVoiceFileID() string {
+func (s *InlineQueryResultCachedVoice) GetVoiceFileID() string {
 	return s.VoiceFileID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultCachedVoice) GetTitle() string {
+func (s *InlineQueryResultCachedVoice) GetTitle() string {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultCachedVoice) GetCaption() OptString {
+func (s *InlineQueryResultCachedVoice) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultCachedVoice) GetParseMode() OptString {
+func (s *InlineQueryResultCachedVoice) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultCachedVoice) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultCachedVoice) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultCachedVoice) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultCachedVoice) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultCachedVoice) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultCachedVoice) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -6787,52 +6787,52 @@ type InlineQueryResultContact struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultContact) GetID() string {
+func (s *InlineQueryResultContact) GetID() string {
 	return s.ID
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s InlineQueryResultContact) GetPhoneNumber() string {
+func (s *InlineQueryResultContact) GetPhoneNumber() string {
 	return s.PhoneNumber
 }
 
 // GetFirstName returns the value of FirstName.
-func (s InlineQueryResultContact) GetFirstName() string {
+func (s *InlineQueryResultContact) GetFirstName() string {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s InlineQueryResultContact) GetLastName() OptString {
+func (s *InlineQueryResultContact) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetVcard returns the value of Vcard.
-func (s InlineQueryResultContact) GetVcard() OptString {
+func (s *InlineQueryResultContact) GetVcard() OptString {
 	return s.Vcard
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultContact) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultContact) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultContact) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultContact) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultContact) GetThumbURL() OptString {
+func (s *InlineQueryResultContact) GetThumbURL() OptString {
 	return s.ThumbURL
 }
 
 // GetThumbWidth returns the value of ThumbWidth.
-func (s InlineQueryResultContact) GetThumbWidth() OptInt {
+func (s *InlineQueryResultContact) GetThumbWidth() OptInt {
 	return s.ThumbWidth
 }
 
 // GetThumbHeight returns the value of ThumbHeight.
-func (s InlineQueryResultContact) GetThumbHeight() OptInt {
+func (s *InlineQueryResultContact) GetThumbHeight() OptInt {
 	return s.ThumbHeight
 }
 
@@ -6918,67 +6918,67 @@ type InlineQueryResultDocument struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultDocument) GetID() string {
+func (s *InlineQueryResultDocument) GetID() string {
 	return s.ID
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultDocument) GetTitle() string {
+func (s *InlineQueryResultDocument) GetTitle() string {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultDocument) GetCaption() OptString {
+func (s *InlineQueryResultDocument) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultDocument) GetParseMode() OptString {
+func (s *InlineQueryResultDocument) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultDocument) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultDocument) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDocumentURL returns the value of DocumentURL.
-func (s InlineQueryResultDocument) GetDocumentURL() string {
+func (s *InlineQueryResultDocument) GetDocumentURL() string {
 	return s.DocumentURL
 }
 
 // GetMimeType returns the value of MimeType.
-func (s InlineQueryResultDocument) GetMimeType() string {
+func (s *InlineQueryResultDocument) GetMimeType() string {
 	return s.MimeType
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultDocument) GetDescription() OptString {
+func (s *InlineQueryResultDocument) GetDescription() OptString {
 	return s.Description
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultDocument) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultDocument) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultDocument) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultDocument) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultDocument) GetThumbURL() OptString {
+func (s *InlineQueryResultDocument) GetThumbURL() OptString {
 	return s.ThumbURL
 }
 
 // GetThumbWidth returns the value of ThumbWidth.
-func (s InlineQueryResultDocument) GetThumbWidth() OptInt {
+func (s *InlineQueryResultDocument) GetThumbWidth() OptInt {
 	return s.ThumbWidth
 }
 
 // GetThumbHeight returns the value of ThumbHeight.
-func (s InlineQueryResultDocument) GetThumbHeight() OptInt {
+func (s *InlineQueryResultDocument) GetThumbHeight() OptInt {
 	return s.ThumbHeight
 }
 
@@ -7058,17 +7058,17 @@ type InlineQueryResultGame struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultGame) GetID() string {
+func (s *InlineQueryResultGame) GetID() string {
 	return s.ID
 }
 
 // GetGameShortName returns the value of GameShortName.
-func (s InlineQueryResultGame) GetGameShortName() string {
+func (s *InlineQueryResultGame) GetGameShortName() string {
 	return s.GameShortName
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultGame) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultGame) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -7120,67 +7120,67 @@ type InlineQueryResultGif struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultGif) GetID() string {
+func (s *InlineQueryResultGif) GetID() string {
 	return s.ID
 }
 
 // GetGIFURL returns the value of GIFURL.
-func (s InlineQueryResultGif) GetGIFURL() string {
+func (s *InlineQueryResultGif) GetGIFURL() string {
 	return s.GIFURL
 }
 
 // GetGIFWidth returns the value of GIFWidth.
-func (s InlineQueryResultGif) GetGIFWidth() OptInt {
+func (s *InlineQueryResultGif) GetGIFWidth() OptInt {
 	return s.GIFWidth
 }
 
 // GetGIFHeight returns the value of GIFHeight.
-func (s InlineQueryResultGif) GetGIFHeight() OptInt {
+func (s *InlineQueryResultGif) GetGIFHeight() OptInt {
 	return s.GIFHeight
 }
 
 // GetGIFDuration returns the value of GIFDuration.
-func (s InlineQueryResultGif) GetGIFDuration() OptInt {
+func (s *InlineQueryResultGif) GetGIFDuration() OptInt {
 	return s.GIFDuration
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultGif) GetThumbURL() string {
+func (s *InlineQueryResultGif) GetThumbURL() string {
 	return s.ThumbURL
 }
 
 // GetThumbMimeType returns the value of ThumbMimeType.
-func (s InlineQueryResultGif) GetThumbMimeType() OptString {
+func (s *InlineQueryResultGif) GetThumbMimeType() OptString {
 	return s.ThumbMimeType
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultGif) GetTitle() OptString {
+func (s *InlineQueryResultGif) GetTitle() OptString {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultGif) GetCaption() OptString {
+func (s *InlineQueryResultGif) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultGif) GetParseMode() OptString {
+func (s *InlineQueryResultGif) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultGif) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultGif) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultGif) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultGif) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultGif) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultGif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -7283,67 +7283,67 @@ type InlineQueryResultLocation struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultLocation) GetID() string {
+func (s *InlineQueryResultLocation) GetID() string {
 	return s.ID
 }
 
 // GetLatitude returns the value of Latitude.
-func (s InlineQueryResultLocation) GetLatitude() float64 {
+func (s *InlineQueryResultLocation) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s InlineQueryResultLocation) GetLongitude() float64 {
+func (s *InlineQueryResultLocation) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultLocation) GetTitle() string {
+func (s *InlineQueryResultLocation) GetTitle() string {
 	return s.Title
 }
 
 // GetHorizontalAccuracy returns the value of HorizontalAccuracy.
-func (s InlineQueryResultLocation) GetHorizontalAccuracy() OptFloat64 {
+func (s *InlineQueryResultLocation) GetHorizontalAccuracy() OptFloat64 {
 	return s.HorizontalAccuracy
 }
 
 // GetLivePeriod returns the value of LivePeriod.
-func (s InlineQueryResultLocation) GetLivePeriod() OptInt {
+func (s *InlineQueryResultLocation) GetLivePeriod() OptInt {
 	return s.LivePeriod
 }
 
 // GetHeading returns the value of Heading.
-func (s InlineQueryResultLocation) GetHeading() OptInt {
+func (s *InlineQueryResultLocation) GetHeading() OptInt {
 	return s.Heading
 }
 
 // GetProximityAlertRadius returns the value of ProximityAlertRadius.
-func (s InlineQueryResultLocation) GetProximityAlertRadius() OptInt {
+func (s *InlineQueryResultLocation) GetProximityAlertRadius() OptInt {
 	return s.ProximityAlertRadius
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultLocation) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultLocation) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultLocation) GetThumbURL() OptString {
+func (s *InlineQueryResultLocation) GetThumbURL() OptString {
 	return s.ThumbURL
 }
 
 // GetThumbWidth returns the value of ThumbWidth.
-func (s InlineQueryResultLocation) GetThumbWidth() OptInt {
+func (s *InlineQueryResultLocation) GetThumbWidth() OptInt {
 	return s.ThumbWidth
 }
 
 // GetThumbHeight returns the value of ThumbHeight.
-func (s InlineQueryResultLocation) GetThumbHeight() OptInt {
+func (s *InlineQueryResultLocation) GetThumbHeight() OptInt {
 	return s.ThumbHeight
 }
 
@@ -7445,67 +7445,67 @@ type InlineQueryResultMpeg4Gif struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultMpeg4Gif) GetID() string {
+func (s *InlineQueryResultMpeg4Gif) GetID() string {
 	return s.ID
 }
 
 // GetMpeg4URL returns the value of Mpeg4URL.
-func (s InlineQueryResultMpeg4Gif) GetMpeg4URL() string {
+func (s *InlineQueryResultMpeg4Gif) GetMpeg4URL() string {
 	return s.Mpeg4URL
 }
 
 // GetMpeg4Width returns the value of Mpeg4Width.
-func (s InlineQueryResultMpeg4Gif) GetMpeg4Width() OptInt {
+func (s *InlineQueryResultMpeg4Gif) GetMpeg4Width() OptInt {
 	return s.Mpeg4Width
 }
 
 // GetMpeg4Height returns the value of Mpeg4Height.
-func (s InlineQueryResultMpeg4Gif) GetMpeg4Height() OptInt {
+func (s *InlineQueryResultMpeg4Gif) GetMpeg4Height() OptInt {
 	return s.Mpeg4Height
 }
 
 // GetMpeg4Duration returns the value of Mpeg4Duration.
-func (s InlineQueryResultMpeg4Gif) GetMpeg4Duration() OptInt {
+func (s *InlineQueryResultMpeg4Gif) GetMpeg4Duration() OptInt {
 	return s.Mpeg4Duration
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultMpeg4Gif) GetThumbURL() string {
+func (s *InlineQueryResultMpeg4Gif) GetThumbURL() string {
 	return s.ThumbURL
 }
 
 // GetThumbMimeType returns the value of ThumbMimeType.
-func (s InlineQueryResultMpeg4Gif) GetThumbMimeType() OptString {
+func (s *InlineQueryResultMpeg4Gif) GetThumbMimeType() OptString {
 	return s.ThumbMimeType
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultMpeg4Gif) GetTitle() OptString {
+func (s *InlineQueryResultMpeg4Gif) GetTitle() OptString {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultMpeg4Gif) GetCaption() OptString {
+func (s *InlineQueryResultMpeg4Gif) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultMpeg4Gif) GetParseMode() OptString {
+func (s *InlineQueryResultMpeg4Gif) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultMpeg4Gif) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultMpeg4Gif) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultMpeg4Gif) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultMpeg4Gif) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultMpeg4Gif) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultMpeg4Gif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -7604,62 +7604,62 @@ type InlineQueryResultPhoto struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultPhoto) GetID() string {
+func (s *InlineQueryResultPhoto) GetID() string {
 	return s.ID
 }
 
 // GetPhotoURL returns the value of PhotoURL.
-func (s InlineQueryResultPhoto) GetPhotoURL() string {
+func (s *InlineQueryResultPhoto) GetPhotoURL() string {
 	return s.PhotoURL
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultPhoto) GetThumbURL() string {
+func (s *InlineQueryResultPhoto) GetThumbURL() string {
 	return s.ThumbURL
 }
 
 // GetPhotoWidth returns the value of PhotoWidth.
-func (s InlineQueryResultPhoto) GetPhotoWidth() OptInt {
+func (s *InlineQueryResultPhoto) GetPhotoWidth() OptInt {
 	return s.PhotoWidth
 }
 
 // GetPhotoHeight returns the value of PhotoHeight.
-func (s InlineQueryResultPhoto) GetPhotoHeight() OptInt {
+func (s *InlineQueryResultPhoto) GetPhotoHeight() OptInt {
 	return s.PhotoHeight
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultPhoto) GetTitle() OptString {
+func (s *InlineQueryResultPhoto) GetTitle() OptString {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultPhoto) GetDescription() OptString {
+func (s *InlineQueryResultPhoto) GetDescription() OptString {
 	return s.Description
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultPhoto) GetCaption() OptString {
+func (s *InlineQueryResultPhoto) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultPhoto) GetParseMode() OptString {
+func (s *InlineQueryResultPhoto) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultPhoto) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultPhoto) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultPhoto) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultPhoto) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultPhoto) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultPhoto) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -7757,72 +7757,72 @@ type InlineQueryResultVenue struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultVenue) GetID() string {
+func (s *InlineQueryResultVenue) GetID() string {
 	return s.ID
 }
 
 // GetLatitude returns the value of Latitude.
-func (s InlineQueryResultVenue) GetLatitude() float64 {
+func (s *InlineQueryResultVenue) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s InlineQueryResultVenue) GetLongitude() float64 {
+func (s *InlineQueryResultVenue) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultVenue) GetTitle() string {
+func (s *InlineQueryResultVenue) GetTitle() string {
 	return s.Title
 }
 
 // GetAddress returns the value of Address.
-func (s InlineQueryResultVenue) GetAddress() string {
+func (s *InlineQueryResultVenue) GetAddress() string {
 	return s.Address
 }
 
 // GetFoursquareID returns the value of FoursquareID.
-func (s InlineQueryResultVenue) GetFoursquareID() OptString {
+func (s *InlineQueryResultVenue) GetFoursquareID() OptString {
 	return s.FoursquareID
 }
 
 // GetFoursquareType returns the value of FoursquareType.
-func (s InlineQueryResultVenue) GetFoursquareType() OptString {
+func (s *InlineQueryResultVenue) GetFoursquareType() OptString {
 	return s.FoursquareType
 }
 
 // GetGooglePlaceID returns the value of GooglePlaceID.
-func (s InlineQueryResultVenue) GetGooglePlaceID() OptString {
+func (s *InlineQueryResultVenue) GetGooglePlaceID() OptString {
 	return s.GooglePlaceID
 }
 
 // GetGooglePlaceType returns the value of GooglePlaceType.
-func (s InlineQueryResultVenue) GetGooglePlaceType() OptString {
+func (s *InlineQueryResultVenue) GetGooglePlaceType() OptString {
 	return s.GooglePlaceType
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultVenue) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultVenue) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultVenue) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultVenue) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultVenue) GetThumbURL() OptString {
+func (s *InlineQueryResultVenue) GetThumbURL() OptString {
 	return s.ThumbURL
 }
 
 // GetThumbWidth returns the value of ThumbWidth.
-func (s InlineQueryResultVenue) GetThumbWidth() OptInt {
+func (s *InlineQueryResultVenue) GetThumbWidth() OptInt {
 	return s.ThumbWidth
 }
 
 // GetThumbHeight returns the value of ThumbHeight.
-func (s InlineQueryResultVenue) GetThumbHeight() OptInt {
+func (s *InlineQueryResultVenue) GetThumbHeight() OptInt {
 	return s.ThumbHeight
 }
 
@@ -7930,72 +7930,72 @@ type InlineQueryResultVideo struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultVideo) GetID() string {
+func (s *InlineQueryResultVideo) GetID() string {
 	return s.ID
 }
 
 // GetVideoURL returns the value of VideoURL.
-func (s InlineQueryResultVideo) GetVideoURL() string {
+func (s *InlineQueryResultVideo) GetVideoURL() string {
 	return s.VideoURL
 }
 
 // GetMimeType returns the value of MimeType.
-func (s InlineQueryResultVideo) GetMimeType() string {
+func (s *InlineQueryResultVideo) GetMimeType() string {
 	return s.MimeType
 }
 
 // GetThumbURL returns the value of ThumbURL.
-func (s InlineQueryResultVideo) GetThumbURL() string {
+func (s *InlineQueryResultVideo) GetThumbURL() string {
 	return s.ThumbURL
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultVideo) GetTitle() string {
+func (s *InlineQueryResultVideo) GetTitle() string {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultVideo) GetCaption() OptString {
+func (s *InlineQueryResultVideo) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultVideo) GetParseMode() OptString {
+func (s *InlineQueryResultVideo) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultVideo) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultVideo) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetVideoWidth returns the value of VideoWidth.
-func (s InlineQueryResultVideo) GetVideoWidth() OptInt {
+func (s *InlineQueryResultVideo) GetVideoWidth() OptInt {
 	return s.VideoWidth
 }
 
 // GetVideoHeight returns the value of VideoHeight.
-func (s InlineQueryResultVideo) GetVideoHeight() OptInt {
+func (s *InlineQueryResultVideo) GetVideoHeight() OptInt {
 	return s.VideoHeight
 }
 
 // GetVideoDuration returns the value of VideoDuration.
-func (s InlineQueryResultVideo) GetVideoDuration() OptInt {
+func (s *InlineQueryResultVideo) GetVideoDuration() OptInt {
 	return s.VideoDuration
 }
 
 // GetDescription returns the value of Description.
-func (s InlineQueryResultVideo) GetDescription() OptString {
+func (s *InlineQueryResultVideo) GetDescription() OptString {
 	return s.Description
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultVideo) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultVideo) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultVideo) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultVideo) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -8093,47 +8093,47 @@ type InlineQueryResultVoice struct {
 }
 
 // GetID returns the value of ID.
-func (s InlineQueryResultVoice) GetID() string {
+func (s *InlineQueryResultVoice) GetID() string {
 	return s.ID
 }
 
 // GetVoiceURL returns the value of VoiceURL.
-func (s InlineQueryResultVoice) GetVoiceURL() string {
+func (s *InlineQueryResultVoice) GetVoiceURL() string {
 	return s.VoiceURL
 }
 
 // GetTitle returns the value of Title.
-func (s InlineQueryResultVoice) GetTitle() string {
+func (s *InlineQueryResultVoice) GetTitle() string {
 	return s.Title
 }
 
 // GetCaption returns the value of Caption.
-func (s InlineQueryResultVoice) GetCaption() OptString {
+func (s *InlineQueryResultVoice) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InlineQueryResultVoice) GetParseMode() OptString {
+func (s *InlineQueryResultVoice) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InlineQueryResultVoice) GetCaptionEntities() []MessageEntity {
+func (s *InlineQueryResultVoice) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetVoiceDuration returns the value of VoiceDuration.
-func (s InlineQueryResultVoice) GetVoiceDuration() OptInt {
+func (s *InlineQueryResultVoice) GetVoiceDuration() OptInt {
 	return s.VoiceDuration
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s InlineQueryResultVoice) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *InlineQueryResultVoice) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetInputMessageContent returns the value of InputMessageContent.
-func (s InlineQueryResultVoice) GetInputMessageContent() OptInputMessageContent {
+func (s *InlineQueryResultVoice) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
 }
 
@@ -8196,22 +8196,22 @@ type InputContactMessageContent struct {
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s InputContactMessageContent) GetPhoneNumber() string {
+func (s *InputContactMessageContent) GetPhoneNumber() string {
 	return s.PhoneNumber
 }
 
 // GetFirstName returns the value of FirstName.
-func (s InputContactMessageContent) GetFirstName() string {
+func (s *InputContactMessageContent) GetFirstName() string {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s InputContactMessageContent) GetLastName() OptString {
+func (s *InputContactMessageContent) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetVcard returns the value of Vcard.
-func (s InputContactMessageContent) GetVcard() OptString {
+func (s *InputContactMessageContent) GetVcard() OptString {
 	return s.Vcard
 }
 
@@ -8290,102 +8290,102 @@ type InputInvoiceMessageContent struct {
 }
 
 // GetTitle returns the value of Title.
-func (s InputInvoiceMessageContent) GetTitle() string {
+func (s *InputInvoiceMessageContent) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s InputInvoiceMessageContent) GetDescription() string {
+func (s *InputInvoiceMessageContent) GetDescription() string {
 	return s.Description
 }
 
 // GetPayload returns the value of Payload.
-func (s InputInvoiceMessageContent) GetPayload() string {
+func (s *InputInvoiceMessageContent) GetPayload() string {
 	return s.Payload
 }
 
 // GetProviderToken returns the value of ProviderToken.
-func (s InputInvoiceMessageContent) GetProviderToken() string {
+func (s *InputInvoiceMessageContent) GetProviderToken() string {
 	return s.ProviderToken
 }
 
 // GetCurrency returns the value of Currency.
-func (s InputInvoiceMessageContent) GetCurrency() string {
+func (s *InputInvoiceMessageContent) GetCurrency() string {
 	return s.Currency
 }
 
 // GetPrices returns the value of Prices.
-func (s InputInvoiceMessageContent) GetPrices() []LabeledPrice {
+func (s *InputInvoiceMessageContent) GetPrices() []LabeledPrice {
 	return s.Prices
 }
 
 // GetMaxTipAmount returns the value of MaxTipAmount.
-func (s InputInvoiceMessageContent) GetMaxTipAmount() OptInt {
+func (s *InputInvoiceMessageContent) GetMaxTipAmount() OptInt {
 	return s.MaxTipAmount
 }
 
 // GetSuggestedTipAmounts returns the value of SuggestedTipAmounts.
-func (s InputInvoiceMessageContent) GetSuggestedTipAmounts() []int64 {
+func (s *InputInvoiceMessageContent) GetSuggestedTipAmounts() []int64 {
 	return s.SuggestedTipAmounts
 }
 
 // GetProviderData returns the value of ProviderData.
-func (s InputInvoiceMessageContent) GetProviderData() OptString {
+func (s *InputInvoiceMessageContent) GetProviderData() OptString {
 	return s.ProviderData
 }
 
 // GetPhotoURL returns the value of PhotoURL.
-func (s InputInvoiceMessageContent) GetPhotoURL() OptString {
+func (s *InputInvoiceMessageContent) GetPhotoURL() OptString {
 	return s.PhotoURL
 }
 
 // GetPhotoSize returns the value of PhotoSize.
-func (s InputInvoiceMessageContent) GetPhotoSize() OptInt {
+func (s *InputInvoiceMessageContent) GetPhotoSize() OptInt {
 	return s.PhotoSize
 }
 
 // GetPhotoWidth returns the value of PhotoWidth.
-func (s InputInvoiceMessageContent) GetPhotoWidth() OptInt {
+func (s *InputInvoiceMessageContent) GetPhotoWidth() OptInt {
 	return s.PhotoWidth
 }
 
 // GetPhotoHeight returns the value of PhotoHeight.
-func (s InputInvoiceMessageContent) GetPhotoHeight() OptInt {
+func (s *InputInvoiceMessageContent) GetPhotoHeight() OptInt {
 	return s.PhotoHeight
 }
 
 // GetNeedName returns the value of NeedName.
-func (s InputInvoiceMessageContent) GetNeedName() OptBool {
+func (s *InputInvoiceMessageContent) GetNeedName() OptBool {
 	return s.NeedName
 }
 
 // GetNeedPhoneNumber returns the value of NeedPhoneNumber.
-func (s InputInvoiceMessageContent) GetNeedPhoneNumber() OptBool {
+func (s *InputInvoiceMessageContent) GetNeedPhoneNumber() OptBool {
 	return s.NeedPhoneNumber
 }
 
 // GetNeedEmail returns the value of NeedEmail.
-func (s InputInvoiceMessageContent) GetNeedEmail() OptBool {
+func (s *InputInvoiceMessageContent) GetNeedEmail() OptBool {
 	return s.NeedEmail
 }
 
 // GetNeedShippingAddress returns the value of NeedShippingAddress.
-func (s InputInvoiceMessageContent) GetNeedShippingAddress() OptBool {
+func (s *InputInvoiceMessageContent) GetNeedShippingAddress() OptBool {
 	return s.NeedShippingAddress
 }
 
 // GetSendPhoneNumberToProvider returns the value of SendPhoneNumberToProvider.
-func (s InputInvoiceMessageContent) GetSendPhoneNumberToProvider() OptBool {
+func (s *InputInvoiceMessageContent) GetSendPhoneNumberToProvider() OptBool {
 	return s.SendPhoneNumberToProvider
 }
 
 // GetSendEmailToProvider returns the value of SendEmailToProvider.
-func (s InputInvoiceMessageContent) GetSendEmailToProvider() OptBool {
+func (s *InputInvoiceMessageContent) GetSendEmailToProvider() OptBool {
 	return s.SendEmailToProvider
 }
 
 // GetIsFlexible returns the value of IsFlexible.
-func (s InputInvoiceMessageContent) GetIsFlexible() OptBool {
+func (s *InputInvoiceMessageContent) GetIsFlexible() OptBool {
 	return s.IsFlexible
 }
 
@@ -8509,32 +8509,32 @@ type InputLocationMessageContent struct {
 }
 
 // GetLatitude returns the value of Latitude.
-func (s InputLocationMessageContent) GetLatitude() float64 {
+func (s *InputLocationMessageContent) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s InputLocationMessageContent) GetLongitude() float64 {
+func (s *InputLocationMessageContent) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetHorizontalAccuracy returns the value of HorizontalAccuracy.
-func (s InputLocationMessageContent) GetHorizontalAccuracy() OptFloat64 {
+func (s *InputLocationMessageContent) GetHorizontalAccuracy() OptFloat64 {
 	return s.HorizontalAccuracy
 }
 
 // GetLivePeriod returns the value of LivePeriod.
-func (s InputLocationMessageContent) GetLivePeriod() OptInt {
+func (s *InputLocationMessageContent) GetLivePeriod() OptInt {
 	return s.LivePeriod
 }
 
 // GetHeading returns the value of Heading.
-func (s InputLocationMessageContent) GetHeading() OptInt {
+func (s *InputLocationMessageContent) GetHeading() OptInt {
 	return s.Heading
 }
 
 // GetProximityAlertRadius returns the value of ProximityAlertRadius.
-func (s InputLocationMessageContent) GetProximityAlertRadius() OptInt {
+func (s *InputLocationMessageContent) GetProximityAlertRadius() OptInt {
 	return s.ProximityAlertRadius
 }
 
@@ -8742,42 +8742,42 @@ type InputMediaAnimation struct {
 }
 
 // GetMedia returns the value of Media.
-func (s InputMediaAnimation) GetMedia() string {
+func (s *InputMediaAnimation) GetMedia() string {
 	return s.Media
 }
 
 // GetThumb returns the value of Thumb.
-func (s InputMediaAnimation) GetThumb() OptString {
+func (s *InputMediaAnimation) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s InputMediaAnimation) GetCaption() OptString {
+func (s *InputMediaAnimation) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputMediaAnimation) GetParseMode() OptString {
+func (s *InputMediaAnimation) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InputMediaAnimation) GetCaptionEntities() []MessageEntity {
+func (s *InputMediaAnimation) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetWidth returns the value of Width.
-func (s InputMediaAnimation) GetWidth() OptInt {
+func (s *InputMediaAnimation) GetWidth() OptInt {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s InputMediaAnimation) GetHeight() OptInt {
+func (s *InputMediaAnimation) GetHeight() OptInt {
 	return s.Height
 }
 
 // GetDuration returns the value of Duration.
-func (s InputMediaAnimation) GetDuration() OptInt {
+func (s *InputMediaAnimation) GetDuration() OptInt {
 	return s.Duration
 }
 
@@ -8851,42 +8851,42 @@ type InputMediaAudio struct {
 }
 
 // GetMedia returns the value of Media.
-func (s InputMediaAudio) GetMedia() string {
+func (s *InputMediaAudio) GetMedia() string {
 	return s.Media
 }
 
 // GetThumb returns the value of Thumb.
-func (s InputMediaAudio) GetThumb() OptString {
+func (s *InputMediaAudio) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s InputMediaAudio) GetCaption() OptString {
+func (s *InputMediaAudio) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputMediaAudio) GetParseMode() OptString {
+func (s *InputMediaAudio) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InputMediaAudio) GetCaptionEntities() []MessageEntity {
+func (s *InputMediaAudio) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDuration returns the value of Duration.
-func (s InputMediaAudio) GetDuration() OptInt {
+func (s *InputMediaAudio) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetPerformer returns the value of Performer.
-func (s InputMediaAudio) GetPerformer() OptString {
+func (s *InputMediaAudio) GetPerformer() OptString {
 	return s.Performer
 }
 
 // GetTitle returns the value of Title.
-func (s InputMediaAudio) GetTitle() OptString {
+func (s *InputMediaAudio) GetTitle() OptString {
 	return s.Title
 }
 
@@ -8957,32 +8957,32 @@ type InputMediaDocument struct {
 }
 
 // GetMedia returns the value of Media.
-func (s InputMediaDocument) GetMedia() string {
+func (s *InputMediaDocument) GetMedia() string {
 	return s.Media
 }
 
 // GetThumb returns the value of Thumb.
-func (s InputMediaDocument) GetThumb() OptString {
+func (s *InputMediaDocument) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s InputMediaDocument) GetCaption() OptString {
+func (s *InputMediaDocument) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputMediaDocument) GetParseMode() OptString {
+func (s *InputMediaDocument) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InputMediaDocument) GetCaptionEntities() []MessageEntity {
+func (s *InputMediaDocument) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDisableContentTypeDetection returns the value of DisableContentTypeDetection.
-func (s InputMediaDocument) GetDisableContentTypeDetection() OptBool {
+func (s *InputMediaDocument) GetDisableContentTypeDetection() OptBool {
 	return s.DisableContentTypeDetection
 }
 
@@ -9033,22 +9033,22 @@ type InputMediaPhoto struct {
 }
 
 // GetMedia returns the value of Media.
-func (s InputMediaPhoto) GetMedia() string {
+func (s *InputMediaPhoto) GetMedia() string {
 	return s.Media
 }
 
 // GetCaption returns the value of Caption.
-func (s InputMediaPhoto) GetCaption() OptString {
+func (s *InputMediaPhoto) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputMediaPhoto) GetParseMode() OptString {
+func (s *InputMediaPhoto) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InputMediaPhoto) GetCaptionEntities() []MessageEntity {
+func (s *InputMediaPhoto) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
@@ -9104,47 +9104,47 @@ type InputMediaVideo struct {
 }
 
 // GetMedia returns the value of Media.
-func (s InputMediaVideo) GetMedia() string {
+func (s *InputMediaVideo) GetMedia() string {
 	return s.Media
 }
 
 // GetThumb returns the value of Thumb.
-func (s InputMediaVideo) GetThumb() OptString {
+func (s *InputMediaVideo) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s InputMediaVideo) GetCaption() OptString {
+func (s *InputMediaVideo) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputMediaVideo) GetParseMode() OptString {
+func (s *InputMediaVideo) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s InputMediaVideo) GetCaptionEntities() []MessageEntity {
+func (s *InputMediaVideo) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetWidth returns the value of Width.
-func (s InputMediaVideo) GetWidth() OptInt {
+func (s *InputMediaVideo) GetWidth() OptInt {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s InputMediaVideo) GetHeight() OptInt {
+func (s *InputMediaVideo) GetHeight() OptInt {
 	return s.Height
 }
 
 // GetDuration returns the value of Duration.
-func (s InputMediaVideo) GetDuration() OptInt {
+func (s *InputMediaVideo) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetSupportsStreaming returns the value of SupportsStreaming.
-func (s InputMediaVideo) GetSupportsStreaming() OptBool {
+func (s *InputMediaVideo) GetSupportsStreaming() OptBool {
 	return s.SupportsStreaming
 }
 
@@ -9362,22 +9362,22 @@ type InputTextMessageContent struct {
 }
 
 // GetMessageText returns the value of MessageText.
-func (s InputTextMessageContent) GetMessageText() string {
+func (s *InputTextMessageContent) GetMessageText() string {
 	return s.MessageText
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s InputTextMessageContent) GetParseMode() OptString {
+func (s *InputTextMessageContent) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetEntities returns the value of Entities.
-func (s InputTextMessageContent) GetEntities() []MessageEntity {
+func (s *InputTextMessageContent) GetEntities() []MessageEntity {
 	return s.Entities
 }
 
 // GetDisableWebPagePreview returns the value of DisableWebPagePreview.
-func (s InputTextMessageContent) GetDisableWebPagePreview() OptBool {
+func (s *InputTextMessageContent) GetDisableWebPagePreview() OptBool {
 	return s.DisableWebPagePreview
 }
 
@@ -9424,42 +9424,42 @@ type InputVenueMessageContent struct {
 }
 
 // GetLatitude returns the value of Latitude.
-func (s InputVenueMessageContent) GetLatitude() float64 {
+func (s *InputVenueMessageContent) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s InputVenueMessageContent) GetLongitude() float64 {
+func (s *InputVenueMessageContent) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetTitle returns the value of Title.
-func (s InputVenueMessageContent) GetTitle() string {
+func (s *InputVenueMessageContent) GetTitle() string {
 	return s.Title
 }
 
 // GetAddress returns the value of Address.
-func (s InputVenueMessageContent) GetAddress() string {
+func (s *InputVenueMessageContent) GetAddress() string {
 	return s.Address
 }
 
 // GetFoursquareID returns the value of FoursquareID.
-func (s InputVenueMessageContent) GetFoursquareID() OptString {
+func (s *InputVenueMessageContent) GetFoursquareID() OptString {
 	return s.FoursquareID
 }
 
 // GetFoursquareType returns the value of FoursquareType.
-func (s InputVenueMessageContent) GetFoursquareType() OptString {
+func (s *InputVenueMessageContent) GetFoursquareType() OptString {
 	return s.FoursquareType
 }
 
 // GetGooglePlaceID returns the value of GooglePlaceID.
-func (s InputVenueMessageContent) GetGooglePlaceID() OptString {
+func (s *InputVenueMessageContent) GetGooglePlaceID() OptString {
 	return s.GooglePlaceID
 }
 
 // GetGooglePlaceType returns the value of GooglePlaceType.
-func (s InputVenueMessageContent) GetGooglePlaceType() OptString {
+func (s *InputVenueMessageContent) GetGooglePlaceType() OptString {
 	return s.GooglePlaceType
 }
 
@@ -9521,27 +9521,27 @@ type Invoice struct {
 }
 
 // GetTitle returns the value of Title.
-func (s Invoice) GetTitle() string {
+func (s *Invoice) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s Invoice) GetDescription() string {
+func (s *Invoice) GetDescription() string {
 	return s.Description
 }
 
 // GetStartParameter returns the value of StartParameter.
-func (s Invoice) GetStartParameter() string {
+func (s *Invoice) GetStartParameter() string {
 	return s.StartParameter
 }
 
 // GetCurrency returns the value of Currency.
-func (s Invoice) GetCurrency() string {
+func (s *Invoice) GetCurrency() string {
 	return s.Currency
 }
 
 // GetTotalAmount returns the value of TotalAmount.
-func (s Invoice) GetTotalAmount() int {
+func (s *Invoice) GetTotalAmount() int {
 	return s.TotalAmount
 }
 
@@ -9659,27 +9659,27 @@ type KeyboardButtonObject struct {
 }
 
 // GetText returns the value of Text.
-func (s KeyboardButtonObject) GetText() string {
+func (s *KeyboardButtonObject) GetText() string {
 	return s.Text
 }
 
 // GetRequestContact returns the value of RequestContact.
-func (s KeyboardButtonObject) GetRequestContact() OptBool {
+func (s *KeyboardButtonObject) GetRequestContact() OptBool {
 	return s.RequestContact
 }
 
 // GetRequestLocation returns the value of RequestLocation.
-func (s KeyboardButtonObject) GetRequestLocation() OptBool {
+func (s *KeyboardButtonObject) GetRequestLocation() OptBool {
 	return s.RequestLocation
 }
 
 // GetRequestPoll returns the value of RequestPoll.
-func (s KeyboardButtonObject) GetRequestPoll() OptKeyboardButtonPollType {
+func (s *KeyboardButtonObject) GetRequestPoll() OptKeyboardButtonPollType {
 	return s.RequestPoll
 }
 
 // GetWebApp returns the value of WebApp.
-func (s KeyboardButtonObject) GetWebApp() OptWebAppInfo {
+func (s *KeyboardButtonObject) GetWebApp() OptWebAppInfo {
 	return s.WebApp
 }
 
@@ -9719,7 +9719,7 @@ type KeyboardButtonPollType struct {
 }
 
 // GetType returns the value of Type.
-func (s KeyboardButtonPollType) GetType() OptString {
+func (s *KeyboardButtonPollType) GetType() OptString {
 	return s.Type
 }
 
@@ -9741,12 +9741,12 @@ type LabeledPrice struct {
 }
 
 // GetLabel returns the value of Label.
-func (s LabeledPrice) GetLabel() string {
+func (s *LabeledPrice) GetLabel() string {
 	return s.Label
 }
 
 // GetAmount returns the value of Amount.
-func (s LabeledPrice) GetAmount() int {
+func (s *LabeledPrice) GetAmount() int {
 	return s.Amount
 }
 
@@ -9767,7 +9767,7 @@ type LeaveChat struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s LeaveChat) GetChatID() ID {
+func (s *LeaveChat) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -9796,32 +9796,32 @@ type Location struct {
 }
 
 // GetLongitude returns the value of Longitude.
-func (s Location) GetLongitude() float64 {
+func (s *Location) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetLatitude returns the value of Latitude.
-func (s Location) GetLatitude() float64 {
+func (s *Location) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetHorizontalAccuracy returns the value of HorizontalAccuracy.
-func (s Location) GetHorizontalAccuracy() OptFloat64 {
+func (s *Location) GetHorizontalAccuracy() OptFloat64 {
 	return s.HorizontalAccuracy
 }
 
 // GetLivePeriod returns the value of LivePeriod.
-func (s Location) GetLivePeriod() OptInt {
+func (s *Location) GetLivePeriod() OptInt {
 	return s.LivePeriod
 }
 
 // GetHeading returns the value of Heading.
-func (s Location) GetHeading() OptInt {
+func (s *Location) GetHeading() OptInt {
 	return s.Heading
 }
 
 // GetProximityAlertRadius returns the value of ProximityAlertRadius.
-func (s Location) GetProximityAlertRadius() OptInt {
+func (s *Location) GetProximityAlertRadius() OptInt {
 	return s.ProximityAlertRadius
 }
 
@@ -9875,22 +9875,22 @@ type LoginUrl struct {
 }
 
 // GetURL returns the value of URL.
-func (s LoginUrl) GetURL() string {
+func (s *LoginUrl) GetURL() string {
 	return s.URL
 }
 
 // GetForwardText returns the value of ForwardText.
-func (s LoginUrl) GetForwardText() OptString {
+func (s *LoginUrl) GetForwardText() OptString {
 	return s.ForwardText
 }
 
 // GetBotUsername returns the value of BotUsername.
-func (s LoginUrl) GetBotUsername() OptString {
+func (s *LoginUrl) GetBotUsername() OptString {
 	return s.BotUsername
 }
 
 // GetRequestWriteAccess returns the value of RequestWriteAccess.
-func (s LoginUrl) GetRequestWriteAccess() OptBool {
+func (s *LoginUrl) GetRequestWriteAccess() OptBool {
 	return s.RequestWriteAccess
 }
 
@@ -9931,22 +9931,22 @@ type MaskPosition struct {
 }
 
 // GetPoint returns the value of Point.
-func (s MaskPosition) GetPoint() string {
+func (s *MaskPosition) GetPoint() string {
 	return s.Point
 }
 
 // GetXShift returns the value of XShift.
-func (s MaskPosition) GetXShift() float64 {
+func (s *MaskPosition) GetXShift() float64 {
 	return s.XShift
 }
 
 // GetYShift returns the value of YShift.
-func (s MaskPosition) GetYShift() float64 {
+func (s *MaskPosition) GetYShift() float64 {
 	return s.YShift
 }
 
 // GetScale returns the value of Scale.
-func (s MaskPosition) GetScale() float64 {
+func (s *MaskPosition) GetScale() float64 {
 	return s.Scale
 }
 
@@ -10079,12 +10079,12 @@ type MenuButtonWebApp struct {
 }
 
 // GetText returns the value of Text.
-func (s MenuButtonWebApp) GetText() string {
+func (s *MenuButtonWebApp) GetText() string {
 	return s.Text
 }
 
 // GetWebApp returns the value of WebApp.
-func (s MenuButtonWebApp) GetWebApp() WebAppInfo {
+func (s *MenuButtonWebApp) GetWebApp() WebAppInfo {
 	return s.WebApp
 }
 
@@ -10210,312 +10210,312 @@ type Message struct {
 }
 
 // GetMessageID returns the value of MessageID.
-func (s Message) GetMessageID() int {
+func (s *Message) GetMessageID() int {
 	return s.MessageID
 }
 
 // GetFrom returns the value of From.
-func (s Message) GetFrom() OptUser {
+func (s *Message) GetFrom() OptUser {
 	return s.From
 }
 
 // GetSenderChat returns the value of SenderChat.
-func (s Message) GetSenderChat() OptChat {
+func (s *Message) GetSenderChat() OptChat {
 	return s.SenderChat
 }
 
 // GetDate returns the value of Date.
-func (s Message) GetDate() int {
+func (s *Message) GetDate() int {
 	return s.Date
 }
 
 // GetChat returns the value of Chat.
-func (s Message) GetChat() Chat {
+func (s *Message) GetChat() Chat {
 	return s.Chat
 }
 
 // GetForwardFrom returns the value of ForwardFrom.
-func (s Message) GetForwardFrom() OptUser {
+func (s *Message) GetForwardFrom() OptUser {
 	return s.ForwardFrom
 }
 
 // GetForwardFromChat returns the value of ForwardFromChat.
-func (s Message) GetForwardFromChat() OptChat {
+func (s *Message) GetForwardFromChat() OptChat {
 	return s.ForwardFromChat
 }
 
 // GetForwardFromMessageID returns the value of ForwardFromMessageID.
-func (s Message) GetForwardFromMessageID() OptInt {
+func (s *Message) GetForwardFromMessageID() OptInt {
 	return s.ForwardFromMessageID
 }
 
 // GetForwardSignature returns the value of ForwardSignature.
-func (s Message) GetForwardSignature() OptString {
+func (s *Message) GetForwardSignature() OptString {
 	return s.ForwardSignature
 }
 
 // GetForwardSenderName returns the value of ForwardSenderName.
-func (s Message) GetForwardSenderName() OptString {
+func (s *Message) GetForwardSenderName() OptString {
 	return s.ForwardSenderName
 }
 
 // GetForwardDate returns the value of ForwardDate.
-func (s Message) GetForwardDate() OptInt {
+func (s *Message) GetForwardDate() OptInt {
 	return s.ForwardDate
 }
 
 // GetIsAutomaticForward returns the value of IsAutomaticForward.
-func (s Message) GetIsAutomaticForward() OptBool {
+func (s *Message) GetIsAutomaticForward() OptBool {
 	return s.IsAutomaticForward
 }
 
 // GetReplyToMessage returns the value of ReplyToMessage.
-func (s Message) GetReplyToMessage() *Message {
+func (s *Message) GetReplyToMessage() *Message {
 	return s.ReplyToMessage
 }
 
 // GetViaBot returns the value of ViaBot.
-func (s Message) GetViaBot() OptUser {
+func (s *Message) GetViaBot() OptUser {
 	return s.ViaBot
 }
 
 // GetEditDate returns the value of EditDate.
-func (s Message) GetEditDate() OptInt {
+func (s *Message) GetEditDate() OptInt {
 	return s.EditDate
 }
 
 // GetHasProtectedContent returns the value of HasProtectedContent.
-func (s Message) GetHasProtectedContent() OptBool {
+func (s *Message) GetHasProtectedContent() OptBool {
 	return s.HasProtectedContent
 }
 
 // GetMediaGroupID returns the value of MediaGroupID.
-func (s Message) GetMediaGroupID() OptString {
+func (s *Message) GetMediaGroupID() OptString {
 	return s.MediaGroupID
 }
 
 // GetAuthorSignature returns the value of AuthorSignature.
-func (s Message) GetAuthorSignature() OptString {
+func (s *Message) GetAuthorSignature() OptString {
 	return s.AuthorSignature
 }
 
 // GetText returns the value of Text.
-func (s Message) GetText() OptString {
+func (s *Message) GetText() OptString {
 	return s.Text
 }
 
 // GetEntities returns the value of Entities.
-func (s Message) GetEntities() []MessageEntity {
+func (s *Message) GetEntities() []MessageEntity {
 	return s.Entities
 }
 
 // GetAnimation returns the value of Animation.
-func (s Message) GetAnimation() OptAnimation {
+func (s *Message) GetAnimation() OptAnimation {
 	return s.Animation
 }
 
 // GetAudio returns the value of Audio.
-func (s Message) GetAudio() OptAudio {
+func (s *Message) GetAudio() OptAudio {
 	return s.Audio
 }
 
 // GetDocument returns the value of Document.
-func (s Message) GetDocument() OptDocument {
+func (s *Message) GetDocument() OptDocument {
 	return s.Document
 }
 
 // GetPhoto returns the value of Photo.
-func (s Message) GetPhoto() []PhotoSize {
+func (s *Message) GetPhoto() []PhotoSize {
 	return s.Photo
 }
 
 // GetSticker returns the value of Sticker.
-func (s Message) GetSticker() OptSticker {
+func (s *Message) GetSticker() OptSticker {
 	return s.Sticker
 }
 
 // GetVideo returns the value of Video.
-func (s Message) GetVideo() OptVideo {
+func (s *Message) GetVideo() OptVideo {
 	return s.Video
 }
 
 // GetVideoNote returns the value of VideoNote.
-func (s Message) GetVideoNote() OptVideoNote {
+func (s *Message) GetVideoNote() OptVideoNote {
 	return s.VideoNote
 }
 
 // GetVoice returns the value of Voice.
-func (s Message) GetVoice() OptVoice {
+func (s *Message) GetVoice() OptVoice {
 	return s.Voice
 }
 
 // GetCaption returns the value of Caption.
-func (s Message) GetCaption() OptString {
+func (s *Message) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s Message) GetCaptionEntities() []MessageEntity {
+func (s *Message) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetContact returns the value of Contact.
-func (s Message) GetContact() OptContact {
+func (s *Message) GetContact() OptContact {
 	return s.Contact
 }
 
 // GetDice returns the value of Dice.
-func (s Message) GetDice() OptDice {
+func (s *Message) GetDice() OptDice {
 	return s.Dice
 }
 
 // GetGame returns the value of Game.
-func (s Message) GetGame() OptGame {
+func (s *Message) GetGame() OptGame {
 	return s.Game
 }
 
 // GetPoll returns the value of Poll.
-func (s Message) GetPoll() OptPoll {
+func (s *Message) GetPoll() OptPoll {
 	return s.Poll
 }
 
 // GetVenue returns the value of Venue.
-func (s Message) GetVenue() OptVenue {
+func (s *Message) GetVenue() OptVenue {
 	return s.Venue
 }
 
 // GetLocation returns the value of Location.
-func (s Message) GetLocation() OptLocation {
+func (s *Message) GetLocation() OptLocation {
 	return s.Location
 }
 
 // GetNewChatMembers returns the value of NewChatMembers.
-func (s Message) GetNewChatMembers() []User {
+func (s *Message) GetNewChatMembers() []User {
 	return s.NewChatMembers
 }
 
 // GetLeftChatMember returns the value of LeftChatMember.
-func (s Message) GetLeftChatMember() OptUser {
+func (s *Message) GetLeftChatMember() OptUser {
 	return s.LeftChatMember
 }
 
 // GetNewChatTitle returns the value of NewChatTitle.
-func (s Message) GetNewChatTitle() OptString {
+func (s *Message) GetNewChatTitle() OptString {
 	return s.NewChatTitle
 }
 
 // GetNewChatPhoto returns the value of NewChatPhoto.
-func (s Message) GetNewChatPhoto() []PhotoSize {
+func (s *Message) GetNewChatPhoto() []PhotoSize {
 	return s.NewChatPhoto
 }
 
 // GetDeleteChatPhoto returns the value of DeleteChatPhoto.
-func (s Message) GetDeleteChatPhoto() OptBool {
+func (s *Message) GetDeleteChatPhoto() OptBool {
 	return s.DeleteChatPhoto
 }
 
 // GetGroupChatCreated returns the value of GroupChatCreated.
-func (s Message) GetGroupChatCreated() OptBool {
+func (s *Message) GetGroupChatCreated() OptBool {
 	return s.GroupChatCreated
 }
 
 // GetSupergroupChatCreated returns the value of SupergroupChatCreated.
-func (s Message) GetSupergroupChatCreated() OptBool {
+func (s *Message) GetSupergroupChatCreated() OptBool {
 	return s.SupergroupChatCreated
 }
 
 // GetChannelChatCreated returns the value of ChannelChatCreated.
-func (s Message) GetChannelChatCreated() OptBool {
+func (s *Message) GetChannelChatCreated() OptBool {
 	return s.ChannelChatCreated
 }
 
 // GetMessageAutoDeleteTimerChanged returns the value of MessageAutoDeleteTimerChanged.
-func (s Message) GetMessageAutoDeleteTimerChanged() OptMessageAutoDeleteTimerChanged {
+func (s *Message) GetMessageAutoDeleteTimerChanged() OptMessageAutoDeleteTimerChanged {
 	return s.MessageAutoDeleteTimerChanged
 }
 
 // GetMigrateToChatID returns the value of MigrateToChatID.
-func (s Message) GetMigrateToChatID() OptInt64 {
+func (s *Message) GetMigrateToChatID() OptInt64 {
 	return s.MigrateToChatID
 }
 
 // GetMigrateFromChatID returns the value of MigrateFromChatID.
-func (s Message) GetMigrateFromChatID() OptInt64 {
+func (s *Message) GetMigrateFromChatID() OptInt64 {
 	return s.MigrateFromChatID
 }
 
 // GetPinnedMessage returns the value of PinnedMessage.
-func (s Message) GetPinnedMessage() *Message {
+func (s *Message) GetPinnedMessage() *Message {
 	return s.PinnedMessage
 }
 
 // GetInvoice returns the value of Invoice.
-func (s Message) GetInvoice() OptInvoice {
+func (s *Message) GetInvoice() OptInvoice {
 	return s.Invoice
 }
 
 // GetSuccessfulPayment returns the value of SuccessfulPayment.
-func (s Message) GetSuccessfulPayment() OptSuccessfulPayment {
+func (s *Message) GetSuccessfulPayment() OptSuccessfulPayment {
 	return s.SuccessfulPayment
 }
 
 // GetConnectedWebsite returns the value of ConnectedWebsite.
-func (s Message) GetConnectedWebsite() OptString {
+func (s *Message) GetConnectedWebsite() OptString {
 	return s.ConnectedWebsite
 }
 
 // GetPassportData returns the value of PassportData.
-func (s Message) GetPassportData() OptPassportData {
+func (s *Message) GetPassportData() OptPassportData {
 	return s.PassportData
 }
 
 // GetProximityAlertTriggered returns the value of ProximityAlertTriggered.
-func (s Message) GetProximityAlertTriggered() OptProximityAlertTriggered {
+func (s *Message) GetProximityAlertTriggered() OptProximityAlertTriggered {
 	return s.ProximityAlertTriggered
 }
 
 // GetVideoChatScheduled returns the value of VideoChatScheduled.
-func (s Message) GetVideoChatScheduled() OptVideoChatScheduled {
+func (s *Message) GetVideoChatScheduled() OptVideoChatScheduled {
 	return s.VideoChatScheduled
 }
 
 // GetVideoChatStarted returns the value of VideoChatStarted.
-func (s Message) GetVideoChatStarted() *VideoChatStarted {
+func (s *Message) GetVideoChatStarted() *VideoChatStarted {
 	return s.VideoChatStarted
 }
 
 // GetVideoChatEnded returns the value of VideoChatEnded.
-func (s Message) GetVideoChatEnded() OptVideoChatEnded {
+func (s *Message) GetVideoChatEnded() OptVideoChatEnded {
 	return s.VideoChatEnded
 }
 
 // GetVideoChatParticipantsInvited returns the value of VideoChatParticipantsInvited.
-func (s Message) GetVideoChatParticipantsInvited() OptVideoChatParticipantsInvited {
+func (s *Message) GetVideoChatParticipantsInvited() OptVideoChatParticipantsInvited {
 	return s.VideoChatParticipantsInvited
 }
 
 // GetWebAppData returns the value of WebAppData.
-func (s Message) GetWebAppData() OptWebAppData {
+func (s *Message) GetWebAppData() OptWebAppData {
 	return s.WebAppData
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s Message) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *Message) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
 // GetNewChatMember returns the value of NewChatMember.
-func (s Message) GetNewChatMember() OptUser {
+func (s *Message) GetNewChatMember() OptUser {
 	return s.NewChatMember
 }
 
 // GetNewChatParticipant returns the value of NewChatParticipant.
-func (s Message) GetNewChatParticipant() OptUser {
+func (s *Message) GetNewChatParticipant() OptUser {
 	return s.NewChatParticipant
 }
 
 // GetLeftChatParticipant returns the value of LeftChatParticipant.
-func (s Message) GetLeftChatParticipant() OptUser {
+func (s *Message) GetLeftChatParticipant() OptUser {
 	return s.LeftChatParticipant
 }
 
@@ -10837,7 +10837,7 @@ type MessageAutoDeleteTimerChanged struct {
 }
 
 // GetMessageAutoDeleteTime returns the value of MessageAutoDeleteTime.
-func (s MessageAutoDeleteTimerChanged) GetMessageAutoDeleteTime() int {
+func (s *MessageAutoDeleteTimerChanged) GetMessageAutoDeleteTime() int {
 	return s.MessageAutoDeleteTime
 }
 
@@ -10869,32 +10869,32 @@ type MessageEntity struct {
 }
 
 // GetType returns the value of Type.
-func (s MessageEntity) GetType() MessageEntityType {
+func (s *MessageEntity) GetType() MessageEntityType {
 	return s.Type
 }
 
 // GetOffset returns the value of Offset.
-func (s MessageEntity) GetOffset() int {
+func (s *MessageEntity) GetOffset() int {
 	return s.Offset
 }
 
 // GetLength returns the value of Length.
-func (s MessageEntity) GetLength() int {
+func (s *MessageEntity) GetLength() int {
 	return s.Length
 }
 
 // GetURL returns the value of URL.
-func (s MessageEntity) GetURL() OptString {
+func (s *MessageEntity) GetURL() OptString {
 	return s.URL
 }
 
 // GetUser returns the value of User.
-func (s MessageEntity) GetUser() OptUser {
+func (s *MessageEntity) GetUser() OptUser {
 	return s.User
 }
 
 // GetLanguage returns the value of Language.
-func (s MessageEntity) GetLanguage() OptString {
+func (s *MessageEntity) GetLanguage() OptString {
 	return s.Language
 }
 
@@ -10963,7 +10963,7 @@ type MessageId struct {
 }
 
 // GetMessageID returns the value of MessageID.
-func (s MessageId) GetMessageID() int {
+func (s *MessageId) GetMessageID() int {
 	return s.MessageID
 }
 
@@ -14389,22 +14389,22 @@ type OrderInfo struct {
 }
 
 // GetName returns the value of Name.
-func (s OrderInfo) GetName() OptString {
+func (s *OrderInfo) GetName() OptString {
 	return s.Name
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s OrderInfo) GetPhoneNumber() OptString {
+func (s *OrderInfo) GetPhoneNumber() OptString {
 	return s.PhoneNumber
 }
 
 // GetEmail returns the value of Email.
-func (s OrderInfo) GetEmail() OptString {
+func (s *OrderInfo) GetEmail() OptString {
 	return s.Email
 }
 
 // GetShippingAddress returns the value of ShippingAddress.
-func (s OrderInfo) GetShippingAddress() OptShippingAddress {
+func (s *OrderInfo) GetShippingAddress() OptShippingAddress {
 	return s.ShippingAddress
 }
 
@@ -14438,12 +14438,12 @@ type PassportData struct {
 }
 
 // GetData returns the value of Data.
-func (s PassportData) GetData() []EncryptedPassportElement {
+func (s *PassportData) GetData() []EncryptedPassportElement {
 	return s.Data
 }
 
 // GetCredentials returns the value of Credentials.
-func (s PassportData) GetCredentials() EncryptedCredentials {
+func (s *PassportData) GetCredentials() EncryptedCredentials {
 	return s.Credentials
 }
 
@@ -14739,22 +14739,22 @@ type PassportElementErrorDataField struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorDataField) GetSource() string {
+func (s *PassportElementErrorDataField) GetSource() string {
 	return s.Source
 }
 
 // GetFieldName returns the value of FieldName.
-func (s PassportElementErrorDataField) GetFieldName() string {
+func (s *PassportElementErrorDataField) GetFieldName() string {
 	return s.FieldName
 }
 
 // GetDataHash returns the value of DataHash.
-func (s PassportElementErrorDataField) GetDataHash() string {
+func (s *PassportElementErrorDataField) GetDataHash() string {
 	return s.DataHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorDataField) GetMessage() string {
+func (s *PassportElementErrorDataField) GetMessage() string {
 	return s.Message
 }
 
@@ -14804,17 +14804,17 @@ type PassportElementErrorFile struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorFile) GetSource() string {
+func (s *PassportElementErrorFile) GetSource() string {
 	return s.Source
 }
 
 // GetFileHash returns the value of FileHash.
-func (s PassportElementErrorFile) GetFileHash() string {
+func (s *PassportElementErrorFile) GetFileHash() string {
 	return s.FileHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorFile) GetMessage() string {
+func (s *PassportElementErrorFile) GetMessage() string {
 	return s.Message
 }
 
@@ -14858,17 +14858,17 @@ type PassportElementErrorFiles struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorFiles) GetSource() string {
+func (s *PassportElementErrorFiles) GetSource() string {
 	return s.Source
 }
 
 // GetFileHashes returns the value of FileHashes.
-func (s PassportElementErrorFiles) GetFileHashes() []string {
+func (s *PassportElementErrorFiles) GetFileHashes() []string {
 	return s.FileHashes
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorFiles) GetMessage() string {
+func (s *PassportElementErrorFiles) GetMessage() string {
 	return s.Message
 }
 
@@ -14912,17 +14912,17 @@ type PassportElementErrorFrontSide struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorFrontSide) GetSource() string {
+func (s *PassportElementErrorFrontSide) GetSource() string {
 	return s.Source
 }
 
 // GetFileHash returns the value of FileHash.
-func (s PassportElementErrorFrontSide) GetFileHash() string {
+func (s *PassportElementErrorFrontSide) GetFileHash() string {
 	return s.FileHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorFrontSide) GetMessage() string {
+func (s *PassportElementErrorFrontSide) GetMessage() string {
 	return s.Message
 }
 
@@ -14965,17 +14965,17 @@ type PassportElementErrorReverseSide struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorReverseSide) GetSource() string {
+func (s *PassportElementErrorReverseSide) GetSource() string {
 	return s.Source
 }
 
 // GetFileHash returns the value of FileHash.
-func (s PassportElementErrorReverseSide) GetFileHash() string {
+func (s *PassportElementErrorReverseSide) GetFileHash() string {
 	return s.FileHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorReverseSide) GetMessage() string {
+func (s *PassportElementErrorReverseSide) GetMessage() string {
 	return s.Message
 }
 
@@ -15016,17 +15016,17 @@ type PassportElementErrorSelfie struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorSelfie) GetSource() string {
+func (s *PassportElementErrorSelfie) GetSource() string {
 	return s.Source
 }
 
 // GetFileHash returns the value of FileHash.
-func (s PassportElementErrorSelfie) GetFileHash() string {
+func (s *PassportElementErrorSelfie) GetFileHash() string {
 	return s.FileHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorSelfie) GetMessage() string {
+func (s *PassportElementErrorSelfie) GetMessage() string {
 	return s.Message
 }
 
@@ -15069,17 +15069,17 @@ type PassportElementErrorTranslationFile struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorTranslationFile) GetSource() string {
+func (s *PassportElementErrorTranslationFile) GetSource() string {
 	return s.Source
 }
 
 // GetFileHash returns the value of FileHash.
-func (s PassportElementErrorTranslationFile) GetFileHash() string {
+func (s *PassportElementErrorTranslationFile) GetFileHash() string {
 	return s.FileHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorTranslationFile) GetMessage() string {
+func (s *PassportElementErrorTranslationFile) GetMessage() string {
 	return s.Message
 }
 
@@ -15128,17 +15128,17 @@ type PassportElementErrorTranslationFiles struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorTranslationFiles) GetSource() string {
+func (s *PassportElementErrorTranslationFiles) GetSource() string {
 	return s.Source
 }
 
 // GetFileHashes returns the value of FileHashes.
-func (s PassportElementErrorTranslationFiles) GetFileHashes() []string {
+func (s *PassportElementErrorTranslationFiles) GetFileHashes() []string {
 	return s.FileHashes
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorTranslationFiles) GetMessage() string {
+func (s *PassportElementErrorTranslationFiles) GetMessage() string {
 	return s.Message
 }
 
@@ -15187,17 +15187,17 @@ type PassportElementErrorUnspecified struct {
 }
 
 // GetSource returns the value of Source.
-func (s PassportElementErrorUnspecified) GetSource() string {
+func (s *PassportElementErrorUnspecified) GetSource() string {
 	return s.Source
 }
 
 // GetElementHash returns the value of ElementHash.
-func (s PassportElementErrorUnspecified) GetElementHash() string {
+func (s *PassportElementErrorUnspecified) GetElementHash() string {
 	return s.ElementHash
 }
 
 // GetMessage returns the value of Message.
-func (s PassportElementErrorUnspecified) GetMessage() string {
+func (s *PassportElementErrorUnspecified) GetMessage() string {
 	return s.Message
 }
 
@@ -15232,22 +15232,22 @@ type PassportFile struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s PassportFile) GetFileID() string {
+func (s *PassportFile) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s PassportFile) GetFileUniqueID() string {
+func (s *PassportFile) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetFileSize returns the value of FileSize.
-func (s PassportFile) GetFileSize() int {
+func (s *PassportFile) GetFileSize() int {
 	return s.FileSize
 }
 
 // GetFileDate returns the value of FileDate.
-func (s PassportFile) GetFileDate() int {
+func (s *PassportFile) GetFileDate() int {
 	return s.FileDate
 }
 
@@ -15288,27 +15288,27 @@ type PhotoSize struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s PhotoSize) GetFileID() string {
+func (s *PhotoSize) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s PhotoSize) GetFileUniqueID() string {
+func (s *PhotoSize) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetWidth returns the value of Width.
-func (s PhotoSize) GetWidth() int {
+func (s *PhotoSize) GetWidth() int {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s PhotoSize) GetHeight() int {
+func (s *PhotoSize) GetHeight() int {
 	return s.Height
 }
 
 // GetFileSize returns the value of FileSize.
-func (s PhotoSize) GetFileSize() OptInt {
+func (s *PhotoSize) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -15349,17 +15349,17 @@ type PinChatMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s PinChatMessage) GetChatID() ID {
+func (s *PinChatMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s PinChatMessage) GetMessageID() int {
+func (s *PinChatMessage) GetMessageID() int {
 	return s.MessageID
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s PinChatMessage) GetDisableNotification() OptBool {
+func (s *PinChatMessage) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
@@ -15412,67 +15412,67 @@ type Poll struct {
 }
 
 // GetID returns the value of ID.
-func (s Poll) GetID() string {
+func (s *Poll) GetID() string {
 	return s.ID
 }
 
 // GetQuestion returns the value of Question.
-func (s Poll) GetQuestion() string {
+func (s *Poll) GetQuestion() string {
 	return s.Question
 }
 
 // GetOptions returns the value of Options.
-func (s Poll) GetOptions() []PollOption {
+func (s *Poll) GetOptions() []PollOption {
 	return s.Options
 }
 
 // GetTotalVoterCount returns the value of TotalVoterCount.
-func (s Poll) GetTotalVoterCount() int {
+func (s *Poll) GetTotalVoterCount() int {
 	return s.TotalVoterCount
 }
 
 // GetIsClosed returns the value of IsClosed.
-func (s Poll) GetIsClosed() bool {
+func (s *Poll) GetIsClosed() bool {
 	return s.IsClosed
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s Poll) GetIsAnonymous() bool {
+func (s *Poll) GetIsAnonymous() bool {
 	return s.IsAnonymous
 }
 
 // GetType returns the value of Type.
-func (s Poll) GetType() PollType {
+func (s *Poll) GetType() PollType {
 	return s.Type
 }
 
 // GetAllowsMultipleAnswers returns the value of AllowsMultipleAnswers.
-func (s Poll) GetAllowsMultipleAnswers() bool {
+func (s *Poll) GetAllowsMultipleAnswers() bool {
 	return s.AllowsMultipleAnswers
 }
 
 // GetCorrectOptionID returns the value of CorrectOptionID.
-func (s Poll) GetCorrectOptionID() OptInt {
+func (s *Poll) GetCorrectOptionID() OptInt {
 	return s.CorrectOptionID
 }
 
 // GetExplanation returns the value of Explanation.
-func (s Poll) GetExplanation() OptString {
+func (s *Poll) GetExplanation() OptString {
 	return s.Explanation
 }
 
 // GetExplanationEntities returns the value of ExplanationEntities.
-func (s Poll) GetExplanationEntities() []MessageEntity {
+func (s *Poll) GetExplanationEntities() []MessageEntity {
 	return s.ExplanationEntities
 }
 
 // GetOpenPeriod returns the value of OpenPeriod.
-func (s Poll) GetOpenPeriod() OptInt {
+func (s *Poll) GetOpenPeriod() OptInt {
 	return s.OpenPeriod
 }
 
 // GetCloseDate returns the value of CloseDate.
-func (s Poll) GetCloseDate() OptInt {
+func (s *Poll) GetCloseDate() OptInt {
 	return s.CloseDate
 }
 
@@ -15553,17 +15553,17 @@ type PollAnswer struct {
 }
 
 // GetPollID returns the value of PollID.
-func (s PollAnswer) GetPollID() string {
+func (s *PollAnswer) GetPollID() string {
 	return s.PollID
 }
 
 // GetUser returns the value of User.
-func (s PollAnswer) GetUser() User {
+func (s *PollAnswer) GetUser() User {
 	return s.User
 }
 
 // GetOptionIds returns the value of OptionIds.
-func (s PollAnswer) GetOptionIds() []int {
+func (s *PollAnswer) GetOptionIds() []int {
 	return s.OptionIds
 }
 
@@ -15592,12 +15592,12 @@ type PollOption struct {
 }
 
 // GetText returns the value of Text.
-func (s PollOption) GetText() string {
+func (s *PollOption) GetText() string {
 	return s.Text
 }
 
 // GetVoterCount returns the value of VoterCount.
-func (s PollOption) GetVoterCount() int {
+func (s *PollOption) GetVoterCount() int {
 	return s.VoterCount
 }
 
@@ -15639,37 +15639,37 @@ type PreCheckoutQuery struct {
 }
 
 // GetID returns the value of ID.
-func (s PreCheckoutQuery) GetID() string {
+func (s *PreCheckoutQuery) GetID() string {
 	return s.ID
 }
 
 // GetFrom returns the value of From.
-func (s PreCheckoutQuery) GetFrom() User {
+func (s *PreCheckoutQuery) GetFrom() User {
 	return s.From
 }
 
 // GetCurrency returns the value of Currency.
-func (s PreCheckoutQuery) GetCurrency() string {
+func (s *PreCheckoutQuery) GetCurrency() string {
 	return s.Currency
 }
 
 // GetTotalAmount returns the value of TotalAmount.
-func (s PreCheckoutQuery) GetTotalAmount() int {
+func (s *PreCheckoutQuery) GetTotalAmount() int {
 	return s.TotalAmount
 }
 
 // GetInvoicePayload returns the value of InvoicePayload.
-func (s PreCheckoutQuery) GetInvoicePayload() string {
+func (s *PreCheckoutQuery) GetInvoicePayload() string {
 	return s.InvoicePayload
 }
 
 // GetShippingOptionID returns the value of ShippingOptionID.
-func (s PreCheckoutQuery) GetShippingOptionID() OptString {
+func (s *PreCheckoutQuery) GetShippingOptionID() OptString {
 	return s.ShippingOptionID
 }
 
 // GetOrderInfo returns the value of OrderInfo.
-func (s PreCheckoutQuery) GetOrderInfo() OptOrderInfo {
+func (s *PreCheckoutQuery) GetOrderInfo() OptOrderInfo {
 	return s.OrderInfo
 }
 
@@ -15744,67 +15744,67 @@ type PromoteChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s PromoteChatMember) GetChatID() ID {
+func (s *PromoteChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s PromoteChatMember) GetUserID() int64 {
+func (s *PromoteChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s PromoteChatMember) GetIsAnonymous() OptBool {
+func (s *PromoteChatMember) GetIsAnonymous() OptBool {
 	return s.IsAnonymous
 }
 
 // GetCanManageChat returns the value of CanManageChat.
-func (s PromoteChatMember) GetCanManageChat() OptBool {
+func (s *PromoteChatMember) GetCanManageChat() OptBool {
 	return s.CanManageChat
 }
 
 // GetCanPostMessages returns the value of CanPostMessages.
-func (s PromoteChatMember) GetCanPostMessages() OptBool {
+func (s *PromoteChatMember) GetCanPostMessages() OptBool {
 	return s.CanPostMessages
 }
 
 // GetCanEditMessages returns the value of CanEditMessages.
-func (s PromoteChatMember) GetCanEditMessages() OptBool {
+func (s *PromoteChatMember) GetCanEditMessages() OptBool {
 	return s.CanEditMessages
 }
 
 // GetCanDeleteMessages returns the value of CanDeleteMessages.
-func (s PromoteChatMember) GetCanDeleteMessages() OptBool {
+func (s *PromoteChatMember) GetCanDeleteMessages() OptBool {
 	return s.CanDeleteMessages
 }
 
 // GetCanManageVideoChats returns the value of CanManageVideoChats.
-func (s PromoteChatMember) GetCanManageVideoChats() OptBool {
+func (s *PromoteChatMember) GetCanManageVideoChats() OptBool {
 	return s.CanManageVideoChats
 }
 
 // GetCanRestrictMembers returns the value of CanRestrictMembers.
-func (s PromoteChatMember) GetCanRestrictMembers() OptBool {
+func (s *PromoteChatMember) GetCanRestrictMembers() OptBool {
 	return s.CanRestrictMembers
 }
 
 // GetCanPromoteMembers returns the value of CanPromoteMembers.
-func (s PromoteChatMember) GetCanPromoteMembers() OptBool {
+func (s *PromoteChatMember) GetCanPromoteMembers() OptBool {
 	return s.CanPromoteMembers
 }
 
 // GetCanChangeInfo returns the value of CanChangeInfo.
-func (s PromoteChatMember) GetCanChangeInfo() OptBool {
+func (s *PromoteChatMember) GetCanChangeInfo() OptBool {
 	return s.CanChangeInfo
 }
 
 // GetCanInviteUsers returns the value of CanInviteUsers.
-func (s PromoteChatMember) GetCanInviteUsers() OptBool {
+func (s *PromoteChatMember) GetCanInviteUsers() OptBool {
 	return s.CanInviteUsers
 }
 
 // GetCanPinMessages returns the value of CanPinMessages.
-func (s PromoteChatMember) GetCanPinMessages() OptBool {
+func (s *PromoteChatMember) GetCanPinMessages() OptBool {
 	return s.CanPinMessages
 }
 
@@ -15884,17 +15884,17 @@ type ProximityAlertTriggered struct {
 }
 
 // GetTraveler returns the value of Traveler.
-func (s ProximityAlertTriggered) GetTraveler() User {
+func (s *ProximityAlertTriggered) GetTraveler() User {
 	return s.Traveler
 }
 
 // GetWatcher returns the value of Watcher.
-func (s ProximityAlertTriggered) GetWatcher() User {
+func (s *ProximityAlertTriggered) GetWatcher() User {
 	return s.Watcher
 }
 
 // GetDistance returns the value of Distance.
-func (s ProximityAlertTriggered) GetDistance() int {
+func (s *ProximityAlertTriggered) GetDistance() int {
 	return s.Distance
 }
 
@@ -15939,27 +15939,27 @@ type ReplyKeyboardMarkup struct {
 }
 
 // GetKeyboard returns the value of Keyboard.
-func (s ReplyKeyboardMarkup) GetKeyboard() [][]KeyboardButton {
+func (s *ReplyKeyboardMarkup) GetKeyboard() [][]KeyboardButton {
 	return s.Keyboard
 }
 
 // GetResizeKeyboard returns the value of ResizeKeyboard.
-func (s ReplyKeyboardMarkup) GetResizeKeyboard() OptBool {
+func (s *ReplyKeyboardMarkup) GetResizeKeyboard() OptBool {
 	return s.ResizeKeyboard
 }
 
 // GetOneTimeKeyboard returns the value of OneTimeKeyboard.
-func (s ReplyKeyboardMarkup) GetOneTimeKeyboard() OptBool {
+func (s *ReplyKeyboardMarkup) GetOneTimeKeyboard() OptBool {
 	return s.OneTimeKeyboard
 }
 
 // GetInputFieldPlaceholder returns the value of InputFieldPlaceholder.
-func (s ReplyKeyboardMarkup) GetInputFieldPlaceholder() OptString {
+func (s *ReplyKeyboardMarkup) GetInputFieldPlaceholder() OptString {
 	return s.InputFieldPlaceholder
 }
 
 // GetSelective returns the value of Selective.
-func (s ReplyKeyboardMarkup) GetSelective() OptBool {
+func (s *ReplyKeyboardMarkup) GetSelective() OptBool {
 	return s.Selective
 }
 
@@ -16007,12 +16007,12 @@ type ReplyKeyboardRemove struct {
 }
 
 // GetRemoveKeyboard returns the value of RemoveKeyboard.
-func (s ReplyKeyboardRemove) GetRemoveKeyboard() bool {
+func (s *ReplyKeyboardRemove) GetRemoveKeyboard() bool {
 	return s.RemoveKeyboard
 }
 
 // GetSelective returns the value of Selective.
-func (s ReplyKeyboardRemove) GetSelective() OptBool {
+func (s *ReplyKeyboardRemove) GetSelective() OptBool {
 	return s.Selective
 }
 
@@ -16040,12 +16040,12 @@ type Response struct {
 }
 
 // GetMigrateToChatID returns the value of MigrateToChatID.
-func (s Response) GetMigrateToChatID() OptInt64 {
+func (s *Response) GetMigrateToChatID() OptInt64 {
 	return s.MigrateToChatID
 }
 
 // GetRetryAfter returns the value of RetryAfter.
-func (s Response) GetRetryAfter() OptInt {
+func (s *Response) GetRetryAfter() OptInt {
 	return s.RetryAfter
 }
 
@@ -16073,22 +16073,22 @@ type RestrictChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s RestrictChatMember) GetChatID() ID {
+func (s *RestrictChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s RestrictChatMember) GetUserID() int64 {
+func (s *RestrictChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetPermissions returns the value of Permissions.
-func (s RestrictChatMember) GetPermissions() ChatPermissions {
+func (s *RestrictChatMember) GetPermissions() ChatPermissions {
 	return s.Permissions
 }
 
 // GetUntilDate returns the value of UntilDate.
-func (s RestrictChatMember) GetUntilDate() OptInt {
+func (s *RestrictChatMember) GetUntilDate() OptInt {
 	return s.UntilDate
 }
 
@@ -16119,12 +16119,12 @@ type Result struct {
 }
 
 // GetResult returns the value of Result.
-func (s Result) GetResult() OptBool {
+func (s *Result) GetResult() OptBool {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s Result) GetOk() bool {
+func (s *Result) GetOk() bool {
 	return s.Ok
 }
 
@@ -16145,12 +16145,12 @@ type ResultArrayOfBotCommand struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultArrayOfBotCommand) GetResult() []BotCommand {
+func (s *ResultArrayOfBotCommand) GetResult() []BotCommand {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultArrayOfBotCommand) GetOk() bool {
+func (s *ResultArrayOfBotCommand) GetOk() bool {
 	return s.Ok
 }
 
@@ -16171,12 +16171,12 @@ type ResultArrayOfChatMember struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultArrayOfChatMember) GetResult() []ChatMember {
+func (s *ResultArrayOfChatMember) GetResult() []ChatMember {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultArrayOfChatMember) GetOk() bool {
+func (s *ResultArrayOfChatMember) GetOk() bool {
 	return s.Ok
 }
 
@@ -16197,12 +16197,12 @@ type ResultArrayOfGameHighScore struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultArrayOfGameHighScore) GetResult() []GameHighScore {
+func (s *ResultArrayOfGameHighScore) GetResult() []GameHighScore {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultArrayOfGameHighScore) GetOk() bool {
+func (s *ResultArrayOfGameHighScore) GetOk() bool {
 	return s.Ok
 }
 
@@ -16223,12 +16223,12 @@ type ResultArrayOfMessage struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultArrayOfMessage) GetResult() []Message {
+func (s *ResultArrayOfMessage) GetResult() []Message {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultArrayOfMessage) GetOk() bool {
+func (s *ResultArrayOfMessage) GetOk() bool {
 	return s.Ok
 }
 
@@ -16249,12 +16249,12 @@ type ResultArrayOfUpdate struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultArrayOfUpdate) GetResult() []Update {
+func (s *ResultArrayOfUpdate) GetResult() []Update {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultArrayOfUpdate) GetOk() bool {
+func (s *ResultArrayOfUpdate) GetOk() bool {
 	return s.Ok
 }
 
@@ -16275,12 +16275,12 @@ type ResultChat struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultChat) GetResult() OptChat {
+func (s *ResultChat) GetResult() OptChat {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultChat) GetOk() bool {
+func (s *ResultChat) GetOk() bool {
 	return s.Ok
 }
 
@@ -16301,12 +16301,12 @@ type ResultChatInviteLink struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultChatInviteLink) GetResult() OptChatInviteLink {
+func (s *ResultChatInviteLink) GetResult() OptChatInviteLink {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultChatInviteLink) GetOk() bool {
+func (s *ResultChatInviteLink) GetOk() bool {
 	return s.Ok
 }
 
@@ -16327,12 +16327,12 @@ type ResultChatMember struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultChatMember) GetResult() OptChatMember {
+func (s *ResultChatMember) GetResult() OptChatMember {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultChatMember) GetOk() bool {
+func (s *ResultChatMember) GetOk() bool {
 	return s.Ok
 }
 
@@ -16353,12 +16353,12 @@ type ResultFile struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultFile) GetResult() OptFile {
+func (s *ResultFile) GetResult() OptFile {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultFile) GetOk() bool {
+func (s *ResultFile) GetOk() bool {
 	return s.Ok
 }
 
@@ -16379,12 +16379,12 @@ type ResultInt struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultInt) GetResult() OptInt {
+func (s *ResultInt) GetResult() OptInt {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultInt) GetOk() bool {
+func (s *ResultInt) GetOk() bool {
 	return s.Ok
 }
 
@@ -16405,12 +16405,12 @@ type ResultMessage struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultMessage) GetResult() OptMessage {
+func (s *ResultMessage) GetResult() OptMessage {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultMessage) GetOk() bool {
+func (s *ResultMessage) GetOk() bool {
 	return s.Ok
 }
 
@@ -16431,12 +16431,12 @@ type ResultMessageId struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultMessageId) GetResult() OptMessageId {
+func (s *ResultMessageId) GetResult() OptMessageId {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultMessageId) GetOk() bool {
+func (s *ResultMessageId) GetOk() bool {
 	return s.Ok
 }
 
@@ -16457,12 +16457,12 @@ type ResultMessageOrBoolean struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultMessageOrBoolean) GetResult() OptResultMessageOrBooleanResult {
+func (s *ResultMessageOrBoolean) GetResult() OptResultMessageOrBooleanResult {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultMessageOrBoolean) GetOk() bool {
+func (s *ResultMessageOrBoolean) GetOk() bool {
 	return s.Ok
 }
 
@@ -16551,12 +16551,12 @@ type ResultPoll struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultPoll) GetResult() OptPoll {
+func (s *ResultPoll) GetResult() OptPoll {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultPoll) GetOk() bool {
+func (s *ResultPoll) GetOk() bool {
 	return s.Ok
 }
 
@@ -16577,12 +16577,12 @@ type ResultStickerSet struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultStickerSet) GetResult() OptStickerSet {
+func (s *ResultStickerSet) GetResult() OptStickerSet {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultStickerSet) GetOk() bool {
+func (s *ResultStickerSet) GetOk() bool {
 	return s.Ok
 }
 
@@ -16603,12 +16603,12 @@ type ResultString struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultString) GetResult() OptString {
+func (s *ResultString) GetResult() OptString {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultString) GetOk() bool {
+func (s *ResultString) GetOk() bool {
 	return s.Ok
 }
 
@@ -16629,12 +16629,12 @@ type ResultUser struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultUser) GetResult() OptUser {
+func (s *ResultUser) GetResult() OptUser {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultUser) GetOk() bool {
+func (s *ResultUser) GetOk() bool {
 	return s.Ok
 }
 
@@ -16655,12 +16655,12 @@ type ResultUserProfilePhotos struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultUserProfilePhotos) GetResult() OptUserProfilePhotos {
+func (s *ResultUserProfilePhotos) GetResult() OptUserProfilePhotos {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultUserProfilePhotos) GetOk() bool {
+func (s *ResultUserProfilePhotos) GetOk() bool {
 	return s.Ok
 }
 
@@ -16681,12 +16681,12 @@ type ResultWebhookInfo struct {
 }
 
 // GetResult returns the value of Result.
-func (s ResultWebhookInfo) GetResult() OptWebhookInfo {
+func (s *ResultWebhookInfo) GetResult() OptWebhookInfo {
 	return s.Result
 }
 
 // GetOk returns the value of Ok.
-func (s ResultWebhookInfo) GetOk() bool {
+func (s *ResultWebhookInfo) GetOk() bool {
 	return s.Ok
 }
 
@@ -16709,12 +16709,12 @@ type RevokeChatInviteLink struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s RevokeChatInviteLink) GetChatID() ID {
+func (s *RevokeChatInviteLink) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetInviteLink returns the value of InviteLink.
-func (s RevokeChatInviteLink) GetInviteLink() string {
+func (s *RevokeChatInviteLink) GetInviteLink() string {
 	return s.InviteLink
 }
 
@@ -16769,72 +16769,72 @@ type SendAnimation struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendAnimation) GetChatID() ID {
+func (s *SendAnimation) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetAnimation returns the value of Animation.
-func (s SendAnimation) GetAnimation() string {
+func (s *SendAnimation) GetAnimation() string {
 	return s.Animation
 }
 
 // GetDuration returns the value of Duration.
-func (s SendAnimation) GetDuration() OptInt {
+func (s *SendAnimation) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetWidth returns the value of Width.
-func (s SendAnimation) GetWidth() OptInt {
+func (s *SendAnimation) GetWidth() OptInt {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s SendAnimation) GetHeight() OptInt {
+func (s *SendAnimation) GetHeight() OptInt {
 	return s.Height
 }
 
 // GetThumb returns the value of Thumb.
-func (s SendAnimation) GetThumb() OptString {
+func (s *SendAnimation) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s SendAnimation) GetCaption() OptString {
+func (s *SendAnimation) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendAnimation) GetParseMode() OptString {
+func (s *SendAnimation) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendAnimation) GetCaptionEntities() []MessageEntity {
+func (s *SendAnimation) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendAnimation) GetDisableNotification() OptBool {
+func (s *SendAnimation) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendAnimation) GetProtectContent() OptBool {
+func (s *SendAnimation) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendAnimation) GetReplyToMessageID() OptInt {
+func (s *SendAnimation) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendAnimation) GetAllowSendingWithoutReply() OptBool {
+func (s *SendAnimation) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendAnimation) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendAnimation) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -16948,72 +16948,72 @@ type SendAudio struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendAudio) GetChatID() ID {
+func (s *SendAudio) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetAudio returns the value of Audio.
-func (s SendAudio) GetAudio() string {
+func (s *SendAudio) GetAudio() string {
 	return s.Audio
 }
 
 // GetCaption returns the value of Caption.
-func (s SendAudio) GetCaption() OptString {
+func (s *SendAudio) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendAudio) GetParseMode() OptString {
+func (s *SendAudio) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendAudio) GetCaptionEntities() []MessageEntity {
+func (s *SendAudio) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDuration returns the value of Duration.
-func (s SendAudio) GetDuration() OptInt {
+func (s *SendAudio) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetPerformer returns the value of Performer.
-func (s SendAudio) GetPerformer() OptString {
+func (s *SendAudio) GetPerformer() OptString {
 	return s.Performer
 }
 
 // GetTitle returns the value of Title.
-func (s SendAudio) GetTitle() OptString {
+func (s *SendAudio) GetTitle() OptString {
 	return s.Title
 }
 
 // GetThumb returns the value of Thumb.
-func (s SendAudio) GetThumb() OptString {
+func (s *SendAudio) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendAudio) GetDisableNotification() OptBool {
+func (s *SendAudio) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendAudio) GetProtectContent() OptBool {
+func (s *SendAudio) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendAudio) GetReplyToMessageID() OptInt {
+func (s *SendAudio) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendAudio) GetAllowSendingWithoutReply() OptBool {
+func (s *SendAudio) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendAudio) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendAudio) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17099,12 +17099,12 @@ type SendChatAction struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendChatAction) GetChatID() ID {
+func (s *SendChatAction) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetAction returns the value of Action.
-func (s SendChatAction) GetAction() string {
+func (s *SendChatAction) GetAction() string {
 	return s.Action
 }
 
@@ -17142,52 +17142,52 @@ type SendContact struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendContact) GetChatID() ID {
+func (s *SendContact) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetPhoneNumber returns the value of PhoneNumber.
-func (s SendContact) GetPhoneNumber() string {
+func (s *SendContact) GetPhoneNumber() string {
 	return s.PhoneNumber
 }
 
 // GetFirstName returns the value of FirstName.
-func (s SendContact) GetFirstName() string {
+func (s *SendContact) GetFirstName() string {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s SendContact) GetLastName() OptString {
+func (s *SendContact) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetVcard returns the value of Vcard.
-func (s SendContact) GetVcard() OptString {
+func (s *SendContact) GetVcard() OptString {
 	return s.Vcard
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendContact) GetDisableNotification() OptBool {
+func (s *SendContact) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendContact) GetProtectContent() OptBool {
+func (s *SendContact) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendContact) GetReplyToMessageID() OptInt {
+func (s *SendContact) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendContact) GetAllowSendingWithoutReply() OptBool {
+func (s *SendContact) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendContact) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendContact) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17261,37 +17261,37 @@ type SendDice struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendDice) GetChatID() ID {
+func (s *SendDice) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetEmoji returns the value of Emoji.
-func (s SendDice) GetEmoji() OptString {
+func (s *SendDice) GetEmoji() OptString {
 	return s.Emoji
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendDice) GetDisableNotification() OptBool {
+func (s *SendDice) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendDice) GetProtectContent() OptBool {
+func (s *SendDice) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendDice) GetReplyToMessageID() OptInt {
+func (s *SendDice) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendDice) GetAllowSendingWithoutReply() OptBool {
+func (s *SendDice) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendDice) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendDice) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17367,62 +17367,62 @@ type SendDocument struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendDocument) GetChatID() ID {
+func (s *SendDocument) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetDocument returns the value of Document.
-func (s SendDocument) GetDocument() string {
+func (s *SendDocument) GetDocument() string {
 	return s.Document
 }
 
 // GetThumb returns the value of Thumb.
-func (s SendDocument) GetThumb() OptString {
+func (s *SendDocument) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s SendDocument) GetCaption() OptString {
+func (s *SendDocument) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendDocument) GetParseMode() OptString {
+func (s *SendDocument) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendDocument) GetCaptionEntities() []MessageEntity {
+func (s *SendDocument) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDisableContentTypeDetection returns the value of DisableContentTypeDetection.
-func (s SendDocument) GetDisableContentTypeDetection() OptBool {
+func (s *SendDocument) GetDisableContentTypeDetection() OptBool {
 	return s.DisableContentTypeDetection
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendDocument) GetDisableNotification() OptBool {
+func (s *SendDocument) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendDocument) GetProtectContent() OptBool {
+func (s *SendDocument) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendDocument) GetReplyToMessageID() OptInt {
+func (s *SendDocument) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendDocument) GetAllowSendingWithoutReply() OptBool {
+func (s *SendDocument) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendDocument) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendDocument) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17506,37 +17506,37 @@ type SendGame struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendGame) GetChatID() int64 {
+func (s *SendGame) GetChatID() int64 {
 	return s.ChatID
 }
 
 // GetGameShortName returns the value of GameShortName.
-func (s SendGame) GetGameShortName() string {
+func (s *SendGame) GetGameShortName() string {
 	return s.GameShortName
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendGame) GetDisableNotification() OptBool {
+func (s *SendGame) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendGame) GetProtectContent() OptBool {
+func (s *SendGame) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendGame) GetReplyToMessageID() OptInt {
+func (s *SendGame) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendGame) GetAllowSendingWithoutReply() OptBool {
+func (s *SendGame) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendGame) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *SendGame) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17645,137 +17645,137 @@ type SendInvoice struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendInvoice) GetChatID() ID {
+func (s *SendInvoice) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetTitle returns the value of Title.
-func (s SendInvoice) GetTitle() string {
+func (s *SendInvoice) GetTitle() string {
 	return s.Title
 }
 
 // GetDescription returns the value of Description.
-func (s SendInvoice) GetDescription() string {
+func (s *SendInvoice) GetDescription() string {
 	return s.Description
 }
 
 // GetPayload returns the value of Payload.
-func (s SendInvoice) GetPayload() string {
+func (s *SendInvoice) GetPayload() string {
 	return s.Payload
 }
 
 // GetProviderToken returns the value of ProviderToken.
-func (s SendInvoice) GetProviderToken() string {
+func (s *SendInvoice) GetProviderToken() string {
 	return s.ProviderToken
 }
 
 // GetCurrency returns the value of Currency.
-func (s SendInvoice) GetCurrency() string {
+func (s *SendInvoice) GetCurrency() string {
 	return s.Currency
 }
 
 // GetPrices returns the value of Prices.
-func (s SendInvoice) GetPrices() []LabeledPrice {
+func (s *SendInvoice) GetPrices() []LabeledPrice {
 	return s.Prices
 }
 
 // GetMaxTipAmount returns the value of MaxTipAmount.
-func (s SendInvoice) GetMaxTipAmount() OptInt {
+func (s *SendInvoice) GetMaxTipAmount() OptInt {
 	return s.MaxTipAmount
 }
 
 // GetSuggestedTipAmounts returns the value of SuggestedTipAmounts.
-func (s SendInvoice) GetSuggestedTipAmounts() []int64 {
+func (s *SendInvoice) GetSuggestedTipAmounts() []int64 {
 	return s.SuggestedTipAmounts
 }
 
 // GetStartParameter returns the value of StartParameter.
-func (s SendInvoice) GetStartParameter() OptString {
+func (s *SendInvoice) GetStartParameter() OptString {
 	return s.StartParameter
 }
 
 // GetProviderData returns the value of ProviderData.
-func (s SendInvoice) GetProviderData() OptString {
+func (s *SendInvoice) GetProviderData() OptString {
 	return s.ProviderData
 }
 
 // GetPhotoURL returns the value of PhotoURL.
-func (s SendInvoice) GetPhotoURL() OptString {
+func (s *SendInvoice) GetPhotoURL() OptString {
 	return s.PhotoURL
 }
 
 // GetPhotoSize returns the value of PhotoSize.
-func (s SendInvoice) GetPhotoSize() OptInt {
+func (s *SendInvoice) GetPhotoSize() OptInt {
 	return s.PhotoSize
 }
 
 // GetPhotoWidth returns the value of PhotoWidth.
-func (s SendInvoice) GetPhotoWidth() OptInt {
+func (s *SendInvoice) GetPhotoWidth() OptInt {
 	return s.PhotoWidth
 }
 
 // GetPhotoHeight returns the value of PhotoHeight.
-func (s SendInvoice) GetPhotoHeight() OptInt {
+func (s *SendInvoice) GetPhotoHeight() OptInt {
 	return s.PhotoHeight
 }
 
 // GetNeedName returns the value of NeedName.
-func (s SendInvoice) GetNeedName() OptBool {
+func (s *SendInvoice) GetNeedName() OptBool {
 	return s.NeedName
 }
 
 // GetNeedPhoneNumber returns the value of NeedPhoneNumber.
-func (s SendInvoice) GetNeedPhoneNumber() OptBool {
+func (s *SendInvoice) GetNeedPhoneNumber() OptBool {
 	return s.NeedPhoneNumber
 }
 
 // GetNeedEmail returns the value of NeedEmail.
-func (s SendInvoice) GetNeedEmail() OptBool {
+func (s *SendInvoice) GetNeedEmail() OptBool {
 	return s.NeedEmail
 }
 
 // GetNeedShippingAddress returns the value of NeedShippingAddress.
-func (s SendInvoice) GetNeedShippingAddress() OptBool {
+func (s *SendInvoice) GetNeedShippingAddress() OptBool {
 	return s.NeedShippingAddress
 }
 
 // GetSendPhoneNumberToProvider returns the value of SendPhoneNumberToProvider.
-func (s SendInvoice) GetSendPhoneNumberToProvider() OptBool {
+func (s *SendInvoice) GetSendPhoneNumberToProvider() OptBool {
 	return s.SendPhoneNumberToProvider
 }
 
 // GetSendEmailToProvider returns the value of SendEmailToProvider.
-func (s SendInvoice) GetSendEmailToProvider() OptBool {
+func (s *SendInvoice) GetSendEmailToProvider() OptBool {
 	return s.SendEmailToProvider
 }
 
 // GetIsFlexible returns the value of IsFlexible.
-func (s SendInvoice) GetIsFlexible() OptBool {
+func (s *SendInvoice) GetIsFlexible() OptBool {
 	return s.IsFlexible
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendInvoice) GetDisableNotification() OptBool {
+func (s *SendInvoice) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendInvoice) GetProtectContent() OptBool {
+func (s *SendInvoice) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendInvoice) GetReplyToMessageID() OptInt {
+func (s *SendInvoice) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendInvoice) GetAllowSendingWithoutReply() OptBool {
+func (s *SendInvoice) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendInvoice) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *SendInvoice) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -17945,62 +17945,62 @@ type SendLocation struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendLocation) GetChatID() ID {
+func (s *SendLocation) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetLatitude returns the value of Latitude.
-func (s SendLocation) GetLatitude() float64 {
+func (s *SendLocation) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s SendLocation) GetLongitude() float64 {
+func (s *SendLocation) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetHorizontalAccuracy returns the value of HorizontalAccuracy.
-func (s SendLocation) GetHorizontalAccuracy() OptFloat64 {
+func (s *SendLocation) GetHorizontalAccuracy() OptFloat64 {
 	return s.HorizontalAccuracy
 }
 
 // GetLivePeriod returns the value of LivePeriod.
-func (s SendLocation) GetLivePeriod() OptInt {
+func (s *SendLocation) GetLivePeriod() OptInt {
 	return s.LivePeriod
 }
 
 // GetHeading returns the value of Heading.
-func (s SendLocation) GetHeading() OptInt {
+func (s *SendLocation) GetHeading() OptInt {
 	return s.Heading
 }
 
 // GetProximityAlertRadius returns the value of ProximityAlertRadius.
-func (s SendLocation) GetProximityAlertRadius() OptInt {
+func (s *SendLocation) GetProximityAlertRadius() OptInt {
 	return s.ProximityAlertRadius
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendLocation) GetDisableNotification() OptBool {
+func (s *SendLocation) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendLocation) GetProtectContent() OptBool {
+func (s *SendLocation) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendLocation) GetReplyToMessageID() OptInt {
+func (s *SendLocation) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendLocation) GetAllowSendingWithoutReply() OptBool {
+func (s *SendLocation) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendLocation) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendLocation) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -18081,32 +18081,32 @@ type SendMediaGroup struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendMediaGroup) GetChatID() ID {
+func (s *SendMediaGroup) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetMedia returns the value of Media.
-func (s SendMediaGroup) GetMedia() []SendMediaGroupMediaItem {
+func (s *SendMediaGroup) GetMedia() []SendMediaGroupMediaItem {
 	return s.Media
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendMediaGroup) GetDisableNotification() OptBool {
+func (s *SendMediaGroup) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendMediaGroup) GetProtectContent() OptBool {
+func (s *SendMediaGroup) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendMediaGroup) GetReplyToMessageID() OptInt {
+func (s *SendMediaGroup) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendMediaGroup) GetAllowSendingWithoutReply() OptBool {
+func (s *SendMediaGroup) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
@@ -18289,52 +18289,52 @@ type SendMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendMessage) GetChatID() ID {
+func (s *SendMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetText returns the value of Text.
-func (s SendMessage) GetText() string {
+func (s *SendMessage) GetText() string {
 	return s.Text
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendMessage) GetParseMode() OptString {
+func (s *SendMessage) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetEntities returns the value of Entities.
-func (s SendMessage) GetEntities() []MessageEntity {
+func (s *SendMessage) GetEntities() []MessageEntity {
 	return s.Entities
 }
 
 // GetDisableWebPagePreview returns the value of DisableWebPagePreview.
-func (s SendMessage) GetDisableWebPagePreview() OptBool {
+func (s *SendMessage) GetDisableWebPagePreview() OptBool {
 	return s.DisableWebPagePreview
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendMessage) GetDisableNotification() OptBool {
+func (s *SendMessage) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendMessage) GetProtectContent() OptBool {
+func (s *SendMessage) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendMessage) GetReplyToMessageID() OptInt {
+func (s *SendMessage) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendMessage) GetAllowSendingWithoutReply() OptBool {
+func (s *SendMessage) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendMessage) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendMessage) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -18417,52 +18417,52 @@ type SendPhoto struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendPhoto) GetChatID() ID {
+func (s *SendPhoto) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetPhoto returns the value of Photo.
-func (s SendPhoto) GetPhoto() string {
+func (s *SendPhoto) GetPhoto() string {
 	return s.Photo
 }
 
 // GetCaption returns the value of Caption.
-func (s SendPhoto) GetCaption() OptString {
+func (s *SendPhoto) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendPhoto) GetParseMode() OptString {
+func (s *SendPhoto) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendPhoto) GetCaptionEntities() []MessageEntity {
+func (s *SendPhoto) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendPhoto) GetDisableNotification() OptBool {
+func (s *SendPhoto) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendPhoto) GetProtectContent() OptBool {
+func (s *SendPhoto) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendPhoto) GetReplyToMessageID() OptInt {
+func (s *SendPhoto) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendPhoto) GetAllowSendingWithoutReply() OptBool {
+func (s *SendPhoto) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendPhoto) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendPhoto) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -18560,92 +18560,92 @@ type SendPoll struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendPoll) GetChatID() ID {
+func (s *SendPoll) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetQuestion returns the value of Question.
-func (s SendPoll) GetQuestion() string {
+func (s *SendPoll) GetQuestion() string {
 	return s.Question
 }
 
 // GetOptions returns the value of Options.
-func (s SendPoll) GetOptions() []string {
+func (s *SendPoll) GetOptions() []string {
 	return s.Options
 }
 
 // GetIsAnonymous returns the value of IsAnonymous.
-func (s SendPoll) GetIsAnonymous() OptBool {
+func (s *SendPoll) GetIsAnonymous() OptBool {
 	return s.IsAnonymous
 }
 
 // GetType returns the value of Type.
-func (s SendPoll) GetType() OptString {
+func (s *SendPoll) GetType() OptString {
 	return s.Type
 }
 
 // GetAllowsMultipleAnswers returns the value of AllowsMultipleAnswers.
-func (s SendPoll) GetAllowsMultipleAnswers() OptBool {
+func (s *SendPoll) GetAllowsMultipleAnswers() OptBool {
 	return s.AllowsMultipleAnswers
 }
 
 // GetCorrectOptionID returns the value of CorrectOptionID.
-func (s SendPoll) GetCorrectOptionID() OptInt {
+func (s *SendPoll) GetCorrectOptionID() OptInt {
 	return s.CorrectOptionID
 }
 
 // GetExplanation returns the value of Explanation.
-func (s SendPoll) GetExplanation() OptString {
+func (s *SendPoll) GetExplanation() OptString {
 	return s.Explanation
 }
 
 // GetExplanationParseMode returns the value of ExplanationParseMode.
-func (s SendPoll) GetExplanationParseMode() OptString {
+func (s *SendPoll) GetExplanationParseMode() OptString {
 	return s.ExplanationParseMode
 }
 
 // GetExplanationEntities returns the value of ExplanationEntities.
-func (s SendPoll) GetExplanationEntities() []MessageEntity {
+func (s *SendPoll) GetExplanationEntities() []MessageEntity {
 	return s.ExplanationEntities
 }
 
 // GetOpenPeriod returns the value of OpenPeriod.
-func (s SendPoll) GetOpenPeriod() OptInt {
+func (s *SendPoll) GetOpenPeriod() OptInt {
 	return s.OpenPeriod
 }
 
 // GetCloseDate returns the value of CloseDate.
-func (s SendPoll) GetCloseDate() OptInt {
+func (s *SendPoll) GetCloseDate() OptInt {
 	return s.CloseDate
 }
 
 // GetIsClosed returns the value of IsClosed.
-func (s SendPoll) GetIsClosed() OptBool {
+func (s *SendPoll) GetIsClosed() OptBool {
 	return s.IsClosed
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendPoll) GetDisableNotification() OptBool {
+func (s *SendPoll) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendPoll) GetProtectContent() OptBool {
+func (s *SendPoll) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendPoll) GetReplyToMessageID() OptInt {
+func (s *SendPoll) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendPoll) GetAllowSendingWithoutReply() OptBool {
+func (s *SendPoll) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendPoll) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendPoll) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -18882,37 +18882,37 @@ type SendSticker struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendSticker) GetChatID() ID {
+func (s *SendSticker) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetSticker returns the value of Sticker.
-func (s SendSticker) GetSticker() string {
+func (s *SendSticker) GetSticker() string {
 	return s.Sticker
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendSticker) GetDisableNotification() OptBool {
+func (s *SendSticker) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendSticker) GetProtectContent() OptBool {
+func (s *SendSticker) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendSticker) GetReplyToMessageID() OptInt {
+func (s *SendSticker) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendSticker) GetAllowSendingWithoutReply() OptBool {
+func (s *SendSticker) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendSticker) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendSticker) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -18984,72 +18984,72 @@ type SendVenue struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendVenue) GetChatID() ID {
+func (s *SendVenue) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetLatitude returns the value of Latitude.
-func (s SendVenue) GetLatitude() float64 {
+func (s *SendVenue) GetLatitude() float64 {
 	return s.Latitude
 }
 
 // GetLongitude returns the value of Longitude.
-func (s SendVenue) GetLongitude() float64 {
+func (s *SendVenue) GetLongitude() float64 {
 	return s.Longitude
 }
 
 // GetTitle returns the value of Title.
-func (s SendVenue) GetTitle() string {
+func (s *SendVenue) GetTitle() string {
 	return s.Title
 }
 
 // GetAddress returns the value of Address.
-func (s SendVenue) GetAddress() string {
+func (s *SendVenue) GetAddress() string {
 	return s.Address
 }
 
 // GetFoursquareID returns the value of FoursquareID.
-func (s SendVenue) GetFoursquareID() OptString {
+func (s *SendVenue) GetFoursquareID() OptString {
 	return s.FoursquareID
 }
 
 // GetFoursquareType returns the value of FoursquareType.
-func (s SendVenue) GetFoursquareType() OptString {
+func (s *SendVenue) GetFoursquareType() OptString {
 	return s.FoursquareType
 }
 
 // GetGooglePlaceID returns the value of GooglePlaceID.
-func (s SendVenue) GetGooglePlaceID() OptString {
+func (s *SendVenue) GetGooglePlaceID() OptString {
 	return s.GooglePlaceID
 }
 
 // GetGooglePlaceType returns the value of GooglePlaceType.
-func (s SendVenue) GetGooglePlaceType() OptString {
+func (s *SendVenue) GetGooglePlaceType() OptString {
 	return s.GooglePlaceType
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendVenue) GetDisableNotification() OptBool {
+func (s *SendVenue) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendVenue) GetProtectContent() OptBool {
+func (s *SendVenue) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendVenue) GetReplyToMessageID() OptInt {
+func (s *SendVenue) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendVenue) GetAllowSendingWithoutReply() OptBool {
+func (s *SendVenue) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendVenue) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendVenue) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -19166,77 +19166,77 @@ type SendVideo struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendVideo) GetChatID() ID {
+func (s *SendVideo) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetVideo returns the value of Video.
-func (s SendVideo) GetVideo() string {
+func (s *SendVideo) GetVideo() string {
 	return s.Video
 }
 
 // GetDuration returns the value of Duration.
-func (s SendVideo) GetDuration() OptInt {
+func (s *SendVideo) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetWidth returns the value of Width.
-func (s SendVideo) GetWidth() OptInt {
+func (s *SendVideo) GetWidth() OptInt {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s SendVideo) GetHeight() OptInt {
+func (s *SendVideo) GetHeight() OptInt {
 	return s.Height
 }
 
 // GetThumb returns the value of Thumb.
-func (s SendVideo) GetThumb() OptString {
+func (s *SendVideo) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetCaption returns the value of Caption.
-func (s SendVideo) GetCaption() OptString {
+func (s *SendVideo) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendVideo) GetParseMode() OptString {
+func (s *SendVideo) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendVideo) GetCaptionEntities() []MessageEntity {
+func (s *SendVideo) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetSupportsStreaming returns the value of SupportsStreaming.
-func (s SendVideo) GetSupportsStreaming() OptBool {
+func (s *SendVideo) GetSupportsStreaming() OptBool {
 	return s.SupportsStreaming
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendVideo) GetDisableNotification() OptBool {
+func (s *SendVideo) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendVideo) GetProtectContent() OptBool {
+func (s *SendVideo) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendVideo) GetReplyToMessageID() OptInt {
+func (s *SendVideo) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendVideo) GetAllowSendingWithoutReply() OptBool {
+func (s *SendVideo) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendVideo) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendVideo) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -19346,52 +19346,52 @@ type SendVideoNote struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendVideoNote) GetChatID() ID {
+func (s *SendVideoNote) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetVideoNote returns the value of VideoNote.
-func (s SendVideoNote) GetVideoNote() string {
+func (s *SendVideoNote) GetVideoNote() string {
 	return s.VideoNote
 }
 
 // GetDuration returns the value of Duration.
-func (s SendVideoNote) GetDuration() OptInt {
+func (s *SendVideoNote) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetLength returns the value of Length.
-func (s SendVideoNote) GetLength() OptInt {
+func (s *SendVideoNote) GetLength() OptInt {
 	return s.Length
 }
 
 // GetThumb returns the value of Thumb.
-func (s SendVideoNote) GetThumb() OptString {
+func (s *SendVideoNote) GetThumb() OptString {
 	return s.Thumb
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendVideoNote) GetDisableNotification() OptBool {
+func (s *SendVideoNote) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendVideoNote) GetProtectContent() OptBool {
+func (s *SendVideoNote) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendVideoNote) GetReplyToMessageID() OptInt {
+func (s *SendVideoNote) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendVideoNote) GetAllowSendingWithoutReply() OptBool {
+func (s *SendVideoNote) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendVideoNote) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendVideoNote) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -19474,57 +19474,57 @@ type SendVoice struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SendVoice) GetChatID() ID {
+func (s *SendVoice) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetVoice returns the value of Voice.
-func (s SendVoice) GetVoice() string {
+func (s *SendVoice) GetVoice() string {
 	return s.Voice
 }
 
 // GetCaption returns the value of Caption.
-func (s SendVoice) GetCaption() OptString {
+func (s *SendVoice) GetCaption() OptString {
 	return s.Caption
 }
 
 // GetParseMode returns the value of ParseMode.
-func (s SendVoice) GetParseMode() OptString {
+func (s *SendVoice) GetParseMode() OptString {
 	return s.ParseMode
 }
 
 // GetCaptionEntities returns the value of CaptionEntities.
-func (s SendVoice) GetCaptionEntities() []MessageEntity {
+func (s *SendVoice) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
 }
 
 // GetDuration returns the value of Duration.
-func (s SendVoice) GetDuration() OptInt {
+func (s *SendVoice) GetDuration() OptInt {
 	return s.Duration
 }
 
 // GetDisableNotification returns the value of DisableNotification.
-func (s SendVoice) GetDisableNotification() OptBool {
+func (s *SendVoice) GetDisableNotification() OptBool {
 	return s.DisableNotification
 }
 
 // GetProtectContent returns the value of ProtectContent.
-func (s SendVoice) GetProtectContent() OptBool {
+func (s *SendVoice) GetProtectContent() OptBool {
 	return s.ProtectContent
 }
 
 // GetReplyToMessageID returns the value of ReplyToMessageID.
-func (s SendVoice) GetReplyToMessageID() OptInt {
+func (s *SendVoice) GetReplyToMessageID() OptInt {
 	return s.ReplyToMessageID
 }
 
 // GetAllowSendingWithoutReply returns the value of AllowSendingWithoutReply.
-func (s SendVoice) GetAllowSendingWithoutReply() OptBool {
+func (s *SendVoice) GetAllowSendingWithoutReply() OptBool {
 	return s.AllowSendingWithoutReply
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s SendVoice) GetReplyMarkup() OptSendReplyMarkup {
+func (s *SendVoice) GetReplyMarkup() OptSendReplyMarkup {
 	return s.ReplyMarkup
 }
 
@@ -19594,17 +19594,17 @@ type SetChatAdministratorCustomTitle struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatAdministratorCustomTitle) GetChatID() ID {
+func (s *SetChatAdministratorCustomTitle) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s SetChatAdministratorCustomTitle) GetUserID() int64 {
+func (s *SetChatAdministratorCustomTitle) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetCustomTitle returns the value of CustomTitle.
-func (s SetChatAdministratorCustomTitle) GetCustomTitle() string {
+func (s *SetChatAdministratorCustomTitle) GetCustomTitle() string {
 	return s.CustomTitle
 }
 
@@ -19632,12 +19632,12 @@ type SetChatDescription struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatDescription) GetChatID() ID {
+func (s *SetChatDescription) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetDescription returns the value of Description.
-func (s SetChatDescription) GetDescription() OptString {
+func (s *SetChatDescription) GetDescription() OptString {
 	return s.Description
 }
 
@@ -19661,12 +19661,12 @@ type SetChatMenuButton struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatMenuButton) GetChatID() OptInt64 {
+func (s *SetChatMenuButton) GetChatID() OptInt64 {
 	return s.ChatID
 }
 
 // GetMenuButton returns the value of MenuButton.
-func (s SetChatMenuButton) GetMenuButton() OptMenuButton {
+func (s *SetChatMenuButton) GetMenuButton() OptMenuButton {
 	return s.MenuButton
 }
 
@@ -19688,12 +19688,12 @@ type SetChatPermissions struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatPermissions) GetChatID() ID {
+func (s *SetChatPermissions) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetPermissions returns the value of Permissions.
-func (s SetChatPermissions) GetPermissions() ChatPermissions {
+func (s *SetChatPermissions) GetPermissions() ChatPermissions {
 	return s.Permissions
 }
 
@@ -19716,12 +19716,12 @@ type SetChatPhoto struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatPhoto) GetChatID() ID {
+func (s *SetChatPhoto) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetPhoto returns the value of Photo.
-func (s SetChatPhoto) GetPhoto() string {
+func (s *SetChatPhoto) GetPhoto() string {
 	return s.Photo
 }
 
@@ -19744,12 +19744,12 @@ type SetChatStickerSet struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatStickerSet) GetChatID() ID {
+func (s *SetChatStickerSet) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetStickerSetName returns the value of StickerSetName.
-func (s SetChatStickerSet) GetStickerSetName() string {
+func (s *SetChatStickerSet) GetStickerSetName() string {
 	return s.StickerSetName
 }
 
@@ -19772,12 +19772,12 @@ type SetChatTitle struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetChatTitle) GetChatID() ID {
+func (s *SetChatTitle) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetTitle returns the value of Title.
-func (s SetChatTitle) GetTitle() string {
+func (s *SetChatTitle) GetTitle() string {
 	return s.Title
 }
 
@@ -19812,37 +19812,37 @@ type SetGameScore struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s SetGameScore) GetUserID() int64 {
+func (s *SetGameScore) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetScore returns the value of Score.
-func (s SetGameScore) GetScore() int {
+func (s *SetGameScore) GetScore() int {
 	return s.Score
 }
 
 // GetForce returns the value of Force.
-func (s SetGameScore) GetForce() OptBool {
+func (s *SetGameScore) GetForce() OptBool {
 	return s.Force
 }
 
 // GetDisableEditMessage returns the value of DisableEditMessage.
-func (s SetGameScore) GetDisableEditMessage() OptBool {
+func (s *SetGameScore) GetDisableEditMessage() OptBool {
 	return s.DisableEditMessage
 }
 
 // GetChatID returns the value of ChatID.
-func (s SetGameScore) GetChatID() OptInt64 {
+func (s *SetGameScore) GetChatID() OptInt64 {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s SetGameScore) GetMessageID() OptInt {
+func (s *SetGameScore) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s SetGameScore) GetInlineMessageID() OptString {
+func (s *SetGameScore) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
@@ -19894,17 +19894,17 @@ type SetMyCommands struct {
 }
 
 // GetCommands returns the value of Commands.
-func (s SetMyCommands) GetCommands() []BotCommand {
+func (s *SetMyCommands) GetCommands() []BotCommand {
 	return s.Commands
 }
 
 // GetScope returns the value of Scope.
-func (s SetMyCommands) GetScope() OptBotCommandScope {
+func (s *SetMyCommands) GetScope() OptBotCommandScope {
 	return s.Scope
 }
 
 // GetLanguageCode returns the value of LanguageCode.
-func (s SetMyCommands) GetLanguageCode() OptString {
+func (s *SetMyCommands) GetLanguageCode() OptString {
 	return s.LanguageCode
 }
 
@@ -19933,12 +19933,12 @@ type SetMyDefaultAdministratorRights struct {
 }
 
 // GetRights returns the value of Rights.
-func (s SetMyDefaultAdministratorRights) GetRights() OptChatAdministratorRights {
+func (s *SetMyDefaultAdministratorRights) GetRights() OptChatAdministratorRights {
 	return s.Rights
 }
 
 // GetForChannels returns the value of ForChannels.
-func (s SetMyDefaultAdministratorRights) GetForChannels() OptBool {
+func (s *SetMyDefaultAdministratorRights) GetForChannels() OptBool {
 	return s.ForChannels
 }
 
@@ -19962,12 +19962,12 @@ type SetPassportDataErrors struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s SetPassportDataErrors) GetUserID() int64 {
+func (s *SetPassportDataErrors) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetErrors returns the value of Errors.
-func (s SetPassportDataErrors) GetErrors() []PassportElementError {
+func (s *SetPassportDataErrors) GetErrors() []PassportElementError {
 	return s.Errors
 }
 
@@ -19991,12 +19991,12 @@ type SetStickerPositionInSet struct {
 }
 
 // GetSticker returns the value of Sticker.
-func (s SetStickerPositionInSet) GetSticker() string {
+func (s *SetStickerPositionInSet) GetSticker() string {
 	return s.Sticker
 }
 
 // GetPosition returns the value of Position.
-func (s SetStickerPositionInSet) GetPosition() int {
+func (s *SetStickerPositionInSet) GetPosition() int {
 	return s.Position
 }
 
@@ -20029,17 +20029,17 @@ type SetStickerSetThumb struct {
 }
 
 // GetName returns the value of Name.
-func (s SetStickerSetThumb) GetName() string {
+func (s *SetStickerSetThumb) GetName() string {
 	return s.Name
 }
 
 // GetUserID returns the value of UserID.
-func (s SetStickerSetThumb) GetUserID() int64 {
+func (s *SetStickerSetThumb) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetThumb returns the value of Thumb.
-func (s SetStickerSetThumb) GetThumb() OptString {
+func (s *SetStickerSetThumb) GetThumb() OptString {
 	return s.Thumb
 }
 
@@ -20085,32 +20085,32 @@ type SetWebhook struct {
 }
 
 // GetURL returns the value of URL.
-func (s SetWebhook) GetURL() string {
+func (s *SetWebhook) GetURL() string {
 	return s.URL
 }
 
 // GetCertificate returns the value of Certificate.
-func (s SetWebhook) GetCertificate() OptString {
+func (s *SetWebhook) GetCertificate() OptString {
 	return s.Certificate
 }
 
 // GetIPAddress returns the value of IPAddress.
-func (s SetWebhook) GetIPAddress() OptString {
+func (s *SetWebhook) GetIPAddress() OptString {
 	return s.IPAddress
 }
 
 // GetMaxConnections returns the value of MaxConnections.
-func (s SetWebhook) GetMaxConnections() OptInt {
+func (s *SetWebhook) GetMaxConnections() OptInt {
 	return s.MaxConnections
 }
 
 // GetAllowedUpdates returns the value of AllowedUpdates.
-func (s SetWebhook) GetAllowedUpdates() []string {
+func (s *SetWebhook) GetAllowedUpdates() []string {
 	return s.AllowedUpdates
 }
 
 // GetDropPendingUpdates returns the value of DropPendingUpdates.
-func (s SetWebhook) GetDropPendingUpdates() OptBool {
+func (s *SetWebhook) GetDropPendingUpdates() OptBool {
 	return s.DropPendingUpdates
 }
 
@@ -20162,32 +20162,32 @@ type ShippingAddress struct {
 }
 
 // GetCountryCode returns the value of CountryCode.
-func (s ShippingAddress) GetCountryCode() string {
+func (s *ShippingAddress) GetCountryCode() string {
 	return s.CountryCode
 }
 
 // GetState returns the value of State.
-func (s ShippingAddress) GetState() string {
+func (s *ShippingAddress) GetState() string {
 	return s.State
 }
 
 // GetCity returns the value of City.
-func (s ShippingAddress) GetCity() string {
+func (s *ShippingAddress) GetCity() string {
 	return s.City
 }
 
 // GetStreetLine1 returns the value of StreetLine1.
-func (s ShippingAddress) GetStreetLine1() string {
+func (s *ShippingAddress) GetStreetLine1() string {
 	return s.StreetLine1
 }
 
 // GetStreetLine2 returns the value of StreetLine2.
-func (s ShippingAddress) GetStreetLine2() string {
+func (s *ShippingAddress) GetStreetLine2() string {
 	return s.StreetLine2
 }
 
 // GetPostCode returns the value of PostCode.
-func (s ShippingAddress) GetPostCode() string {
+func (s *ShippingAddress) GetPostCode() string {
 	return s.PostCode
 }
 
@@ -20233,17 +20233,17 @@ type ShippingOption struct {
 }
 
 // GetID returns the value of ID.
-func (s ShippingOption) GetID() string {
+func (s *ShippingOption) GetID() string {
 	return s.ID
 }
 
 // GetTitle returns the value of Title.
-func (s ShippingOption) GetTitle() string {
+func (s *ShippingOption) GetTitle() string {
 	return s.Title
 }
 
 // GetPrices returns the value of Prices.
-func (s ShippingOption) GetPrices() []LabeledPrice {
+func (s *ShippingOption) GetPrices() []LabeledPrice {
 	return s.Prices
 }
 
@@ -20274,22 +20274,22 @@ type ShippingQuery struct {
 }
 
 // GetID returns the value of ID.
-func (s ShippingQuery) GetID() string {
+func (s *ShippingQuery) GetID() string {
 	return s.ID
 }
 
 // GetFrom returns the value of From.
-func (s ShippingQuery) GetFrom() User {
+func (s *ShippingQuery) GetFrom() User {
 	return s.From
 }
 
 // GetInvoicePayload returns the value of InvoicePayload.
-func (s ShippingQuery) GetInvoicePayload() string {
+func (s *ShippingQuery) GetInvoicePayload() string {
 	return s.InvoicePayload
 }
 
 // GetShippingAddress returns the value of ShippingAddress.
-func (s ShippingQuery) GetShippingAddress() ShippingAddress {
+func (s *ShippingQuery) GetShippingAddress() ShippingAddress {
 	return s.ShippingAddress
 }
 
@@ -20340,57 +20340,57 @@ type Sticker struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Sticker) GetFileID() string {
+func (s *Sticker) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Sticker) GetFileUniqueID() string {
+func (s *Sticker) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetWidth returns the value of Width.
-func (s Sticker) GetWidth() int {
+func (s *Sticker) GetWidth() int {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s Sticker) GetHeight() int {
+func (s *Sticker) GetHeight() int {
 	return s.Height
 }
 
 // GetIsAnimated returns the value of IsAnimated.
-func (s Sticker) GetIsAnimated() bool {
+func (s *Sticker) GetIsAnimated() bool {
 	return s.IsAnimated
 }
 
 // GetIsVideo returns the value of IsVideo.
-func (s Sticker) GetIsVideo() bool {
+func (s *Sticker) GetIsVideo() bool {
 	return s.IsVideo
 }
 
 // GetThumb returns the value of Thumb.
-func (s Sticker) GetThumb() OptPhotoSize {
+func (s *Sticker) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
 // GetEmoji returns the value of Emoji.
-func (s Sticker) GetEmoji() OptString {
+func (s *Sticker) GetEmoji() OptString {
 	return s.Emoji
 }
 
 // GetSetName returns the value of SetName.
-func (s Sticker) GetSetName() OptString {
+func (s *Sticker) GetSetName() OptString {
 	return s.SetName
 }
 
 // GetMaskPosition returns the value of MaskPosition.
-func (s Sticker) GetMaskPosition() OptMaskPosition {
+func (s *Sticker) GetMaskPosition() OptMaskPosition {
 	return s.MaskPosition
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Sticker) GetFileSize() OptInt {
+func (s *Sticker) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -20468,37 +20468,37 @@ type StickerSet struct {
 }
 
 // GetName returns the value of Name.
-func (s StickerSet) GetName() string {
+func (s *StickerSet) GetName() string {
 	return s.Name
 }
 
 // GetTitle returns the value of Title.
-func (s StickerSet) GetTitle() string {
+func (s *StickerSet) GetTitle() string {
 	return s.Title
 }
 
 // GetIsAnimated returns the value of IsAnimated.
-func (s StickerSet) GetIsAnimated() bool {
+func (s *StickerSet) GetIsAnimated() bool {
 	return s.IsAnimated
 }
 
 // GetIsVideo returns the value of IsVideo.
-func (s StickerSet) GetIsVideo() bool {
+func (s *StickerSet) GetIsVideo() bool {
 	return s.IsVideo
 }
 
 // GetContainsMasks returns the value of ContainsMasks.
-func (s StickerSet) GetContainsMasks() bool {
+func (s *StickerSet) GetContainsMasks() bool {
 	return s.ContainsMasks
 }
 
 // GetStickers returns the value of Stickers.
-func (s StickerSet) GetStickers() []Sticker {
+func (s *StickerSet) GetStickers() []Sticker {
 	return s.Stickers
 }
 
 // GetThumb returns the value of Thumb.
-func (s StickerSet) GetThumb() OptPhotoSize {
+func (s *StickerSet) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
@@ -20550,22 +20550,22 @@ type StopMessageLiveLocation struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s StopMessageLiveLocation) GetChatID() OptID {
+func (s *StopMessageLiveLocation) GetChatID() OptID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s StopMessageLiveLocation) GetMessageID() OptInt {
+func (s *StopMessageLiveLocation) GetMessageID() OptInt {
 	return s.MessageID
 }
 
 // GetInlineMessageID returns the value of InlineMessageID.
-func (s StopMessageLiveLocation) GetInlineMessageID() OptString {
+func (s *StopMessageLiveLocation) GetInlineMessageID() OptString {
 	return s.InlineMessageID
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s StopMessageLiveLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *StopMessageLiveLocation) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -20599,17 +20599,17 @@ type StopPoll struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s StopPoll) GetChatID() ID {
+func (s *StopPoll) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s StopPoll) GetMessageID() int {
+func (s *StopPoll) GetMessageID() int {
 	return s.MessageID
 }
 
 // GetReplyMarkup returns the value of ReplyMarkup.
-func (s StopPoll) GetReplyMarkup() OptInlineKeyboardMarkup {
+func (s *StopPoll) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
 }
 
@@ -20649,37 +20649,37 @@ type SuccessfulPayment struct {
 }
 
 // GetCurrency returns the value of Currency.
-func (s SuccessfulPayment) GetCurrency() string {
+func (s *SuccessfulPayment) GetCurrency() string {
 	return s.Currency
 }
 
 // GetTotalAmount returns the value of TotalAmount.
-func (s SuccessfulPayment) GetTotalAmount() int {
+func (s *SuccessfulPayment) GetTotalAmount() int {
 	return s.TotalAmount
 }
 
 // GetInvoicePayload returns the value of InvoicePayload.
-func (s SuccessfulPayment) GetInvoicePayload() string {
+func (s *SuccessfulPayment) GetInvoicePayload() string {
 	return s.InvoicePayload
 }
 
 // GetShippingOptionID returns the value of ShippingOptionID.
-func (s SuccessfulPayment) GetShippingOptionID() OptString {
+func (s *SuccessfulPayment) GetShippingOptionID() OptString {
 	return s.ShippingOptionID
 }
 
 // GetOrderInfo returns the value of OrderInfo.
-func (s SuccessfulPayment) GetOrderInfo() OptOrderInfo {
+func (s *SuccessfulPayment) GetOrderInfo() OptOrderInfo {
 	return s.OrderInfo
 }
 
 // GetTelegramPaymentChargeID returns the value of TelegramPaymentChargeID.
-func (s SuccessfulPayment) GetTelegramPaymentChargeID() string {
+func (s *SuccessfulPayment) GetTelegramPaymentChargeID() string {
 	return s.TelegramPaymentChargeID
 }
 
 // GetProviderPaymentChargeID returns the value of ProviderPaymentChargeID.
-func (s SuccessfulPayment) GetProviderPaymentChargeID() string {
+func (s *SuccessfulPayment) GetProviderPaymentChargeID() string {
 	return s.ProviderPaymentChargeID
 }
 
@@ -20729,17 +20729,17 @@ type UnbanChatMember struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s UnbanChatMember) GetChatID() ID {
+func (s *UnbanChatMember) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetUserID returns the value of UserID.
-func (s UnbanChatMember) GetUserID() int64 {
+func (s *UnbanChatMember) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetOnlyIfBanned returns the value of OnlyIfBanned.
-func (s UnbanChatMember) GetOnlyIfBanned() OptBool {
+func (s *UnbanChatMember) GetOnlyIfBanned() OptBool {
 	return s.OnlyIfBanned
 }
 
@@ -20767,12 +20767,12 @@ type UnbanChatSenderChat struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s UnbanChatSenderChat) GetChatID() ID {
+func (s *UnbanChatSenderChat) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetSenderChatID returns the value of SenderChatID.
-func (s UnbanChatSenderChat) GetSenderChatID() int64 {
+func (s *UnbanChatSenderChat) GetSenderChatID() int64 {
 	return s.SenderChatID
 }
 
@@ -20793,7 +20793,7 @@ type UnpinAllChatMessages struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s UnpinAllChatMessages) GetChatID() ID {
+func (s *UnpinAllChatMessages) GetChatID() ID {
 	return s.ChatID
 }
 
@@ -20812,12 +20812,12 @@ type UnpinChatMessage struct {
 }
 
 // GetChatID returns the value of ChatID.
-func (s UnpinChatMessage) GetChatID() ID {
+func (s *UnpinChatMessage) GetChatID() ID {
 	return s.ChatID
 }
 
 // GetMessageID returns the value of MessageID.
-func (s UnpinChatMessage) GetMessageID() OptInt {
+func (s *UnpinChatMessage) GetMessageID() OptInt {
 	return s.MessageID
 }
 
@@ -20858,77 +20858,77 @@ type Update struct {
 }
 
 // GetUpdateID returns the value of UpdateID.
-func (s Update) GetUpdateID() int {
+func (s *Update) GetUpdateID() int {
 	return s.UpdateID
 }
 
 // GetMessage returns the value of Message.
-func (s Update) GetMessage() OptMessage {
+func (s *Update) GetMessage() OptMessage {
 	return s.Message
 }
 
 // GetEditedMessage returns the value of EditedMessage.
-func (s Update) GetEditedMessage() OptMessage {
+func (s *Update) GetEditedMessage() OptMessage {
 	return s.EditedMessage
 }
 
 // GetChannelPost returns the value of ChannelPost.
-func (s Update) GetChannelPost() OptMessage {
+func (s *Update) GetChannelPost() OptMessage {
 	return s.ChannelPost
 }
 
 // GetEditedChannelPost returns the value of EditedChannelPost.
-func (s Update) GetEditedChannelPost() OptMessage {
+func (s *Update) GetEditedChannelPost() OptMessage {
 	return s.EditedChannelPost
 }
 
 // GetInlineQuery returns the value of InlineQuery.
-func (s Update) GetInlineQuery() OptInlineQuery {
+func (s *Update) GetInlineQuery() OptInlineQuery {
 	return s.InlineQuery
 }
 
 // GetChosenInlineResult returns the value of ChosenInlineResult.
-func (s Update) GetChosenInlineResult() OptChosenInlineResult {
+func (s *Update) GetChosenInlineResult() OptChosenInlineResult {
 	return s.ChosenInlineResult
 }
 
 // GetCallbackQuery returns the value of CallbackQuery.
-func (s Update) GetCallbackQuery() OptCallbackQuery {
+func (s *Update) GetCallbackQuery() OptCallbackQuery {
 	return s.CallbackQuery
 }
 
 // GetShippingQuery returns the value of ShippingQuery.
-func (s Update) GetShippingQuery() OptShippingQuery {
+func (s *Update) GetShippingQuery() OptShippingQuery {
 	return s.ShippingQuery
 }
 
 // GetPreCheckoutQuery returns the value of PreCheckoutQuery.
-func (s Update) GetPreCheckoutQuery() OptPreCheckoutQuery {
+func (s *Update) GetPreCheckoutQuery() OptPreCheckoutQuery {
 	return s.PreCheckoutQuery
 }
 
 // GetPoll returns the value of Poll.
-func (s Update) GetPoll() OptPoll {
+func (s *Update) GetPoll() OptPoll {
 	return s.Poll
 }
 
 // GetPollAnswer returns the value of PollAnswer.
-func (s Update) GetPollAnswer() OptPollAnswer {
+func (s *Update) GetPollAnswer() OptPollAnswer {
 	return s.PollAnswer
 }
 
 // GetMyChatMember returns the value of MyChatMember.
-func (s Update) GetMyChatMember() OptChatMemberUpdated {
+func (s *Update) GetMyChatMember() OptChatMemberUpdated {
 	return s.MyChatMember
 }
 
 // GetChatMember returns the value of ChatMember.
-func (s Update) GetChatMember() OptChatMemberUpdated {
+func (s *Update) GetChatMember() OptChatMemberUpdated {
 	return s.ChatMember
 }
 
 // GetChatJoinRequest returns the value of ChatJoinRequest.
-func (s Update) GetChatJoinRequest() OptChatJoinRequest {
+func (s *Update) GetChatJoinRequest() OptChatJoinRequest {
 	return s.ChatJoinRequest
 }
 
@@ -21018,12 +21018,12 @@ type UploadStickerFile struct {
 }
 
 // GetUserID returns the value of UserID.
-func (s UploadStickerFile) GetUserID() int64 {
+func (s *UploadStickerFile) GetUserID() int64 {
 	return s.UserID
 }
 
 // GetPNGSticker returns the value of PNGSticker.
-func (s UploadStickerFile) GetPNGSticker() string {
+func (s *UploadStickerFile) GetPNGSticker() string {
 	return s.PNGSticker
 }
 
@@ -21064,47 +21064,47 @@ type User struct {
 }
 
 // GetID returns the value of ID.
-func (s User) GetID() int64 {
+func (s *User) GetID() int64 {
 	return s.ID
 }
 
 // GetIsBot returns the value of IsBot.
-func (s User) GetIsBot() bool {
+func (s *User) GetIsBot() bool {
 	return s.IsBot
 }
 
 // GetFirstName returns the value of FirstName.
-func (s User) GetFirstName() string {
+func (s *User) GetFirstName() string {
 	return s.FirstName
 }
 
 // GetLastName returns the value of LastName.
-func (s User) GetLastName() OptString {
+func (s *User) GetLastName() OptString {
 	return s.LastName
 }
 
 // GetUsername returns the value of Username.
-func (s User) GetUsername() OptString {
+func (s *User) GetUsername() OptString {
 	return s.Username
 }
 
 // GetLanguageCode returns the value of LanguageCode.
-func (s User) GetLanguageCode() OptString {
+func (s *User) GetLanguageCode() OptString {
 	return s.LanguageCode
 }
 
 // GetCanJoinGroups returns the value of CanJoinGroups.
-func (s User) GetCanJoinGroups() OptBool {
+func (s *User) GetCanJoinGroups() OptBool {
 	return s.CanJoinGroups
 }
 
 // GetCanReadAllGroupMessages returns the value of CanReadAllGroupMessages.
-func (s User) GetCanReadAllGroupMessages() OptBool {
+func (s *User) GetCanReadAllGroupMessages() OptBool {
 	return s.CanReadAllGroupMessages
 }
 
 // GetSupportsInlineQueries returns the value of SupportsInlineQueries.
-func (s User) GetSupportsInlineQueries() OptBool {
+func (s *User) GetSupportsInlineQueries() OptBool {
 	return s.SupportsInlineQueries
 }
 
@@ -21163,12 +21163,12 @@ type UserProfilePhotos struct {
 }
 
 // GetTotalCount returns the value of TotalCount.
-func (s UserProfilePhotos) GetTotalCount() int {
+func (s *UserProfilePhotos) GetTotalCount() int {
 	return s.TotalCount
 }
 
 // GetPhotos returns the value of Photos.
-func (s UserProfilePhotos) GetPhotos() [][]PhotoSize {
+func (s *UserProfilePhotos) GetPhotos() [][]PhotoSize {
 	return s.Photos
 }
 
@@ -21202,37 +21202,37 @@ type Venue struct {
 }
 
 // GetLocation returns the value of Location.
-func (s Venue) GetLocation() Location {
+func (s *Venue) GetLocation() Location {
 	return s.Location
 }
 
 // GetTitle returns the value of Title.
-func (s Venue) GetTitle() string {
+func (s *Venue) GetTitle() string {
 	return s.Title
 }
 
 // GetAddress returns the value of Address.
-func (s Venue) GetAddress() string {
+func (s *Venue) GetAddress() string {
 	return s.Address
 }
 
 // GetFoursquareID returns the value of FoursquareID.
-func (s Venue) GetFoursquareID() OptString {
+func (s *Venue) GetFoursquareID() OptString {
 	return s.FoursquareID
 }
 
 // GetFoursquareType returns the value of FoursquareType.
-func (s Venue) GetFoursquareType() OptString {
+func (s *Venue) GetFoursquareType() OptString {
 	return s.FoursquareType
 }
 
 // GetGooglePlaceID returns the value of GooglePlaceID.
-func (s Venue) GetGooglePlaceID() OptString {
+func (s *Venue) GetGooglePlaceID() OptString {
 	return s.GooglePlaceID
 }
 
 // GetGooglePlaceType returns the value of GooglePlaceType.
-func (s Venue) GetGooglePlaceType() OptString {
+func (s *Venue) GetGooglePlaceType() OptString {
 	return s.GooglePlaceType
 }
 
@@ -21295,47 +21295,47 @@ type Video struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Video) GetFileID() string {
+func (s *Video) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Video) GetFileUniqueID() string {
+func (s *Video) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetWidth returns the value of Width.
-func (s Video) GetWidth() int {
+func (s *Video) GetWidth() int {
 	return s.Width
 }
 
 // GetHeight returns the value of Height.
-func (s Video) GetHeight() int {
+func (s *Video) GetHeight() int {
 	return s.Height
 }
 
 // GetDuration returns the value of Duration.
-func (s Video) GetDuration() int {
+func (s *Video) GetDuration() int {
 	return s.Duration
 }
 
 // GetThumb returns the value of Thumb.
-func (s Video) GetThumb() OptPhotoSize {
+func (s *Video) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
 // GetFileName returns the value of FileName.
-func (s Video) GetFileName() OptString {
+func (s *Video) GetFileName() OptString {
 	return s.FileName
 }
 
 // GetMimeType returns the value of MimeType.
-func (s Video) GetMimeType() OptString {
+func (s *Video) GetMimeType() OptString {
 	return s.MimeType
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Video) GetFileSize() OptInt {
+func (s *Video) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -21392,7 +21392,7 @@ type VideoChatEnded struct {
 }
 
 // GetDuration returns the value of Duration.
-func (s VideoChatEnded) GetDuration() int {
+func (s *VideoChatEnded) GetDuration() int {
 	return s.Duration
 }
 
@@ -21409,7 +21409,7 @@ type VideoChatParticipantsInvited struct {
 }
 
 // GetUsers returns the value of Users.
-func (s VideoChatParticipantsInvited) GetUsers() []User {
+func (s *VideoChatParticipantsInvited) GetUsers() []User {
 	return s.Users
 }
 
@@ -21427,7 +21427,7 @@ type VideoChatScheduled struct {
 }
 
 // GetStartDate returns the value of StartDate.
-func (s VideoChatScheduled) GetStartDate() int {
+func (s *VideoChatScheduled) GetStartDate() int {
 	return s.StartDate
 }
 
@@ -21459,32 +21459,32 @@ type VideoNote struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s VideoNote) GetFileID() string {
+func (s *VideoNote) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s VideoNote) GetFileUniqueID() string {
+func (s *VideoNote) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetLength returns the value of Length.
-func (s VideoNote) GetLength() int {
+func (s *VideoNote) GetLength() int {
 	return s.Length
 }
 
 // GetDuration returns the value of Duration.
-func (s VideoNote) GetDuration() int {
+func (s *VideoNote) GetDuration() int {
 	return s.Duration
 }
 
 // GetThumb returns the value of Thumb.
-func (s VideoNote) GetThumb() OptPhotoSize {
+func (s *VideoNote) GetThumb() OptPhotoSize {
 	return s.Thumb
 }
 
 // GetFileSize returns the value of FileSize.
-func (s VideoNote) GetFileSize() OptInt {
+func (s *VideoNote) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -21535,27 +21535,27 @@ type Voice struct {
 }
 
 // GetFileID returns the value of FileID.
-func (s Voice) GetFileID() string {
+func (s *Voice) GetFileID() string {
 	return s.FileID
 }
 
 // GetFileUniqueID returns the value of FileUniqueID.
-func (s Voice) GetFileUniqueID() string {
+func (s *Voice) GetFileUniqueID() string {
 	return s.FileUniqueID
 }
 
 // GetDuration returns the value of Duration.
-func (s Voice) GetDuration() int {
+func (s *Voice) GetDuration() int {
 	return s.Duration
 }
 
 // GetMimeType returns the value of MimeType.
-func (s Voice) GetMimeType() OptString {
+func (s *Voice) GetMimeType() OptString {
 	return s.MimeType
 }
 
 // GetFileSize returns the value of FileSize.
-func (s Voice) GetFileSize() OptInt {
+func (s *Voice) GetFileSize() OptInt {
 	return s.FileSize
 }
 
@@ -21595,12 +21595,12 @@ type WebAppData struct {
 }
 
 // GetData returns the value of Data.
-func (s WebAppData) GetData() string {
+func (s *WebAppData) GetData() string {
 	return s.Data
 }
 
 // GetButtonText returns the value of ButtonText.
-func (s WebAppData) GetButtonText() string {
+func (s *WebAppData) GetButtonText() string {
 	return s.ButtonText
 }
 
@@ -21622,7 +21622,7 @@ type WebAppInfo struct {
 }
 
 // GetURL returns the value of URL.
-func (s WebAppInfo) GetURL() string {
+func (s *WebAppInfo) GetURL() string {
 	return s.URL
 }
 
@@ -21657,47 +21657,47 @@ type WebhookInfo struct {
 }
 
 // GetURL returns the value of URL.
-func (s WebhookInfo) GetURL() string {
+func (s *WebhookInfo) GetURL() string {
 	return s.URL
 }
 
 // GetHasCustomCertificate returns the value of HasCustomCertificate.
-func (s WebhookInfo) GetHasCustomCertificate() bool {
+func (s *WebhookInfo) GetHasCustomCertificate() bool {
 	return s.HasCustomCertificate
 }
 
 // GetPendingUpdateCount returns the value of PendingUpdateCount.
-func (s WebhookInfo) GetPendingUpdateCount() int {
+func (s *WebhookInfo) GetPendingUpdateCount() int {
 	return s.PendingUpdateCount
 }
 
 // GetIPAddress returns the value of IPAddress.
-func (s WebhookInfo) GetIPAddress() OptString {
+func (s *WebhookInfo) GetIPAddress() OptString {
 	return s.IPAddress
 }
 
 // GetLastErrorDate returns the value of LastErrorDate.
-func (s WebhookInfo) GetLastErrorDate() OptInt {
+func (s *WebhookInfo) GetLastErrorDate() OptInt {
 	return s.LastErrorDate
 }
 
 // GetLastErrorMessage returns the value of LastErrorMessage.
-func (s WebhookInfo) GetLastErrorMessage() OptString {
+func (s *WebhookInfo) GetLastErrorMessage() OptString {
 	return s.LastErrorMessage
 }
 
 // GetLastSynchronizationErrorDate returns the value of LastSynchronizationErrorDate.
-func (s WebhookInfo) GetLastSynchronizationErrorDate() OptInt {
+func (s *WebhookInfo) GetLastSynchronizationErrorDate() OptInt {
 	return s.LastSynchronizationErrorDate
 }
 
 // GetMaxConnections returns the value of MaxConnections.
-func (s WebhookInfo) GetMaxConnections() OptInt {
+func (s *WebhookInfo) GetMaxConnections() OptInt {
 	return s.MaxConnections
 }
 
 // GetAllowedUpdates returns the value of AllowedUpdates.
-func (s WebhookInfo) GetAllowedUpdates() []string {
+func (s *WebhookInfo) GetAllowedUpdates() []string {
 	return s.AllowedUpdates
 }
 

@@ -11,13 +11,13 @@ type Handler interface {
 	// HealthzGet implements GET /healthz operation.
 	//
 	// GET /healthz
-	HealthzGet(ctx context.Context, params HealthzGetParams) (HealthzGetOK, error)
+	HealthzGet(ctx context.Context, params HealthzGetParams) (*HealthzGetOK, error)
 	// SameName implements sameName operation.
 	//
 	// Parameter with different location, but the same name.
 	//
 	// GET /same_name/{path}
-	SameName(ctx context.Context, params SameNameParams) (SameNameOK, error)
+	SameName(ctx context.Context, params SameNameParams) (*SameNameOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

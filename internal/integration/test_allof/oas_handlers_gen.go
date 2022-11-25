@@ -71,7 +71,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	var response NullableStringsOK
+	var response *NullableStringsOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -85,7 +85,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = NilString
 			Params   = struct{}
-			Response = NullableStringsOK
+			Response = *NullableStringsOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -170,7 +170,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 	}()
 
-	var response ObjectsWithConflictingArrayPropertyOK
+	var response *ObjectsWithConflictingArrayPropertyOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -182,9 +182,9 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 
 		type (
-			Request  = ObjectsWithConflictingArrayPropertyReq
+			Request  = *ObjectsWithConflictingArrayPropertyReq
 			Params   = struct{}
-			Response = ObjectsWithConflictingArrayPropertyOK
+			Response = *ObjectsWithConflictingArrayPropertyOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -269,7 +269,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		}
 	}()
 
-	var response ObjectsWithConflictingPropertiesOK
+	var response *ObjectsWithConflictingPropertiesOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -281,9 +281,9 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		}
 
 		type (
-			Request  = ObjectsWithConflictingPropertiesReq
+			Request  = *ObjectsWithConflictingPropertiesReq
 			Params   = struct{}
-			Response = ObjectsWithConflictingPropertiesOK
+			Response = *ObjectsWithConflictingPropertiesOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -368,7 +368,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	var response ReferencedAllofOK
+	var response *ReferencedAllofOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -382,7 +382,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = ReferencedAllofReq
 			Params   = struct{}
-			Response = ReferencedAllofOK
+			Response = *ReferencedAllofOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -467,7 +467,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		}
 	}()
 
-	var response ReferencedAllofOptionalOK
+	var response *ReferencedAllofOptionalOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -481,7 +481,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		type (
 			Request  = ReferencedAllofOptionalReq
 			Params   = struct{}
-			Response = ReferencedAllofOptionalOK
+			Response = *ReferencedAllofOptionalOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -566,7 +566,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	var response SimpleIntegerOK
+	var response *SimpleIntegerOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -580,7 +580,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		type (
 			Request  = int
 			Params   = struct{}
-			Response = SimpleIntegerOK
+			Response = *SimpleIntegerOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -665,7 +665,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	var response SimpleObjectsOK
+	var response *SimpleObjectsOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -677,9 +677,9 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		}
 
 		type (
-			Request  = SimpleObjectsReq
+			Request  = *SimpleObjectsReq
 			Params   = struct{}
-			Response = SimpleObjectsOK
+			Response = *SimpleObjectsOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

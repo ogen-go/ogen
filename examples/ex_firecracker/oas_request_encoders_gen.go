@@ -12,7 +12,7 @@ import (
 )
 
 func encodeCreateSnapshotRequest(
-	req SnapshotCreateParams,
+	req *SnapshotCreateParams,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -26,7 +26,7 @@ func encodeCreateSnapshotRequest(
 }
 
 func encodeCreateSyncActionRequest(
-	req InstanceActionInfo,
+	req *InstanceActionInfo,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -40,7 +40,7 @@ func encodeCreateSyncActionRequest(
 }
 
 func encodeLoadSnapshotRequest(
-	req SnapshotLoadParams,
+	req *SnapshotLoadParams,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -54,7 +54,7 @@ func encodeLoadSnapshotRequest(
 }
 
 func encodeMmdsConfigPutRequest(
-	req MmdsConfig,
+	req *MmdsConfig,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -100,7 +100,7 @@ func encodeMmdsPutRequest(
 }
 
 func encodePatchBalloonRequest(
-	req BalloonUpdate,
+	req *BalloonUpdate,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -114,7 +114,7 @@ func encodePatchBalloonRequest(
 }
 
 func encodePatchBalloonStatsIntervalRequest(
-	req BalloonStatsUpdate,
+	req *BalloonStatsUpdate,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -128,7 +128,7 @@ func encodePatchBalloonStatsIntervalRequest(
 }
 
 func encodePatchGuestDriveByIDRequest(
-	req PartialDrive,
+	req *PartialDrive,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -142,7 +142,7 @@ func encodePatchGuestDriveByIDRequest(
 }
 
 func encodePatchGuestNetworkInterfaceByIDRequest(
-	req PartialNetworkInterface,
+	req *PartialNetworkInterface,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -176,7 +176,7 @@ func encodePatchMachineConfigurationRequest(
 }
 
 func encodePatchVmRequest(
-	req VM,
+	req *VM,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -190,7 +190,7 @@ func encodePatchVmRequest(
 }
 
 func encodePutBalloonRequest(
-	req Balloon,
+	req *Balloon,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -204,7 +204,7 @@ func encodePutBalloonRequest(
 }
 
 func encodePutGuestBootSourceRequest(
-	req BootSource,
+	req *BootSource,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -218,7 +218,7 @@ func encodePutGuestBootSourceRequest(
 }
 
 func encodePutGuestDriveByIDRequest(
-	req Drive,
+	req *Drive,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -232,7 +232,7 @@ func encodePutGuestDriveByIDRequest(
 }
 
 func encodePutGuestNetworkInterfaceByIDRequest(
-	req NetworkInterface,
+	req *NetworkInterface,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -246,7 +246,7 @@ func encodePutGuestNetworkInterfaceByIDRequest(
 }
 
 func encodePutGuestVsockRequest(
-	req Vsock,
+	req *Vsock,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -260,7 +260,7 @@ func encodePutGuestVsockRequest(
 }
 
 func encodePutLoggerRequest(
-	req Logger,
+	req *Logger,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -294,7 +294,7 @@ func encodePutMachineConfigurationRequest(
 }
 
 func encodePutMetricsRequest(
-	req Metrics,
+	req *Metrics,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

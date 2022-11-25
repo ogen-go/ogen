@@ -13,7 +13,7 @@ type Handler interface {
 	// Получение ид для использования 2chcaptcha.
 	//
 	// GET /api/captcha/2chcaptcha/id
-	APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (Captcha, error)
+	APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (*Captcha, error)
 	// APICaptcha2chcaptchaShowGet implements GET /api/captcha/2chcaptcha/show operation.
 	//
 	// Отображение 2chcaptcha по id.
@@ -29,43 +29,43 @@ type Handler interface {
 	// Срок жизни id: 180 секунд.
 	//
 	// GET /api/captcha/app/id/{public_key}
-	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (Captcha, error)
+	APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (*Captcha, error)
 	// APICaptchaInvisibleRecaptchaIDGet implements GET /api/captcha/invisible_recaptcha/id operation.
 	//
 	// Получение публичного ключа invisible recaptcha.
 	//
 	// GET /api/captcha/invisible_recaptcha/id
-	APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (Captcha, error)
+	APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (*Captcha, error)
 	// APICaptchaInvisibleRecaptchaMobileGet implements GET /api/captcha/invisible_recaptcha/mobile operation.
 	//
 	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/invisible_recaptcha/mobile
-	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (APICaptchaInvisibleRecaptchaMobileGetOK, error)
+	APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (*APICaptchaInvisibleRecaptchaMobileGetOK, error)
 	// APICaptchaRecaptchaIDGet implements GET /api/captcha/recaptcha/id operation.
 	//
 	// Получение публичного ключа recaptcha v2.
 	//
 	// GET /api/captcha/recaptcha/id
-	APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (Captcha, error)
+	APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (*Captcha, error)
 	// APICaptchaRecaptchaMobileGet implements GET /api/captcha/recaptcha/mobile operation.
 	//
 	// Получение html страницы для решения капчи, CORS отключён.
 	//
 	// GET /api/captcha/recaptcha/mobile
-	APICaptchaRecaptchaMobileGet(ctx context.Context) (APICaptchaRecaptchaMobileGetOK, error)
+	APICaptchaRecaptchaMobileGet(ctx context.Context) (*APICaptchaRecaptchaMobileGetOK, error)
 	// APIDislikeGet implements GET /api/dislike operation.
 	//
 	// Добавление дизлайка на пост.
 	//
 	// GET /api/dislike
-	APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (Like, error)
+	APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (*Like, error)
 	// APILikeGet implements GET /api/like operation.
 	//
 	// Добавление лайка на пост.
 	//
 	// GET /api/like
-	APILikeGet(ctx context.Context, params APILikeGetParams) (Like, error)
+	APILikeGet(ctx context.Context, params APILikeGetParams) (*Like, error)
 	// APIMobileV2AfterBoardThreadNumGet implements GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
 	//
 	// Получение постов в треде >= указанного. Не
@@ -73,7 +73,7 @@ type Handler interface {
 	// целиком, только для проверки новых постов.
 	//
 	// GET /api/mobile/v2/after/{board}/{thread}/{num}
-	APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (MobileThreadPostsAfter, error)
+	APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (*MobileThreadPostsAfter, error)
 	// APIMobileV2BoardsGet implements GET /api/mobile/v2/boards operation.
 	//
 	// Получение списка досок и их настроек.
@@ -85,19 +85,19 @@ type Handler interface {
 	// Получение информации о треде.
 	//
 	// GET /api/mobile/v2/info/{board}/{thread}
-	APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (MobileThreadLastInfo, error)
+	APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (*MobileThreadLastInfo, error)
 	// APIMobileV2PostBoardNumGet implements GET /api/mobile/v2/post/{board}/{num} operation.
 	//
 	// Получение информации о посте.
 	//
 	// GET /api/mobile/v2/post/{board}/{num}
-	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (MobilePost, error)
+	APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (*MobilePost, error)
 	// UserPassloginPost implements POST /user/passlogin operation.
 	//
 	// Авторизация пасскода.
 	//
 	// POST /user/passlogin
-	UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (Passcode, error)
+	UserPassloginPost(ctx context.Context, req OptUserPassloginPostReq, params UserPassloginPostParams) (*Passcode, error)
 	// UserPostingPost implements POST /user/posting operation.
 	//
 	// Создание нового поста или треда.
@@ -109,7 +109,7 @@ type Handler interface {
 	// Отправка жалобы.
 	//
 	// POST /user/report
-	UserReportPost(ctx context.Context, req OptUserReportPostReq) (Report, error)
+	UserReportPost(ctx context.Context, req OptUserReportPostReq) (*Report, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

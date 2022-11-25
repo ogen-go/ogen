@@ -13,12 +13,12 @@ type Location struct {
 }
 
 // GetLat returns the value of Lat.
-func (s Location) GetLat() float64 {
+func (s *Location) GetLat() float64 {
 	return s.Lat
 }
 
 // GetLon returns the value of Lon.
-func (s Location) GetLon() float64 {
+func (s *Location) GetLon() float64 {
 	return s.Lon
 }
 
@@ -84,12 +84,12 @@ type ObjectsWithConflictingArrayPropertyReq struct {
 }
 
 // GetFoo returns the value of Foo.
-func (s ObjectsWithConflictingArrayPropertyReq) GetFoo() []int {
+func (s *ObjectsWithConflictingArrayPropertyReq) GetFoo() []int {
 	return s.Foo
 }
 
 // GetBar returns the value of Bar.
-func (s ObjectsWithConflictingArrayPropertyReq) GetBar() int {
+func (s *ObjectsWithConflictingArrayPropertyReq) GetBar() int {
 	return s.Bar
 }
 
@@ -114,12 +114,12 @@ type ObjectsWithConflictingPropertiesReq struct {
 }
 
 // GetFoo returns the value of Foo.
-func (s ObjectsWithConflictingPropertiesReq) GetFoo() string {
+func (s *ObjectsWithConflictingPropertiesReq) GetFoo() string {
 	return s.Foo
 }
 
 // GetBar returns the value of Bar.
-func (s ObjectsWithConflictingPropertiesReq) GetBar() OptInt {
+func (s *ObjectsWithConflictingPropertiesReq) GetBar() OptInt {
 	return s.Bar
 }
 
@@ -306,17 +306,17 @@ type Robot struct {
 }
 
 // GetState returns the value of State.
-func (s Robot) GetState() RobotState {
+func (s *Robot) GetState() RobotState {
 	return s.State
 }
 
 // GetID returns the value of ID.
-func (s Robot) GetID() uuid.UUID {
+func (s *Robot) GetID() uuid.UUID {
 	return s.ID
 }
 
 // GetLocation returns the value of Location.
-func (s Robot) GetLocation() Location {
+func (s *Robot) GetLocation() Location {
 	return s.Location
 }
 
@@ -355,12 +355,12 @@ type SimpleObjectsReq struct {
 }
 
 // GetFoo returns the value of Foo.
-func (s SimpleObjectsReq) GetFoo() OptString {
+func (s *SimpleObjectsReq) GetFoo() OptString {
 	return s.Foo
 }
 
 // GetBar returns the value of Bar.
-func (s SimpleObjectsReq) GetBar() OptBool {
+func (s *SimpleObjectsReq) GetBar() OptBool {
 	return s.Bar
 }
 

@@ -15,7 +15,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -41,7 +41,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 	}
 }
 
-func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -91,7 +91,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	}
 }
 
-func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCancelWorkflowRunResponse(response *ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
 	span.SetStatus(codes.Ok, http.StatusText(202))
@@ -179,7 +179,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 	}
 }
 
-func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateRegistrationTokenForOrgResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -192,7 +192,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 	return nil
 }
 
-func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateRegistrationTokenForRepoResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -205,7 +205,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 	return nil
 }
 
-func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateRemoveTokenForOrgResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -218,7 +218,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 	return nil
 }
 
-func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateRemoveTokenForRepoResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -231,7 +231,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 	return nil
 }
 
-func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -244,77 +244,77 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	return nil
 }
 
-func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteArtifactResponse(response *ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteEnvironmentSecretResponse(response *ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteOrgSecretResponse(response *ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteRepoSecretResponse(response *ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response *ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response *ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunResponse(response *ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDeleteWorkflowRunLogsResponse(response *ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadArtifactResponse(response *ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -340,7 +340,7 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound
 	return nil
 }
 
-func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadJobLogsForWorkflowRunResponse(response *ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -366,7 +366,7 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 	return nil
 }
 
-func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadWorkflowRunLogsResponse(response *ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -392,14 +392,14 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 	return nil
 }
 
-func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetAllowedActionsOrganizationResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -412,7 +412,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 	return nil
 }
 
-func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetAllowedActionsRepositoryResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -425,7 +425,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 	return nil
 }
 
-func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetArtifactResponse(response *Artifact, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -438,7 +438,7 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 	return nil
 }
 
-func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetEnvironmentPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -451,7 +451,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 	return nil
 }
 
-func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetEnvironmentSecretResponse(response *ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -464,7 +464,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 	return nil
 }
 
-func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response *ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -477,7 +477,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 	return nil
 }
 
-func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response *ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -490,7 +490,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 	return nil
 }
 
-func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetJobForWorkflowRunResponse(response *Job, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -503,7 +503,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 	return nil
 }
 
-func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetOrgPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -516,7 +516,7 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 	return nil
 }
 
-func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetOrgSecretResponse(response *OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -529,7 +529,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 	return nil
 }
 
-func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetRepoPublicKeyResponse(response *ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -542,7 +542,7 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 	return nil
 }
 
-func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetRepoSecretResponse(response *ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -572,7 +572,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 	return nil
 }
 
-func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetSelfHostedRunnerForOrgResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -585,7 +585,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 	return nil
 }
 
-func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetSelfHostedRunnerForRepoResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -598,7 +598,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 	return nil
 }
 
-func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -611,7 +611,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 	return nil
 }
 
-func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetWorkflowRunResponse(response *WorkflowRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -624,7 +624,7 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 	return nil
 }
 
-func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsGetWorkflowRunUsageResponse(response *WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -637,7 +637,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	return nil
 }
 
-func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListArtifactsForRepoResponse(response *ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -669,7 +669,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	return nil
 }
 
-func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListEnvironmentSecretsResponse(response *ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -701,7 +701,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	return nil
 }
 
-func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListJobsForWorkflowRunResponse(response *ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -733,7 +733,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	return nil
 }
 
-func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListOrgSecretsResponse(response *ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -765,7 +765,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders
 	return nil
 }
 
-func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -778,7 +778,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	return nil
 }
 
-func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoSecretsResponse(response *ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -810,7 +810,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeade
 	return nil
 }
 
-func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoWorkflowsResponse(response *ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -876,7 +876,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 	return nil
 }
 
-func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelectedReposForOrgSecretResponse(response *ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -889,7 +889,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 	return nil
 }
 
-func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -902,7 +902,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response *ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -915,7 +915,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForOrgResponse(response *ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -947,7 +947,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForRepoResponse(response *ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -979,7 +979,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	return nil
 }
 
-func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -1011,7 +1011,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	return nil
 }
 
-func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunArtifactsResponse(response *ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -1043,7 +1043,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	return nil
 }
 
-func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunsForRepoResponse(response *ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -1075,7 +1075,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	return nil
 }
 
-func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsReRunWorkflowResponse(response *ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -1088,7 +1088,7 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 	return nil
 }
 
-func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -1114,14 +1114,14 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 	}
 }
 
-func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsRetryWorkflowResponse(response *ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -1151,63 +1151,63 @@ func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, 
 	return nil
 }
 
-func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsOrganizationResponse(response *ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetAllowedActionsRepositoryResponse(response *ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response *ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response *ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedReposForOrgSecretResponse(response *ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response *RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -1275,7 +1275,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	}
 }
 
-func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityDeleteRepoSubscriptionResponse(response *ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -1325,7 +1325,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	}
 }
 
-func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityGetFeedsResponse(response *Feed, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -1786,7 +1786,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 	return nil
 }
 
-func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -1894,7 +1894,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	}
 }
 
-func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListReposWatchedByUserResponse(response *ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -2002,7 +2002,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	}
 }
 
-func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListWatchersForRepoResponse(response *ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -2149,7 +2149,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	}
 }
 
-func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
+func encodeActivitySetRepoSubscriptionResponse(response *RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -2689,7 +2689,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 	}
 }
 
-func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsGetAuthenticatedResponse(response *Integration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -2837,7 +2837,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	}
 }
 
-func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsGetWebhookConfigForAppResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3573,7 +3573,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 	}
 }
 
-func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsRevokeInstallationAccessTokenResponse(response *AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -3697,7 +3697,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	}
 }
 
-func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeAppsUpdateWebhookConfigForAppResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3710,7 +3710,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubActionsBillingGheResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3723,7 +3723,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubActionsBillingOrgResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3736,7 +3736,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 	return nil
 }
 
-func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubActionsBillingUserResponse(response *ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3749,7 +3749,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubPackagesBillingGheResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3762,7 +3762,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubPackagesBillingOrgResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3775,7 +3775,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 	return nil
 }
 
-func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetGithubPackagesBillingUserResponse(response *PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3788,7 +3788,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetSharedStorageBillingGheResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3801,7 +3801,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetSharedStorageBillingOrgResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3814,7 +3814,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 	return nil
 }
 
-func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
+func encodeBillingGetSharedStorageBillingUserResponse(response *CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3858,7 +3858,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	}
 }
 
-func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksGetResponse(response *CheckRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3871,7 +3871,7 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 	return nil
 }
 
-func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksGetSuiteResponse(response *CheckSuite, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -3884,7 +3884,7 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 	return nil
 }
 
-func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListAnnotationsResponse(response *ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -3920,7 +3920,7 @@ func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders
 	return nil
 }
 
-func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForRefResponse(response *ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -3952,7 +3952,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.R
 	return nil
 }
 
-func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForSuiteResponse(response *ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -3984,7 +3984,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w ht
 	return nil
 }
 
-func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListSuitesForRefResponse(response *ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -4016,7 +4016,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeade
 	return nil
 }
 
-func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksRerequestSuiteResponse(response *ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -4029,7 +4029,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 	return nil
 }
 
-func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksSetSuitesPreferencesResponse(response *CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4653,21 +4653,21 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -4680,7 +4680,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 	return nil
 }
 
-func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response *AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -4693,7 +4693,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 	return nil
 }
 
-func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -4706,49 +4706,49 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response *EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response *SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4778,7 +4778,7 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 	return nil
 }
 
-func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response *ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4791,7 +4791,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 	return nil
 }
 
-func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4804,7 +4804,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	return nil
 }
 
-func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4817,7 +4817,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	return nil
 }
 
-func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response *Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4830,7 +4830,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 	return nil
 }
 
-func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4843,7 +4843,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 	return nil
 }
 
-func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4856,7 +4856,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	return nil
 }
 
-func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response *ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4869,7 +4869,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 	return nil
 }
 
-func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response *ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4899,7 +4899,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 	return nil
 }
 
-func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4912,7 +4912,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -4925,7 +4925,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -4957,7 +4957,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	return nil
 }
 
-func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -4989,7 +4989,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	return nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -5002,7 +5002,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 	return nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -5015,35 +5015,35 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	return nil
 }
 
-func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -5056,7 +5056,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	return nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -5069,28 +5069,28 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return nil
 }
 
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response *ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -5103,7 +5103,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response Sci
 	return nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response *ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -5116,7 +5116,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	return nil
 }
 
-func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response *RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -6768,7 +6768,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 	}
 }
 
-func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeGitListMatchingRefsResponse(response *GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -6885,14 +6885,14 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 	}
 }
 
-func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeInteractionsRemoveRestrictionsForOrgResponse(response *InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -7005,7 +7005,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 	}
 }
 
-func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesAddAssigneesResponse(response *IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -7351,14 +7351,14 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	}
 }
 
-func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteCommentResponse(response *IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesDeleteLabelResponse(response *IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -8103,7 +8103,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	}
 }
 
-func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListLabelsForMilestoneResponse(response *IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -8387,7 +8387,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 	}
 }
 
-func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesRemoveAssigneesResponse(response *IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8602,7 +8602,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 	}
 }
 
-func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesUpdateLabelResponse(response *Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8615,7 +8615,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 	return nil
 }
 
-func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesUpdateMilestoneResponse(response *Milestone, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8702,7 +8702,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 	}
 }
 
-func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
+func encodeLicensesGetForRepoResponse(response *LicenseContent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8865,7 +8865,7 @@ func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span
 	return nil
 }
 
-func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
+func encodeMetaRootResponse(response *MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8878,7 +8878,7 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 	return nil
 }
 
-func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsCancelImportResponse(response *MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -9276,7 +9276,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	}
 }
 
-func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsListForOrgResponse(response *MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -9740,7 +9740,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	}
 }
 
-func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsUpdateImportResponse(response *Import, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -10908,7 +10908,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	}
 }
 
-func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsGetWebhookConfigForOrgResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -11169,7 +11169,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	}
 }
 
-func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListForUserResponse(response *OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -11422,7 +11422,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	}
 }
 
-func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListOutsideCollaboratorsResponse(response *OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -11512,7 +11512,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	}
 }
 
-func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListPublicMembersResponse(response *OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -11817,7 +11817,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	}
 }
 
-func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -11917,7 +11917,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	}
 }
 
-func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsUnblockUserResponse(response *OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -12022,7 +12022,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 	}
 }
 
-func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsUpdateWebhookConfigForOrgResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12494,7 +12494,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	}
 }
 
-func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageForAuthenticatedUserResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12507,7 +12507,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 	return nil
 }
 
-func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageForOrganizationResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12520,7 +12520,7 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 	return nil
 }
 
-func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageForUserResponse(response *Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12533,7 +12533,7 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 	return nil
 }
 
-func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12546,7 +12546,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 	return nil
 }
 
-func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageVersionForOrganizationResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -12559,7 +12559,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 	return nil
 }
 
-func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
+func encodePackagesGetPackageVersionForUserResponse(response *PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -15161,7 +15161,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	}
 }
 
-func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListCommitsResponse(response *PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -15263,7 +15263,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	}
 }
 
-func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListRequestedReviewersResponse(response *PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -15295,7 +15295,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 	return nil
 }
 
-func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewCommentsResponse(response *PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -15331,7 +15331,7 @@ func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHea
 	return nil
 }
 
-func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewCommentsForRepoResponse(response *PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -15367,7 +15367,7 @@ func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommen
 	return nil
 }
 
-func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewsResponse(response *PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -15685,7 +15685,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	}
 }
 
-func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
+func encodePullsUpdateReviewCommentResponse(response *PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -16090,7 +16090,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	}
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response *Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16134,7 +16134,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	}
 }
 
-func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsCreateForTeamDiscussionLegacyResponse(response *Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -16147,42 +16147,42 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	return nil
 }
 
-func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForCommitCommentResponse(response *ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueResponse(response *ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForIssueCommentResponse(response *ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForPullRequestCommentResponse(response *ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionResponse(response *ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsDeleteForTeamDiscussionCommentResponse(response *ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -16532,7 +16532,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	}
 }
 
-func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -16568,7 +16568,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response Reactions
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -16604,7 +16604,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response Reaction
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionInOrgResponse(response *ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -16640,7 +16640,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListFor
 	return nil
 }
 
-func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionLegacyResponse(response *ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -17152,7 +17152,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	}
 }
 
-func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCreateCommitStatusResponse(response *StatusHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -17775,7 +17775,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	}
 }
 
-func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCreateUsingTemplateResponse(response *RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -17985,7 +17985,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAccessRestrictionsResponse(response *ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18017,7 +18017,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	}
 }
 
-func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteAnEnvironmentResponse(response *ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18124,7 +18124,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	}
 }
 
-func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteDeployKeyResponse(response *ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18235,7 +18235,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	}
 }
 
-func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteInvitationResponse(response *ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18316,14 +18316,14 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	}
 }
 
-func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseResponse(response *ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDeleteReleaseAssetResponse(response *ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18355,28 +18355,28 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	}
 }
 
-func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableAutomatedSecurityFixesResponse(response *ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableLfsForRepoResponse(response *ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDisableVulnerabilityAlertsResponse(response *ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadTarballArchiveResponse(response *ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18402,7 +18402,7 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 	return nil
 }
 
-func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadZipballArchiveResponse(response *ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
 		h := uri.NewHeaderEncoder(w.Header())
@@ -18428,7 +18428,7 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 	return nil
 }
 
-func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableAutomatedSecurityFixesResponse(response *ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18460,7 +18460,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 	}
 }
 
-func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposEnableVulnerabilityAlertsResponse(response *ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -18553,7 +18553,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	}
 }
 
-func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetAdminBranchProtectionResponse(response *ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19072,7 +19072,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	}
 }
 
-func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetCommunityProfileMetricsResponse(response *CommunityProfile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19227,7 +19227,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	}
 }
 
-func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetLatestPagesBuildResponse(response *PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19240,7 +19240,7 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 	return nil
 }
 
-func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetLatestReleaseResponse(response *Release, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19284,7 +19284,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	}
 }
 
-func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetPagesBuildResponse(response *PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19383,7 +19383,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	}
 }
 
-func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetPullRequestReviewProtectionResponse(response *ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -19835,7 +19835,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	}
 }
 
-func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeReposGetWebhookConfigForRepoResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -20047,7 +20047,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	}
 }
 
-func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommentsForCommitResponse(response *ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20083,7 +20083,7 @@ func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommi
 	return nil
 }
 
-func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommitCommentsForRepoResponse(response *ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20335,7 +20335,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	}
 }
 
-func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListDeployKeysResponse(response *ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20425,7 +20425,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	}
 }
 
-func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListDeploymentsResponse(response *ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20522,7 +20522,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 	}
 }
 
-func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListForOrgResponse(response *ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20558,7 +20558,7 @@ func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.Res
 	return nil
 }
 
-func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListForUserResponse(response *ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20648,7 +20648,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	}
 }
 
-func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListInvitationsResponse(response *ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20781,7 +20781,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 	return nil
 }
 
-func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListPagesBuildsResponse(response *ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20877,7 +20877,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 	}
 }
 
-func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListPullRequestsAssociatedWithCommitResponse(response *ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -20913,7 +20913,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListP
 	return nil
 }
 
-func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListReleaseAssetsResponse(response *ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -21003,7 +21003,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	}
 }
 
-func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListTagsResponse(response *ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -21039,7 +21039,7 @@ func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.Respons
 	return nil
 }
 
-func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListTeamsResponse(response *ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -21363,7 +21363,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 	}
 }
 
-func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveCollaboratorResponse(response *ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -21413,7 +21413,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 	}
 }
 
-func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRemoveStatusCheckProtectionResponse(response *ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -21592,7 +21592,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	}
 }
 
-func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
+func encodeReposRequestPagesBuildResponse(response *PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -21605,7 +21605,7 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 	return nil
 }
 
-func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
+func encodeReposSetAdminBranchProtectionResponse(response *ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -21779,7 +21779,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 	}
 }
 
-func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
+func encodeReposTransferResponse(response *MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
 	span.SetStatus(codes.Ok, http.StatusText(202))
@@ -21945,7 +21945,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	}
 }
 
-func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateInvitationResponse(response *RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -22020,7 +22020,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	}
 }
 
-func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateReleaseAssetResponse(response *ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -22119,7 +22119,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 	}
 }
 
-func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUpdateWebhookConfigForRepoResponse(response *WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -22132,7 +22132,7 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w htt
 	return nil
 }
 
-func encodeReposUploadReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
+func encodeReposUploadReleaseAssetResponse(response *ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -22911,7 +22911,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 	}
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -23110,7 +23110,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 	}
 }
 
-func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCreateDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -23123,7 +23123,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 }
 
-func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCreateDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -23136,7 +23136,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	return nil
 }
 
-func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCreateDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -23149,7 +23149,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	return nil
 }
 
-func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCreateDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -23162,7 +23162,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	return nil
 }
 
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response *GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23218,35 +23218,35 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 	}
 }
 
-func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentInOrgResponse(response *TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionCommentLegacyResponse(response *TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionInOrgResponse(response *TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteDiscussionLegacyResponse(response *TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsDeleteInOrgResponse(response *TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -23321,7 +23321,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	}
 }
 
-func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23334,7 +23334,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 	return nil
 }
 
-func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23347,7 +23347,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 	return nil
 }
 
-func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23360,7 +23360,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 	return nil
 }
 
-func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsGetDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23533,7 +23533,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	}
 }
 
-func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListChildInOrgResponse(response *TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23647,7 +23647,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	}
 }
 
-func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionCommentsInOrgResponse(response *TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23683,7 +23683,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussion
 	return nil
 }
 
-func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionCommentsLegacyResponse(response *TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23719,7 +23719,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussio
 	return nil
 }
 
-func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionsInOrgResponse(response *TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23755,7 +23755,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgO
 	return nil
 }
 
-func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionsLegacyResponse(response *TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23906,7 +23906,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	}
 }
 
-func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListIdpGroupsForOrgResponse(response *GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -23938,7 +23938,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http
 	return nil
 }
 
-func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListIdpGroupsInOrgResponse(response *GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -23951,7 +23951,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 	return nil
 }
 
-func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListMembersInOrgResponse(response *TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -24041,7 +24041,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	}
 }
 
-func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListPendingInvitationsInOrgResponse(response *TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -24077,7 +24077,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInv
 	return nil
 }
 
-func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListPendingInvitationsLegacyResponse(response *TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -24113,7 +24113,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingIn
 	return nil
 }
 
-func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListProjectsInOrgResponse(response *TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -24203,7 +24203,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	}
 }
 
-func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListReposInOrgResponse(response *TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -24350,7 +24350,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 	}
 }
 
-func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveProjectInOrgResponse(response *TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
@@ -24406,21 +24406,21 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 	}
 }
 
-func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoInOrgResponse(response *TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsRemoveRepoLegacyResponse(response *TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsUpdateDiscussionCommentInOrgResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24433,7 +24433,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsUpdateDiscussionCommentLegacyResponse(response *TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24446,7 +24446,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsUpdateDiscussionInOrgResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24459,7 +24459,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	return nil
 }
 
-func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsUpdateDiscussionLegacyResponse(response *TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24472,7 +24472,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	return nil
 }
 
-func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsUpdateInOrgResponse(response *TeamFull, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
@@ -25817,7 +25817,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	}
 }
 
-func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowersForUserResponse(response *UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -25853,7 +25853,7 @@ func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserO
 	return nil
 }
 
-func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowingForUserResponse(response *UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -25973,7 +25973,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	}
 }
 
-func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListGpgKeysForUserResponse(response *UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{
@@ -26093,7 +26093,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	}
 }
 
-func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListPublicKeysForUserResponse(response *UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
 	{

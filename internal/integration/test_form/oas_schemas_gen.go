@@ -291,12 +291,12 @@ type SharedRequest struct {
 }
 
 // GetFilename returns the value of Filename.
-func (s SharedRequest) GetFilename() OptString {
+func (s *SharedRequest) GetFilename() OptString {
 	return s.Filename
 }
 
 // GetFile returns the value of File.
-func (s SharedRequest) GetFile() OptString {
+func (s *SharedRequest) GetFile() OptString {
 	return s.File
 }
 
@@ -319,12 +319,12 @@ type SharedRequestForm struct {
 }
 
 // GetFilename returns the value of Filename.
-func (s SharedRequestForm) GetFilename() OptString {
+func (s *SharedRequestForm) GetFilename() OptString {
 	return s.Filename
 }
 
 // GetFile returns the value of File.
-func (s SharedRequestForm) GetFile() OptMultipartFile {
+func (s *SharedRequestForm) GetFile() OptMultipartFile {
 	return s.File
 }
 
@@ -351,32 +351,32 @@ type TestForm struct {
 }
 
 // GetID returns the value of ID.
-func (s TestForm) GetID() OptInt {
+func (s *TestForm) GetID() OptInt {
 	return s.ID
 }
 
 // GetUUID returns the value of UUID.
-func (s TestForm) GetUUID() OptUUID {
+func (s *TestForm) GetUUID() OptUUID {
 	return s.UUID
 }
 
 // GetDescription returns the value of Description.
-func (s TestForm) GetDescription() string {
+func (s *TestForm) GetDescription() string {
 	return s.Description
 }
 
 // GetArray returns the value of Array.
-func (s TestForm) GetArray() []string {
+func (s *TestForm) GetArray() []string {
 	return s.Array
 }
 
 // GetObject returns the value of Object.
-func (s TestForm) GetObject() OptTestFormObject {
+func (s *TestForm) GetObject() OptTestFormObject {
 	return s.Object
 }
 
 // GetDeepObject returns the value of DeepObject.
-func (s TestForm) GetDeepObject() OptTestFormDeepObject {
+func (s *TestForm) GetDeepObject() OptTestFormDeepObject {
 	return s.DeepObject
 }
 
@@ -416,12 +416,12 @@ type TestFormDeepObject struct {
 }
 
 // GetMin returns the value of Min.
-func (s TestFormDeepObject) GetMin() OptInt {
+func (s *TestFormDeepObject) GetMin() OptInt {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestFormDeepObject) GetMax() int {
+func (s *TestFormDeepObject) GetMax() int {
 	return s.Max
 }
 
@@ -441,12 +441,12 @@ type TestFormObject struct {
 }
 
 // GetMin returns the value of Min.
-func (s TestFormObject) GetMin() OptInt {
+func (s *TestFormObject) GetMin() OptInt {
 	return s.Min
 }
 
 // GetMax returns the value of Max.
-func (s TestFormObject) GetMax() int {
+func (s *TestFormObject) GetMax() int {
 	return s.Max
 }
 
@@ -473,17 +473,17 @@ type TestMultipartUploadOK struct {
 }
 
 // GetFile returns the value of File.
-func (s TestMultipartUploadOK) GetFile() string {
+func (s *TestMultipartUploadOK) GetFile() string {
 	return s.File
 }
 
 // GetOptionalFile returns the value of OptionalFile.
-func (s TestMultipartUploadOK) GetOptionalFile() OptString {
+func (s *TestMultipartUploadOK) GetOptionalFile() OptString {
 	return s.OptionalFile
 }
 
 // GetFiles returns the value of Files.
-func (s TestMultipartUploadOK) GetFiles() []string {
+func (s *TestMultipartUploadOK) GetFiles() []string {
 	return s.Files
 }
 
@@ -511,27 +511,27 @@ type TestMultipartUploadReq struct {
 }
 
 // GetOrderId returns the value of OrderId.
-func (s TestMultipartUploadReq) GetOrderId() OptInt {
+func (s *TestMultipartUploadReq) GetOrderId() OptInt {
 	return s.OrderId
 }
 
 // GetUserId returns the value of UserId.
-func (s TestMultipartUploadReq) GetUserId() OptInt {
+func (s *TestMultipartUploadReq) GetUserId() OptInt {
 	return s.UserId
 }
 
 // GetFile returns the value of File.
-func (s TestMultipartUploadReq) GetFile() string {
+func (s *TestMultipartUploadReq) GetFile() string {
 	return s.File
 }
 
 // GetOptionalFile returns the value of OptionalFile.
-func (s TestMultipartUploadReq) GetOptionalFile() OptString {
+func (s *TestMultipartUploadReq) GetOptionalFile() OptString {
 	return s.OptionalFile
 }
 
 // GetFiles returns the value of Files.
-func (s TestMultipartUploadReq) GetFiles() []string {
+func (s *TestMultipartUploadReq) GetFiles() []string {
 	return s.Files
 }
 
@@ -569,27 +569,27 @@ type TestMultipartUploadReqForm struct {
 }
 
 // GetOrderId returns the value of OrderId.
-func (s TestMultipartUploadReqForm) GetOrderId() OptInt {
+func (s *TestMultipartUploadReqForm) GetOrderId() OptInt {
 	return s.OrderId
 }
 
 // GetUserId returns the value of UserId.
-func (s TestMultipartUploadReqForm) GetUserId() OptInt {
+func (s *TestMultipartUploadReqForm) GetUserId() OptInt {
 	return s.UserId
 }
 
 // GetFile returns the value of File.
-func (s TestMultipartUploadReqForm) GetFile() ht.MultipartFile {
+func (s *TestMultipartUploadReqForm) GetFile() ht.MultipartFile {
 	return s.File
 }
 
 // GetOptionalFile returns the value of OptionalFile.
-func (s TestMultipartUploadReqForm) GetOptionalFile() OptMultipartFile {
+func (s *TestMultipartUploadReqForm) GetOptionalFile() OptMultipartFile {
 	return s.OptionalFile
 }
 
 // GetFiles returns the value of Files.
-func (s TestMultipartUploadReqForm) GetFiles() []ht.MultipartFile {
+func (s *TestMultipartUploadReqForm) GetFiles() []ht.MultipartFile {
 	return s.Files
 }
 

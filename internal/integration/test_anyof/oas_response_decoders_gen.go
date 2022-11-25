@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeIntegerNumberResponse(resp *http.Response) (res IntegerNumber, err error) {
+func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41,7 +41,7 @@ func decodeIntegerNumberResponse(resp *http.Response) (res IntegerNumber, err er
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49,7 +49,7 @@ func decodeIntegerNumberResponse(resp *http.Response) (res IntegerNumber, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeJaegerAnyOfResponse(resp *http.Response) (res JaegerAnyOf, err error) {
+func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -77,7 +77,7 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res JaegerAnyOf, err error)
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -85,7 +85,7 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res JaegerAnyOf, err error)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOneUUIDResponse(resp *http.Response) (res OneUUID, err error) {
+func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -113,7 +113,7 @@ func decodeOneUUIDResponse(resp *http.Response) (res OneUUID, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodePublishEventResponse(response Event, w http.ResponseWriter, span trace.Span) error {
+func encodePublishEventResponse(response *Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -24,7 +24,7 @@ func encodePublishEventResponse(response Event, w http.ResponseWriter, span trac
 	return nil
 }
 
-func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeErrorResponse(response *ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	code := response.StatusCode
 	if code == 0 {
@@ -47,7 +47,7 @@ func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span t
 	return nil
 
 }
-func encodeStatusWebhookResponse(response StatusWebhookOK, w http.ResponseWriter, span trace.Span) error {
+func encodeStatusWebhookResponse(response *StatusWebhookOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

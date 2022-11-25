@@ -83,7 +83,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 		}
 
 		type (
-			Request  = NewPet
+			Request  = *NewPet
 			Params   = struct{}
 			Response = AddPetRes
 		)

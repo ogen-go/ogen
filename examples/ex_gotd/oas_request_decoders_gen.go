@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeAddStickerToSetRequest(r *http.Request) (
-	req AddStickerToSet,
+	req *AddStickerToSet,
 	close func() error,
 	rerr error,
 ) {
@@ -74,14 +74,14 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request) (
-	req AnswerCallbackQuery,
+	req *AnswerCallbackQuery,
 	close func() error,
 	rerr error,
 ) {
@@ -140,14 +140,14 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request) (
-	req AnswerInlineQuery,
+	req *AnswerInlineQuery,
 	close func() error,
 	rerr error,
 ) {
@@ -206,14 +206,14 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request) (
-	req AnswerPreCheckoutQuery,
+	req *AnswerPreCheckoutQuery,
 	close func() error,
 	rerr error,
 ) {
@@ -264,14 +264,14 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request) (
-	req AnswerShippingQuery,
+	req *AnswerShippingQuery,
 	close func() error,
 	rerr error,
 ) {
@@ -330,14 +330,14 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAnswerWebAppQueryRequest(r *http.Request) (
-	req AnswerWebAppQuery,
+	req *AnswerWebAppQuery,
 	close func() error,
 	rerr error,
 ) {
@@ -396,14 +396,14 @@ func (s *Server) decodeAnswerWebAppQueryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request) (
-	req ApproveChatJoinRequest,
+	req *ApproveChatJoinRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -454,14 +454,14 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeBanChatMemberRequest(r *http.Request) (
-	req BanChatMember,
+	req *BanChatMember,
 	close func() error,
 	rerr error,
 ) {
@@ -512,14 +512,14 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeBanChatSenderChatRequest(r *http.Request) (
-	req BanChatSenderChat,
+	req *BanChatSenderChat,
 	close func() error,
 	rerr error,
 ) {
@@ -570,14 +570,14 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCopyMessageRequest(r *http.Request) (
-	req CopyMessage,
+	req *CopyMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -636,14 +636,14 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request) (
-	req CreateChatInviteLink,
+	req *CreateChatInviteLink,
 	close func() error,
 	rerr error,
 ) {
@@ -702,14 +702,14 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request) (
-	req CreateNewStickerSet,
+	req *CreateNewStickerSet,
 	close func() error,
 	rerr error,
 ) {
@@ -768,14 +768,14 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request) (
-	req DeclineChatJoinRequest,
+	req *DeclineChatJoinRequest,
 	close func() error,
 	rerr error,
 ) {
@@ -826,14 +826,14 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request) (
-	req DeleteChatPhoto,
+	req *DeleteChatPhoto,
 	close func() error,
 	rerr error,
 ) {
@@ -884,14 +884,14 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request) (
-	req DeleteChatStickerSet,
+	req *DeleteChatStickerSet,
 	close func() error,
 	rerr error,
 ) {
@@ -942,14 +942,14 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeDeleteMessageRequest(r *http.Request) (
-	req DeleteMessage,
+	req *DeleteMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -1000,7 +1000,7 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1069,7 +1069,7 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request) (
-	req DeleteStickerFromSet,
+	req *DeleteStickerFromSet,
 	close func() error,
 	rerr error,
 ) {
@@ -1120,7 +1120,7 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1189,7 +1189,7 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request) (
 }
 
 func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request) (
-	req EditChatInviteLink,
+	req *EditChatInviteLink,
 	close func() error,
 	rerr error,
 ) {
@@ -1248,14 +1248,14 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEditMessageCaptionRequest(r *http.Request) (
-	req EditMessageCaption,
+	req *EditMessageCaption,
 	close func() error,
 	rerr error,
 ) {
@@ -1314,14 +1314,14 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request) (
-	req EditMessageLiveLocation,
+	req *EditMessageLiveLocation,
 	close func() error,
 	rerr error,
 ) {
@@ -1380,14 +1380,14 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEditMessageMediaRequest(r *http.Request) (
-	req EditMessageMedia,
+	req *EditMessageMedia,
 	close func() error,
 	rerr error,
 ) {
@@ -1446,14 +1446,14 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request) (
-	req EditMessageReplyMarkup,
+	req *EditMessageReplyMarkup,
 	close func() error,
 	rerr error,
 ) {
@@ -1512,14 +1512,14 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEditMessageTextRequest(r *http.Request) (
-	req EditMessageText,
+	req *EditMessageText,
 	close func() error,
 	rerr error,
 ) {
@@ -1578,14 +1578,14 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request) (
-	req ExportChatInviteLink,
+	req *ExportChatInviteLink,
 	close func() error,
 	rerr error,
 ) {
@@ -1636,14 +1636,14 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeForwardMessageRequest(r *http.Request) (
-	req ForwardMessage,
+	req *ForwardMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -1694,14 +1694,14 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGetChatRequest(r *http.Request) (
-	req GetChat,
+	req *GetChat,
 	close func() error,
 	rerr error,
 ) {
@@ -1752,14 +1752,14 @@ func (s *Server) decodeGetChatRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request) (
-	req GetChatAdministrators,
+	req *GetChatAdministrators,
 	close func() error,
 	rerr error,
 ) {
@@ -1810,14 +1810,14 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGetChatMemberRequest(r *http.Request) (
-	req GetChatMember,
+	req *GetChatMember,
 	close func() error,
 	rerr error,
 ) {
@@ -1868,14 +1868,14 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGetChatMemberCountRequest(r *http.Request) (
-	req GetChatMemberCount,
+	req *GetChatMemberCount,
 	close func() error,
 	rerr error,
 ) {
@@ -1926,7 +1926,7 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1995,7 +1995,7 @@ func (s *Server) decodeGetChatMenuButtonRequest(r *http.Request) (
 }
 
 func (s *Server) decodeGetFileRequest(r *http.Request) (
-	req GetFile,
+	req *GetFile,
 	close func() error,
 	rerr error,
 ) {
@@ -2046,14 +2046,14 @@ func (s *Server) decodeGetFileRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGetGameHighScoresRequest(r *http.Request) (
-	req GetGameHighScores,
+	req *GetGameHighScores,
 	close func() error,
 	rerr error,
 ) {
@@ -2104,7 +2104,7 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -2235,7 +2235,7 @@ func (s *Server) decodeGetMyDefaultAdministratorRightsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeGetStickerSetRequest(r *http.Request) (
-	req GetStickerSet,
+	req *GetStickerSet,
 	close func() error,
 	rerr error,
 ) {
@@ -2286,7 +2286,7 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -2370,7 +2370,7 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request) (
 }
 
 func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request) (
-	req GetUserProfilePhotos,
+	req *GetUserProfilePhotos,
 	close func() error,
 	rerr error,
 ) {
@@ -2429,14 +2429,14 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeLeaveChatRequest(r *http.Request) (
-	req LeaveChat,
+	req *LeaveChat,
 	close func() error,
 	rerr error,
 ) {
@@ -2487,14 +2487,14 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePinChatMessageRequest(r *http.Request) (
-	req PinChatMessage,
+	req *PinChatMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -2545,14 +2545,14 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePromoteChatMemberRequest(r *http.Request) (
-	req PromoteChatMember,
+	req *PromoteChatMember,
 	close func() error,
 	rerr error,
 ) {
@@ -2603,14 +2603,14 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeRestrictChatMemberRequest(r *http.Request) (
-	req RestrictChatMember,
+	req *RestrictChatMember,
 	close func() error,
 	rerr error,
 ) {
@@ -2661,14 +2661,14 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request) (
-	req RevokeChatInviteLink,
+	req *RevokeChatInviteLink,
 	close func() error,
 	rerr error,
 ) {
@@ -2719,14 +2719,14 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendAnimationRequest(r *http.Request) (
-	req SendAnimation,
+	req *SendAnimation,
 	close func() error,
 	rerr error,
 ) {
@@ -2785,14 +2785,14 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendAudioRequest(r *http.Request) (
-	req SendAudio,
+	req *SendAudio,
 	close func() error,
 	rerr error,
 ) {
@@ -2851,14 +2851,14 @@ func (s *Server) decodeSendAudioRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendChatActionRequest(r *http.Request) (
-	req SendChatAction,
+	req *SendChatAction,
 	close func() error,
 	rerr error,
 ) {
@@ -2909,14 +2909,14 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendContactRequest(r *http.Request) (
-	req SendContact,
+	req *SendContact,
 	close func() error,
 	rerr error,
 ) {
@@ -2975,14 +2975,14 @@ func (s *Server) decodeSendContactRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendDiceRequest(r *http.Request) (
-	req SendDice,
+	req *SendDice,
 	close func() error,
 	rerr error,
 ) {
@@ -3041,14 +3041,14 @@ func (s *Server) decodeSendDiceRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendDocumentRequest(r *http.Request) (
-	req SendDocument,
+	req *SendDocument,
 	close func() error,
 	rerr error,
 ) {
@@ -3107,14 +3107,14 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendGameRequest(r *http.Request) (
-	req SendGame,
+	req *SendGame,
 	close func() error,
 	rerr error,
 ) {
@@ -3173,14 +3173,14 @@ func (s *Server) decodeSendGameRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendInvoiceRequest(r *http.Request) (
-	req SendInvoice,
+	req *SendInvoice,
 	close func() error,
 	rerr error,
 ) {
@@ -3239,14 +3239,14 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendLocationRequest(r *http.Request) (
-	req SendLocation,
+	req *SendLocation,
 	close func() error,
 	rerr error,
 ) {
@@ -3305,14 +3305,14 @@ func (s *Server) decodeSendLocationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendMediaGroupRequest(r *http.Request) (
-	req SendMediaGroup,
+	req *SendMediaGroup,
 	close func() error,
 	rerr error,
 ) {
@@ -3371,14 +3371,14 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendMessageRequest(r *http.Request) (
-	req SendMessage,
+	req *SendMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -3437,14 +3437,14 @@ func (s *Server) decodeSendMessageRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendPhotoRequest(r *http.Request) (
-	req SendPhoto,
+	req *SendPhoto,
 	close func() error,
 	rerr error,
 ) {
@@ -3503,14 +3503,14 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendPollRequest(r *http.Request) (
-	req SendPoll,
+	req *SendPoll,
 	close func() error,
 	rerr error,
 ) {
@@ -3569,14 +3569,14 @@ func (s *Server) decodeSendPollRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendStickerRequest(r *http.Request) (
-	req SendSticker,
+	req *SendSticker,
 	close func() error,
 	rerr error,
 ) {
@@ -3635,14 +3635,14 @@ func (s *Server) decodeSendStickerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendVenueRequest(r *http.Request) (
-	req SendVenue,
+	req *SendVenue,
 	close func() error,
 	rerr error,
 ) {
@@ -3701,14 +3701,14 @@ func (s *Server) decodeSendVenueRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendVideoRequest(r *http.Request) (
-	req SendVideo,
+	req *SendVideo,
 	close func() error,
 	rerr error,
 ) {
@@ -3767,14 +3767,14 @@ func (s *Server) decodeSendVideoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendVideoNoteRequest(r *http.Request) (
-	req SendVideoNote,
+	req *SendVideoNote,
 	close func() error,
 	rerr error,
 ) {
@@ -3833,14 +3833,14 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSendVoiceRequest(r *http.Request) (
-	req SendVoice,
+	req *SendVoice,
 	close func() error,
 	rerr error,
 ) {
@@ -3899,14 +3899,14 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (
-	req SetChatAdministratorCustomTitle,
+	req *SetChatAdministratorCustomTitle,
 	close func() error,
 	rerr error,
 ) {
@@ -3965,14 +3965,14 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetChatDescriptionRequest(r *http.Request) (
-	req SetChatDescription,
+	req *SetChatDescription,
 	close func() error,
 	rerr error,
 ) {
@@ -4031,7 +4031,7 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4100,7 +4100,7 @@ func (s *Server) decodeSetChatMenuButtonRequest(r *http.Request) (
 }
 
 func (s *Server) decodeSetChatPermissionsRequest(r *http.Request) (
-	req SetChatPermissions,
+	req *SetChatPermissions,
 	close func() error,
 	rerr error,
 ) {
@@ -4151,14 +4151,14 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetChatPhotoRequest(r *http.Request) (
-	req SetChatPhoto,
+	req *SetChatPhoto,
 	close func() error,
 	rerr error,
 ) {
@@ -4209,14 +4209,14 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetChatStickerSetRequest(r *http.Request) (
-	req SetChatStickerSet,
+	req *SetChatStickerSet,
 	close func() error,
 	rerr error,
 ) {
@@ -4267,14 +4267,14 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetChatTitleRequest(r *http.Request) (
-	req SetChatTitle,
+	req *SetChatTitle,
 	close func() error,
 	rerr error,
 ) {
@@ -4333,14 +4333,14 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetGameScoreRequest(r *http.Request) (
-	req SetGameScore,
+	req *SetGameScore,
 	close func() error,
 	rerr error,
 ) {
@@ -4391,14 +4391,14 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetMyCommandsRequest(r *http.Request) (
-	req SetMyCommands,
+	req *SetMyCommands,
 	close func() error,
 	rerr error,
 ) {
@@ -4457,7 +4457,7 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4526,7 +4526,7 @@ func (s *Server) decodeSetMyDefaultAdministratorRightsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request) (
-	req SetPassportDataErrors,
+	req *SetPassportDataErrors,
 	close func() error,
 	rerr error,
 ) {
@@ -4585,14 +4585,14 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request) (
-	req SetStickerPositionInSet,
+	req *SetStickerPositionInSet,
 	close func() error,
 	rerr error,
 ) {
@@ -4643,14 +4643,14 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request) (
-	req SetStickerSetThumb,
+	req *SetStickerSetThumb,
 	close func() error,
 	rerr error,
 ) {
@@ -4701,14 +4701,14 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSetWebhookRequest(r *http.Request) (
-	req SetWebhook,
+	req *SetWebhook,
 	close func() error,
 	rerr error,
 ) {
@@ -4759,14 +4759,14 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request) (
-	req StopMessageLiveLocation,
+	req *StopMessageLiveLocation,
 	close func() error,
 	rerr error,
 ) {
@@ -4825,14 +4825,14 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeStopPollRequest(r *http.Request) (
-	req StopPoll,
+	req *StopPoll,
 	close func() error,
 	rerr error,
 ) {
@@ -4891,14 +4891,14 @@ func (s *Server) decodeStopPollRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUnbanChatMemberRequest(r *http.Request) (
-	req UnbanChatMember,
+	req *UnbanChatMember,
 	close func() error,
 	rerr error,
 ) {
@@ -4949,14 +4949,14 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request) (
-	req UnbanChatSenderChat,
+	req *UnbanChatSenderChat,
 	close func() error,
 	rerr error,
 ) {
@@ -5007,14 +5007,14 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request) (
-	req UnpinAllChatMessages,
+	req *UnpinAllChatMessages,
 	close func() error,
 	rerr error,
 ) {
@@ -5065,14 +5065,14 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUnpinChatMessageRequest(r *http.Request) (
-	req UnpinChatMessage,
+	req *UnpinChatMessage,
 	close func() error,
 	rerr error,
 ) {
@@ -5123,14 +5123,14 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUploadStickerFileRequest(r *http.Request) (
-	req UploadStickerFile,
+	req *UploadStickerFile,
 	close func() error,
 	rerr error,
 ) {
@@ -5181,7 +5181,7 @@ func (s *Server) decodeUploadStickerFileRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

@@ -23,11 +23,11 @@ type Handler interface {
 	// MaskContentType implements maskContentType operation.
 	//
 	// POST /maskContentType
-	MaskContentType(ctx context.Context, req MaskContentTypeReqWithContentType) (MaskResponse, error)
+	MaskContentType(ctx context.Context, req *MaskContentTypeReqWithContentType) (*MaskResponse, error)
 	// MaskContentTypeOptional implements maskContentTypeOptional operation.
 	//
 	// POST /maskContentTypeOptional
-	MaskContentTypeOptional(ctx context.Context, req MaskContentTypeOptionalReqWithContentType) (MaskResponse, error)
+	MaskContentTypeOptional(ctx context.Context, req *MaskContentTypeOptionalReqWithContentType) (*MaskResponse, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

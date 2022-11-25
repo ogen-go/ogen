@@ -34095,7 +34095,7 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 // LogFileHandler invokes logFileHandler operation.
 //
 // GET /logs/{logpath}
-func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (res LogFileHandlerUnauthorized, err error) {
+func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (res *LogFileHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileHandler"),
 	}
@@ -34174,7 +34174,7 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 // LogFileListHandler invokes logFileListHandler operation.
 //
 // GET /logs/
-func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
+func (c *Client) LogFileListHandler(ctx context.Context) (res *LogFileListHandlerUnauthorized, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logFileListHandler"),
 	}

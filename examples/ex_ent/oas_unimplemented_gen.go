@@ -18,7 +18,7 @@ var _ Handler = UnimplementedHandler{}
 // Creates a new Pet and persists it to storage.
 //
 // POST /pets
-func (UnimplementedHandler) CreatePet(ctx context.Context, req CreatePetReq) (r CreatePetRes, _ error) {
+func (UnimplementedHandler) CreatePet(ctx context.Context, req *CreatePetReq) (r CreatePetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -27,7 +27,7 @@ func (UnimplementedHandler) CreatePet(ctx context.Context, req CreatePetReq) (r 
 // Creates a new Category and attaches it to the Pet.
 //
 // POST /pets/{id}/categories
-func (UnimplementedHandler) CreatePetCategories(ctx context.Context, req CreatePetCategoriesReq, params CreatePetCategoriesParams) (r CreatePetCategoriesRes, _ error) {
+func (UnimplementedHandler) CreatePetCategories(ctx context.Context, req *CreatePetCategoriesReq, params CreatePetCategoriesParams) (r CreatePetCategoriesRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -36,7 +36,7 @@ func (UnimplementedHandler) CreatePetCategories(ctx context.Context, req CreateP
 // Creates a new Pet and attaches it to the Pet.
 //
 // POST /pets/{id}/friends
-func (UnimplementedHandler) CreatePetFriends(ctx context.Context, req CreatePetFriendsReq, params CreatePetFriendsParams) (r CreatePetFriendsRes, _ error) {
+func (UnimplementedHandler) CreatePetFriends(ctx context.Context, req *CreatePetFriendsReq, params CreatePetFriendsParams) (r CreatePetFriendsRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -45,7 +45,7 @@ func (UnimplementedHandler) CreatePetFriends(ctx context.Context, req CreatePetF
 // Creates a new User and attaches it to the Pet.
 //
 // POST /pets/{id}/owner
-func (UnimplementedHandler) CreatePetOwner(ctx context.Context, req CreatePetOwnerReq, params CreatePetOwnerParams) (r CreatePetOwnerRes, _ error) {
+func (UnimplementedHandler) CreatePetOwner(ctx context.Context, req *CreatePetOwnerReq, params CreatePetOwnerParams) (r CreatePetOwnerRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -117,6 +117,6 @@ func (UnimplementedHandler) ReadPetOwner(ctx context.Context, params ReadPetOwne
 // Updates a Pet and persists changes to storage.
 //
 // PATCH /pets/{id}
-func (UnimplementedHandler) UpdatePet(ctx context.Context, req UpdatePetReq, params UpdatePetParams) (r UpdatePetRes, _ error) {
+func (UnimplementedHandler) UpdatePet(ctx context.Context, req *UpdatePetReq, params UpdatePetParams) (r UpdatePetRes, _ error) {
 	return r, ht.ErrNotImplemented
 }

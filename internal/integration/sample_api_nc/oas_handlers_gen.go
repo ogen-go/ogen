@@ -211,7 +211,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		}
 
 		type (
-			Request  = DefaultTest
+			Request  = *DefaultTest
 			Params   = DefaultTestParams
 			Response = int32
 		)
@@ -279,7 +279,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 		err error
 	)
 
-	var response ErrorStatusCode
+	var response *ErrorStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -293,7 +293,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = ErrorStatusCode
+			Response = *ErrorStatusCode
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -556,7 +556,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 		err error
 	)
 
-	var response FoobarPutDef
+	var response *FoobarPutDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -570,7 +570,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = FoobarPutDef
+			Response = *FoobarPutDef
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -650,7 +650,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	var response Hash
+	var response *Hash
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -669,7 +669,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 		type (
 			Request  = struct{}
 			Params   = GetHeaderParams
-			Response = Hash
+			Response = *Hash
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -733,7 +733,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 		err error
 	)
 
-	var response NoAdditionalPropertiesTest
+	var response *NoAdditionalPropertiesTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -747,7 +747,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = NoAdditionalPropertiesTest
+			Response = *NoAdditionalPropertiesTest
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -811,7 +811,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 		err error
 	)
 
-	var response NilIntStatusCode
+	var response *NilIntStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -825,7 +825,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = NilIntStatusCode
+			Response = *NilIntStatusCode
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -908,7 +908,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	var response OneofBugOK
+	var response *OneofBugOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -920,9 +920,9 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		}
 
 		type (
-			Request  = OneOfBugs
+			Request  = *OneOfBugs
 			Params   = struct{}
-			Response = OneofBugOK
+			Response = *OneofBugOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1082,7 +1082,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	var response Pet
+	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1096,7 +1096,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		type (
 			Request  = OptPet
 			Params   = struct{}
-			Response = Pet
+			Response = *Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1584,7 +1584,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 		return
 	}
 
-	var response Pet
+	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1603,7 +1603,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 		type (
 			Request  = struct{}
 			Params   = PetGetByNameParams
-			Response = Pet
+			Response = *Pet
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1782,7 +1782,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	var response PetUpdateNameAliasPostDef
+	var response *PetUpdateNameAliasPostDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1796,7 +1796,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		type (
 			Request  = OptPetName
 			Params   = struct{}
-			Response = PetUpdateNameAliasPostDef
+			Response = *PetUpdateNameAliasPostDef
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1876,7 +1876,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	var response PetUpdateNamePostDef
+	var response *PetUpdateNamePostDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1890,7 +1890,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		type (
 			Request  = OptString
 			Params   = struct{}
-			Response = PetUpdateNamePostDef
+			Response = *PetUpdateNamePostDef
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2140,7 +2140,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 		err error
 	)
 
-	var response RecursiveMap
+	var response *RecursiveMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2154,7 +2154,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = RecursiveMap
+			Response = *RecursiveMap
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2309,7 +2309,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 		err error
 	)
 
-	var response StringIntMap
+	var response *StringIntMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2323,7 +2323,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = StringIntMap
+			Response = *StringIntMap
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2503,7 +2503,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	var response TestFloatValidationOK
+	var response *TestFloatValidationOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2515,9 +2515,9 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		}
 
 		type (
-			Request  = TestFloatValidation
+			Request  = *TestFloatValidation
 			Params   = struct{}
-			Response = TestFloatValidationOK
+			Response = *TestFloatValidationOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -2673,7 +2673,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 		return
 	}
 
-	var response TestObjectQueryParameterOK
+	var response *TestObjectQueryParameterOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -2696,7 +2696,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = TestObjectQueryParameterParams
-			Response = TestObjectQueryParameterOK
+			Response = *TestObjectQueryParameterOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

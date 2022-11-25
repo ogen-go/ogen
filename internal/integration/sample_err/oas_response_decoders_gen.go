@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataCreateResponse(resp *http.Response) (res Data, err error) {
+func decodeDataCreateResponse(resp *http.Response) (res *Data, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41,13 +41,13 @@ func decodeDataCreateResponse(resp *http.Response) (res Data, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
 	}
 	// Convenient error response.
-	defRes, err := func() (res ErrorStatusCode, err error) {
+	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -72,7 +72,7 @@ func decodeDataCreateResponse(resp *http.Response) (res Data, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return ErrorStatusCode{
+			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil
@@ -83,10 +83,10 @@ func decodeDataCreateResponse(resp *http.Response) (res Data, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "default")
 	}
-	return res, errors.Wrap(&defRes, "error")
+	return res, errors.Wrap(defRes, "error")
 }
 
-func decodeDataGetResponse(resp *http.Response) (res Data, err error) {
+func decodeDataGetResponse(resp *http.Response) (res *Data, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -114,13 +114,13 @@ func decodeDataGetResponse(resp *http.Response) (res Data, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
 	}
 	// Convenient error response.
-	defRes, err := func() (res ErrorStatusCode, err error) {
+	defRes, err := func() (res *ErrorStatusCode, err error) {
 		ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 		if err != nil {
 			return res, errors.Wrap(err, "parse media type")
@@ -145,7 +145,7 @@ func decodeDataGetResponse(resp *http.Response) (res Data, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return ErrorStatusCode{
+			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil
@@ -156,5 +156,5 @@ func decodeDataGetResponse(resp *http.Response) (res Data, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "default")
 	}
-	return res, errors.Wrap(&defRes, "error")
+	return res, errors.Wrap(defRes, "error")
 }

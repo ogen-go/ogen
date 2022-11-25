@@ -24,7 +24,7 @@ func (s AnyOfIntegerNumberString) Validate() error {
 	}
 }
 
-func (s IntegerNumber) Validate() error {
+func (s *IntegerNumber) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Plain.Validate(); err != nil {
@@ -42,7 +42,7 @@ func (s IntegerNumber) Validate() error {
 	}
 	return nil
 }
-func (s JaegerAnyOf) Validate() error {
+func (s *JaegerAnyOf) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.SizeLimit.Validate(); err != nil {
@@ -82,7 +82,7 @@ func (s JaegerAnyOfSizeLimit) Validate() error {
 	}
 }
 
-func (s OneUUID) Validate() error {
+func (s *OneUUID) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{

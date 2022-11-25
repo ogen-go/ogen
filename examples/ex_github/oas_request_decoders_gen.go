@@ -16,7 +16,7 @@ import (
 )
 
 func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (
-	req ActionsCreateOrUpdateEnvironmentSecretReq,
+	req *ActionsCreateOrUpdateEnvironmentSecretReq,
 	close func() error,
 	rerr error,
 ) {
@@ -75,14 +75,14 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (
-	req ActionsCreateOrUpdateOrgSecretReq,
+	req *ActionsCreateOrUpdateOrgSecretReq,
 	close func() error,
 	rerr error,
 ) {
@@ -141,14 +141,14 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (
-	req ActionsCreateOrUpdateRepoSecretReq,
+	req *ActionsCreateOrUpdateRepoSecretReq,
 	close func() error,
 	rerr error,
 ) {
@@ -207,14 +207,14 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (
-	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
+	req *ActionsCreateSelfHostedRunnerGroupForOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -273,14 +273,14 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request) (
-	req ActionsReviewPendingDeploymentsForRunReq,
+	req *ActionsReviewPendingDeploymentsForRunReq,
 	close func() error,
 	rerr error,
 ) {
@@ -339,7 +339,7 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -470,7 +470,7 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 }
 
 func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request) (
-	req ActionsSetGithubActionsPermissionsOrganizationReq,
+	req *ActionsSetGithubActionsPermissionsOrganizationReq,
 	close func() error,
 	rerr error,
 ) {
@@ -529,14 +529,14 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) (
-	req ActionsSetGithubActionsPermissionsRepositoryReq,
+	req *ActionsSetGithubActionsPermissionsRepositoryReq,
 	close func() error,
 	rerr error,
 ) {
@@ -595,14 +595,14 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request) (
-	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
+	req *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -661,14 +661,14 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (
-	req ActionsSetSelectedReposForOrgSecretReq,
+	req *ActionsSetSelectedReposForOrgSecretReq,
 	close func() error,
 	rerr error,
 ) {
@@ -727,14 +727,14 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request) (
-	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
+	req *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
 	close func() error,
 	rerr error,
 ) {
@@ -793,14 +793,14 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (
-	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
+	req *ActionsSetSelfHostedRunnersInGroupForOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -859,14 +859,14 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (
-	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
+	req *ActionsUpdateSelfHostedRunnerGroupForOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -925,7 +925,7 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1180,7 +1180,7 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request) (
 }
 
 func (s *Server) decodeAppsCheckTokenRequest(r *http.Request) (
-	req AppsCheckTokenReq,
+	req *AppsCheckTokenReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1231,14 +1231,14 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request) (
-	req AppsCreateContentAttachmentReq,
+	req *AppsCreateContentAttachmentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1297,7 +1297,7 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1445,7 +1445,7 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request)
 }
 
 func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request) (
-	req AppsDeleteAuthorizationReq,
+	req *AppsDeleteAuthorizationReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1496,14 +1496,14 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request) (
-	req AppsDeleteTokenReq,
+	req *AppsDeleteTokenReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1554,14 +1554,14 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAppsResetTokenRequest(r *http.Request) (
-	req AppsResetTokenReq,
+	req *AppsResetTokenReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1612,14 +1612,14 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAppsScopeTokenRequest(r *http.Request) (
-	req AppsScopeTokenReq,
+	req *AppsScopeTokenReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1678,7 +1678,7 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1762,7 +1762,7 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request) (
 }
 
 func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request) (
-	req ChecksCreateSuiteReq,
+	req *ChecksCreateSuiteReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1813,14 +1813,14 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request) (
-	req ChecksSetSuitesPreferencesReq,
+	req *ChecksSetSuitesPreferencesReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1871,14 +1871,14 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request) (
-	req CodeScanningUpdateAlertReq,
+	req *CodeScanningUpdateAlertReq,
 	close func() error,
 	rerr error,
 ) {
@@ -1937,14 +1937,14 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request) (
-	req CodeScanningUploadSarifReq,
+	req *CodeScanningUploadSarifReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2003,14 +2003,14 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (
-	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
+	req *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2069,14 +2069,14 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request) (
-	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
+	req *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2135,14 +2135,14 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request) (
-	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
+	req *EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2201,14 +2201,14 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request) (
-	req SelectedActions,
+	req *SelectedActions,
 	close func() error,
 	rerr error,
 ) {
@@ -2259,14 +2259,14 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request) (
-	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
+	req *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2325,14 +2325,14 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request) (
-	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
+	req *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2391,14 +2391,14 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request) (
-	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
+	req *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2457,14 +2457,14 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request) (
-	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
+	req *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2523,14 +2523,14 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request) (
-	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
+	req *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2589,14 +2589,14 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request) (
-	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
+	req *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2655,14 +2655,14 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Request) (
-	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
+	req *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2721,14 +2721,14 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request) (
-	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
+	req *EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2787,7 +2787,7 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -2871,7 +2871,7 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 }
 
 func (s *Server) decodeGistsCreateRequest(r *http.Request) (
-	req GistsCreateReq,
+	req *GistsCreateReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2930,14 +2930,14 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGistsCreateCommentRequest(r *http.Request) (
-	req GistsCreateCommentReq,
+	req *GistsCreateCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -2996,14 +2996,14 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request) (
-	req GistsUpdateCommentReq,
+	req *GistsUpdateCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3062,14 +3062,14 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitCreateBlobRequest(r *http.Request) (
-	req GitCreateBlobReq,
+	req *GitCreateBlobReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3120,14 +3120,14 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitCreateCommitRequest(r *http.Request) (
-	req GitCreateCommitReq,
+	req *GitCreateCommitReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3178,14 +3178,14 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitCreateRefRequest(r *http.Request) (
-	req GitCreateRefReq,
+	req *GitCreateRefReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3236,14 +3236,14 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitCreateTagRequest(r *http.Request) (
-	req GitCreateTagReq,
+	req *GitCreateTagReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3302,14 +3302,14 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitCreateTreeRequest(r *http.Request) (
-	req GitCreateTreeReq,
+	req *GitCreateTreeReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3368,14 +3368,14 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeGitUpdateRefRequest(r *http.Request) (
-	req GitUpdateRefReq,
+	req *GitUpdateRefReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3426,14 +3426,14 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Request) (
-	req InteractionLimit,
+	req *InteractionLimit,
 	close func() error,
 	rerr error,
 ) {
@@ -3492,14 +3492,14 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request) (
-	req InteractionLimit,
+	req *InteractionLimit,
 	close func() error,
 	rerr error,
 ) {
@@ -3558,14 +3558,14 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (
-	req InteractionLimit,
+	req *InteractionLimit,
 	close func() error,
 	rerr error,
 ) {
@@ -3624,7 +3624,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -3693,7 +3693,7 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request) (
 }
 
 func (s *Server) decodeIssuesCreateRequest(r *http.Request) (
-	req IssuesCreateReq,
+	req *IssuesCreateReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3744,14 +3744,14 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request) (
-	req IssuesCreateCommentReq,
+	req *IssuesCreateCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3802,14 +3802,14 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request) (
-	req IssuesCreateLabelReq,
+	req *IssuesCreateLabelReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3860,14 +3860,14 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request) (
-	req IssuesCreateMilestoneReq,
+	req *IssuesCreateMilestoneReq,
 	close func() error,
 	rerr error,
 ) {
@@ -3926,7 +3926,7 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4149,7 +4149,7 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request) (
 }
 
 func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request) (
-	req IssuesUpdateCommentReq,
+	req *IssuesUpdateCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4200,7 +4200,7 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4346,7 +4346,7 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request) (
 }
 
 func (s *Server) decodeMarkdownRenderRequest(r *http.Request) (
-	req MarkdownRenderReq,
+	req *MarkdownRenderReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4405,7 +4405,7 @@ func (s *Server) decodeMarkdownRenderRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4516,7 +4516,7 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request) (
 }
 
 func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request) (
-	req MigrationsSetLfsPreferenceReq,
+	req *MigrationsSetLfsPreferenceReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4575,14 +4575,14 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request) (
-	req MigrationsStartForAuthenticatedUserReq,
+	req *MigrationsStartForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4641,14 +4641,14 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request) (
-	req MigrationsStartForOrgReq,
+	req *MigrationsStartForOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4707,14 +4707,14 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMigrationsStartImportRequest(r *http.Request) (
-	req MigrationsStartImportReq,
+	req *MigrationsStartImportReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4773,7 +4773,7 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -4919,7 +4919,7 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 }
 
 func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Request) (
-	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
+	req *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
 	close func() error,
 	rerr error,
 ) {
@@ -4978,14 +4978,14 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r *http.Request) (
-	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
+	req *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5044,7 +5044,7 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -5205,7 +5205,7 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request) (
 }
 
 func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request) (
-	req OrgsCreateWebhookReq,
+	req *OrgsCreateWebhookReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5264,7 +5264,7 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -5348,7 +5348,7 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request) (
 }
 
 func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request) (
-	req OrgsUpdateMembershipForAuthenticatedUserReq,
+	req *OrgsUpdateMembershipForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5407,7 +5407,7 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -5645,7 +5645,7 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request) (
 }
 
 func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request) (
-	req ProjectsCreateColumnReq,
+	req *ProjectsCreateColumnReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5696,14 +5696,14 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request) (
-	req ProjectsCreateForAuthenticatedUserReq,
+	req *ProjectsCreateForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5754,14 +5754,14 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request) (
-	req ProjectsCreateForOrgReq,
+	req *ProjectsCreateForOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5812,14 +5812,14 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request) (
-	req ProjectsCreateForRepoReq,
+	req *ProjectsCreateForRepoReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5870,14 +5870,14 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeProjectsMoveCardRequest(r *http.Request) (
-	req ProjectsMoveCardReq,
+	req *ProjectsMoveCardReq,
 	close func() error,
 	rerr error,
 ) {
@@ -5936,14 +5936,14 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request) (
-	req ProjectsMoveColumnReq,
+	req *ProjectsMoveColumnReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6002,7 +6002,7 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -6148,7 +6148,7 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request) (
 }
 
 func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request) (
-	req ProjectsUpdateColumnReq,
+	req *ProjectsUpdateColumnReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6199,14 +6199,14 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePullsCreateRequest(r *http.Request) (
-	req PullsCreateReq,
+	req *PullsCreateReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6257,14 +6257,14 @@ func (s *Server) decodePullsCreateRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (
-	req PullsCreateReplyForReviewCommentReq,
+	req *PullsCreateReplyForReviewCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6315,7 +6315,7 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request) 
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -6399,7 +6399,7 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request) (
 }
 
 func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request) (
-	req PullsCreateReviewCommentReq,
+	req *PullsCreateReviewCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6458,14 +6458,14 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePullsDismissReviewRequest(r *http.Request) (
-	req PullsDismissReviewReq,
+	req *PullsDismissReviewReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6516,7 +6516,7 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -6600,7 +6600,7 @@ func (s *Server) decodePullsMergeRequest(r *http.Request) (
 }
 
 func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request) (
-	req PullsRemoveRequestedReviewersReq,
+	req *PullsRemoveRequestedReviewersReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6659,14 +6659,14 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePullsSubmitReviewRequest(r *http.Request) (
-	req PullsSubmitReviewReq,
+	req *PullsSubmitReviewReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6725,7 +6725,7 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -6871,7 +6871,7 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request) (
 }
 
 func (s *Server) decodePullsUpdateReviewRequest(r *http.Request) (
-	req PullsUpdateReviewReq,
+	req *PullsUpdateReviewReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6922,14 +6922,14 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request) (
-	req PullsUpdateReviewCommentReq,
+	req *PullsUpdateReviewCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -6980,14 +6980,14 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request) (
-	req ReactionsCreateForCommitCommentReq,
+	req *ReactionsCreateForCommitCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7046,14 +7046,14 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request) (
-	req ReactionsCreateForIssueReq,
+	req *ReactionsCreateForIssueReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7112,14 +7112,14 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request) (
-	req ReactionsCreateForIssueCommentReq,
+	req *ReactionsCreateForIssueCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7178,14 +7178,14 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request) (
-	req ReactionsCreateForPullRequestReviewCommentReq,
+	req *ReactionsCreateForPullRequestReviewCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7244,14 +7244,14 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request) (
-	req ReactionsCreateForReleaseReq,
+	req *ReactionsCreateForReleaseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7310,14 +7310,14 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) (
-	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
+	req *ReactionsCreateForTeamDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7376,14 +7376,14 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request) (
-	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
+	req *ReactionsCreateForTeamDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7442,14 +7442,14 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (
-	req ReactionsCreateForTeamDiscussionInOrgReq,
+	req *ReactionsCreateForTeamDiscussionInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7508,14 +7508,14 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (
-	req ReactionsCreateForTeamDiscussionLegacyReq,
+	req *ReactionsCreateForTeamDiscussionLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -7574,7 +7574,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -7966,7 +7966,7 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request) (
-	req ReposCreateAutolinkReq,
+	req *ReposCreateAutolinkReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8017,14 +8017,14 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request) (
-	req ReposCreateCommitCommentReq,
+	req *ReposCreateCommitCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8075,14 +8075,14 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request) (
-	req ReposCreateCommitStatusReq,
+	req *ReposCreateCommitStatusReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8141,14 +8141,14 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request) (
-	req ReposCreateDeployKeyReq,
+	req *ReposCreateDeployKeyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8199,14 +8199,14 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request) (
-	req ReposCreateDeploymentReq,
+	req *ReposCreateDeploymentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8257,14 +8257,14 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request) (
-	req ReposCreateDeploymentStatusReq,
+	req *ReposCreateDeploymentStatusReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8323,14 +8323,14 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request) (
-	req ReposCreateDispatchEventReq,
+	req *ReposCreateDispatchEventReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8389,14 +8389,14 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request) (
-	req ReposCreateForAuthenticatedUserReq,
+	req *ReposCreateForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8447,7 +8447,7 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -8516,7 +8516,7 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposCreateInOrgRequest(r *http.Request) (
-	req ReposCreateInOrgReq,
+	req *ReposCreateInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8575,14 +8575,14 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request) (
-	req ReposCreateOrUpdateFileContentsReq,
+	req *ReposCreateOrUpdateFileContentsReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8633,7 +8633,7 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -8706,7 +8706,7 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposCreateReleaseRequest(r *http.Request) (
-	req ReposCreateReleaseReq,
+	req *ReposCreateReleaseReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8757,14 +8757,14 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request) (
-	req ReposCreateUsingTemplateReq,
+	req *ReposCreateUsingTemplateReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8815,7 +8815,7 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -8899,7 +8899,7 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposDeleteFileRequest(r *http.Request) (
-	req ReposDeleteFileReq,
+	req *ReposDeleteFileReq,
 	close func() error,
 	rerr error,
 ) {
@@ -8950,14 +8950,14 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposMergeRequest(r *http.Request) (
-	req ReposMergeReq,
+	req *ReposMergeReq,
 	close func() error,
 	rerr error,
 ) {
@@ -9008,14 +9008,14 @@ func (s *Server) decodeReposMergeRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request) (
-	req ReposMergeUpstreamReq,
+	req *ReposMergeUpstreamReq,
 	close func() error,
 	rerr error,
 ) {
@@ -9066,7 +9066,7 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -9443,7 +9443,7 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request) (
-	req ReposReplaceAllTopicsReq,
+	req *ReposReplaceAllTopicsReq,
 	close func() error,
 	rerr error,
 ) {
@@ -9502,7 +9502,7 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -9817,7 +9817,7 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposTransferRequest(r *http.Request) (
-	req ReposTransferReq,
+	req *ReposTransferReq,
 	close func() error,
 	rerr error,
 ) {
@@ -9868,7 +9868,7 @@ func (s *Server) decodeReposTransferRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -9952,7 +9952,7 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request) (
-	req ReposUpdateBranchProtectionReq,
+	req *ReposUpdateBranchProtectionReq,
 	close func() error,
 	rerr error,
 ) {
@@ -10011,14 +10011,14 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request) (
-	req ReposUpdateCommitCommentReq,
+	req *ReposUpdateCommitCommentReq,
 	close func() error,
 	rerr error,
 ) {
@@ -10069,7 +10069,7 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -10555,7 +10555,7 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request) (
 }
 
 func (s *Server) decodeReposUploadReleaseAssetRequest(r *http.Request) (
-	req ReposUploadReleaseAssetReqWithContentType,
+	req *ReposUploadReleaseAssetReqWithContentType,
 	close func() error,
 	rerr error,
 ) {
@@ -10589,14 +10589,14 @@ func (s *Server) decodeReposUploadReleaseAssetRequest(r *http.Request) (
 			ContentType: ct,
 			Content:     request,
 		}
-		return wrapped, close, nil
+		return &wrapped, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request) (
-	req SecretScanningUpdateAlertReq,
+	req *SecretScanningUpdateAlertReq,
 	close func() error,
 	rerr error,
 ) {
@@ -10655,7 +10655,7 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -11124,7 +11124,7 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 }
 
 func (s *Server) decodeTeamsCreateRequest(r *http.Request) (
-	req TeamsCreateReq,
+	req *TeamsCreateReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11183,14 +11183,14 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (
-	req TeamsCreateDiscussionCommentInOrgReq,
+	req *TeamsCreateDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11241,14 +11241,14 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request)
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (
-	req TeamsCreateDiscussionCommentLegacyReq,
+	req *TeamsCreateDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11299,14 +11299,14 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (
-	req TeamsCreateDiscussionInOrgReq,
+	req *TeamsCreateDiscussionInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11357,14 +11357,14 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (
-	req TeamsCreateDiscussionLegacyReq,
+	req *TeamsCreateDiscussionLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11415,14 +11415,14 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (
-	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
+	req *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11473,14 +11473,14 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request) (
-	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
+	req *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11539,14 +11539,14 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (
-	req TeamsUpdateDiscussionCommentInOrgReq,
+	req *TeamsUpdateDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11597,14 +11597,14 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request)
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (
-	req TeamsUpdateDiscussionCommentLegacyReq,
+	req *TeamsUpdateDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11655,7 +11655,7 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -11863,7 +11863,7 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request) (
 }
 
 func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request) (
-	req TeamsUpdateLegacyReq,
+	req *TeamsUpdateLegacyReq,
 	close func() error,
 	rerr error,
 ) {
@@ -11922,7 +11922,7 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -12006,7 +12006,7 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request) (
 }
 
 func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request) (
-	req UsersCreateGpgKeyForAuthenticatedReq,
+	req *UsersCreateGpgKeyForAuthenticatedReq,
 	close func() error,
 	rerr error,
 ) {
@@ -12057,14 +12057,14 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request)
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request) (
-	req UsersCreatePublicSSHKeyForAuthenticatedReq,
+	req *UsersCreatePublicSSHKeyForAuthenticatedReq,
 	close func() error,
 	rerr error,
 ) {
@@ -12123,7 +12123,7 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -12207,7 +12207,7 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request) 
 }
 
 func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request) (
-	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
+	req *UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
 	close func() error,
 	rerr error,
 ) {
@@ -12266,7 +12266,7 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

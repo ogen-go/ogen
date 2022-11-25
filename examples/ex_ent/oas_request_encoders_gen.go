@@ -12,7 +12,7 @@ import (
 )
 
 func encodeCreatePetRequest(
-	req CreatePetReq,
+	req *CreatePetReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -26,7 +26,7 @@ func encodeCreatePetRequest(
 }
 
 func encodeCreatePetCategoriesRequest(
-	req CreatePetCategoriesReq,
+	req *CreatePetCategoriesReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -40,7 +40,7 @@ func encodeCreatePetCategoriesRequest(
 }
 
 func encodeCreatePetFriendsRequest(
-	req CreatePetFriendsReq,
+	req *CreatePetFriendsReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -54,7 +54,7 @@ func encodeCreatePetFriendsRequest(
 }
 
 func encodeCreatePetOwnerRequest(
-	req CreatePetOwnerReq,
+	req *CreatePetOwnerReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -68,7 +68,7 @@ func encodeCreatePetOwnerRequest(
 }
 
 func encodeUpdatePetRequest(
-	req UpdatePetReq,
+	req *UpdatePetReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

@@ -14,7 +14,7 @@ import (
 )
 
 // EncodeURI encodes TestFormDeepObject as URI form.
-func (s TestFormDeepObject) EncodeURI(e uri.Encoder) error {
+func (s *TestFormDeepObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		if val, ok := s.Min.Get(); ok {
 			return e.EncodeValue(conv.IntToString(val))
@@ -131,7 +131,7 @@ func (s *TestFormDeepObject) DecodeURI(d uri.Decoder) error {
 }
 
 // EncodeURI encodes TestFormObject as URI form.
-func (s TestFormObject) EncodeURI(e uri.Encoder) error {
+func (s *TestFormObject) EncodeURI(e uri.Encoder) error {
 	if err := e.EncodeField("min", func(e uri.Encoder) error {
 		if val, ok := s.Min.Get(); ok {
 			return e.EncodeValue(conv.IntToString(val))

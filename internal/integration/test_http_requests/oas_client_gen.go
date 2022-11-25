@@ -282,7 +282,7 @@ func (c *Client) Base64Request(ctx context.Context, request Base64RequestReq) (r
 // MaskContentType invokes maskContentType operation.
 //
 // POST /maskContentType
-func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReqWithContentType) (res MaskResponse, err error) {
+func (c *Client) MaskContentType(ctx context.Context, request *MaskContentTypeReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
 	}
@@ -345,7 +345,7 @@ func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReq
 // MaskContentTypeOptional invokes maskContentTypeOptional operation.
 //
 // POST /maskContentTypeOptional
-func (c *Client) MaskContentTypeOptional(ctx context.Context, request MaskContentTypeOptionalReqWithContentType) (res MaskResponse, err error) {
+func (c *Client) MaskContentTypeOptional(ctx context.Context, request *MaskContentTypeOptionalReqWithContentType) (res *MaskResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
 	}

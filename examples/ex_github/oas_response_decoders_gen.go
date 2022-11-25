@@ -16,11 +16,11 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return &ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37,11 +37,11 @@ func decodeActionsAddSelectedRepoToOrgSecretResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
+func decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp *http.Response) (res *ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsAddSelfHostedRunnerToGroupForOrgNoContent{}, nil
+		return &ActionsAddSelfHostedRunnerToGroupForOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -142,7 +142,7 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res ActionsCancelWorkflowRunAccepted, err error) {
+func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res *ActionsCancelWorkflowRunAccepted, err error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -170,7 +170,7 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res ActionsCan
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -295,7 +295,7 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -323,7 +323,7 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -331,7 +331,7 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -359,7 +359,7 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (r
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -367,7 +367,7 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -395,7 +395,7 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res Auth
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -403,7 +403,7 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res Auth
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -431,7 +431,7 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res Aut
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -439,7 +439,7 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res Aut
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -467,7 +467,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -475,97 +475,97 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteArtifactResponse(resp *http.Response) (res ActionsDeleteArtifactNoContent, err error) {
+func decodeActionsDeleteArtifactResponse(resp *http.Response) (res *ActionsDeleteArtifactNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteArtifactNoContent{}, nil
+		return &ActionsDeleteArtifactNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
+func decodeActionsDeleteEnvironmentSecretResponse(resp *http.Response) (res *ActionsDeleteEnvironmentSecretNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteEnvironmentSecretNoContent{}, nil
+		return &ActionsDeleteEnvironmentSecretNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res ActionsDeleteOrgSecretNoContent, err error) {
+func decodeActionsDeleteOrgSecretResponse(resp *http.Response) (res *ActionsDeleteOrgSecretNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteOrgSecretNoContent{}, nil
+		return &ActionsDeleteOrgSecretNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res ActionsDeleteRepoSecretNoContent, err error) {
+func decodeActionsDeleteRepoSecretResponse(resp *http.Response) (res *ActionsDeleteRepoSecretNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteRepoSecretNoContent{}, nil
+		return &ActionsDeleteRepoSecretNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteSelfHostedRunnerFromOrgNoContent{}, nil
+		return &ActionsDeleteSelfHostedRunnerFromOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteSelfHostedRunnerFromRepoNoContent{}, nil
+		return &ActionsDeleteSelfHostedRunnerFromRepoNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp *http.Response) (res *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent{}, nil
+		return &ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res ActionsDeleteWorkflowRunNoContent, err error) {
+func decodeActionsDeleteWorkflowRunResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteWorkflowRunNoContent{}, nil
+		return &ActionsDeleteWorkflowRunNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
+func decodeActionsDeleteWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDeleteWorkflowRunLogsNoContent{}, nil
+		return &ActionsDeleteWorkflowRunLogsNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+		return &ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadArtifactResponse(resp *http.Response) (res ActionsDownloadArtifactFound, err error) {
+func decodeActionsDownloadArtifactResponse(resp *http.Response) (res *ActionsDownloadArtifactFound, err error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -601,12 +601,12 @@ func decodeActionsDownloadArtifactResponse(resp *http.Response) (res ActionsDown
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
+func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (res *ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -642,12 +642,12 @@ func decodeActionsDownloadJobLogsForWorkflowRunResponse(resp *http.Response) (re
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res ActionsDownloadWorkflowRunLogsFound, err error) {
+func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res *ActionsDownloadWorkflowRunLogsFound, err error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -683,21 +683,21 @@ func decodeActionsDownloadWorkflowRunLogsResponse(resp *http.Response) (res Acti
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
+		return &ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (res SelectedActions, err error) {
+func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (res *SelectedActions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -725,7 +725,7 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -733,7 +733,7 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res SelectedActions, err error) {
+func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res *SelectedActions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -761,7 +761,7 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -769,7 +769,7 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err error) {
+func decodeActionsGetArtifactResponse(resp *http.Response) (res *Artifact, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -797,7 +797,7 @@ func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err er
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -805,7 +805,7 @@ func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -833,7 +833,7 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res Acti
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -841,7 +841,7 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res Acti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res ActionsSecret, err error) {
+func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res *ActionsSecret, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -869,7 +869,7 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res Actions
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -877,7 +877,7 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res Actions
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res ActionsOrganizationPermissions, err error) {
+func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsOrganizationPermissions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -905,7 +905,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -913,7 +913,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res ActionsRepositoryPermissions, err error) {
+func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsRepositoryPermissions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -941,7 +941,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -949,7 +949,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, err error) {
+func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res *Job, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -977,7 +977,7 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, er
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -985,7 +985,7 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1013,7 +1013,7 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPubli
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1021,7 +1021,7 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPubli
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationActionsSecret, err error) {
+func decodeActionsGetOrgSecretResponse(resp *http.Response) (res *OrganizationActionsSecret, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1049,7 +1049,7 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationAct
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1057,7 +1057,7 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationAct
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPublicKey, err error) {
+func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res *ActionsPublicKey, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1085,7 +1085,7 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPubl
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1093,7 +1093,7 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPubl
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret, err error) {
+func decodeActionsGetRepoSecretResponse(resp *http.Response) (res *ActionsSecret, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1121,7 +1121,7 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret,
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1173,7 +1173,7 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Runner, err error) {
+func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res *Runner, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1201,7 +1201,7 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Ru
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1209,7 +1209,7 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Ru
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res Runner, err error) {
+func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res *Runner, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1237,7 +1237,7 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res R
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1245,7 +1245,7 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1273,7 +1273,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1281,7 +1281,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, err error) {
+func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res *WorkflowRun, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1309,7 +1309,7 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1317,7 +1317,7 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res WorkflowRunUsage, err error) {
+func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res *WorkflowRunUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1345,7 +1345,7 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res Workflow
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1353,7 +1353,7 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res Workflow
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res ActionsListArtifactsForRepoOKHeaders, err error) {
+func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res *ActionsListArtifactsForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1414,7 +1414,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res Actions
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1422,7 +1422,7 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res Actions
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res ActionsListEnvironmentSecretsOKHeaders, err error) {
+func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res *ActionsListEnvironmentSecretsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1483,7 +1483,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res Actio
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1491,7 +1491,7 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res Actio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res ActionsListJobsForWorkflowRunOKHeaders, err error) {
+func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res *ActionsListJobsForWorkflowRunOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1552,7 +1552,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res Actio
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1560,7 +1560,7 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res Actio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOrgSecretsOKHeaders, err error) {
+func decodeActionsListOrgSecretsResponse(resp *http.Response) (res *ActionsListOrgSecretsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1621,7 +1621,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOr
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1629,7 +1629,7 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1657,7 +1657,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1665,7 +1665,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListRepoSecretsOKHeaders, err error) {
+func decodeActionsListRepoSecretsResponse(resp *http.Response) (res *ActionsListRepoSecretsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1726,7 +1726,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListR
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1734,7 +1734,7 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsListRepoWorkflowsOKHeaders, err error) {
+func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res *ActionsListRepoWorkflowsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1795,7 +1795,7 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsLis
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1891,7 +1891,7 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (res ActionsListSelectedReposForOrgSecretOK, err error) {
+func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsListSelectedReposForOrgSecretOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1919,7 +1919,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1927,7 +1927,7 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1955,7 +1955,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1963,7 +1963,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
+func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1991,7 +1991,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -1999,7 +1999,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2060,7 +2060,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2068,7 +2068,7 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2129,7 +2129,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2137,7 +2137,7 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
+func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2198,7 +2198,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2206,7 +2206,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res ActionsListWorkflowRunArtifactsOKHeaders, err error) {
+func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res *ActionsListWorkflowRunArtifactsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2267,7 +2267,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res Act
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2275,7 +2275,7 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res Act
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res ActionsListWorkflowRunsForRepoOKHeaders, err error) {
+func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res *ActionsListWorkflowRunsForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2336,7 +2336,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res Acti
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2344,7 +2344,7 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res Acti
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWorkflowCreated, err error) {
+func decodeActionsReRunWorkflowResponse(resp *http.Response) (res *ActionsReRunWorkflowCreated, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -2372,7 +2372,7 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWo
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2380,11 +2380,11 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return &ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -2401,16 +2401,16 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp *http.Response) (res *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent{}, nil
+		return &ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsRetryWorkflowResponse(resp *http.Response) (res ActionsRetryWorkflowCreated, err error) {
+func decodeActionsRetryWorkflowResponse(resp *http.Response) (res *ActionsRetryWorkflowCreated, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -2438,7 +2438,7 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response) (res ActionsRetryWo
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2490,79 +2490,79 @@ func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
+func decodeActionsSetAllowedActionsOrganizationResponse(resp *http.Response) (res *ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetAllowedActionsOrganizationNoContent{}, nil
+		return &ActionsSetAllowedActionsOrganizationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
+func decodeActionsSetAllowedActionsRepositoryResponse(resp *http.Response) (res *ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetAllowedActionsRepositoryNoContent{}, nil
+		return &ActionsSetAllowedActionsRepositoryNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetGithubActionsPermissionsOrganizationNoContent{}, nil
+		return &ActionsSetGithubActionsPermissionsOrganizationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
+func decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp *http.Response) (res *ActionsSetGithubActionsPermissionsRepositoryNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetGithubActionsPermissionsRepositoryNoContent{}, nil
+		return &ActionsSetGithubActionsPermissionsRepositoryNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.Response) (res *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
+		return &ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res ActionsSetSelectedReposForOrgSecretNoContent, err error) {
+func decodeActionsSetSelectedReposForOrgSecretResponse(resp *http.Response) (res *ActionsSetSelectedReposForOrgSecretNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetSelectedReposForOrgSecretNoContent{}, nil
+		return &ActionsSetSelectedReposForOrgSecretNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp *http.Response) (res *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent{}, nil
+		return &ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
+func decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp *http.Response) (res *ActionsSetSelfHostedRunnersInGroupForOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActionsSetSelfHostedRunnersInGroupForOrgNoContent{}, nil
+		return &ActionsSetSelfHostedRunnersInGroupForOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res RunnerGroupsOrg, err error) {
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (res *RunnerGroupsOrg, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2590,7 +2590,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -2700,11 +2700,11 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
+func decodeActivityDeleteRepoSubscriptionResponse(resp *http.Response) (res *ActivityDeleteRepoSubscriptionNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ActivityDeleteRepoSubscriptionNoContent{}, nil
+		return &ActivityDeleteRepoSubscriptionNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -2781,7 +2781,7 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
+func decodeActivityGetFeedsResponse(resp *http.Response) (res *Feed, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2809,7 +2809,7 @@ func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -3790,7 +3790,7 @@ func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.Response) (res ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
+func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.Response) (res *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3859,7 +3859,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -4007,7 +4007,7 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res ActivityListReposWatchedByUserOKHeaders, err error) {
+func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res *ActivityListReposWatchedByUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4076,7 +4076,7 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res Acti
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -4224,7 +4224,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res ActivityListWatchersForRepoOKHeaders, err error) {
+func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res *ActivityListWatchersForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4293,7 +4293,7 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res Activit
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -4484,7 +4484,7 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res RepositorySubscription, err error) {
+func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res *RepositorySubscription, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4512,7 +4512,7 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res Reposit
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -5579,7 +5579,7 @@ func decodeAppsDeleteTokenResponse(resp *http.Response) (res AppsDeleteTokenRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, err error) {
+func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res *Integration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5607,7 +5607,7 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -5906,7 +5906,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5934,7 +5934,7 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res WebhookC
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7400,11 +7400,11 @@ func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
+func decodeAppsRevokeInstallationAccessTokenResponse(resp *http.Response) (res *AppsRevokeInstallationAccessTokenNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return AppsRevokeInstallationAccessTokenNoContent{}, nil
+		return &AppsRevokeInstallationAccessTokenNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -7643,7 +7643,7 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsus
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7671,7 +7671,7 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res Webho
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7679,7 +7679,7 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res Webho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7707,7 +7707,7 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res A
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7715,7 +7715,7 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7743,7 +7743,7 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res A
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7751,7 +7751,7 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res ActionsBillingUsage, err error) {
+func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res *ActionsBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7779,7 +7779,7 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7787,7 +7787,7 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7815,7 +7815,7 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7823,7 +7823,7 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7851,7 +7851,7 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7859,7 +7859,7 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res PackagesBillingUsage, err error) {
+func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res *PackagesBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7887,7 +7887,7 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7895,7 +7895,7 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7923,7 +7923,7 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res C
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7931,7 +7931,7 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7959,7 +7959,7 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res C
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -7967,7 +7967,7 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res C
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res CombinedBillingUsage, err error) {
+func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res *CombinedBillingUsage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7995,7 +7995,7 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8069,7 +8069,7 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
+func decodeChecksGetResponse(resp *http.Response) (res *CheckRun, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8097,7 +8097,7 @@ func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8105,7 +8105,7 @@ func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err error) {
+func decodeChecksGetSuiteResponse(resp *http.Response) (res *CheckSuite, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8133,7 +8133,7 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err erro
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8141,7 +8141,7 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err erro
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListAnnotationsResponse(resp *http.Response) (res ChecksListAnnotationsOKHeaders, err error) {
+func decodeChecksListAnnotationsResponse(resp *http.Response) (res *ChecksListAnnotationsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8210,7 +8210,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res ChecksListAnn
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8218,7 +8218,7 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res ChecksListAnn
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListForRefResponse(resp *http.Response) (res ChecksListForRefOKHeaders, err error) {
+func decodeChecksListForRefResponse(resp *http.Response) (res *ChecksListForRefOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8279,7 +8279,7 @@ func decodeChecksListForRefResponse(resp *http.Response) (res ChecksListForRefOK
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8287,7 +8287,7 @@ func decodeChecksListForRefResponse(resp *http.Response) (res ChecksListForRefOK
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListForSuiteResponse(resp *http.Response) (res ChecksListForSuiteOKHeaders, err error) {
+func decodeChecksListForSuiteResponse(resp *http.Response) (res *ChecksListForSuiteOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8348,7 +8348,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res ChecksListForSui
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8356,7 +8356,7 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res ChecksListForSui
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSuitesForRefOKHeaders, err error) {
+func decodeChecksListSuitesForRefResponse(resp *http.Response) (res *ChecksListSuitesForRefOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8417,7 +8417,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSu
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8425,7 +8425,7 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSu
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRerequestSuiteCreated, err error) {
+func decodeChecksRerequestSuiteResponse(resp *http.Response) (res *ChecksRerequestSuiteCreated, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -8453,7 +8453,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -8461,7 +8461,7 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res CheckSuitePreference, err error) {
+func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res *CheckSuitePreference, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8489,7 +8489,7 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res CheckSui
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -9796,25 +9796,25 @@ func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return &EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent{}, nil
+		return &EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -9842,7 +9842,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -9850,7 +9850,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Response) (res AuthenticationToken, err error) {
+func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Response) (res *AuthenticationToken, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -9878,7 +9878,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -9886,7 +9886,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -9914,7 +9914,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -9922,61 +9922,61 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent{}, nil
+		return &EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent{}, nil
+		return &EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent{}, nil
+		return &EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminDeleteUserFromEnterpriseNoContent{}, nil
+		return &EnterpriseAdminDeleteUserFromEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
+		return &EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
+		return &EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response) (res SelectedActions, err error) {
+func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Response) (res *SelectedActions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10004,7 +10004,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10056,7 +10056,7 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (res []AuditL
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res ActionsEnterprisePermissions, err error) {
+func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *ActionsEnterprisePermissions, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10084,7 +10084,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10092,7 +10092,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10120,7 +10120,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10128,7 +10128,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10156,7 +10156,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10164,7 +10164,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Response) (res Runner, err error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Response) (res *Runner, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10192,7 +10192,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10200,7 +10200,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10228,7 +10228,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10236,7 +10236,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10264,7 +10264,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10272,7 +10272,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Response) (res ScimGroupListEnterprise, err error) {
+func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Response) (res *ScimGroupListEnterprise, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10300,7 +10300,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10308,7 +10308,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (res ScimUserListEnterprise, err error) {
+func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http.Response) (res *ScimUserListEnterprise, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10336,7 +10336,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10388,7 +10388,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10416,7 +10416,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10424,7 +10424,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10452,7 +10452,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10460,7 +10460,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10521,7 +10521,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10529,7 +10529,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10590,7 +10590,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10598,7 +10598,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -10626,7 +10626,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10634,7 +10634,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -10662,7 +10662,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10670,43 +10670,43 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return &EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent{}, nil
+		return &EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminSetAllowedActionsEnterpriseNoContent{}, nil
+		return &EnterpriseAdminSetAllowedActionsEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent{}, nil
+		return &EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10734,7 +10734,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10742,7 +10742,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10770,7 +10770,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10778,34 +10778,34 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
+		return &EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent{}, nil
+		return &EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp *http.Response) (res *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent{}, nil
+		return &EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response) (res ScimEnterpriseGroup, err error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.Response) (res *ScimEnterpriseGroup, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10833,7 +10833,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.R
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10841,7 +10841,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response) (res ScimEnterpriseUser, err error) {
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Response) (res *ScimEnterpriseUser, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10869,7 +10869,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -10877,7 +10877,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res RunnerGroupsEnterprise, err error) {
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp *http.Response) (res *RunnerGroupsEnterprise, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10905,7 +10905,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -14170,7 +14170,7 @@ func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGitListMatchingRefsResponse(resp *http.Response) (res GitListMatchingRefsOKHeaders, err error) {
+func decodeGitListMatchingRefsResponse(resp *http.Response) (res *GitListMatchingRefsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14239,7 +14239,7 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res GitListMatching
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -14391,20 +14391,20 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return InteractionsRemoveRestrictionsForAuthenticatedUserNoContent{}, nil
+		return &InteractionsRemoveRestrictionsForAuthenticatedUserNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
+func decodeInteractionsRemoveRestrictionsForOrgResponse(resp *http.Response) (res *InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return InteractionsRemoveRestrictionsForOrgNoContent{}, nil
+		return &InteractionsRemoveRestrictionsForOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -14592,7 +14592,7 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesAddAssigneesResponse(resp *http.Response) (res IssueSimple, err error) {
+func decodeIssuesAddAssigneesResponse(resp *http.Response) (res *IssueSimple, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -14620,7 +14620,7 @@ func decodeIssuesAddAssigneesResponse(resp *http.Response) (res IssueSimple, err
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -15333,20 +15333,20 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesDeleteCommentResponse(resp *http.Response) (res IssuesDeleteCommentNoContent, err error) {
+func decodeIssuesDeleteCommentResponse(resp *http.Response) (res *IssuesDeleteCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return IssuesDeleteCommentNoContent{}, nil
+		return &IssuesDeleteCommentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesDeleteLabelResponse(resp *http.Response) (res IssuesDeleteLabelNoContent, err error) {
+func decodeIssuesDeleteLabelResponse(resp *http.Response) (res *IssuesDeleteLabelNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return IssuesDeleteLabelNoContent{}, nil
+		return &IssuesDeleteLabelNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -16855,7 +16855,7 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res IssuesListLabelsForMilestoneOKHeaders, err error) {
+func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res *IssuesListLabelsForMilestoneOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16924,7 +16924,7 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res Issues
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -17421,7 +17421,7 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res IssueSimple, err error) {
+func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res *IssueSimple, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17449,7 +17449,7 @@ func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res IssueSimple, 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -17904,7 +17904,7 @@ func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCom
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error) {
+func decodeIssuesUpdateLabelResponse(resp *http.Response) (res *Label, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17932,7 +17932,7 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error)
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -17940,7 +17940,7 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res Milestone, err error) {
+func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res *Milestone, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17968,7 +17968,7 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res Milestone, er
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -18114,7 +18114,7 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res Licenses
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, err error) {
+func decodeLicensesGetForRepoResponse(resp *http.Response) (res *LicenseContent, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18142,7 +18142,7 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -18391,7 +18391,7 @@ func decodeMetaGetZenResponse(resp *http.Response) (res MetaGetZenOK, err error)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMetaRootResponse(resp *http.Response) (res MetaRootOK, err error) {
+func decodeMetaRootResponse(resp *http.Response) (res *MetaRootOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18419,7 +18419,7 @@ func decodeMetaRootResponse(resp *http.Response) (res MetaRootOK, err error) {
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -18427,11 +18427,11 @@ func decodeMetaRootResponse(resp *http.Response) (res MetaRootOK, err error) {
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsCancelImportResponse(resp *http.Response) (res MigrationsCancelImportNoContent, err error) {
+func decodeMigrationsCancelImportResponse(resp *http.Response) (res *MigrationsCancelImportNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return MigrationsCancelImportNoContent{}, nil
+		return &MigrationsCancelImportNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -19199,7 +19199,7 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsListForOrgResponse(resp *http.Response) (res MigrationsListForOrgOKHeaders, err error) {
+func decodeMigrationsListForOrgResponse(resp *http.Response) (res *MigrationsListForOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19268,7 +19268,7 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res MigrationsList
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -20147,7 +20147,7 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res Migratio
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err error) {
+func decodeMigrationsUpdateImportResponse(resp *http.Response) (res *Import, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20175,7 +20175,7 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -22420,7 +22420,7 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22448,7 +22448,7 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res WebhookC
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -22945,7 +22945,7 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListForUserResponse(resp *http.Response) (res OrgsListForUserOKHeaders, err error) {
+func decodeOrgsListForUserResponse(resp *http.Response) (res *OrgsListForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23014,7 +23014,7 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res OrgsListForUserOKHe
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -23441,7 +23441,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res OrgsListOutsideCollaboratorsOKHeaders, err error) {
+func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res *OrgsListOutsideCollaboratorsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23510,7 +23510,7 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res OrgsLi
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -23625,7 +23625,7 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsListPublicMembersResponse(resp *http.Response) (res OrgsListPublicMembersOKHeaders, err error) {
+func decodeOrgsListPublicMembersResponse(resp *http.Response) (res *OrgsListPublicMembersOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23694,7 +23694,7 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res OrgsListPubli
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -24231,11 +24231,11 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsR
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp *http.Response) (res *OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return OrgsRemovePublicMembershipForAuthenticatedUserNoContent{}, nil
+		return &OrgsRemovePublicMembershipForAuthenticatedUserNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -24414,11 +24414,11 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUnblockUserResponse(resp *http.Response) (res OrgsUnblockUserNoContent, err error) {
+func decodeOrgsUnblockUserResponse(resp *http.Response) (res *OrgsUnblockUserNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return OrgsUnblockUserNoContent{}, nil
+		return &OrgsUnblockUserNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -24645,7 +24645,7 @@ func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhook
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24673,7 +24673,7 @@ func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res Webho
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25653,7 +25653,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (res Package, err error) {
+func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (res *Package, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25681,7 +25681,7 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25689,7 +25689,7 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res Package, err error) {
+func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res *Package, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25717,7 +25717,7 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res P
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25725,7 +25725,7 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res P
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageForUserResponse(resp *http.Response) (res Package, err error) {
+func decodePackagesGetPackageForUserResponse(resp *http.Response) (res *Package, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25753,7 +25753,7 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response) (res Package, 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25761,7 +25761,7 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response) (res Package, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Response) (res PackageVersion, err error) {
+func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Response) (res *PackageVersion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25789,7 +25789,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25797,7 +25797,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response) (res PackageVersion, err error) {
+func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response) (res *PackageVersion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25825,7 +25825,7 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response)
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -25833,7 +25833,7 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res PackageVersion, err error) {
+func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res *PackageVersion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25861,7 +25861,7 @@ func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res Pa
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -31218,7 +31218,7 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListCommitsResponse(resp *http.Response) (res PullsListCommitsOKHeaders, err error) {
+func decodePullsListCommitsResponse(resp *http.Response) (res *PullsListCommitsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -31287,7 +31287,7 @@ func decodePullsListCommitsResponse(resp *http.Response) (res PullsListCommitsOK
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -31432,7 +31432,7 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullRequestReviewRequestHeaders, err error) {
+func decodePullsListRequestedReviewersResponse(resp *http.Response) (res *PullRequestReviewRequestHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -31493,7 +31493,7 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullReq
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -31501,7 +31501,7 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullReq
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewCommentsResponse(resp *http.Response) (res PullsListReviewCommentsOKHeaders, err error) {
+func decodePullsListReviewCommentsResponse(resp *http.Response) (res *PullsListReviewCommentsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -31570,7 +31570,7 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res PullsListRe
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -31578,7 +31578,7 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res PullsListRe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res PullsListReviewCommentsForRepoOKHeaders, err error) {
+func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res *PullsListReviewCommentsForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -31647,7 +31647,7 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res Pull
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -31655,7 +31655,7 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res Pull
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsListReviewsResponse(resp *http.Response) (res PullsListReviewsOKHeaders, err error) {
+func decodePullsListReviewsResponse(resp *http.Response) (res *PullsListReviewsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -31724,7 +31724,7 @@ func decodePullsListReviewsResponse(resp *http.Response) (res PullsListReviewsOK
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -32368,7 +32368,7 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res PullRequestReviewComment, err error) {
+func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res *PullRequestReviewComment, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32396,7 +32396,7 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res PullReques
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -33262,7 +33262,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res Reaction, err error) {
+func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *Reaction, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -33290,7 +33290,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -33364,7 +33364,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (res Reaction, err error) {
+func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (res *Reaction, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -33392,7 +33392,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -33400,56 +33400,56 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res ReactionsDeleteForCommitCommentNoContent, err error) {
+func decodeReactionsDeleteForCommitCommentResponse(resp *http.Response) (res *ReactionsDeleteForCommitCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForCommitCommentNoContent{}, nil
+		return &ReactionsDeleteForCommitCommentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res ReactionsDeleteForIssueNoContent, err error) {
+func decodeReactionsDeleteForIssueResponse(resp *http.Response) (res *ReactionsDeleteForIssueNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForIssueNoContent{}, nil
+		return &ReactionsDeleteForIssueNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res ReactionsDeleteForIssueCommentNoContent, err error) {
+func decodeReactionsDeleteForIssueCommentResponse(resp *http.Response) (res *ReactionsDeleteForIssueCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForIssueCommentNoContent{}, nil
+		return &ReactionsDeleteForIssueCommentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
+func decodeReactionsDeleteForPullRequestCommentResponse(resp *http.Response) (res *ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForPullRequestCommentNoContent{}, nil
+		return &ReactionsDeleteForPullRequestCommentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForTeamDiscussionNoContent{}, nil
+		return &ReactionsDeleteForTeamDiscussionNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
+func decodeReactionsDeleteForTeamDiscussionCommentResponse(resp *http.Response) (res *ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReactionsDeleteForTeamDiscussionCommentNoContent{}, nil
+		return &ReactionsDeleteForTeamDiscussionCommentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -34164,7 +34164,7 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34233,7 +34233,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -34241,7 +34241,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionCommentLegacyOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34310,7 +34310,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -34318,7 +34318,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34387,7 +34387,7 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -34395,7 +34395,7 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (res ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
+func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (res *ReactionsListForTeamDiscussionLegacyOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -34464,7 +34464,7 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -35411,7 +35411,7 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateCommitStatusResponse(resp *http.Response) (res StatusHeaders, err error) {
+func decodeReposCreateCommitStatusResponse(resp *http.Response) (res *StatusHeaders, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -35472,7 +35472,7 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res StatusHeade
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -36734,7 +36734,7 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res RepositoryHeaders, err error) {
+func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res *RepositoryHeaders, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -36795,7 +36795,7 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res Repository
 					return res, errors.Wrap(err, "parse Location header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -37163,11 +37163,11 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res ReposDeleteAccessRestrictionsNoContent, err error) {
+func decodeReposDeleteAccessRestrictionsResponse(resp *http.Response) (res *ReposDeleteAccessRestrictionsNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteAccessRestrictionsNoContent{}, nil
+		return &ReposDeleteAccessRestrictionsNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37211,11 +37211,11 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res ReposDeleteAnEnvironmentNoContent, err error) {
+func decodeReposDeleteAnEnvironmentResponse(resp *http.Response) (res *ReposDeleteAnEnvironmentNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteAnEnvironmentNoContent{}, nil
+		return &ReposDeleteAnEnvironmentNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37376,11 +37376,11 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res ReposDeleteDeployKeyNoContent, err error) {
+func decodeReposDeleteDeployKeyResponse(resp *http.Response) (res *ReposDeleteDeployKeyNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteDeployKeyNoContent{}, nil
+		return &ReposDeleteDeployKeyNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37610,11 +37610,11 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteInvitationResponse(resp *http.Response) (res ReposDeleteInvitationNoContent, err error) {
+func decodeReposDeleteInvitationResponse(resp *http.Response) (res *ReposDeleteInvitationNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteInvitationNoContent{}, nil
+		return &ReposDeleteInvitationNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37757,20 +37757,20 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteReleaseResponse(resp *http.Response) (res ReposDeleteReleaseNoContent, err error) {
+func decodeReposDeleteReleaseResponse(resp *http.Response) (res *ReposDeleteReleaseNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteReleaseNoContent{}, nil
+		return &ReposDeleteReleaseNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res ReposDeleteReleaseAssetNoContent, err error) {
+func decodeReposDeleteReleaseAssetResponse(resp *http.Response) (res *ReposDeleteReleaseAssetNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDeleteReleaseAssetNoContent{}, nil
+		return &ReposDeleteReleaseAssetNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37814,34 +37814,34 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposDisableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDisableAutomatedSecurityFixesNoContent{}, nil
+		return &ReposDisableAutomatedSecurityFixesNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res ReposDisableLfsForRepoNoContent, err error) {
+func decodeReposDisableLfsForRepoResponse(resp *http.Response) (res *ReposDisableLfsForRepoNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDisableLfsForRepoNoContent{}, nil
+		return &ReposDisableLfsForRepoNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
+func decodeReposDisableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposDisableVulnerabilityAlertsNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposDisableVulnerabilityAlertsNoContent{}, nil
+		return &ReposDisableVulnerabilityAlertsNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res ReposDownloadTarballArchiveFound, err error) {
+func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res *ReposDownloadTarballArchiveFound, err error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -37877,12 +37877,12 @@ func decodeReposDownloadTarballArchiveResponse(resp *http.Response) (res ReposDo
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res ReposDownloadZipballArchiveFound, err error) {
+func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res *ReposDownloadZipballArchiveFound, err error) {
 	switch resp.StatusCode {
 	case 302:
 		// Code 302.
@@ -37918,16 +37918,16 @@ func decodeReposDownloadZipballArchiveResponse(resp *http.Response) (res ReposDo
 				return res, errors.Wrap(err, "parse Location header")
 			}
 		}
-		return wrapper, nil
+		return &wrapper, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
+func decodeReposEnableAutomatedSecurityFixesResponse(resp *http.Response) (res *ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposEnableAutomatedSecurityFixesNoContent{}, nil
+		return &ReposEnableAutomatedSecurityFixesNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -37971,11 +37971,11 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLf
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
+func decodeReposEnableVulnerabilityAlertsResponse(resp *http.Response) (res *ReposEnableVulnerabilityAlertsNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposEnableVulnerabilityAlertsNoContent{}, nil
+		return &ReposEnableVulnerabilityAlertsNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -38172,7 +38172,7 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res ProtectedBranchAdminEnforced, err error) {
+func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -38200,7 +38200,7 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -39288,7 +39288,7 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res CommunityProfile, err error) {
+func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res *CommunityProfile, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39316,7 +39316,7 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res Com
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -39621,7 +39621,7 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild, err error) {
+func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res *PageBuild, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39649,7 +39649,7 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild,
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -39657,7 +39657,7 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err error) {
+func decodeReposGetLatestReleaseResponse(resp *http.Response) (res *Release, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39685,7 +39685,7 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -39759,7 +39759,7 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err error) {
+func decodeReposGetPagesBuildResponse(resp *http.Response) (res *PageBuild, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39787,7 +39787,7 @@ func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -39963,7 +39963,7 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res ProtectedBranchPullRequestReview, err error) {
+func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res *ProtectedBranchPullRequestReview, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39991,7 +39991,7 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -40923,7 +40923,7 @@ func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -40951,7 +40951,7 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res Webhoo
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -41379,7 +41379,7 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommentsForCommitResponse(resp *http.Response) (res ReposListCommentsForCommitOKHeaders, err error) {
+func decodeReposListCommentsForCommitResponse(resp *http.Response) (res *ReposListCommentsForCommitOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41448,7 +41448,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res ReposLis
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -41456,7 +41456,7 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res ReposLis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res ReposListCommitCommentsForRepoOKHeaders, err error) {
+func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res *ReposListCommitCommentsForRepoOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -41525,7 +41525,7 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res Repo
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -41977,7 +41977,7 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListDeployKeysResponse(resp *http.Response) (res ReposListDeployKeysOKHeaders, err error) {
+func decodeReposListDeployKeysResponse(resp *http.Response) (res *ReposListDeployKeysOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42046,7 +42046,7 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res ReposListDeploy
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42161,7 +42161,7 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListDeploymentsResponse(resp *http.Response) (res ReposListDeploymentsOKHeaders, err error) {
+func decodeReposListDeploymentsResponse(resp *http.Response) (res *ReposListDeploymentsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42230,7 +42230,7 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res ReposListDeplo
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42367,7 +42367,7 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForOrgResponse(resp *http.Response) (res ReposListForOrgOKHeaders, err error) {
+func decodeReposListForOrgResponse(resp *http.Response) (res *ReposListForOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42436,7 +42436,7 @@ func decodeReposListForOrgResponse(resp *http.Response) (res ReposListForOrgOKHe
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42444,7 +42444,7 @@ func decodeReposListForOrgResponse(resp *http.Response) (res ReposListForOrgOKHe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListForUserResponse(resp *http.Response) (res ReposListForUserOKHeaders, err error) {
+func decodeReposListForUserResponse(resp *http.Response) (res *ReposListForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42513,7 +42513,7 @@ func decodeReposListForUserResponse(resp *http.Response) (res ReposListForUserOK
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42628,7 +42628,7 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListInvitationsResponse(resp *http.Response) (res ReposListInvitationsOKHeaders, err error) {
+func decodeReposListInvitationsResponse(resp *http.Response) (res *ReposListInvitationsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42697,7 +42697,7 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res ReposListInvit
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42911,7 +42911,7 @@ func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListPagesBuildsResponse(resp *http.Response) (res ReposListPagesBuildsOKHeaders, err error) {
+func decodeReposListPagesBuildsResponse(resp *http.Response) (res *ReposListPagesBuildsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42980,7 +42980,7 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res ReposListPages
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -43098,7 +43098,7 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (res ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
+func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response) (res *ReposListPullRequestsAssociatedWithCommitOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43167,7 +43167,7 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -43175,7 +43175,7 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListReleaseAssetsResponse(resp *http.Response) (res ReposListReleaseAssetsOKHeaders, err error) {
+func decodeReposListReleaseAssetsResponse(resp *http.Response) (res *ReposListReleaseAssetsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43244,7 +43244,7 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res ReposListRel
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -43359,7 +43359,7 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListTagsResponse(resp *http.Response) (res ReposListTagsOKHeaders, err error) {
+func decodeReposListTagsResponse(resp *http.Response) (res *ReposListTagsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43428,7 +43428,7 @@ func decodeReposListTagsResponse(resp *http.Response) (res ReposListTagsOKHeader
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -43436,7 +43436,7 @@ func decodeReposListTagsResponse(resp *http.Response) (res ReposListTagsOKHeader
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposListTeamsResponse(resp *http.Response) (res ReposListTeamsOKHeaders, err error) {
+func decodeReposListTeamsResponse(resp *http.Response) (res *ReposListTeamsOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -43505,7 +43505,7 @@ func decodeReposListTeamsResponse(resp *http.Response) (res ReposListTeamsOKHead
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -44064,11 +44064,11 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res ReposRemoveCollaboratorNoContent, err error) {
+func decodeReposRemoveCollaboratorResponse(resp *http.Response) (res *ReposRemoveCollaboratorNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposRemoveCollaboratorNoContent{}, nil
+		return &ReposRemoveCollaboratorNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -44169,11 +44169,11 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res Repo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
+func decodeReposRemoveStatusCheckProtectionResponse(resp *http.Response) (res *ReposRemoveStatusCheckProtectionNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return ReposRemoveStatusCheckProtectionNoContent{}, nil
+		return &ReposRemoveStatusCheckProtectionNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -44562,7 +44562,7 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildStatus, err error) {
+func decodeReposRequestPagesBuildResponse(resp *http.Response) (res *PageBuildStatus, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -44590,7 +44590,7 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildSta
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -44598,7 +44598,7 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildSta
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res ProtectedBranchAdminEnforced, err error) {
+func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res *ProtectedBranchAdminEnforced, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -44626,7 +44626,7 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -44967,7 +44967,7 @@ func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushW
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, err error) {
+func decodeReposTransferResponse(resp *http.Response) (res *MinimalRepository, err error) {
 	switch resp.StatusCode {
 	case 202:
 		// Code 202.
@@ -44995,7 +44995,7 @@ func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, er
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -45351,7 +45351,7 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInvitation, err error) {
+func decodeReposUpdateInvitationResponse(resp *http.Response) (res *RepositoryInvitation, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45379,7 +45379,7 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInv
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -45519,7 +45519,7 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res ReleaseAsset, err error) {
+func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45547,7 +45547,7 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res ReleaseAsse
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -45747,7 +45747,7 @@ func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebho
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res WebhookConfig, err error) {
+func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res *WebhookConfig, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -45775,7 +45775,7 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res Web
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -45783,7 +45783,7 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res Web
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res ReleaseAsset, err error) {
+func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res *ReleaseAsset, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -45811,7 +45811,7 @@ func decodeReposUploadReleaseAssetResponse(resp *http.Response) (res ReleaseAsse
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47258,11 +47258,11 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (res TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp *http.Response) (res *TeamsAddOrUpdateRepoPermissionsInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsAddOrUpdateRepoPermissionsInOrgNoContent{}, nil
+		return &TeamsAddOrUpdateRepoPermissionsInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -47594,7 +47594,7 @@ func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -47622,7 +47622,7 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47630,7 +47630,7 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -47658,7 +47658,7 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47666,7 +47666,7 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -47694,7 +47694,7 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47702,7 +47702,7 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -47730,7 +47730,7 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47738,7 +47738,7 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Response) (res GroupMapping, err error) {
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Response) (res *GroupMapping, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -47766,7 +47766,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -47870,47 +47870,47 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsDeleteDiscussionCommentInOrgNoContent{}, nil
+		return &TeamsDeleteDiscussionCommentInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsDeleteDiscussionCommentLegacyNoContent{}, nil
+		return &TeamsDeleteDiscussionCommentLegacyNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
+func decodeTeamsDeleteDiscussionInOrgResponse(resp *http.Response) (res *TeamsDeleteDiscussionInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsDeleteDiscussionInOrgNoContent{}, nil
+		return &TeamsDeleteDiscussionInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
+func decodeTeamsDeleteDiscussionLegacyResponse(resp *http.Response) (res *TeamsDeleteDiscussionLegacyNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsDeleteDiscussionLegacyNoContent{}, nil
+		return &TeamsDeleteDiscussionLegacyNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res TeamsDeleteInOrgNoContent, err error) {
+func decodeTeamsDeleteInOrgResponse(resp *http.Response) (res *TeamsDeleteInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsDeleteInOrgNoContent{}, nil
+		return &TeamsDeleteInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -48050,7 +48050,7 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48078,7 +48078,7 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res Team
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48086,7 +48086,7 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res Team
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48114,7 +48114,7 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res Tea
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48122,7 +48122,7 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res Tea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48150,7 +48150,7 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscuss
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48158,7 +48158,7 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscuss
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48186,7 +48186,7 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res TeamDiscus
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48484,7 +48484,7 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListChildInOrgResponse(resp *http.Response) (res TeamsListChildInOrgOKHeaders, err error) {
+func decodeTeamsListChildInOrgResponse(resp *http.Response) (res *TeamsListChildInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48553,7 +48553,7 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res TeamsListChildI
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48728,7 +48728,7 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
+func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionCommentsInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48797,7 +48797,7 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res Te
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48805,7 +48805,7 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res Te
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
+func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionCommentsLegacyOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48874,7 +48874,7 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res T
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48882,7 +48882,7 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res TeamsListDiscussionsInOrgOKHeaders, err error) {
+func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res *TeamsListDiscussionsInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -48951,7 +48951,7 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res TeamsList
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -48959,7 +48959,7 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res TeamsList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res TeamsListDiscussionsLegacyOKHeaders, err error) {
+func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res *TeamsListDiscussionsLegacyOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49028,7 +49028,7 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res TeamsLis
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49272,7 +49272,7 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappingHeaders, err error) {
+func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res *GroupMappingHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49333,7 +49333,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappi
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49341,7 +49341,7 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappi
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMapping, err error) {
+func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res *GroupMapping, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49369,7 +49369,7 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMappin
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49377,7 +49377,7 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMappin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res TeamsListMembersInOrgOKHeaders, err error) {
+func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res *TeamsListMembersInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49446,7 +49446,7 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res TeamsListMemb
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49561,7 +49561,7 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res TeamsListPendingInvitationsInOrgOKHeaders, err error) {
+func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res *TeamsListPendingInvitationsInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49630,7 +49630,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res Te
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49638,7 +49638,7 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res Te
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res TeamsListPendingInvitationsLegacyOKHeaders, err error) {
+func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res *TeamsListPendingInvitationsLegacyOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49707,7 +49707,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res T
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49715,7 +49715,7 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res TeamsListProjectsInOrgOKHeaders, err error) {
+func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res *TeamsListProjectsInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49784,7 +49784,7 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res TeamsListPro
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -49899,7 +49899,7 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsListReposInOrgResponse(resp *http.Response) (res TeamsListReposInOrgOKHeaders, err error) {
+func decodeTeamsListReposInOrgResponse(resp *http.Response) (res *TeamsListReposInOrgOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -49968,7 +49968,7 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res TeamsListReposI
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -50119,11 +50119,11 @@ func decodeTeamsRemoveMembershipForUserLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res TeamsRemoveProjectInOrgNoContent, err error) {
+func decodeTeamsRemoveProjectInOrgResponse(resp *http.Response) (res *TeamsRemoveProjectInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsRemoveProjectInOrgNoContent{}, nil
+		return &TeamsRemoveProjectInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
@@ -50227,25 +50227,25 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemov
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res TeamsRemoveRepoInOrgNoContent, err error) {
+func decodeTeamsRemoveRepoInOrgResponse(resp *http.Response) (res *TeamsRemoveRepoInOrgNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsRemoveRepoInOrgNoContent{}, nil
+		return &TeamsRemoveRepoInOrgNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res TeamsRemoveRepoLegacyNoContent, err error) {
+func decodeTeamsRemoveRepoLegacyResponse(resp *http.Response) (res *TeamsRemoveRepoLegacyNoContent, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
-		return TeamsRemoveRepoLegacyNoContent{}, nil
+		return &TeamsRemoveRepoLegacyNoContent{}, nil
 	}
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50273,7 +50273,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -50281,7 +50281,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res TeamDiscussionComment, err error) {
+func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res *TeamDiscussionComment, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50309,7 +50309,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -50317,7 +50317,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50345,7 +50345,7 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -50353,7 +50353,7 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDiscussion, err error) {
+func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res *TeamDiscussion, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50381,7 +50381,7 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -50389,7 +50389,7 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res TeamFull, err error) {
+func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res *TeamFull, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -50417,7 +50417,7 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res TeamFull, err erro
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -53112,7 +53112,7 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowersForUserResponse(resp *http.Response) (res UsersListFollowersForUserOKHeaders, err error) {
+func decodeUsersListFollowersForUserResponse(resp *http.Response) (res *UsersListFollowersForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53181,7 +53181,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res UsersList
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -53189,7 +53189,7 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res UsersList
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListFollowingForUserResponse(resp *http.Response) (res UsersListFollowingForUserOKHeaders, err error) {
+func decodeUsersListFollowingForUserResponse(resp *http.Response) (res *UsersListFollowingForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53258,7 +53258,7 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res UsersList
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -53436,7 +53436,7 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res UsersListGpgKeysForUserOKHeaders, err error) {
+func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res *UsersListGpgKeysForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53505,7 +53505,7 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res UsersListGp
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -53683,7 +53683,7 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res UsersListPublicKeysForUserOKHeaders, err error) {
+func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res *UsersListPublicKeysForUserOKHeaders, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -53752,7 +53752,7 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res UsersLis
 					return res, errors.Wrap(err, "parse Link header")
 				}
 			}
-			return wrapper, nil
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

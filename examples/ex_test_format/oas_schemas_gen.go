@@ -18,12 +18,12 @@ type Error struct {
 }
 
 // GetCode returns the value of Code.
-func (s Error) GetCode() OptInt32 {
+func (s *Error) GetCode() OptInt32 {
 	return s.Code
 }
 
 // GetStatus returns the value of Status.
-func (s Error) GetStatus() OptString {
+func (s *Error) GetStatus() OptString {
 	return s.Status
 }
 
@@ -4473,1262 +4473,1262 @@ type TestRequestFormatTestReq struct {
 }
 
 // GetRequiredAny returns the value of RequiredAny.
-func (s TestRequestFormatTestReq) GetRequiredAny() jx.Raw {
+func (s *TestRequestFormatTestReq) GetRequiredAny() jx.Raw {
 	return s.RequiredAny
 }
 
 // GetRequiredArrayAny returns the value of RequiredArrayAny.
-func (s TestRequestFormatTestReq) GetRequiredArrayAny() []jx.Raw {
+func (s *TestRequestFormatTestReq) GetRequiredArrayAny() []jx.Raw {
 	return s.RequiredArrayAny
 }
 
 // GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
-func (s TestRequestFormatTestReq) GetRequiredArrayBoolean() []bool {
+func (s *TestRequestFormatTestReq) GetRequiredArrayBoolean() []bool {
 	return s.RequiredArrayBoolean
 }
 
 // GetRequiredArrayInteger returns the value of RequiredArrayInteger.
-func (s TestRequestFormatTestReq) GetRequiredArrayInteger() []int {
+func (s *TestRequestFormatTestReq) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
 }
 
 // GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
 	return s.RequiredArrayIntegerInt64
 }
 
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint() []uint {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
 	return s.RequiredArrayIntegerUint32
 }
 
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
 	return s.RequiredArrayIntegerUnix
 }
 
 // GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusNano
 }
 
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
-func (s TestRequestFormatTestReq) GetRequiredArrayNull() []struct{} {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNull() []struct{} {
 	return s.RequiredArrayNull
 }
 
 // GetRequiredArrayNumber returns the value of RequiredArrayNumber.
-func (s TestRequestFormatTestReq) GetRequiredArrayNumber() []float64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNumber() []float64 {
 	return s.RequiredArrayNumber
 }
 
 // GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
-func (s TestRequestFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
 	return s.RequiredArrayNumberDouble
 }
 
 // GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
-func (s TestRequestFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
 	return s.RequiredArrayNumberFloat
 }
 
 // GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
-func (s TestRequestFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
 	return s.RequiredArrayNumberInt32
 }
 
 // GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
-func (s TestRequestFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
 	return s.RequiredArrayNumberInt64
 }
 
 // GetRequiredArrayString returns the value of RequiredArrayString.
-func (s TestRequestFormatTestReq) GetRequiredArrayString() []string {
+func (s *TestRequestFormatTestReq) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
 }
 
 // GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
 	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringBinary() []string {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringBinary() []string {
 	return s.RequiredArrayStringBinary
 }
 
 // GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringByte() [][]byte {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringByte() [][]byte {
 	return s.RequiredArrayStringByte
 }
 
 // GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringDate() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringDate() []time.Time {
 	return s.RequiredArrayStringDate
 }
 
 // GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
 	return s.RequiredArrayStringDateMinusTime
 }
 
 // GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
 	return s.RequiredArrayStringDuration
 }
 
 // GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringEmail() []string {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringEmail() []string {
 	return s.RequiredArrayStringEmail
 }
 
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringHostname() []string {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt32() []int32 {
 	return s.RequiredArrayStringInt32
 }
 
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
 	return s.RequiredArrayStringIP
 }
 
 // GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
 	return s.RequiredArrayStringIpv4
 }
 
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringPassword() []string {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringPassword() []string {
 	return s.RequiredArrayStringPassword
 }
 
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringTime() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
 	return s.RequiredArrayStringUnix
 }
 
 // GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
 	return s.RequiredArrayStringUnixMinusMicro
 }
 
 // GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
 	return s.RequiredArrayStringUnixMinusMilli
 }
 
 // GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
 	return s.RequiredArrayStringUnixMinusNano
 }
 
 // GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringURI() []url.URL {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
 }
 
 // GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
-func (s TestRequestFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
 	return s.RequiredArrayStringUUID
 }
 
 // GetRequiredBoolean returns the value of RequiredBoolean.
-func (s TestRequestFormatTestReq) GetRequiredBoolean() bool {
+func (s *TestRequestFormatTestReq) GetRequiredBoolean() bool {
 	return s.RequiredBoolean
 }
 
 // GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
 	return s.RequiredDoubleArrayAny
 }
 
 // GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
 	return s.RequiredDoubleArrayBoolean
 }
 
 // GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
 	return s.RequiredDoubleArrayInteger
 }
 
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
 }
 
 // GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
 	return s.RequiredDoubleArrayIntegerUint32
 }
 
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnix
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusNano
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
 	return s.RequiredDoubleArrayNull
 }
 
 // GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
 	return s.RequiredDoubleArrayNumber
 }
 
 // GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
 	return s.RequiredDoubleArrayNumberDouble
 }
 
 // GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
 	return s.RequiredDoubleArrayNumberFloat
 }
 
 // GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
 	return s.RequiredDoubleArrayNumberInt32
 }
 
 // GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
 	return s.RequiredDoubleArrayNumberInt64
 }
 
 // GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayString() [][]string {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayString() [][]string {
 	return s.RequiredDoubleArrayString
 }
 
 // GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
 	return s.RequiredDoubleArrayStringBase64
 }
 
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
 }
 
 // GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
 	return s.RequiredDoubleArrayStringByte
 }
 
 // GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
 	return s.RequiredDoubleArrayStringDate
 }
 
 // GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringDateMinusTime
 }
 
 // GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
 	return s.RequiredDoubleArrayStringDuration
 }
 
 // GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
 	return s.RequiredDoubleArrayStringEmail
 }
 
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
 	return s.RequiredDoubleArrayStringInt32
 }
 
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIP
 }
 
 // GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv4
 }
 
 // GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv6
 }
 
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
 }
 
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnix
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusNano
 }
 
 // GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
 }
 
 // GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
-func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.RequiredDoubleArrayStringUUID
 }
 
 // GetRequiredInteger returns the value of RequiredInteger.
-func (s TestRequestFormatTestReq) GetRequiredInteger() int {
+func (s *TestRequestFormatTestReq) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
-func (s TestRequestFormatTestReq) GetRequiredIntegerInt32() int32 {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
 }
 
 // GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
-func (s TestRequestFormatTestReq) GetRequiredIntegerInt64() int64 {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUint() uint {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUint32() uint32 {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUint32() uint32 {
 	return s.RequiredIntegerUint32
 }
 
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUint64() uint64 {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUnix() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnix() time.Time {
 	return s.RequiredIntegerUnix
 }
 
 // GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
 	return s.RequiredIntegerUnixMinusMicro
 }
 
 // GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
 	return s.RequiredIntegerUnixMinusMilli
 }
 
 // GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
 	return s.RequiredIntegerUnixMinusNano
 }
 
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
 }
 
 // GetRequiredNull returns the value of RequiredNull.
-func (s TestRequestFormatTestReq) GetRequiredNull() struct{} {
+func (s *TestRequestFormatTestReq) GetRequiredNull() struct{} {
 	return s.RequiredNull
 }
 
 // GetRequiredNumber returns the value of RequiredNumber.
-func (s TestRequestFormatTestReq) GetRequiredNumber() float64 {
+func (s *TestRequestFormatTestReq) GetRequiredNumber() float64 {
 	return s.RequiredNumber
 }
 
 // GetRequiredNumberDouble returns the value of RequiredNumberDouble.
-func (s TestRequestFormatTestReq) GetRequiredNumberDouble() float64 {
+func (s *TestRequestFormatTestReq) GetRequiredNumberDouble() float64 {
 	return s.RequiredNumberDouble
 }
 
 // GetRequiredNumberFloat returns the value of RequiredNumberFloat.
-func (s TestRequestFormatTestReq) GetRequiredNumberFloat() float32 {
+func (s *TestRequestFormatTestReq) GetRequiredNumberFloat() float32 {
 	return s.RequiredNumberFloat
 }
 
 // GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
-func (s TestRequestFormatTestReq) GetRequiredNumberInt32() int32 {
+func (s *TestRequestFormatTestReq) GetRequiredNumberInt32() int32 {
 	return s.RequiredNumberInt32
 }
 
 // GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
-func (s TestRequestFormatTestReq) GetRequiredNumberInt64() int64 {
+func (s *TestRequestFormatTestReq) GetRequiredNumberInt64() int64 {
 	return s.RequiredNumberInt64
 }
 
 // GetRequiredString returns the value of RequiredString.
-func (s TestRequestFormatTestReq) GetRequiredString() string {
+func (s *TestRequestFormatTestReq) GetRequiredString() string {
 	return s.RequiredString
 }
 
 // GetRequiredStringBase64 returns the value of RequiredStringBase64.
-func (s TestRequestFormatTestReq) GetRequiredStringBase64() []byte {
+func (s *TestRequestFormatTestReq) GetRequiredStringBase64() []byte {
 	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
-func (s TestRequestFormatTestReq) GetRequiredStringBinary() string {
+func (s *TestRequestFormatTestReq) GetRequiredStringBinary() string {
 	return s.RequiredStringBinary
 }
 
 // GetRequiredStringByte returns the value of RequiredStringByte.
-func (s TestRequestFormatTestReq) GetRequiredStringByte() []byte {
+func (s *TestRequestFormatTestReq) GetRequiredStringByte() []byte {
 	return s.RequiredStringByte
 }
 
 // GetRequiredStringDate returns the value of RequiredStringDate.
-func (s TestRequestFormatTestReq) GetRequiredStringDate() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringDate() time.Time {
 	return s.RequiredStringDate
 }
 
 // GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
 	return s.RequiredStringDateMinusTime
 }
 
 // GetRequiredStringDuration returns the value of RequiredStringDuration.
-func (s TestRequestFormatTestReq) GetRequiredStringDuration() time.Duration {
+func (s *TestRequestFormatTestReq) GetRequiredStringDuration() time.Duration {
 	return s.RequiredStringDuration
 }
 
 // GetRequiredStringEmail returns the value of RequiredStringEmail.
-func (s TestRequestFormatTestReq) GetRequiredStringEmail() string {
+func (s *TestRequestFormatTestReq) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
-func (s TestRequestFormatTestReq) GetRequiredStringHostname() string {
+func (s *TestRequestFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
-func (s TestRequestFormatTestReq) GetRequiredStringInt32() int32 {
+func (s *TestRequestFormatTestReq) GetRequiredStringInt32() int32 {
 	return s.RequiredStringInt32
 }
 
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
-func (s TestRequestFormatTestReq) GetRequiredStringInt64() int64 {
+func (s *TestRequestFormatTestReq) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
-func (s TestRequestFormatTestReq) GetRequiredStringIP() netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredStringIP() netip.Addr {
 	return s.RequiredStringIP
 }
 
 // GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
-func (s TestRequestFormatTestReq) GetRequiredStringIpv4() netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredStringIpv4() netip.Addr {
 	return s.RequiredStringIpv4
 }
 
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
-func (s TestRequestFormatTestReq) GetRequiredStringIpv6() netip.Addr {
+func (s *TestRequestFormatTestReq) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
-func (s TestRequestFormatTestReq) GetRequiredStringPassword() string {
+func (s *TestRequestFormatTestReq) GetRequiredStringPassword() string {
 	return s.RequiredStringPassword
 }
 
 // GetRequiredStringTime returns the value of RequiredStringTime.
-func (s TestRequestFormatTestReq) GetRequiredStringTime() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
-func (s TestRequestFormatTestReq) GetRequiredStringUnix() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringUnix() time.Time {
 	return s.RequiredStringUnix
 }
 
 // GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
 	return s.RequiredStringUnixMinusMicro
 }
 
 // GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
 	return s.RequiredStringUnixMinusMilli
 }
 
 // GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
 	return s.RequiredStringUnixMinusNano
 }
 
 // GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
+func (s *TestRequestFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
 	return s.RequiredStringUnixMinusSeconds
 }
 
 // GetRequiredStringURI returns the value of RequiredStringURI.
-func (s TestRequestFormatTestReq) GetRequiredStringURI() url.URL {
+func (s *TestRequestFormatTestReq) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
 }
 
 // GetRequiredStringUUID returns the value of RequiredStringUUID.
-func (s TestRequestFormatTestReq) GetRequiredStringUUID() uuid.UUID {
+func (s *TestRequestFormatTestReq) GetRequiredStringUUID() uuid.UUID {
 	return s.RequiredStringUUID
 }
 
 // GetOptionalAny returns the value of OptionalAny.
-func (s TestRequestFormatTestReq) GetOptionalAny() jx.Raw {
+func (s *TestRequestFormatTestReq) GetOptionalAny() jx.Raw {
 	return s.OptionalAny
 }
 
 // GetOptionalArrayAny returns the value of OptionalArrayAny.
-func (s TestRequestFormatTestReq) GetOptionalArrayAny() []jx.Raw {
+func (s *TestRequestFormatTestReq) GetOptionalArrayAny() []jx.Raw {
 	return s.OptionalArrayAny
 }
 
 // GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
-func (s TestRequestFormatTestReq) GetOptionalArrayBoolean() []bool {
+func (s *TestRequestFormatTestReq) GetOptionalArrayBoolean() []bool {
 	return s.OptionalArrayBoolean
 }
 
 // GetOptionalArrayInteger returns the value of OptionalArrayInteger.
-func (s TestRequestFormatTestReq) GetOptionalArrayInteger() []int {
+func (s *TestRequestFormatTestReq) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
 }
 
 // GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
 	return s.OptionalArrayIntegerInt64
 }
 
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint() []uint {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
 	return s.OptionalArrayIntegerUint32
 }
 
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
 	return s.OptionalArrayIntegerUnix
 }
 
 // GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusNano
 }
 
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
-func (s TestRequestFormatTestReq) GetOptionalArrayNull() []struct{} {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNull() []struct{} {
 	return s.OptionalArrayNull
 }
 
 // GetOptionalArrayNumber returns the value of OptionalArrayNumber.
-func (s TestRequestFormatTestReq) GetOptionalArrayNumber() []float64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNumber() []float64 {
 	return s.OptionalArrayNumber
 }
 
 // GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
-func (s TestRequestFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
 	return s.OptionalArrayNumberDouble
 }
 
 // GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
-func (s TestRequestFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
 	return s.OptionalArrayNumberFloat
 }
 
 // GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
-func (s TestRequestFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
 	return s.OptionalArrayNumberInt32
 }
 
 // GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
-func (s TestRequestFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
 	return s.OptionalArrayNumberInt64
 }
 
 // GetOptionalArrayString returns the value of OptionalArrayString.
-func (s TestRequestFormatTestReq) GetOptionalArrayString() []string {
+func (s *TestRequestFormatTestReq) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
 // GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
 	return s.OptionalArrayStringBase64
 }
 
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringBinary() []string {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
 }
 
 // GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringByte() [][]byte {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringByte() [][]byte {
 	return s.OptionalArrayStringByte
 }
 
 // GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringDate() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringDate() []time.Time {
 	return s.OptionalArrayStringDate
 }
 
 // GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
 	return s.OptionalArrayStringDateMinusTime
 }
 
 // GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
 	return s.OptionalArrayStringDuration
 }
 
 // GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringEmail() []string {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringEmail() []string {
 	return s.OptionalArrayStringEmail
 }
 
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringHostname() []string {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringInt32() []int32 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt32() []int32 {
 	return s.OptionalArrayStringInt32
 }
 
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringInt64() []int64 {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
 	return s.OptionalArrayStringIP
 }
 
 // GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
 	return s.OptionalArrayStringIpv4
 }
 
 // GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
 	return s.OptionalArrayStringIpv6
 }
 
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringPassword() []string {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
 }
 
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringTime() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
 	return s.OptionalArrayStringUnix
 }
 
 // GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
 	return s.OptionalArrayStringUnixMinusMicro
 }
 
 // GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
 	return s.OptionalArrayStringUnixMinusMilli
 }
 
 // GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
 	return s.OptionalArrayStringUnixMinusNano
 }
 
 // GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringURI() []url.URL {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
 }
 
 // GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
-func (s TestRequestFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
 	return s.OptionalArrayStringUUID
 }
 
 // GetOptionalBoolean returns the value of OptionalBoolean.
-func (s TestRequestFormatTestReq) GetOptionalBoolean() OptBool {
+func (s *TestRequestFormatTestReq) GetOptionalBoolean() OptBool {
 	return s.OptionalBoolean
 }
 
 // GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
 	return s.OptionalDoubleArrayAny
 }
 
 // GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
 	return s.OptionalDoubleArrayBoolean
 }
 
 // GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
 	return s.OptionalDoubleArrayInteger
 }
 
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
 }
 
 // GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
 	return s.OptionalDoubleArrayIntegerUint32
 }
 
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnix
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusNano
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
 	return s.OptionalDoubleArrayNull
 }
 
 // GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
 	return s.OptionalDoubleArrayNumber
 }
 
 // GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
 	return s.OptionalDoubleArrayNumberDouble
 }
 
 // GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
 	return s.OptionalDoubleArrayNumberFloat
 }
 
 // GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
 	return s.OptionalDoubleArrayNumberInt32
 }
 
 // GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
 	return s.OptionalDoubleArrayNumberInt64
 }
 
 // GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayString() [][]string {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayString() [][]string {
 	return s.OptionalDoubleArrayString
 }
 
 // GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
 	return s.OptionalDoubleArrayStringBase64
 }
 
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
 }
 
 // GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
 	return s.OptionalDoubleArrayStringByte
 }
 
 // GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
 	return s.OptionalDoubleArrayStringDate
 }
 
 // GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringDateMinusTime
 }
 
 // GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
 	return s.OptionalDoubleArrayStringDuration
 }
 
 // GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
 	return s.OptionalDoubleArrayStringEmail
 }
 
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
 	return s.OptionalDoubleArrayStringInt32
 }
 
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIP
 }
 
 // GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv4
 }
 
 // GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv6
 }
 
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
 }
 
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnix
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusNano
 }
 
 // GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
 }
 
 // GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
-func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.OptionalDoubleArrayStringUUID
 }
 
 // GetOptionalInteger returns the value of OptionalInteger.
-func (s TestRequestFormatTestReq) GetOptionalInteger() OptInt {
+func (s *TestRequestFormatTestReq) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
-func (s TestRequestFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
 }
 
 // GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
-func (s TestRequestFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUint() OptUint {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
 	return s.OptionalIntegerUint32
 }
 
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
 	return s.OptionalIntegerUnix
 }
 
 // GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
 	return s.OptionalIntegerUnixMinusMicro
 }
 
 // GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
 	return s.OptionalIntegerUnixMinusMilli
 }
 
 // GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
 	return s.OptionalIntegerUnixMinusNano
 }
 
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+func (s *TestRequestFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
 }
 
 // GetOptionalNull returns the value of OptionalNull.
-func (s TestRequestFormatTestReq) GetOptionalNull() OptNull {
+func (s *TestRequestFormatTestReq) GetOptionalNull() OptNull {
 	return s.OptionalNull
 }
 
 // GetOptionalNumber returns the value of OptionalNumber.
-func (s TestRequestFormatTestReq) GetOptionalNumber() OptFloat64 {
+func (s *TestRequestFormatTestReq) GetOptionalNumber() OptFloat64 {
 	return s.OptionalNumber
 }
 
 // GetOptionalNumberDouble returns the value of OptionalNumberDouble.
-func (s TestRequestFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
+func (s *TestRequestFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
 	return s.OptionalNumberDouble
 }
 
 // GetOptionalNumberFloat returns the value of OptionalNumberFloat.
-func (s TestRequestFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
+func (s *TestRequestFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
 	return s.OptionalNumberFloat
 }
 
 // GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
-func (s TestRequestFormatTestReq) GetOptionalNumberInt32() OptInt32 {
+func (s *TestRequestFormatTestReq) GetOptionalNumberInt32() OptInt32 {
 	return s.OptionalNumberInt32
 }
 
 // GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
-func (s TestRequestFormatTestReq) GetOptionalNumberInt64() OptInt64 {
+func (s *TestRequestFormatTestReq) GetOptionalNumberInt64() OptInt64 {
 	return s.OptionalNumberInt64
 }
 
 // GetOptionalString returns the value of OptionalString.
-func (s TestRequestFormatTestReq) GetOptionalString() OptString {
+func (s *TestRequestFormatTestReq) GetOptionalString() OptString {
 	return s.OptionalString
 }
 
 // GetOptionalStringBase64 returns the value of OptionalStringBase64.
-func (s TestRequestFormatTestReq) GetOptionalStringBase64() []byte {
+func (s *TestRequestFormatTestReq) GetOptionalStringBase64() []byte {
 	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
-func (s TestRequestFormatTestReq) GetOptionalStringBinary() OptString {
+func (s *TestRequestFormatTestReq) GetOptionalStringBinary() OptString {
 	return s.OptionalStringBinary
 }
 
 // GetOptionalStringByte returns the value of OptionalStringByte.
-func (s TestRequestFormatTestReq) GetOptionalStringByte() []byte {
+func (s *TestRequestFormatTestReq) GetOptionalStringByte() []byte {
 	return s.OptionalStringByte
 }
 
 // GetOptionalStringDate returns the value of OptionalStringDate.
-func (s TestRequestFormatTestReq) GetOptionalStringDate() OptDate {
+func (s *TestRequestFormatTestReq) GetOptionalStringDate() OptDate {
 	return s.OptionalStringDate
 }
 
 // GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
-func (s TestRequestFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
+func (s *TestRequestFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
 	return s.OptionalStringDateMinusTime
 }
 
 // GetOptionalStringDuration returns the value of OptionalStringDuration.
-func (s TestRequestFormatTestReq) GetOptionalStringDuration() OptDuration {
+func (s *TestRequestFormatTestReq) GetOptionalStringDuration() OptDuration {
 	return s.OptionalStringDuration
 }
 
 // GetOptionalStringEmail returns the value of OptionalStringEmail.
-func (s TestRequestFormatTestReq) GetOptionalStringEmail() OptString {
+func (s *TestRequestFormatTestReq) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
-func (s TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
+func (s *TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
-func (s TestRequestFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
+func (s *TestRequestFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
 	return s.OptionalStringInt32
 }
 
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
-func (s TestRequestFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
+func (s *TestRequestFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
-func (s TestRequestFormatTestReq) GetOptionalStringIP() OptIP {
+func (s *TestRequestFormatTestReq) GetOptionalStringIP() OptIP {
 	return s.OptionalStringIP
 }
 
 // GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
-func (s TestRequestFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
+func (s *TestRequestFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
 	return s.OptionalStringIpv4
 }
 
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
-func (s TestRequestFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
+func (s *TestRequestFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
-func (s TestRequestFormatTestReq) GetOptionalStringPassword() OptString {
+func (s *TestRequestFormatTestReq) GetOptionalStringPassword() OptString {
 	return s.OptionalStringPassword
 }
 
 // GetOptionalStringTime returns the value of OptionalStringTime.
-func (s TestRequestFormatTestReq) GetOptionalStringTime() OptTime {
+func (s *TestRequestFormatTestReq) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
-func (s TestRequestFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
+func (s *TestRequestFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
 	return s.OptionalStringUnix
 }
 
 // GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
-func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+func (s *TestRequestFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
 	return s.OptionalStringUnixMinusMicro
 }
 
 // GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
-func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+func (s *TestRequestFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
 	return s.OptionalStringUnixMinusMilli
 }
 
 // GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
-func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+func (s *TestRequestFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
 	return s.OptionalStringUnixMinusNano
 }
 
 // GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
-func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+func (s *TestRequestFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
 	return s.OptionalStringUnixMinusSeconds
 }
 
 // GetOptionalStringURI returns the value of OptionalStringURI.
-func (s TestRequestFormatTestReq) GetOptionalStringURI() OptURI {
+func (s *TestRequestFormatTestReq) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
 }
 
 // GetOptionalStringUUID returns the value of OptionalStringUUID.
-func (s TestRequestFormatTestReq) GetOptionalStringUUID() OptUUID {
+func (s *TestRequestFormatTestReq) GetOptionalStringUUID() OptUUID {
 	return s.OptionalStringUUID
 }
 
@@ -7250,1262 +7250,1262 @@ type TestRequestRequiredFormatTestReq struct {
 }
 
 // GetRequiredAny returns the value of RequiredAny.
-func (s TestRequestRequiredFormatTestReq) GetRequiredAny() jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredAny() jx.Raw {
 	return s.RequiredAny
 }
 
 // GetRequiredArrayAny returns the value of RequiredArrayAny.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayAny() []jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayAny() []jx.Raw {
 	return s.RequiredArrayAny
 }
 
 // GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayBoolean() []bool {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayBoolean() []bool {
 	return s.RequiredArrayBoolean
 }
 
 // GetRequiredArrayInteger returns the value of RequiredArrayInteger.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayInteger() []int {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
 }
 
 // GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
 	return s.RequiredArrayIntegerInt64
 }
 
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint() []uint {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
 	return s.RequiredArrayIntegerUint32
 }
 
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
 	return s.RequiredArrayIntegerUnix
 }
 
 // GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusNano
 }
 
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNull() []struct{} {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNull() []struct{} {
 	return s.RequiredArrayNull
 }
 
 // GetRequiredArrayNumber returns the value of RequiredArrayNumber.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumber() []float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNumber() []float64 {
 	return s.RequiredArrayNumber
 }
 
 // GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
 	return s.RequiredArrayNumberDouble
 }
 
 // GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
 	return s.RequiredArrayNumberFloat
 }
 
 // GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
 	return s.RequiredArrayNumberInt32
 }
 
 // GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
 	return s.RequiredArrayNumberInt64
 }
 
 // GetRequiredArrayString returns the value of RequiredArrayString.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayString() []string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
 }
 
 // GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringBase64() [][]byte {
 	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringBinary() []string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringBinary() []string {
 	return s.RequiredArrayStringBinary
 }
 
 // GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringByte() [][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringByte() [][]byte {
 	return s.RequiredArrayStringByte
 }
 
 // GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDate() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringDate() []time.Time {
 	return s.RequiredArrayStringDate
 }
 
 // GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
 	return s.RequiredArrayStringDateMinusTime
 }
 
 // GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
 	return s.RequiredArrayStringDuration
 }
 
 // GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringEmail() []string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringEmail() []string {
 	return s.RequiredArrayStringEmail
 }
 
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringHostname() []string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt32() []int32 {
 	return s.RequiredArrayStringInt32
 }
 
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
 	return s.RequiredArrayStringIP
 }
 
 // GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
 	return s.RequiredArrayStringIpv4
 }
 
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringPassword() []string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringPassword() []string {
 	return s.RequiredArrayStringPassword
 }
 
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringTime() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
 	return s.RequiredArrayStringUnix
 }
 
 // GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
 	return s.RequiredArrayStringUnixMinusMicro
 }
 
 // GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
 	return s.RequiredArrayStringUnixMinusMilli
 }
 
 // GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
 	return s.RequiredArrayStringUnixMinusNano
 }
 
 // GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringURI() []url.URL {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
 }
 
 // GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
 	return s.RequiredArrayStringUUID
 }
 
 // GetRequiredBoolean returns the value of RequiredBoolean.
-func (s TestRequestRequiredFormatTestReq) GetRequiredBoolean() bool {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredBoolean() bool {
 	return s.RequiredBoolean
 }
 
 // GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
 	return s.RequiredDoubleArrayAny
 }
 
 // GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
 	return s.RequiredDoubleArrayBoolean
 }
 
 // GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
 	return s.RequiredDoubleArrayInteger
 }
 
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
 }
 
 // GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
 	return s.RequiredDoubleArrayIntegerUint32
 }
 
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnix
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusNano
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
 	return s.RequiredDoubleArrayNull
 }
 
 // GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
 	return s.RequiredDoubleArrayNumber
 }
 
 // GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
 	return s.RequiredDoubleArrayNumberDouble
 }
 
 // GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
 	return s.RequiredDoubleArrayNumberFloat
 }
 
 // GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
 	return s.RequiredDoubleArrayNumberInt32
 }
 
 // GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
 	return s.RequiredDoubleArrayNumberInt64
 }
 
 // GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayString() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayString() [][]string {
 	return s.RequiredDoubleArrayString
 }
 
 // GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBase64() [][][]byte {
 	return s.RequiredDoubleArrayStringBase64
 }
 
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
 }
 
 // GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
 	return s.RequiredDoubleArrayStringByte
 }
 
 // GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
 	return s.RequiredDoubleArrayStringDate
 }
 
 // GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringDateMinusTime
 }
 
 // GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
 	return s.RequiredDoubleArrayStringDuration
 }
 
 // GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
 	return s.RequiredDoubleArrayStringEmail
 }
 
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
 	return s.RequiredDoubleArrayStringInt32
 }
 
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIP
 }
 
 // GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv4
 }
 
 // GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv6
 }
 
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
 }
 
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnix
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusNano
 }
 
 // GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
 }
 
 // GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.RequiredDoubleArrayStringUUID
 }
 
 // GetRequiredInteger returns the value of RequiredInteger.
-func (s TestRequestRequiredFormatTestReq) GetRequiredInteger() int {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerInt32() int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
 }
 
 // GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerInt64() int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint() uint {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint32() uint32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint32() uint32 {
 	return s.RequiredIntegerUint32
 }
 
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint64() uint64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnix() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnix() time.Time {
 	return s.RequiredIntegerUnix
 }
 
 // GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
 	return s.RequiredIntegerUnixMinusMicro
 }
 
 // GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
 	return s.RequiredIntegerUnixMinusMilli
 }
 
 // GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
 	return s.RequiredIntegerUnixMinusNano
 }
 
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
 }
 
 // GetRequiredNull returns the value of RequiredNull.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNull() struct{} {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNull() struct{} {
 	return s.RequiredNull
 }
 
 // GetRequiredNumber returns the value of RequiredNumber.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNumber() float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNumber() float64 {
 	return s.RequiredNumber
 }
 
 // GetRequiredNumberDouble returns the value of RequiredNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNumberDouble() float64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNumberDouble() float64 {
 	return s.RequiredNumberDouble
 }
 
 // GetRequiredNumberFloat returns the value of RequiredNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNumberFloat() float32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNumberFloat() float32 {
 	return s.RequiredNumberFloat
 }
 
 // GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNumberInt32() int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNumberInt32() int32 {
 	return s.RequiredNumberInt32
 }
 
 // GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredNumberInt64() int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredNumberInt64() int64 {
 	return s.RequiredNumberInt64
 }
 
 // GetRequiredString returns the value of RequiredString.
-func (s TestRequestRequiredFormatTestReq) GetRequiredString() string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredString() string {
 	return s.RequiredString
 }
 
 // GetRequiredStringBase64 returns the value of RequiredStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringBase64() []byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringBase64() []byte {
 	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringBinary() string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringBinary() string {
 	return s.RequiredStringBinary
 }
 
 // GetRequiredStringByte returns the value of RequiredStringByte.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringByte() []byte {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringByte() []byte {
 	return s.RequiredStringByte
 }
 
 // GetRequiredStringDate returns the value of RequiredStringDate.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringDate() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringDate() time.Time {
 	return s.RequiredStringDate
 }
 
 // GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
 	return s.RequiredStringDateMinusTime
 }
 
 // GetRequiredStringDuration returns the value of RequiredStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringDuration() time.Duration {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringDuration() time.Duration {
 	return s.RequiredStringDuration
 }
 
 // GetRequiredStringEmail returns the value of RequiredStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringEmail() string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringHostname() string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringInt32() int32 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt32() int32 {
 	return s.RequiredStringInt32
 }
 
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringInt64() int64 {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringIP() netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringIP() netip.Addr {
 	return s.RequiredStringIP
 }
 
 // GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringIpv4() netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringIpv4() netip.Addr {
 	return s.RequiredStringIpv4
 }
 
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringIpv6() netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringPassword() string {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringPassword() string {
 	return s.RequiredStringPassword
 }
 
 // GetRequiredStringTime returns the value of RequiredStringTime.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringTime() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnix() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnix() time.Time {
 	return s.RequiredStringUnix
 }
 
 // GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
 	return s.RequiredStringUnixMinusMicro
 }
 
 // GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
 	return s.RequiredStringUnixMinusMilli
 }
 
 // GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
 	return s.RequiredStringUnixMinusNano
 }
 
 // GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
 	return s.RequiredStringUnixMinusSeconds
 }
 
 // GetRequiredStringURI returns the value of RequiredStringURI.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringURI() url.URL {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
 }
 
 // GetRequiredStringUUID returns the value of RequiredStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetRequiredStringUUID() uuid.UUID {
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringUUID() uuid.UUID {
 	return s.RequiredStringUUID
 }
 
 // GetOptionalAny returns the value of OptionalAny.
-func (s TestRequestRequiredFormatTestReq) GetOptionalAny() jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalAny() jx.Raw {
 	return s.OptionalAny
 }
 
 // GetOptionalArrayAny returns the value of OptionalArrayAny.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayAny() []jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayAny() []jx.Raw {
 	return s.OptionalArrayAny
 }
 
 // GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayBoolean() []bool {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayBoolean() []bool {
 	return s.OptionalArrayBoolean
 }
 
 // GetOptionalArrayInteger returns the value of OptionalArrayInteger.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayInteger() []int {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
 }
 
 // GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
 	return s.OptionalArrayIntegerInt64
 }
 
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint() []uint {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
 	return s.OptionalArrayIntegerUint32
 }
 
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
 	return s.OptionalArrayIntegerUnix
 }
 
 // GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusNano
 }
 
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNull() []struct{} {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNull() []struct{} {
 	return s.OptionalArrayNull
 }
 
 // GetOptionalArrayNumber returns the value of OptionalArrayNumber.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumber() []float64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNumber() []float64 {
 	return s.OptionalArrayNumber
 }
 
 // GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
 	return s.OptionalArrayNumberDouble
 }
 
 // GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
 	return s.OptionalArrayNumberFloat
 }
 
 // GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
 	return s.OptionalArrayNumberInt32
 }
 
 // GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
 	return s.OptionalArrayNumberInt64
 }
 
 // GetOptionalArrayString returns the value of OptionalArrayString.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayString() []string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
 // GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringBase64() [][]byte {
 	return s.OptionalArrayStringBase64
 }
 
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringBinary() []string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
 }
 
 // GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringByte() [][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringByte() [][]byte {
 	return s.OptionalArrayStringByte
 }
 
 // GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDate() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringDate() []time.Time {
 	return s.OptionalArrayStringDate
 }
 
 // GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
 	return s.OptionalArrayStringDateMinusTime
 }
 
 // GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
 	return s.OptionalArrayStringDuration
 }
 
 // GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringEmail() []string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringEmail() []string {
 	return s.OptionalArrayStringEmail
 }
 
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringHostname() []string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt32() []int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt32() []int32 {
 	return s.OptionalArrayStringInt32
 }
 
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt64() []int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
 	return s.OptionalArrayStringIP
 }
 
 // GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
 	return s.OptionalArrayStringIpv4
 }
 
 // GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
 	return s.OptionalArrayStringIpv6
 }
 
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringPassword() []string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
 }
 
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringTime() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
 	return s.OptionalArrayStringUnix
 }
 
 // GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
 	return s.OptionalArrayStringUnixMinusMicro
 }
 
 // GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
 	return s.OptionalArrayStringUnixMinusMilli
 }
 
 // GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
 	return s.OptionalArrayStringUnixMinusNano
 }
 
 // GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringURI() []url.URL {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
 }
 
 // GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
 	return s.OptionalArrayStringUUID
 }
 
 // GetOptionalBoolean returns the value of OptionalBoolean.
-func (s TestRequestRequiredFormatTestReq) GetOptionalBoolean() OptBool {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalBoolean() OptBool {
 	return s.OptionalBoolean
 }
 
 // GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
 	return s.OptionalDoubleArrayAny
 }
 
 // GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
 	return s.OptionalDoubleArrayBoolean
 }
 
 // GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
 	return s.OptionalDoubleArrayInteger
 }
 
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
 }
 
 // GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
 	return s.OptionalDoubleArrayIntegerUint32
 }
 
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnix
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusNano
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
 	return s.OptionalDoubleArrayNull
 }
 
 // GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
 	return s.OptionalDoubleArrayNumber
 }
 
 // GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
 	return s.OptionalDoubleArrayNumberDouble
 }
 
 // GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
 	return s.OptionalDoubleArrayNumberFloat
 }
 
 // GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
 	return s.OptionalDoubleArrayNumberInt32
 }
 
 // GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
 	return s.OptionalDoubleArrayNumberInt64
 }
 
 // GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayString() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayString() [][]string {
 	return s.OptionalDoubleArrayString
 }
 
 // GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBase64() [][][]byte {
 	return s.OptionalDoubleArrayStringBase64
 }
 
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
 }
 
 // GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
 	return s.OptionalDoubleArrayStringByte
 }
 
 // GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
 	return s.OptionalDoubleArrayStringDate
 }
 
 // GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringDateMinusTime
 }
 
 // GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
 	return s.OptionalDoubleArrayStringDuration
 }
 
 // GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
 	return s.OptionalDoubleArrayStringEmail
 }
 
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
 	return s.OptionalDoubleArrayStringInt32
 }
 
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIP
 }
 
 // GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv4
 }
 
 // GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv6
 }
 
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
 }
 
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnix
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusNano
 }
 
 // GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
 }
 
 // GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.OptionalDoubleArrayStringUUID
 }
 
 // GetOptionalInteger returns the value of OptionalInteger.
-func (s TestRequestRequiredFormatTestReq) GetOptionalInteger() OptInt {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
 }
 
 // GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint() OptUint {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
 	return s.OptionalIntegerUint32
 }
 
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
 	return s.OptionalIntegerUnix
 }
 
 // GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
 	return s.OptionalIntegerUnixMinusMicro
 }
 
 // GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
 	return s.OptionalIntegerUnixMinusMilli
 }
 
 // GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
 	return s.OptionalIntegerUnixMinusNano
 }
 
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
 }
 
 // GetOptionalNull returns the value of OptionalNull.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNull() OptNull {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNull() OptNull {
 	return s.OptionalNull
 }
 
 // GetOptionalNumber returns the value of OptionalNumber.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNumber() OptFloat64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNumber() OptFloat64 {
 	return s.OptionalNumber
 }
 
 // GetOptionalNumberDouble returns the value of OptionalNumberDouble.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
 	return s.OptionalNumberDouble
 }
 
 // GetOptionalNumberFloat returns the value of OptionalNumberFloat.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
 	return s.OptionalNumberFloat
 }
 
 // GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNumberInt32() OptInt32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNumberInt32() OptInt32 {
 	return s.OptionalNumberInt32
 }
 
 // GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalNumberInt64() OptInt64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalNumberInt64() OptInt64 {
 	return s.OptionalNumberInt64
 }
 
 // GetOptionalString returns the value of OptionalString.
-func (s TestRequestRequiredFormatTestReq) GetOptionalString() OptString {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalString() OptString {
 	return s.OptionalString
 }
 
 // GetOptionalStringBase64 returns the value of OptionalStringBase64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringBase64() []byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringBase64() []byte {
 	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringBinary() OptString {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringBinary() OptString {
 	return s.OptionalStringBinary
 }
 
 // GetOptionalStringByte returns the value of OptionalStringByte.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringByte() []byte {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringByte() []byte {
 	return s.OptionalStringByte
 }
 
 // GetOptionalStringDate returns the value of OptionalStringDate.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringDate() OptDate {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringDate() OptDate {
 	return s.OptionalStringDate
 }
 
 // GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
 	return s.OptionalStringDateMinusTime
 }
 
 // GetOptionalStringDuration returns the value of OptionalStringDuration.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringDuration() OptDuration {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringDuration() OptDuration {
 	return s.OptionalStringDuration
 }
 
 // GetOptionalStringEmail returns the value of OptionalStringEmail.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringEmail() OptString {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
 	return s.OptionalStringInt32
 }
 
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringIP() OptIP {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringIP() OptIP {
 	return s.OptionalStringIP
 }
 
 // GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
 	return s.OptionalStringIpv4
 }
 
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringPassword() OptString {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringPassword() OptString {
 	return s.OptionalStringPassword
 }
 
 // GetOptionalStringTime returns the value of OptionalStringTime.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringTime() OptTime {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
 	return s.OptionalStringUnix
 }
 
 // GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
 	return s.OptionalStringUnixMinusMicro
 }
 
 // GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
 	return s.OptionalStringUnixMinusMilli
 }
 
 // GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
 	return s.OptionalStringUnixMinusNano
 }
 
 // GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
 	return s.OptionalStringUnixMinusSeconds
 }
 
 // GetOptionalStringURI returns the value of OptionalStringURI.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringURI() OptURI {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
 }
 
 // GetOptionalStringUUID returns the value of OptionalStringUUID.
-func (s TestRequestRequiredFormatTestReq) GetOptionalStringUUID() OptUUID {
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringUUID() OptUUID {
 	return s.OptionalStringUUID
 }
 
@@ -10027,1262 +10027,1262 @@ type TestResponseFormatTestOK struct {
 }
 
 // GetRequiredAny returns the value of RequiredAny.
-func (s TestResponseFormatTestOK) GetRequiredAny() jx.Raw {
+func (s *TestResponseFormatTestOK) GetRequiredAny() jx.Raw {
 	return s.RequiredAny
 }
 
 // GetRequiredArrayAny returns the value of RequiredArrayAny.
-func (s TestResponseFormatTestOK) GetRequiredArrayAny() []jx.Raw {
+func (s *TestResponseFormatTestOK) GetRequiredArrayAny() []jx.Raw {
 	return s.RequiredArrayAny
 }
 
 // GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
-func (s TestResponseFormatTestOK) GetRequiredArrayBoolean() []bool {
+func (s *TestResponseFormatTestOK) GetRequiredArrayBoolean() []bool {
 	return s.RequiredArrayBoolean
 }
 
 // GetRequiredArrayInteger returns the value of RequiredArrayInteger.
-func (s TestResponseFormatTestOK) GetRequiredArrayInteger() []int {
+func (s *TestResponseFormatTestOK) GetRequiredArrayInteger() []int {
 	return s.RequiredArrayInteger
 }
 
 // GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt32() []int32 {
 	return s.RequiredArrayIntegerInt32
 }
 
 // GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerInt64() []int64 {
 	return s.RequiredArrayIntegerInt64
 }
 
 // GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint() []uint {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint() []uint {
 	return s.RequiredArrayIntegerUint
 }
 
 // GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint32() []uint32 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint32() []uint32 {
 	return s.RequiredArrayIntegerUint32
 }
 
 // GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint64() []uint64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUint64() []uint64 {
 	return s.RequiredArrayIntegerUint64
 }
 
 // GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnix() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnix() []time.Time {
 	return s.RequiredArrayIntegerUnix
 }
 
 // GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusNano
 }
 
 // GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredArrayNull returns the value of RequiredArrayNull.
-func (s TestResponseFormatTestOK) GetRequiredArrayNull() []struct{} {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNull() []struct{} {
 	return s.RequiredArrayNull
 }
 
 // GetRequiredArrayNumber returns the value of RequiredArrayNumber.
-func (s TestResponseFormatTestOK) GetRequiredArrayNumber() []float64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNumber() []float64 {
 	return s.RequiredArrayNumber
 }
 
 // GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
-func (s TestResponseFormatTestOK) GetRequiredArrayNumberDouble() []float64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNumberDouble() []float64 {
 	return s.RequiredArrayNumberDouble
 }
 
 // GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
-func (s TestResponseFormatTestOK) GetRequiredArrayNumberFloat() []float32 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNumberFloat() []float32 {
 	return s.RequiredArrayNumberFloat
 }
 
 // GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
-func (s TestResponseFormatTestOK) GetRequiredArrayNumberInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNumberInt32() []int32 {
 	return s.RequiredArrayNumberInt32
 }
 
 // GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
-func (s TestResponseFormatTestOK) GetRequiredArrayNumberInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayNumberInt64() []int64 {
 	return s.RequiredArrayNumberInt64
 }
 
 // GetRequiredArrayString returns the value of RequiredArrayString.
-func (s TestResponseFormatTestOK) GetRequiredArrayString() []string {
+func (s *TestResponseFormatTestOK) GetRequiredArrayString() []string {
 	return s.RequiredArrayString
 }
 
 // GetRequiredArrayStringBase64 returns the value of RequiredArrayStringBase64.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringBase64() [][]byte {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringBase64() [][]byte {
 	return s.RequiredArrayStringBase64
 }
 
 // GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringBinary() []string {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringBinary() []string {
 	return s.RequiredArrayStringBinary
 }
 
 // GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringByte() [][]byte {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringByte() [][]byte {
 	return s.RequiredArrayStringByte
 }
 
 // GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringDate() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringDate() []time.Time {
 	return s.RequiredArrayStringDate
 }
 
 // GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringDateMinusTime() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringDateMinusTime() []time.Time {
 	return s.RequiredArrayStringDateMinusTime
 }
 
 // GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringDuration() []time.Duration {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringDuration() []time.Duration {
 	return s.RequiredArrayStringDuration
 }
 
 // GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringEmail() []string {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringEmail() []string {
 	return s.RequiredArrayStringEmail
 }
 
 // GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringHostname() []string {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringHostname() []string {
 	return s.RequiredArrayStringHostname
 }
 
 // GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt32() []int32 {
 	return s.RequiredArrayStringInt32
 }
 
 // GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringInt64() []int64 {
 	return s.RequiredArrayStringInt64
 }
 
 // GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringIP() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringIP() []netip.Addr {
 	return s.RequiredArrayStringIP
 }
 
 // GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringIpv4() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringIpv4() []netip.Addr {
 	return s.RequiredArrayStringIpv4
 }
 
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringIpv6() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringPassword() []string {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringPassword() []string {
 	return s.RequiredArrayStringPassword
 }
 
 // GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringTime() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringTime() []time.Time {
 	return s.RequiredArrayStringTime
 }
 
 // GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUnix() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnix() []time.Time {
 	return s.RequiredArrayStringUnix
 }
 
 // GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMicro() []time.Time {
 	return s.RequiredArrayStringUnixMinusMicro
 }
 
 // GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMilli() []time.Time {
 	return s.RequiredArrayStringUnixMinusMilli
 }
 
 // GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusNano() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusNano() []time.Time {
 	return s.RequiredArrayStringUnixMinusNano
 }
 
 // GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
 	return s.RequiredArrayStringUnixMinusSeconds
 }
 
 // GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringURI() []url.URL {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringURI() []url.URL {
 	return s.RequiredArrayStringURI
 }
 
 // GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
-func (s TestResponseFormatTestOK) GetRequiredArrayStringUUID() []uuid.UUID {
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringUUID() []uuid.UUID {
 	return s.RequiredArrayStringUUID
 }
 
 // GetRequiredBoolean returns the value of RequiredBoolean.
-func (s TestResponseFormatTestOK) GetRequiredBoolean() bool {
+func (s *TestResponseFormatTestOK) GetRequiredBoolean() bool {
 	return s.RequiredBoolean
 }
 
 // GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayAny() [][]jx.Raw {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayAny() [][]jx.Raw {
 	return s.RequiredDoubleArrayAny
 }
 
 // GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayBoolean() [][]bool {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayBoolean() [][]bool {
 	return s.RequiredDoubleArrayBoolean
 }
 
 // GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayInteger() [][]int {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayInteger() [][]int {
 	return s.RequiredDoubleArrayInteger
 }
 
 // GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
 	return s.RequiredDoubleArrayIntegerInt32
 }
 
 // GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
 	return s.RequiredDoubleArrayIntegerInt64
 }
 
 // GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint() [][]uint {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint() [][]uint {
 	return s.RequiredDoubleArrayIntegerUint
 }
 
 // GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
 	return s.RequiredDoubleArrayIntegerUint32
 }
 
 // GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
 	return s.RequiredDoubleArrayIntegerUint64
 }
 
 // GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnix
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusNano
 }
 
 // GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNull() [][]struct{} {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNull() [][]struct{} {
 	return s.RequiredDoubleArrayNull
 }
 
 // GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumber() [][]float64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNumber() [][]float64 {
 	return s.RequiredDoubleArrayNumber
 }
 
 // GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNumberDouble() [][]float64 {
 	return s.RequiredDoubleArrayNumberDouble
 }
 
 // GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNumberFloat() [][]float32 {
 	return s.RequiredDoubleArrayNumberFloat
 }
 
 // GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt32() [][]int32 {
 	return s.RequiredDoubleArrayNumberInt32
 }
 
 // GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt64() [][]int64 {
 	return s.RequiredDoubleArrayNumberInt64
 }
 
 // GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayString() [][]string {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayString() [][]string {
 	return s.RequiredDoubleArrayString
 }
 
 // GetRequiredDoubleArrayStringBase64 returns the value of RequiredDoubleArrayStringBase64.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringBase64() [][][]byte {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringBase64() [][][]byte {
 	return s.RequiredDoubleArrayStringBase64
 }
 
 // GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringBinary() [][]string {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringBinary() [][]string {
 	return s.RequiredDoubleArrayStringBinary
 }
 
 // GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringByte() [][][]byte {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringByte() [][][]byte {
 	return s.RequiredDoubleArrayStringByte
 }
 
 // GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDate() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringDate() [][]time.Time {
 	return s.RequiredDoubleArrayStringDate
 }
 
 // GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringDateMinusTime
 }
 
 // GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
 	return s.RequiredDoubleArrayStringDuration
 }
 
 // GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringEmail() [][]string {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringEmail() [][]string {
 	return s.RequiredDoubleArrayStringEmail
 }
 
 // GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringHostname() [][]string {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringHostname() [][]string {
 	return s.RequiredDoubleArrayStringHostname
 }
 
 // GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt32() [][]int32 {
 	return s.RequiredDoubleArrayStringInt32
 }
 
 // GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt64() [][]int64 {
 	return s.RequiredDoubleArrayStringInt64
 }
 
 // GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIP
 }
 
 // GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv4
 }
 
 // GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.RequiredDoubleArrayStringIpv6
 }
 
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringPassword() [][]string {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
 }
 
 // GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringTime() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringTime() [][]time.Time {
 	return s.RequiredDoubleArrayStringTime
 }
 
 // GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnix() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnix
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMicro
 }
 
 // GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusMilli
 }
 
 // GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusNano
 }
 
 // GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.RequiredDoubleArrayStringUnixMinusSeconds
 }
 
 // GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringURI() [][]url.URL {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringURI() [][]url.URL {
 	return s.RequiredDoubleArrayStringURI
 }
 
 // GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
-func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.RequiredDoubleArrayStringUUID
 }
 
 // GetRequiredInteger returns the value of RequiredInteger.
-func (s TestResponseFormatTestOK) GetRequiredInteger() int {
+func (s *TestResponseFormatTestOK) GetRequiredInteger() int {
 	return s.RequiredInteger
 }
 
 // GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
-func (s TestResponseFormatTestOK) GetRequiredIntegerInt32() int32 {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerInt32() int32 {
 	return s.RequiredIntegerInt32
 }
 
 // GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
-func (s TestResponseFormatTestOK) GetRequiredIntegerInt64() int64 {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerInt64() int64 {
 	return s.RequiredIntegerInt64
 }
 
 // GetRequiredIntegerUint returns the value of RequiredIntegerUint.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUint() uint {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUint() uint {
 	return s.RequiredIntegerUint
 }
 
 // GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUint32() uint32 {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUint32() uint32 {
 	return s.RequiredIntegerUint32
 }
 
 // GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUint64() uint64 {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUint64() uint64 {
 	return s.RequiredIntegerUint64
 }
 
 // GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUnix() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnix() time.Time {
 	return s.RequiredIntegerUnix
 }
 
 // GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMicro() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMicro() time.Time {
 	return s.RequiredIntegerUnixMinusMicro
 }
 
 // GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMilli() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMilli() time.Time {
 	return s.RequiredIntegerUnixMinusMilli
 }
 
 // GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusNano() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusNano() time.Time {
 	return s.RequiredIntegerUnixMinusNano
 }
 
 // GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusSeconds() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredIntegerUnixMinusSeconds() time.Time {
 	return s.RequiredIntegerUnixMinusSeconds
 }
 
 // GetRequiredNull returns the value of RequiredNull.
-func (s TestResponseFormatTestOK) GetRequiredNull() struct{} {
+func (s *TestResponseFormatTestOK) GetRequiredNull() struct{} {
 	return s.RequiredNull
 }
 
 // GetRequiredNumber returns the value of RequiredNumber.
-func (s TestResponseFormatTestOK) GetRequiredNumber() float64 {
+func (s *TestResponseFormatTestOK) GetRequiredNumber() float64 {
 	return s.RequiredNumber
 }
 
 // GetRequiredNumberDouble returns the value of RequiredNumberDouble.
-func (s TestResponseFormatTestOK) GetRequiredNumberDouble() float64 {
+func (s *TestResponseFormatTestOK) GetRequiredNumberDouble() float64 {
 	return s.RequiredNumberDouble
 }
 
 // GetRequiredNumberFloat returns the value of RequiredNumberFloat.
-func (s TestResponseFormatTestOK) GetRequiredNumberFloat() float32 {
+func (s *TestResponseFormatTestOK) GetRequiredNumberFloat() float32 {
 	return s.RequiredNumberFloat
 }
 
 // GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
-func (s TestResponseFormatTestOK) GetRequiredNumberInt32() int32 {
+func (s *TestResponseFormatTestOK) GetRequiredNumberInt32() int32 {
 	return s.RequiredNumberInt32
 }
 
 // GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
-func (s TestResponseFormatTestOK) GetRequiredNumberInt64() int64 {
+func (s *TestResponseFormatTestOK) GetRequiredNumberInt64() int64 {
 	return s.RequiredNumberInt64
 }
 
 // GetRequiredString returns the value of RequiredString.
-func (s TestResponseFormatTestOK) GetRequiredString() string {
+func (s *TestResponseFormatTestOK) GetRequiredString() string {
 	return s.RequiredString
 }
 
 // GetRequiredStringBase64 returns the value of RequiredStringBase64.
-func (s TestResponseFormatTestOK) GetRequiredStringBase64() []byte {
+func (s *TestResponseFormatTestOK) GetRequiredStringBase64() []byte {
 	return s.RequiredStringBase64
 }
 
 // GetRequiredStringBinary returns the value of RequiredStringBinary.
-func (s TestResponseFormatTestOK) GetRequiredStringBinary() string {
+func (s *TestResponseFormatTestOK) GetRequiredStringBinary() string {
 	return s.RequiredStringBinary
 }
 
 // GetRequiredStringByte returns the value of RequiredStringByte.
-func (s TestResponseFormatTestOK) GetRequiredStringByte() []byte {
+func (s *TestResponseFormatTestOK) GetRequiredStringByte() []byte {
 	return s.RequiredStringByte
 }
 
 // GetRequiredStringDate returns the value of RequiredStringDate.
-func (s TestResponseFormatTestOK) GetRequiredStringDate() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringDate() time.Time {
 	return s.RequiredStringDate
 }
 
 // GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetRequiredStringDateMinusTime() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringDateMinusTime() time.Time {
 	return s.RequiredStringDateMinusTime
 }
 
 // GetRequiredStringDuration returns the value of RequiredStringDuration.
-func (s TestResponseFormatTestOK) GetRequiredStringDuration() time.Duration {
+func (s *TestResponseFormatTestOK) GetRequiredStringDuration() time.Duration {
 	return s.RequiredStringDuration
 }
 
 // GetRequiredStringEmail returns the value of RequiredStringEmail.
-func (s TestResponseFormatTestOK) GetRequiredStringEmail() string {
+func (s *TestResponseFormatTestOK) GetRequiredStringEmail() string {
 	return s.RequiredStringEmail
 }
 
 // GetRequiredStringHostname returns the value of RequiredStringHostname.
-func (s TestResponseFormatTestOK) GetRequiredStringHostname() string {
+func (s *TestResponseFormatTestOK) GetRequiredStringHostname() string {
 	return s.RequiredStringHostname
 }
 
 // GetRequiredStringInt32 returns the value of RequiredStringInt32.
-func (s TestResponseFormatTestOK) GetRequiredStringInt32() int32 {
+func (s *TestResponseFormatTestOK) GetRequiredStringInt32() int32 {
 	return s.RequiredStringInt32
 }
 
 // GetRequiredStringInt64 returns the value of RequiredStringInt64.
-func (s TestResponseFormatTestOK) GetRequiredStringInt64() int64 {
+func (s *TestResponseFormatTestOK) GetRequiredStringInt64() int64 {
 	return s.RequiredStringInt64
 }
 
 // GetRequiredStringIP returns the value of RequiredStringIP.
-func (s TestResponseFormatTestOK) GetRequiredStringIP() netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredStringIP() netip.Addr {
 	return s.RequiredStringIP
 }
 
 // GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
-func (s TestResponseFormatTestOK) GetRequiredStringIpv4() netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredStringIpv4() netip.Addr {
 	return s.RequiredStringIpv4
 }
 
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
-func (s TestResponseFormatTestOK) GetRequiredStringIpv6() netip.Addr {
+func (s *TestResponseFormatTestOK) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
-func (s TestResponseFormatTestOK) GetRequiredStringPassword() string {
+func (s *TestResponseFormatTestOK) GetRequiredStringPassword() string {
 	return s.RequiredStringPassword
 }
 
 // GetRequiredStringTime returns the value of RequiredStringTime.
-func (s TestResponseFormatTestOK) GetRequiredStringTime() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringTime() time.Time {
 	return s.RequiredStringTime
 }
 
 // GetRequiredStringUnix returns the value of RequiredStringUnix.
-func (s TestResponseFormatTestOK) GetRequiredStringUnix() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringUnix() time.Time {
 	return s.RequiredStringUnix
 }
 
 // GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusMicro() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringUnixMinusMicro() time.Time {
 	return s.RequiredStringUnixMinusMicro
 }
 
 // GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusMilli() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringUnixMinusMilli() time.Time {
 	return s.RequiredStringUnixMinusMilli
 }
 
 // GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusNano() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringUnixMinusNano() time.Time {
 	return s.RequiredStringUnixMinusNano
 }
 
 // GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusSeconds() time.Time {
+func (s *TestResponseFormatTestOK) GetRequiredStringUnixMinusSeconds() time.Time {
 	return s.RequiredStringUnixMinusSeconds
 }
 
 // GetRequiredStringURI returns the value of RequiredStringURI.
-func (s TestResponseFormatTestOK) GetRequiredStringURI() url.URL {
+func (s *TestResponseFormatTestOK) GetRequiredStringURI() url.URL {
 	return s.RequiredStringURI
 }
 
 // GetRequiredStringUUID returns the value of RequiredStringUUID.
-func (s TestResponseFormatTestOK) GetRequiredStringUUID() uuid.UUID {
+func (s *TestResponseFormatTestOK) GetRequiredStringUUID() uuid.UUID {
 	return s.RequiredStringUUID
 }
 
 // GetOptionalAny returns the value of OptionalAny.
-func (s TestResponseFormatTestOK) GetOptionalAny() jx.Raw {
+func (s *TestResponseFormatTestOK) GetOptionalAny() jx.Raw {
 	return s.OptionalAny
 }
 
 // GetOptionalArrayAny returns the value of OptionalArrayAny.
-func (s TestResponseFormatTestOK) GetOptionalArrayAny() []jx.Raw {
+func (s *TestResponseFormatTestOK) GetOptionalArrayAny() []jx.Raw {
 	return s.OptionalArrayAny
 }
 
 // GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
-func (s TestResponseFormatTestOK) GetOptionalArrayBoolean() []bool {
+func (s *TestResponseFormatTestOK) GetOptionalArrayBoolean() []bool {
 	return s.OptionalArrayBoolean
 }
 
 // GetOptionalArrayInteger returns the value of OptionalArrayInteger.
-func (s TestResponseFormatTestOK) GetOptionalArrayInteger() []int {
+func (s *TestResponseFormatTestOK) GetOptionalArrayInteger() []int {
 	return s.OptionalArrayInteger
 }
 
 // GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt32() []int32 {
 	return s.OptionalArrayIntegerInt32
 }
 
 // GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerInt64() []int64 {
 	return s.OptionalArrayIntegerInt64
 }
 
 // GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint() []uint {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint() []uint {
 	return s.OptionalArrayIntegerUint
 }
 
 // GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint32() []uint32 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint32() []uint32 {
 	return s.OptionalArrayIntegerUint32
 }
 
 // GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint64() []uint64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUint64() []uint64 {
 	return s.OptionalArrayIntegerUint64
 }
 
 // GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnix() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnix() []time.Time {
 	return s.OptionalArrayIntegerUnix
 }
 
 // GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusNano
 }
 
 // GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalArrayNull returns the value of OptionalArrayNull.
-func (s TestResponseFormatTestOK) GetOptionalArrayNull() []struct{} {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNull() []struct{} {
 	return s.OptionalArrayNull
 }
 
 // GetOptionalArrayNumber returns the value of OptionalArrayNumber.
-func (s TestResponseFormatTestOK) GetOptionalArrayNumber() []float64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNumber() []float64 {
 	return s.OptionalArrayNumber
 }
 
 // GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
-func (s TestResponseFormatTestOK) GetOptionalArrayNumberDouble() []float64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNumberDouble() []float64 {
 	return s.OptionalArrayNumberDouble
 }
 
 // GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
-func (s TestResponseFormatTestOK) GetOptionalArrayNumberFloat() []float32 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNumberFloat() []float32 {
 	return s.OptionalArrayNumberFloat
 }
 
 // GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
-func (s TestResponseFormatTestOK) GetOptionalArrayNumberInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNumberInt32() []int32 {
 	return s.OptionalArrayNumberInt32
 }
 
 // GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
-func (s TestResponseFormatTestOK) GetOptionalArrayNumberInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayNumberInt64() []int64 {
 	return s.OptionalArrayNumberInt64
 }
 
 // GetOptionalArrayString returns the value of OptionalArrayString.
-func (s TestResponseFormatTestOK) GetOptionalArrayString() []string {
+func (s *TestResponseFormatTestOK) GetOptionalArrayString() []string {
 	return s.OptionalArrayString
 }
 
 // GetOptionalArrayStringBase64 returns the value of OptionalArrayStringBase64.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringBase64() [][]byte {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringBase64() [][]byte {
 	return s.OptionalArrayStringBase64
 }
 
 // GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringBinary() []string {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringBinary() []string {
 	return s.OptionalArrayStringBinary
 }
 
 // GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringByte() [][]byte {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringByte() [][]byte {
 	return s.OptionalArrayStringByte
 }
 
 // GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringDate() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringDate() []time.Time {
 	return s.OptionalArrayStringDate
 }
 
 // GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringDateMinusTime() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringDateMinusTime() []time.Time {
 	return s.OptionalArrayStringDateMinusTime
 }
 
 // GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringDuration() []time.Duration {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringDuration() []time.Duration {
 	return s.OptionalArrayStringDuration
 }
 
 // GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringEmail() []string {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringEmail() []string {
 	return s.OptionalArrayStringEmail
 }
 
 // GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringHostname() []string {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringHostname() []string {
 	return s.OptionalArrayStringHostname
 }
 
 // GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringInt32() []int32 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt32() []int32 {
 	return s.OptionalArrayStringInt32
 }
 
 // GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringInt64() []int64 {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringInt64() []int64 {
 	return s.OptionalArrayStringInt64
 }
 
 // GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringIP() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringIP() []netip.Addr {
 	return s.OptionalArrayStringIP
 }
 
 // GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringIpv4() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringIpv4() []netip.Addr {
 	return s.OptionalArrayStringIpv4
 }
 
 // GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringIpv6() []netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringIpv6() []netip.Addr {
 	return s.OptionalArrayStringIpv6
 }
 
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringPassword() []string {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
 }
 
 // GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringTime() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringTime() []time.Time {
 	return s.OptionalArrayStringTime
 }
 
 // GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUnix() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnix() []time.Time {
 	return s.OptionalArrayStringUnix
 }
 
 // GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMicro() []time.Time {
 	return s.OptionalArrayStringUnixMinusMicro
 }
 
 // GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMilli() []time.Time {
 	return s.OptionalArrayStringUnixMinusMilli
 }
 
 // GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusNano() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusNano() []time.Time {
 	return s.OptionalArrayStringUnixMinusNano
 }
 
 // GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
 	return s.OptionalArrayStringUnixMinusSeconds
 }
 
 // GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringURI() []url.URL {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringURI() []url.URL {
 	return s.OptionalArrayStringURI
 }
 
 // GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
-func (s TestResponseFormatTestOK) GetOptionalArrayStringUUID() []uuid.UUID {
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringUUID() []uuid.UUID {
 	return s.OptionalArrayStringUUID
 }
 
 // GetOptionalBoolean returns the value of OptionalBoolean.
-func (s TestResponseFormatTestOK) GetOptionalBoolean() OptBool {
+func (s *TestResponseFormatTestOK) GetOptionalBoolean() OptBool {
 	return s.OptionalBoolean
 }
 
 // GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayAny() [][]jx.Raw {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayAny() [][]jx.Raw {
 	return s.OptionalDoubleArrayAny
 }
 
 // GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayBoolean() [][]bool {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayBoolean() [][]bool {
 	return s.OptionalDoubleArrayBoolean
 }
 
 // GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayInteger() [][]int {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayInteger() [][]int {
 	return s.OptionalDoubleArrayInteger
 }
 
 // GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
 	return s.OptionalDoubleArrayIntegerInt32
 }
 
 // GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
 	return s.OptionalDoubleArrayIntegerInt64
 }
 
 // GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint() [][]uint {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint() [][]uint {
 	return s.OptionalDoubleArrayIntegerUint
 }
 
 // GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
 	return s.OptionalDoubleArrayIntegerUint32
 }
 
 // GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
 	return s.OptionalDoubleArrayIntegerUint64
 }
 
 // GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnix
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusNano
 }
 
 // GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNull() [][]struct{} {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNull() [][]struct{} {
 	return s.OptionalDoubleArrayNull
 }
 
 // GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumber() [][]float64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNumber() [][]float64 {
 	return s.OptionalDoubleArrayNumber
 }
 
 // GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNumberDouble() [][]float64 {
 	return s.OptionalDoubleArrayNumberDouble
 }
 
 // GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNumberFloat() [][]float32 {
 	return s.OptionalDoubleArrayNumberFloat
 }
 
 // GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt32() [][]int32 {
 	return s.OptionalDoubleArrayNumberInt32
 }
 
 // GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt64() [][]int64 {
 	return s.OptionalDoubleArrayNumberInt64
 }
 
 // GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayString() [][]string {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayString() [][]string {
 	return s.OptionalDoubleArrayString
 }
 
 // GetOptionalDoubleArrayStringBase64 returns the value of OptionalDoubleArrayStringBase64.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringBase64() [][][]byte {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringBase64() [][][]byte {
 	return s.OptionalDoubleArrayStringBase64
 }
 
 // GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringBinary() [][]string {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringBinary() [][]string {
 	return s.OptionalDoubleArrayStringBinary
 }
 
 // GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringByte() [][][]byte {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringByte() [][][]byte {
 	return s.OptionalDoubleArrayStringByte
 }
 
 // GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDate() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringDate() [][]time.Time {
 	return s.OptionalDoubleArrayStringDate
 }
 
 // GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringDateMinusTime
 }
 
 // GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
 	return s.OptionalDoubleArrayStringDuration
 }
 
 // GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringEmail() [][]string {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringEmail() [][]string {
 	return s.OptionalDoubleArrayStringEmail
 }
 
 // GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringHostname() [][]string {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringHostname() [][]string {
 	return s.OptionalDoubleArrayStringHostname
 }
 
 // GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt32() [][]int32 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt32() [][]int32 {
 	return s.OptionalDoubleArrayStringInt32
 }
 
 // GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt64() [][]int64 {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt64() [][]int64 {
 	return s.OptionalDoubleArrayStringInt64
 }
 
 // GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIP
 }
 
 // GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv4
 }
 
 // GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
 	return s.OptionalDoubleArrayStringIpv6
 }
 
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringPassword() [][]string {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
 }
 
 // GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringTime() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringTime() [][]time.Time {
 	return s.OptionalDoubleArrayStringTime
 }
 
 // GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnix() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnix
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMicro
 }
 
 // GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusMilli
 }
 
 // GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusNano
 }
 
 // GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
 	return s.OptionalDoubleArrayStringUnixMinusSeconds
 }
 
 // GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringURI() [][]url.URL {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringURI() [][]url.URL {
 	return s.OptionalDoubleArrayStringURI
 }
 
 // GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
-func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
 	return s.OptionalDoubleArrayStringUUID
 }
 
 // GetOptionalInteger returns the value of OptionalInteger.
-func (s TestResponseFormatTestOK) GetOptionalInteger() OptInt {
+func (s *TestResponseFormatTestOK) GetOptionalInteger() OptInt {
 	return s.OptionalInteger
 }
 
 // GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
-func (s TestResponseFormatTestOK) GetOptionalIntegerInt32() OptInt32 {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerInt32() OptInt32 {
 	return s.OptionalIntegerInt32
 }
 
 // GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
-func (s TestResponseFormatTestOK) GetOptionalIntegerInt64() OptInt64 {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerInt64() OptInt64 {
 	return s.OptionalIntegerInt64
 }
 
 // GetOptionalIntegerUint returns the value of OptionalIntegerUint.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUint() OptUint {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUint() OptUint {
 	return s.OptionalIntegerUint
 }
 
 // GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUint32() OptUint32 {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUint32() OptUint32 {
 	return s.OptionalIntegerUint32
 }
 
 // GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUint64() OptUint64 {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUint64() OptUint64 {
 	return s.OptionalIntegerUint64
 }
 
 // GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUnix() OptUnixSeconds {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnix() OptUnixSeconds {
 	return s.OptionalIntegerUnix
 }
 
 // GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
 	return s.OptionalIntegerUnixMinusMicro
 }
 
 // GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
 	return s.OptionalIntegerUnixMinusMilli
 }
 
 // GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusNano() OptUnixNano {
 	return s.OptionalIntegerUnixMinusNano
 }
 
 // GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+func (s *TestResponseFormatTestOK) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
 	return s.OptionalIntegerUnixMinusSeconds
 }
 
 // GetOptionalNull returns the value of OptionalNull.
-func (s TestResponseFormatTestOK) GetOptionalNull() OptNull {
+func (s *TestResponseFormatTestOK) GetOptionalNull() OptNull {
 	return s.OptionalNull
 }
 
 // GetOptionalNumber returns the value of OptionalNumber.
-func (s TestResponseFormatTestOK) GetOptionalNumber() OptFloat64 {
+func (s *TestResponseFormatTestOK) GetOptionalNumber() OptFloat64 {
 	return s.OptionalNumber
 }
 
 // GetOptionalNumberDouble returns the value of OptionalNumberDouble.
-func (s TestResponseFormatTestOK) GetOptionalNumberDouble() OptFloat64 {
+func (s *TestResponseFormatTestOK) GetOptionalNumberDouble() OptFloat64 {
 	return s.OptionalNumberDouble
 }
 
 // GetOptionalNumberFloat returns the value of OptionalNumberFloat.
-func (s TestResponseFormatTestOK) GetOptionalNumberFloat() OptFloat32 {
+func (s *TestResponseFormatTestOK) GetOptionalNumberFloat() OptFloat32 {
 	return s.OptionalNumberFloat
 }
 
 // GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
-func (s TestResponseFormatTestOK) GetOptionalNumberInt32() OptInt32 {
+func (s *TestResponseFormatTestOK) GetOptionalNumberInt32() OptInt32 {
 	return s.OptionalNumberInt32
 }
 
 // GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
-func (s TestResponseFormatTestOK) GetOptionalNumberInt64() OptInt64 {
+func (s *TestResponseFormatTestOK) GetOptionalNumberInt64() OptInt64 {
 	return s.OptionalNumberInt64
 }
 
 // GetOptionalString returns the value of OptionalString.
-func (s TestResponseFormatTestOK) GetOptionalString() OptString {
+func (s *TestResponseFormatTestOK) GetOptionalString() OptString {
 	return s.OptionalString
 }
 
 // GetOptionalStringBase64 returns the value of OptionalStringBase64.
-func (s TestResponseFormatTestOK) GetOptionalStringBase64() []byte {
+func (s *TestResponseFormatTestOK) GetOptionalStringBase64() []byte {
 	return s.OptionalStringBase64
 }
 
 // GetOptionalStringBinary returns the value of OptionalStringBinary.
-func (s TestResponseFormatTestOK) GetOptionalStringBinary() OptString {
+func (s *TestResponseFormatTestOK) GetOptionalStringBinary() OptString {
 	return s.OptionalStringBinary
 }
 
 // GetOptionalStringByte returns the value of OptionalStringByte.
-func (s TestResponseFormatTestOK) GetOptionalStringByte() []byte {
+func (s *TestResponseFormatTestOK) GetOptionalStringByte() []byte {
 	return s.OptionalStringByte
 }
 
 // GetOptionalStringDate returns the value of OptionalStringDate.
-func (s TestResponseFormatTestOK) GetOptionalStringDate() OptDate {
+func (s *TestResponseFormatTestOK) GetOptionalStringDate() OptDate {
 	return s.OptionalStringDate
 }
 
 // GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
-func (s TestResponseFormatTestOK) GetOptionalStringDateMinusTime() OptDateTime {
+func (s *TestResponseFormatTestOK) GetOptionalStringDateMinusTime() OptDateTime {
 	return s.OptionalStringDateMinusTime
 }
 
 // GetOptionalStringDuration returns the value of OptionalStringDuration.
-func (s TestResponseFormatTestOK) GetOptionalStringDuration() OptDuration {
+func (s *TestResponseFormatTestOK) GetOptionalStringDuration() OptDuration {
 	return s.OptionalStringDuration
 }
 
 // GetOptionalStringEmail returns the value of OptionalStringEmail.
-func (s TestResponseFormatTestOK) GetOptionalStringEmail() OptString {
+func (s *TestResponseFormatTestOK) GetOptionalStringEmail() OptString {
 	return s.OptionalStringEmail
 }
 
 // GetOptionalStringHostname returns the value of OptionalStringHostname.
-func (s TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
+func (s *TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
 	return s.OptionalStringHostname
 }
 
 // GetOptionalStringInt32 returns the value of OptionalStringInt32.
-func (s TestResponseFormatTestOK) GetOptionalStringInt32() OptStringInt32 {
+func (s *TestResponseFormatTestOK) GetOptionalStringInt32() OptStringInt32 {
 	return s.OptionalStringInt32
 }
 
 // GetOptionalStringInt64 returns the value of OptionalStringInt64.
-func (s TestResponseFormatTestOK) GetOptionalStringInt64() OptStringInt64 {
+func (s *TestResponseFormatTestOK) GetOptionalStringInt64() OptStringInt64 {
 	return s.OptionalStringInt64
 }
 
 // GetOptionalStringIP returns the value of OptionalStringIP.
-func (s TestResponseFormatTestOK) GetOptionalStringIP() OptIP {
+func (s *TestResponseFormatTestOK) GetOptionalStringIP() OptIP {
 	return s.OptionalStringIP
 }
 
 // GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
-func (s TestResponseFormatTestOK) GetOptionalStringIpv4() OptIPv4 {
+func (s *TestResponseFormatTestOK) GetOptionalStringIpv4() OptIPv4 {
 	return s.OptionalStringIpv4
 }
 
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
-func (s TestResponseFormatTestOK) GetOptionalStringIpv6() OptIPv6 {
+func (s *TestResponseFormatTestOK) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
-func (s TestResponseFormatTestOK) GetOptionalStringPassword() OptString {
+func (s *TestResponseFormatTestOK) GetOptionalStringPassword() OptString {
 	return s.OptionalStringPassword
 }
 
 // GetOptionalStringTime returns the value of OptionalStringTime.
-func (s TestResponseFormatTestOK) GetOptionalStringTime() OptTime {
+func (s *TestResponseFormatTestOK) GetOptionalStringTime() OptTime {
 	return s.OptionalStringTime
 }
 
 // GetOptionalStringUnix returns the value of OptionalStringUnix.
-func (s TestResponseFormatTestOK) GetOptionalStringUnix() OptStringUnixSeconds {
+func (s *TestResponseFormatTestOK) GetOptionalStringUnix() OptStringUnixSeconds {
 	return s.OptionalStringUnix
 }
 
 // GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
-func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+func (s *TestResponseFormatTestOK) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
 	return s.OptionalStringUnixMinusMicro
 }
 
 // GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
-func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+func (s *TestResponseFormatTestOK) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
 	return s.OptionalStringUnixMinusMilli
 }
 
 // GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
-func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+func (s *TestResponseFormatTestOK) GetOptionalStringUnixMinusNano() OptStringUnixNano {
 	return s.OptionalStringUnixMinusNano
 }
 
 // GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
-func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+func (s *TestResponseFormatTestOK) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
 	return s.OptionalStringUnixMinusSeconds
 }
 
 // GetOptionalStringURI returns the value of OptionalStringURI.
-func (s TestResponseFormatTestOK) GetOptionalStringURI() OptURI {
+func (s *TestResponseFormatTestOK) GetOptionalStringURI() OptURI {
 	return s.OptionalStringURI
 }
 
 // GetOptionalStringUUID returns the value of OptionalStringUUID.
-func (s TestResponseFormatTestOK) GetOptionalStringUUID() OptUUID {
+func (s *TestResponseFormatTestOK) GetOptionalStringUUID() OptUUID {
 	return s.OptionalStringUUID
 }
 

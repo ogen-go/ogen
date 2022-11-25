@@ -18,7 +18,7 @@ import (
 )
 
 func encodeTestFormURLEncodedRequest(
-	req TestForm,
+	req *TestForm,
 	r *http.Request,
 ) error {
 	const contentType = "application/x-www-form-urlencoded"
@@ -130,7 +130,7 @@ func encodeTestFormURLEncodedRequest(
 }
 
 func encodeTestMultipartRequest(
-	req TestForm,
+	req *TestForm,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"
@@ -247,7 +247,7 @@ func encodeTestMultipartRequest(
 }
 
 func encodeTestMultipartUploadRequest(
-	req TestMultipartUploadReqForm,
+	req *TestMultipartUploadReqForm,
 	r *http.Request,
 ) error {
 	const contentType = "multipart/form-data"

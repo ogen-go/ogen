@@ -18,6 +18,6 @@ var _ Handler = UnimplementedHandler{}
 // Liveness probe for kubernetes.
 //
 // GET /healthz
-func (UnimplementedHandler) ProbeLiveness(ctx context.Context) (r ProbeLivenessOK, _ error) {
+func (UnimplementedHandler) ProbeLiveness(ctx context.Context) (r *ProbeLivenessOK, _ error) {
 	return r, ht.ErrNotImplemented
 }

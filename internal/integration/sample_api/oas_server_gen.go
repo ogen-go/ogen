@@ -17,13 +17,13 @@ type Handler interface {
 	// DefaultTest implements defaultTest operation.
 	//
 	// POST /defaultTest
-	DefaultTest(ctx context.Context, req DefaultTest, params DefaultTestParams) (int32, error)
+	DefaultTest(ctx context.Context, req *DefaultTest, params DefaultTestParams) (int32, error)
 	// ErrorGet implements errorGet operation.
 	//
 	// Returns error.
 	//
 	// GET /error
-	ErrorGet(ctx context.Context) (ErrorStatusCode, error)
+	ErrorGet(ctx context.Context) (*ErrorStatusCode, error)
 	// FoobarGet implements foobarGet operation.
 	//
 	// Dumb endpoint for testing things.
@@ -39,25 +39,25 @@ type Handler interface {
 	// FoobarPut implements PUT /foobar operation.
 	//
 	// PUT /foobar
-	FoobarPut(ctx context.Context) (FoobarPutDef, error)
+	FoobarPut(ctx context.Context) (*FoobarPutDef, error)
 	// GetHeader implements getHeader operation.
 	//
 	// Test for header param.
 	//
 	// GET /test/header
-	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
+	GetHeader(ctx context.Context, params GetHeaderParams) (*Hash, error)
 	// NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 	//
 	// GET /noAdditionalPropertiesTest
-	NoAdditionalPropertiesTest(ctx context.Context) (NoAdditionalPropertiesTest, error)
+	NoAdditionalPropertiesTest(ctx context.Context) (*NoAdditionalPropertiesTest, error)
 	// NullableDefaultResponse implements nullableDefaultResponse operation.
 	//
 	// GET /nullableDefaultResponse
-	NullableDefaultResponse(ctx context.Context) (NilIntStatusCode, error)
+	NullableDefaultResponse(ctx context.Context) (*NilIntStatusCode, error)
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug
-	OneofBug(ctx context.Context, req OneOfBugs) (OneofBugOK, error)
+	OneofBug(ctx context.Context, req *OneOfBugs) (*OneofBugOK, error)
 	// PatternRecursiveMapGet implements GET /patternRecursiveMap operation.
 	//
 	// GET /patternRecursiveMap
@@ -67,7 +67,7 @@ type Handler interface {
 	// Creates pet.
 	//
 	// POST /pet
-	PetCreate(ctx context.Context, req OptPet) (Pet, error)
+	PetCreate(ctx context.Context, req OptPet) (*Pet, error)
 	// PetFriendsNamesByID implements petFriendsNamesByID operation.
 	//
 	// Returns names of all friends of pet.
@@ -97,7 +97,7 @@ type Handler interface {
 	// Returns pet by name from the system that the user has access to.
 	//
 	// GET /pet/{name}
-	PetGetByName(ctx context.Context, params PetGetByNameParams) (Pet, error)
+	PetGetByName(ctx context.Context, params PetGetByNameParams) (*Pet, error)
 	// PetNameByID implements petNameByID operation.
 	//
 	// Returns pet name by pet id.
@@ -107,11 +107,11 @@ type Handler interface {
 	// PetUpdateNameAliasPost implements POST /pet/updateNameAlias operation.
 	//
 	// POST /pet/updateNameAlias
-	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (PetUpdateNameAliasPostDef, error)
+	PetUpdateNameAliasPost(ctx context.Context, req OptPetName) (*PetUpdateNameAliasPostDef, error)
 	// PetUpdateNamePost implements POST /pet/updateName operation.
 	//
 	// POST /pet/updateName
-	PetUpdateNamePost(ctx context.Context, req OptString) (PetUpdateNamePostDef, error)
+	PetUpdateNamePost(ctx context.Context, req OptString) (*PetUpdateNamePostDef, error)
 	// PetUploadAvatarByID implements petUploadAvatarByID operation.
 	//
 	// Uploads pet avatar by id.
@@ -125,7 +125,7 @@ type Handler interface {
 	// RecursiveMapGet implements GET /recursiveMap operation.
 	//
 	// GET /recursiveMap
-	RecursiveMapGet(ctx context.Context) (RecursiveMap, error)
+	RecursiveMapGet(ctx context.Context) (*RecursiveMap, error)
 	// SecurityTest implements securityTest operation.
 	//
 	// GET /securityTest
@@ -133,7 +133,7 @@ type Handler interface {
 	// StringIntMapGet implements GET /stringIntMap operation.
 	//
 	// GET /stringIntMap
-	StringIntMapGet(ctx context.Context) (StringIntMap, error)
+	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
 	// TestContentParameter implements testContentParameter operation.
 	//
 	// GET /testContentParameter
@@ -141,7 +141,7 @@ type Handler interface {
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation
-	TestFloatValidation(ctx context.Context, req TestFloatValidation) (TestFloatValidationOK, error)
+	TestFloatValidation(ctx context.Context, req *TestFloatValidation) (*TestFloatValidationOK, error)
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -149,7 +149,7 @@ type Handler interface {
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter
-	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (TestObjectQueryParameterOK, error)
+	TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (*TestObjectQueryParameterOK, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and

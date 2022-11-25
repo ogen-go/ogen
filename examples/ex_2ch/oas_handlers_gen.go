@@ -61,7 +61,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 		return
 	}
 
-	var response Captcha
+	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -84,7 +84,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 		type (
 			Request  = struct{}
 			Params   = APICaptcha2chcaptchaIDGetParams
-			Response = Captcha
+			Response = *Captcha
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -261,7 +261,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 		return
 	}
 
-	var response Captcha
+	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -288,7 +288,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 		type (
 			Request  = struct{}
 			Params   = APICaptchaAppIDPublicKeyGetParams
-			Response = Captcha
+			Response = *Captcha
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -365,7 +365,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		return
 	}
 
-	var response Captcha
+	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -388,7 +388,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		type (
 			Request  = struct{}
 			Params   = APICaptchaInvisibleRecaptchaIDGetParams
-			Response = Captcha
+			Response = *Captcha
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -451,7 +451,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		err error
 	)
 
-	var response APICaptchaInvisibleRecaptchaMobileGetOK
+	var response *APICaptchaInvisibleRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -465,7 +465,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = APICaptchaInvisibleRecaptchaMobileGetOK
+			Response = *APICaptchaInvisibleRecaptchaMobileGetOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -542,7 +542,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 		return
 	}
 
-	var response Captcha
+	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -565,7 +565,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 		type (
 			Request  = struct{}
 			Params   = APICaptchaRecaptchaIDGetParams
-			Response = Captcha
+			Response = *Captcha
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -628,7 +628,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 		err error
 	)
 
-	var response APICaptchaRecaptchaMobileGetOK
+	var response *APICaptchaRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -642,7 +642,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 		type (
 			Request  = struct{}
 			Params   = struct{}
-			Response = APICaptchaRecaptchaMobileGetOK
+			Response = *APICaptchaRecaptchaMobileGetOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -719,7 +719,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	var response Like
+	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -742,7 +742,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 		type (
 			Request  = struct{}
 			Params   = APIDislikeGetParams
-			Response = Like
+			Response = *Like
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -819,7 +819,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 		return
 	}
 
-	var response Like
+	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -842,7 +842,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 		type (
 			Request  = struct{}
 			Params   = APILikeGetParams
-			Response = Like
+			Response = *Like
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -921,7 +921,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		return
 	}
 
-	var response MobileThreadPostsAfter
+	var response *MobileThreadPostsAfter
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -948,7 +948,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		type (
 			Request  = struct{}
 			Params   = APIMobileV2AfterBoardThreadNumGetParams
-			Response = MobileThreadPostsAfter
+			Response = *MobileThreadPostsAfter
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1102,7 +1102,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 		return
 	}
 
-	var response MobileThreadLastInfo
+	var response *MobileThreadLastInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1125,7 +1125,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 		type (
 			Request  = struct{}
 			Params   = APIMobileV2InfoBoardThreadGetParams
-			Response = MobileThreadLastInfo
+			Response = *MobileThreadLastInfo
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1202,7 +1202,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 		return
 	}
 
-	var response MobilePost
+	var response *MobilePost
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1225,7 +1225,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 		type (
 			Request  = struct{}
 			Params   = APIMobileV2PostBoardNumGetParams
-			Response = MobilePost
+			Response = *MobilePost
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1317,7 +1317,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	var response Passcode
+	var response *Passcode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1336,7 +1336,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		type (
 			Request  = OptUserPassloginPostReq
 			Params   = UserPassloginPostParams
-			Response = Passcode
+			Response = *Passcode
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -1514,7 +1514,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	var response Report
+	var response *Report
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:       ctx,
@@ -1528,7 +1528,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		type (
 			Request  = OptUserReportPostReq
 			Params   = struct{}
-			Response = Report
+			Response = *Report
 		)
 		response, err = middleware.HookMiddleware[
 			Request,

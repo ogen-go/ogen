@@ -63,7 +63,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Liveness probe for kubernetes.
 //
 // GET /healthz
-func (c *Client) ProbeLiveness(ctx context.Context) (res ProbeLivenessOK, err error) {
+func (c *Client) ProbeLiveness(ctx context.Context) (res *ProbeLivenessOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("probeLiveness"),
 	}

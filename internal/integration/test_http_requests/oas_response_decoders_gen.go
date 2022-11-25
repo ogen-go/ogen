@@ -90,7 +90,7 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, err 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeResponse(resp *http.Response) (res MaskResponse, err error) {
+func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -118,7 +118,7 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res MaskResponse, err e
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -126,7 +126,7 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res MaskResponse, err e
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res MaskResponse, err error) {
+func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -154,7 +154,7 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res MaskRespons
 			if err := d.Skip(); err != io.EOF {
 				return res, errors.New("unexpected trailing data")
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

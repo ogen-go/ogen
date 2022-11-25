@@ -15,7 +15,7 @@ import (
 )
 
 func (s *Server) decodeCreateSnapshotRequest(r *http.Request) (
-	req SnapshotCreateParams,
+	req *SnapshotCreateParams,
 	close func() error,
 	rerr error,
 ) {
@@ -74,14 +74,14 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeCreateSyncActionRequest(r *http.Request) (
-	req InstanceActionInfo,
+	req *InstanceActionInfo,
 	close func() error,
 	rerr error,
 ) {
@@ -140,14 +140,14 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeLoadSnapshotRequest(r *http.Request) (
-	req SnapshotLoadParams,
+	req *SnapshotLoadParams,
 	close func() error,
 	rerr error,
 ) {
@@ -198,14 +198,14 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
-	req MmdsConfig,
+	req *MmdsConfig,
 	close func() error,
 	rerr error,
 ) {
@@ -256,7 +256,7 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -391,7 +391,7 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request) (
 }
 
 func (s *Server) decodePatchBalloonRequest(r *http.Request) (
-	req BalloonUpdate,
+	req *BalloonUpdate,
 	close func() error,
 	rerr error,
 ) {
@@ -442,14 +442,14 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request) (
-	req BalloonStatsUpdate,
+	req *BalloonStatsUpdate,
 	close func() error,
 	rerr error,
 ) {
@@ -500,14 +500,14 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request) (
-	req PartialDrive,
+	req *PartialDrive,
 	close func() error,
 	rerr error,
 ) {
@@ -566,14 +566,14 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (
-	req PartialNetworkInterface,
+	req *PartialNetworkInterface,
 	close func() error,
 	rerr error,
 ) {
@@ -632,7 +632,7 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -716,7 +716,7 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request) (
 }
 
 func (s *Server) decodePatchVmRequest(r *http.Request) (
-	req VM,
+	req *VM,
 	close func() error,
 	rerr error,
 ) {
@@ -775,14 +775,14 @@ func (s *Server) decodePatchVmRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutBalloonRequest(r *http.Request) (
-	req Balloon,
+	req *Balloon,
 	close func() error,
 	rerr error,
 ) {
@@ -833,14 +833,14 @@ func (s *Server) decodePutBalloonRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutGuestBootSourceRequest(r *http.Request) (
-	req BootSource,
+	req *BootSource,
 	close func() error,
 	rerr error,
 ) {
@@ -891,14 +891,14 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request) (
-	req Drive,
+	req *Drive,
 	close func() error,
 	rerr error,
 ) {
@@ -957,14 +957,14 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (
-	req NetworkInterface,
+	req *NetworkInterface,
 	close func() error,
 	rerr error,
 ) {
@@ -1023,14 +1023,14 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutGuestVsockRequest(r *http.Request) (
-	req Vsock,
+	req *Vsock,
 	close func() error,
 	rerr error,
 ) {
@@ -1089,14 +1089,14 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodePutLoggerRequest(r *http.Request) (
-	req Logger,
+	req *Logger,
 	close func() error,
 	rerr error,
 ) {
@@ -1155,7 +1155,7 @@ func (s *Server) decodePutLoggerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}
@@ -1239,7 +1239,7 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request) (
 }
 
 func (s *Server) decodePutMetricsRequest(r *http.Request) (
-	req Metrics,
+	req *Metrics,
 	close func() error,
 	rerr error,
 ) {
@@ -1290,7 +1290,7 @@ func (s *Server) decodePutMetricsRequest(r *http.Request) (
 		if err := d.Skip(); err != io.EOF {
 			return req, close, errors.New("unexpected trailing data")
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

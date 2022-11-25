@@ -38,7 +38,7 @@ func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace
 	return nil
 }
 
-func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeErrorGetResponse(response *ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	code := response.StatusCode
 	if code == 0 {
@@ -133,7 +133,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	}
 }
 
-func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span trace.Span) error {
+func encodeFoobarPutResponse(response *FoobarPutDef, w http.ResponseWriter, span trace.Span) error {
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.
@@ -150,7 +150,7 @@ func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span 
 	return nil
 }
 
-func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Span) error {
+func encodeGetHeaderResponse(response *Hash, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -163,7 +163,7 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
-func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
+func encodeNoAdditionalPropertiesTestResponse(response *NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -176,7 +176,7 @@ func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTes
 	return nil
 }
 
-func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeNullableDefaultResponseResponse(response *NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	code := response.StatusCode
 	if code == 0 {
@@ -199,7 +199,7 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 	return nil
 }
 
-func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
+func encodeOneofBugResponse(response *OneofBugOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -219,7 +219,7 @@ func encodePatternRecursiveMapGetResponse(response PatternRecursiveMap, w http.R
 	return nil
 }
 
-func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
+func encodePetCreateResponse(response *Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -382,7 +382,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 	}
 }
 
-func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
+func encodePetGetByNameResponse(response *Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -408,7 +408,7 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	return nil
 }
 
-func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w http.ResponseWriter, span trace.Span) error {
+func encodePetUpdateNameAliasPostResponse(response *PetUpdateNameAliasPostDef, w http.ResponseWriter, span trace.Span) error {
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.
@@ -425,7 +425,7 @@ func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w 
 	return nil
 }
 
-func encodePetUpdateNamePostResponse(response PetUpdateNamePostDef, w http.ResponseWriter, span trace.Span) error {
+func encodePetUpdateNamePostResponse(response *PetUpdateNamePostDef, w http.ResponseWriter, span trace.Span) error {
 	code := response.StatusCode
 	if code == 0 {
 		// Set default status code.
@@ -496,7 +496,7 @@ func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWri
 	return nil
 }
 
-func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter, span trace.Span) error {
+func encodeRecursiveMapGetResponse(response *RecursiveMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -522,7 +522,7 @@ func encodeSecurityTestResponse(response string, w http.ResponseWriter, span tra
 	return nil
 }
 
-func encodeStringIntMapGetResponse(response StringIntMap, w http.ResponseWriter, span trace.Span) error {
+func encodeStringIntMapGetResponse(response *StringIntMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -548,7 +548,7 @@ func encodeTestContentParameterResponse(response string, w http.ResponseWriter, 
 	return nil
 }
 
-func encodeTestFloatValidationResponse(response TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
+func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
@@ -598,7 +598,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 	}
 }
 
-func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
+func encodeTestObjectQueryParameterResponse(response *TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

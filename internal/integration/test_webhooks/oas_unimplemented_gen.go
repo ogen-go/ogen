@@ -16,21 +16,22 @@ var _ Handler = UnimplementedHandler{}
 // PublishEvent implements publishEvent operation.
 //
 // POST /event
-func (UnimplementedHandler) PublishEvent(ctx context.Context, req OptEvent) (r Event, _ error) {
+func (UnimplementedHandler) PublishEvent(ctx context.Context, req OptEvent) (r *Event, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
-// NewError creates ErrorStatusCode from error returned by handler.
+// NewError creates *ErrorStatusCode from error returned by handler.
 //
 // Used for common default response.
-func (UnimplementedHandler) NewError(ctx context.Context, err error) (r ErrorStatusCode) {
+func (UnimplementedHandler) NewError(ctx context.Context, err error) (r *ErrorStatusCode) {
+	r = new(ErrorStatusCode)
 	return r
 }
 
 var _ WebhookHandler = UnimplementedHandler{}
 
 // StatusWebhook implements statusWebhook operation.
-func (UnimplementedHandler) StatusWebhook(ctx context.Context) (r StatusWebhookOK, _ error) {
+func (UnimplementedHandler) StatusWebhook(ctx context.Context) (r *StatusWebhookOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
