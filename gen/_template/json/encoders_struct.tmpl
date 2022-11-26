@@ -15,14 +15,14 @@
 {{- $pattern := $.JSON.PatternProps }}
 {{- $va := $.Validators }}
 // Encode implements json.Marshaler.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
+func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 	{{- template "json/encode_struct_fields" $fields }}
 	{{- if $additional }}
 	for k, elem := range s.{{ $additional.Name }} {

@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "json/encoders_sum" }}{{ $d := $.JSON.Sum -}}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	{{- if $d.Discriminator -}}
 	switch s.Type {
 	{{- range $m := $.SumSpec.Mapping }}

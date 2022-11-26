@@ -27,7 +27,7 @@ type {{ $.Name }} struct {
 
 {{- if $v.Optional }}
 // IsSet returns true if {{ $.Go }} was set.
-func (o {{ $.Name }}) IsSet() bool { return o.Set }
+func (o {{ $.ReadOnlyReceiver }}) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *{{ $.Name }}) Reset() {
@@ -53,11 +53,11 @@ func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
 
 {{- if $v.Nullable  }}
 // IsSet returns true if value is Null.
-func (o {{ $.Name }}) IsNull() bool { return o.Null }
+func (o {{ $.ReadOnlyReceiver }}) IsNull() bool { return o.Null }
 {{ end }}
 
 // Get returns value and boolean that denotes whether value was set.
-func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
+func (o {{ $.ReadOnlyReceiver }}) Get() (v {{ $g.Go }}, ok bool) {
 	{{- if $v.Nullable }}
 	if o.Null {
 		return v, false
@@ -72,7 +72,7 @@ func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o {{ $.Name }}) Or(d {{ $g.Go }}) {{ $g.Go }} {
+func (o {{ $.ReadOnlyReceiver }}) Or(d {{ $g.Go }}) {{ $g.Go }} {
 	if v, ok := o.Get(); ok {
 		return v
 	}

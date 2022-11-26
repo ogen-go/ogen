@@ -130,7 +130,9 @@ func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
 
-func (t *Type) ReceiverType() string {
+// ImplReceiverType returns type that should be used as receiver type for
+// interface implementation.
+func (t *Type) ImplReceiverType() string {
 	if t.needsPointerReceiverType() {
 		return "*" + t.Name
 	}
@@ -242,5 +244,20 @@ func (t *Type) TypeDiscriminator() (r []TypeDiscriminatorCase) {
 
 // DoPassByPointer returns true if type should be passed by pointer.
 func (t *Type) DoPassByPointer() bool {
-	return t.IsStruct()
+	switch t.Kind {
+	case KindStruct:
+		return true
+	case KindAlias:
+		return t.AliasTo.DoPassByPointer()
+	default:
+		return false
+	}
+}
+
+// ReadOnlyReceiver returns the receiver type for read-only methods.
+func (t *Type) ReadOnlyReceiver() string {
+	if t.DoPassByPointer() {
+		return "*" + t.Name
+	}
+	return t.Name
 }

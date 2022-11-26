@@ -151,7 +151,7 @@
 {{- range $t := $.Types }}{{/*Range schemas*/}}
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
 {{- if $t.IsStruct }}{{/*If struct*/}}
-func (s {{ $t.Name }}) Validate() error {
+func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	var failures []validate.FieldError
 	{{- range $f := $t.Fields }}{{/*Range fields*/}}
 	{{- if $f.Type.NeedValidation }}
@@ -171,7 +171,7 @@ func (s {{ $t.Name }}) Validate() error {
 	return nil
 }
 {{- else if $t.IsMap }}
-func (s {{ $t.Name }}) Validate() error {
+func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	var failures []validate.FieldError
 
 	{{- if $t.Item.NeedValidation }}
@@ -193,11 +193,11 @@ func (s {{ $t.Name }}) Validate() error {
 	return nil
 }
 {{- else if $t.IsAlias }}
-func (s {{ $t.Name }}) Validate() error {
+func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	{{- template "validate" elem $t.AliasTo "s" }}
 }
 {{- else if $t.IsSum }}
-func (s {{ $t.Name }}) Validate() error {
+func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	switch s.Type {
 	{{- range $s := $t.SumOf }}
 		case {{ $s.Name }}{{ $t.Name }}:
@@ -214,7 +214,7 @@ func (s {{ $t.Name }}) Validate() error {
 {{ else if $t.IsGeneric }}
 {{/* Handled in-place */}}
 {{ else if $t.IsEnum }}
-func (s {{ $t.Name }}) Validate() error {
+func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 switch s {
 {{- range $v := $t.EnumVariants }}
 	case {{ $v.ValueGo }}: return nil
