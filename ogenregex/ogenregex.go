@@ -41,6 +41,8 @@ type regexp2Regexp struct {
 	exp *regexp2.Regexp
 }
 
+const regexp2Flags = regexp2.ECMAScript | regexp2.Unicode
+
 func (r regexp2Regexp) Match(s []byte) (bool, error) {
 	return r.exp.MatchRunes([]rune(string(s)))
 }
@@ -70,7 +72,7 @@ func Compile(exp string) (Regexp, error) {
 			return goRegexp{re}, nil
 		}
 	}
-	re, err := regexp2.Compile(exp, regexp2.ECMAScript|regexp2.Unicode)
+	re, err := regexp2.Compile(exp, regexp2Flags)
 	if err != nil {
 		return nil, errors.Wrap(err, "regexp2")
 	}
